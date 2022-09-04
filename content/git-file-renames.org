@@ -1,0 +1,2 @@
+If you move a file in git, then commit the deletion and addition at
+the same time.

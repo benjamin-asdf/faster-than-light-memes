@@ -1,0 +1,30 @@
+{:tasks {:init (def
+                 url
+                 "https://benjamin-asdf.github.io/faster-than-light-memes/")
+         setup-once
+         (when-not (babashka.fs/exists? "public")
+           (do
+             (shell
+              "mkdir -p public")
+             (shell
+              "git init public")))
+         build (shell "emacs" "-Q" "--script" "build-site.el" )
+         serve-local {:depends [build]
+                      :task (shell "emacsclient" "--eval" "(load-file \"./serve.el\")")}
+         deploy-add {:depends [setup-once] :task (shell {:dir "public"} "git" "add" "--" ".")}
+         deploy-commit (shell
+                        {:dir "public"}
+                        "git" "commit" "--allow-empty" "-m" "deploy")
+         deploy {:depends [deploy-add deploy-commit]
+                 :task (shell
+                        {:dir "public"}
+                        "git"
+                        "push"
+                        "--force"
+                        "git@github.com:benjamin-asdf/faster-than-light-memes.git"
+                        "master:gh-pages")}
+         build-deploy {:depends [build deploy]}
+         browse-qr-code (shell
+                         "xdg-open"
+                         (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url))
+         browse (shell "xdg-open" url)}}

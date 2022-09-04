@@ -1,0 +1,22 @@
+* Pages
+** [[file:git-file-renames.org][Renaming files with git the proper way]]
+
+
+
+* hurr
+
+yea
+
+#+begin_src shell
+  lul
+#+end_src
+
+
+#+begin_src clojure
+  (defn foo [] 'hehe)
+#+end_src
+
+
+#+begin_src lisp
+  (defun foo () 'lol)
+#+end_src
