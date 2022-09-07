@@ -1,2 +1,315 @@
-If you move a file in git, then commit the deletion and addition at
-the same time.
+If you move a file in git, then commit the deletion and addition at the same time.
+
+Here is one of the ways I can tell somebody is not on a high git magician power level:
+
+Renaming a file and have separate commits for the creation and deletion of the files.
+
+* The correct way
+
+There is 2 ways I know to rename files correctly:
+
+** One: Stage both files at the same time
+
+#+begin_src shell :results verbatim :results replace
+  rm -rf rename-files-demo
+  mkdir rename-files-demo
+  git init rename-files-demo
+  cd rename-files-demo
+  echo 'first hi' > myfile
+  git add myfile
+  git commit -m "Initial"
+  cd rename-files-demo
+  mv myfile my-better-file
+  git add myfile my-better-file
+  git status
+#+end_src
+
+#+RESULTS:
+: Initialized empty Git repository in /home/benj/repos/faster-than-light-memes/content/rename-files-demo/.git/
+: [master (root-commit) c212c46] Initial
+:  1 file changed, 1 insertion(+)
+:  create mode 100644 myfile
+: On branch master
+: Changes to be committed:
+:   (use "git restore --staged <file>..." to unstage)
+: 	renamed:    myfile -> my-better-file
+:
+
+** Two: Use [[https://www.git-scm.com/docs/git-mv][git-mv]]
+
+#+begin_src shell :results verbatim :results replace
+  rm -rf rename-files-demo
+  mkdir rename-files-demo
+  git init rename-files-demo
+  cd rename-files-demo
+  echo 'first hi' > myfile
+  git add myfile
+  git commit -m "Initial"
+  git mv myfile my-better-file
+  git status
+#+end_src
+
+#+RESULTS:
+: Initialized empty Git repository in /home/benj/repos/faster-than-light-memes/content/rename-files-demo/.git/
+: [master (root-commit) 1812bb2] Initial
+:  1 file changed, 1 insertion(+)
+:  create mode 100644 myfile
+: On branch master
+: Changes to be committed:
+:   (use "git restore --staged <file>..." to unstage)
+: 	renamed:    myfile -> my-better-file
+:
+
+* Why correct?
+
+On this level of detail, the keyword here is ~renamed~.
+Observe how ~git log follow~ tracks the whole history of our file:
+
+#+begin_src shell :results verbatim :results replace
+  cd rename-files-demo
+  git commit -m "Rename the file"
+  echo 'more' > my-better-file
+  git add my-better-file
+  git commit -m "More better file"
+  git log --follow --oneline my-better-file
+#+end_src
+
+#+RESULTS:
+: [master c64d270] Rename the file
+:  1 file changed, 0 insertions(+), 0 deletions(-)
+:  rename myfile => my-better-file (100%)
+: [master 2d41652] More better file
+:  1 file changed, 1 insertion(+), 1 deletion(-)
+: 2d41652 More better file
+: c64d270 Rename the file
+: c212c46 Initial
+
+* The incorrect way
+
+Let's delete our demo and make some commits.
+This time we do not add the deletion and creation in the same commit,
+but 2:
+
+#+begin_src shell :results verbatim :results replace
+  rm -rf rename-files-demo
+  mkdir rename-files-demo
+  git init rename-files-demo
+  cd rename-files-demo
+  echo 'first hi' > myfile
+  git add myfile
+  git commit -m "Initial"
+  cd rename-files-demo
+  mv myfile my-better-file
+  git add myfile
+  git commit -m "Remove myfile"
+  git add my-better-file
+  git commit -m "Add my-better-file"
+  echo 'more' > my-better-file
+  git add my-better-file
+  git commit -m "More better file"
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Initialized empty Git repository in /home/benj/repos/faster-than-light-memes/content/rename-files-demo/.git/
+[master (root-commit) 93f9b1a] Initial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 myfile
+[master af4eb30] Remove myfile
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 myfile
+[master b7b9ecb] Add my-better-file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 my-better-file
+[master 0a945a4] More better file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+#+end_example
+
+Commit 1:
+
+#+begin_example
+ 1 file changed, 1 deletion(-)
+#+end_example
+
+Commit 2:
+
+#+begin_example
+ 1 file changed, 1 insertion(+)
+ create mode 100644 my-better-file
+#+end_example
+
+And git log --follow is broken:
+
+#+begin_src shell :results verbatim
+  cd rename-files-demo
+  git log --oneline --follow --oneline -- my-better-file
+#+end_src
+
+#+RESULTS:
+: 0a945a4 More better file
+: b7b9ecb Add my-better-file
+
+Now, if I want to log out the history of the file, I see at the bottom
+usually something like "Move the files into this dir".
+
+* In the context of ~git merge~
+
+** The issue with the incorrect way:
+
+Arguably the more important context of where this starts mattering is
+~git merge~.
+
+Here the same *inccorrect* setup again
+
+#+begin_src shell :results verbatim :results replace
+  rm -rf rename-files-demo
+  mkdir rename-files-demo
+  git init rename-files-demo
+  cd rename-files-demo
+
+  # setup myfile
+  echo 'first hi' > myfile
+  git add myfile
+  git commit -m "Initial"
+
+  # make 2 commits to rename it
+  mv myfile my-better-file
+  git add myfile
+  git commit -m "Remove myfile"
+  git add my-better-file
+  git commit -m "Add my-better-file"
+
+  # Make additional changes to myfile on master
+  echo 'more' > my-better-file
+  git add my-better-file
+  git commit -m "More better file"
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Initialized empty Git repository in /home/benj/repos/faster-than-light-memes/content/rename-files-demo/.git/
+[master (root-commit) 739cff1] Initial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 myfile
+[master b9494a4] Remove myfile
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 myfile
+[master 9b10c1f] Add my-better-file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 my-better-file
+[master 115e73e] More better file
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+#+end_example
+
+Let's say we hacked on myfile on a feature branch, then merge feature
+into master:
+
+#+begin_src shell :results verbatim :results replace
+  cd rename-files-demo
+  git checkout -b feature HEAD~3
+  echo 'lul' >> myfile
+  git add myfile
+  git commit -m 'Add on feature branch'
+  git checkout master
+  git merge feature
+  git status
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[feature a3fae6a] Add on feature branch
+ 1 file changed, 1 insertion(+)
+CONFLICT (modify/delete): myfile deleted in HEAD and modified in feature.  Version feature of myfile left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+	deleted by us:   myfile
+
+no changes added to commit (use "git add" and/or "git commit -a")
+#+end_example
+
+The key here is
+
+#+begin_quote
+CONFLICT (modify/delete): myfile deleted in HEAD and modified in feature.  Version feature of myfile left in tree.
+#+end_quote
+
+We have 2 versions of myfile, but git is asking us to fix a conflict
+of "we deleted".
+But the real conflict we are interested in is between feature branchs ~myfile~
+and master branchs ~my-better-file~.
+This is annoying in the best case. And really can be a recipe for disaster.
+
+** The correct way:
+
+Let's try this out in the correct way:
+
+#+begin_src shell :results verbatim :results replace
+  rm -rf rename-files-demo
+  mkdir rename-files-demo
+  git init rename-files-demo
+  cd rename-files-demo
+
+  # setup myfile
+  echo 'first hi' >> myfile
+  git add myfile
+  git commit -m "Initial"
+
+  # rename it
+  mv myfile my-better-file
+  git add -a
+  git commit -m "Rename the file"
+
+  # Make additional changes to myfile on master
+  echo 'more' >> my-better-file
+  git add my-better-file
+  git commit -m "More better file"
+
+  #  make a feature branch with changes to the original 'myfile'
+  git checkout -b feature HEAD~2
+  echo 'lul' >> myfile
+  git add myfile
+  git commit -m 'Add on feature branch'
+
+  # merge feature into master
+  git checkout master
+  git merge feature
+  git status
+  cat my-better-file
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Initialized empty Git repository in /home/benj/repos/faster-than-light-memes/content/rename-files-demo/.git/
+[master (root-commit) 6a85068] Initial
+ 1 file changed, 1 insertion(+)
+ create mode 100644 myfile
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    myfile
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	my-better-file
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[master 201bc18] More better file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 my-better-file
+[master c84ceee] Add on feature branch
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+nothing to commit, working tree clean
+first hi
+more
+#+end_example
+
+funny, these things are not as easy as I thought they are
