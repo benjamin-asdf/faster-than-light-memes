@@ -3,5 +3,4 @@
 
 * Introduction
 
-Emacs, clojure, dreams and other kinds magic.
-I want to make the future of life great.
+Emacs, clojure, dreaming and other kinds of magic.
