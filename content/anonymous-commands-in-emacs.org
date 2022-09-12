@@ -14,9 +14,8 @@ I get help buffer with this content:
 
 #+begin_example
 Key             Binding
-
 f		[closure]
-#+end_quote
+#+end_example
 
 It is not really useful to just get the info [closure] here.
 
@@ -50,11 +49,9 @@ Alias your function:
 
 #+begin_example
 Key             Binding
-
 b		foo-b
-
 f		foo-a
-#+end_quote
+#+end_example
 
 
 Foo-b works because ~defalias~ returns the symbol.
@@ -69,7 +66,7 @@ is essentially the same as
 
 * Result
 
-I end up just using  ~defun~ inline inside my config.
+I end up just using  ~defun~ inline.
 Examples:
 
 #+begin_src elisp
