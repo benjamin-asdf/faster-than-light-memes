@@ -1,5 +1,6 @@
 * Pages
 ** [[file:anonymous-commands-in-emacs.org][Anonymous lambdas in emacs binds]]
+** [[file:intro-to-clojure.org::*Introduction][Intro to Clojure]]
 
 * Introduction
 
