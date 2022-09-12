@@ -49,7 +49,7 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 
 * slack
 
-[[https://clojurians.slack.com/?redir][on slack]].
+Meet nice people that are excited about the tech [[https://clojurians.slack.com/?redir][on slack]].
 
 * Other such lists
 
