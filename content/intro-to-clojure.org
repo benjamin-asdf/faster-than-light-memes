@@ -27,12 +27,12 @@ Get prepared for your journey as a pilot of an alien spaceship.
 As a beginner I suggest either
 
 ** Vs Code
-Easier to make work probably. vscode is a great tool and editor.
-[[https://calva.io/getting-started/][calva for vscode]]
+Easy to make work. A great editor. You will not need to be ashamed of
+your choice. [[https://calva.io/getting-started/][calva for vscode]]
 
 ** Emacs
 Strong affinity to hacker culture and a program that is more than a
-tool, but eventually an extension to your heart and mind.
+tool, but eventually an extension to your hands, heart and mind.
 
 Here is a config file I tried to make for beginners:
 https://github.com/benjamin-asdf/simple-easy-emacs
