@@ -32,7 +32,7 @@ your choice. [[https://calva.io/getting-started/][calva for vscode]]
 
 ** Emacs
 Strong affinity to hacker culture and a program that is more than a
-tool, but eventually an extension to your hands, heart and mind.
+tool, but eventually an extension to your hands, heart, and mind.
 
 Here is a config file I tried to make for beginners:
 https://github.com/benjamin-asdf/simple-easy-emacs
@@ -50,7 +50,7 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 * Slack
 
 Meet nice people that are excited about the tech [[https://clojurians.slack.com/?redir][on slack]].
-Seriosly a lot of people hang there and answer beginner questions,
+Seriously a lot of people hang there and answer beginner questions,
 everybody is welcome.
 
 * Other such lists
