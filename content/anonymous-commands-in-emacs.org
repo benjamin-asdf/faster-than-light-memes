@@ -1,0 +1,87 @@
+* Introduction
+
+Generally, you do not want to make keybindings to anonymous lambdas.
+Here is the primary reason that comes to mind:
+
+#+begin_src elisp
+(describe-keymap
+ (let ((m (make-sparse-keymap)))
+   (define-key m (kbd "f") (lambda () (interactive) 'hi))
+   m))
+#+end_src
+
+I get help buffer with this content:
+
+#+begin_example
+Key             Binding
+
+f		[closure]
+#+end_quote
+
+It is not really useful to just get the info [closure] here.
+
+** add-hook
+
+The same thing goes for ~add-hook~. From the doc string:
+
+#+begin_quote
+FUNCTION may be any valid function, but it's recommended to use a
+function symbol and not a lambda form.  Using a symbol will
+ensure that the function is not re-added if the function is
+edited, and using lambda forms may also have a negative
+performance impact when running `add-hook' and `remove-hook'
+#+end_quote
+
+Some of the hooks functionality is meant for symbols.
+
+
+* Solution
+
+Alias your function:
+
+#+begin_src elisp
+  (defalias 'foo-a (lambda () (interactive) 'hi))
+   (describe-keymap
+    (let ((m (make-sparse-keymap)))
+      (define-key m (kbd "f") 'foo-a)
+      (define-key m (kbd "b") (defalias 'foo-b (lambda () (interactive) 'hi2)))
+     m))
+#+end_src
+
+#+begin_example
+Key             Binding
+
+b		foo-b
+
+f		foo-a
+#+end_quote
+
+
+Foo-b works because ~defalias~ returns the symbol.
+
+** defun
+
+~(defalias 'foo (lambda () (interactive)))~
+
+is essentially the same as
+
+~(defun foo () (interactive))~
+
+* Result
+
+I end up just using  ~defun~ inline inside my config.
+Examples:
+
+#+begin_src elisp
+(add-hook
+ 'sh-mode-hook
+ (defun mm/add-bash-completion () ...))
+#+end_src
+
+#+begin_src elisp
+  (mememacs/leader-def
+    "pP" (defun mm/project-switch-project-find-file ()
+	   (interactive) ...))
+#+end_src
+
+After writing this post, [[https://github.com/benjamin-asdf/dotfiles/commit/1e4135b977a5866de19020ba6f8a92b417339157][I went and fixed the remaining add-hook lambas]] In my config.

@@ -1,22 +1,7 @@
 * Pages
-** [[file:git-file-renames.org][Renaming files with git the proper way]]
+** [[file:anonymous-commands-in-emacs.org][Anonymous lambdas in emacs binds]]
 
+* Introduction
 
-
-* hurr
-
-yea
-
-#+begin_src shell
-  lul
-#+end_src
-
-
-#+begin_src clojure
-  (defn foo [] 'hehe)
-#+end_src
-
-
-#+begin_src lisp
-  (defun foo () 'lol)
-#+end_src
+The future of life lies in memes.
+Here, I am trying to give back to the world what have learned.
