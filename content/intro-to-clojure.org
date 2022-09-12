@@ -52,7 +52,6 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 Meet nice people that are excited about the tech [[https://clojurians.slack.com/?redir][on slack]].
 Seriosly a lot of people hang there and answer beginner questions,
 everybody is welcome.
-It is the [[https://www.youtube.com/watch?v=zv5TiGOLWXA][heartfelt desire]] of the community to be welcoming to beginners.
 
 * Other such lists
 
