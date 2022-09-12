@@ -3,5 +3,5 @@
 
 * Introduction
 
-The future of life lies in memes.
-Here, I am trying to give back to the world what have learned.
+Emacs, clojure, dreams and other kinds magic.
+I want to make the future of life great.

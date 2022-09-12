@@ -1,5 +1,11 @@
 Benjamin Schwerdtners blog
 
+This is up here:
+https://benjamin-asdf.github.io/faster-than-light-memes/
+
+Make a blog using org and use babashka as build tool.
+
+
 # build
 
 ```
