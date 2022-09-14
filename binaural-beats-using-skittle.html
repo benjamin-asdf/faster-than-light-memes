@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org99ba193">Introduction</a>
+<ul>
+<li><a href="#orgd335cdb">What are binaural beats?</a></li>
+<li><a href="#org5ba8277">Science</a></li>
+<li><a href="#orgd11c424">Frequency</a></li>
+<li><a href="#orga8d3942">The neuroscience of the auditory system </a></li>
+<li><a href="#org15bdea1">I think this is ultra cool</a></li>
+<li><a href="#org05c4048">Give me those binaural beats</a></li>
+</ul>
+</li>
+<li><a href="#orgd76e19a">skittle</a>
+<ul>
+<li><a href="#org6b106ea">1 ear</a>
+<ul>
+<li><a href="#org5eba02a">The first playground</a></li>
+</ul>
+</li>
+<li><a href="#orgf7347f5">Playing Hz, first round</a></li>
+</ul>
+</li>
+<li><a href="#orge48924c">binaural!</a>
+<ul>
+<li><a href="#org8e482a3">just put the second sound in the other ear, whatever</a></li>
+</ul>
+</li>
+<li><a href="#org2aca890">Intermediate results</a>
+<ul>
+<li><a href="#org505764c">Artifacts</a></li>
+<li><a href="#org2f2aa6e">Binaural beat?</a></li>
+</ul>
+</li>
+<li><a href="#orgb364075">Change the base frequency</a>
+<ul>
+<li><a href="#orgf94f751">I really need a slider for frequencies in my life.</a>
+<ul>
+<li><a href="#org14dece5">nice dev experience, skittle really</a></li>
+<li><a href="#org61ede9f">code:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org99ba193" class="outline-2">
+<h2 id="org99ba193">Introduction</h2>
+<div class="outline-text-2" id="text-org99ba193">
+<p>
+The best thing about being a rationalist is figuring out you are wrong
+about something.
+</p>
+
+<p>
+I was thinking = that binaural beats= belong together with astral travel,
+frankly, just down the toilet.
+Turns out that not only was I wrong, but binaural beats also have cool
+neuroscience and pose a fun engineering problem on top of that!
+</p>
+
+<p>
+<a href="https://benjamin-asdf.github.io/just-40hz-binaural-beats/">Here</a> is the current result of my journeys up on gh-pages.
+</p>
+</div>
+
+
+<div id="outline-container-orgd335cdb" class="outline-3">
+<h3 id="orgd335cdb">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orgd335cdb">
+<p>
+<a href="https://simple.wikipedia.org/wiki/Binaural_beats">https://simple.wikipedia.org/wiki/Binaural_beats</a>
+</p>
+
+<blockquote>
+<p>
+A binaural beat is an auditory illusion
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+For example, if a 530 Hz pure tone is presented to a subject's right ear, while a 520 Hz pure tone is presented to the subject's left ear, the listener will perceive the illusion of a third tone. The third sound is called a binaural beat, and in this example would have a perceived pitch correlating to a frequency of 10 Hz, that being the difference between the 530 Hz and 520 Hz pure tones presented to each ear.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org5ba8277" class="outline-3">
+<h3 id="org5ba8277">Science</h3>
+<div class="outline-text-3" id="text-org5ba8277">
+<p>
+There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
+attention tacks when listening to binaural beats.
+</p>
+
+<p>
+BTW the frequency and the time of the exposure matter (i.e. before and during the task is best).
+</p>
+
+<p>
+Oh yes, I certainly want more of that memory and attention.
+</p>
+
+
+<div id="org1ec33db" class="figure">
+<p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art. (I made this with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">https://huggingface.co/spaces/stabilityai/stable-diffusion</a>)</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd11c424" class="outline-3">
+<h3 id="orgd11c424">Frequency</h3>
+<div class="outline-text-3" id="text-orgd11c424">
+<p>
+Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
+really do not want to listen to those.
+I heard <a href="https://hubermanlab.com/the-science-of-hearing-balance-and-accelerated-learning/">Andrew Huberman</a> saying that <b>40Hz</b> is the most powerful.
+</p>
+
+<p>
+If you know about <a href="https://en.wikipedia.org/wiki/Neural_oscillation">brain waves</a>, you might remember 40Hz as the
+legendarily intriguing gamma wave.
+</p>
+
+<p>
+From <a href="https://en.wikipedia.org/wiki/Gamma_wave">wikipedia article</a>:
+</p>
+
+<blockquote>
+<p>
+Gamma rhythms are correlated with large scale brain network activity and cognitive phenomena such as working memory, attention, and perceptual grouping, and can be increased in amplitude via meditation or neurostimulation.
+</p>
+</blockquote>
+
+<p>
+We are really talking about cool stuff here, attention, working
+memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/Binding_problem">Binding problem</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga8d3942" class="outline-3">
+<h3 id="orga8d3942">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-orga8d3942">
+<p>
+Hearing is cool because the neuronal neural information first goes into the brainstorm
+and then goes up some nuclei up to the thalamus. And eventually to the
+temporal lobes of the cortex (the 2 arm things on the side of the brain).
+</p>
+
+<p>
+This is different from the vision system where the info goes directly to the thalamus.
+</p>
+
+<p>
+Quoting this <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7082494/">paper</a>:
+</p>
+
+<blockquote>
+<p>
+Presenting two tones with a slight frequency mismatch to each ear separately creates a perception of a third tone, a binaural beat, that oscillates at the absolute difference between the tones (Oster, 1973; Moore, 2012). These beats are thought to originate subcortically in the medial nucleus of the superior olivary complex, the first nucleus in the auditory pathway to receive bilateral input (Wernick and Starr, 1968; Kuwada et al., 1979). This “illusory” third tone is lateralized between the left and right ear of the listener, making binaural beats useful for spatial sound research (Ross et al., 2014).
+</p>
+</blockquote>
+
+<p>
+from the Wikipedia articles on <a href="https://en.wikipedia.org/wiki/Sound_localization">Sound localization</a>
+</p>
+
+<blockquote>
+<p>
+The auditory system uses several cues for sound source localization, including time difference and level difference (or intensity difference) between the ears, and spectral information.
+</p>
+</blockquote>
+
+<p>
+and <a href="https://en.wikipedia.org/wiki/Superior_olivary_complex">Superior olivary complex</a>
+</p>
+
+<blockquote>
+<p>
+The superior olivary nucleus plays a number of roles in hearing. The medial superior olive (MSO) is a specialized nucleus that is believed to measure the time difference of arrival of sounds between the ears (the interaural time difference or ITD). The ITD is a major cue for determining the azimuth of sounds, i.e., localizing them on the azimuthal plane – their degree to the left or the right.
+</p>
+</blockquote>
+
+<p>
+So there is sort of a clump of neurons below the cortex that are specialized to integrate the timing information between the left and the right ear.
+I'm guessing those then start firing in the 40Hz frequency and that is interpreted as a third sound higher up.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15bdea1" class="outline-3">
+<h3 id="org15bdea1">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-org15bdea1">
+<p>
+You throw some energy at the brain in the right form (in this case
+some sound waves) and it reacts in some special way.
+If you put it like that, it is not surprising that some things
+eventually, end up doing <b>something</b>.
+</p>
+
+<p>
+Now that the phenomenon has a name we can talk about it, similar to <a href="https://en.wikipedia.org/wiki/ASMR">ASMR</a>.
+</p>
+
+<p>
+Thinking about how this was always part of how the brain works.
+Makes me wonder if some music composers and performers implicitly hit on this earlier, or not.
+I tried searching the web for
+</p>
+
+<blockquote>
+<p>
+binaural beats in music
+</p>
+</blockquote>
+
+<p>
+but I really get the same results mix as when I search for <code>binaural beats</code>.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org05c4048" class="outline-3">
+<h3 id="org05c4048">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-org05c4048">
+<p>
+I dint feel like opening a youtube video just to listen to some
+sounds. As an aspiring hacker and engineer, I just want to make my
+computer make some sounds that I want to listen to.
+So I decided to make a simple website that just makes binaural beats and nothing else.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd76e19a" class="outline-2">
+<h2 id="orgd76e19a">skittle</h2>
+<div class="outline-text-2" id="text-orgd76e19a">
+<p>
+I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
+and get greeted with a friendly <code>Isn't cool? this :)</code>.
+</p>
+
+<p>
+It took me a moment to figure out I should open my index.html with a browser.
+Then do the <code>cider-connect-cljs</code>
+</p>
+</div>
+
+<div id="outline-container-org6b106ea" class="outline-3">
+<h3 id="org6b106ea">1 ear</h3>
+<div class="outline-text-3" id="text-org6b106ea">
+<p>
+First I think let's start making a sound in 1 ear.
+</p>
+
+<p>
+I am thinking a frequency that I can hear would be nice
+so I search the web for <code>human auditory frequencies</code>
+and click on <a href="https://en.wikipedia.org/wiki/Hearing_range">https://en.wikipedia.org/wiki/Hearing_range</a>.
+</p>
+
+<p>
+Looking at the chart, 1 kHz sounds like a good first thing to try.
+I am figuring something inside the speech area should sound natural
+(turned out that was a naive assumption).
+</p>
+</div>
+
+<div id="outline-container-org5eba02a" class="outline-4">
+<h4 id="org5eba02a">The first playground</h4>
+<div class="outline-text-4" id="text-org5eba02a">
+<p>
+I have a file called playground.clj
+(Later I figured out I should rename to .cljs :) ).
+</p>
+
+<p>
+Now getting heavily inspired by <a href="https://github.com/Cortexelus/Polyphonic-Binaural-Beats">this code</a>.
+Going 1 form by 1 like a usual lisp interaction dev experience, lulling it up:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Clojure">(def ctx (js/window.AudioContext.))
+(def ctx js/window.webkitAudioContext)
+
+(def panner (ctx.createStereoPanner))
+(set! (.. panner -pan -value) -1)
+(.. panner (connect ctx.destination))
+
+(def oscillators (atom []))
+(let [o (ctx.createOscillator)
+      _ (set! (.- o type) "sine")
+      _ (set! (.. o -frequency -value) 1000)]
+  (. o start)
+  (. o (connect panner))
+  (swap! oscillators conj o))
+</pre>
+</div>
+
+<p>
+I connect my headphones via Bluetooth (a small feat on Linux, maybe
+another blog post), and lo and behold I hear a tone in my left ear.
+It is a really obnoxious sound, after a few seconds, it is so painful
+that I move the headphone to the side.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7347f5" class="outline-3">
+<h3 id="orgf7347f5">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-orgf7347f5">
+<p>
+Here is a more endurable sound:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Clojure">(set! (.. (@oscillators 0) -frequency -value) 200)
+</pre>
+</div>
+
+<p>
+Playing around live at the REPL with sound is <b>fun</b>!
+</p>
+
+<p>
+Now I am thinking, let's pick some music frequency, those are supposed
+to be crafted over hundreds of years to be beautiful frequencies, right?
+</p>
+
+<p>
+Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</a>. I pick D#3 / Eb3. Whatever that is.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Clojure">(def a-note-freq 152.74)
+(set! (.. (@oscillators 0) -frequency -value) a-note-freq)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge48924c" class="outline-2">
+<h2 id="orge48924c">binaural!</h2>
+<div class="outline-text-2" id="text-orge48924c">
+<p>
+Let's do the thing where I add +40Hz and play that on the other ear.
+First I start generalizing how I make a panner:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Clojure">(defn -&gt;panner [ctx left?]
+  (let
+      [panner (. ctx createStereoPanner)
+       _ (set! (.. panner -pan -value) (if left? -1 1))
+       _ (.. panner (connect ctx.destination))]
+    panner))
+</pre>
+</div>
+
+<p>
+For some reason running this I get:
+</p>
+
+<pre class="example" id="org433089b">
+Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
+</pre>
+
+<p>
+I went and asked in the nbb clojurians slack. I am sure one day we will figure out
+this error, in the meantime&#x2026;
+</p>
+</div>
+
+<div id="outline-container-org8e482a3" class="outline-3">
+<h3 id="org8e482a3">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-org8e482a3">
+<div class="org-src-container">
+<pre class="src src-Clojure">(ns beats)
+
+(def a-note-freq 152.74)
+(def binaural-beat-freq 40)
+(def oscillators (atom []))
+(defonce ctx (js/window.AudioContext.))
+
+(def panners
+  {:left
+   (let [left? true]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))
+   :right
+   (let [left? nil]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))})
+
+(defn oscillate [panner hz]
+  (let [o (ctx.createOscillator)
+	_ (set! (.- o type) "sine")
+	_ (set! (.. o -frequency -value) hz)]
+    (. o start)
+    (. o (connect panner))
+    (swap! oscillators conj o)))
+
+(-&gt; panners :right (oscillate (+ a-note-freq binaural-beat-freq)))
+(-&gt; panners :left (oscillate a-note-freq))
+</pre>
+</div>
+
+<p>
+lol, it works.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2aca890" class="outline-2">
+<h2 id="org2aca890">Intermediate results</h2>
+<div class="outline-text-2" id="text-org2aca890">
+</div>
+<div id="outline-container-org505764c" class="outline-3">
+<h3 id="org505764c">Artifacts</h3>
+<div class="outline-text-3" id="text-org505764c">
+<p>
+Every now and then there are artifacts in the sound with my headphones setup.
+Some are just rustling and crackling.
+</p>
+
+<p>
+Others sound like some kind of metal being stretched far, far away, underwater, or in slow motion.
+It reminds me a bit of the <a href="https://www.youtube.com/watch?v=O6iHgOEp0Fg&amp;t=452s">Dungeon Keeper soundtrack</a>. Dark and eerie,
+sort of slow mow.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2f2aa6e" class="outline-3">
+<h3 id="org2f2aa6e">Binaural beat?</h3>
+<div class="outline-text-3" id="text-org2f2aa6e">
+<p>
+Pretty sure I get the third-tone illusion.
+I would describe it as some kind of background or in between "airy"
+sound.
+It is supposed to seem to come from the middle of the brain.
+It is as if the fabric of the sound is richer. Like there is sound in more places.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb364075" class="outline-2">
+<h2 id="orgb364075">Change the base frequency</h2>
+<div class="outline-text-2" id="text-orgb364075">
+<p>
+It occurred to me, that if I get the 40Hz sound illusion, then I would
+predict that I can change the base frequency, keeping the 40Hz difference between
+left and right ear invariant. I should then constantly perceive a 3rd
+tone that is the binaural beat.
+</p>
+</div>
+
+<div id="outline-container-orgf94f751" class="outline-3">
+<h3 id="orgf94f751">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-orgf94f751">
+<p>
+I did not do much web dev in my life and making a slider was a first.
+</p>
+
+<p>
+I managed to put something together, drawing inspiration from
+<a href="https://www.w3schools.com/howto/howto_js_rangeslider.asp">w3 schools</a>, <a href="https://babashka.org/scittle/">https://babashka.org/scittle/</a> and <a href="https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function">stackoverflow</a>
+</p>
+</div>
+
+<div id="outline-container-org14dece5" class="outline-4">
+<h4 id="org14dece5">nice dev experience, skittle really</h4>
+<div class="outline-text-4" id="text-org14dece5">
+<ol class="org-ol">
+<li>I did not need to restart my REPL at any point, adding those Html
+elements, then reloading my index.html - it handles that.</li>
+<li><p>
+I get auto completions with cider. E.g. <code>js/..</code> does something.
+</p>
+
+<div class="org-center">
+<p>
+BTW here is a tip, for <code>sci</code> projects (<code>babashka</code>, <code>nbb</code>, <code>skittle</code>).
+Currently, you need to evaluate a namespace form first.
+Then you can get completions.
+At least with cider.
+</p>
+</div></li>
+</ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-org61ede9f" class="outline-4">
+<h4 id="org61ede9f">code:</h4>
+<div class="outline-text-4" id="text-org61ede9f">
+<p>
+index.html
+</p>
+<div class="org-src-container">
+<pre class="src src-Html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script&gt;var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/scittle@0.3.10/dist/scittle.js" type="application/javascript"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/scittle@0.3.10/dist/scittle.nrepl.js" type="application/javascript"&gt;&lt;/script&gt;
+    &lt;script type="application/x-scittle" src="beats.cljs"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="slidecontainer"&gt;
+      &lt;input type="range" min="120000" max="250000" value="15274"
+      class="slider" id="frequencyRange" onchange="update_app(this.value)"&gt; &lt;/div&gt;
+    &lt;div id="frequencyDisplay"&gt; &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<p>
+beats.cljs
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(ns beats)
+
+(def binaural-beat-freq 40)
+(defonce ctx (js/window.AudioContext.))
+(def slider (js/document.getElementById "frequencyRange"))
+(def display (js/document.getElementById "frequencyDisplay"))
+
+(def panners
+  {:left
+   (let [left? true]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))
+   :right
+   (let [left? nil]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))})
+
+(defn update-display! [value]
+  (set! (.-innerHTML display)
+	(str "Base frequency: " value)))
+
+(def get-oscillator
+  (memoize
+   (fn [panner]
+     (let [o (ctx.createOscillator)]
+       (set! (.- o type) "sine")
+       (. o start)
+       (. o (connect panner))
+       o))))
+
+(defn oscillate [panner hz]
+  (let [o (get-oscillator panner)
+	_ (set! (.. o -frequency -value) hz)])
+  hz)
+
+(defn update-app [frequency-value]
+  (let [frequency-value (/ frequency-value 1000.0)]
+    (-&gt; panners :right (oscillate (+ frequency-value binaural-beat-freq)))
+    (-&gt; panners :left (oscillate frequency-value))
+    (update-display! frequency-value)))
+
+(set! (.-update_app js/window) update-app)
+
+(update-app (* 1000 152.74))
+</pre>
+</div>
+
+<p>
+The fact that I export my function by setting this global <code>window</code> object is quite wild.
+And then how I write a string of js code in the 'onchange' of the
+Html - damn.
+As I said, I am new to the web. Now I know one reason why it is called the wild west.
+But it let me "just do" what I wanted without being in my way so I
+appreciate that.
+</p>
+
+<p>
+On the skittle side, I updated the code to only get 1 oscillator per slider. Seems like stuff is working.
+Switching up the frequencies via the slider is satisfying.
+For some reason, those artifacts are also gone. Maybe sliders just ensure balance and harmony in the world?
+</p>
+
+<p>
+I am pretty sure I can tell there is 1 sound that seems to stay the same across frequencies.
+</p>
+
+<p>
+I do the float <code>* 1000</code> trick because I want to work with 2 digits for my frequencies.
+</p>
+
+<p>
+Btw I also quickly tried what a <b>real</b> 40Hz tone sounds like. Ultra-low. I almost feel like I can make out the single waves, maybe that
+are the headphones cracking?
+Not surprising as the lower bound of human hearing is 20hz.
+The sound of the highest achievement of human thought.
+Genius insights, ideas that come to you like lightning. Globally
+integrating patterns of the brain and mind.
+</p>
+
+
+<div id="org299c97c" class="figure">
+<p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art. (I made this with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">https://huggingface.co/spaces/stabilityai/stable-diffusion</a>)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.4)</p>
+</div>
+</body>
+</html>
