@@ -1,4 +1,4 @@
-Benjamin Schwerdtners blog
+  * [ ] Benjamin Schwerdtners blog
 
 This is up here:
 https://benjamin-asdf.github.io/faster-than-light-memes/

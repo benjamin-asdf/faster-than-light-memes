@@ -1,0 +1,368 @@
+* Introduction
+
+The best thing about being a rationalist is figuring out you are wrong
+about someting.
+
+I was thinking =binaural beats= belong together with astral travel on
+the
+
+the unfattering category of useless esotericism -
+Let me brighten up your day!
+
+** What they are
+
+https://simple.wikipedia.org/wiki/Binaural_beats
+
+#+begin_quote
+A binaural beat is an auditory illusion
+#+end_quote
+
+#+begin_quote
+For example, if a 530 Hz pure tone is presented to a subject's right ear, while a 520 Hz pure tone is presented to the subject's left ear, the listener will perceive the illusion of a third tone. The third sound is called a binaural beat, and in this example would have a perceived pitch correlating to a frequency of 10 Hz, that being the difference between the 530 Hz and 520 Hz pure tones presented to each ear.
+#+end_quote
+
+
+** sience
+
+There has developed a [[https://pubmed.ncbi.nlm.nih.gov/30073406/][growing science]] about improvements at memory and
+attention taks when listening to binaural beats.
+
+BTW the frequency and the time of the exposure matters (i.e. before and during the task is best).
+
+** frequency
+
+Theta waves (5hz) [[https://pubmed.ncbi.nlm.nih.gov/29222722/][actually decrease memory task performance]].
+I heard [[https://hubermanlab.com/the-science-of-hearing-balance-and-accelerated-learning/][Andrew Huberman]] saying that *40hz* is the most useful.
+
+If you know about [[https://en.wikipedia.org/wiki/Neural_oscillation][brain waves]], you might remember 40hz as the interesting gamma wave.
+
+From [[https://en.wikipedia.org/wiki/Gamma_wave][wikipedia article]]:
+
+#+begin_quote
+Gamma rhythms are correlated with large scale brain network activity and cognitive phenomena such as working memory, attention, and perceptual grouping, and can be increased in amplitude via meditation or neurostimulation.
+#+end_quote
+
+We are really talking about cool stuff here, attention, working
+memeory, memory processes. Also, the [[https://en.wikipedia.org/wiki/Binding_problem][Binding problem]].
+
+
+
+
+** The neuroscience of the [[https://en.wikipedia.org/wiki/Hearing][auditory system ]]
+
+One cool thing about hearing is how the neural information first goes
+into the brianstem and then through a few waystations,
+before ariving at the thalamus and then the cortex
+This is different from vision where the info goes directly to the thalamus.
+
+Quoting this [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7082494/][paper]]:
+
+#+begin_quote
+Presenting two tones with a slight frequency mismatch to each ear separately creates a perception of a third tone, a binaural beat, that oscillates at the absolute difference between the tones (Oster, 1973; Moore, 2012). These beats are thought to originate subcortically in the medial nucleus of the superior olivary complex, the first nucleus in the auditory pathway to receive bilateral input (Wernick and Starr, 1968; Kuwada et al., 1979). This “illusory” third tone is lateralized between the left and right ear of the listener, making binaural beats useful for spatial sound research (Ross et al., 2014).
+#+end_quote
+
+from the wikipedia articles on [[https://en.wikipedia.org/wiki/Sound_localization][Sound localization]]
+
+#+begin_quote
+ The auditory system uses several cues for sound source localization, including time difference and level difference (or intensity difference) between the ears, and spectral information.
+#+end_quote
+
+and [[https://en.wikipedia.org/wiki/Superior_olivary_complex][Superior olivary complex]]
+
+#+begin_quote
+The superior olivary nucleus plays a number of roles in hearing. The medial superior olive (MSO) is a specialized nucleus that is believed to measure the time difference of arrival of sounds between the ears (the interaural time difference or ITD). The ITD is a major cue for determining the azimuth of sounds, i.e., localising them on the azimuthal plane – their degree to the left or the right.
+#+end_quote
+
+ok so there is sort of a clump of neurons below the cortex that are specialized to integrate the timing information between left and right ear.
+I'm guessing those then start firing in the 40hz frequency and that is interpreted as a third sound higher up.
+
+** Give me those binaural beats
+
+I don't feel like openining a youtube video just to listen to some sounds.
+So I decided to make a simple website that just makes binaural beats
+and nothing else.
+
+* Engineering
+
+
+
+Kind of cool
+in the realm of things that always where part of being human
+but somebody had to discover it and give it a name.
+
+Make me wonder if some music composers and performers implicitly hit
+on this earlier, or not.
+I tried searching the web for
+
+#+begin_quote
+binaural beats in music
+#+end_quote
+
+but I really get the same results mix as when I search for =binaural beats=.
+
+
+* skittle
+I setup a beautiful hello world [[https://github.com/babashka/scittle/tree/main/doc/nrepl][and connect with nrepl]]
+and get greeted with a friendly =Isn't cool? this :)=.
+
+It took me a moment to figure out I should open my index.html with a browser.
+Then do the ~cider-connect-cljs~
+
+** 1 ear
+
+First I think let's start making a sound in 1 ear.
+
+I am thinking a frequency that I can hear would be nice
+so I search the web for =human auditory frequencies=
+and click on https://en.wikipedia.org/wiki/Hearing_range.
+
+Looking at the chart, 1 kHz sounds like a good first thing to try.
+I am figuring something inside the speech area should sound natural
+(turned out that was a naive assumption).
+
+*** The first playground
+
+I have a file called playground.clj
+(Later I figured out I should to rename to .cljs :) ).
+
+Now getting heavily inspired by [[https://github.com/Cortexelus/Polyphonic-Binaural-Beats][this code]].
+Going 1 form by 1 like a usual lisp interaction dev experience, lulling it up:
+
+#+begin_src clojure
+(def ctx (js/window.AudioContext.))
+(def ctx js/window.webkitAudioContext)
+
+(def panner (ctx.createStereoPanner))
+(set! (.. panner -pan -value) -1)
+(.. panner (connect ctx.destination))
+
+(def oscillators (atom []))
+(let [o (ctx.createOscillator)
+      _ (set! (.- o type) "sine")
+      _ (set! (.. o -frequency -value) 1000)]
+  (. o start)
+  (. o (connect panner))
+  (swap! oscillators conj o))
+#+end_src
+
+I connect my headphones via Bluetooth (a small feat on linux, maybe
+another blog post) and lo and behold I hear a tone in my left ear.
+It is a really obnoxious sound, after a few seconds it is so painful
+that I move the headphone to the side.
+
+** playing with the hz first round
+
+Here is a more endurable sound:
+
+#+begin_src clojure
+(set! (.. (@oscillators 0) -frequency -value) 200)
+#+end_src
+
+Playing around live at the REPL with sound is *fun*!
+Now I am thinking, let's pick some music frequency, those are supposed
+to be crafted over hundreds of years to be beautiful frequencies, right?
+
+Checking out [[https://pages.mtu.edu/~suits/notefreq432.html][a website]]. I pick D#3 / Eb3. Whatever that is.
+
+#+begin_src clojure
+(def a-note-freq 152.74)
+(set! (.. (@oscillators 0) -frequency -value) a-note-freq)
+#+end_src
+
+* binaurals!
+
+Let's do the thing where I add +40hz and play that on the other ear.
+First I start generalizing how I make a panner:
+
+#+begin_src clojure
+(defn ->panner [ctx left?]
+  (let
+      [panner (. ctx createStereoPanner)
+       _ (set! (.. panner -pan -value) (if left? -1 1))
+       _ (.. panner (connect ctx.destination))]
+    panner))
+#+end_src
+
+For some reason running this I get:
+
+#+begin_example
+Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
+#+end_example
+
+I went and ask in the nbb clojurians slack. I am sure one day we will figure out
+this error, in the meantime..
+
+** just put the second sound in the other ear, bro
+
+#+begin_src clojure
+(ns beats)
+
+(def a-note-freq 152.74)
+(def binaural-beat-freq 40)
+(def oscillators (atom []))
+(defonce ctx (js/window.AudioContext.))
+
+(def panners
+  {:left
+   (let [left? true]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))
+   :right
+   (let [left? nil]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))})
+
+(defn oscillate [panner hz]
+  (let [o (ctx.createOscillator)
+        _ (set! (.- o type) "sine")
+        _ (set! (.. o -frequency -value) hz)]
+    (. o start)
+    (. o (connect panner))
+    (swap! oscillators conj o)))
+
+(-> panners :right (oscillate (+ a-note-freq binaural-beat-freq)))
+(-> panners :left (oscillate a-note-freq))
+#+end_src
+
+
+* Intermediate results
+
+** Artifacts
+
+Every now and then there are artifacts in the sound with my headphones setup.
+Some are just rustles and crackles.
+
+Others sound like some kind of metal being stretched far, far away, or under water, or in slow motion.
+It reminds me a bit of the [[https://www.youtube.com/watch?v=O6iHgOEp0Fg&t=452s][Dungeon Keeper soundtrack]].
+Dark and eerie.
+Dark and eerie.
+...
+Dark... and eerie.
+
+** Binaural beat?
+
+Pretty sure I get the third tone illusion.
+Yea I would describe it like some kind of background airy sound. It is
+supposed to seem come from the middle of the brain.
+In a way it is as if the fabric of the sound is just richer. Like
+there is sound comming at all =places=.
+
+* Change the base frequency
+
+** 40hz difference - with different base frequencies?
+
+It occurred to me, if I get the 40hz sound illusion, then I would
+predict that I can change the base frequency, keeping the 40hz difference between
+left and right ear invariant. I should then constantly perceive a 3rd
+tone that is the binaural beat.
+
+** Add a slider
+I did not do much webdev in my life and making a slider was a first.
+
+I managed to put something together, drawing inspiration from
+[[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]], https://babashka.org/scittle/ and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]]
+
+*** nice dev experience that skittle nbb thing, really
+
+1) I did not need to restart my REPL at any point
+2) I get auto completions with cider. E.g. `js/..` does something.
+
+   #+begin_center
+   btw here is a tip, for sci projects (babashka, nbb, skittle).
+   Currently if you try to complete with the nrepl server and
+   you did not eval a namespace form first, it wont work. At least not
+   with cider.
+   So just make sure you have a ns form and eval that. Then you can
+   get completions.
+   #+end_center
+
+code:
+
+#+begin_src html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+    <script src="https://cdn.jsdelivr.net/npm/scittle@0.3.10/dist/scittle.js" type="application/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scittle@0.3.10/dist/scittle.nrepl.js" type="application/javascript"></script>
+    <script type="application/x-scittle" src="beats.cljs"></script>
+  </head>
+  <body>
+    <div class="slidecontainer">
+      <input type="range" min="120000" max="250000" value="15274"
+      class="slider" id="frequencyRange" onchange="update_app(this.value)"> </div>
+    <div id="frequencyDisplay"> </div>
+  </body>
+</html>
+#+end_src
+
+#+begin_src clojure
+(ns beats)
+
+(def binaural-beat-freq 40)
+(defonce ctx (js/window.AudioContext.))
+(def slider (js/document.getElementById "frequencyRange"))
+(def display (js/document.getElementById "frequencyDisplay"))
+
+(def panners
+  {:left
+   (let [left? true]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))
+   :right
+   (let [left? nil]
+     (let [panner (. ctx createStereoPanner)]
+       (set! (.. panner -pan -value) (if left? -1 1))
+       (.connect panner ctx.destination)
+       panner))})
+
+(defn update-display! [value]
+  (set! (.-innerHTML display)
+        (str "Base frequency: " value)))
+
+(def get-oscillator
+  (memoize
+   (fn [panner]
+     (let [o (ctx.createOscillator)]
+       (set! (.- o type) "sine")
+       (. o start)
+       (. o (connect panner))
+       o))))
+
+(defn oscillate [panner hz]
+  (let [o (get-oscillator panner)
+        _ (set! (.. o -frequency -value) hz)])
+  hz)
+
+(defn update-app [frequency-value]
+  (let [frequency-value (/ frequency-value 1000.0)]
+    (-> panners :right (oscillate (+ frequency-value binaural-beat-freq)))
+    (-> panners :left (oscillate frequency-value))
+    (update-display! frequency-value)))
+
+(set! (.-update_app js/window) update-app)
+
+(update-app (* 1000 152.74))
+#+end_src
+
+The fact that I export my function by setting this global ~window~
+object and then I how I write a string of js in the 'onchange' of the
+html. This stuff is pretty wild.
+
+On the skittle side I updated the code to ge 1 oscillator per slider. Seems like stuff is working.
+Switching up the frequencies via the slider is satisfying.
+I am pretty sure I can tell there is 1 sound character that seems to stay the same across frequencies.
+
+Some part of the code was rounding the frequency value at first to
+whole numbers. I heard [[https://en.wikipedia.org/wiki/Douglas_Crockford][Douglas Crockford]] saying once that when the floating points
+matter in javascript, you multiply and devide back. So I did that for my frequency.
+Because my default G#3 note is ~152.74~ after all.
+
+
+[[https://i.imgur.com/xijojsT.png]]
