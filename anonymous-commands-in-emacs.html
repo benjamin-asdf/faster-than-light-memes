@@ -15,23 +15,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5495f8e">Introduction</a>
+<li><a href="#org6f27b2f">Introduction</a>
 <ul>
-<li><a href="#org4d7f816">add-hook</a></li>
+<li><a href="#org50b4208">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#org1c1132d">Solution</a>
+<li><a href="#org2fd6f35">Solution</a>
 <ul>
-<li><a href="#org6a32744">defun</a></li>
+<li><a href="#org95a9209">defun</a></li>
 </ul>
 </li>
-<li><a href="#org46a74e3">Result</a></li>
+<li><a href="#org6de3f46">Result</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5495f8e" class="outline-2">
-<h2 id="org5495f8e">Introduction</h2>
-<div class="outline-text-2" id="text-org5495f8e">
+<div id="outline-container-org6f27b2f" class="outline-2">
+<h2 id="org6f27b2f">Introduction</h2>
+<div class="outline-text-2" id="text-org6f27b2f">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -49,7 +49,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org3eac72f">
+<pre class="example" id="orgc9e7904">
 Key             Binding
 f		[closure]
 </pre>
@@ -59,9 +59,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-org4d7f816" class="outline-3">
-<h3 id="org4d7f816">add-hook</h3>
-<div class="outline-text-3" id="text-org4d7f816">
+<div id="outline-container-org50b4208" class="outline-3">
+<h3 id="org50b4208">add-hook</h3>
+<div class="outline-text-3" id="text-org50b4208">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -84,9 +84,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-org1c1132d" class="outline-2">
-<h2 id="org1c1132d">Solution</h2>
-<div class="outline-text-2" id="text-org1c1132d">
+<div id="outline-container-org2fd6f35" class="outline-2">
+<h2 id="org2fd6f35">Solution</h2>
+<div class="outline-text-2" id="text-org2fd6f35">
 <p>
 Alias your function:
 </p>
@@ -101,7 +101,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="org0dd52b8">
+<pre class="example" id="orgeba8b94">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -113,9 +113,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-org6a32744" class="outline-3">
-<h3 id="org6a32744">defun</h3>
-<div class="outline-text-3" id="text-org6a32744">
+<div id="outline-container-org95a9209" class="outline-3">
+<h3 id="org95a9209">defun</h3>
+<div class="outline-text-3" id="text-org95a9209">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -131,9 +131,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-org46a74e3" class="outline-2">
-<h2 id="org46a74e3">Result</h2>
-<div class="outline-text-2" id="text-org46a74e3">
+<div id="outline-container-org6de3f46" class="outline-2">
+<h2 id="org6de3f46">Result</h2>
+<div class="outline-text-2" id="text-org6de3f46">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:
