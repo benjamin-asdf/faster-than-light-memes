@@ -15,18 +15,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga617270">The correct way</a>
+<li><a href="#orgbbec518">The correct way</a>
 <ul>
-<li><a href="#org3530b2a">One: Stage both files at the same time</a></li>
-<li><a href="#orge17bb58">Two: Use git-mv</a></li>
+<li><a href="#org1da5fc7">One: Stage both files at the same time</a></li>
+<li><a href="#org4cc76e9">Two: Use git-mv</a></li>
 </ul>
 </li>
-<li><a href="#org15432f7">Why correct?</a></li>
-<li><a href="#orgddd86a3">The incorrect way</a></li>
-<li><a href="#orgee34eb8">In the context of <code>git merge</code></a>
+<li><a href="#orgc398231">Why correct?</a></li>
+<li><a href="#orgd9836a6">The incorrect way</a></li>
+<li><a href="#orgf599776">In the context of <code>git merge</code></a>
 <ul>
-<li><a href="#orgd573af4">The issue with the incorrect way:</a></li>
-<li><a href="#orgbe1b102">The correct way:</a></li>
+<li><a href="#org49eba5b">The issue with the incorrect way:</a></li>
+<li><a href="#orgb5e5b7c">The correct way:</a></li>
 </ul>
 </li>
 </ul>
@@ -44,17 +44,17 @@ Here is one of the ways I can tell somebody is not on a high git magician power 
 Renaming a file and have separate commits for the creation and deletion of the files.
 </p>
 
-<div id="outline-container-orga617270" class="outline-2">
-<h2 id="orga617270">The correct way</h2>
-<div class="outline-text-2" id="text-orga617270">
+<div id="outline-container-orgbbec518" class="outline-2">
+<h2 id="orgbbec518">The correct way</h2>
+<div class="outline-text-2" id="text-orgbbec518">
 <p>
 There is 2 ways I know to rename files correctly:
 </p>
 </div>
 
-<div id="outline-container-org3530b2a" class="outline-3">
-<h3 id="org3530b2a">One: Stage both files at the same time</h3>
-<div class="outline-text-3" id="text-org3530b2a">
+<div id="outline-container-org1da5fc7" class="outline-3">
+<h3 id="org1da5fc7">One: Stage both files at the same time</h3>
+<div class="outline-text-3" id="text-org1da5fc7">
 <div class="org-src-container">
 <pre class="src src-shell">rm -rf rename-files-demo
 mkdir rename-files-demo
@@ -72,9 +72,9 @@ git status
 </div>
 </div>
 
-<div id="outline-container-orge17bb58" class="outline-3">
-<h3 id="orge17bb58">Two: Use <a href="https://www.git-scm.com/docs/git-mv">git-mv</a></h3>
-<div class="outline-text-3" id="text-orge17bb58">
+<div id="outline-container-org4cc76e9" class="outline-3">
+<h3 id="org4cc76e9">Two: Use <a href="https://www.git-scm.com/docs/git-mv">git-mv</a></h3>
+<div class="outline-text-3" id="text-org4cc76e9">
 <div class="org-src-container">
 <pre class="src src-shell">rm -rf rename-files-demo
 mkdir rename-files-demo
@@ -91,9 +91,9 @@ git status
 </div>
 </div>
 
-<div id="outline-container-org15432f7" class="outline-2">
-<h2 id="org15432f7">Why correct?</h2>
-<div class="outline-text-2" id="text-org15432f7">
+<div id="outline-container-orgc398231" class="outline-2">
+<h2 id="orgc398231">Why correct?</h2>
+<div class="outline-text-2" id="text-orgc398231">
 <p>
 On this level of detail, the keyword here is <code>renamed</code>.
 Observe how <code>git log follow</code> tracks the whole history of our file:
@@ -111,9 +111,9 @@ git log --follow --oneline my-better-file
 </div>
 </div>
 
-<div id="outline-container-orgddd86a3" class="outline-2">
-<h2 id="orgddd86a3">The incorrect way</h2>
-<div class="outline-text-2" id="text-orgddd86a3">
+<div id="outline-container-orgd9836a6" class="outline-2">
+<h2 id="orgd9836a6">The incorrect way</h2>
+<div class="outline-text-2" id="text-orgd9836a6">
 <p>
 Let's delete our demo and make some commits.
 This time we do not add the deletion and creation in the same commit,
@@ -144,7 +144,7 @@ git commit -m <span style="font-style: italic;">"More better file"</span>
 Commit 1:
 </p>
 
-<pre class="example" id="org45b543c">
+<pre class="example" id="org557e897">
 1 file changed, 1 deletion(-)
 </pre>
 
@@ -152,7 +152,7 @@ Commit 1:
 Commit 2:
 </p>
 
-<pre class="example" id="org251a474">
+<pre class="example" id="org76f632e">
 1 file changed, 1 insertion(+)
 create mode 100644 my-better-file
 </pre>
@@ -174,13 +174,13 @@ usually something like "Move the files into this dir".
 </div>
 </div>
 
-<div id="outline-container-orgee34eb8" class="outline-2">
-<h2 id="orgee34eb8">In the context of <code>git merge</code></h2>
-<div class="outline-text-2" id="text-orgee34eb8">
+<div id="outline-container-orgf599776" class="outline-2">
+<h2 id="orgf599776">In the context of <code>git merge</code></h2>
+<div class="outline-text-2" id="text-orgf599776">
 </div>
-<div id="outline-container-orgd573af4" class="outline-3">
-<h3 id="orgd573af4">The issue with the incorrect way:</h3>
-<div class="outline-text-3" id="text-orgd573af4">
+<div id="outline-container-org49eba5b" class="outline-3">
+<h3 id="org49eba5b">The issue with the incorrect way:</h3>
+<div class="outline-text-3" id="text-org49eba5b">
 <p>
 Arguably the more important context of where this starts mattering is
 <code>git merge</code>.
@@ -253,9 +253,9 @@ This is annoying in the best case. And really can be a recipe for disaster.
 </div>
 </div>
 
-<div id="outline-container-orgbe1b102" class="outline-3">
-<h3 id="orgbe1b102">The correct way:</h3>
-<div class="outline-text-3" id="text-orgbe1b102">
+<div id="outline-container-orgb5e5b7c" class="outline-3">
+<h3 id="orgb5e5b7c">The correct way:</h3>
+<div class="outline-text-3" id="text-orgb5e5b7c">
 <p>
 Let's try this out in the correct way:
 </p>
