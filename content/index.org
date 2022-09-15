@@ -1,7 +1,7 @@
 * Pages
 ** [[file:anonymous-commands-in-emacs.org][Anonymous lambdas in emacs binds]]
 ** [[file:intro-to-clojure.org::*Introduction][Intro to Clojure]]
-** [[file:binaural-beats-using-scittle.org::*Introduction][Binaural Beats with Skittle]]
+** [[file:binaural-beats-using-scittle.org::*Introduction][Binaural Beats with Scittle]]
 
 * Introduction
 
