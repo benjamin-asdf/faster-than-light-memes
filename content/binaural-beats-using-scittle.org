@@ -112,7 +112,7 @@ computer make some sounds that I want to listen to.
 So I decided to make a simple website that just makes binaural beats and nothing else.
 
 
-* skittle
+* scittle
 I set up a beautiful hello world [[https://github.com/babashka/scittle/tree/main/doc/nrepl][and connect with nrepl]]
 and get greeted with a friendly =Isn't cool? this :)=.
 
@@ -276,7 +276,7 @@ I did not do much web dev in my life and making a slider was a first.
 I managed to put something together, drawing inspiration from
 [[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]], [[https://babashka.org/scittle/][scittle]] for how to export, and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]] for how to add a function to "onchange".
 
-*** nice dev experience, skittle really
+*** nice dev experience, scittle really
 
 1) I did not need to restart my REPL at any point, adding those Html
    elements, then reloading my index.html - it handles that.
@@ -372,7 +372,7 @@ As I said, I am new to the web. Now I know one reason why it is called the wild 
 But it let me "just do" what I wanted without being in my way so I
 appreciate that.
 
-On the skittle side, I updated the code to only get 1 oscillator per slider. Seems like stuff is working.
+On the scittle side, I updated the code to only get 1 oscillator per slider. Seems like stuff is working.
 Switching up the frequencies via the slider is satisfying.
 For some reason, those artifacts are also gone. Maybe sliders just ensure balance and harmony in the world?
 
