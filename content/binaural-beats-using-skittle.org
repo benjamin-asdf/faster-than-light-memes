@@ -13,7 +13,7 @@ neuroscience and pose a fun engineering problem on top of that!
 
 ** What are binaural beats?
 
-https://simple.wikipedia.org/wiki/Binaural_beats
+[[https://simple.wikipedia.org/wiki/Binaural_beats][Wikipedia]]
 
 #+begin_quote
 A binaural beat is an auditory illusion
@@ -55,7 +55,7 @@ We are really talking about cool stuff here, attention, working
 memory, and memory processes. Also, the [[https://en.wikipedia.org/wiki/Binding_problem][Binding problem]].
 
 ** The neuroscience of the [[https://en.wikipedia.org/wiki/Hearing][auditory system ]]
-Hearing is cool because the neuronal neural information first goes into the brainstorm
+Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
 temporal lobes of the cortex (the 2 arm things on the side of the brain).
 
@@ -79,7 +79,7 @@ and [[https://en.wikipedia.org/wiki/Superior_olivary_complex][Superior olivary c
 The superior olivary nucleus plays a number of roles in hearing. The medial superior olive (MSO) is a specialized nucleus that is believed to measure the time difference of arrival of sounds between the ears (the interaural time difference or ITD). The ITD is a major cue for determining the azimuth of sounds, i.e., localizing them on the azimuthal plane – their degree to the left or the right.
 #+end_quote
 
-So there is sort of a clump of neurons below the cortex that are specialized to integrate the timing information between the left and the right ear.
+So there is sort of a clump of neurons in the brainstem that are specialized to integrate the timing information between the left and the right ear.
 I'm guessing those then start firing in the 40Hz frequency and that is interpreted as a third sound higher up.
 
 ** I think this is ultra cool
@@ -274,7 +274,7 @@ tone that is the binaural beat.
 I did not do much web dev in my life and making a slider was a first.
 
 I managed to put something together, drawing inspiration from
-[[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]], https://babashka.org/scittle/ and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]]
+[[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]], [[https://babashka.org/scittle/][scittle]] for how to export, and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]] for how to add a function to "onchange".
 
 *** nice dev experience, skittle really
 
