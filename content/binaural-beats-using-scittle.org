@@ -31,7 +31,7 @@ BTW the frequency and the time of the exposure matter (i.e. before and during th
 
 Oh yes, I certainly want more of that memory and attention.
 
-#+CAPTION: A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art. (I made this with https://huggingface.co/spaces/stabilityai/stable-diffusion)
+#+CAPTION: A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.
 https://i.imgur.com/eHaaoYF.png
 
 
@@ -294,8 +294,8 @@ I managed to put something together, drawing inspiration from
    #+end_center
 
 
-#+CAPTION: A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful. (I made this with https://huggingface.co/spaces/stabilityai/stable-diffusion)
-https://i.imgur.com/M8rSuZ3.png
+#+CAPTION: A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.
+https://.imgur.com/M8rSuZ3.png
 
 I am thinking of ~scittle~ as a mammal with the habitus of a mouse. Because the
 word sort of has this ring to it.
@@ -397,9 +397,13 @@ The sound of the highest achievement of human thought.
 Genius insights, ideas that come to you like lightning. Globally
 integrating patterns of the brain and mind.
 
-#+CAPTION: Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art. (I made this with https://huggingface.co/spaces/stabilityai/stable-diffusion)
+#+CAPTION: Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.
 [[https://i.imgur.com/xijojsT.png]]
 
+
+* Images
+Made with [[https://huggingface.co/spaces/stabilityai/stable-diffusion][stable-diffusion]].
+The captions are the prompts I used.
 
 * Update 1
 
