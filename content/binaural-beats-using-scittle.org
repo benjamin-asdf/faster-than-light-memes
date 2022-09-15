@@ -10,7 +10,6 @@ neuroscience and pose a fun engineering problem on top of that!
 
 [[https://benjamin-asdf.github.io/just-40hz-binaural-beats/][Here]] is the current result of my journeys up on gh-pages.
 
-
 ** What are binaural beats?
 
 [[https://simple.wikipedia.org/wiki/Binaural_beats][Wikipedia]]
@@ -111,23 +110,28 @@ sounds. As an aspiring hacker and engineer, I just want to make my
 computer make some sounds that I want to listen to.
 So I decided to make a simple website that just makes binaural beats and nothing else.
 
+*** The problem statement:
+
+Make a sound on 1 ear (e.g. left headphone speaker)
+
+Make a second sound on the other ear, with +40Hz frequency.
 
 * scittle
+
 I set up a beautiful hello world [[https://github.com/babashka/scittle/tree/main/doc/nrepl][and connect with nrepl]]
 and get greeted with a friendly =Isn't cool? this :)=.
 
 It took me a moment to figure out I should open my index.html with a browser.
 Then do the ~cider-connect-cljs~
 
-** 1 ear
+** 1 ear, 1 sound
 
 First I think let's start making a sound in 1 ear.
 
 I am thinking a frequency that I can hear would be nice
-so I search the web for =human auditory frequencies=
-and click on https://en.wikipedia.org/wiki/Hearing_range.
+so I search the web for [[https://en.wikipedia.org/wiki/Hearing_range][human auditory frequencies]]
 
-Looking at the chart, 1 kHz sounds like a good first thing to try.
+1 kHz sounds like a good first thing to try.
 I am figuring something inside the speech area should sound natural
 (turned out that was a naive assumption).
 
@@ -389,3 +393,11 @@ integrating patterns of the brain and mind.
 
 #+CAPTION: Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art. (I made this with https://huggingface.co/spaces/stabilityai/stable-diffusion)
 [[https://i.imgur.com/xijojsT.png]]
+
+
+* Update 1
+
+Currently does not work on mobile. Seems like I have the
+opportunity for another web dev feat, then.
+Seems like the issue is isolated on the sound appearing because the
+slider value works fine (meaning that the scittle code is running fine).
