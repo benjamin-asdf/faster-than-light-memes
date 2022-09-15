@@ -287,7 +287,7 @@ I managed to put something together, drawing inspiration from
 2) I get auto completions with cider. E.g. ~js/..~ does something.
 
    #+begin_center
-   BTW here is a tip, for ~sci~ projects (~babashka~, ~nbb~, ~skittle~).
+   BTW here is a tip, for ~sci~ projects (~babashka~, ~nbb~, ~scittle~).
    Currently, you need to evaluate a namespace form first.
    Then you can get completions.
    At least with cider.
