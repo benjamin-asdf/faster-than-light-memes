@@ -278,7 +278,7 @@ tone that is the binaural beat.
 I did not do much web dev in my life and making a slider was a first.
 
 I managed to put something together, drawing inspiration from
-[[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]], [[https://babashka.org/scittle/][scittle]] for how to export, and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]] for how to add a function to "onchange".
+[[https://www.w3schools.com/howto/howto_js_rangeslider.asp][w3 schools]] for the Html, [[https://babashka.org/scittle/][scittle]] for how to export, and [[https://stackoverflow.com/questions/13896685/html5-slider-with-onchange-function][stackoverflow]] for how to add a function to "onchange".
 
 *** nice dev experience, scittle really
 
@@ -293,6 +293,12 @@ I managed to put something together, drawing inspiration from
    At least with cider.
    #+end_center
 
+
+#+CAPTION: A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful. (I made this with https://huggingface.co/spaces/stabilityai/stable-diffusion)
+https://i.imgur.com/M8rSuZ3.png
+
+I am thinking of ~scittle~ as a mammal with the habitus of a mouse. Because the
+word sort of has this ring to it.
 
 
 *** code:
