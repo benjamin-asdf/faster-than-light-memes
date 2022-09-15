@@ -297,8 +297,8 @@ I managed to put something together, drawing inspiration from
 #+CAPTION: A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.
 https://i.imgur.com/M8rSuZ3.png
 
-With ~scittle~ a small mammal with mouse habitus comes to my mind. Because the
-word sort of has this ring to it.
+The word ~scittle~ makes me think of a small mammal in the habitus of
+a mouse.
 I am imagining it scurrying and curiously sniffing around.
 
 *** code:
