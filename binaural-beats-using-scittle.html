@@ -15,58 +15,59 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org79983b0">Introduction</a>
+<li><a href="#org5e78ceb">Introduction</a>
 <ul>
-<li><a href="#orgf301002">What are binaural beats?</a></li>
-<li><a href="#org34dac86">Science</a></li>
-<li><a href="#orgb39d201">Frequency</a></li>
-<li><a href="#org780efcf">The neuroscience of the auditory system </a></li>
-<li><a href="#org1f9f681">I think this is ultra cool</a></li>
-<li><a href="#org86fa14b">Give me those binaural beats</a>
+<li><a href="#orga8beec7">What are binaural beats?</a></li>
+<li><a href="#orgd2f97d7">Science</a></li>
+<li><a href="#org614dcea">Frequency</a></li>
+<li><a href="#org139732f">The neuroscience of the auditory system </a></li>
+<li><a href="#orgbb008a3">I think this is ultra cool</a></li>
+<li><a href="#org6b03746">Give me those binaural beats</a>
 <ul>
-<li><a href="#org2c14f4d">The problem statement:</a></li>
+<li><a href="#org81e2693">The problem statement:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org7a56000">scittle</a>
+<li><a href="#orgfbf879d">scittle</a>
 <ul>
-<li><a href="#orgcfdc452">1 ear, 1 sound</a>
+<li><a href="#org4d1f39c">1 ear, 1 sound</a>
 <ul>
-<li><a href="#org3e09bce">The first playground</a></li>
+<li><a href="#org4c8e74e">The first playground</a></li>
 </ul>
 </li>
-<li><a href="#org4ef1d55">Playing Hz, first round</a></li>
+<li><a href="#org0d3915d">Playing Hz, first round</a></li>
 </ul>
 </li>
-<li><a href="#org076738d">binaural!</a>
+<li><a href="#org2fd1beb">binaural!</a>
 <ul>
-<li><a href="#org0c044b4">just put the second sound in the other ear, whatever</a></li>
+<li><a href="#orgac43cfa">just put the second sound in the other ear, whatever</a></li>
 </ul>
 </li>
-<li><a href="#orgcb47579">Intermediate results</a>
+<li><a href="#org79240fb">Intermediate results</a>
 <ul>
-<li><a href="#org76401b1">Artifacts</a></li>
-<li><a href="#org7c21cf9">Binaural beat?</a></li>
+<li><a href="#orge083c4d">Artifacts</a></li>
+<li><a href="#orgbcb6699">Binaural beat?</a></li>
 </ul>
 </li>
-<li><a href="#org7020764">Change the base frequency</a>
+<li><a href="#org09636c3">Change the base frequency</a>
 <ul>
-<li><a href="#org74810bc">I really need a slider for frequencies in my life.</a>
+<li><a href="#org794ddc2">I really need a slider for frequencies in my life.</a>
 <ul>
-<li><a href="#org0194d93">nice dev experience, scittle really</a></li>
-<li><a href="#org9dcd838">code:</a></li>
+<li><a href="#org90febc0">nice dev experience, scittle really</a></li>
+<li><a href="#org152ad7e">code:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org6f85528">Update 1</a></li>
+<li><a href="#org33c9102">Images</a></li>
+<li><a href="#orge63f84c">Update 1</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org79983b0" class="outline-2">
-<h2 id="org79983b0">Introduction</h2>
-<div class="outline-text-2" id="text-org79983b0">
+<div id="outline-container-org5e78ceb" class="outline-2">
+<h2 id="org5e78ceb">Introduction</h2>
+<div class="outline-text-2" id="text-org5e78ceb">
 <p>
 The best thing about being a rationalist is figuring out you are wrong
 about something.
@@ -84,9 +85,9 @@ neuroscience and pose a fun engineering problem on top of that!
 </p>
 </div>
 
-<div id="outline-container-orgf301002" class="outline-3">
-<h3 id="orgf301002">What are binaural beats?</h3>
-<div class="outline-text-3" id="text-orgf301002">
+<div id="outline-container-orga8beec7" class="outline-3">
+<h3 id="orga8beec7">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orga8beec7">
 <p>
 <a href="https://simple.wikipedia.org/wiki/Binaural_beats">Wikipedia</a>
 </p>
@@ -105,9 +106,9 @@ For example, if a 530 Hz pure tone is presented to a subject's right ear, while 
 </div>
 </div>
 
-<div id="outline-container-org34dac86" class="outline-3">
-<h3 id="org34dac86">Science</h3>
-<div class="outline-text-3" id="text-org34dac86">
+<div id="outline-container-orgd2f97d7" class="outline-3">
+<h3 id="orgd2f97d7">Science</h3>
+<div class="outline-text-3" id="text-orgd2f97d7">
 <p>
 There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
 attention tacks when listening to binaural beats.
@@ -122,18 +123,18 @@ Oh yes, I certainly want more of that memory and attention.
 </p>
 
 
-<div id="org7ee5cbc" class="figure">
+<div id="org9fcef1d" class="figure">
 <p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
 </p>
-<p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art. (I made this with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">https://huggingface.co/spaces/stabilityai/stable-diffusion</a>)</p>
+<p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.</p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgb39d201" class="outline-3">
-<h3 id="orgb39d201">Frequency</h3>
-<div class="outline-text-3" id="text-orgb39d201">
+<div id="outline-container-org614dcea" class="outline-3">
+<h3 id="org614dcea">Frequency</h3>
+<div class="outline-text-3" id="text-org614dcea">
 <p>
 Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
 really do not want to listen to those.
@@ -162,9 +163,9 @@ memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/B
 </div>
 </div>
 
-<div id="outline-container-org780efcf" class="outline-3">
-<h3 id="org780efcf">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
-<div class="outline-text-3" id="text-org780efcf">
+<div id="outline-container-org139732f" class="outline-3">
+<h3 id="org139732f">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-org139732f">
 <p>
 Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
@@ -212,9 +213,9 @@ I'm guessing those then start firing in the 40Hz frequency and that is interpret
 </div>
 </div>
 
-<div id="outline-container-org1f9f681" class="outline-3">
-<h3 id="org1f9f681">I think this is ultra cool</h3>
-<div class="outline-text-3" id="text-org1f9f681">
+<div id="outline-container-orgbb008a3" class="outline-3">
+<h3 id="orgbb008a3">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-orgbb008a3">
 <p>
 You throw some energy at the brain in the right form (in this case
 some sound waves) and it reacts in some special way.
@@ -245,9 +246,9 @@ but I really get the same results mix as when I search for <code>binaural beats<
 </div>
 
 
-<div id="outline-container-org86fa14b" class="outline-3">
-<h3 id="org86fa14b">Give me those binaural beats</h3>
-<div class="outline-text-3" id="text-org86fa14b">
+<div id="outline-container-org6b03746" class="outline-3">
+<h3 id="org6b03746">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-org6b03746">
 <p>
 I dint feel like opening a youtube video just to listen to some
 sounds. As an aspiring hacker and engineer, I just want to make my
@@ -256,9 +257,9 @@ So I decided to make a simple website that just makes binaural beats and nothing
 </p>
 </div>
 
-<div id="outline-container-org2c14f4d" class="outline-4">
-<h4 id="org2c14f4d">The problem statement:</h4>
-<div class="outline-text-4" id="text-org2c14f4d">
+<div id="outline-container-org81e2693" class="outline-4">
+<h4 id="org81e2693">The problem statement:</h4>
+<div class="outline-text-4" id="text-org81e2693">
 <p>
 Make a sound on 1 ear (e.g. left headphone speaker)
 </p>
@@ -271,9 +272,9 @@ Make a second sound on the other ear, with +40Hz frequency.
 </div>
 </div>
 
-<div id="outline-container-org7a56000" class="outline-2">
-<h2 id="org7a56000">scittle</h2>
-<div class="outline-text-2" id="text-org7a56000">
+<div id="outline-container-orgfbf879d" class="outline-2">
+<h2 id="orgfbf879d">scittle</h2>
+<div class="outline-text-2" id="text-orgfbf879d">
 <p>
 I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
 and get greeted with a friendly <code>Isn't cool? this :)</code>.
@@ -285,9 +286,9 @@ Then do the <code>cider-connect-cljs</code>
 </p>
 </div>
 
-<div id="outline-container-orgcfdc452" class="outline-3">
-<h3 id="orgcfdc452">1 ear, 1 sound</h3>
-<div class="outline-text-3" id="text-orgcfdc452">
+<div id="outline-container-org4d1f39c" class="outline-3">
+<h3 id="org4d1f39c">1 ear, 1 sound</h3>
+<div class="outline-text-3" id="text-org4d1f39c">
 <p>
 First I think let's start making a sound in 1 ear.
 </p>
@@ -304,9 +305,9 @@ I am figuring something inside the speech area should sound natural
 </p>
 </div>
 
-<div id="outline-container-org3e09bce" class="outline-4">
-<h4 id="org3e09bce">The first playground</h4>
-<div class="outline-text-4" id="text-org3e09bce">
+<div id="outline-container-org4c8e74e" class="outline-4">
+<h4 id="org4c8e74e">The first playground</h4>
+<div class="outline-text-4" id="text-org4c8e74e">
 <p>
 I have a file called playground.clj
 (Later I figured out I should rename to .cljs :) ).
@@ -345,9 +346,9 @@ that I move the headphone to the side.
 </div>
 </div>
 
-<div id="outline-container-org4ef1d55" class="outline-3">
-<h3 id="org4ef1d55">Playing Hz, first round</h3>
-<div class="outline-text-3" id="text-org4ef1d55">
+<div id="outline-container-org0d3915d" class="outline-3">
+<h3 id="org0d3915d">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-org0d3915d">
 <p>
 Here is a more endurable sound:
 </p>
@@ -380,9 +381,9 @@ Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</
 </div>
 
 
-<div id="outline-container-org076738d" class="outline-2">
-<h2 id="org076738d">binaural!</h2>
-<div class="outline-text-2" id="text-org076738d">
+<div id="outline-container-org2fd1beb" class="outline-2">
+<h2 id="org2fd1beb">binaural!</h2>
+<div class="outline-text-2" id="text-org2fd1beb">
 <p>
 Let's do the thing where I add +40Hz and play that on the other ear.
 First I start generalizing how I make a panner:
@@ -402,7 +403,7 @@ First I start generalizing how I make a panner:
 For some reason running this I get:
 </p>
 
-<pre class="example" id="org0ca7143">
+<pre class="example" id="orgeea28e3">
 Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
 </pre>
 
@@ -412,9 +413,9 @@ this error, in the meantime&#x2026;
 </p>
 </div>
 
-<div id="outline-container-org0c044b4" class="outline-3">
-<h3 id="org0c044b4">just put the second sound in the other ear, whatever</h3>
-<div class="outline-text-3" id="text-org0c044b4">
+<div id="outline-container-orgac43cfa" class="outline-3">
+<h3 id="orgac43cfa">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-orgac43cfa">
 <div class="org-src-container">
 <pre class="src src-Clojure">(ns beats)
 
@@ -457,13 +458,13 @@ lol, it works.
 </div>
 </div>
 
-<div id="outline-container-orgcb47579" class="outline-2">
-<h2 id="orgcb47579">Intermediate results</h2>
-<div class="outline-text-2" id="text-orgcb47579">
+<div id="outline-container-org79240fb" class="outline-2">
+<h2 id="org79240fb">Intermediate results</h2>
+<div class="outline-text-2" id="text-org79240fb">
 </div>
-<div id="outline-container-org76401b1" class="outline-3">
-<h3 id="org76401b1">Artifacts</h3>
-<div class="outline-text-3" id="text-org76401b1">
+<div id="outline-container-orge083c4d" class="outline-3">
+<h3 id="orge083c4d">Artifacts</h3>
+<div class="outline-text-3" id="text-orge083c4d">
 <p>
 Every now and then there are artifacts in the sound with my headphones setup.
 Some are just rustling and crackling.
@@ -477,9 +478,9 @@ sort of slow mow.
 </div>
 </div>
 
-<div id="outline-container-org7c21cf9" class="outline-3">
-<h3 id="org7c21cf9">Binaural beat?</h3>
-<div class="outline-text-3" id="text-org7c21cf9">
+<div id="outline-container-orgbcb6699" class="outline-3">
+<h3 id="orgbcb6699">Binaural beat?</h3>
+<div class="outline-text-3" id="text-orgbcb6699">
 <p>
 Pretty sure I get the third-tone illusion.
 I would describe it as some kind of background or in between "airy"
@@ -491,9 +492,9 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 </div>
 </div>
 
-<div id="outline-container-org7020764" class="outline-2">
-<h2 id="org7020764">Change the base frequency</h2>
-<div class="outline-text-2" id="text-org7020764">
+<div id="outline-container-org09636c3" class="outline-2">
+<h2 id="org09636c3">Change the base frequency</h2>
+<div class="outline-text-2" id="text-org09636c3">
 <p>
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
@@ -502,9 +503,9 @@ tone that is the binaural beat.
 </p>
 </div>
 
-<div id="outline-container-org74810bc" class="outline-3">
-<h3 id="org74810bc">I really need a slider for frequencies in my life.</h3>
-<div class="outline-text-3" id="text-org74810bc">
+<div id="outline-container-org794ddc2" class="outline-3">
+<h3 id="org794ddc2">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-org794ddc2">
 <p>
 I did not do much web dev in my life and making a slider was a first.
 </p>
@@ -515,9 +516,9 @@ I managed to put something together, drawing inspiration from
 </p>
 </div>
 
-<div id="outline-container-org0194d93" class="outline-4">
-<h4 id="org0194d93">nice dev experience, scittle really</h4>
-<div class="outline-text-4" id="text-org0194d93">
+<div id="outline-container-org90febc0" class="outline-4">
+<h4 id="org90febc0">nice dev experience, scittle really</h4>
+<div class="outline-text-4" id="text-org90febc0">
 <ol class="org-ol">
 <li>I did not need to restart my REPL at any point, adding those Html
 elements, then reloading my index.html - it handles that.</li>
@@ -537,10 +538,10 @@ At least with cider.
 
 
 
-<div id="org2fe945c" class="figure">
-<p><img src="https://i.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
+<div id="orged2d935" class="figure">
+<p><img src="https://.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
 </p>
-<p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful. (I made this with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">https://huggingface.co/spaces/stabilityai/stable-diffusion</a>)</p>
+<p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.</p>
 </div>
 
 <p>
@@ -551,9 +552,9 @@ word sort of has this ring to it.
 </div>
 
 
-<div id="outline-container-org9dcd838" class="outline-4">
-<h4 id="org9dcd838">code:</h4>
-<div class="outline-text-4" id="text-org9dcd838">
+<div id="outline-container-org152ad7e" class="outline-4">
+<h4 id="org152ad7e">code:</h4>
+<div class="outline-text-4" id="text-org152ad7e">
 <p>
 index.html
 </p>
@@ -664,10 +665,10 @@ integrating patterns of the brain and mind.
 </p>
 
 
-<div id="org15669dd" class="figure">
+<div id="org3bb55ef" class="figure">
 <p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
 </p>
-<p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art. (I made this with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">https://huggingface.co/spaces/stabilityai/stable-diffusion</a>)</p>
+<p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.</p>
 </div>
 </div>
 </div>
@@ -675,9 +676,19 @@ integrating patterns of the brain and mind.
 </div>
 
 
-<div id="outline-container-org6f85528" class="outline-2">
-<h2 id="org6f85528">Update 1</h2>
-<div class="outline-text-2" id="text-org6f85528">
+<div id="outline-container-org33c9102" class="outline-2">
+<h2 id="org33c9102">Images</h2>
+<div class="outline-text-2" id="text-org33c9102">
+<p>
+Made with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable-diffusion</a>.
+The captions are the prompts I used.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge63f84c" class="outline-2">
+<h2 id="orge63f84c">Update 1</h2>
+<div class="outline-text-2" id="text-orge63f84c">
 <p>
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
