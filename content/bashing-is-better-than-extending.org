@@ -1,0 +1,64 @@
+
+* Introduction
+
+I sometimes get asked something along the lines of
+
+
+#+begin_quote
+What is the single most important package in your emacs config that
+makes you more productive?
+#+end_quote
+
+
+* Lever
+
+Levers are great.
+They make it possible to have a large effect with little
+
+effort
+output with input
+
+
+
+* Hello, bash-completion
+
+* async-shell-command and friends
+
+
+* babashka tasks
+
+I can write build tasks in my favority language clojure, with the
+development ergonomics of a lisp.
+
+
+
+* compilation
+
+Using emacs ~project.el~ I get a beautiful flow of invoking bb tasks:
+I just need a project with a =.git= dir.
+And I invoke ~project-compile~, type in ~bb
+
+
+* It gets even better
+
+Sometimes you want to run the same command over and over.
+For example when compiling or devving some script.
+
+Now you might start doing
+scm
+and the ~C-p~ to go up in the history everytime.
+
+
+With a recent version of emacs
+revert-buffer-function
+Lol, so good.
+
+
+
+
+
+
+* more levers
+
+a lever
+a doorway

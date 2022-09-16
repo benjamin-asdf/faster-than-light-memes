@@ -6,33 +6,3 @@ I sometimes get asked
 What is the single most important package in your emacs config that
 makes you more productive?
 #+end_quote
-
-* Hello, bash-completion
-
-* async-shell-command and friends
-
-
-* babashka tasks
-
-I can write build tasks in my favority language clojure, with the
-development ergonomics of a lisp.
-
-
-
-* compilation
-
-Using emacs ~project.el~ I get a beautiful flow of invoking bb tasks:
-I just need a project with a =.git= dir.
-And I invoke ~project-compile~, type in ~bb
-
-
-* it gets even better
-With a recent version of emacs
-revert-buffer-function
-
-
-
-* more levers
-
-a lever
-a doorway
