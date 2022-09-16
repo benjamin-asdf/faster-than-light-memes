@@ -422,7 +422,8 @@ But mobile still did not work, ok.
 After checking [[https://stackoverflow.com/questions/46345883/why-audio-not-playing-on-mobile-browser][stackoverflow]] I still sort of have the idea that it has
 to do with user interaction events and this ~AudioContext~.
 I first wanted to delay the whole audio setup until you click the
-utton. But [[https://developer.mozilla.org/en-US/docs/Web/API/AudioContext][read]] that you should make a single ~AudioContext~ at the beginning.
+button.
+But [[https://developer.mozilla.org/en-US/docs/Web/API/AudioContext][read]] that you should make a single ~AudioContext~ at the beginning.
 
 So I try delay the 1 other thing in the code:
 
