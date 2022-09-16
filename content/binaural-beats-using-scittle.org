@@ -400,19 +400,20 @@ integrating patterns of the brain and mind.
 #+CAPTION: Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.
 [[https://i.imgur.com/xijojsT.png]]
 
+* Notes
 
-* Images
+** Images
 Made with [[https://huggingface.co/spaces/stabilityai/stable-diffusion][stable-diffusion]].
 The captions are the prompts I used.
 
-* Update 1
+** Update 1
 
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
 Seems like the issue is isolated on the sound appearing because the
 slider value works fine (meaning that the scittle code is running fine).
 
-* Update 2
+** Update 2
 
 Now it also works on mobile!
 Somebody helpfully pointed out on slack that on mac there was an error
