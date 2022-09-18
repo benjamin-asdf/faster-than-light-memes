@@ -18,11 +18,14 @@ They make it possible to have a large effect with little
 effort
 output with input
 
-
-
 * Hello, bash-completion
 
 * async-shell-command and friends
+
+
+mm/shell-command-on-file
+
+
 
 
 * babashka tasks
@@ -52,10 +55,6 @@ and the ~C-p~ to go up in the history everytime.
 With a recent version of emacs
 revert-buffer-function
 Lol, so good.
-
-
-
-
 
 
 * more levers
