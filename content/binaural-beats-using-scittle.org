@@ -114,7 +114,7 @@ So I decided to make a simple website that just makes binaural beats and nothing
 
 Make a sound on 1 ear (e.g. left headphone speaker)
 
-Make a second sound on the other ear, with +40Hz frequency.
+Make a second sound on the other ear, with a +40Hz frequency.
 
 * scittle
 
@@ -270,8 +270,7 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
-left and right ear invariant. I should then constantly perceive a 3rd
-tone that is the binaural beat.
+left and right ear invariant. I should then constantly perceive a 3rd tone which is the binaural beat.
 
 ** I really need a slider for frequencies in my life.
 
@@ -426,7 +425,7 @@ I first wanted to delay the whole audio setup until you click the
 button.
 But [[https://developer.mozilla.org/en-US/docs/Web/API/AudioContext][read]] that you should make a single ~AudioContext~ at the beginning.
 
-So I try delay the 1 other thing in the code:
+So I try to delay the 1 other thing in the code:
 
 #+begin_src clojure
   (def panners

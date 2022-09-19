@@ -131,7 +131,6 @@ and ~recompile~
 
 it uses compile-history
 
-
 * It gets even better
 
 Sometimes you want to run the same command over and over.
