@@ -1,6 +1,20 @@
 
 * Introduction
 
+simplicity and joy with babashka tasks.
+
+
+Here is something I have brought into my practice.
+
+[[https://github.com/szermatt/emacs-bash-completion][bash-completion]]
+
+I set shell-file-name to bash
+
+This just keeps everything simple.
+You can also stick to zsh.
+
+
+
 I sometimes get asked something along the lines of
 
 
@@ -30,7 +44,7 @@ mm/shell-command-on-file
 
 ** rerun compilation with a single key
 
-** default env for your async shell commands
+* default env for your async shell commands
 
 enter .dir-locals.el
 
@@ -94,8 +108,7 @@ hippie
 it might sometimes just uncannily know what you where thinking
 
 
-
-
+(setq-default compile-command "bb tasks")
 
 
 
@@ -132,6 +145,11 @@ and ~recompile~
 it uses compile-history
 
 * It gets even better
+
+
+Let me introduce you to the wonders of ~revert-buffer-function~.
+
+
 
 Sometimes you want to run the same command over and over.
 For example when compiling or devving some script.
@@ -192,3 +210,35 @@ Date:   Fri Jul 10 04:34:41 2015 +0300
 
     * lisp/cedet/ede.el: (project-try-ede): New function.
     (project-root): New implementation.
+
+
+
+* recompile
+
+* ansi colors for comint
+
+[[https://github.com/lambdaisland/kaocha][Koacha]] by default outputs colored output.
+
+If you use the default *compilation* mode you will get output
+sprinkled with ANSI (color) escape codes.
+Bit cluttering on the eyes.
+
+I knew from earlies dabblelings that there is a package called ~ansi-color~
+So I checked around on how to make my buffer colored nicely.
+
+Turns out that ~comint~ already has ~ansi-color-compilation-filter~ setup by default.
+Checking the code for ~compile~ I see that with prefix arg, the buffer
+becomes a comint buffer.
+So I decided I always make my compile buffers comint buffers.
+
+#+begin_src elisp
+(advice-add
+   'compile
+   :filter-args
+   (defun mm/always-use-comint-for-compile (args)
+     `(,(car args) t)))
+#+end_src
+
+Koacha output looks like this:
+
+https://imgur.com/a/ZiskjEC
