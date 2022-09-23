@@ -1,6 +1,10 @@
-{:tasks {:init (def
-                 url
-                 "https://benjamin-asdf.github.io/faster-than-light-memes/")
+{:blog
+ {:blog-title "faster-than-light-memes"
+  :blog-author "Benjamin Schwerdtner"
+  :out-dir "public/"
+  :blog-root "https://benjamin-asdf.github.io/faster-than-light-memes/"}
+ :tasks {:init
+         (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
          setup-once
          (when-not (babashka.fs/exists? "public")
            (do
@@ -9,8 +13,13 @@
              (shell
               "git init public")))
          build (shell "emacs" "-Q" "--script" "build-site.el" )
-         serve-local {:depends [build]
-                      :task (shell "emacsclient" "--eval" "(load-file \"./serve.el\")")}
+         serve-local
+         {:depends [build]
+          :task
+          (let [port 8081]
+            (shell "http-server" ":port" port ":dir" "./public")
+            (shell "xdg-open"
+                   "http://localhost:8081/"))}
          deploy-add {:depends [setup-once] :task (shell {:dir "public"} "git" "add" "--" ".")}
          deploy-commit (shell
                         {:dir "public"}

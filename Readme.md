@@ -18,3 +18,6 @@ for a list of available commands.
 thanks to System Crafters for getting me started:
 
 https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/
+
+Thanks to https://github.com/borkdude/quickblog
+I copied some of the code.
