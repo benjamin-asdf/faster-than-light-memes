@@ -106,10 +106,13 @@
   [dir]
   (into
    #{}
-   (str/split-lines
-    @(:out (p/process
-            ["git" "ls-files" "-o"]
-            {:dir dir :out :string})))))
+   (filter
+    #(str/ends-with? % ".html")
+    (str/split-lines
+     @(:out
+       (p/process
+        ["git" "ls-files" "-o"]
+        {:dir dir :out :string}))))))
 
 (comment
   (def a-post '{:path "/home/benj/notes/20220923T112406--foo__public.org",
