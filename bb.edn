@@ -1,5 +1,5 @@
 {:blog
- {:blog-title "faster-than-light-memes"
+ {:blog-title "Faster than Light Memes"
   :blog-author "Benjamin Schwerdtner"
   :out-dir "public/"
   :blog-root "https://benjamin-asdf.github.io/faster-than-light-memes/"}
