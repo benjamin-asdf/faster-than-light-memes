@@ -19,44 +19,63 @@
 (require 'denote)
 (require 'parseedn)
 
+(setf denote-directory "~/notes/")
+
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
 
 (defun ftlm/file->denote-links (file)
   (with-current-buffer (find-file-noselect file)
-    (when-let
-	((regexp (denote-link--file-type-regexp (buffer-file-name))))
-      (denote-link--expand-identifiers regexp))))
+    (denote-link--expand-identifiers "\\[\\[denote:\\(?1:\\([0-9]\\{8\\}\\)\\(T[0-9]\\{6\\}\\)\\)]\\[.*?]]")))
 
 (defun ftlm/denote-file-data (file)
   (with-temp-buffer
     (insert-file-contents file)
     (goto-char (point-min))
-    (let ((res))
-      (while (re-search-forward
-	      "#\\+\\(.+?\\):\\s-+\\(.+?\\)$"
-	      nil
-	      t)
+    (let ((res)
+	  (end (save-excursion (re-search-forward "^$"))))
+      (while (re-search-forward "#\\+\\(.+?\\):\\s-+\\(.+?\\)$" end t)
 	(push
 	 (cons (match-string 1)
 	       (match-string 2))
 	 res))
       res)))
+(defun dw/strip-file-name-metadata (file-name)
+  (replace-regexp-in-string "^.*--\\(.*?\\)__.*$" "\\1" file-name))
+
+(declare
+ (ftlm/denote-file-data
+  "/home/benj/notes/20220919T110439--binaural-beats-using-scittle__clojure.org"))
 
 (defun ftlm/posts ()
-  (let ((files (ftlm/file->denote-links ftlm/index-file)))
+  (let ((files (cons ftlm/index-file (ftlm/file->denote-links ftlm/index-file))))
     (mapcar
      (lambda (f)
+       (message "%s" f)
        (cons (cons :path f) (ftlm/denote-file-data f)))
      files)))
 
+(defun note->path (lst) (cdr (assq :path lst)))
+
+(dolist (path (mapcar #'note->path (ftlm/posts)))
+  (with-current-buffer
+      (find-file-noselect path)
+    (goto-char (point-min))
+    (unless
+	(re-search-forward "#\\+EXPORT_FILE_NAME:" nil t)
+      (goto-char (point-min))
+      (re-search-forward "^$")
+      (insert
+       (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))))
+
 (defvar posts (ftlm/posts))
+(message "%s" (mapcar #'note->path posts))
 
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
              :recursive t
 	     :exclude ".*"
-	     :include (mapcar (lambda (lst) (cdr (assq :path lst))) posts)
+	     :include (mapcar #'note->path posts)
              :base-directory "~/notes/"
              :publishing-function 'org-html-publish-to-html
              :publishing-directory "./public"
@@ -68,15 +87,12 @@
              :time-stamp-file nil)))
 
 ;; Customize the HTML output
-
 (setq org-html-validation-link t)
+
 (setq org-html-validation-link nil            ;; Don't show validation link
       org-html-head-include-scripts nil       ;; Use our own scripts
       org-html-head-include-default-style nil ;; Use our own styles
       org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
-
-(defun dw/strip-file-name-metadata (file-name)
-  (replace-regexp-in-string "^.*--\\(.*?\\)__.*$" "\\1" file-name))
 
 (defun denote-link-ol-export (link description format)
   "Export a `denote:' link from Org files.
@@ -89,12 +105,15 @@ backend."
          (id (cdr path-id))
          (desc (or description (concat "denote:" id))))
     (cond
-     ((eq format 'html) (format "<a target=\"_blank\" href=\"%s.html\">%s</a>" p desc))
+     ;; I also do not want target=_blank. I want _self (the default)
+     ((eq format 'html) (format "<a href=\"%s.html\">%s</a>" p desc))
      ((eq format 'latex) (format "\\href{%s}{%s}" (replace-regexp-in-string "[\\{}$%&_#~^]" "\\\\\\&" path) desc))
      ((eq format 'texinfo) (format "@uref{%s,%s}" path desc))
      ((eq format 'ascii) (format "[%s] <denote:%s>" desc path)) ; NOTE 2022-06-16: May be tweaked further
      ((eq format 'md) (format "[%s](%s.md)" desc p))
      (t path))))
+
+(org-publish-all t)
 
 (with-temp-buffer
   (parseedn-print (ftlm/posts))
@@ -103,7 +122,7 @@ backend."
 	(call-shell-region
 	 (point-min)
 	 (point-max)
-	 "bb /home/benj/repos/faster-than-light-memes/src/ftlmemes/feed.clj"
+	 "bb src/ftlmemes/feed.clj"
 	 nil
 	 b)
 	b)

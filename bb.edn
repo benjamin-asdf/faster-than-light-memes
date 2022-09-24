@@ -20,6 +20,8 @@
             (shell "http-server" ":port" port ":dir" "./public")
             (shell "xdg-open"
                    "http://localhost:8081/"))}
+         browse-local
+         {:task (shell "xdg-open" "http://localhost:8081/")}
          deploy-add {:depends [setup-once] :task (shell {:dir "public"} "git" "add" "--" ".")}
          deploy-commit (shell
                         {:dir "public"}

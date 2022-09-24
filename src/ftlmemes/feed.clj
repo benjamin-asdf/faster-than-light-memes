@@ -64,7 +64,7 @@
         (->> clojure-posts (filter (comp new-files :file)))
         clojure-posts-modified? (seq new-clojure-posts)]
     (if (and (not clojure-posts-modified?) (fs/exists? clojure-feed-file))
-      (println "No Clojure posts modified; skipping Clojure feed")
+      (println "No new Clojure posts; skipping Clojure feed")
       (do
         (println "Writing Clojure feed" (str clojure-feed-file))
         (spit clojure-feed-file (atom-feed opts clojure-posts))))
@@ -82,11 +82,10 @@
    (.parse s)))
 
 (defn ->post [opts org-data]
-  (let [{:keys [identifier title filetags] :as d}
+  (let [{:keys [identifier filetags EXPORT_FILE_NAME] :as d}
         (clojure.walk/keywordize-keys org-data)
-        file (str title ".html")
+        file (str EXPORT_FILE_NAME ".html")
         html-file (fs/file (:out-dir opts) file)]
-
     (assoc
      d
      :date (rfc-3339 identifier)
@@ -138,9 +137,7 @@
   (atom-feed opts clojure-posts)
   (->>
    (new-files "public/")
-   (keep (->posts {:out-dir "public/"} [a-post])))
-
-  )
+   (keep (->posts {:out-dir "public/"} [a-post]))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (let [opts (-> (read-string (slurp "bb.edn")) :blog)

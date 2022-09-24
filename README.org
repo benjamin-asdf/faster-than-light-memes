@@ -1,0 +1,32 @@
+Benjamin Schwerdtners blog
+
+This is up here:
+https://benjamin-asdf.github.io/faster-than-light-memes/
+
+Make a blog using org and use babashka as build tool.
+
+I take the website content straight from my [[https://github.com/protesilaos/denote][denote]] notes dir.
+
+* build
+
+
+#+begin_src shell
+bb tasks
+#+end_src
+
+for a list of available commands.
+
+You need to set ~ftlm/index-file~ and ~denote-directory~ in =build-site.el=.
+
+** deps:
+
+https://github.com/babashka/http-server
+
+* Acknowledgments
+
+Thanks to System Crafters for getting me started:
+
+https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/
+
+Thanks to https://github.com/borkdude/quickblog
+I copied atom feed code.
