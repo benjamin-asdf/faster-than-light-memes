@@ -5,33 +5,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>anonymous-commands-in-emacs</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
 <body>
 <div id="content" class="content">
+<h1 class="title">anonymous-commands-in-emacs</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb57b5b9">Introduction</a>
+<li><a href="#org419da1e">Introduction</a>
 <ul>
-<li><a href="#org151e1e6">add-hook</a></li>
+<li><a href="#org2fa9511">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#org993706a">Solution</a>
+<li><a href="#orgd5449c3">Solution</a>
 <ul>
-<li><a href="#org8a3fb27">defun</a></li>
+<li><a href="#org0b94ea7">defun</a></li>
 </ul>
 </li>
-<li><a href="#orgbd3e590">Result</a></li>
+<li><a href="#orgda42746">Result</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb57b5b9" class="outline-2">
-<h2 id="orgb57b5b9">Introduction</h2>
-<div class="outline-text-2" id="text-orgb57b5b9">
+
+<div id="outline-container-org419da1e" class="outline-2">
+<h2 id="org419da1e">Introduction</h2>
+<div class="outline-text-2" id="text-org419da1e">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -49,7 +51,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org033ffe1">
+<pre class="example" id="orgc1ee332">
 Key             Binding
 f		[closure]
 </pre>
@@ -59,9 +61,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-org151e1e6" class="outline-3">
-<h3 id="org151e1e6">add-hook</h3>
-<div class="outline-text-3" id="text-org151e1e6">
+<div id="outline-container-org2fa9511" class="outline-3">
+<h3 id="org2fa9511">add-hook</h3>
+<div class="outline-text-3" id="text-org2fa9511">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -84,9 +86,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-org993706a" class="outline-2">
-<h2 id="org993706a">Solution</h2>
-<div class="outline-text-2" id="text-org993706a">
+<div id="outline-container-orgd5449c3" class="outline-2">
+<h2 id="orgd5449c3">Solution</h2>
+<div class="outline-text-2" id="text-orgd5449c3">
 <p>
 Alias your function:
 </p>
@@ -101,7 +103,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="orgeec7598">
+<pre class="example" id="org3684a4e">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -113,9 +115,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-org8a3fb27" class="outline-3">
-<h3 id="org8a3fb27">defun</h3>
-<div class="outline-text-3" id="text-org8a3fb27">
+<div id="outline-container-org0b94ea7" class="outline-3">
+<h3 id="org0b94ea7">defun</h3>
+<div class="outline-text-3" id="text-org0b94ea7">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -131,9 +133,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-orgbd3e590" class="outline-2">
-<h2 id="orgbd3e590">Result</h2>
-<div class="outline-text-2" id="text-orgbd3e590">
+<div id="outline-container-orgda42746" class="outline-2">
+<h2 id="orgda42746">Result</h2>
+<div class="outline-text-2" id="text-orgda42746">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:
@@ -160,6 +162,7 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 </div>
 </div>
 <div id="postamble" class="status">
+<p class="date">Date: 2022-09-23 Fri 18:59</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.4)</p>
 </div>
 </body>
