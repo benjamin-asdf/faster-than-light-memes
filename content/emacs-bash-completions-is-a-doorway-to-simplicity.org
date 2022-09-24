@@ -1,8 +1,0 @@
-* Introduction
-
-I sometimes get asked
-
-#+begin_quote
-What is the single most important package in your emacs config that
-makes you more productive?
-#+end_quote
