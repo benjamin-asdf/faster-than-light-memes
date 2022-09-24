@@ -46,17 +46,20 @@
  (ftlm/denote-file-data
   "/home/benj/notes/20220919T110439--binaural-beats-using-scittle__clojure.org"))
 
-(defun ftlm/posts ()
-  (let ((files (cons ftlm/index-file (ftlm/file->denote-links ftlm/index-file))))
-    (mapcar
-     (lambda (f)
-       (message "%s" f)
-       (cons (cons :path f) (ftlm/denote-file-data f)))
-     files)))
+(defun ftlm/post-data (file)
+  (cons (cons :path file) (ftlm/denote-file-data file)))
+
+(defun ftlm/post-files ()
+  (ftlm/file->denote-links ftlm/index-file))
+
+(defun ftlm/posts+index-files ()
+  (cons ftlm/index-file (ftlm/post-files)))
+
+(defun ftlm/posts (files) (mapcar #'ftlm/post-data files))
 
 (defun note->path (lst) (cdr (assq :path lst)))
 
-(dolist (path (mapcar #'note->path (ftlm/posts)))
+(dolist (path (ftlm/posts+index-files))
   (with-current-buffer
       (find-file-noselect path)
     (goto-char (point-min))
@@ -67,15 +70,12 @@
       (insert
        (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))))
 
-(defvar posts (ftlm/posts))
-(message "%s" (mapcar #'note->path posts))
-
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
              :recursive t
 	     :exclude ".*"
-	     :include (mapcar #'note->path posts)
+	     :include (ftlm/posts+index-files)
              :base-directory "~/notes/"
              :publishing-function 'org-html-publish-to-html
              :publishing-directory "./public"
@@ -116,7 +116,8 @@ backend."
 (org-publish-all t)
 
 (with-temp-buffer
-  (parseedn-print (ftlm/posts))
+  (parseedn-print
+   (mapcar #'ftlm/post-data (ftlm/post-files)))
   (with-current-buffer
       (let ((b (get-buffer-create "bb")))
 	(call-shell-region
