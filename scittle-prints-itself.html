@@ -16,31 +16,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1b27e34">Introduction</a></li>
-<li><a href="#org7eb2aab">Problem statement</a></li>
-<li><a href="#orgb25f526">Some reagent code</a></li>
-<li><a href="#org291f6d4">Fetch</a></li>
-<li><a href="#orgf6904dd">Pretty print the code..?</a></li>
-<li><a href="#org4823c6a">Eval string</a></li>
-<li><a href="#org615e24f">Only fetch once</a></li>
-<li><a href="#orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org24bac8f">Codepen</a></li>
+<li><a href="#org06d6001">Introduction</a></li>
+<li><a href="#org509f3f6">Problem statement</a></li>
+<li><a href="#org1959343">Some reagent code</a></li>
+<li><a href="#orgba4654e">Fetch</a></li>
+<li><a href="#org807abda">Pretty print the code..?</a></li>
+<li><a href="#org69a1d1d">Eval string</a></li>
+<li><a href="#orgc6353c1">Only fetch once</a></li>
+<li><a href="#org68350de">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org4e54159">Codepen</a></li>
 </ul>
 </div>
 </div>
+<p>
+Description of the crafting of a website.
+Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
+</p>
 
-<div id="outline-container-org1b27e34" class="outline-2">
-<h2 id="org1b27e34">Introduction</h2>
-<div class="outline-text-2" id="text-org1b27e34">
+<div id="outline-container-org06d6001" class="outline-2">
+<h2 id="org06d6001">Introduction</h2>
+<div class="outline-text-2" id="text-org06d6001">
 <p>
 I was wondering about what is cool for a newcomer to coding.
-As a lisper, I think the real joy of programming is interactive programming.
+I love lisp and I think one of the real joys in programming is interactive programming.
 So if I find some way of communicating this magic, that would be great.
 </p>
 
 <p>
-After my <a href="binaural-beats-using-scittle.html">binaural beats</a> adventure I am sort of hot for trying out
-Scittle on something bigger.
+After my <a href="binaural-beats-using-scittle.html">binaural beats</a> adventure I feel like Scittle is an amazing tool
+so I want to try it on something bigger.
 So I had this idea of a Scittle website that prints its source code,
 then you update the code and get an immediate effect.
 </p>
@@ -52,9 +56,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-org7eb2aab" class="outline-2">
-<h2 id="org7eb2aab">Problem statement</h2>
-<div class="outline-text-2" id="text-org7eb2aab">
+<div id="outline-container-org509f3f6" class="outline-2">
+<h2 id="org509f3f6">Problem statement</h2>
+<div class="outline-text-2" id="text-org509f3f6">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -63,15 +67,14 @@ I am thinking getting this approximately non-clunky would be hard.
 Especially balancing the parens.
 I decided to go with a drag and drop area where you slurp in a
 file into the browser.</li>
-<li>(made up constraints) make it a website and use Scitttle</li>
 <li>This is not a <a href="https://en.wikipedia.org/wiki/Quine_(computing)">Quine</a> because it receives the source code as input</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgb25f526" class="outline-2">
-<h2 id="orgb25f526">Some reagent code</h2>
-<div class="outline-text-2" id="text-orgb25f526">
+<div id="outline-container-org1959343" class="outline-2">
+<h2 id="org1959343">Some reagent code</h2>
+<div class="outline-text-2" id="text-org1959343">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -159,9 +162,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-org291f6d4" class="outline-2">
-<h2 id="org291f6d4">Fetch</h2>
-<div class="outline-text-2" id="text-org291f6d4">
+<div id="outline-container-orgba4654e" class="outline-2">
+<h2 id="orgba4654e">Fetch</h2>
+<div class="outline-text-2" id="text-orgba4654e">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -177,15 +180,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-orgf6904dd" class="outline-2">
-<h2 id="orgf6904dd">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-orgf6904dd">
+<div id="outline-container-org807abda" class="outline-2">
+<h2 id="org807abda">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-org807abda">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="org32d7599" class="figure">
+<div id="org73b5f55" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -222,9 +225,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org4823c6a" class="outline-2">
-<h2 id="org4823c6a">Eval string</h2>
-<div class="outline-text-2" id="text-org4823c6a">
+<div id="outline-container-org69a1d1d" class="outline-2">
+<h2 id="org69a1d1d">Eval string</h2>
+<div class="outline-text-2" id="text-org69a1d1d">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -310,15 +313,14 @@ hello2
 </blockquote>
 
 <p>
-Another piece in place, another hit of dopamine, another lesson
-learned eternity.
+Another piece in place, another hit of dopamine, wonderful coding moments.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org615e24f" class="outline-2">
-<h2 id="org615e24f">Only fetch once</h2>
-<div class="outline-text-2" id="text-org615e24f">
+<div id="outline-container-orgc6353c1" class="outline-2">
+<h2 id="orgc6353c1">Only fetch once</h2>
+<div class="outline-text-2" id="text-orgc6353c1">
 <p>
 I update the fetch code like so:
 </p>
@@ -340,9 +342,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-orgdc2c89b" class="outline-2">
-<h2 id="orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-orgdc2c89b">
+<div id="outline-container-org68350de" class="outline-2">
+<h2 id="org68350de">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-org68350de">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -361,7 +363,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="orgb85ac85" class="figure">
+<div id="org25155f0" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -376,7 +378,7 @@ This contraption of course pales in comparison to having a REPL running.
 But the idea is that it is might useful to somebody that doesn't even
 know what a REPL <b><b>is</b></b>.
 And if you are a beginner and now you wonder what that REPL thing is.
-<a href="intro-to-clojure.html">Here</a> I try to make a list for how to get a dev setup.
+<a href="intro-to-clojure.html">Here</a> I try to make a list of how to get a dev setup.
 </p>
 
 <p>
@@ -386,9 +388,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org24bac8f" class="outline-2">
-<h2 id="org24bac8f">Codepen</h2>
-<div class="outline-text-2" id="text-org24bac8f">
+<div id="outline-container-org4e54159" class="outline-2">
+<h2 id="org4e54159">Codepen</h2>
+<div class="outline-text-2" id="text-org4e54159">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
