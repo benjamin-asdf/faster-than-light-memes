@@ -44,13 +44,15 @@
          [::atom/name blog-author]]
         (for [{:keys [title file html identifier]} posts
               :let [link (blog-link opts file)]]
-          [::atom/entry
-           [::atom/id link]
-           [::atom/link {:href link}]
-           [::atom/title title]
-           [::atom/updated (rfc-3339 identifier)]
-           [::atom/content {:type "html"}
-            [:-cdata html]]])])
+          (do
+            (println title file identifier)
+            [::atom/entry
+             [::atom/id link]
+             [::atom/link {:href link}]
+             [::atom/title title]
+             [::atom/updated (rfc-3339 identifier)]
+             [::atom/content {:type "html"}
+              [:-cdata html]]]))])
       xml/indent-str))
 
 (defn- spit-feeds [{:keys [out-dir new-files posts] :as opts}]
@@ -86,6 +88,7 @@
         (clojure.walk/keywordize-keys org-data)
         file (str EXPORT_FILE_NAME ".html")
         html-file (fs/file (:out-dir opts) file)]
+    (println file identifier EXPORT_FILE_NAME)
     (assoc
      d
      :date (rfc-3339 identifier)

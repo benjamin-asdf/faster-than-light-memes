@@ -50,7 +50,10 @@
   (cons (cons :path file) (ftlm/denote-file-data file)))
 
 (defun ftlm/post-files ()
-  (ftlm/file->denote-links ftlm/index-file))
+  (cl-remove-if
+   (lambda (s)
+     (string-match-p "org_archive$" s))
+   (ftlm/file->denote-links ftlm/index-file)))
 
 (defun ftlm/posts+index-files ()
   (cons ftlm/index-file (ftlm/post-files)))
