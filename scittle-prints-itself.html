@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>scittle-prints-itself</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">scittle-prints-itself</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1b27e34">Introduction</a></li>
+<li><a href="#org7eb2aab">Problem statement</a></li>
+<li><a href="#orgb25f526">Some reagent code</a></li>
+<li><a href="#org291f6d4">Fetch</a></li>
+<li><a href="#orgf6904dd">Pretty print the code..?</a></li>
+<li><a href="#org4823c6a">Eval string</a></li>
+<li><a href="#org615e24f">Only fetch once</a></li>
+<li><a href="#orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org24bac8f">Codepen</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1b27e34" class="outline-2">
+<h2 id="org1b27e34">Introduction</h2>
+<div class="outline-text-2" id="text-org1b27e34">
+<p>
+I was wondering about what is cool for a newcomer to coding.
+As a lisper, I think the real joy of programming is interactive programming.
+So if I find some way of communicating this magic, that would be great.
+</p>
+
+<p>
+After my <a href="binaural-beats-using-scittle.html">binaural beats</a> adventure I am sort of hot for trying out
+Scittle on something bigger.
+So I had this idea of a Scittle website that prints its source code,
+then you update the code and get an immediate effect.
+</p>
+
+<p>
+I wanted this to be <b>my</b> website so maybe a new team member can also
+go into the code and hack around.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7eb2aab" class="outline-2">
+<h2 id="org7eb2aab">Problem statement</h2>
+<div class="outline-text-2" id="text-org7eb2aab">
+<ol class="org-ol">
+<li>print your source code</li>
+<li>ability to update code</li>
+<li>no code editor in the browser (input field&#x2026;)
+I am thinking getting this approximately non-clunky would be hard.
+Especially balancing the parens.
+I decided to go with a drag and drop area where you slurp in a
+file into the browser.</li>
+<li>(made up constraints) make it a website and use Scitttle</li>
+<li>This is not a <a href="https://en.wikipedia.org/wiki/Quine_(computing)">Quine</a> because it receives the source code as input</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb25f526" class="outline-2">
+<h2 id="orgb25f526">Some reagent code</h2>
+<div class="outline-text-2" id="text-orgb25f526">
+<p>
+I do some StackOverflow-driven development for a drag-and-drop area.
+</p>
+
+<p>
+I needed to figure out how <a href="https://www.w3schools.com/jsref/event_ondragover.asp">ondragover Event</a> and friends translate with
+hiccup.
+Luckily the legendary question answerer  <code>@p-himik</code> helped me out in the
+<code>#clojurescript</code> slack channel.
+Turns out that when I add <code>:on-drag-over</code> in the attribute map it works.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(ns main
+  (:require
+   [reagent.core :as r]
+   [reagent.dom :as rdom]))
+
+(defonce state (r/atom {:code-text ""}))
+
+(defn drop-area []
+  [:div#drop-area
+   {:style {:margin-top "1rem"
+	    :height "10rem"
+	    :width "10rem"
+	    :background "Aquamarine"}
+    :on-drag-enter
+    (fn [event]
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "cyan"))
+    :on-drag-exit
+    (fn [event]
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))
+    :on-drag-over
+    (fn [event]
+      (doto
+	  event
+	  .stopPropagation
+	 .preventDefault)
+      (set! (.. event -dataTransfer -dropEffect) "copy"))
+    :on-drop (fn [event]
+      (doto
+	  event
+	  .stopPropagation
+	  .preventDefault)
+      (let [file (-&gt;  (.. event -dataTransfer -files) first)]
+	(-&gt;
+	 (.text file)
+	 (.then
+	  (fn [t] (swap! state assoc :code-text t)))))
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))}
+   [:div
+    {:style {:margin "1rem"
+	     :padding-top "2.5rem"}}
+    "drop a file here"]])
+
+(defn code-snippet []
+  [:div
+   {:style {:background "gainsboro"}}
+   (:code-text @state)])
+
+(defn my-component []
+  [:div
+   [drop-area]
+   [code-snippet]])
+
+(rdom/render [my-component] (.getElementById js/document "app"))
+
+(comment
+  (swap! state assoc :code-text "foi110"))
+</pre>
+</div>
+
+<p>
+With this, I have a drop area for a file.
+</p>
+
+<p>
+Wonderful thing:
+Updating <code>state</code> redraws the UI for us.
+</p>
+
+<p>
+Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reagent</code> 's magic take effect.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org291f6d4" class="outline-2">
+<h2 id="org291f6d4">Fetch</h2>
+<div class="outline-text-2" id="text-org291f6d4">
+<p>
+I also want to show the default code on the first load.
+After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(-&gt;
+ (js/fetch "main.cljs")
+ (.then (fn [x] (.text x)))
+ (.then (fn [x] (swap! state assoc :code-text x))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6904dd" class="outline-2">
+<h2 id="orgf6904dd">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-orgf6904dd">
+<p>
+At this point my website looks like this:
+</p>
+
+
+<div id="org32d7599" class="figure">
+<p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
+</div>
+
+<p>
+I want to do something where at least the white space is rendered.
+</p>
+
+<p>
+After searching the web, I decide I need a <code>&lt;pre&gt;</code> tag to say it is preformatted.
+Also <code>&lt;code&gt;</code> sounds great.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(defn code-snippet []
+  [:div
+   {:style {:background "gainsboro"}}
+   [:pre
+    [:code
+     (:code-text @state)]]])
+</pre>
+</div>
+
+<p>
+Update the function, re-eval the <code>rdom/render</code> form. Boom I instantly look at my updated visuals.
+With cider, I can also call <code>cider-eval-buffer</code>, or <code>cider-eval-file</code>.
+I first had the background <code>style</code> inside the <code>code</code> tag, which did not have
+the look I wanted.
+I can hack on a piece of UI in isolation. Directly. Without any mental
+suspension time. It is great.
+It is how all coding should be.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4823c6a" class="outline-2">
+<h2 id="org4823c6a">Eval string</h2>
+<div class="outline-text-2" id="text-org4823c6a">
+<p>
+Now for the magic of updating the website with whatever you upload.
+First, I ask Borkdude on slack how to evaluate a string.
+-&gt; You use <code>load-string</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(load-string
+ (prn-str '(js/console.log "hello")))
+</pre>
+</div>
+
+<p>
+Says <code>hello</code> in the console.
+</p>
+
+<p>
+I update my file drop handler with the side effect of loading the text:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(fn [t]
+ (load-string l)
+ (swap! state assoc :code-text t))
+</pre>
+</div>
+<p>
+(Yes there is a syntax error in this snippet).
+</p>
+
+<p>
+I add this to the bottom of the file to see if my code is evaluated:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(js/console.log "hello2")
+</pre>
+</div>
+
+<p>
+Now loading silently fails when I upload my file, but the text updates.
+</p>
+
+<p>
+So I evaluate this in isolation:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(load-string (@state :code-text))
+</pre>
+</div>
+
+<p>
+Ah, I get an analyzer error about <code>l</code> not being defined or something.
+</p>
+
+<p>
+I update my handler like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(try
+ (load-string t)
+ (swap! state assoc :code-text t)
+ (catch js/Error _ (js/alert "That code does not work.")))
+</pre>
+</div>
+
+<p>
+following Stew Halloway's example of binary error feedback. Either
+there is an error, or there is no error.
+Error messages are just bloat anyway.
+</p>
+
+<p>
+console says:
+</p>
+
+<blockquote>
+<p>
+hello2
+</p>
+</blockquote>
+
+<p>
+Another piece in place, another hit of dopamine, another lesson
+learned eternity.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org615e24f" class="outline-2">
+<h2 id="org615e24f">Only fetch once</h2>
+<div class="outline-text-2" id="text-org615e24f">
+<p>
+I update the fetch code like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(or
+ (:code-text @state)
+ (-&gt;
+  (js/fetch "main.cljs")
+  (.then (fn [x] (.text x)))
+  (.then (fn [x] (swap! state assoc :code-text x)))))
+</pre>
+</div>
+
+<p>
+I can do this because in Clojure everything is an expression and I can
+put expressions anywhere.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdc2c89b" class="outline-2">
+<h2 id="orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orgdc2c89b">
+<p>
+I want something on the eyes so I change the style of the drop area:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">{:margin-top "1rem"
+ :height "5rem"
+ :width "5rem"
+ :background "magenta"}
+</pre>
+</div>
+
+
+<p>
+Drag and drop, and:
+</p>
+
+
+<div id="orgb85ac85" class="figure">
+<p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
+</div>
+
+<p>
+In emacs: <code>list-colors-display</code>, nice. And drag and drop with <a href="https://github.com/mwh/dragon">dragon.</a>
+</p>
+
+<p>
+This contraption of course pales in comparison to having a REPL running.
+But the idea is that it is might useful to somebody that doesn't even
+know what a REPL <b><b>is</b></b>.
+And if you are a beginner and now you wonder what that REPL thing is.
+<a href="intro-to-clojure.html">Here</a> I try to make a list for how to get a dev setup.
+</p>
+
+<p>
+Here is an idea I had and did not put into the initial version: Make
+an <code>undo</code> button. So that the user can go back in the history of the website
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24bac8f" class="outline-2">
+<h2 id="org24bac8f">Codepen</h2>
+<div class="outline-text-2" id="text-org24bac8f">
+<p>
+An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
+</p>
+
+<p>
+A key difference is that my website prints its whole code.
+No machinery is hidden anywhere.
+</p>
+
+<p>
+If I may say so I think this is cute.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-09-26 Mon 13:21</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.4)</p>
+</div>
+</body>
+</html>

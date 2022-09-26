@@ -3,11 +3,432 @@
   <title>Faster-than-Light memes</title>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/atom.xml" rel="self"/>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/"/>
-  <updated>2022-09-24T08:46:46+00:00</updated>
+  <updated>2022-09-26T18:00:20+00:00</updated>
   <id>https://benjamin-asdf.github.io/faster-than-light-memes/</id>
   <author>
     <name>Benjamin Schwerdtner</name>
   </author>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/scittle-prints-itself.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/scittle-prints-itself.html"/>
+    <title>scittle-prints-itself</title>
+    <updated>2022-09-26T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>scittle-prints-itself</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">scittle-prints-itself</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1b27e34">Introduction</a></li>
+<li><a href="#org7eb2aab">Problem statement</a></li>
+<li><a href="#orgb25f526">Some reagent code</a></li>
+<li><a href="#org291f6d4">Fetch</a></li>
+<li><a href="#orgf6904dd">Pretty print the code..?</a></li>
+<li><a href="#org4823c6a">Eval string</a></li>
+<li><a href="#org615e24f">Only fetch once</a></li>
+<li><a href="#orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org24bac8f">Codepen</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1b27e34" class="outline-2">
+<h2 id="org1b27e34">Introduction</h2>
+<div class="outline-text-2" id="text-org1b27e34">
+<p>
+I was wondering about what is cool for a newcomer to coding.
+As a lisper, I think the real joy of programming is interactive programming.
+So if I find some way of communicating this magic, that would be great.
+</p>
+
+<p>
+After my <a href="binaural-beats-using-scittle.html">binaural beats</a> adventure I am sort of hot for trying out
+Scittle on something bigger.
+So I had this idea of a Scittle website that prints its source code,
+then you update the code and get an immediate effect.
+</p>
+
+<p>
+I wanted this to be <b>my</b> website so maybe a new team member can also
+go into the code and hack around.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7eb2aab" class="outline-2">
+<h2 id="org7eb2aab">Problem statement</h2>
+<div class="outline-text-2" id="text-org7eb2aab">
+<ol class="org-ol">
+<li>print your source code</li>
+<li>ability to update code</li>
+<li>no code editor in the browser (input field&#x2026;)
+I am thinking getting this approximately non-clunky would be hard.
+Especially balancing the parens.
+I decided to go with a drag and drop area where you slurp in a
+file into the browser.</li>
+<li>(made up constraints) make it a website and use Scitttle</li>
+<li>This is not a <a href="https://en.wikipedia.org/wiki/Quine_(computing)">Quine</a> because it receives the source code as input</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb25f526" class="outline-2">
+<h2 id="orgb25f526">Some reagent code</h2>
+<div class="outline-text-2" id="text-orgb25f526">
+<p>
+I do some StackOverflow-driven development for a drag-and-drop area.
+</p>
+
+<p>
+I needed to figure out how <a href="https://www.w3schools.com/jsref/event_ondragover.asp">ondragover Event</a> and friends translate with
+hiccup.
+Luckily the legendary question answerer  <code>@p-himik</code> helped me out in the
+<code>#clojurescript</code> slack channel.
+Turns out that when I add <code>:on-drag-over</code> in the attribute map it works.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(ns main
+  (:require
+   [reagent.core :as r]
+   [reagent.dom :as rdom]))
+
+(defonce state (r/atom {:code-text ""}))
+
+(defn drop-area []
+  [:div#drop-area
+   {:style {:margin-top "1rem"
+	    :height "10rem"
+	    :width "10rem"
+	    :background "Aquamarine"}
+    :on-drag-enter
+    (fn [event]
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "cyan"))
+    :on-drag-exit
+    (fn [event]
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))
+    :on-drag-over
+    (fn [event]
+      (doto
+	  event
+	  .stopPropagation
+	 .preventDefault)
+      (set! (.. event -dataTransfer -dropEffect) "copy"))
+    :on-drop (fn [event]
+      (doto
+	  event
+	  .stopPropagation
+	  .preventDefault)
+      (let [file (-&gt;  (.. event -dataTransfer -files) first)]
+	(-&gt;
+	 (.text file)
+	 (.then
+	  (fn [t] (swap! state assoc :code-text t)))))
+      (set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))}
+   [:div
+    {:style {:margin "1rem"
+	     :padding-top "2.5rem"}}
+    "drop a file here"]])
+
+(defn code-snippet []
+  [:div
+   {:style {:background "gainsboro"}}
+   (:code-text @state)])
+
+(defn my-component []
+  [:div
+   [drop-area]
+   [code-snippet]])
+
+(rdom/render [my-component] (.getElementById js/document "app"))
+
+(comment
+  (swap! state assoc :code-text "foi110"))
+</pre>
+</div>
+
+<p>
+With this, I have a drop area for a file.
+</p>
+
+<p>
+Wonderful thing:
+Updating <code>state</code> redraws the UI for us.
+</p>
+
+<p>
+Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reagent</code> 's magic take effect.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org291f6d4" class="outline-2">
+<h2 id="org291f6d4">Fetch</h2>
+<div class="outline-text-2" id="text-org291f6d4">
+<p>
+I also want to show the default code on the first load.
+After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(-&gt;
+ (js/fetch "main.cljs")
+ (.then (fn [x] (.text x)))
+ (.then (fn [x] (swap! state assoc :code-text x))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf6904dd" class="outline-2">
+<h2 id="orgf6904dd">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-orgf6904dd">
+<p>
+At this point my website looks like this:
+</p>
+
+
+<div id="org32d7599" class="figure">
+<p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
+</div>
+
+<p>
+I want to do something where at least the white space is rendered.
+</p>
+
+<p>
+After searching the web, I decide I need a <code>&lt;pre&gt;</code> tag to say it is preformatted.
+Also <code>&lt;code&gt;</code> sounds great.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(defn code-snippet []
+  [:div
+   {:style {:background "gainsboro"}}
+   [:pre
+    [:code
+     (:code-text @state)]]])
+</pre>
+</div>
+
+<p>
+Update the function, re-eval the <code>rdom/render</code> form. Boom I instantly look at my updated visuals.
+With cider, I can also call <code>cider-eval-buffer</code>, or <code>cider-eval-file</code>.
+I first had the background <code>style</code> inside the <code>code</code> tag, which did not have
+the look I wanted.
+I can hack on a piece of UI in isolation. Directly. Without any mental
+suspension time. It is great.
+It is how all coding should be.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4823c6a" class="outline-2">
+<h2 id="org4823c6a">Eval string</h2>
+<div class="outline-text-2" id="text-org4823c6a">
+<p>
+Now for the magic of updating the website with whatever you upload.
+First, I ask Borkdude on slack how to evaluate a string.
+-&gt; You use <code>load-string</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(load-string
+ (prn-str '(js/console.log "hello")))
+</pre>
+</div>
+
+<p>
+Says <code>hello</code> in the console.
+</p>
+
+<p>
+I update my file drop handler with the side effect of loading the text:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(fn [t]
+ (load-string l)
+ (swap! state assoc :code-text t))
+</pre>
+</div>
+<p>
+(Yes there is a syntax error in this snippet).
+</p>
+
+<p>
+I add this to the bottom of the file to see if my code is evaluated:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(js/console.log "hello2")
+</pre>
+</div>
+
+<p>
+Now loading silently fails when I upload my file, but the text updates.
+</p>
+
+<p>
+So I evaluate this in isolation:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(load-string (@state :code-text))
+</pre>
+</div>
+
+<p>
+Ah, I get an analyzer error about <code>l</code> not being defined or something.
+</p>
+
+<p>
+I update my handler like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(try
+ (load-string t)
+ (swap! state assoc :code-text t)
+ (catch js/Error _ (js/alert "That code does not work.")))
+</pre>
+</div>
+
+<p>
+following Stew Halloway's example of binary error feedback. Either
+there is an error, or there is no error.
+Error messages are just bloat anyway.
+</p>
+
+<p>
+console says:
+</p>
+
+<blockquote>
+<p>
+hello2
+</p>
+</blockquote>
+
+<p>
+Another piece in place, another hit of dopamine, another lesson
+learned eternity.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org615e24f" class="outline-2">
+<h2 id="org615e24f">Only fetch once</h2>
+<div class="outline-text-2" id="text-org615e24f">
+<p>
+I update the fetch code like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(or
+ (:code-text @state)
+ (-&gt;
+  (js/fetch "main.cljs")
+  (.then (fn [x] (.text x)))
+  (.then (fn [x] (swap! state assoc :code-text x)))))
+</pre>
+</div>
+
+<p>
+I can do this because in Clojure everything is an expression and I can
+put expressions anywhere.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdc2c89b" class="outline-2">
+<h2 id="orgdc2c89b">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orgdc2c89b">
+<p>
+I want something on the eyes so I change the style of the drop area:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">{:margin-top "1rem"
+ :height "5rem"
+ :width "5rem"
+ :background "magenta"}
+</pre>
+</div>
+
+
+<p>
+Drag and drop, and:
+</p>
+
+
+<div id="orgb85ac85" class="figure">
+<p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
+</div>
+
+<p>
+In emacs: <code>list-colors-display</code>, nice. And drag and drop with <a href="https://github.com/mwh/dragon">dragon.</a>
+</p>
+
+<p>
+This contraption of course pales in comparison to having a REPL running.
+But the idea is that it is might useful to somebody that doesn't even
+know what a REPL <b><b>is</b></b>.
+And if you are a beginner and now you wonder what that REPL thing is.
+<a href="intro-to-clojure.html">Here</a> I try to make a list for how to get a dev setup.
+</p>
+
+<p>
+Here is an idea I had and did not put into the initial version: Make
+an <code>undo</code> button. So that the user can go back in the history of the website
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24bac8f" class="outline-2">
+<h2 id="org24bac8f">Codepen</h2>
+<div class="outline-text-2" id="text-org24bac8f">
+<p>
+An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
+</p>
+
+<p>
+A key difference is that my website prints its whole code.
+No machinery is hidden anywhere.
+</p>
+
+<p>
+If I may say so I think this is cute.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-09-26 Mon 13:21</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.4)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
   <entry>
     <id>https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html</id>
     <link href="https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html"/>
@@ -32,24 +453,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org80b211b">Introduction</a>
+<li><a href="#org51da662">Introduction</a>
 <ul>
-<li><a href="#org61b5a7b">add-hook</a></li>
+<li><a href="#orgc422e44">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#orgc3d370c">Solution</a>
+<li><a href="#org8790f7e">Solution</a>
 <ul>
-<li><a href="#orgd40fd7d">defun</a></li>
+<li><a href="#org348a752">defun</a></li>
 </ul>
 </li>
-<li><a href="#orgd32fdbd">Result</a></li>
+<li><a href="#orgcd1a6c4">Result</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org80b211b" class="outline-2">
-<h2 id="org80b211b">Introduction</h2>
-<div class="outline-text-2" id="text-org80b211b">
+<div id="outline-container-org51da662" class="outline-2">
+<h2 id="org51da662">Introduction</h2>
+<div class="outline-text-2" id="text-org51da662">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -67,7 +488,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org7a0f10b">
+<pre class="example" id="org10d5ef7">
 Key             Binding
 f		[closure]
 </pre>
@@ -77,9 +498,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-org61b5a7b" class="outline-3">
-<h3 id="org61b5a7b">add-hook</h3>
-<div class="outline-text-3" id="text-org61b5a7b">
+<div id="outline-container-orgc422e44" class="outline-3">
+<h3 id="orgc422e44">add-hook</h3>
+<div class="outline-text-3" id="text-orgc422e44">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -102,9 +523,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-orgc3d370c" class="outline-2">
-<h2 id="orgc3d370c">Solution</h2>
-<div class="outline-text-2" id="text-orgc3d370c">
+<div id="outline-container-org8790f7e" class="outline-2">
+<h2 id="org8790f7e">Solution</h2>
+<div class="outline-text-2" id="text-org8790f7e">
 <p>
 Alias your function:
 </p>
@@ -119,7 +540,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="org3f0d9f3">
+<pre class="example" id="org9c98cd5">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -131,9 +552,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-orgd40fd7d" class="outline-3">
-<h3 id="orgd40fd7d">defun</h3>
-<div class="outline-text-3" id="text-orgd40fd7d">
+<div id="outline-container-org348a752" class="outline-3">
+<h3 id="org348a752">defun</h3>
+<div class="outline-text-3" id="text-org348a752">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -149,9 +570,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-orgd32fdbd" class="outline-2">
-<h2 id="orgd32fdbd">Result</h2>
-<div class="outline-text-2" id="text-orgd32fdbd">
+<div id="outline-container-orgcd1a6c4" class="outline-2">
+<h2 id="orgcd1a6c4">Result</h2>
+<div class="outline-text-2" id="text-orgcd1a6c4">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:
@@ -210,65 +631,65 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga411639">Introduction</a>
+<li><a href="#org26f8006">Introduction</a>
 <ul>
-<li><a href="#org16d90cd">What are binaural beats?</a></li>
-<li><a href="#org1a2bc1a">Science</a></li>
-<li><a href="#org3097243">Frequency</a></li>
-<li><a href="#org6f8650e">The neuroscience of the auditory system </a></li>
-<li><a href="#org34c6b5d">I think this is ultra cool</a></li>
-<li><a href="#orgd4c03ee">Give me those binaural beats</a>
+<li><a href="#orgfea38ed">What are binaural beats?</a></li>
+<li><a href="#org7066b28">Science</a></li>
+<li><a href="#org2933c2a">Frequency</a></li>
+<li><a href="#orgc7bb3f7">The neuroscience of the auditory system </a></li>
+<li><a href="#orge7abf89">I think this is ultra cool</a></li>
+<li><a href="#orgb0f767d">Give me those binaural beats</a>
 <ul>
-<li><a href="#orga46e438">The problem statement:</a></li>
+<li><a href="#orgce65379">The problem statement:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgd8cdb69">scittle</a>
+<li><a href="#org1536094">scittle</a>
 <ul>
-<li><a href="#org578d16d">1 ear, 1 sound</a>
+<li><a href="#org3262fc1">1 ear, 1 sound</a>
 <ul>
-<li><a href="#orga65b497">The first playground</a></li>
+<li><a href="#orgebf1cb5">The first playground</a></li>
 </ul>
 </li>
-<li><a href="#org445ad86">Playing Hz, first round</a></li>
+<li><a href="#org6f2d08b">Playing Hz, first round</a></li>
 </ul>
 </li>
-<li><a href="#org942548a">binaural!</a>
+<li><a href="#orgfd054c2">binaural!</a>
 <ul>
-<li><a href="#org161247e">just put the second sound in the other ear, whatever</a></li>
+<li><a href="#org0bf627c">just put the second sound in the other ear, whatever</a></li>
 </ul>
 </li>
-<li><a href="#org9211a77">Intermediate results</a>
+<li><a href="#org216197a">Intermediate results</a>
 <ul>
-<li><a href="#org53fdbb5">Artifacts</a></li>
-<li><a href="#org5524db7">Binaural beat?</a></li>
+<li><a href="#orgb154b38">Artifacts</a></li>
+<li><a href="#orgd5a03b2">Binaural beat?</a></li>
 </ul>
 </li>
-<li><a href="#orgdcc0ab5">Change the base frequency</a>
+<li><a href="#org40992c8">Change the base frequency</a>
 <ul>
-<li><a href="#org33a9392">I really need a slider for frequencies in my life.</a>
+<li><a href="#org6b7dde8">I really need a slider for frequencies in my life.</a>
 <ul>
-<li><a href="#org60bcdc2">nice dev experience, scittle really</a></li>
-<li><a href="#orgc3d9dbd">code:</a></li>
+<li><a href="#orgd5c3829">nice dev experience, scittle really</a></li>
+<li><a href="#org1b4df6e">code:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5bb0d7d">Notes</a>
+<li><a href="#orgd4a4a38">Notes</a>
 <ul>
-<li><a href="#org3375198">Images</a></li>
-<li><a href="#org6c08b31">Update 1</a></li>
-<li><a href="#org2bf0893">Update 2</a></li>
+<li><a href="#orgb761d46">Images</a></li>
+<li><a href="#org98a8676">Update 1</a></li>
+<li><a href="#orgcb940ee">Update 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga411639" class="outline-2">
-<h2 id="orga411639">Introduction</h2>
-<div class="outline-text-2" id="text-orga411639">
+<div id="outline-container-org26f8006" class="outline-2">
+<h2 id="org26f8006">Introduction</h2>
+<div class="outline-text-2" id="text-org26f8006">
 <p>
 The best thing about being a rationalist is figuring out you are wrong
 about something.
@@ -286,9 +707,9 @@ neuroscience and pose a fun engineering problem on top of that!
 </p>
 </div>
 
-<div id="outline-container-org16d90cd" class="outline-3">
-<h3 id="org16d90cd">What are binaural beats?</h3>
-<div class="outline-text-3" id="text-org16d90cd">
+<div id="outline-container-orgfea38ed" class="outline-3">
+<h3 id="orgfea38ed">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orgfea38ed">
 <p>
 <a href="https://simple.wikipedia.org/wiki/Binaural_beats">Wikipedia</a>
 </p>
@@ -307,9 +728,9 @@ For example, if a 530 Hz pure tone is presented to a subject's right ear, while 
 </div>
 </div>
 
-<div id="outline-container-org1a2bc1a" class="outline-3">
-<h3 id="org1a2bc1a">Science</h3>
-<div class="outline-text-3" id="text-org1a2bc1a">
+<div id="outline-container-org7066b28" class="outline-3">
+<h3 id="org7066b28">Science</h3>
+<div class="outline-text-3" id="text-org7066b28">
 <p>
 There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
 attention tasks when listening to binaural beats.
@@ -324,7 +745,7 @@ Oh yes, I certainly want more of that memory and attention.
 </p>
 
 
-<div id="orge898ec2" class="figure">
+<div id="org11a6a4f" class="figure">
 <p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.</p>
@@ -333,9 +754,9 @@ Oh yes, I certainly want more of that memory and attention.
 </div>
 
 
-<div id="outline-container-org3097243" class="outline-3">
-<h3 id="org3097243">Frequency</h3>
-<div class="outline-text-3" id="text-org3097243">
+<div id="outline-container-org2933c2a" class="outline-3">
+<h3 id="org2933c2a">Frequency</h3>
+<div class="outline-text-3" id="text-org2933c2a">
 <p>
 Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
 really do not want to listen to those.
@@ -364,9 +785,9 @@ memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/B
 </div>
 </div>
 
-<div id="outline-container-org6f8650e" class="outline-3">
-<h3 id="org6f8650e">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
-<div class="outline-text-3" id="text-org6f8650e">
+<div id="outline-container-orgc7bb3f7" class="outline-3">
+<h3 id="orgc7bb3f7">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-orgc7bb3f7">
 <p>
 Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
@@ -414,9 +835,9 @@ I'm guessing those then start firing in the 40Hz frequency and that is interpret
 </div>
 </div>
 
-<div id="outline-container-org34c6b5d" class="outline-3">
-<h3 id="org34c6b5d">I think this is ultra cool</h3>
-<div class="outline-text-3" id="text-org34c6b5d">
+<div id="outline-container-orge7abf89" class="outline-3">
+<h3 id="orge7abf89">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-orge7abf89">
 <p>
 You throw some energy at the brain in the right form (in this case
 some sound waves) and it reacts in some special way.
@@ -447,9 +868,9 @@ but I really get the same results mix as when I search for <code>binaural beats<
 </div>
 
 
-<div id="outline-container-orgd4c03ee" class="outline-3">
-<h3 id="orgd4c03ee">Give me those binaural beats</h3>
-<div class="outline-text-3" id="text-orgd4c03ee">
+<div id="outline-container-orgb0f767d" class="outline-3">
+<h3 id="orgb0f767d">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-orgb0f767d">
 <p>
 I dint feel like opening a youtube video just to listen to some
 sounds. As an aspiring hacker and engineer, I just want to make my
@@ -458,9 +879,9 @@ So I decided to make a simple website that just makes binaural beats and nothing
 </p>
 </div>
 
-<div id="outline-container-orga46e438" class="outline-4">
-<h4 id="orga46e438">The problem statement:</h4>
-<div class="outline-text-4" id="text-orga46e438">
+<div id="outline-container-orgce65379" class="outline-4">
+<h4 id="orgce65379">The problem statement:</h4>
+<div class="outline-text-4" id="text-orgce65379">
 <p>
 Make a sound on 1 ear (e.g. left headphone speaker)
 </p>
@@ -473,9 +894,9 @@ Make a second sound on the other ear, with a +40Hz frequency.
 </div>
 </div>
 
-<div id="outline-container-orgd8cdb69" class="outline-2">
-<h2 id="orgd8cdb69">scittle</h2>
-<div class="outline-text-2" id="text-orgd8cdb69">
+<div id="outline-container-org1536094" class="outline-2">
+<h2 id="org1536094">scittle</h2>
+<div class="outline-text-2" id="text-org1536094">
 <p>
 I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
 and get greeted with a friendly <code>Isn't cool? this :)</code>.
@@ -487,9 +908,9 @@ Then do the <code>cider-connect-cljs</code>
 </p>
 </div>
 
-<div id="outline-container-org578d16d" class="outline-3">
-<h3 id="org578d16d">1 ear, 1 sound</h3>
-<div class="outline-text-3" id="text-org578d16d">
+<div id="outline-container-org3262fc1" class="outline-3">
+<h3 id="org3262fc1">1 ear, 1 sound</h3>
+<div class="outline-text-3" id="text-org3262fc1">
 <p>
 First I think let's start making a sound in 1 ear.
 </p>
@@ -506,9 +927,9 @@ I am figuring something inside the speech area should sound natural
 </p>
 </div>
 
-<div id="outline-container-orga65b497" class="outline-4">
-<h4 id="orga65b497">The first playground</h4>
-<div class="outline-text-4" id="text-orga65b497">
+<div id="outline-container-orgebf1cb5" class="outline-4">
+<h4 id="orgebf1cb5">The first playground</h4>
+<div class="outline-text-4" id="text-orgebf1cb5">
 <p>
 I have a file called playground.clj
 (Later I figured out I should rename to .cljs :) ).
@@ -547,9 +968,9 @@ that I move the headphone to the side.
 </div>
 </div>
 
-<div id="outline-container-org445ad86" class="outline-3">
-<h3 id="org445ad86">Playing Hz, first round</h3>
-<div class="outline-text-3" id="text-org445ad86">
+<div id="outline-container-org6f2d08b" class="outline-3">
+<h3 id="org6f2d08b">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-org6f2d08b">
 <p>
 Here is a more endurable sound:
 </p>
@@ -582,9 +1003,9 @@ Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</
 </div>
 
 
-<div id="outline-container-org942548a" class="outline-2">
-<h2 id="org942548a">binaural!</h2>
-<div class="outline-text-2" id="text-org942548a">
+<div id="outline-container-orgfd054c2" class="outline-2">
+<h2 id="orgfd054c2">binaural!</h2>
+<div class="outline-text-2" id="text-orgfd054c2">
 <p>
 Let's do the thing where I add +40Hz and play that on the other ear.
 First I start generalizing how I make a panner:
@@ -604,7 +1025,7 @@ First I start generalizing how I make a panner:
 For some reason running this I get:
 </p>
 
-<pre class="example" id="orgec9d2ed">
+<pre class="example" id="orgcab3873">
 Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
 </pre>
 
@@ -614,9 +1035,9 @@ this error, in the meantime&#x2026;
 </p>
 </div>
 
-<div id="outline-container-org161247e" class="outline-3">
-<h3 id="org161247e">just put the second sound in the other ear, whatever</h3>
-<div class="outline-text-3" id="text-org161247e">
+<div id="outline-container-org0bf627c" class="outline-3">
+<h3 id="org0bf627c">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-org0bf627c">
 <div class="org-src-container">
 <pre class="src src-Clojure">(ns beats)
 
@@ -659,13 +1080,13 @@ lol, it works.
 </div>
 </div>
 
-<div id="outline-container-org9211a77" class="outline-2">
-<h2 id="org9211a77">Intermediate results</h2>
-<div class="outline-text-2" id="text-org9211a77">
+<div id="outline-container-org216197a" class="outline-2">
+<h2 id="org216197a">Intermediate results</h2>
+<div class="outline-text-2" id="text-org216197a">
 </div>
-<div id="outline-container-org53fdbb5" class="outline-3">
-<h3 id="org53fdbb5">Artifacts</h3>
-<div class="outline-text-3" id="text-org53fdbb5">
+<div id="outline-container-orgb154b38" class="outline-3">
+<h3 id="orgb154b38">Artifacts</h3>
+<div class="outline-text-3" id="text-orgb154b38">
 <p>
 Every now and then there are artifacts in the sound with my headphones setup.
 Some are just rustling and crackling.
@@ -679,9 +1100,9 @@ sort of slow mow.
 </div>
 </div>
 
-<div id="outline-container-org5524db7" class="outline-3">
-<h3 id="org5524db7">Binaural beat?</h3>
-<div class="outline-text-3" id="text-org5524db7">
+<div id="outline-container-orgd5a03b2" class="outline-3">
+<h3 id="orgd5a03b2">Binaural beat?</h3>
+<div class="outline-text-3" id="text-orgd5a03b2">
 <p>
 Pretty sure I get the third-tone illusion.
 I would describe it as some kind of background or in between "airy"
@@ -693,9 +1114,9 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 </div>
 </div>
 
-<div id="outline-container-orgdcc0ab5" class="outline-2">
-<h2 id="orgdcc0ab5">Change the base frequency</h2>
-<div class="outline-text-2" id="text-orgdcc0ab5">
+<div id="outline-container-org40992c8" class="outline-2">
+<h2 id="org40992c8">Change the base frequency</h2>
+<div class="outline-text-2" id="text-org40992c8">
 <p>
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
@@ -703,9 +1124,9 @@ left and right ear invariant. I should then constantly perceive a 3rd tone which
 </p>
 </div>
 
-<div id="outline-container-org33a9392" class="outline-3">
-<h3 id="org33a9392">I really need a slider for frequencies in my life.</h3>
-<div class="outline-text-3" id="text-org33a9392">
+<div id="outline-container-org6b7dde8" class="outline-3">
+<h3 id="org6b7dde8">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-org6b7dde8">
 <p>
 I did not do much web dev in my life and making a slider was a first.
 </p>
@@ -716,9 +1137,9 @@ I managed to put something together, drawing inspiration from
 </p>
 </div>
 
-<div id="outline-container-org60bcdc2" class="outline-4">
-<h4 id="org60bcdc2">nice dev experience, scittle really</h4>
-<div class="outline-text-4" id="text-org60bcdc2">
+<div id="outline-container-orgd5c3829" class="outline-4">
+<h4 id="orgd5c3829">nice dev experience, scittle really</h4>
+<div class="outline-text-4" id="text-orgd5c3829">
 <ol class="org-ol">
 <li>I did not need to restart my REPL at any point, adding those Html
 elements, then reloading my index.html - it handles that.</li>
@@ -738,7 +1159,7 @@ At least with cider.
 
 
 
-<div id="orgafb4266" class="figure">
+<div id="orgfe83792" class="figure">
 <p><img src="https://i.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.</p>
@@ -752,9 +1173,9 @@ I imagine it scurrying and curiously sniffing around.
 </div>
 </div>
 
-<div id="outline-container-orgc3d9dbd" class="outline-4">
-<h4 id="orgc3d9dbd">code:</h4>
-<div class="outline-text-4" id="text-orgc3d9dbd">
+<div id="outline-container-org1b4df6e" class="outline-4">
+<h4 id="org1b4df6e">code:</h4>
+<div class="outline-text-4" id="text-org1b4df6e">
 <p>
 index.html
 </p>
@@ -865,7 +1286,7 @@ integrating patterns of the brain and mind.
 </p>
 
 
-<div id="orgbf101a5" class="figure">
+<div id="orga7ca92f" class="figure">
 <p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.</p>
@@ -875,13 +1296,13 @@ integrating patterns of the brain and mind.
 </div>
 </div>
 
-<div id="outline-container-org5bb0d7d" class="outline-2">
-<h2 id="org5bb0d7d">Notes</h2>
-<div class="outline-text-2" id="text-org5bb0d7d">
+<div id="outline-container-orgd4a4a38" class="outline-2">
+<h2 id="orgd4a4a38">Notes</h2>
+<div class="outline-text-2" id="text-orgd4a4a38">
 </div>
-<div id="outline-container-org3375198" class="outline-3">
-<h3 id="org3375198">Images</h3>
-<div class="outline-text-3" id="text-org3375198">
+<div id="outline-container-orgb761d46" class="outline-3">
+<h3 id="orgb761d46">Images</h3>
+<div class="outline-text-3" id="text-orgb761d46">
 <p>
 Made with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable-diffusion</a>.
 The captions are the prompts I used.
@@ -889,9 +1310,9 @@ The captions are the prompts I used.
 </div>
 </div>
 
-<div id="outline-container-org6c08b31" class="outline-3">
-<h3 id="org6c08b31">Update 1</h3>
-<div class="outline-text-3" id="text-org6c08b31">
+<div id="outline-container-org98a8676" class="outline-3">
+<h3 id="org98a8676">Update 1</h3>
+<div class="outline-text-3" id="text-org98a8676">
 <p>
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
@@ -901,9 +1322,9 @@ slider value works fine (meaning that the scittle code is running fine).
 </div>
 </div>
 
-<div id="outline-container-org2bf0893" class="outline-3">
-<h3 id="org2bf0893">Update 2</h3>
-<div class="outline-text-3" id="text-org2bf0893">
+<div id="outline-container-orgcb940ee" class="outline-3">
+<h3 id="orgcb940ee">Update 2</h3>
+<div class="outline-text-3" id="text-orgcb940ee">
 <p>
 Now it also works on mobile!
 Somebody helpfully pointed out on slack that on mac there was an error
@@ -974,68 +1395,42 @@ It works, haha!
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgabdd7cc">Introduction</a></li>
-<li><a href="#org3e0e27a">A dev environment</a>
+<li><a href="#orgd24207f">Introduction</a></li>
+<li><a href="#orgbe87a21">A dev environment</a>
 <ul>
-<li><a href="#org11c7111">Vs Code</a></li>
-<li><a href="#org4a1fde2">Emacs</a></li>
+<li><a href="#org5fa5f77">Vs Code</a></li>
+<li><a href="#orgbd4a342">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#orgc2adae6">Nr 1 book for beginners</a></li>
-<li><a href="#orge03db35">Slack</a></li>
-<li><a href="#orga5c2ba2">Other such lists</a></li>
+<li><a href="#org85b68b3">Nr 1 book for beginners</a></li>
+<li><a href="#orgff88b84">Slack</a></li>
+<li><a href="#org14e78a7">Other such lists</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgabdd7cc" class="outline-2">
-<h2 id="orgabdd7cc">Introduction</h2>
-<div class="outline-text-2" id="text-orgabdd7cc">
+<div id="outline-container-orgd24207f" class="outline-2">
+<h2 id="orgd24207f">Introduction</h2>
+<div class="outline-text-2" id="text-orgd24207f">
 <p>
 Clojure is a modern, functional lisp with a fiercely convinced community and
 production orientation.
 </p>
-
-<p>
-It is a pile of "just get shit done" and produces small, robust, and simple code.
-</p>
-
-<p>
-A key feature of lisps is that interactivity is foundational.
-The magic of making your source code come alive under your fingers is
-not describable via words, rather it has to be experienced.
-You can try this out yourself by setting up <a href="https://github.com/clojure-emacs/cider">emacs cider</a> or <a href="https://calva.io/getting-started/">calva for vscode</a>.
-</p>
-
-<p>
-Beyond it being a lisp, it has a unique approach to functional
-programming. Firstly by putting a strong emphasis on data orientation,
-secondly by being dynamically typed (not typical for functional
-languages),
-and thirdly by fully embracing the need of state in your program.
-</p>
-
-<p>
-The idiomatic style of Clojure, that has developed in recent
-years has been dubbed <code>data-oriented programming</code>.
-It is truly unique and is said to bring back the joy of programming.
-For real it is ultra-enabling and feels powerful.
-</p>
 </div>
 </div>
 
-<div id="outline-container-org3e0e27a" class="outline-2">
-<h2 id="org3e0e27a">A dev environment</h2>
-<div class="outline-text-2" id="text-org3e0e27a">
+<div id="outline-container-orgbe87a21" class="outline-2">
+<h2 id="orgbe87a21">A dev environment</h2>
+<div class="outline-text-2" id="text-orgbe87a21">
 <p>
 Get prepared for your journey as a pilot of an alien spaceship.
 As a beginner I suggest either
 </p>
 </div>
 
-<div id="outline-container-org11c7111" class="outline-3">
-<h3 id="org11c7111">Vs Code</h3>
-<div class="outline-text-3" id="text-org11c7111">
+<div id="outline-container-org5fa5f77" class="outline-3">
+<h3 id="org5fa5f77">Vs Code</h3>
+<div class="outline-text-3" id="text-org5fa5f77">
 <p>
 Easy to make work. A great editor. You will not need to be ashamed of
 your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
@@ -1043,9 +1438,9 @@ your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
 </div>
 </div>
 
-<div id="outline-container-org4a1fde2" class="outline-3">
-<h3 id="org4a1fde2">Emacs</h3>
-<div class="outline-text-3" id="text-org4a1fde2">
+<div id="outline-container-orgbd4a342" class="outline-3">
+<h3 id="orgbd4a342">Emacs</h3>
+<div class="outline-text-3" id="text-orgbd4a342">
 <p>
 Strong affinity to hacker culture and a program that is more than a
 tool, but eventually an extension to your hands, heart, and mind.
@@ -1069,18 +1464,18 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 </div>
 </div>
 
-<div id="outline-container-orgc2adae6" class="outline-2">
-<h2 id="orgc2adae6">Nr 1 book for beginners</h2>
-<div class="outline-text-2" id="text-orgc2adae6">
+<div id="outline-container-org85b68b3" class="outline-2">
+<h2 id="org85b68b3">Nr 1 book for beginners</h2>
+<div class="outline-text-2" id="text-org85b68b3">
 <p>
 <a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge03db35" class="outline-2">
-<h2 id="orge03db35">Slack</h2>
-<div class="outline-text-2" id="text-orge03db35">
+<div id="outline-container-orgff88b84" class="outline-2">
+<h2 id="orgff88b84">Slack</h2>
+<div class="outline-text-2" id="text-orgff88b84">
 <p>
 Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
 Seriously a lot of people hang there and answer beginner questions,
@@ -1089,9 +1484,9 @@ everybody is welcome.
 </div>
 </div>
 
-<div id="outline-container-orga5c2ba2" class="outline-2">
-<h2 id="orga5c2ba2">Other such lists</h2>
-<div class="outline-text-2" id="text-orga5c2ba2">
+<div id="outline-container-org14e78a7" class="outline-2">
+<h2 id="org14e78a7">Other such lists</h2>
+<div class="outline-text-2" id="text-org14e78a7">
 <p>
 Carin is cool and has a funny picture of the emacs learning curve here:
 <a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
