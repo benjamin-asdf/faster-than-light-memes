@@ -81,7 +81,7 @@
 	     :include (ftlm/posts+index-files)
              :base-directory "~/notes/"
              :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public"
+             :publishing-directory "./gh-pages/"
              :with-author nil
              :with-creator t
              :auto-sitemap t

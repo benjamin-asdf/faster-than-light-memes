@@ -1,34 +1,29 @@
 {:blog
  {:blog-title "Faster-than-Light memes"
   :blog-author "Benjamin Schwerdtner"
-  :out-dir "public/"
+  :out-dir "gh-pages/"
   :blog-root "https://benjamin-asdf.github.io/faster-than-light-memes/"}
  :tasks {:init
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
          setup-once
-         (when-not (babashka.fs/exists? "public")
-           (do
-             (shell
-              "mkdir -p public")
-             (shell
-              "git init public")))
+         (shell "git" "worktree" "add" "gh-pages")
          build (shell "emacs" "-Q" "--script" "build-site.el" )
          serve-local
          {:depends [build]
           :task
           (let [port 8081]
-            (shell "http-server" ":port" port ":dir" "./public")
+            (shell "http-server" ":port" port ":dir" "./gh-pages")
             (shell "xdg-open"
                    "http://localhost:8081/"))}
          browse-local
          {:task (shell "xdg-open" "http://localhost:8081/")}
-         deploy-add {:depends [setup-once] :task (shell {:dir "public"} "git" "add" "--" ".")}
+         deploy-add {:depends [setup-once] :task (shell {:dir "gh-pages"} "git" "add" "--" ".")}
          deploy-commit (shell
-                        {:dir "public"}
+                        {:dir "gh-pages"}
                         "git" "commit" "--allow-empty" "-m" "deploy")
          deploy {:depends [deploy-add deploy-commit]
                  :task (shell
-                        {:dir "public"}
+                        {:dir "gh-pages"}
                         "git"
                         "push"
                         "--force"
