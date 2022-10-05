@@ -16,15 +16,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org232bac3">Introduction</a></li>
-<li><a href="#orgf71fef5">Problem statement</a></li>
-<li><a href="#org7ecae6f">Some reagent code</a></li>
-<li><a href="#org1bc88aa">Fetch</a></li>
-<li><a href="#orgb92ca61">Pretty print the code..?</a></li>
-<li><a href="#org97239ad">Eval string</a></li>
-<li><a href="#orga4f349b">Only fetch once</a></li>
-<li><a href="#org579a4a7">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org87ce17f">Codepen</a></li>
+<li><a href="#orgeff86b5">Introduction</a></li>
+<li><a href="#org4e754ee">Problem statement</a></li>
+<li><a href="#org9154d6f">Some reagent code</a></li>
+<li><a href="#org82b0c01">Fetch</a></li>
+<li><a href="#org35265f1">Pretty print the code..?</a></li>
+<li><a href="#orgb2d96b0">Eval string</a></li>
+<li><a href="#orgd0b7b63">Only fetch once</a></li>
+<li><a href="#orge55b549">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org627ceb6">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -33,9 +33,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-org232bac3" class="outline-2">
-<h2 id="org232bac3">Introduction</h2>
-<div class="outline-text-2" id="text-org232bac3">
+<div id="outline-container-orgeff86b5" class="outline-2">
+<h2 id="orgeff86b5">Introduction</h2>
+<div class="outline-text-2" id="text-orgeff86b5">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -56,9 +56,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-orgf71fef5" class="outline-2">
-<h2 id="orgf71fef5">Problem statement</h2>
-<div class="outline-text-2" id="text-orgf71fef5">
+<div id="outline-container-org4e754ee" class="outline-2">
+<h2 id="org4e754ee">Problem statement</h2>
+<div class="outline-text-2" id="text-org4e754ee">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -72,9 +72,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org7ecae6f" class="outline-2">
-<h2 id="org7ecae6f">Some reagent code</h2>
-<div class="outline-text-2" id="text-org7ecae6f">
+<div id="outline-container-org9154d6f" class="outline-2">
+<h2 id="org9154d6f">Some reagent code</h2>
+<div class="outline-text-2" id="text-org9154d6f">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -162,9 +162,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-org1bc88aa" class="outline-2">
-<h2 id="org1bc88aa">Fetch</h2>
-<div class="outline-text-2" id="text-org1bc88aa">
+<div id="outline-container-org82b0c01" class="outline-2">
+<h2 id="org82b0c01">Fetch</h2>
+<div class="outline-text-2" id="text-org82b0c01">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -180,15 +180,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-orgb92ca61" class="outline-2">
-<h2 id="orgb92ca61">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-orgb92ca61">
+<div id="outline-container-org35265f1" class="outline-2">
+<h2 id="org35265f1">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-org35265f1">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="org81650be" class="figure">
+<div id="orgce5c4e7" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -225,9 +225,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org97239ad" class="outline-2">
-<h2 id="org97239ad">Eval string</h2>
-<div class="outline-text-2" id="text-org97239ad">
+<div id="outline-container-orgb2d96b0" class="outline-2">
+<h2 id="orgb2d96b0">Eval string</h2>
+<div class="outline-text-2" id="text-orgb2d96b0">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -318,9 +318,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-orga4f349b" class="outline-2">
-<h2 id="orga4f349b">Only fetch once</h2>
-<div class="outline-text-2" id="text-orga4f349b">
+<div id="outline-container-orgd0b7b63" class="outline-2">
+<h2 id="orgd0b7b63">Only fetch once</h2>
+<div class="outline-text-2" id="text-orgd0b7b63">
 <p>
 I update the fetch code like so:
 </p>
@@ -342,9 +342,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-org579a4a7" class="outline-2">
-<h2 id="org579a4a7">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-org579a4a7">
+<div id="outline-container-orge55b549" class="outline-2">
+<h2 id="orge55b549">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orge55b549">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -363,7 +363,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="orgd998c36" class="figure">
+<div id="orgabd6a69" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -388,9 +388,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org87ce17f" class="outline-2">
-<h2 id="org87ce17f">Codepen</h2>
-<div class="outline-text-2" id="text-org87ce17f">
+<div id="outline-container-org627ceb6" class="outline-2">
+<h2 id="org627ceb6">Codepen</h2>
+<div class="outline-text-2" id="text-org627ceb6">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
