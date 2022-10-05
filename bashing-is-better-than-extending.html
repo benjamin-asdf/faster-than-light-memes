@@ -16,255 +16,198 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdbf20ac">Introduction</a></li>
-<li><a href="#org54fc026"><code>read-shell-command</code></a></li>
-<li><a href="#org96ed603"><code>shell-command</code>, <code>async-shell-command</code> + friends</a>
+<li><a href="#orgbc6fd43">Introduction</a></li>
+<li><a href="#orgff93276">Emacs in a magic forest</a></li>
+<li><a href="#org07f577e">read-shell-command</a></li>
+<li><a href="#org186dcaf">bash-completion</a></li>
+<li><a href="#orgccabf67">bash completions are now your lever</a>
 <ul>
-<li><a href="#org5053149"><code>shell-command</code></a>
-<ul>
-<li><a href="#org1e6bcb8">Here is a nugget:</a></li>
-<li><a href="#org95e0493">Good to know:</a></li>
-<li><a href="#org28589a3">Output bufffer</a></li>
+<li><a href="#orgf330a60">Babashka tasks</a></li>
 </ul>
 </li>
-<li><a href="#orga9e3694"><code>shell-command-async</code></a></li>
-<li><a href="#orgad48c72"><code>compile</code></a></li>
-<li><a href="#orgcccaf6a">dired</a></li>
-</ul>
-</li>
-<li><a href="#orgffc825c"><code>bash-completion</code></a></li>
-<li><a href="#orgeaf078f">bash completions are now your lever</a></li>
-<li><a href="#orgfb4af49"><code>shell-file-name</code></a></li>
-<li><a href="#orgdf7598e">babashka tasks</a></li>
-<li><a href="#orgb7f4cc9">Lever</a></li>
-<li><a href="#org3450e63">async-shell-command and friends</a>
+<li><a href="#orgb0610d7">Commands that leverage <code>read-shell-command</code></a>
 <ul>
-<li><a href="#org61f3ae6">compilation</a></li>
-<li><a href="#org0b7d336">rerun compilation with a single key</a></li>
-</ul>
-</li>
-<li><a href="#org2870903">default env for your async shell commands</a></li>
-<li><a href="#org57f548b">read shell command</a>
+<li><a href="#orgd0e00bb">shell-command</a>
 <ul>
-<li><a href="#orgabb377c">history</a></li>
-<li><a href="#orgceb1c3b">make completions even sicker</a></li>
+<li><a href="#orgf50a4f8">Here is a nugget:</a></li>
+<li><a href="#org5a3cbc1">Good to know:</a></li>
+<li><a href="#org16549e4">Output buffer</a></li>
 </ul>
 </li>
-<li><a href="#org9b9835f">histories</a></li>
-<li><a href="#orgbebedd2">It gets even better</a></li>
-<li><a href="#org22c1d63">project</a></li>
-<li><a href="#org39cca03">recompile</a></li>
-<li><a href="#orga7f88fd">ansi colors for comint</a></li>
-<li><a href="#org5190f2d">Bash completions are your lever</a>
+<li><a href="#orgb76337d">shell-command-async</a></li>
+<li><a href="#orgfa04e22">compile</a></li>
+<li><a href="#org415836f">dired</a></li>
+<li><a href="#orgd083af3">shell-command-on-file</a></li>
+</ul>
+</li>
+<li><a href="#org4cb41b8">It gets even better</a>
 <ul>
-<li><a href="#org5ec45ee">ssh</a></li>
-<li><a href="#orgcf213fd">embarking</a></li>
+<li><a href="#org52dc9db">revert-buffer in compilation buffers</a></li>
 </ul>
 </li>
-<li><a href="#orgdb61c98">story</a></li>
+<li><a href="#org88d14a9">Scripts at the speed of thought</a>
+<ul>
+<li><a href="#org185fd1e">mememacs/create-script</a>
+<ul>
+<li><a href="#orgaad1312">bash-completion in <code>sh-mode</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfaac656">async-shell-command, my bread and butter</a>
+<ul>
+<li><a href="#org9416ede">Put the command into the buffer name</a></li>
+<li><a href="#orgd28607c">shell-command&#x2013;same-buffer-confirm</a></li>
+<li><a href="#org8dbd113">shell-mode as a terminal emulator</a></li>
+</ul>
+</li>
+<li><a href="#orga05b166">process-list</a></li>
+<li><a href="#org5987f70">The next layer on the cake</a>
+<ul>
+<li><a href="#org90fb7e7">project</a></li>
+<li><a href="#orgd1fdb8e">recompile</a></li>
+<li><a href="#orgc83cec0">ansi colors for comint</a></li>
+</ul>
+</li>
+<li><a href="#org35c280e">Levers are great</a>
+<ul>
+<li><a href="#org940dd4f">ssh</a></li>
+<li><a href="#org20618a8">embarking</a></li>
+<li><a href="#org2d1b671">pass</a></li>
+</ul>
+</li>
+<li><a href="#org2e58b3c">Particulars</a>
+<ul>
+<li><a href="#org699b8f2">shell-file-name</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <p>
-How <code>bash-completion</code> makes everything better by enableling power
-through general leverage.
-Demonstrations of technology around <code>shell-command</code>.
-Simplicity and joy with babashka tasks.
+<b>Not</b> how to run babashka tasks.
 </p>
 
-
-<div id="outline-container-orgdbf20ac" class="outline-2">
-<h2 id="orgdbf20ac">Introduction</h2>
-<div class="outline-text-2" id="text-orgdbf20ac">
 <p>
-Ok let just do it. You might want to hold tight to your chair because
+How <code>bash-completion</code>  makes everything better.
+</p>
+
+<p>
+How to run <b>any</b> shell commands.
+</p>
+
+<p>
+Technology around <code>shell-command</code>.
+</p>
+
+<p>
+Simplicity and joy.
+</p>
+
+<div id="outline-container-orgbc6fd43" class="outline-2">
+<h2 id="orgbc6fd43">Introduction</h2>
+<div class="outline-text-2" id="text-orgbc6fd43">
+<p>
+Ok, let's just do it. You might want to hold tight to your chair because
 the juiciness and elegance of what follow might just blow you over.
 Here is how I build my <a href="https://benjamin-asdf.github.io/faster-than-light-memes/">blog</a> with babashka tasks:
 </p>
 
 
-
-<div id="org7692eec" class="figure">
+<div id="orgd265cb2" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/bb-task-demo.gif?raw=true" alt="bb-task-demo.gif?raw=true" />
 </p>
-<p><span class="figure-number">Figure 1: </span>Using <code>compile</code> to leverage <code>read-shell-command</code> and thereby <code>bash-completions</code>. Recompiling via <code>revert-buffer</code>. Dismissing the <code>*compilation*</code> bufffer.</p>
+<p><span class="figure-number">Figure 1: </span>Using <code>compile</code> to leverage <code>read-shell-command</code> and thereby <code>bash-completions</code>. Recompiling via <code>revert-buffer</code>. Dismissing the <code>*compilation*</code> buffer.</p>
 </div>
 
 <p>
 You might think "Ok sure, looks useful." Let me entice you with the
-really impressive thing about this:
-</p>
-
-<ol class="org-ol">
-<li>This is general across all projects, all shell commands where there
-is bash completion for it.</li>
-<li>The elisp line count that is concretely about babashka tasks in my
-config is <code>zero</code>.</li>
-<li>The amount of config I have for the faster-than-light-memes project
-is <code>zero</code>. It just works by having a <code>bb.edn</code> with tasks.</li>
-</ol>
-
-
-
-
-<p>
-This is possible by the harmony between some 3 or 4 general tools.
-Together they are like layers of ice.
-Let me hand you your skates that let you glide on it. Smoothly, gracefully and <b>fast</b>.
+the really impressive thing about this:
 </p>
 
 <p>
-Let me tell you a story of a few humble builtin emacs commands and a
-happy little package called <code>bash-completion</code>.
-</p>
-
-
-
-<p>
-Together they are like
-pieces of a machine
-rolling precisely
-with a layer of ice on the top.
-And there are skates available that make you go <b>fast</b>.
+There is nothing concrete about babashka tasks nor about that specific
+project in my emacs config.
+It just works by having a <code>bb.edn</code> with tasks.
 </p>
 
 <p>
-<a href="https://clojurians.slack.com/archives/C099W16KZ/p1663862976109399">this slack conversation</a>
+Made possible via the harmony between some 3 or 4 general tools.
+Like layers of ice. You deserve some skates to ride on
+it. Smoothly, gracefully and <b>fast</b>.
+Here is the story of a happy little package called <code>bash-completion</code>.
 </p>
 </div>
 </div>
 
-
-<div id="outline-container-org54fc026" class="outline-2">
-<h2 id="org54fc026"><code>read-shell-command</code></h2>
-<div class="outline-text-2" id="text-org54fc026">
+<div id="outline-container-orgff93276" class="outline-2">
+<h2 id="orgff93276">Emacs in a magic forest</h2>
+<div class="outline-text-2" id="text-orgff93276">
 <p>
-This is like `read-from-minibuffer` but sets some keymap and hstory.
-If you type tab, you get completions from <code>shell-dynamic-complete-functions</code>.
+Once upon a time,
 </p>
 
 <p>
-By default this does something when you start typing a command name,
-tab. Or start typing a file name (<code>.</code> also works) and hit tab.
+there was an elven city on a big tree called Emacs in a magic forest.
+They crafted all kinds of beautiful spells, some of them woven into
+the fabric of the big forest itself.
 </p>
 
 <p>
-In just a bit I introduce the Character of the story that brings in <b>any</b>
-shell completions.
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org96ed603" class="outline-2">
-<h2 id="org96ed603"><code>shell-command</code>, <code>async-shell-command</code> + friends</h2>
-<div class="outline-text-2" id="text-org96ed603">
-<p>
-They use <code>read-shell-command</code>.
-</p>
-</div>
-
-<div id="outline-container-org5053149" class="outline-3">
-<h3 id="org5053149"><code>shell-command</code></h3>
-<div class="outline-text-3" id="text-org5053149">
-<p>
-Bound to <code>M-!</code>
+A spell was crafted by writing in a magic book.
+The language in the books was extremely pithy and made heavy use of parenthesis.
 </p>
 
 <p>
-This is the <code>interactive</code> doorway into emacs lisp <code>start-process</code> functionality.
-It has quite a big doc string.
+The city was overflowing with books. Even though the elves had
+mastered the technology of infinite storage space, it was considered bad style to
+produce more books as was necessary.
+There were little books everywhere that talked about every corner of the forest.
+Every time an elf wanted to craft a spell that had an effect somewhere
+else in the forest, they would make a spell that talked to the river
+and roots (called <code>shell</code> for some reason) in a language of <code>commands</code>.
 </p>
-</div>
-
-<div id="outline-container-org1e6bcb8" class="outline-4">
-<h4 id="org1e6bcb8">Here is a nugget:</h4>
-<div class="outline-text-4" id="text-org1e6bcb8">
-<blockquote>
-<p>
-With prefix argument, insert the COMMAND's output at point.
-</p>
-</blockquote>
 
 <p>
-Can be nice, you can do <code>C-u M-!</code> <code>date</code> and you have a date inserted
-in the buffer.
+The elves especially treasured their books <code>orderless</code>, <code>vetico</code> and
+<code>consult</code>, though anything that made <code>completing-read</code> beautiful and
+effective worked (<code>helm</code>, <code>ivy</code>, <code>selectrum</code>).
+</p>
+
+<p>
+All elves knew well how to select <code>candidates</code> <b>fast</b>.
+So it became really useful to be good at <code>completing-read</code>.
+</p>
+
+<p>
+One day a hacker elf had an idea for a clever <a href="https://github.com/szermatt/emacs-bash-completion">book</a>.
+A spell that would ask the <code>shell</code> for a list of <b><b>candidates of commands</b></b>
+By doing so they enabled all <code>commands</code> to be part
+of the beautiful dance of emacs, without the need for any more books.
+No matter how large the forest grew, a single book would suffice to
+make magic in <b>all</b> its corners <b>fast</b>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org95e0493" class="outline-4">
-<h4 id="org95e0493">Good to know:</h4>
-<div class="outline-text-4" id="text-org95e0493">
-<blockquote>
+<div id="outline-container-org07f577e" class="outline-2">
+<h2 id="org07f577e">read-shell-command</h2>
+<div class="outline-text-2" id="text-org07f577e">
 <p>
-If COMMAND ends in &amp;, execute it asynchronously.
-</p>
-</blockquote>
-</div>
-</div>
-
-<div id="outline-container-org28589a3" class="outline-4">
-<h4 id="org28589a3">Output bufffer</h4>
-<div class="outline-text-4" id="text-org28589a3">
-<p>
-Your command output is located by default in a buffer named by <code>shell-command-buffer-name</code>.
-Or <code>shell-command-buffer-name-async</code> when async.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orga9e3694" class="outline-3">
-<h3 id="orga9e3694"><code>shell-command-async</code></h3>
-<div class="outline-text-3" id="text-orga9e3694">
-<p>
-Bound to <code>M-&amp;</code> and has the same effect as adding a <code>&amp;</code> in <code>shell-command</code>.
+This is like <code>read-from-minibuffer</code> but sets some keymap and history.
+Hit <code>&lt;tab&gt;</code>, you get completions from <code>shell-dynamic-complete-functions</code>.
+Those completions are sort of okay, but they do not give you command-specific completions.
+Invoke <code>shell-command</code>, then type <code>git checkout</code>, hit tab. Nothing happens. <b><b>Yet</b></b>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgad48c72" class="outline-3">
-<h3 id="orgad48c72"><code>compile</code></h3>
-<div class="outline-text-3" id="text-orgad48c72">
+<div id="outline-container-org186dcaf" class="outline-2">
+<h2 id="org186dcaf">bash-completion</h2>
+<div class="outline-text-2" id="text-org186dcaf">
 <p>
-Very useful, very similar to <code>shell-command-async</code>.
-Always uses the same buffer called <code>*compilation*</code>.
-You can set <code>compile-command</code> for instance via <code>.dir-locals.el</code>, then
-it auto makes a compile command in that project.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgcccaf6a" class="outline-3">
-<h3 id="orgcccaf6a">dired</h3>
-<div class="outline-text-3" id="text-orgcccaf6a">
-<p>
-<code>dired-do-shell-command</code> and <code>dired-do-async-shell-command</code>
-are symetrical with <code>shell-command</code> and <code>async-shell-command</code>.
-In fact, those functions call <code>shell-command</code>.
-</p>
-
-<p>
-Bound to <code>!</code> and <code>&amp;</code> in dired.
-Docstring is worth reading.
-Important to know is that <code>*</code> expands to <code>dired-file-name-at-point</code>,
-or the marked files, but is implicit as last arg.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgffc825c" class="outline-2">
-<h2 id="orgffc825c"><code>bash-completion</code></h2>
-<div class="outline-text-2" id="text-orgffc825c">
-<p>
-Ok so now you know there is some places where you can start an emacs
-process via shell command.
-</p>
-
-<p>
-Let me make your life better: <a href="https://github.com/szermatt/emacs-bash-completion">bash-completion</a>.
+Ok your emacs life is about to level up +1 <a href="https://github.com/szermatt/emacs-bash-completion">bash-completion</a>.
+Config:
 </p>
 
 <div class="org-src-container">
@@ -280,268 +223,494 @@ Let me make your life better: <a href="https://github.com/szermatt/emacs-bash-co
 </div>
 
 <p>
-Remember how I said <code>shell-dynamic-complete-functions</code> contribute to
-your completions.
-</p>
-
-<p>
 Here are the completions of your shell at the tips of those sweet
 coconut oily fingers.
 </p>
+
+<p>
+Now you can do <code>shell-command</code>
+-&gt; Hit that tab while typing <code>git checkout ..</code> a door just
+opened.
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgeaf078f" class="outline-2">
-<h2 id="orgeaf078f">bash completions are now your lever</h2>
-<div class="outline-text-2" id="text-orgeaf078f">
+<div id="outline-container-orgccabf67" class="outline-2">
+<h2 id="orgccabf67">bash completions are now your lever</h2>
+<div class="outline-text-2" id="text-orgccabf67">
 <p>
 Now my friends we have entered the realm of harnessing already
-existing shell completions directly into our kingdom of emacs that
-makes us feel so cozy and at home.
+existing shell completions directly into our kingdom of emacs where
+we cozy and effective.
 </p>
 </div>
-</div>
 
-
-
-
-
-
-
-
-<div id="outline-container-orgfb4af49" class="outline-2">
-<h2 id="orgfb4af49"><code>shell-file-name</code></h2>
-<div class="outline-text-2" id="text-orgfb4af49">
+<div id="outline-container-orgf330a60" class="outline-3">
+<h3 id="orgf330a60">Babashka tasks</h3>
+<div class="outline-text-3" id="text-orgf330a60">
 <p>
-Your <code>shell-file-name</code> matters.
-I decided "/bin/bash" is just good enough when I am shelling from emacs.
-I checked with zsh and it worked fine btw.
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-orgdf7598e" class="outline-2">
-<h2 id="orgdf7598e">babashka tasks</h2>
-<div class="outline-text-2" id="text-orgdf7598e">
-<p>
-Babashka tasks are a great invention of our time,
-allowing my to write build tasks in my favority language clojure, with the
+Babashka tasks are one of the great discoveries of our time,
+allowing us to write build tasks in Clojure, with the
 development ergonomics of a lisp.
 </p>
 
 <p>
 The babashka book has <a href="https://book.babashka.org/#_terminal_tab_completion">a section</a> on adding shell completions.
-</p>
-</div>
-</div>
-
-
-
-<div id="outline-container-orgb7f4cc9" class="outline-2">
-<h2 id="orgb7f4cc9">Lever</h2>
-<div class="outline-text-2" id="text-orgb7f4cc9">
-<p>
-Levers are great.
-They make it possible to have a large effect with little
-</p>
-
-<p>
-effort
-output with input
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org3450e63" class="outline-2">
-<h2 id="org3450e63">async-shell-command and friends</h2>
-<div class="outline-text-2" id="text-org3450e63">
-<p>
-mm/shell-command-on-file
-</p>
-</div>
-
-
-<div id="outline-container-org61f3ae6" class="outline-3">
-<h3 id="org61f3ae6">compilation</h3>
-</div>
-
-<div id="outline-container-org0b7d336" class="outline-3">
-<h3 id="org0b7d336">rerun compilation with a single key</h3>
-</div>
-</div>
-
-<div id="outline-container-org2870903" class="outline-2">
-<h2 id="org2870903">default env for your async shell commands</h2>
-<div class="outline-text-2" id="text-org2870903">
-<p>
-enter .dir-locals.el
-</p>
-
-<p>
-I never remember the syntax to this
-Like how it was with `ln` before borkdude shared this trick:
-substitute <code>ln</code> with <code>cp</code> in your mind and you know the args.
-</p>
-
-<p>
-Imagine
-you write a list
-of function calls
-the operation is the mode and is allowed to be nil
-the args are variables to set
-you write a cons cell in elisp as a dotted list (foo . bar)
-</p>
-
-<p>
-And imagine there is a quote around your list
-</p>
-</div>
-</div>
-
-
-
-<div id="outline-container-org57f548b" class="outline-2">
-<h2 id="org57f548b">read shell command</h2>
-<div class="outline-text-2" id="text-org57f548b">
-</div>
-<div id="outline-container-orgabb377c" class="outline-3">
-<h3 id="orgabb377c">history</h3>
-<div class="outline-text-3" id="text-orgabb377c">
-<p>
-M-h		consult-history
-M-i		completion-at-point
-M-n		next-history-element
-M-p		previous-history-element
-</p>
-
-<p>
-M-r		previous-matching-history-element
-M-s		next-matching-history-element
-</p>
-
-
-
-<p>
-frankly those are not so useful to me because consult-history coverst that
-like a powerhose
-like a power hose
-like a water hydrant hose
-</p>
-
-<p>
-M-r		previous-matching-history-element
-M-s		next-matching-history-element
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-orgceb1c3b" class="outline-3">
-<h3 id="orgceb1c3b">make completions even sicker</h3>
-<div class="outline-text-3" id="text-orgceb1c3b">
-<p>
-Here is a few pieces that make minibuffer completions
-bolster
-add levarage
-make it juicy
-</p>
-
-<p>
-I have consult-yank-pop on M-y
-</p>
-
-<p>
-hippie
-it might sometimes just uncannily know what you where thinking
-</p>
-
-
-<p>
-(setq-default compile-command "bb tasks")
+Boom. This is all you need.
+Now you can enjoy those babashka tasks completions.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9b9835f" class="outline-2">
-<h2 id="org9b9835f">histories</h2>
-<div class="outline-text-2" id="text-org9b9835f">
+<div id="outline-container-orgb0610d7" class="outline-2">
+<h2 id="orgb0610d7">Commands that leverage <code>read-shell-command</code></h2>
+<div class="outline-text-2" id="text-orgb0610d7">
 <p>
-compile-history
-shell-command-history
-dired-shell-command-history
+They use <code>read-shell-command</code>.
+Making <code>read-shell-command</code> <b>good</b> will pay off for all these.
 </p>
 </div>
+
+<div id="outline-container-orgd0e00bb" class="outline-3">
+<h3 id="orgd0e00bb">shell-command</h3>
+<div class="outline-text-3" id="text-orgd0e00bb">
+<p>
+Bound to <code>M-!</code>
+</p>
+
+<p>
+This is the <code>interactive</code> doorway into emacs lisp <code>start-process</code> functionality.
+</p>
 </div>
 
-
-<div id="outline-container-orgbebedd2" class="outline-2">
-<h2 id="orgbebedd2">It gets even better</h2>
-<div class="outline-text-2" id="text-orgbebedd2">
-<p>
-Let me introduce you to the wonders of <code>revert-buffer-function</code>.
-<code>revert-buffer</code> is a powerful command by itself.
-</p>
-
-
-<p>
-I did not know this for a while, but you can set the local variable <code>revert-buffer-function</code>.
-</p>
-
-<p>
-Thanks to this stroke of genius:
-</p>
-
+<div id="outline-container-orgf50a4f8" class="outline-4">
+<h4 id="orgf50a4f8">Here is a nugget:</h4>
+<div class="outline-text-4" id="text-orgf50a4f8">
 <blockquote>
 <p>
-5f650422e4a4c44ffc5ee0be4ec969765a307c7b
-Author:     Sean Whitton &lt;spwhitton@spwhitton.name&gt;
-Set revert-buffer-function in shell command output buffers
+With prefix argument, insert the COMMAND's output at point.
 </p>
 </blockquote>
 
 <p>
-This pearl is in emacs 28:
+<code>C-u M-!</code> <code>date</code> and you have a date inserted in the buffer.
+</p>
+
+<p>
+Like this:
+<code>Thu Sep 29 10:55:44 AM CEST 2022</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5a3cbc1" class="outline-4">
+<h4 id="org5a3cbc1">Good to know:</h4>
+<div class="outline-text-4" id="text-org5a3cbc1">
+<blockquote>
+<p>
+If COMMAND ends in &amp;, execute it asynchronously.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org16549e4" class="outline-4">
+<h4 id="org16549e4">Output buffer</h4>
+<div class="outline-text-4" id="text-org16549e4">
+<p>
+Your command output is located by default in a buffer named by <code>shell-command-buffer-name</code>.
+Or <code>shell-command-buffer-name-async</code> when async.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb76337d" class="outline-3">
+<h3 id="orgb76337d">shell-command-async</h3>
+<div class="outline-text-3" id="text-orgb76337d">
+<p>
+Bound to <code>M-&amp;</code> and has the same effect as adding a <code>&amp;</code> in <code>shell-command</code>.
+To kill the process I can hit <code>C-c C-c</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa04e22" class="outline-3">
+<h3 id="orgfa04e22">compile</h3>
+<div class="outline-text-3" id="text-orgfa04e22">
+<p>
+Very useful, very similar to <code>shell-command-async</code>.
+Always uses the same buffer called <code>*compilation*</code>.
+You can set <code>compile-command</code> for instance via <code>.dir-locals.el</code>, then
+it auto makes a compile command in that project.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org415836f" class="outline-3">
+<h3 id="org415836f">dired</h3>
+<div class="outline-text-3" id="text-org415836f">
+<p>
+<code>dired-do-shell-command</code> and <code>dired-do-async-shell-command</code>
+are symetrical with <code>shell-command</code> and <code>async-shell-command</code>.
+Those functions call <code>shell-command</code>.
+</p>
+
+<p>
+Bound to <code>!</code> and <code>&amp;</code> in dired Docstring is worth reading.
+Important to know is that <code>*</code> expands to <code>dired-file-name-at-point</code>,
+or the marked files, but is implicit as the last arg.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd083af3" class="outline-3">
+<h3 id="orgd083af3">shell-command-on-file</h3>
+<div class="outline-text-3" id="text-orgd083af3">
+<p>
+Sometimes you are currently visiting a script file and you just want
+to run it.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">setq-local</span> revert-buffer-function
-                              (<span style="font-weight: bold;">lambda</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> _)
-                                (async-shell-command command buffer)))
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/shell-command-on-file</span> (command)
+  <span style="font-style: italic;">"Execute COMMAND asynchronously on the current file."</span>
+  (<span style="font-weight: bold;">interactive</span> (list (read-shell-command
+                      (concat <span style="font-style: italic;">"Async shell command on "</span> (buffer-name) <span style="font-style: italic;">": "</span>))))
+  (<span style="font-weight: bold;">let</span> ((filename (<span style="font-weight: bold;">if</span> (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (async-shell-command (concat command <span style="font-style: italic;">" "</span> filename))))
 </pre>
 </div>
 
 <p>
-You say <code>revert-buffer</code> in shell command buffer, to boom run the
-command again in the same buffer.
-Lol, so good.
+Thanks to <a href="https://github.com/Gavinok/emacs.d">Gavin Freeborn</a> for the initial version of this code.
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org22c1d63" class="outline-2">
-<h2 id="org22c1d63">project</h2>
-<div class="outline-text-2" id="text-org22c1d63">
+<div id="outline-container-org4cb41b8" class="outline-2">
+<h2 id="org4cb41b8">It gets even better</h2>
+<div class="outline-text-2" id="text-org4cb41b8">
 <p>
-There is a big package <code>projectile</code> that sees wide usage.
-Personally I settled on <code>project.el</code>, it was added to emacs a few
-years after <code>projectile</code> came out and it vibes more with my aesthetics.
-Simpler + builtin + gets everything done I need.
+Let me introduce you to the wonders of <code>revert-buffer-function</code>.
+Now, <code>revert-buffer</code> is a powerful command by itself.
 </p>
 
 <p>
-Use <code>project-compile</code> to run <code>compile</code> in the project root.
-Analogously, there is <code>project-async-shell-command</code>.
-<code>projectile</code> provides similar commands.
+I did not know this for a while, but you can set the local variable <code>revert-buffer-function</code>.
+This pearl is in emacs 28:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setq-local</span>
+ revert-buffer-function
+ (<span style="font-weight: bold;">lambda</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> _)
+   (async-shell-command command buffer)))
+</pre>
+</div>
+
+<p>
+You say <code>revert-buffer</code> in a shell command buffer, to boom run the
+command again in the same buffer. Exactly what I want sometimes.
+A single key to rerun a command. And I think the concepts just fit
+nicely. There is no mental burden with this.
+</p>
+</div>
+
+<div id="outline-container-org52dc9db" class="outline-3">
+<h3 id="org52dc9db">revert-buffer in compilation buffers</h3>
+<div class="outline-text-3" id="text-org52dc9db">
+<div class="org-src-container">
+<pre class="src src-elisp">(advice-add
+   #'compilation-revert-buffer
+   <span style="font-weight: bold;">:filter-args</span>
+   (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/always-noconfirm-compilation-revert-buffer</span> (args)
+     (<span style="font-weight: bold;">pcase</span> args
+       (`(,ignore-auto nil) `(,ignore-auto t))
+       (_ args))))
+</pre>
+</div>
+
+<p>
+I use <code>revert-buffer</code> as a consenting adult - kill and restart the
+compile command, without asking.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org88d14a9" class="outline-2">
+<h2 id="org88d14a9">Scripts at the speed of thought</h2>
+<div class="outline-text-2" id="text-org88d14a9">
+
+<div id="org2639ff8" class="figure">
+<p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/insta-script.gif?raw=true" alt="insta-script.gif?raw=true" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Make a script, and run the script. Leveraging <code>bash-completion</code> in <code>shell-script-mode</code>.</p>
+</div>
+</div>
+
+<div id="outline-container-org185fd1e" class="outline-3">
+<h3 id="org185fd1e">mememacs/create-script</h3>
+<div class="outline-text-3" id="text-org185fd1e">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-script*</span> (file bang setup)
+  (find-file file)
+  (insert bang)
+  (save-buffer)
+  (evil-insert-state)
+  (set-file-modes file #o751)
+  (funcall setup))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-script</span> (file)
+  (<span style="font-weight: bold;">interactive</span> <span style="font-style: italic;">"Fnew script: "</span>)
+  (mememacs/create-script*
+   file
+   <span style="font-style: italic;">"#!/bin/sh\n"</span>
+   #'shell-script-mode))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-bb-script</span> (file)
+  (<span style="font-weight: bold;">interactive</span> <span style="font-style: italic;">"Fnew bb: "</span>)
+  (mememacs/create-script*
+   file
+   <span style="font-style: italic;">"#!/usr/bin/env bb\n"</span>
+   #'clojure-mode))
+</pre>
+</div>
+
+<p>
+I have bound these in <code>dired-mode</code>.
+Then, I use <code>mm/shell-command-on-file</code> to dev interactively sort of.
+</p>
+
+<p>
+Btw <code>shell-script-mode</code> becomes a power house when you integrate <a href="https://github.com/koalaman/shellcheck">shellcheck</a>.
+<code>flycheck</code> has something for that. (pretty sure <code>flymake</code> should as well.)
+Shellcheck makes superb warnings. Firmly in my "adopt" circle.
+</p>
+</div>
+
+<div id="outline-container-orgaad1312" class="outline-4">
+<h4 id="orgaad1312">bash-completion in <code>sh-mode</code></h4>
+<div class="outline-text-4" id="text-orgaad1312">
+<p>
+Here is my full <code>bash-completion</code> config that adds to <code>capf</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package bash-completion
+  <span style="font-weight: bold;">:init</span>
+  (autoload 'bash-completion-dynamic-complete
+    <span style="font-style: italic;">"bash-completion"</span>
+    <span style="font-style: italic;">"BASH completion hook"</span>)
+  (add-hook 'shell-dynamic-complete-functions
+            #'bash-completion-dynamic-complete)
+
+  <span style="font-weight: bold;">:config</span>
+  (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">bash-completion-capf-1</span> (bol)
+    (bash-completion-dynamic-complete-nocomint (funcall bol) (point) t))
+  (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">bash-completion-eshell-capf</span> ()
+    (bash-completion-capf-1 (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">save-excursion</span> (eshell-bol) (point)))))
+  (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">bash-completion-capf</span> ()
+    (bash-completion-capf-1 #'point-at-bol))
+  (add-hook
+   'sh-mode-hook
+   (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/add-bash-completion</span> ()
+     (add-hook 'completion-at-point-functions #'bash-completion-capf nil t))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfaac656" class="outline-2">
+<h2 id="orgfaac656">async-shell-command, my bread and butter</h2>
+<div class="outline-text-2" id="text-orgfaac656">
+<p>
+Of these commands, it is the one I use the most.
+And really, all the other commands could be performed in terms of it.
+Here is some of my journey of smoothing out some edges.
+</p>
+</div>
+
+<div id="outline-container-org9416ede" class="outline-3">
+<h3 id="org9416ede">Put the command into the buffer name</h3>
+<div class="outline-text-3" id="text-org9416ede">
+<p>
+When you run a second command, by default, it tries to reuse the old buffer and asks you
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(yes-or-no-p
+             (format <span style="font-style: italic;">"A command is running in the default buffer.  %s? "</span>
+                     action))
+</pre>
+</div>
+
+<p>
+I put the <code>command</code> into the buffer name so I usually get a unique
+buffer name.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/put-command-in-async-buff-name</span> (f <span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> args)
+  (<span style="font-weight: bold;">let*</span> ((path-s (path-slug default-directory))
+         (command (car args))
+         (buffname (concat path-s <span style="font-style: italic;">" "</span> command))
+         (shell-command-buffer-name-async
+          (format
+           <span style="font-style: italic;">"*async-shell-command %s*"</span>
+           (string-trim
+            (substring buffname 0 (min (length buffname) 50))))))
+    (apply f args)))
+
+(advice-add 'shell-command <span style="font-weight: bold;">:around</span> #'mm/put-command-in-async-buff-name)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">path-slug</span> (dir)
+    <span style="font-style: italic;">"Returns the initials of `dir`s path,</span>
+<span style="font-style: italic;">with the last part appended fully</span>
+
+<span style="font-style: italic;">Example:</span>
+
+<span style="font-style: italic;">(path-slug \"/foo/bar/hello\")</span>
+<span style="font-style: italic;">=&gt; \"f/b/hello\" "</span>
+    (<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">dash</span>)
+    (<span style="font-weight: bold;">let*</span> ((path (replace-regexp-in-string <span style="font-style: italic;">"\\."</span> <span style="font-style: italic;">""</span> dir))
+           (path (split-string path <span style="font-style: italic;">"/"</span> t))
+           (path-s (mapconcat
+                    (<span style="font-weight: bold;">lambda</span> (it)
+                      (cl-subseq it 0 1))
+                    (-drop-last 1 path)
+                    <span style="font-style: italic;">"/"</span>))
+           (path-s (concat
+                    path-s
+                    <span style="font-style: italic;">"/"</span>
+                    (-last-item path))))
+      path-s))
+</pre>
+</div>
+
+<p>
+Now I can complete buffers and start typing the commands.
+And the buffers don't have an anonymous name like <code>*async-shell-command&lt;2&gt;*</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org39cca03" class="outline-2">
-<h2 id="org39cca03">recompile</h2>
-<div class="outline-text-2" id="text-org39cca03">
+<div id="outline-container-orgd28607c" class="outline-3">
+<h3 id="orgd28607c">shell-command&#x2013;same-buffer-confirm</h3>
+<div class="outline-text-3" id="text-orgd28607c">
+<p>
+Sort of a power setting when you do <code>async-shell-command</code> a lot.
+I used to have this to <code>'confirm-kill-process</code>
+Now I do
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">setf</span> async-shell-command-buffer 'new-buffer)
+</pre>
+</div>
+
+<p>
+If I want to kill I can do <code>C-c C-c</code> on the old buffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8dbd113" class="outline-3">
+<h3 id="org8dbd113">shell-mode as a terminal emulator</h3>
+<div class="outline-text-3" id="text-org8dbd113">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/shell-via-async-shell-command</span> ()
+    (switch-to-buffer
+     (window-buffer
+      (async-shell-command
+       shell-file-name))))
+</pre>
+</div>
+
+<p>
+You get a shell buffer running your shell.
+Does everything I need from a terminal.
+It pays of having a minimal <code>.rc</code> file. This is also why I have
+<code>shell-file-name</code> set to "/bin/bash".
+Even though I have a cool zsh config with vi mode.
+I get all the evil stuff for free in <code>shell</code> buffers.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga05b166" class="outline-2">
+<h2 id="orga05b166">process-list</h2>
+<div class="outline-text-2" id="text-orga05b166">
+<p>
+You get a list of all current processes.
+Here is a function I have bound in <code>process-menu-mode-map</code> :
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/process-menu-switch-to-buffer</span> ()
+  (<span style="font-weight: bold;">interactive</span>)
+  (<span style="font-weight: bold;">when-let*</span>
+      ((id (tabulated-list-get-id))
+       (b (process-buffer id)))
+    (switch-to-buffer b)))
+</pre>
+</div>
+
+<p>
+Nice, a way to easily get to the buffer again when looking at <code>process-list</code>.
+</p>
+
+<p>
+Similarly useful is doing <code>ibuffer</code> then <code>s m</code> <code>ibuffer-filter-by-used-mode</code> -&gt; <code>shell</code>.
+Nice, an ibuffer list of shell procs.
+</p>
+
+<p>
+With <code>embark</code> I can also do <code>consult-buffer</code> -&gt; <code>b</code> to narrow -&gt; type
+<code>async</code> -&gt; <code>embark-export</code>.
+Hehe, a nice <code>ibuffer</code> of all my shell commands.
+</p>
+
+<p>
+If you don't know <code>ibuffer</code>, but you know <code>dired</code>.
+Then you know <code>ibuffer</code>. They are analogous by design.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5987f70" class="outline-2">
+<h2 id="org5987f70">The next layer on the cake</h2>
+<div class="outline-text-2" id="text-org5987f70">
+<p>
+More context for <code>shell-command</code>.
+</p>
+</div>
+
+<div id="outline-container-org90fb7e7" class="outline-3">
+<h3 id="org90fb7e7">project</h3>
+<div class="outline-text-3" id="text-org90fb7e7">
+<p>
+I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile</code> in the project root. Analogously, there is <code>project-async-shell-command</code>.
+<code>projectile</code>, a big and widely used package, provides similar commands.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1fdb8e" class="outline-3">
+<h3 id="orgd1fdb8e">recompile</h3>
+<div class="outline-text-3" id="text-orgd1fdb8e">
 <p>
 Similar to going to the <code>*compilation*</code> buffer and <code>revert-buffer</code>.
 But a single command.
@@ -549,9 +718,9 @@ But a single command.
 </div>
 </div>
 
-<div id="outline-container-orga7f88fd" class="outline-2">
-<h2 id="orga7f88fd">ansi colors for comint</h2>
-<div class="outline-text-2" id="text-orga7f88fd">
+<div id="outline-container-orgc83cec0" class="outline-3">
+<h3 id="orgc83cec0">ansi colors for comint</h3>
+<div class="outline-text-3" id="text-orgc83cec0">
 <p>
 If you use <a href="https://github.com/lambdaisland/kaocha">Koacha</a> together with <code>compile</code>,
 you will get output sprinkled with ANSI (color) escape codes.
@@ -562,7 +731,7 @@ Bit cluttering on the eyes.
 </p>
 
 <p>
-I knew from earlier dabblelings that there is a package called <code>ansi-color</code>
+I knew from earlier dabblings that there is a package called <code>ansi-color</code>.
 So I checked around on how to make my buffer colored nicely.
 </p>
 
@@ -586,155 +755,91 @@ So I decided I always make my compile buffers comint buffers.
 Koacha output looks like this:
 </p>
 
-<p>
-<a href="https://imgur.com/a/ZiskjEC">https://imgur.com/a/ZiskjEC</a>
+
+<div id="orgf014217" class="figure">
+<p><img src="https://i.imgur.com/5vpmnsu.png" alt="5vpmnsu.png" />
 </p>
+<p><span class="figure-number">Figure 3: </span>A <code>compile</code> buffer running <code>Koacha</code> with pleasing green colored output text.</p>
+</div>
+</div>
 </div>
 </div>
 
-
-<div id="outline-container-org5190f2d" class="outline-2">
-<h2 id="org5190f2d">Bash completions are your lever</h2>
-<div class="outline-text-2" id="text-org5190f2d">
+<div id="outline-container-org35c280e" class="outline-2">
+<h2 id="org35c280e">Levers are great</h2>
+<div class="outline-text-2" id="text-org35c280e">
+</div>
+<div id="outline-container-org940dd4f" class="outline-3">
+<h3 id="org940dd4f">ssh</h3>
+<div class="outline-text-3" id="text-org940dd4f">
 <p>
-A lot of programs on linux come with bash completions.
-This is power is just lying around waiting to be picked up.
-</p>
-</div>
-
-<div id="outline-container-org5ec45ee" class="outline-3">
-<h3 id="org5ec45ee">ssh</h3>
-<div class="outline-text-3" id="text-org5ec45ee">
-<p>
-Really nice tip in case you did not know:
+Nice tip in case you did not know:
 You can define preset configs in <code>~/.ssh/config</code> and they will show up
 as bash completions when you type <code>ssh</code>  and hit tap.
-Here is for example my ssh config to tunnel into a datomic cloud compute group:
 </p>
 
-<blockquote>
-<p>
-Host dotomic-system-ec2
-     HostName ec2-xx-xxx-xx-xx.compute-1.amazonaws.com
-     User ec2-user
-     IdentityFile <i>home/benj</i>.ssh/ben-ec2-key-pair.pem
-     LocalForward 7000 ec2-xx-xxx-xx-xx.compute-1.amazonaws.com:7000
-</p>
-</blockquote>
+<div class="org-src-container">
+<pre class="src src-shell">Host dotomic-system-ec2
+     HostName ...
+     ...
+</pre>
+</div>
 
 <p>
-(I have a clojure nrepl running at port 7000 there, feels good).
+So now I just type <code>M-&amp;</code> for <code>async-shell-command</code>, then <code>ssh</code>, then
+I hit tap and I get <code>dotomic-system-ec2</code> as completion. Yes!
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcf213fd" class="outline-3">
-<h3 id="orgcf213fd">embarking</h3>
-<div class="outline-text-3" id="text-orgcf213fd">
+<div id="outline-container-org20618a8" class="outline-3">
+<h3 id="org20618a8">embarking</h3>
+<div class="outline-text-3" id="text-org20618a8">
 <p>
-Through <a href="https://github.com/oantolin/embark">embark</a> the reach and hence of completions if further amplified.
+Through <a href="https://github.com/oantolin/embark">embark</a> the power of completions is further amplified.
 For instance, I can complete git branches via <code>git checkout</code> completions.
-Embark gives me general actions for completion candidates, so I
-can for instance choose to insert the candidate into the buffer.
-Of course there is nothing special about git completions, they are
-provided via <code>bash-completion</code>.
 </p>
 
 
-<div id="org2052bdf" class="figure">
-<p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/bb-task-demo.gif?raw=true" alt="bb-task-demo.gif?raw=true" />
+<div id="org6db1045" class="figure">
+<p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/embarking-git-branches.gif?raw=true" alt="embarking-git-branches.gif?raw=true" />
 </p>
-<p><span class="figure-number">Figure 2: </span>Abusing <code>read-shell-command</code> to dispatch with <code>embark</code> on git checkout completions. Invoking <code>embark-insert</code> as an example.</p>
-</div>
+<p><span class="figure-number">Figure 4: </span>Abusing <code>read-shell-command</code> to dispatch with <code>embark</code> on git checkout completions. Invoking <code>embark-insert</code> as an example.</p>
 </div>
 </div>
 </div>
 
-
-
-
-
-<div id="outline-container-orgdb61c98" class="outline-2">
-<h2 id="orgdb61c98">story</h2>
-<div class="outline-text-2" id="text-orgdb61c98">
+<div id="outline-container-org2d1b671" class="outline-3">
+<h3 id="org2d1b671">pass</h3>
+<div class="outline-text-3" id="text-org2d1b671">
 <p>
-once upon a time
+Another example. I used to use <a href="https://github.com/emacs-helm/helm-pass/blob/master/helm-pass.el">helm-pass</a> for <code>pass</code>.
+Guess what, <code>pass</code> has great shell completions.
+I get a free interface to <code>pass</code> just with <code>async-shell-command</code>.
 </p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-org2e58b3c" class="outline-2">
+<h2 id="org2e58b3c">Particulars</h2>
+<div class="outline-text-2" id="text-org2e58b3c">
+</div>
+<div id="outline-container-org699b8f2" class="outline-3">
+<h3 id="org699b8f2">shell-file-name</h3>
+<div class="outline-text-3" id="text-org699b8f2">
 <p>
-there was a tribe of elves living in a city on a big tree in a magic forest.
-They crafted all kinds of beautiful spells, some of them woven into
-the fabric of the big forest itself.
+It matters.
+For instance, if you use "/bin/bash" and you set up your path in a <code>zshrc</code> that might be a pitfall.
+Another thing that happened to me was that <a href="https://www.funtoo.org/Funtoo:Keychain">keychain</a> was prompting for my ssh password inside the <code>bash-completion</code> process, making it hang.
 </p>
-
-<p>
-They could make magc machienes on other trees in the fores burst
-into life or freeze forever.
-</p>
-
-<p>
-Whenever they crafted a spell, they wrote it down in magic books, that
-happened to be the magic system of the forest
-</p>
-
-
-<p>
-instructions where converted into the
-</p>
-
-<p>
-when you built a spell that reached into another part of the forest,
-</p>
-
-<p>
-you crafted a beautiful book that told a story about that part of the forest.
-About how to reach that place of magic, and about the animals that lived there.
-</p>
-
-<p>
-The language was so beautiful and easy to use that the elves did not
-notice
-</p>
-
-<p>
-One day a crafty hacker
-</p>
-
-<p>
-magic mirror of ice
-it has become a sport to ride on the ice
-such was the magic of the mirror that you could make spells inside the castle
-just crazing on the ice. And this was blazingly fast.
-</p>
-
-<p>
-The book of the mirror then, was a sort of book of books that allowed
-the casting of spells without the need for more books.
-</p>
-
-<p>
-Among the high scholars of the elves
-</p>
-
-<p>
-there emerged a growing consensus that the writing of more and more books
-</p>
-
-<p>
-that there must be some escence
-that is captured by an even cleverer book.
-</p>
-
-<p>
-The queen decreed that whomever finds a clever book of books
-wins a price and the highest honors.
-</p>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-09-22 Thu 12:32</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.0.50 (<a href="https://orgmode.org">Org</a> mode 9.5.4)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.1 (<a href="https://orgmode.org">Org</a> mode 9.5.2)</p>
 </div>
 </body>
 </html>
