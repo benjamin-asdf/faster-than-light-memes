@@ -6,7 +6,7 @@
  :tasks {:init
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
          setup-once
-         {:requires [babashka.fs :as fs]
+         {:requires ([babashka.fs :as fs])
           :task (when-not (fs/exists? "gh-pages") (shell "git" "worktree" "add" "gh-pages"))}
          build (shell "emacs" "-Q" "--script" "build-site.el" )
          serve-local
