@@ -10,30 +10,39 @@
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
 <body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
 <div id="content" class="content">
 <h1 class="title">anonymous-commands-in-emacs</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga0ac0a6">Introduction</a>
+<li><a href="#org552a889">Introduction</a>
 <ul>
-<li><a href="#orgb9951cf">add-hook</a></li>
+<li><a href="#org58a8594">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#org29ae624">Solution</a>
+<li><a href="#org41bafcd">Solution</a>
 <ul>
-<li><a href="#orge441f2c">defun</a></li>
+<li><a href="#org02e55ee">defun</a></li>
 </ul>
 </li>
-<li><a href="#org5bd7194">Result</a></li>
+<li><a href="#orga2764c1">Result</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga0ac0a6" class="outline-2">
-<h2 id="orga0ac0a6">Introduction</h2>
-<div class="outline-text-2" id="text-orga0ac0a6">
+<div id="outline-container-org552a889" class="outline-2">
+<h2 id="org552a889">Introduction</h2>
+<div class="outline-text-2" id="text-org552a889">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -51,7 +60,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org301e592">
+<pre class="example" id="orgafd4ccb">
 Key             Binding
 f		[closure]
 </pre>
@@ -61,9 +70,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-orgb9951cf" class="outline-3">
-<h3 id="orgb9951cf">add-hook</h3>
-<div class="outline-text-3" id="text-orgb9951cf">
+<div id="outline-container-org58a8594" class="outline-3">
+<h3 id="org58a8594">add-hook</h3>
+<div class="outline-text-3" id="text-org58a8594">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -86,9 +95,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-org29ae624" class="outline-2">
-<h2 id="org29ae624">Solution</h2>
-<div class="outline-text-2" id="text-org29ae624">
+<div id="outline-container-org41bafcd" class="outline-2">
+<h2 id="org41bafcd">Solution</h2>
+<div class="outline-text-2" id="text-org41bafcd">
 <p>
 Alias your function:
 </p>
@@ -103,7 +112,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="org3ffdf07">
+<pre class="example" id="org001e836">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -115,9 +124,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-orge441f2c" class="outline-3">
-<h3 id="orge441f2c">defun</h3>
-<div class="outline-text-3" id="text-orge441f2c">
+<div id="outline-container-org02e55ee" class="outline-3">
+<h3 id="org02e55ee">defun</h3>
+<div class="outline-text-3" id="text-org02e55ee">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -133,9 +142,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-org5bd7194" class="outline-2">
-<h2 id="org5bd7194">Result</h2>
-<div class="outline-text-2" id="text-org5bd7194">
+<div id="outline-container-orga2764c1" class="outline-2">
+<h2 id="orga2764c1">Result</h2>
+<div class="outline-text-2" id="text-orga2764c1">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:
@@ -163,7 +172,7 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-09-23 Fri 18:59</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.1 (<a href="https://orgmode.org">Org</a> mode 9.5.2)</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
 </html>
