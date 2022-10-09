@@ -39,21 +39,24 @@
 	       (match-string 2))
 	 res))
       res)))
+
 (defun dw/strip-file-name-metadata (file-name)
   (replace-regexp-in-string "^.*--\\(.*?\\)__.*$" "\\1" file-name))
 
-(declare
- (ftlm/denote-file-data
-  "/home/benj/notes/20220919T110439--binaural-beats-using-scittle__clojure.org"))
+;; (declare
+;;  (ftlm/denote-file-data
+;;   "/home/benj/notes/20220919T110439--binaural-beats-using-scittle__clojure.org"))
 
 (defun ftlm/post-data (file)
   (cons (cons :path file) (ftlm/denote-file-data file)))
 
 (defun ftlm/post-files ()
-  (cl-remove-if
-   (lambda (s)
-     (string-match-p "org_archive$" s))
-   (ftlm/file->denote-links ftlm/index-file)))
+  (mapcar
+   (lambda (p) (expand-file-name p denote-directory))
+   (cl-remove-if
+    (lambda (s)
+      (string-match-p "org_archive$" s))
+    (ftlm/file->denote-links ftlm/index-file))))
 
 (defun ftlm/posts+index-files ()
   (cons ftlm/index-file (ftlm/post-files)))
@@ -76,6 +79,13 @@
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
+	     :org-html-preamble t
+	     :html-preamble-format
+	     `(("en"
+		,(with-current-buffer
+		     (find-file-noselect
+		      "preamble.html")
+		   (buffer-string))))
              :recursive t
 	     :exclude ".*"
 	     :include (ftlm/posts+index-files)
@@ -88,9 +98,6 @@
              :with-toc t
              :section-numbers nil
              :time-stamp-file nil)))
-
-;; Customize the HTML output
-(setq org-html-validation-link t)
 
 (setq org-html-validation-link nil            ;; Don't show validation link
       org-html-head-include-scripts nil       ;; Use our own scripts
