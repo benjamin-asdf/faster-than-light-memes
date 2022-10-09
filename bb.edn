@@ -29,7 +29,7 @@
                         "push"
                         "--force"
                         "git@github.com:benjamin-asdf/faster-than-light-memes.git"
-                        "master:gh-pages")}
+                        "gh-pages:gh-pages")}
          build-deploy {:depends [build deploy]}
          browse-qr-code (shell
                          "xdg-open"
