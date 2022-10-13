@@ -12,7 +12,7 @@
 <body>
 <div id="preamble" class="status">
   <h4>
-    <a href="/"
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
@@ -25,15 +25,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4a0cfbb">Introduction</a></li>
-<li><a href="#org579e649">Problem statement</a></li>
-<li><a href="#org1e6e61e">Some reagent code</a></li>
-<li><a href="#orgf13f799">Fetch</a></li>
-<li><a href="#orged8fcd7">Pretty print the code..?</a></li>
-<li><a href="#org4a1f5ce">Eval string</a></li>
-<li><a href="#org2cda059">Only fetch once</a></li>
-<li><a href="#org22ca385">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org1baf0b7">Codepen</a></li>
+<li><a href="#orga2844ef">Introduction</a></li>
+<li><a href="#org4980d3f">Problem statement</a></li>
+<li><a href="#orgcf28bff">Some reagent code</a></li>
+<li><a href="#org0b5e424">Fetch</a></li>
+<li><a href="#org498953e">Pretty print the code..?</a></li>
+<li><a href="#orgcd8768f">Eval string</a></li>
+<li><a href="#org148544c">Only fetch once</a></li>
+<li><a href="#orge6db493">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#orgf5054e5">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -42,9 +42,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-org4a0cfbb" class="outline-2">
-<h2 id="org4a0cfbb">Introduction</h2>
-<div class="outline-text-2" id="text-org4a0cfbb">
+<div id="outline-container-orga2844ef" class="outline-2">
+<h2 id="orga2844ef">Introduction</h2>
+<div class="outline-text-2" id="text-orga2844ef">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -65,9 +65,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-org579e649" class="outline-2">
-<h2 id="org579e649">Problem statement</h2>
-<div class="outline-text-2" id="text-org579e649">
+<div id="outline-container-org4980d3f" class="outline-2">
+<h2 id="org4980d3f">Problem statement</h2>
+<div class="outline-text-2" id="text-org4980d3f">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -81,9 +81,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org1e6e61e" class="outline-2">
-<h2 id="org1e6e61e">Some reagent code</h2>
-<div class="outline-text-2" id="text-org1e6e61e">
+<div id="outline-container-orgcf28bff" class="outline-2">
+<h2 id="orgcf28bff">Some reagent code</h2>
+<div class="outline-text-2" id="text-orgcf28bff">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -171,9 +171,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-orgf13f799" class="outline-2">
-<h2 id="orgf13f799">Fetch</h2>
-<div class="outline-text-2" id="text-orgf13f799">
+<div id="outline-container-org0b5e424" class="outline-2">
+<h2 id="org0b5e424">Fetch</h2>
+<div class="outline-text-2" id="text-org0b5e424">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -189,15 +189,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-orged8fcd7" class="outline-2">
-<h2 id="orged8fcd7">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-orged8fcd7">
+<div id="outline-container-org498953e" class="outline-2">
+<h2 id="org498953e">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-org498953e">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="orgb2bf191" class="figure">
+<div id="org80dac9b" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -234,9 +234,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org4a1f5ce" class="outline-2">
-<h2 id="org4a1f5ce">Eval string</h2>
-<div class="outline-text-2" id="text-org4a1f5ce">
+<div id="outline-container-orgcd8768f" class="outline-2">
+<h2 id="orgcd8768f">Eval string</h2>
+<div class="outline-text-2" id="text-orgcd8768f">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -327,9 +327,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-org2cda059" class="outline-2">
-<h2 id="org2cda059">Only fetch once</h2>
-<div class="outline-text-2" id="text-org2cda059">
+<div id="outline-container-org148544c" class="outline-2">
+<h2 id="org148544c">Only fetch once</h2>
+<div class="outline-text-2" id="text-org148544c">
 <p>
 I update the fetch code like so:
 </p>
@@ -351,9 +351,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-org22ca385" class="outline-2">
-<h2 id="org22ca385">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-org22ca385">
+<div id="outline-container-orge6db493" class="outline-2">
+<h2 id="orge6db493">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orge6db493">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -372,7 +372,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="org3a0eec3" class="figure">
+<div id="org0a4c5d9" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -397,9 +397,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org1baf0b7" class="outline-2">
-<h2 id="org1baf0b7">Codepen</h2>
-<div class="outline-text-2" id="text-org1baf0b7">
+<div id="outline-container-orgf5054e5" class="outline-2">
+<h2 id="orgf5054e5">Codepen</h2>
+<div class="outline-text-2" id="text-orgf5054e5">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
