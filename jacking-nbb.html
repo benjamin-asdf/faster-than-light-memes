@@ -25,24 +25,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19cb425">Introduction</a></li>
-<li><a href="#orgb1ac572">Jack-in command</a>
+<li><a href="#orgd1ea4fb">Introduction</a></li>
+<li><a href="#org1085298">Jack-in command</a>
 <ul>
-<li><a href="#org699eb51">cider repl workaround</a></li>
-<li><a href="#org142ca22">the command</a></li>
-<li><a href="#orge7175d7">hack for the remaining issue</a></li>
+<li><a href="#orgfa2eac2">cider repl workaround</a></li>
+<li><a href="#orge5c27cc">the command</a></li>
+<li><a href="#orgab5c1cf">hack for the remaining issue</a></li>
 </ul>
 </li>
+<li><a href="#org52d5242">Results</a></li>
 </ul>
 </div>
 </div>
 <p>
 A cider jack in command for nbb.
 </p>
-
-<div id="outline-container-org19cb425" class="outline-2">
-<h2 id="org19cb425">Introduction</h2>
-<div class="outline-text-2" id="text-org19cb425">
+<div id="outline-container-orgd1ea4fb" class="outline-2">
+<h2 id="orgd1ea4fb">Introduction</h2>
+<div class="outline-text-2" id="text-orgd1ea4fb">
 <p>
 <a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
 A node script that is an interpreter for Clojurescript.
@@ -70,13 +70,13 @@ Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and
 </div>
 </div>
 
-<div id="outline-container-orgb1ac572" class="outline-2">
-<h2 id="orgb1ac572">Jack-in command</h2>
-<div class="outline-text-2" id="text-orgb1ac572">
+<div id="outline-container-org1085298" class="outline-2">
+<h2 id="org1085298">Jack-in command</h2>
+<div class="outline-text-2" id="text-org1085298">
 </div>
-<div id="outline-container-org699eb51" class="outline-3">
-<h3 id="org699eb51">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org699eb51">
+<div id="outline-container-orgfa2eac2" class="outline-3">
+<h3 id="orgfa2eac2">cider repl workaround</h3>
+<div class="outline-text-3" id="text-orgfa2eac2">
 <p>
 We currently need this workaround for sci-based cljs repls for cider:
 </p>
@@ -95,9 +95,9 @@ We currently need this workaround for sci-based cljs repls for cider:
 </div>
 </div>
 
-<div id="outline-container-org142ca22" class="outline-3">
-<h3 id="org142ca22">the command</h3>
-<div class="outline-text-3" id="text-org142ca22">
+<div id="outline-container-orge5c27cc" class="outline-3">
+<h3 id="orge5c27cc">the command</h3>
+<div class="outline-text-3" id="text-orge5c27cc">
 <p>
 Unfortunately, cider does not have the concept of a nbb repl currently.
 I think <code>cider-jack-in-resolve-command</code> and similar functions could be
@@ -147,9 +147,9 @@ This is what I wanted to say:
 </div>
 </div>
 
-<div id="outline-container-orge7175d7" class="outline-3">
-<h3 id="orge7175d7">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-orge7175d7">
+<div id="outline-container-orgab5c1cf" class="outline-3">
+<h3 id="orgab5c1cf">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-orgab5c1cf">
 <p>
 With this, you should get an error "ClojureScript is not available&#x2026;".
 <a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
@@ -159,13 +159,20 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 <pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
   <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
-  (<span style="font-weight: bold;">unless</span>
-      (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
-    (cider-library-present-p <span style="font-style: italic;">"cljs.core"</span>)
+  (<span style="font-weight: bold;">unless</span> (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
     (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
 </pre>
 </div>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org52d5242" class="outline-2">
+<h2 id="org52d5242">Results</h2>
+<div class="outline-text-2" id="text-org52d5242">
+<p>
+Hehe, insta nbb repl. Works good.
+</p>
 </div>
 </div>
 </div>
