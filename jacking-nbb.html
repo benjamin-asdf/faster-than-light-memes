@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jacking-nbb</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">jacking-nbb</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org19cb425">Introduction</a></li>
+<li><a href="#orgb1ac572">Jack-in command</a>
+<ul>
+<li><a href="#org699eb51">cider repl workaround</a></li>
+<li><a href="#org142ca22">the command</a></li>
+<li><a href="#orge7175d7">hack for the remaining issue</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+A cider jack in command for nbb.
+</p>
+
+<div id="outline-container-org19cb425" class="outline-2">
+<h2 id="org19cb425">Introduction</h2>
+<div class="outline-text-2" id="text-org19cb425">
+<p>
+<a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
+A node script that is an interpreter for Clojurescript.
+You get the upsides of Node.js + it is Clojure.
+</p>
+
+<p>
+Want to try out some npm packages?
+Sure, just make a <code>package.json</code>, works instant, is part of the design
+principles of nbb.
+</p>
+
+<p>
+You get Clojures immutable data structures, polymorphism constructs, a
+repl, etc.
+</p>
+
+<p>
+On the tooling side, you might be surprised how far nbb gets with very little.
+</p>
+
+<p>
+Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and nbb is a natural fit for a quick cljs repl.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb1ac572" class="outline-2">
+<h2 id="orgb1ac572">Jack-in command</h2>
+<div class="outline-text-2" id="text-orgb1ac572">
+</div>
+<div id="outline-container-org699eb51" class="outline-3">
+<h3 id="org699eb51">cider repl workaround</h3>
+<div class="outline-text-3" id="text-org699eb51">
+<p>
+We currently need this workaround for sci-based cljs repls for cider:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride <span style="font-style: italic;">"(+ 1 2 3)"</span>)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-connected-hook</span> ()
+  (<span style="font-weight: bold;">when</span> (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
+    (<span style="font-weight: bold;">setq-local</span> cider-show-error-buffer nil)
+    (cider-set-repl-type 'cljs)))
+
+(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org142ca22" class="outline-3">
+<h3 id="org142ca22">the command</h3>
+<div class="outline-text-3" id="text-org142ca22">
+<p>
+Unfortunately, cider does not have the concept of a nbb repl currently.
+I think <code>cider-jack-in-resolve-command</code> and similar functions could be
+thrown out and replaced with data.
+</p>
+
+<p>
+So I went 1 level deeper to bypass ciders auto-detection of
+project type (+ jack in cmd):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start a nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (<span style="font-weight: bold;">let*</span> ((cider-allow-jack-in-without-project t)
+         (orig-buffer (current-buffer))
+         (params '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+                   <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride))
+         (params (cider--update-project-dir
+                  params)))
+    (nrepl-start-server-process
+     (plist-get params <span style="font-weight: bold;">:project-dir</span>)
+     (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>)
+     (<span style="font-weight: bold;">lambda</span> (server-buffer)
+       (<span style="font-weight: bold;">with-current-buffer</span>
+           orig-buffer
+         (cider-connect-sibling-cljs
+          params
+          server-buffer))))))
+</pre>
+</div>
+
+<p>
+This is what I wanted to say:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start an nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (cider-jack-in-cljs
+   '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+     <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge7175d7" class="outline-3">
+<h3 id="orge7175d7">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-orge7175d7">
+<p>
+With this, you should get an error "ClojureScript is not available&#x2026;".
+<a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
+  <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
+  (<span style="font-weight: bold;">unless</span>
+      (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
+    (cider-library-present-p <span style="font-style: italic;">"cljs.core"</span>)
+    (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-14 Fri 10:22</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
