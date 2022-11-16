@@ -3,197 +3,11 @@
   <title>Faster-than-Light memes</title>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/atom.xml" rel="self"/>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/"/>
-  <updated>2022-10-14T12:27:22+00:00</updated>
+  <updated>2022-11-16T12:09:26+00:00</updated>
   <id>https://benjamin-asdf.github.io/faster-than-light-memes/</id>
   <author>
     <name>Benjamin Schwerdtner</name>
   </author>
-  <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html"/>
-    <title>jacking-nbb</title>
-    <updated>2022-10-14T23:59:59+00:00</updated>
-    <content type="html">
-      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jacking-nbb</title>
-<meta name="generator" content="Org Mode" />
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-</head>
-<body>
-<div id="preamble" class="status">
-  <h4>
-    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
-       style="background-color:black;;text-decoration:none;padding:0.3rem">
-      <span style="color:#feb48f">:faster-than-light</span>
-      <span style="color:#F689FF">/memes</span>
-    </a>
-  </h4>
-</div>
-<div id="content" class="content">
-<h1 class="title">jacking-nbb</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org19cb425">Introduction</a></li>
-<li><a href="#orgb1ac572">Jack-in command</a>
-<ul>
-<li><a href="#org699eb51">cider repl workaround</a></li>
-<li><a href="#org142ca22">the command</a></li>
-<li><a href="#orge7175d7">hack for the remaining issue</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<p>
-A cider jack in command for nbb.
-</p>
-
-<div id="outline-container-org19cb425" class="outline-2">
-<h2 id="org19cb425">Introduction</h2>
-<div class="outline-text-2" id="text-org19cb425">
-<p>
-<a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
-A node script that is an interpreter for Clojurescript.
-You get the upsides of Node.js + it is Clojure.
-</p>
-
-<p>
-Want to try out some npm packages?
-Sure, just make a <code>package.json</code>, works instant, is part of the design
-principles of nbb.
-</p>
-
-<p>
-You get Clojures immutable data structures, polymorphism constructs, a
-repl, etc.
-</p>
-
-<p>
-On the tooling side, you might be surprised how far nbb gets with very little.
-</p>
-
-<p>
-Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and nbb is a natural fit for a quick cljs repl.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgb1ac572" class="outline-2">
-<h2 id="orgb1ac572">Jack-in command</h2>
-<div class="outline-text-2" id="text-orgb1ac572">
-</div>
-<div id="outline-container-org699eb51" class="outline-3">
-<h3 id="org699eb51">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org699eb51">
-<p>
-We currently need this workaround for sci-based cljs repls for cider:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride <span style="font-style: italic;">"(+ 1 2 3)"</span>)
-
-(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-connected-hook</span> ()
-  (<span style="font-weight: bold;">when</span> (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
-    (<span style="font-weight: bold;">setq-local</span> cider-show-error-buffer nil)
-    (cider-set-repl-type 'cljs)))
-
-(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org142ca22" class="outline-3">
-<h3 id="org142ca22">the command</h3>
-<div class="outline-text-3" id="text-org142ca22">
-<p>
-Unfortunately, cider does not have the concept of a nbb repl currently.
-I think <code>cider-jack-in-resolve-command</code> and similar functions could be
-thrown out and replaced with data.
-</p>
-
-<p>
-So I went 1 level deeper to bypass ciders auto-detection of
-project type (+ jack in cmd):
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
-  <span style="font-style: italic;">"Start a nbb nrepl process and connect."</span>
-  (<span style="font-weight: bold;">interactive</span>)
-  (<span style="font-weight: bold;">let*</span> ((cider-allow-jack-in-without-project t)
-         (orig-buffer (current-buffer))
-         (params '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
-                   <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride))
-         (params (cider--update-project-dir
-                  params)))
-    (nrepl-start-server-process
-     (plist-get params <span style="font-weight: bold;">:project-dir</span>)
-     (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>)
-     (<span style="font-weight: bold;">lambda</span> (server-buffer)
-       (<span style="font-weight: bold;">with-current-buffer</span>
-           orig-buffer
-         (cider-connect-sibling-cljs
-          params
-          server-buffer))))))
-</pre>
-</div>
-
-<p>
-This is what I wanted to say:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
-  <span style="font-style: italic;">"Start an nbb nrepl process and connect."</span>
-  (<span style="font-weight: bold;">interactive</span>)
-  (cider-jack-in-cljs
-   '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
-     <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride)))
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orge7175d7" class="outline-3">
-<h3 id="orge7175d7">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-orge7175d7">
-<p>
-With this, you should get an error "ClojureScript is not available&#x2026;".
-<a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
-(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
-  <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
-  (<span style="font-weight: bold;">unless</span>
-      (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
-    (cider-library-present-p <span style="font-style: italic;">"cljs.core"</span>)
-    (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="date">Date: 2022-10-14 Fri 10:22</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
-</div>
-</body>
-</html>
-]]>
-    </content>
-  </entry>
   <entry>
     <id>https://benjamin-asdf.github.io/faster-than-light-memes/scittle-prints-itself.html</id>
     <link href="https://benjamin-asdf.github.io/faster-than-light-memes/scittle-prints-itself.html"/>
@@ -227,15 +41,15 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge536e6b">Introduction</a></li>
-<li><a href="#orga68e57a">Problem statement</a></li>
-<li><a href="#org341f5ee">Some reagent code</a></li>
-<li><a href="#org2af3cda">Fetch</a></li>
-<li><a href="#org990e0d1">Pretty print the code..?</a></li>
-<li><a href="#org802af19">Eval string</a></li>
-<li><a href="#orgcd9105a">Only fetch once</a></li>
-<li><a href="#orgd7d9f6b">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org90ed1bf">Codepen</a></li>
+<li><a href="#orgdefba97">Introduction</a></li>
+<li><a href="#org7e27540">Problem statement</a></li>
+<li><a href="#org44d6e02">Some reagent code</a></li>
+<li><a href="#orgcd2b992">Fetch</a></li>
+<li><a href="#orge52ea5f">Pretty print the code..?</a></li>
+<li><a href="#orge35bfab">Eval string</a></li>
+<li><a href="#org2337752">Only fetch once</a></li>
+<li><a href="#org1f0b407">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org8b44f9d">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -244,9 +58,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-orge536e6b" class="outline-2">
-<h2 id="orge536e6b">Introduction</h2>
-<div class="outline-text-2" id="text-orge536e6b">
+<div id="outline-container-orgdefba97" class="outline-2">
+<h2 id="orgdefba97">Introduction</h2>
+<div class="outline-text-2" id="text-orgdefba97">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -267,9 +81,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-orga68e57a" class="outline-2">
-<h2 id="orga68e57a">Problem statement</h2>
-<div class="outline-text-2" id="text-orga68e57a">
+<div id="outline-container-org7e27540" class="outline-2">
+<h2 id="org7e27540">Problem statement</h2>
+<div class="outline-text-2" id="text-org7e27540">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -283,9 +97,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org341f5ee" class="outline-2">
-<h2 id="org341f5ee">Some reagent code</h2>
-<div class="outline-text-2" id="text-org341f5ee">
+<div id="outline-container-org44d6e02" class="outline-2">
+<h2 id="org44d6e02">Some reagent code</h2>
+<div class="outline-text-2" id="text-org44d6e02">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -373,9 +187,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-org2af3cda" class="outline-2">
-<h2 id="org2af3cda">Fetch</h2>
-<div class="outline-text-2" id="text-org2af3cda">
+<div id="outline-container-orgcd2b992" class="outline-2">
+<h2 id="orgcd2b992">Fetch</h2>
+<div class="outline-text-2" id="text-orgcd2b992">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -391,15 +205,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-org990e0d1" class="outline-2">
-<h2 id="org990e0d1">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-org990e0d1">
+<div id="outline-container-orge52ea5f" class="outline-2">
+<h2 id="orge52ea5f">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-orge52ea5f">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="orga951d40" class="figure">
+<div id="org5fc5339" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -436,9 +250,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org802af19" class="outline-2">
-<h2 id="org802af19">Eval string</h2>
-<div class="outline-text-2" id="text-org802af19">
+<div id="outline-container-orge35bfab" class="outline-2">
+<h2 id="orge35bfab">Eval string</h2>
+<div class="outline-text-2" id="text-orge35bfab">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -529,9 +343,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-orgcd9105a" class="outline-2">
-<h2 id="orgcd9105a">Only fetch once</h2>
-<div class="outline-text-2" id="text-orgcd9105a">
+<div id="outline-container-org2337752" class="outline-2">
+<h2 id="org2337752">Only fetch once</h2>
+<div class="outline-text-2" id="text-org2337752">
 <p>
 I update the fetch code like so:
 </p>
@@ -553,9 +367,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-orgd7d9f6b" class="outline-2">
-<h2 id="orgd7d9f6b">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-orgd7d9f6b">
+<div id="outline-container-org1f0b407" class="outline-2">
+<h2 id="org1f0b407">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-org1f0b407">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -574,7 +388,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="org2b8792e" class="figure">
+<div id="org5a9a2b1" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -599,9 +413,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org90ed1bf" class="outline-2">
-<h2 id="org90ed1bf">Codepen</h2>
-<div class="outline-text-2" id="text-org90ed1bf">
+<div id="outline-container-org8b44f9d" class="outline-2">
+<h2 id="org8b44f9d">Codepen</h2>
+<div class="outline-text-2" id="text-org8b44f9d">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
@@ -619,6 +433,651 @@ If I may say so I think this is cute.
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-09-26 Mon 13:21</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html"/>
+    <title>intro-to-clojure</title>
+    <updated>2022-09-12T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>intro-to-clojure</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">intro-to-clojure</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgcc0aa46">Introduction</a></li>
+<li><a href="#orgd256311">Start</a></li>
+<li><a href="#org8afa32a">A dev environment</a>
+<ul>
+<li><a href="#org0d1df47">Vs Code</a></li>
+<li><a href="#org80eab84">Emacs</a></li>
+</ul>
+</li>
+<li><a href="#orgbcdbab6">Nr 1 book for beginners</a></li>
+<li><a href="#orge855144">Slack</a></li>
+<li><a href="#orgf4ce986">Other such lists</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcc0aa46" class="outline-2">
+<h2 id="orgcc0aa46">Introduction</h2>
+<div class="outline-text-2" id="text-orgcc0aa46">
+<p>
+Clojure is a modern, functional lisp with a fiercely convinced community and
+production orientation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd256311" class="outline-2">
+<h2 id="orgd256311">Start</h2>
+<div class="outline-text-2" id="text-orgd256311">
+<p>
+I highly recommend <a href="https://www.maria.cloud/intro">Maria.Cloud</a>, you can just go there and start coding.
+This is great for anybody that does not know yet x
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8afa32a" class="outline-2">
+<h2 id="org8afa32a">A dev environment</h2>
+<div class="outline-text-2" id="text-org8afa32a">
+<p>
+Get prepared for your journey as a pilot of an alien spaceship.
+As a beginner I suggest either
+</p>
+</div>
+
+<div id="outline-container-org0d1df47" class="outline-3">
+<h3 id="org0d1df47">Vs Code</h3>
+<div class="outline-text-3" id="text-org0d1df47">
+<p>
+Easy to make work. A great editor. You will not need to be ashamed of
+your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80eab84" class="outline-3">
+<h3 id="org80eab84">Emacs</h3>
+<div class="outline-text-3" id="text-org80eab84">
+<p>
+Strong affinity to hacker culture and a program that is more than a
+tool, but eventually an extension to your hands, heart, and mind.
+</p>
+
+<p>
+Here is a config file I tried to make for beginners:
+<a href="https://github.com/benjamin-asdf/simple-easy-emacs">https://github.com/benjamin-asdf/simple-easy-emacs</a>
+</p>
+
+<p>
+A framework by clojurians that might be just right for you:
+<a href="https://github.com/corgi-emacs/corgi">https://github.com/corgi-emacs/corgi</a>
+</p>
+
+<p>
+There is also doom and spacemacs that enjoy wide appraisal for their
+"out of the box" experience.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbcdbab6" class="outline-2">
+<h2 id="orgbcdbab6">Nr 1 book for beginners</h2>
+<div class="outline-text-2" id="text-orgbcdbab6">
+<p>
+<a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge855144" class="outline-2">
+<h2 id="orge855144">Slack</h2>
+<div class="outline-text-2" id="text-orge855144">
+<p>
+Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
+Seriously a lot of people hang there and answer beginner questions,
+everybody is welcome.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4ce986" class="outline-2">
+<h2 id="orgf4ce986">Other such lists</h2>
+<div class="outline-text-2" id="text-orgf4ce986">
+<p>
+Carin is cool and has a funny picture of the emacs learning curve here:
+<a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
+</p>
+
+<p>
+I like that they have a philosophy section mentioning Rich Hickey's talks
+this matters a lot to clojurians.
+</p>
+
+<p>
+<a href="https://thoughtbot.com/blog/tips-for-clojure-beginners">https://thoughtbot.com/blog/tips-for-clojure-beginners</a>
+<a href="https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f">https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f</a>
+<a href="https://www.clojurenewbieguide.com/">https://www.clojurenewbieguide.com/</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-09-12 Mon 20:23</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/dir-env-process-environment.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/dir-env-process-environment.html"/>
+    <title>dir-env-process-environment</title>
+    <updated>2022-10-17T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>dir-env-process-environment</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">dir-env-process-environment</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org66f9ce3">Introduction</a></li>
+<li><a href="#orgc3f0bf2">The setup</a>
+<ul>
+<li><a href="#org0288dce">From the project I currently work on:</a></li>
+</ul>
+</li>
+<li><a href="#org5e5a719">Non-file-buffer</a></li>
+<li><a href="#org78fae75">revert with grace</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66f9ce3" class="outline-2">
+<h2 id="org66f9ce3">Introduction</h2>
+<div class="outline-text-2" id="text-org66f9ce3">
+<p>
+Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
+</p>
+
+<p>
+An advanced use case is that you want to set up a process environment for
+everything you do inside some project.
+</p>
+
+<p>
+What I show here works for <code>compile</code>, <code>shell-command</code>, and even cider connections.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3f0bf2" class="outline-2">
+<h2 id="orgc3f0bf2">The setup</h2>
+<div class="outline-text-2" id="text-orgc3f0bf2">
+<p>
+<code>.dir-locals.el</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"FOO"</span> <span style="font-style: italic;">"hurr"</span>)))))
+</pre>
+</div>
+
+<p>
+Yes, it is a bit convoluted but for a <a href="https://emacs.stackexchange.com/questions/35964/how-can-i-get-buffer-local-environment-variables-via-dir-locals">reason.</a>
+We need to copy the list, else if somebody modifies the cdr locally,
+that would modify the global value.
+(In the case that <code>FOO</code> is an element in the list somewhere already).
+</p>
+
+<p>
+The answer mentions <code>setq-local</code>. I tried that without success.
+</p>
+
+<p>
+<code>Shell-command</code> and friends will inherit the process environmen. It pretty much just works.
+</p>
+</div>
+
+<div id="outline-container-org0288dce" class="outline-3">
+<h3 id="org0288dce">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-org0288dce">
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"AWS_PROFILE"</span> <span style="font-style: italic;">"datalake-deployer"</span>)
+         (<span style="font-weight: bold;">setq-local</span> cider-clojure-cli-aliases (concat cider-clojure-cli-aliases <span style="font-style: italic;">":dev"</span>))))))
+</pre>
+</div>
+
+<p>
+Now I start cider connections with <code>AWS_PROFILE</code> set correctly.
+Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task for deploying that needs this env and it all just works.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e5a719" class="outline-2">
+<h2 id="org5e5a719">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-org5e5a719">
+<p>
+By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
+(When the local variable <code>buffer-file-name</code> is not set).
+</p>
+
+<p>
+There is a function <code>hack-dir-local-variables-non-file-buffer</code> for this purpose.
+This is called by <code>dired</code>, also <code>magit</code>.
+</p>
+
+<p>
+I usually start processes from either a (source) file buffer or dired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78fae75" class="outline-2">
+<h2 id="org78fae75">revert with grace</h2>
+<div class="outline-text-2" id="text-org78fae75">
+<p>
+When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
+whatever buffer you want to have the effect.
+It hacks the local variables again for the buffer.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-17 Mon 09:56</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/pearls-of-introspection.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/pearls-of-introspection.html"/>
+    <title>pearls-of-introspection</title>
+    <updated>2022-11-12T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>pearls-of-introspection</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">pearls-of-introspection</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6cf9634">The describes</a>
+<ul>
+<li><a href="#orgec1b088">describe-mode</a></li>
+<li><a href="#org0abb405">describe-char</a></li>
+<li><a href="#org1d437da">describe-key</a></li>
+<li><a href="#orge1ed691">describe-function</a></li>
+<li><a href="#org3c75028">describe-keymap</a></li>
+<li><a href="#orgca4aa11">prefix-help-command</a>
+<ul>
+<li><a href="#org947c974">embark-bindings</a></li>
+</ul>
+</li>
+<li><a href="#org24a4bb0">M-x <code>describe-</code></a></li>
+</ul>
+</li>
+<li><a href="#org781b5fa">view-lossage</a></li>
+<li><a href="#orgbbc9b89">apropos-value</a></li>
+<li><a href="#orgbcbab5b">find-library</a></li>
+<li><a href="#org795807a">where-is</a></li>
+</ul>
+</div>
+</div>
+<p>
+Recently, I watched <a href="https://www.youtube.com/watch?v=6M1JesjbtDM">BugsWriter falling in love with elisp</a> <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> - he said
+about <code>describe-mode</code>
+</p>
+
+<blockquote>
+<p>
+Why did nobody ever tell me about this?
+</p>
+</blockquote>
+
+<p>
+This post is called Pearls of introspection.
+</p>
+
+<blockquote>
+<p>
+All of Emacs is one bright pearl.
+</p>
+</blockquote>
+
+<div id="outline-container-org6cf9634" class="outline-2">
+<h2 id="org6cf9634">The describes</h2>
+<div class="outline-text-2" id="text-org6cf9634">
+</div>
+<div id="outline-container-orgec1b088" class="outline-3">
+<h3 id="orgec1b088">describe-mode</h3>
+<div class="outline-text-3" id="text-orgec1b088">
+<p>
+Lists all current keybinds in a buffer. Huge output, sometimes what
+you want.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0abb405" class="outline-3">
+<h3 id="org0abb405">describe-char</h3>
+<div class="outline-text-3" id="text-org0abb405">
+<p>
+Emacs is a text editor, text is made up of chars.
+<code>describe-char</code>  is useful if you want to know what face is rendering.
+It goes beyond that by showing string properties, overlays,
+and buttons. This can be useful for debugging.
+</p>
+
+<p>
+Story:
+Once I deleted some packages on my system, then I go into emacs <code>info</code>
+and some of the text is not rendered right.
+</p>
+
+<p>
+<code>describe-char</code> gave me the hint, the <code>fixed-pitch</code> face wanted
+"Monospace Serif" or some such but I only had Monospace.
+</p>
+
+<p>
+So I did this and was happy ever after:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(set-face-attribute 'fixed-pitch nil  <span style="font-weight: bold;">:family</span> <span style="font-style: italic;">"Monospace"</span>)
+(set-face-attribute 'fixed-pitch-serif nil  <span style="font-weight: bold;">:family</span> <span style="font-style: italic;">"Monospace"</span>)
+</pre>
+</div>
+
+<p>
+Worth binding:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(define-key help-map (kbd <span style="font-style: italic;">"c"</span>) #'describe-char)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1d437da" class="outline-3">
+<h3 id="org1d437da">describe-key</h3>
+<div class="outline-text-3" id="text-org1d437da">
+<p>
+"What does this key do?" - the answer is <code>describe-key</code> and hit the
+key.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge1ed691" class="outline-3">
+<h3 id="orge1ed691">describe-function</h3>
+<div class="outline-text-3" id="text-orge1ed691">
+<p>
+Emacs functions have amazing docstrings.
+</p>
+
+<p>
+The help buffer has a keymap of its own, try <code>?</code> to list keybinds.
+</p>
+
+<p>
+Highlight: <code>s</code> to go to source.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c75028" class="outline-3">
+<h3 id="org3c75028">describe-keymap</h3>
+<div class="outline-text-3" id="text-org3c75028">
+<p>
+Probably faster than describe-mode, renders a keymap in a help buffer.
+Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca4aa11" class="outline-3">
+<h3 id="orgca4aa11">prefix-help-command</h3>
+<div class="outline-text-3" id="text-orgca4aa11">
+<p>
+You type <code>?</code> after starting to type a prefix, then you get the binds.
+</p>
+</div>
+
+<div id="outline-container-org947c974" class="outline-4">
+<h4 id="org947c974">embark-bindings</h4>
+<div class="outline-text-4" id="text-org947c974">
+<p>
+An alternative to the default <code>?</code>, it is amazing. I get a vertico
+ completing-read of the binds.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24a4bb0" class="outline-3">
+<h3 id="org24a4bb0">M-x <code>describe-</code></h3>
+<div class="outline-text-3" id="text-org24a4bb0">
+<p>
+There are more, some of them I never used. Emacs is vast like the ocean.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org781b5fa" class="outline-2">
+<h2 id="org781b5fa">view-lossage</h2>
+<div class="outline-text-2" id="text-org781b5fa">
+<p>
+You accidentally hit some key, and something unexpected happens.
+<code>view-lossage</code> is your friend. It shows the last keys + commands.
+</p>
+
+<p>
+It is like the morning-after pill version of <code>describe-key</code>.
+</p>
+
+<p>
+story:
+I sometimes accidentally hit <code>y</code> before typing the text for
+an <code>avy</code> command.
+</p>
+
+<p>
+Every time I was like "Holy cow whatever I hit there is powerful". <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+I didn't know about <code>view-lossage</code>. The thing is, it would not have
+helped, because <code>avy</code> is reading the key, then dispatching on the key.
+I guess it needs to go through the keymap system or something to show
+up in <code>view-lossage</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbbc9b89" class="outline-2">
+<h2 id="orgbbc9b89">apropos-value</h2>
+<div class="outline-text-2" id="text-orgbbc9b89">
+<p>
+This helps me about once per year.
+</p>
+
+<p>
+It is extremely satisfying when you use this and it helps you.
+I once figured out about <code>revert-buffer-function</code> by using it.
+</p>
+
+<p>
+You can revert <code>shell-command</code> buffers to rerun the command but I did
+not know by which principle.
+</p>
+
+<p>
+<code>apropos-value</code>, then typing my shell command showed me there was a
+buffer-local
+variable called <code>revert-buffer-function</code>. It worked because
+Elisp closure objects print with their environment. In other words, the
+value of <code>revert-buffer-function</code> was a lambda that printed with my
+shell command. It is quite wild.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcbab5b" class="outline-2">
+<h2 id="orgbcbab5b">find-library</h2>
+<div class="outline-text-2" id="text-orgbcbab5b">
+<p>
+Read code, and do little experiments. I am not sure but I think there
+might be something profound about Elisp and emacs.
+I think the language is the program and the program is the language or
+something. Knowing the program is to know the language and knowing the
+language is to know the program.
+(Insert link to top Elisp functions blog post here).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org795807a" class="outline-2">
+<h2 id="org795807a">where-is</h2>
+<div class="outline-text-2" id="text-org795807a">
+<p>
+I just discovered this via <code>describe-keymap</code> into <code>help-map</code> lol.
+This is like <code>describe-key</code> but you say the command and it says the
+keybinding.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><blockquote>
+<p>
+I thought lisp was going to be complicated but it is simple.
+</p>
+</blockquote>
+<p class="footpara">
+That is an interesting tension between outside perception and the
+actual language.
+Since you write the AST directly so you can say what you mean.
+The power of lisp is that the code is made of
+</p>
+<ol class="org-ol">
+<li>Ideas</li>
+<li>There is nothing else.</li>
+</ol></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+It makes the cursor stay and yank the target word.
+Hit <code>?</code> before typing the keys for avy.
+The way it works is that avy can dispatch with different actions, the
+default is to jump to the location, but <code>y</code> for example yanks a word
+and makes your cursor stay where you are. It is really powerful.
+Ace-window has the same paradigm.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-11-12 Sat 16:02</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -659,65 +1118,65 @@ If I may say so I think this is cute.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb41687d">Introduction</a>
+<li><a href="#org976bdda">Introduction</a>
 <ul>
-<li><a href="#org1d4e82d">What are binaural beats?</a></li>
-<li><a href="#org3ade306">Science</a></li>
-<li><a href="#org400d8e8">Frequency</a></li>
-<li><a href="#org621ca6f">The neuroscience of the auditory system </a></li>
-<li><a href="#orge8340b4">I think this is ultra cool</a></li>
-<li><a href="#orge4eaf2e">Give me those binaural beats</a>
+<li><a href="#orga0691a6">What are binaural beats?</a></li>
+<li><a href="#org185faf9">Science</a></li>
+<li><a href="#org67661a1">Frequency</a></li>
+<li><a href="#org5786f20">The neuroscience of the auditory system </a></li>
+<li><a href="#org2aae038">I think this is ultra cool</a></li>
+<li><a href="#org1f261e7">Give me those binaural beats</a>
 <ul>
-<li><a href="#orgec85d18">The problem statement:</a></li>
+<li><a href="#org98132df">The problem statement:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org547c13c">scittle</a>
+<li><a href="#org23eeb08">scittle</a>
 <ul>
-<li><a href="#org5ffeebf">1 ear, 1 sound</a>
+<li><a href="#orgfea49d8">1 ear, 1 sound</a>
 <ul>
-<li><a href="#orgc6c2716">The first playground</a></li>
+<li><a href="#org953c9bf">The first playground</a></li>
 </ul>
 </li>
-<li><a href="#org88928fc">Playing Hz, first round</a></li>
+<li><a href="#org3b0c1b7">Playing Hz, first round</a></li>
 </ul>
 </li>
-<li><a href="#orgd359a2e">binaural!</a>
+<li><a href="#org2b8557b">binaural!</a>
 <ul>
-<li><a href="#orgdee0b09">just put the second sound in the other ear, whatever</a></li>
+<li><a href="#orgc974253">just put the second sound in the other ear, whatever</a></li>
 </ul>
 </li>
-<li><a href="#org804a45d">Intermediate results</a>
+<li><a href="#orgce2e7d0">Intermediate results</a>
 <ul>
-<li><a href="#orgf73a903">Artifacts</a></li>
-<li><a href="#org57c237b">Binaural beat?</a></li>
+<li><a href="#org0c0bc89">Artifacts</a></li>
+<li><a href="#org053f1a6">Binaural beat?</a></li>
 </ul>
 </li>
-<li><a href="#orgca62bb4">Change the base frequency</a>
+<li><a href="#org3291631">Change the base frequency</a>
 <ul>
-<li><a href="#orgc71ad8c">I really need a slider for frequencies in my life.</a>
+<li><a href="#orgb2c9bfe">I really need a slider for frequencies in my life.</a>
 <ul>
-<li><a href="#org171ffa4">nice dev experience, scittle really</a></li>
-<li><a href="#org72b207f">code:</a></li>
+<li><a href="#org02fb1a4">nice dev experience, scittle really</a></li>
+<li><a href="#org87d678f">code:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgfdf3a01">Notes</a>
+<li><a href="#org7c5b3b8">Notes</a>
 <ul>
-<li><a href="#org04919a9">Images</a></li>
-<li><a href="#org33930bd">Update 1</a></li>
-<li><a href="#org515d53f">Update 2</a></li>
+<li><a href="#orgc518874">Images</a></li>
+<li><a href="#org9340d58">Update 1</a></li>
+<li><a href="#orgc199184">Update 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb41687d" class="outline-2">
-<h2 id="orgb41687d">Introduction</h2>
-<div class="outline-text-2" id="text-orgb41687d">
+<div id="outline-container-org976bdda" class="outline-2">
+<h2 id="org976bdda">Introduction</h2>
+<div class="outline-text-2" id="text-org976bdda">
 <p>
 The best thing about being a rationalist is figuring out you are wrong
 about something.
@@ -735,9 +1194,9 @@ neuroscience and pose a fun engineering problem on top of that!
 </p>
 </div>
 
-<div id="outline-container-org1d4e82d" class="outline-3">
-<h3 id="org1d4e82d">What are binaural beats?</h3>
-<div class="outline-text-3" id="text-org1d4e82d">
+<div id="outline-container-orga0691a6" class="outline-3">
+<h3 id="orga0691a6">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orga0691a6">
 <p>
 <a href="https://simple.wikipedia.org/wiki/Binaural_beats">Wikipedia</a>
 </p>
@@ -756,9 +1215,9 @@ For example, if a 530 Hz pure tone is presented to a subject's right ear, while 
 </div>
 </div>
 
-<div id="outline-container-org3ade306" class="outline-3">
-<h3 id="org3ade306">Science</h3>
-<div class="outline-text-3" id="text-org3ade306">
+<div id="outline-container-org185faf9" class="outline-3">
+<h3 id="org185faf9">Science</h3>
+<div class="outline-text-3" id="text-org185faf9">
 <p>
 There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
 attention tasks when listening to binaural beats.
@@ -773,7 +1232,7 @@ Oh yes, I certainly want more of that memory and attention.
 </p>
 
 
-<div id="org12757a5" class="figure">
+<div id="org4fd3e84" class="figure">
 <p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.</p>
@@ -782,9 +1241,9 @@ Oh yes, I certainly want more of that memory and attention.
 </div>
 
 
-<div id="outline-container-org400d8e8" class="outline-3">
-<h3 id="org400d8e8">Frequency</h3>
-<div class="outline-text-3" id="text-org400d8e8">
+<div id="outline-container-org67661a1" class="outline-3">
+<h3 id="org67661a1">Frequency</h3>
+<div class="outline-text-3" id="text-org67661a1">
 <p>
 Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
 really do not want to listen to those.
@@ -813,9 +1272,9 @@ memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/B
 </div>
 </div>
 
-<div id="outline-container-org621ca6f" class="outline-3">
-<h3 id="org621ca6f">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
-<div class="outline-text-3" id="text-org621ca6f">
+<div id="outline-container-org5786f20" class="outline-3">
+<h3 id="org5786f20">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-org5786f20">
 <p>
 Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
@@ -863,9 +1322,9 @@ I'm guessing those then start firing in the 40Hz frequency and that is interpret
 </div>
 </div>
 
-<div id="outline-container-orge8340b4" class="outline-3">
-<h3 id="orge8340b4">I think this is ultra cool</h3>
-<div class="outline-text-3" id="text-orge8340b4">
+<div id="outline-container-org2aae038" class="outline-3">
+<h3 id="org2aae038">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-org2aae038">
 <p>
 You throw some energy at the brain in the right form (in this case
 some sound waves) and it reacts in some special way.
@@ -896,9 +1355,9 @@ but I really get the same results mix as when I search for <code>binaural beats<
 </div>
 
 
-<div id="outline-container-orge4eaf2e" class="outline-3">
-<h3 id="orge4eaf2e">Give me those binaural beats</h3>
-<div class="outline-text-3" id="text-orge4eaf2e">
+<div id="outline-container-org1f261e7" class="outline-3">
+<h3 id="org1f261e7">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-org1f261e7">
 <p>
 I dint feel like opening a youtube video just to listen to some
 sounds. As an aspiring hacker and engineer, I just want to make my
@@ -907,9 +1366,9 @@ So I decided to make a simple website that just makes binaural beats and nothing
 </p>
 </div>
 
-<div id="outline-container-orgec85d18" class="outline-4">
-<h4 id="orgec85d18">The problem statement:</h4>
-<div class="outline-text-4" id="text-orgec85d18">
+<div id="outline-container-org98132df" class="outline-4">
+<h4 id="org98132df">The problem statement:</h4>
+<div class="outline-text-4" id="text-org98132df">
 <p>
 Make a sound on 1 ear (e.g. left headphone speaker)
 </p>
@@ -922,9 +1381,9 @@ Make a second sound on the other ear, with a +40Hz frequency.
 </div>
 </div>
 
-<div id="outline-container-org547c13c" class="outline-2">
-<h2 id="org547c13c">scittle</h2>
-<div class="outline-text-2" id="text-org547c13c">
+<div id="outline-container-org23eeb08" class="outline-2">
+<h2 id="org23eeb08">scittle</h2>
+<div class="outline-text-2" id="text-org23eeb08">
 <p>
 I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
 and get greeted with a friendly <code>Isn't cool? this :)</code>.
@@ -936,9 +1395,9 @@ Then do the <code>cider-connect-cljs</code>
 </p>
 </div>
 
-<div id="outline-container-org5ffeebf" class="outline-3">
-<h3 id="org5ffeebf">1 ear, 1 sound</h3>
-<div class="outline-text-3" id="text-org5ffeebf">
+<div id="outline-container-orgfea49d8" class="outline-3">
+<h3 id="orgfea49d8">1 ear, 1 sound</h3>
+<div class="outline-text-3" id="text-orgfea49d8">
 <p>
 First I think let's start making a sound in 1 ear.
 </p>
@@ -955,9 +1414,9 @@ I am figuring something inside the speech area should sound natural
 </p>
 </div>
 
-<div id="outline-container-orgc6c2716" class="outline-4">
-<h4 id="orgc6c2716">The first playground</h4>
-<div class="outline-text-4" id="text-orgc6c2716">
+<div id="outline-container-org953c9bf" class="outline-4">
+<h4 id="org953c9bf">The first playground</h4>
+<div class="outline-text-4" id="text-org953c9bf">
 <p>
 I have a file called playground.clj
 (Later I figured out I should rename to .cljs :) ).
@@ -996,9 +1455,9 @@ that I move the headphone to the side.
 </div>
 </div>
 
-<div id="outline-container-org88928fc" class="outline-3">
-<h3 id="org88928fc">Playing Hz, first round</h3>
-<div class="outline-text-3" id="text-org88928fc">
+<div id="outline-container-org3b0c1b7" class="outline-3">
+<h3 id="org3b0c1b7">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-org3b0c1b7">
 <p>
 Here is a more endurable sound:
 </p>
@@ -1031,9 +1490,9 @@ Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</
 </div>
 
 
-<div id="outline-container-orgd359a2e" class="outline-2">
-<h2 id="orgd359a2e">binaural!</h2>
-<div class="outline-text-2" id="text-orgd359a2e">
+<div id="outline-container-org2b8557b" class="outline-2">
+<h2 id="org2b8557b">binaural!</h2>
+<div class="outline-text-2" id="text-org2b8557b">
 <p>
 Let's do the thing where I add +40Hz and play that on the other ear.
 First I start generalizing how I make a panner:
@@ -1053,7 +1512,7 @@ First I start generalizing how I make a panner:
 For some reason running this I get:
 </p>
 
-<pre class="example" id="org1fe466c">
+<pre class="example" id="org48b8576">
 Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
 </pre>
 
@@ -1063,9 +1522,9 @@ this error, in the meantime&#x2026;
 </p>
 </div>
 
-<div id="outline-container-orgdee0b09" class="outline-3">
-<h3 id="orgdee0b09">just put the second sound in the other ear, whatever</h3>
-<div class="outline-text-3" id="text-orgdee0b09">
+<div id="outline-container-orgc974253" class="outline-3">
+<h3 id="orgc974253">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-orgc974253">
 <div class="org-src-container">
 <pre class="src src-Clojure">(ns beats)
 
@@ -1108,13 +1567,13 @@ lol, it works.
 </div>
 </div>
 
-<div id="outline-container-org804a45d" class="outline-2">
-<h2 id="org804a45d">Intermediate results</h2>
-<div class="outline-text-2" id="text-org804a45d">
+<div id="outline-container-orgce2e7d0" class="outline-2">
+<h2 id="orgce2e7d0">Intermediate results</h2>
+<div class="outline-text-2" id="text-orgce2e7d0">
 </div>
-<div id="outline-container-orgf73a903" class="outline-3">
-<h3 id="orgf73a903">Artifacts</h3>
-<div class="outline-text-3" id="text-orgf73a903">
+<div id="outline-container-org0c0bc89" class="outline-3">
+<h3 id="org0c0bc89">Artifacts</h3>
+<div class="outline-text-3" id="text-org0c0bc89">
 <p>
 Every now and then there are artifacts in the sound with my headphones setup.
 Some are just rustling and crackling.
@@ -1128,9 +1587,9 @@ sort of slow mow.
 </div>
 </div>
 
-<div id="outline-container-org57c237b" class="outline-3">
-<h3 id="org57c237b">Binaural beat?</h3>
-<div class="outline-text-3" id="text-org57c237b">
+<div id="outline-container-org053f1a6" class="outline-3">
+<h3 id="org053f1a6">Binaural beat?</h3>
+<div class="outline-text-3" id="text-org053f1a6">
 <p>
 Pretty sure I get the third-tone illusion.
 I would describe it as some kind of background or in between "airy"
@@ -1142,9 +1601,9 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 </div>
 </div>
 
-<div id="outline-container-orgca62bb4" class="outline-2">
-<h2 id="orgca62bb4">Change the base frequency</h2>
-<div class="outline-text-2" id="text-orgca62bb4">
+<div id="outline-container-org3291631" class="outline-2">
+<h2 id="org3291631">Change the base frequency</h2>
+<div class="outline-text-2" id="text-org3291631">
 <p>
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
@@ -1152,9 +1611,9 @@ left and right ear invariant. I should then constantly perceive a 3rd tone which
 </p>
 </div>
 
-<div id="outline-container-orgc71ad8c" class="outline-3">
-<h3 id="orgc71ad8c">I really need a slider for frequencies in my life.</h3>
-<div class="outline-text-3" id="text-orgc71ad8c">
+<div id="outline-container-orgb2c9bfe" class="outline-3">
+<h3 id="orgb2c9bfe">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-orgb2c9bfe">
 <p>
 I did not do much web dev in my life and making a slider was a first.
 </p>
@@ -1165,9 +1624,9 @@ I managed to put something together, drawing inspiration from
 </p>
 </div>
 
-<div id="outline-container-org171ffa4" class="outline-4">
-<h4 id="org171ffa4">nice dev experience, scittle really</h4>
-<div class="outline-text-4" id="text-org171ffa4">
+<div id="outline-container-org02fb1a4" class="outline-4">
+<h4 id="org02fb1a4">nice dev experience, scittle really</h4>
+<div class="outline-text-4" id="text-org02fb1a4">
 <ol class="org-ol">
 <li>I did not need to restart my REPL at any point, adding those Html
 elements, then reloading my index.html - it handles that.</li>
@@ -1187,7 +1646,7 @@ At least with cider.
 
 
 
-<div id="org5fed164" class="figure">
+<div id="org2111714" class="figure">
 <p><img src="https://i.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.</p>
@@ -1201,9 +1660,9 @@ I imagine it scurrying and curiously sniffing around.
 </div>
 </div>
 
-<div id="outline-container-org72b207f" class="outline-4">
-<h4 id="org72b207f">code:</h4>
-<div class="outline-text-4" id="text-org72b207f">
+<div id="outline-container-org87d678f" class="outline-4">
+<h4 id="org87d678f">code:</h4>
+<div class="outline-text-4" id="text-org87d678f">
 <p>
 index.html
 </p>
@@ -1314,7 +1773,7 @@ integrating patterns of the brain and mind.
 </p>
 
 
-<div id="org7bee9b3" class="figure">
+<div id="org7172eb2" class="figure">
 <p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.</p>
@@ -1324,13 +1783,13 @@ integrating patterns of the brain and mind.
 </div>
 </div>
 
-<div id="outline-container-orgfdf3a01" class="outline-2">
-<h2 id="orgfdf3a01">Notes</h2>
-<div class="outline-text-2" id="text-orgfdf3a01">
+<div id="outline-container-org7c5b3b8" class="outline-2">
+<h2 id="org7c5b3b8">Notes</h2>
+<div class="outline-text-2" id="text-org7c5b3b8">
 </div>
-<div id="outline-container-org04919a9" class="outline-3">
-<h3 id="org04919a9">Images</h3>
-<div class="outline-text-3" id="text-org04919a9">
+<div id="outline-container-orgc518874" class="outline-3">
+<h3 id="orgc518874">Images</h3>
+<div class="outline-text-3" id="text-orgc518874">
 <p>
 Made with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable-diffusion</a>.
 The captions are the prompts I used.
@@ -1338,9 +1797,9 @@ The captions are the prompts I used.
 </div>
 </div>
 
-<div id="outline-container-org33930bd" class="outline-3">
-<h3 id="org33930bd">Update 1</h3>
-<div class="outline-text-3" id="text-org33930bd">
+<div id="outline-container-org9340d58" class="outline-3">
+<h3 id="org9340d58">Update 1</h3>
+<div class="outline-text-3" id="text-org9340d58">
 <p>
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
@@ -1350,9 +1809,9 @@ slider value works fine (meaning that the scittle code is running fine).
 </div>
 </div>
 
-<div id="outline-container-org515d53f" class="outline-3">
-<h3 id="org515d53f">Update 2</h3>
-<div class="outline-text-3" id="text-org515d53f">
+<div id="outline-container-orgc199184" class="outline-3">
+<h3 id="orgc199184">Update 2</h3>
+<div class="outline-text-3" id="text-orgc199184">
 <p>
 Now it also works on mobile!
 Somebody helpfully pointed out on slack that on mac there was an error
@@ -1400,10 +1859,10 @@ It works, haha!
     </content>
   </entry>
   <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html"/>
-    <title>intro-to-clojure</title>
-    <updated>2022-09-12T23:59:59+00:00</updated>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html"/>
+    <title>jacking-nbb</title>
+    <updated>2022-10-14T23:59:59+00:00</updated>
     <content type="html">
       <![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -1412,7 +1871,7 @@ It works, haha!
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>intro-to-clojure</title>
+<title>jacking-nbb</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
@@ -1427,123 +1886,164 @@ It works, haha!
   </h4>
 </div>
 <div id="content" class="content">
-<h1 class="title">intro-to-clojure</h1>
+<h1 class="title">jacking-nbb</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5386cf0">Introduction</a></li>
-<li><a href="#org0472f15">A dev environment</a>
+<li><a href="#org937155c">Introduction</a></li>
+<li><a href="#org9ba96a0">Jack-in command</a>
 <ul>
-<li><a href="#org4f56b99">Vs Code</a></li>
-<li><a href="#org3f9eefc">Emacs</a></li>
+<li><a href="#org100e944">cider repl workaround</a></li>
+<li><a href="#org13d8b74">the command</a></li>
+<li><a href="#orgf41cfdd">hack for the remaining issue</a></li>
 </ul>
 </li>
-<li><a href="#org2c764b5">Nr 1 book for beginners</a></li>
-<li><a href="#org651c17f">Slack</a></li>
-<li><a href="#org7f19f4c">Other such lists</a></li>
+<li><a href="#org1d6b6e9">Results</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5386cf0" class="outline-2">
-<h2 id="org5386cf0">Introduction</h2>
-<div class="outline-text-2" id="text-org5386cf0">
 <p>
-Clojure is a modern, functional lisp with a fiercely convinced community and
-production orientation.
+A cider jack in command for nbb.
+</p>
+<div id="outline-container-org937155c" class="outline-2">
+<h2 id="org937155c">Introduction</h2>
+<div class="outline-text-2" id="text-org937155c">
+<p>
+<a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
+A node script that is an interpreter for Clojurescript.
+You get the upsides of Node.js + it is Clojure.
+</p>
+
+<p>
+Want to try out some npm packages?
+Sure, just make a <code>package.json</code>, works instant, is part of the design
+principles of nbb.
+</p>
+
+<p>
+You get Clojures immutable data structures, polymorphism constructs, a
+repl, etc.
+</p>
+
+<p>
+On the tooling side, you might be surprised how far nbb gets with very little.
+</p>
+
+<p>
+Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and nbb is a natural fit for a quick cljs repl.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0472f15" class="outline-2">
-<h2 id="org0472f15">A dev environment</h2>
-<div class="outline-text-2" id="text-org0472f15">
-<p>
-Get prepared for your journey as a pilot of an alien spaceship.
-As a beginner I suggest either
-</p>
+<div id="outline-container-org9ba96a0" class="outline-2">
+<h2 id="org9ba96a0">Jack-in command</h2>
+<div class="outline-text-2" id="text-org9ba96a0">
 </div>
-
-<div id="outline-container-org4f56b99" class="outline-3">
-<h3 id="org4f56b99">Vs Code</h3>
-<div class="outline-text-3" id="text-org4f56b99">
+<div id="outline-container-org100e944" class="outline-3">
+<h3 id="org100e944">cider repl workaround</h3>
+<div class="outline-text-3" id="text-org100e944">
 <p>
-Easy to make work. A great editor. You will not need to be ashamed of
-your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3f9eefc" class="outline-3">
-<h3 id="org3f9eefc">Emacs</h3>
-<div class="outline-text-3" id="text-org3f9eefc">
-<p>
-Strong affinity to hacker culture and a program that is more than a
-tool, but eventually an extension to your hands, heart, and mind.
+We currently need this workaround for sci-based cljs repls for cider:
 </p>
 
-<p>
-Here is a config file I tried to make for beginners:
-<a href="https://github.com/benjamin-asdf/simple-easy-emacs">https://github.com/benjamin-asdf/simple-easy-emacs</a>
-</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride <span style="font-style: italic;">"(+ 1 2 3)"</span>)
 
-<p>
-A framework by clojurians that might be just right for you:
-<a href="https://github.com/corgi-emacs/corgi">https://github.com/corgi-emacs/corgi</a>
-</p>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-connected-hook</span> ()
+  (<span style="font-weight: bold;">when</span> (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
+    (<span style="font-weight: bold;">setq-local</span> cider-show-error-buffer nil)
+    (cider-set-repl-type 'cljs)))
 
-<p>
-There is also doom and spacemacs that enjoy wide appraisal for their
-"out of the box" experience.
-</p>
+(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2c764b5" class="outline-2">
-<h2 id="org2c764b5">Nr 1 book for beginners</h2>
-<div class="outline-text-2" id="text-org2c764b5">
+<div id="outline-container-org13d8b74" class="outline-3">
+<h3 id="org13d8b74">the command</h3>
+<div class="outline-text-3" id="text-org13d8b74">
 <p>
-<a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org651c17f" class="outline-2">
-<h2 id="org651c17f">Slack</h2>
-<div class="outline-text-2" id="text-org651c17f">
-<p>
-Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
-Seriously a lot of people hang there and answer beginner questions,
-everybody is welcome.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org7f19f4c" class="outline-2">
-<h2 id="org7f19f4c">Other such lists</h2>
-<div class="outline-text-2" id="text-org7f19f4c">
-<p>
-Carin is cool and has a funny picture of the emacs learning curve here:
-<a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
+Unfortunately, cider does not have the concept of a nbb repl currently.
+I think <code>cider-jack-in-resolve-command</code> and similar functions could be
+thrown out and replaced with data.
 </p>
 
 <p>
-I like that they have a philosophy section mentioning Rich Hickey's talks
-this matters a lot to clojurians.
+So I went 1 level deeper to bypass ciders auto-detection of
+project type (+ jack in cmd):
 </p>
 
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start a nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (<span style="font-weight: bold;">let*</span> ((cider-allow-jack-in-without-project t)
+         (orig-buffer (current-buffer))
+         (params '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+                   <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride))
+         (params (cider--update-project-dir
+                  params)))
+    (nrepl-start-server-process
+     (plist-get params <span style="font-weight: bold;">:project-dir</span>)
+     (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>)
+     (<span style="font-weight: bold;">lambda</span> (server-buffer)
+       (<span style="font-weight: bold;">with-current-buffer</span>
+           orig-buffer
+         (cider-connect-sibling-cljs
+          params
+          server-buffer))))))
+</pre>
+</div>
+
 <p>
-<a href="https://thoughtbot.com/blog/tips-for-clojure-beginners">https://thoughtbot.com/blog/tips-for-clojure-beginners</a>
-<a href="https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f">https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f</a>
-<a href="https://www.clojurenewbieguide.com/">https://www.clojurenewbieguide.com/</a>
+This is what I wanted to say:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start an nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (cider-jack-in-cljs
+   '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+     <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf41cfdd" class="outline-3">
+<h3 id="orgf41cfdd">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-orgf41cfdd">
+<p>
+With this, you should get an error "ClojureScript is not available&#x2026;".
+<a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
+  <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
+  (<span style="font-weight: bold;">unless</span> (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
+    (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1d6b6e9" class="outline-2">
+<h2 id="org1d6b6e9">Results</h2>
+<div class="outline-text-2" id="text-org1d6b6e9">
+<p>
+Hehe, insta nbb repl. Works good.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2022-09-12 Mon 20:23</p>
+<p class="date">Date: 2022-10-14 Fri 10:22</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>

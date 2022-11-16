@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>dir-env-process-environment</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">dir-env-process-environment</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org66f9ce3">Introduction</a></li>
+<li><a href="#orgc3f0bf2">The setup</a>
+<ul>
+<li><a href="#org0288dce">From the project I currently work on:</a></li>
+</ul>
+</li>
+<li><a href="#org5e5a719">Non-file-buffer</a></li>
+<li><a href="#org78fae75">revert with grace</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66f9ce3" class="outline-2">
+<h2 id="org66f9ce3">Introduction</h2>
+<div class="outline-text-2" id="text-org66f9ce3">
+<p>
+Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
+</p>
+
+<p>
+An advanced use case is that you want to set up a process environment for
+everything you do inside some project.
+</p>
+
+<p>
+What I show here works for <code>compile</code>, <code>shell-command</code>, and even cider connections.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3f0bf2" class="outline-2">
+<h2 id="orgc3f0bf2">The setup</h2>
+<div class="outline-text-2" id="text-orgc3f0bf2">
+<p>
+<code>.dir-locals.el</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"FOO"</span> <span style="font-style: italic;">"hurr"</span>)))))
+</pre>
+</div>
+
+<p>
+Yes, it is a bit convoluted but for a <a href="https://emacs.stackexchange.com/questions/35964/how-can-i-get-buffer-local-environment-variables-via-dir-locals">reason.</a>
+We need to copy the list, else if somebody modifies the cdr locally,
+that would modify the global value.
+(In the case that <code>FOO</code> is an element in the list somewhere already).
+</p>
+
+<p>
+The answer mentions <code>setq-local</code>. I tried that without success.
+</p>
+
+<p>
+<code>Shell-command</code> and friends will inherit the process environmen. It pretty much just works.
+</p>
+</div>
+
+<div id="outline-container-org0288dce" class="outline-3">
+<h3 id="org0288dce">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-org0288dce">
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"AWS_PROFILE"</span> <span style="font-style: italic;">"datalake-deployer"</span>)
+         (<span style="font-weight: bold;">setq-local</span> cider-clojure-cli-aliases (concat cider-clojure-cli-aliases <span style="font-style: italic;">":dev"</span>))))))
+</pre>
+</div>
+
+<p>
+Now I start cider connections with <code>AWS_PROFILE</code> set correctly.
+Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task for deploying that needs this env and it all just works.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e5a719" class="outline-2">
+<h2 id="org5e5a719">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-org5e5a719">
+<p>
+By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
+(When the local variable <code>buffer-file-name</code> is not set).
+</p>
+
+<p>
+There is a function <code>hack-dir-local-variables-non-file-buffer</code> for this purpose.
+This is called by <code>dired</code>, also <code>magit</code>.
+</p>
+
+<p>
+I usually start processes from either a (source) file buffer or dired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78fae75" class="outline-2">
+<h2 id="org78fae75">revert with grace</h2>
+<div class="outline-text-2" id="text-org78fae75">
+<p>
+When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
+whatever buffer you want to have the effect.
+It hacks the local variables again for the buffer.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-17 Mon 09:56</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>

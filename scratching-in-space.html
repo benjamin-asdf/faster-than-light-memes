@@ -21,15 +21,211 @@
 </div>
 <div id="content" class="content">
 <h1 class="title">scratching-in-space</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga837803">Introduction</a></li>
+<li><a href="#org583bddb">scratching in space</a>
+<ul>
+<li><a href="#org1be30d9">here is my current hack for this:</a></li>
+</ul>
+</li>
+<li><a href="#org666d1d7">clojure scratch repl?</a></li>
+<li><a href="#org7989660">Further reading</a></li>
+<li><a href="#orgf466c3c">inspiring talks</a></li>
+</ul>
+</div>
+</div>
 <p>
-Emacs scratch buffers are place oriented design.
-Simple alternative: make files.
-Musings about persistent scratch technology.
+Emacs scratch buffers have place oriented design.
 </p>
 
 <p>
-&lt;comming soon&gt;
+A simple alternative: make files.
 </p>
+
+<p>
+Musings about persistent scratch technology.
+</p>
+
+<div id="outline-container-orga837803" class="outline-2">
+<h2 id="orga837803">Introduction</h2>
+<div class="outline-text-2" id="text-orga837803">
+<p>
+If you ever typed something in a buffer called <code>*scratch*</code> you will
+inevitably have found yourself in this situation:
+</p>
+
+<ol class="org-ol">
+<li>Just typed some awesome code.</li>
+<li>Kill scratch buffer accidentally or unthinkingly.</li>
+<li>That awesome text is gone forever&#x2026; and it hurts.</li>
+</ol>
+
+<p>
+I did try <a href="https://github.com/Fanael/persistent-scratch">persistent-scratch</a>, in its simplest form, it persists your
+scratch buffer across sessions.
+You still end up having one place for your "current" scratch.
+It just did not click with me.
+</p>
+
+<p>
+The whole idea of a scratch buffer might be obsolete (<a href="http://xahlee.info/emacs/emacs/modernization_scratch_buffer.html">Xah Lee 2008</a>).
+</p>
+
+<p>
+What I want:
+</p>
+
+<ol class="org-ol">
+<li>Convenient way of writing some code interactively.</li>
+<li>Persist it.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org583bddb" class="outline-2">
+<h2 id="org583bddb">scratching in space</h2>
+<div class="outline-text-2" id="text-org583bddb">
+<p>
+Our disk space is vast, and emacs is great at creating files.
+</p>
+
+<p>
+We can be like Sherlock Holmes and never throw our notes away.
+</p>
+
+<p>
+Horde those scratches. Put them in git.
+Now you can grep through them, see what you were scratching years in the past.
+</p>
+
+<p>
+I have a dir called <code>~/scratches</code> with all my scratches.
+This is a bit similar to <a href="https://start.duckduckgo.com/">denote</a>, which I use for note-taking.
+</p>
+</div>
+
+<div id="outline-container-org1be30d9" class="outline-3">
+<h3 id="org1be30d9">here is my current hack for this:</h3>
+<div class="outline-text-3" id="text-org1be30d9">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">mememacs/scratch-dir</span> (expand-file-name <span style="font-style: italic;">"~/scratch"</span>))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/latest-scratch</span> (suffix)
+  (<span style="font-weight: bold;">unless</span> (file-exists-p mememacs/scratch-dir)
+    (make-directory mememacs/scratch-dir))
+  (<span style="font-weight: bold;">when-let</span>
+      ((f
+        (car
+         (cl-remove-if-not
+          (<span style="font-weight: bold;">lambda</span> (it)
+            (<span style="font-weight: bold;">and</span> (string-suffix-p suffix it)
+                 (not (string-match-p <span style="font-style: italic;">"#"</span> it))))
+          (process-lines
+           <span style="font-style: italic;">"ls"</span>
+           <span style="font-style: italic;">"-A"</span>
+           <span style="font-style: italic;">"-t"</span>
+           mememacs/scratch-dir)))))
+    (expand-file-name f mememacs/scratch-dir)))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/new-scratch-name</span> (suffix)
+  (<span style="font-weight: bold;">unless</span> (file-exists-p
+           mememacs/scratch-dir)
+    (make-directory
+     mememacs/scratch-dir))
+  (expand-file-name
+   (format <span style="font-style: italic;">"%s.%s"</span> (make-temp-name <span style="font-style: italic;">"scratch-"</span>) suffix)
+   mememacs/scratch-dir))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/scratch</span>
+    (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> create-new suffix)
+  <span style="font-style: italic;">"Visit the latest scratch file with `suffix` (a file extension).</span>
+<span style="font-style: italic;">With prefix arg make a new file."</span>
+  (<span style="font-weight: bold;">interactive</span>
+   (list current-prefix-arg
+         (completing-read <span style="font-style: italic;">"scratch filetype: "</span> '(<span style="font-style: italic;">"cljs"</span> <span style="font-style: italic;">"clj"</span>))))
+  (<span style="font-weight: bold;">let*</span> ((latest (mememacs/latest-scratch suffix))
+         (buff
+          (find-file-noselect
+           (<span style="font-weight: bold;">if</span> (<span style="font-weight: bold;">or</span> create-new (not latest))
+               (mememacs/new-scratch-name suffix)
+             latest))))
+    (pop-to-buffer-same-window buff)
+    (<span style="font-weight: bold;">when</span> (eq major-mode 'emacs-lisp-mode)
+      (elisp-enable-lexical-binding))
+    buff))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/scratch-el</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> arg)
+  (<span style="font-weight: bold;">interactive</span> <span style="font-style: italic;">"P"</span>)
+  (mm/scratch arg <span style="font-style: italic;">"el"</span>))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">keybinds:
+leader bs #'mm/scratch-el
+leader bS #'mm/scratch
+</pre>
+</div>
+
+<p>
+With a nice keybind (<code>leader b s</code>) I go to my current scratch file - the latest modified file in my scratch dir.
+With prefix-arg, it makes a new file.
+A second bind will ask me to make a <code>clj</code> or <code>cljs</code> file.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org666d1d7" class="outline-2">
+<h2 id="org666d1d7">clojure scratch repl?</h2>
+<div class="outline-text-2" id="text-org666d1d7">
+<p>
+Whatever. I just do this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'{}'</span> &gt; ~/scratch/bb.edn
+</pre>
+</div>
+
+<p>
+Now I can start a cider repl with bb in my scratch dir.
+If you want to be asked for <code>bb</code> or <code>jvm</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'{}'</span> &gt; ~/scratch/deps.edn
+</pre>
+</div>
+
+<p>
+Also <code>nbb</code>: A nice way to scratch some cljs + javascript + node:
+It currently requires some workaround that you can find <a href="jacking-nbb.html">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7989660" class="outline-2">
+<h2 id="org7989660">Further reading</h2>
+<div class="outline-text-2" id="text-org7989660">
+<ul class="org-ul">
+<li><a href="backing-you-up.html">backups in space</a></li>
+<li><a href="https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/">reddit persistent scratch discussion</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf466c3c" class="outline-2">
+<h2 id="orgf466c3c">inspiring talks</h2>
+<div class="outline-text-2" id="text-orgf466c3c">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=-6BsiVyC1kM">The value of values (place-oriented programming is obsolete)</a></li>
+<li><a href="https://www.youtube.com/watch?v=OUZZKtypink">Program like Sherlock Holmes</a></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-10-04 Tue 16:04</p>

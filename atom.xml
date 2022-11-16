@@ -3,16 +3,16 @@
   <title>Faster-than-Light memes</title>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/atom.xml" rel="self"/>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/"/>
-  <updated>2022-10-14T12:27:22+00:00</updated>
+  <updated>2022-11-16T12:09:26+00:00</updated>
   <id>https://benjamin-asdf.github.io/faster-than-light-memes/</id>
   <author>
     <name>Benjamin Schwerdtner</name>
   </author>
   <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html"/>
-    <title>jacking-nbb</title>
-    <updated>2022-10-14T23:59:59+00:00</updated>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html"/>
+    <title>anonymous-commands-in-emacs</title>
+    <updated>2022-09-23T23:59:59+00:00</updated>
     <content type="html">
       <![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -21,7 +21,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jacking-nbb</title>
+<title>anonymous-commands-in-emacs</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
@@ -36,211 +36,158 @@
   </h4>
 </div>
 <div id="content" class="content">
-<h1 class="title">jacking-nbb</h1>
+<h1 class="title">anonymous-commands-in-emacs</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19cb425">Introduction</a></li>
-<li><a href="#orgb1ac572">Jack-in command</a>
+<li><a href="#org2efde75">Introduction</a>
 <ul>
-<li><a href="#org699eb51">cider repl workaround</a></li>
-<li><a href="#org142ca22">the command</a></li>
-<li><a href="#orge7175d7">hack for the remaining issue</a></li>
+<li><a href="#org3704702">add-hook</a></li>
 </ul>
 </li>
+<li><a href="#org101e7d5">Solution</a>
+<ul>
+<li><a href="#org22c4ebe">defun</a></li>
+</ul>
+</li>
+<li><a href="#org6fadbca">Result</a></li>
 </ul>
 </div>
 </div>
-<p>
-A cider jack in command for nbb.
-</p>
 
-<div id="outline-container-org19cb425" class="outline-2">
-<h2 id="org19cb425">Introduction</h2>
-<div class="outline-text-2" id="text-org19cb425">
+<div id="outline-container-org2efde75" class="outline-2">
+<h2 id="org2efde75">Introduction</h2>
+<div class="outline-text-2" id="text-org2efde75">
 <p>
-<a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
-A node script that is an interpreter for Clojurescript.
-You get the upsides of Node.js + it is Clojure.
-</p>
-
-<p>
-Want to try out some npm packages?
-Sure, just make a <code>package.json</code>, works instant, is part of the design
-principles of nbb.
-</p>
-
-<p>
-You get Clojures immutable data structures, polymorphism constructs, a
-repl, etc.
-</p>
-
-<p>
-On the tooling side, you might be surprised how far nbb gets with very little.
-</p>
-
-<p>
-Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and nbb is a natural fit for a quick cljs repl.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgb1ac572" class="outline-2">
-<h2 id="orgb1ac572">Jack-in command</h2>
-<div class="outline-text-2" id="text-orgb1ac572">
-</div>
-<div id="outline-container-org699eb51" class="outline-3">
-<h3 id="org699eb51">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org699eb51">
-<p>
-We currently need this workaround for sci-based cljs repls for cider:
+Generally, you do not want to make keybindings to anonymous lambdas.
+Here is the primary reason that comes to mind:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride <span style="font-style: italic;">"(+ 1 2 3)"</span>)
-
-(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-connected-hook</span> ()
-  (<span style="font-weight: bold;">when</span> (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
-    (<span style="font-weight: bold;">setq-local</span> cider-show-error-buffer nil)
-    (cider-set-repl-type 'cljs)))
-
-(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org142ca22" class="outline-3">
-<h3 id="org142ca22">the command</h3>
-<div class="outline-text-3" id="text-org142ca22">
-<p>
-Unfortunately, cider does not have the concept of a nbb repl currently.
-I think <code>cider-jack-in-resolve-command</code> and similar functions could be
-thrown out and replaced with data.
-</p>
-
-<p>
-So I went 1 level deeper to bypass ciders auto-detection of
-project type (+ jack in cmd):
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
-  <span style="font-style: italic;">"Start a nbb nrepl process and connect."</span>
-  (<span style="font-weight: bold;">interactive</span>)
-  (<span style="font-weight: bold;">let*</span> ((cider-allow-jack-in-without-project t)
-         (orig-buffer (current-buffer))
-         (params '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
-                   <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride))
-         (params (cider--update-project-dir
-                  params)))
-    (nrepl-start-server-process
-     (plist-get params <span style="font-weight: bold;">:project-dir</span>)
-     (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>)
-     (<span style="font-weight: bold;">lambda</span> (server-buffer)
-       (<span style="font-weight: bold;">with-current-buffer</span>
-           orig-buffer
-         (cider-connect-sibling-cljs
-          params
-          server-buffer))))))
+<pre class="src src-elisp">(describe-keymap
+ (<span style="font-weight: bold;">let</span> ((m (make-sparse-keymap)))
+   (define-key m (kbd <span style="font-style: italic;">"f"</span>) (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi))
+   m))
 </pre>
 </div>
 
 <p>
-This is what I wanted to say:
+I get help buffer with this content:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
-  <span style="font-style: italic;">"Start an nbb nrepl process and connect."</span>
-  (<span style="font-weight: bold;">interactive</span>)
-  (cider-jack-in-cljs
-   '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
-     <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride)))
+<pre class="example" id="org6273461">
+Key             Binding
+f		[closure]
 </pre>
-</div>
-</div>
-</div>
 
-<div id="outline-container-orge7175d7" class="outline-3">
-<h3 id="orge7175d7">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-orge7175d7">
 <p>
-With this, you should get an error "ClojureScript is not available&#x2026;".
-<a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
+It is not really useful to just get the info [closure] here.
+</p>
+</div>
+
+<div id="outline-container-org3704702" class="outline-3">
+<h3 id="org3704702">add-hook</h3>
+<div class="outline-text-3" id="text-org3704702">
+<p>
+The same thing goes for <code>add-hook</code>. From the doc string:
+</p>
+
+<blockquote>
+<p>
+FUNCTION may be any valid function, but it's recommended to use a
+function symbol and not a lambda form.  Using a symbol will
+ensure that the function is not re-added if the function is
+edited, and using lambda forms may also have a negative
+performance impact when running `add-hook' and `remove-hook'
+</p>
+</blockquote>
+
+<p>
+Some of the hooks functionality is meant for symbols.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org101e7d5" class="outline-2">
+<h2 id="org101e7d5">Solution</h2>
+<div class="outline-text-2" id="text-org101e7d5">
+<p>
+Alias your function:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
-(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
-  <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
-  (<span style="font-weight: bold;">unless</span>
-      (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
-    (cider-library-present-p <span style="font-style: italic;">"cljs.core"</span>)
-    (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
+<pre class="src src-elisp">(<span style="font-weight: bold;">defalias</span> '<span style="font-weight: bold;">foo-a</span> (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi))
+ (describe-keymap
+  (<span style="font-weight: bold;">let</span> ((m (make-sparse-keymap)))
+    (define-key m (kbd <span style="font-style: italic;">"f"</span>) 'foo-a)
+    (define-key m (kbd <span style="font-style: italic;">"b"</span>) (<span style="font-weight: bold;">defalias</span> '<span style="font-weight: bold;">foo-b</span> (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi2)))
+   m))
 </pre>
 </div>
+
+<pre class="example" id="org22615cd">
+Key             Binding
+b		foo-b
+f		foo-a
+</pre>
+
+
+<p>
+Foo-b works because <code>defalias</code> returns the symbol.
+</p>
 </div>
+
+<div id="outline-container-org22c4ebe" class="outline-3">
+<h3 id="org22c4ebe">defun</h3>
+<div class="outline-text-3" id="text-org22c4ebe">
+<p>
+<code>(defalias 'foo (lambda () (interactive)))</code>
+</p>
+
+<p>
+is essentially the same as
+</p>
+
+<p>
+<code>(defun foo () (interactive))</code>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6fadbca" class="outline-2">
+<h2 id="org6fadbca">Result</h2>
+<div class="outline-text-2" id="text-org6fadbca">
+<p>
+I end up just using  <code>defun</code> inline.
+Examples:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(add-hook
+ 'sh-mode-hook
+ (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/add-bash-completion</span> () ...))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(mememacs/leader-def
+  <span style="font-style: italic;">"pP"</span> (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/project-switch-project-find-file</span> ()
+         (<span style="font-weight: bold;">interactive</span>) ...))
+</pre>
+</div>
+
+<p>
+After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/commit/1e4135b977a5866de19020ba6f8a92b417339157">I went and fixed the remaining add-hook lambas</a> In my config.
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2022-10-14 Fri 10:22</p>
-<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
-</div>
-</body>
-</html>
-]]>
-    </content>
-  </entry>
-  <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/Scratching-in-space.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/Scratching-in-space.html"/>
-    <title>scratching-in-space</title>
-    <updated>2022-10-04T23:59:59+00:00</updated>
-    <content type="html">
-      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>scratching-in-space</title>
-<meta name="generator" content="Org Mode" />
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-</head>
-<body>
-<div id="preamble" class="status">
-  <h4>
-    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
-       style="background-color:black;;text-decoration:none;padding:0.3rem">
-      <span style="color:#feb48f">:faster-than-light</span>
-      <span style="color:#F689FF">/memes</span>
-    </a>
-  </h4>
-</div>
-<div id="content" class="content">
-<h1 class="title">scratching-in-space</h1>
-<p>
-Emacs scratch buffers are place oriented design.
-</p>
-
-<p>
-Simple alternative: make files.
-</p>
-
-<p>
-Musings about persistent scratch technology.
-</p>
-
-<p>
-&lt;comming soon&gt;
-</p>
-</div>
-<div id="postamble" class="status">
-<p class="date">Date: 2022-10-04 Tue 16:04</p>
+<p class="date">Date: 2022-09-23 Fri 18:59</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -281,15 +228,15 @@ Musings about persistent scratch technology.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge536e6b">Introduction</a></li>
-<li><a href="#orga68e57a">Problem statement</a></li>
-<li><a href="#org341f5ee">Some reagent code</a></li>
-<li><a href="#org2af3cda">Fetch</a></li>
-<li><a href="#org990e0d1">Pretty print the code..?</a></li>
-<li><a href="#org802af19">Eval string</a></li>
-<li><a href="#orgcd9105a">Only fetch once</a></li>
-<li><a href="#orgd7d9f6b">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org90ed1bf">Codepen</a></li>
+<li><a href="#orgdefba97">Introduction</a></li>
+<li><a href="#org7e27540">Problem statement</a></li>
+<li><a href="#org44d6e02">Some reagent code</a></li>
+<li><a href="#orgcd2b992">Fetch</a></li>
+<li><a href="#orge52ea5f">Pretty print the code..?</a></li>
+<li><a href="#orge35bfab">Eval string</a></li>
+<li><a href="#org2337752">Only fetch once</a></li>
+<li><a href="#org1f0b407">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org8b44f9d">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -298,9 +245,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-orge536e6b" class="outline-2">
-<h2 id="orge536e6b">Introduction</h2>
-<div class="outline-text-2" id="text-orge536e6b">
+<div id="outline-container-orgdefba97" class="outline-2">
+<h2 id="orgdefba97">Introduction</h2>
+<div class="outline-text-2" id="text-orgdefba97">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -321,9 +268,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-orga68e57a" class="outline-2">
-<h2 id="orga68e57a">Problem statement</h2>
-<div class="outline-text-2" id="text-orga68e57a">
+<div id="outline-container-org7e27540" class="outline-2">
+<h2 id="org7e27540">Problem statement</h2>
+<div class="outline-text-2" id="text-org7e27540">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -337,9 +284,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org341f5ee" class="outline-2">
-<h2 id="org341f5ee">Some reagent code</h2>
-<div class="outline-text-2" id="text-org341f5ee">
+<div id="outline-container-org44d6e02" class="outline-2">
+<h2 id="org44d6e02">Some reagent code</h2>
+<div class="outline-text-2" id="text-org44d6e02">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -427,9 +374,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-org2af3cda" class="outline-2">
-<h2 id="org2af3cda">Fetch</h2>
-<div class="outline-text-2" id="text-org2af3cda">
+<div id="outline-container-orgcd2b992" class="outline-2">
+<h2 id="orgcd2b992">Fetch</h2>
+<div class="outline-text-2" id="text-orgcd2b992">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -445,15 +392,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-org990e0d1" class="outline-2">
-<h2 id="org990e0d1">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-org990e0d1">
+<div id="outline-container-orge52ea5f" class="outline-2">
+<h2 id="orge52ea5f">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-orge52ea5f">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="orga951d40" class="figure">
+<div id="org5fc5339" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -490,9 +437,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org802af19" class="outline-2">
-<h2 id="org802af19">Eval string</h2>
-<div class="outline-text-2" id="text-org802af19">
+<div id="outline-container-orge35bfab" class="outline-2">
+<h2 id="orge35bfab">Eval string</h2>
+<div class="outline-text-2" id="text-orge35bfab">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -583,9 +530,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-orgcd9105a" class="outline-2">
-<h2 id="orgcd9105a">Only fetch once</h2>
-<div class="outline-text-2" id="text-orgcd9105a">
+<div id="outline-container-org2337752" class="outline-2">
+<h2 id="org2337752">Only fetch once</h2>
+<div class="outline-text-2" id="text-org2337752">
 <p>
 I update the fetch code like so:
 </p>
@@ -607,9 +554,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-orgd7d9f6b" class="outline-2">
-<h2 id="orgd7d9f6b">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-orgd7d9f6b">
+<div id="outline-container-org1f0b407" class="outline-2">
+<h2 id="org1f0b407">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-org1f0b407">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -628,7 +575,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="org2b8792e" class="figure">
+<div id="org5a9a2b1" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -653,9 +600,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org90ed1bf" class="outline-2">
-<h2 id="org90ed1bf">Codepen</h2>
-<div class="outline-text-2" id="text-org90ed1bf">
+<div id="outline-container-org8b44f9d" class="outline-2">
+<h2 id="org8b44f9d">Codepen</h2>
+<div class="outline-text-2" id="text-org8b44f9d">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
@@ -681,10 +628,10 @@ If I may say so I think this is cute.
     </content>
   </entry>
   <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/anonymous-commands-in-emacs.html"/>
-    <title>anonymous-commands-in-emacs</title>
-    <updated>2022-09-23T23:59:59+00:00</updated>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html"/>
+    <title>intro-to-clojure</title>
+    <updated>2022-09-12T23:59:59+00:00</updated>
     <content type="html">
       <![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -693,7 +640,7 @@ If I may say so I think this is cute.
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>anonymous-commands-in-emacs</title>
+<title>intro-to-clojure</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
@@ -708,158 +655,886 @@ If I may say so I think this is cute.
   </h4>
 </div>
 <div id="content" class="content">
-<h1 class="title">anonymous-commands-in-emacs</h1>
+<h1 class="title">intro-to-clojure</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgebca9ea">Introduction</a>
+<li><a href="#orgcc0aa46">Introduction</a></li>
+<li><a href="#orgd256311">Start</a></li>
+<li><a href="#org8afa32a">A dev environment</a>
 <ul>
-<li><a href="#orgb9328fe">add-hook</a></li>
+<li><a href="#org0d1df47">Vs Code</a></li>
+<li><a href="#org80eab84">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#orgbc3863f">Solution</a>
-<ul>
-<li><a href="#org3952c31">defun</a></li>
-</ul>
-</li>
-<li><a href="#orgeb10086">Result</a></li>
+<li><a href="#orgbcdbab6">Nr 1 book for beginners</a></li>
+<li><a href="#orge855144">Slack</a></li>
+<li><a href="#orgf4ce986">Other such lists</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgebca9ea" class="outline-2">
-<h2 id="orgebca9ea">Introduction</h2>
-<div class="outline-text-2" id="text-orgebca9ea">
+<div id="outline-container-orgcc0aa46" class="outline-2">
+<h2 id="orgcc0aa46">Introduction</h2>
+<div class="outline-text-2" id="text-orgcc0aa46">
 <p>
-Generally, you do not want to make keybindings to anonymous lambdas.
-Here is the primary reason that comes to mind:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(describe-keymap
- (<span style="font-weight: bold;">let</span> ((m (make-sparse-keymap)))
-   (define-key m (kbd <span style="font-style: italic;">"f"</span>) (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi))
-   m))
-</pre>
-</div>
-
-<p>
-I get help buffer with this content:
-</p>
-
-<pre class="example" id="org7f72fad">
-Key             Binding
-f		[closure]
-</pre>
-
-<p>
-It is not really useful to just get the info [closure] here.
-</p>
-</div>
-
-<div id="outline-container-orgb9328fe" class="outline-3">
-<h3 id="orgb9328fe">add-hook</h3>
-<div class="outline-text-3" id="text-orgb9328fe">
-<p>
-The same thing goes for <code>add-hook</code>. From the doc string:
-</p>
-
-<blockquote>
-<p>
-FUNCTION may be any valid function, but it's recommended to use a
-function symbol and not a lambda form.  Using a symbol will
-ensure that the function is not re-added if the function is
-edited, and using lambda forms may also have a negative
-performance impact when running `add-hook' and `remove-hook'
-</p>
-</blockquote>
-
-<p>
-Some of the hooks functionality is meant for symbols.
+Clojure is a modern, functional lisp with a fiercely convinced community and
+production orientation.
 </p>
 </div>
 </div>
-</div>
 
-
-<div id="outline-container-orgbc3863f" class="outline-2">
-<h2 id="orgbc3863f">Solution</h2>
-<div class="outline-text-2" id="text-orgbc3863f">
+<div id="outline-container-orgd256311" class="outline-2">
+<h2 id="orgd256311">Start</h2>
+<div class="outline-text-2" id="text-orgd256311">
 <p>
-Alias your function:
+I highly recommend <a href="https://www.maria.cloud/intro">Maria.Cloud</a>, you can just go there and start coding.
+This is great for anybody that does not know yet x
 </p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(<span style="font-weight: bold;">defalias</span> '<span style="font-weight: bold;">foo-a</span> (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi))
- (describe-keymap
-  (<span style="font-weight: bold;">let</span> ((m (make-sparse-keymap)))
-    (define-key m (kbd <span style="font-style: italic;">"f"</span>) 'foo-a)
-    (define-key m (kbd <span style="font-style: italic;">"b"</span>) (<span style="font-weight: bold;">defalias</span> '<span style="font-weight: bold;">foo-b</span> (<span style="font-weight: bold;">lambda</span> () (<span style="font-weight: bold;">interactive</span>) 'hi2)))
-   m))
-</pre>
+</div>
 </div>
 
-<pre class="example" id="orgb55d2e4">
-Key             Binding
-b		foo-b
-f		foo-a
-</pre>
-
-
+<div id="outline-container-org8afa32a" class="outline-2">
+<h2 id="org8afa32a">A dev environment</h2>
+<div class="outline-text-2" id="text-org8afa32a">
 <p>
-Foo-b works because <code>defalias</code> returns the symbol.
+Get prepared for your journey as a pilot of an alien spaceship.
+As a beginner I suggest either
 </p>
 </div>
 
-<div id="outline-container-org3952c31" class="outline-3">
-<h3 id="org3952c31">defun</h3>
-<div class="outline-text-3" id="text-org3952c31">
+<div id="outline-container-org0d1df47" class="outline-3">
+<h3 id="org0d1df47">Vs Code</h3>
+<div class="outline-text-3" id="text-org0d1df47">
 <p>
-<code>(defalias 'foo (lambda () (interactive)))</code>
+Easy to make work. A great editor. You will not need to be ashamed of
+your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org80eab84" class="outline-3">
+<h3 id="org80eab84">Emacs</h3>
+<div class="outline-text-3" id="text-org80eab84">
+<p>
+Strong affinity to hacker culture and a program that is more than a
+tool, but eventually an extension to your hands, heart, and mind.
 </p>
 
 <p>
-is essentially the same as
+Here is a config file I tried to make for beginners:
+<a href="https://github.com/benjamin-asdf/simple-easy-emacs">https://github.com/benjamin-asdf/simple-easy-emacs</a>
 </p>
 
 <p>
-<code>(defun foo () (interactive))</code>
+A framework by clojurians that might be just right for you:
+<a href="https://github.com/corgi-emacs/corgi">https://github.com/corgi-emacs/corgi</a>
+</p>
+
+<p>
+There is also doom and spacemacs that enjoy wide appraisal for their
+"out of the box" experience.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgeb10086" class="outline-2">
-<h2 id="orgeb10086">Result</h2>
-<div class="outline-text-2" id="text-orgeb10086">
+<div id="outline-container-orgbcdbab6" class="outline-2">
+<h2 id="orgbcdbab6">Nr 1 book for beginners</h2>
+<div class="outline-text-2" id="text-orgbcdbab6">
 <p>
-I end up just using  <code>defun</code> inline.
-Examples:
+<a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge855144" class="outline-2">
+<h2 id="orge855144">Slack</h2>
+<div class="outline-text-2" id="text-orge855144">
+<p>
+Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
+Seriously a lot of people hang there and answer beginner questions,
+everybody is welcome.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4ce986" class="outline-2">
+<h2 id="orgf4ce986">Other such lists</h2>
+<div class="outline-text-2" id="text-orgf4ce986">
+<p>
+Carin is cool and has a funny picture of the emacs learning curve here:
+<a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
 </p>
 
-<div class="org-src-container">
-<pre class="src src-elisp">(add-hook
- 'sh-mode-hook
- (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/add-bash-completion</span> () ...))
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-elisp">(mememacs/leader-def
-  <span style="font-style: italic;">"pP"</span> (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/project-switch-project-find-file</span> ()
-         (<span style="font-weight: bold;">interactive</span>) ...))
-</pre>
-</div>
+<p>
+I like that they have a philosophy section mentioning Rich Hickey's talks
+this matters a lot to clojurians.
+</p>
 
 <p>
-After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/commit/1e4135b977a5866de19020ba6f8a92b417339157">I went and fixed the remaining add-hook lambas</a> In my config.
+<a href="https://thoughtbot.com/blog/tips-for-clojure-beginners">https://thoughtbot.com/blog/tips-for-clojure-beginners</a>
+<a href="https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f">https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f</a>
+<a href="https://www.clojurenewbieguide.com/">https://www.clojurenewbieguide.com/</a>
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2022-09-23 Fri 18:59</p>
+<p class="date">Date: 2022-09-12 Mon 20:23</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/dir-env-process-environment.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/dir-env-process-environment.html"/>
+    <title>dir-env-process-environment</title>
+    <updated>2022-10-17T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>dir-env-process-environment</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">dir-env-process-environment</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org66f9ce3">Introduction</a></li>
+<li><a href="#orgc3f0bf2">The setup</a>
+<ul>
+<li><a href="#org0288dce">From the project I currently work on:</a></li>
+</ul>
+</li>
+<li><a href="#org5e5a719">Non-file-buffer</a></li>
+<li><a href="#org78fae75">revert with grace</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org66f9ce3" class="outline-2">
+<h2 id="org66f9ce3">Introduction</h2>
+<div class="outline-text-2" id="text-org66f9ce3">
+<p>
+Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
+</p>
+
+<p>
+An advanced use case is that you want to set up a process environment for
+everything you do inside some project.
+</p>
+
+<p>
+What I show here works for <code>compile</code>, <code>shell-command</code>, and even cider connections.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3f0bf2" class="outline-2">
+<h2 id="orgc3f0bf2">The setup</h2>
+<div class="outline-text-2" id="text-orgc3f0bf2">
+<p>
+<code>.dir-locals.el</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"FOO"</span> <span style="font-style: italic;">"hurr"</span>)))))
+</pre>
+</div>
+
+<p>
+Yes, it is a bit convoluted but for a <a href="https://emacs.stackexchange.com/questions/35964/how-can-i-get-buffer-local-environment-variables-via-dir-locals">reason.</a>
+We need to copy the list, else if somebody modifies the cdr locally,
+that would modify the global value.
+(In the case that <code>FOO</code> is an element in the list somewhere already).
+</p>
+
+<p>
+The answer mentions <code>setq-local</code>. I tried that without success.
+</p>
+
+<p>
+<code>Shell-command</code> and friends will inherit the process environmen. It pretty much just works.
+</p>
+</div>
+
+<div id="outline-container-org0288dce" class="outline-3">
+<h3 id="org0288dce">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-org0288dce">
+<div class="org-src-container">
+<pre class="src src-elisp">((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (<span style="font-weight: bold;">setq</span> process-environment
+               (copy-sequence process-environment))
+         (setenv <span style="font-style: italic;">"AWS_PROFILE"</span> <span style="font-style: italic;">"datalake-deployer"</span>)
+         (<span style="font-weight: bold;">setq-local</span> cider-clojure-cli-aliases (concat cider-clojure-cli-aliases <span style="font-style: italic;">":dev"</span>))))))
+</pre>
+</div>
+
+<p>
+Now I start cider connections with <code>AWS_PROFILE</code> set correctly.
+Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task for deploying that needs this env and it all just works.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e5a719" class="outline-2">
+<h2 id="org5e5a719">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-org5e5a719">
+<p>
+By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
+(When the local variable <code>buffer-file-name</code> is not set).
+</p>
+
+<p>
+There is a function <code>hack-dir-local-variables-non-file-buffer</code> for this purpose.
+This is called by <code>dired</code>, also <code>magit</code>.
+</p>
+
+<p>
+I usually start processes from either a (source) file buffer or dired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org78fae75" class="outline-2">
+<h2 id="org78fae75">revert with grace</h2>
+<div class="outline-text-2" id="text-org78fae75">
+<p>
+When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
+whatever buffer you want to have the effect.
+It hacks the local variables again for the buffer.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-17 Mon 09:56</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/not-even-the-sky-is-the-limit.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/not-even-the-sky-is-the-limit.html"/>
+    <title>not-even-the-sky-is-the-limit</title>
+    <updated>2022-11-15T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>not-even-the-sky-is-the-limit</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">not-even-the-sky-is-the-limit</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org15700d5">Introduction</a></li>
+<li><a href="#orgb313bcd">One way to learn is to learn on a playground</a></li>
+<li><a href="#org084cf01">Huberman</a></li>
+<li><a href="#org1c78e14">The practice</a></li>
+</ul>
+</div>
+</div>
+<p>
+Claim your nature.
+Not even the sky is the limit.
+</p>
+
+<div id="outline-container-org15700d5" class="outline-2">
+<h2 id="org15700d5">Introduction</h2>
+<div class="outline-text-2" id="text-org15700d5">
+<p>
+I have been practicing <a href="https://en.wikipedia.org/wiki/Wim_Hof">Wim Hof</a> Method for years.
+It is a spiritual path of sorts.
+</p>
+
+<p>
+There is this thing where you embrace being an animal, and animals
+are really hardcore man.
+</p>
+
+<p>
+Human animals plan, think and discover how to world works.
+</p>
+
+<p>
+The brain is the control hub of our inner physiology also.
+</p>
+
+<p>
+Getting in touch with your physiology is not mystical, and not reserved
+for a certain kind of person either.
+It is using the paths in your brain that evolved to do just
+that. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+
+<p>
+To close the loop: The inner physiology is another part of the
+world. With its mechanics, story, characters and places
+that can be discovered - and mastered to various degrees.
+Such is the human way, you are the animal
+that uses thought
+has thought
+likes stories
+</p>
+
+
+<p>
+Where can you start? With the things you already have control
+over. Hence breathing techniques, stretching and cold exposure.
+</p>
+
+<p>
+Emphasize the in-breath over the out-breath and you are pumping adrenaline.
+The other way around and you get more relaxed.
+</p>
+
+<p>
+Cold exposure pumps dopamine, with a long arc. <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>  It makes the whole day awesome.
+A cold shower is already an achievement that sets you up for performance.
+</p>
+
+<p>
+Wim has mentioned somewhere on the free part of his app something
+about determinism and having "the cold as a teacher". An upsight
+clicked clicked in me that will try to share here.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb313bcd" class="outline-2">
+<h2 id="orgb313bcd">One way to learn is to learn on a playground</h2>
+<div class="outline-text-2" id="text-orgb313bcd">
+<p>
+I will now put together 2 ideas. Learning on a playground and
+discovering the <i>rest of your brain</i>.
+</p>
+
+<p>
+There is a reason we make hello world programs. We learn in the small
+what is similar for the large.
+</p>
+
+<p>
+Say Wim Hof is right and determinism is a mental thing I can grab, or a place I can go to
+in mind, how do I learn to do so?
+</p>
+
+<p>
+Also importantly, how do you even know you are doing it?
+</p>
+
+<p>
+Enter cold showers ("The cold is our teacher").
+It is hard to kill yourself with a cold shower, yet it takes mental
+energy to go into one and to stay. It gives you a chance to be
+determined in a small, controlled, safe environment.
+</p>
+
+<p>
+You manage to endure a wall of physical discomfort, you are doing
+it. This is what determinism is.
+</p>
+
+<p>
+<i>just do it</i>
+</p>
+
+<p>
+In the lore of Wim-hoffing, you keep a calm mind and observe yourself
+being able to <i>do it</i>.
+</p>
+
+<p>
+You are deploying the mental capacities that you might call <code>determinism</code>.
+</p>
+
+<p>
+The cold shower is the playground that allows you to see how it is to
+be determined.
+</p>
+
+<p>
+You observe the mentality, the mechanics, the feel, the drive, the
+<i>just doing</i> it. What you <i>are</i> when you are being determined.
+</p>
+
+<p>
+This then, shows you how to be determined elsewhere.
+The cold is not an end goal, it is a simple, easy playground where we
+can test how it is to be determined.
+This also means we have a benchmark for whether we are deploying
+determinism, or not.
+</p>
+
+<p>
+To learn something you need some way of telling whether you are
+doing it right.
+</p>
+
+<p>
+I connect this to an experience I had while I was learning to juggle.
+There was a moment when I was doing 1 or 2 balls when I realized:
+here is a limit, a place where I can invest in training and I will get
+better and build a foundation and eventually be able to juggle. (I was right).
+</p>
+
+<blockquote>
+<p>
+The only place where you can grow is at the edge.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org084cf01" class="outline-2">
+<h2 id="org084cf01">Huberman</h2>
+<div class="outline-text-2" id="text-org084cf01">
+<p>
+<a href="https://hubermanlab.com/">Professor Huberman</a> is since recently one of the great science
+communicators of our time.
+About physiology, neuroscience and (my words) frankly, the human soul.
+</p>
+
+<p>
+Transcript from a recent Q&amp;A event (you can find it on the Huberman lab
+podcast feed):
+</p>
+
+<blockquote>
+<p>
+If you want to get the most out of the cold exposure then you want to get
+to that point of "I want to get out of here, but I know I can
+stay in safely, but I really want to get out of here".
+</p>
+
+<p>
+It's a little hard to explain, but there is just
+so much learning in those short moments about where your mind goes.
+And this sounds subjective and maybe a little whishy-washy.
+You can realize great things about yourself in those moments.
+You can find insight in those moments.
+</p>
+</blockquote>
+
+<p>
+I agree. I call this learning how to be determined.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c78e14" class="outline-2">
+<h2 id="org1c78e14">The practice</h2>
+<div class="outline-text-2" id="text-org1c78e14">
+<p>
+I can recommend the Wim hof app to get started. There is a diary thing
+where you start with 10-second cold showers after a warm shower etc.
+</p>
+
+<p>
+Tip: if you have a dispatchable shower head, put it in your hand and
+move it around. Cold exposure is all about control. If you have the
+shower head in your hand, you gain control.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+One way to describe this is by having a set of inside jokes
+with the physiology driving parts of your brain. Using your own style.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://hubermanlab.com/using-deliberate-cold-exposure-for-health-and-performance/">Andrew Huberman</a> has in recent times communicated beautifully about the
+the current science of cold exposure, breathing technique and
+stretching.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-11-15 Tue 19:20</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/pearls-of-introspection.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/pearls-of-introspection.html"/>
+    <title>pearls-of-introspection</title>
+    <updated>2022-11-12T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>pearls-of-introspection</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">pearls-of-introspection</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6cf9634">The describes</a>
+<ul>
+<li><a href="#orgec1b088">describe-mode</a></li>
+<li><a href="#org0abb405">describe-char</a></li>
+<li><a href="#org1d437da">describe-key</a></li>
+<li><a href="#orge1ed691">describe-function</a></li>
+<li><a href="#org3c75028">describe-keymap</a></li>
+<li><a href="#orgca4aa11">prefix-help-command</a>
+<ul>
+<li><a href="#org947c974">embark-bindings</a></li>
+</ul>
+</li>
+<li><a href="#org24a4bb0">M-x <code>describe-</code></a></li>
+</ul>
+</li>
+<li><a href="#org781b5fa">view-lossage</a></li>
+<li><a href="#orgbbc9b89">apropos-value</a></li>
+<li><a href="#orgbcbab5b">find-library</a></li>
+<li><a href="#org795807a">where-is</a></li>
+</ul>
+</div>
+</div>
+<p>
+Recently, I watched <a href="https://www.youtube.com/watch?v=6M1JesjbtDM">BugsWriter falling in love with elisp</a> <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> - he said
+about <code>describe-mode</code>
+</p>
+
+<blockquote>
+<p>
+Why did nobody ever tell me about this?
+</p>
+</blockquote>
+
+<p>
+This post is called Pearls of introspection.
+</p>
+
+<blockquote>
+<p>
+All of Emacs is one bright pearl.
+</p>
+</blockquote>
+
+<div id="outline-container-org6cf9634" class="outline-2">
+<h2 id="org6cf9634">The describes</h2>
+<div class="outline-text-2" id="text-org6cf9634">
+</div>
+<div id="outline-container-orgec1b088" class="outline-3">
+<h3 id="orgec1b088">describe-mode</h3>
+<div class="outline-text-3" id="text-orgec1b088">
+<p>
+Lists all current keybinds in a buffer. Huge output, sometimes what
+you want.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0abb405" class="outline-3">
+<h3 id="org0abb405">describe-char</h3>
+<div class="outline-text-3" id="text-org0abb405">
+<p>
+Emacs is a text editor, text is made up of chars.
+<code>describe-char</code>  is useful if you want to know what face is rendering.
+It goes beyond that by showing string properties, overlays,
+and buttons. This can be useful for debugging.
+</p>
+
+<p>
+Story:
+Once I deleted some packages on my system, then I go into emacs <code>info</code>
+and some of the text is not rendered right.
+</p>
+
+<p>
+<code>describe-char</code> gave me the hint, the <code>fixed-pitch</code> face wanted
+"Monospace Serif" or some such but I only had Monospace.
+</p>
+
+<p>
+So I did this and was happy ever after:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(set-face-attribute 'fixed-pitch nil  <span style="font-weight: bold;">:family</span> <span style="font-style: italic;">"Monospace"</span>)
+(set-face-attribute 'fixed-pitch-serif nil  <span style="font-weight: bold;">:family</span> <span style="font-style: italic;">"Monospace"</span>)
+</pre>
+</div>
+
+<p>
+Worth binding:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(define-key help-map (kbd <span style="font-style: italic;">"c"</span>) #'describe-char)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org1d437da" class="outline-3">
+<h3 id="org1d437da">describe-key</h3>
+<div class="outline-text-3" id="text-org1d437da">
+<p>
+"What does this key do?" - the answer is <code>describe-key</code> and hit the
+key.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge1ed691" class="outline-3">
+<h3 id="orge1ed691">describe-function</h3>
+<div class="outline-text-3" id="text-orge1ed691">
+<p>
+Emacs functions have amazing docstrings.
+</p>
+
+<p>
+The help buffer has a keymap of its own, try <code>?</code> to list keybinds.
+</p>
+
+<p>
+Highlight: <code>s</code> to go to source.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c75028" class="outline-3">
+<h3 id="org3c75028">describe-keymap</h3>
+<div class="outline-text-3" id="text-org3c75028">
+<p>
+Probably faster than describe-mode, renders a keymap in a help buffer.
+Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca4aa11" class="outline-3">
+<h3 id="orgca4aa11">prefix-help-command</h3>
+<div class="outline-text-3" id="text-orgca4aa11">
+<p>
+You type <code>?</code> after starting to type a prefix, then you get the binds.
+</p>
+</div>
+
+<div id="outline-container-org947c974" class="outline-4">
+<h4 id="org947c974">embark-bindings</h4>
+<div class="outline-text-4" id="text-org947c974">
+<p>
+An alternative to the default <code>?</code>, it is amazing. I get a vertico
+ completing-read of the binds.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org24a4bb0" class="outline-3">
+<h3 id="org24a4bb0">M-x <code>describe-</code></h3>
+<div class="outline-text-3" id="text-org24a4bb0">
+<p>
+There are more, some of them I never used. Emacs is vast like the ocean.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org781b5fa" class="outline-2">
+<h2 id="org781b5fa">view-lossage</h2>
+<div class="outline-text-2" id="text-org781b5fa">
+<p>
+You accidentally hit some key, and something unexpected happens.
+<code>view-lossage</code> is your friend. It shows the last keys + commands.
+</p>
+
+<p>
+It is like the morning-after pill version of <code>describe-key</code>.
+</p>
+
+<p>
+story:
+I sometimes accidentally hit <code>y</code> before typing the text for
+an <code>avy</code> command.
+</p>
+
+<p>
+Every time I was like "Holy cow whatever I hit there is powerful". <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+I didn't know about <code>view-lossage</code>. The thing is, it would not have
+helped, because <code>avy</code> is reading the key, then dispatching on the key.
+I guess it needs to go through the keymap system or something to show
+up in <code>view-lossage</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbbc9b89" class="outline-2">
+<h2 id="orgbbc9b89">apropos-value</h2>
+<div class="outline-text-2" id="text-orgbbc9b89">
+<p>
+This helps me about once per year.
+</p>
+
+<p>
+It is extremely satisfying when you use this and it helps you.
+I once figured out about <code>revert-buffer-function</code> by using it.
+</p>
+
+<p>
+You can revert <code>shell-command</code> buffers to rerun the command but I did
+not know by which principle.
+</p>
+
+<p>
+<code>apropos-value</code>, then typing my shell command showed me there was a
+buffer-local
+variable called <code>revert-buffer-function</code>. It worked because
+Elisp closure objects print with their environment. In other words, the
+value of <code>revert-buffer-function</code> was a lambda that printed with my
+shell command. It is quite wild.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcbab5b" class="outline-2">
+<h2 id="orgbcbab5b">find-library</h2>
+<div class="outline-text-2" id="text-orgbcbab5b">
+<p>
+Read code, and do little experiments. I am not sure but I think there
+might be something profound about Elisp and emacs.
+I think the language is the program and the program is the language or
+something. Knowing the program is to know the language and knowing the
+language is to know the program.
+(Insert link to top Elisp functions blog post here).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org795807a" class="outline-2">
+<h2 id="org795807a">where-is</h2>
+<div class="outline-text-2" id="text-org795807a">
+<p>
+I just discovered this via <code>describe-keymap</code> into <code>help-map</code> lol.
+This is like <code>describe-key</code> but you say the command and it says the
+keybinding.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><blockquote>
+<p>
+I thought lisp was going to be complicated but it is simple.
+</p>
+</blockquote>
+<p class="footpara">
+That is an interesting tension between outside perception and the
+actual language.
+Since you write the AST directly so you can say what you mean.
+The power of lisp is that the code is made of
+</p>
+<ol class="org-ol">
+<li>Ideas</li>
+<li>There is nothing else.</li>
+</ol></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+It makes the cursor stay and yank the target word.
+Hit <code>?</code> before typing the keys for avy.
+The way it works is that avy can dispatch with different actions, the
+default is to jump to the location, but <code>y</code> for example yanks a word
+and makes your cursor stay where you are. It is really powerful.
+Ace-window has the same paradigm.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-11-12 Sat 16:02</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -900,69 +1575,69 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org23fd3eb">Introduction</a></li>
-<li><a href="#org2369e7b">Emacs in a magic forest</a></li>
-<li><a href="#org9787140">read-shell-command</a></li>
-<li><a href="#orgf2b7724">bash-completion</a></li>
-<li><a href="#org70963fc">bash completions are now your lever</a>
+<li><a href="#org61cea65">Introduction</a></li>
+<li><a href="#org8e2f13f">Emacs in a magic forest</a></li>
+<li><a href="#orgea0d347">read-shell-command</a></li>
+<li><a href="#orgaa2af70">bash-completion</a></li>
+<li><a href="#orgceacd08">bash completions are now your lever</a>
 <ul>
-<li><a href="#org8e33841">Babashka tasks</a></li>
+<li><a href="#org1dd1b16">Babashka tasks</a></li>
 </ul>
 </li>
-<li><a href="#org5783eba">Commands that leverage <code>read-shell-command</code></a>
+<li><a href="#org013de53">Commands that leverage <code>read-shell-command</code></a>
 <ul>
-<li><a href="#orge77d741">shell-command</a>
+<li><a href="#org923ff83">shell-command</a>
 <ul>
-<li><a href="#org9062ae7">Here is a nugget:</a></li>
-<li><a href="#org66e6e9b">Good to know:</a></li>
-<li><a href="#org89eb88c">Output buffer</a></li>
+<li><a href="#orgf7258f6">Here is a nugget:</a></li>
+<li><a href="#org0204545">Good to know:</a></li>
+<li><a href="#org6902a75">Output buffer</a></li>
 </ul>
 </li>
-<li><a href="#orgc74d9c5">shell-command-async</a></li>
-<li><a href="#org810db68">compile</a></li>
-<li><a href="#org0545058">dired</a></li>
-<li><a href="#org5608ffd">shell-command-on-file</a></li>
+<li><a href="#org2225ec6">shell-command-async</a></li>
+<li><a href="#org2cafb87">compile</a></li>
+<li><a href="#orgf44a77f">dired</a></li>
+<li><a href="#org0bf5e7d">shell-command-on-file</a></li>
 </ul>
 </li>
-<li><a href="#org9ce1a17">It gets even better</a>
+<li><a href="#orgcf19b43">It gets even better</a>
 <ul>
-<li><a href="#org805e318">revert-buffer in compilation buffers</a></li>
+<li><a href="#org8fc11b1">revert-buffer in compilation buffers</a></li>
 </ul>
 </li>
-<li><a href="#orgaced055">Scripts at the speed of thought</a>
+<li><a href="#org85f0707">Scripts at the speed of thought</a>
 <ul>
-<li><a href="#org95e543c">mememacs/create-script</a>
+<li><a href="#org1cb279b">mememacs/create-script</a>
 <ul>
-<li><a href="#org0c28245">bash-completion in <code>sh-mode</code></a></li>
+<li><a href="#org1dffd9e">bash-completion in <code>sh-mode</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge36b969">async-shell-command, my bread and butter</a>
+<li><a href="#org7ca684c">async-shell-command, my bread and butter</a>
 <ul>
-<li><a href="#orgd7b84fe">Put the command into the buffer name</a></li>
-<li><a href="#org7ecc3ec">shell-command&#x2013;same-buffer-confirm</a></li>
-<li><a href="#orga81f9aa">shell-mode as a terminal emulator</a></li>
+<li><a href="#org5623100">Put the command into the buffer name</a></li>
+<li><a href="#org76d74db">shell-command&#x2013;same-buffer-confirm</a></li>
+<li><a href="#orgf2fd01c">shell-mode as a terminal emulator</a></li>
 </ul>
 </li>
-<li><a href="#org4679d59">process-list</a></li>
-<li><a href="#orgcd115ac">The next layer on the cake</a>
+<li><a href="#org836203e">process-list</a></li>
+<li><a href="#org8098226">The next layer on the cake</a>
 <ul>
-<li><a href="#org620ac38">project</a></li>
-<li><a href="#org6c9330c">recompile</a></li>
-<li><a href="#org5fbc4c0">ansi colors for comint</a></li>
+<li><a href="#org1813c04">project</a></li>
+<li><a href="#org42786cc">recompile</a></li>
+<li><a href="#orgaab3403">ansi colors for comint</a></li>
 </ul>
 </li>
-<li><a href="#orgd4a34dd">Levers are great</a>
+<li><a href="#org13f8ab2">Levers are great</a>
 <ul>
-<li><a href="#org5480267">ssh</a></li>
-<li><a href="#orgc2ace64">embarking</a></li>
-<li><a href="#org6952832">pass</a></li>
+<li><a href="#org8e1f354">ssh</a></li>
+<li><a href="#orgc20f86f">embarking</a></li>
+<li><a href="#org1e79db7">pass</a></li>
 </ul>
 </li>
-<li><a href="#org129d5cb">Particulars</a>
+<li><a href="#org62b5d7a">Particulars</a>
 <ul>
-<li><a href="#org7215455">shell-file-name</a></li>
+<li><a href="#orgf7e124b">shell-file-name</a></li>
 </ul>
 </li>
 </ul>
@@ -988,9 +1663,9 @@ Technology around <code>shell-command</code>.
 Simplicity and joy.
 </p>
 
-<div id="outline-container-org23fd3eb" class="outline-2">
-<h2 id="org23fd3eb">Introduction</h2>
-<div class="outline-text-2" id="text-org23fd3eb">
+<div id="outline-container-org61cea65" class="outline-2">
+<h2 id="org61cea65">Introduction</h2>
+<div class="outline-text-2" id="text-org61cea65">
 <p>
 Ok, let's just do it. You might want to hold tight to your chair because
 the juiciness and elegance of what follow might just blow you over.
@@ -998,7 +1673,7 @@ Here is how I build my <a href="https://benjamin-asdf.github.io/faster-than-ligh
 </p>
 
 
-<div id="org73cc265" class="figure">
+<div id="org92dff98" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/bb-task-demo.gif?raw=true" alt="bb-task-demo.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Using <code>compile</code> to leverage <code>read-shell-command</code> and thereby <code>bash-completions</code>. Recompiling via <code>revert-buffer</code>. Dismissing the <code>*compilation*</code> buffer.</p>
@@ -1024,9 +1699,9 @@ Here is the story of a happy little package called <code>bash-completion</code>.
 </div>
 </div>
 
-<div id="outline-container-org2369e7b" class="outline-2">
-<h2 id="org2369e7b">Emacs in a magic forest</h2>
-<div class="outline-text-2" id="text-org2369e7b">
+<div id="outline-container-org8e2f13f" class="outline-2">
+<h2 id="org8e2f13f">Emacs in a magic forest</h2>
+<div class="outline-text-2" id="text-org8e2f13f">
 <p>
 Once upon a time,
 </p>
@@ -1074,9 +1749,9 @@ make magic in <b>all</b> its corners <b>fast</b>.
 </div>
 </div>
 
-<div id="outline-container-org9787140" class="outline-2">
-<h2 id="org9787140">read-shell-command</h2>
-<div class="outline-text-2" id="text-org9787140">
+<div id="outline-container-orgea0d347" class="outline-2">
+<h2 id="orgea0d347">read-shell-command</h2>
+<div class="outline-text-2" id="text-orgea0d347">
 <p>
 This is like <code>read-from-minibuffer</code> but sets some keymap and history.
 Hit <code>&lt;tab&gt;</code>, you get completions from <code>shell-dynamic-complete-functions</code>.
@@ -1086,9 +1761,9 @@ Invoke <code>shell-command</code>, then type <code>git checkout</code>, hit tab.
 </div>
 </div>
 
-<div id="outline-container-orgf2b7724" class="outline-2">
-<h2 id="orgf2b7724">bash-completion</h2>
-<div class="outline-text-2" id="text-orgf2b7724">
+<div id="outline-container-orgaa2af70" class="outline-2">
+<h2 id="orgaa2af70">bash-completion</h2>
+<div class="outline-text-2" id="text-orgaa2af70">
 <p>
 Ok your emacs life is about to level up +1 <a href="https://github.com/szermatt/emacs-bash-completion">bash-completion</a>.
 Config:
@@ -1119,9 +1794,9 @@ opened.
 </div>
 </div>
 
-<div id="outline-container-org70963fc" class="outline-2">
-<h2 id="org70963fc">bash completions are now your lever</h2>
-<div class="outline-text-2" id="text-org70963fc">
+<div id="outline-container-orgceacd08" class="outline-2">
+<h2 id="orgceacd08">bash completions are now your lever</h2>
+<div class="outline-text-2" id="text-orgceacd08">
 <p>
 Now my friends we have entered the realm of harnessing already
 existing shell completions directly into our kingdom of emacs where
@@ -1129,9 +1804,9 @@ we cozy and effective.
 </p>
 </div>
 
-<div id="outline-container-org8e33841" class="outline-3">
-<h3 id="org8e33841">Babashka tasks</h3>
-<div class="outline-text-3" id="text-org8e33841">
+<div id="outline-container-org1dd1b16" class="outline-3">
+<h3 id="org1dd1b16">Babashka tasks</h3>
+<div class="outline-text-3" id="text-org1dd1b16">
 <p>
 Babashka tasks are one of the great discoveries of our time,
 allowing us to write build tasks in Clojure, with the
@@ -1147,18 +1822,18 @@ Now you can enjoy those babashka tasks completions.
 </div>
 </div>
 
-<div id="outline-container-org5783eba" class="outline-2">
-<h2 id="org5783eba">Commands that leverage <code>read-shell-command</code></h2>
-<div class="outline-text-2" id="text-org5783eba">
+<div id="outline-container-org013de53" class="outline-2">
+<h2 id="org013de53">Commands that leverage <code>read-shell-command</code></h2>
+<div class="outline-text-2" id="text-org013de53">
 <p>
 They use <code>read-shell-command</code>.
 Making <code>read-shell-command</code> <b>good</b> will pay off for all these.
 </p>
 </div>
 
-<div id="outline-container-orge77d741" class="outline-3">
-<h3 id="orge77d741">shell-command</h3>
-<div class="outline-text-3" id="text-orge77d741">
+<div id="outline-container-org923ff83" class="outline-3">
+<h3 id="org923ff83">shell-command</h3>
+<div class="outline-text-3" id="text-org923ff83">
 <p>
 Bound to <code>M-!</code>
 </p>
@@ -1168,9 +1843,9 @@ This is the <code>interactive</code> doorway into emacs lisp <code>start-process
 </p>
 </div>
 
-<div id="outline-container-org9062ae7" class="outline-4">
-<h4 id="org9062ae7">Here is a nugget:</h4>
-<div class="outline-text-4" id="text-org9062ae7">
+<div id="outline-container-orgf7258f6" class="outline-4">
+<h4 id="orgf7258f6">Here is a nugget:</h4>
+<div class="outline-text-4" id="text-orgf7258f6">
 <blockquote>
 <p>
 With prefix argument, insert the COMMAND's output at point.
@@ -1188,9 +1863,9 @@ Like this:
 </div>
 </div>
 
-<div id="outline-container-org66e6e9b" class="outline-4">
-<h4 id="org66e6e9b">Good to know:</h4>
-<div class="outline-text-4" id="text-org66e6e9b">
+<div id="outline-container-org0204545" class="outline-4">
+<h4 id="org0204545">Good to know:</h4>
+<div class="outline-text-4" id="text-org0204545">
 <blockquote>
 <p>
 If COMMAND ends in &amp;, execute it asynchronously.
@@ -1199,9 +1874,9 @@ If COMMAND ends in &amp;, execute it asynchronously.
 </div>
 </div>
 
-<div id="outline-container-org89eb88c" class="outline-4">
-<h4 id="org89eb88c">Output buffer</h4>
-<div class="outline-text-4" id="text-org89eb88c">
+<div id="outline-container-org6902a75" class="outline-4">
+<h4 id="org6902a75">Output buffer</h4>
+<div class="outline-text-4" id="text-org6902a75">
 <p>
 Your command output is located by default in a buffer named by <code>shell-command-buffer-name</code>.
 Or <code>shell-command-buffer-name-async</code> when async.
@@ -1210,9 +1885,9 @@ Or <code>shell-command-buffer-name-async</code> when async.
 </div>
 </div>
 
-<div id="outline-container-orgc74d9c5" class="outline-3">
-<h3 id="orgc74d9c5">shell-command-async</h3>
-<div class="outline-text-3" id="text-orgc74d9c5">
+<div id="outline-container-org2225ec6" class="outline-3">
+<h3 id="org2225ec6">shell-command-async</h3>
+<div class="outline-text-3" id="text-org2225ec6">
 <p>
 Bound to <code>M-&amp;</code> and has the same effect as adding a <code>&amp;</code> in <code>shell-command</code>.
 To kill the process I can hit <code>C-c C-c</code>.
@@ -1220,9 +1895,9 @@ To kill the process I can hit <code>C-c C-c</code>.
 </div>
 </div>
 
-<div id="outline-container-org810db68" class="outline-3">
-<h3 id="org810db68">compile</h3>
-<div class="outline-text-3" id="text-org810db68">
+<div id="outline-container-org2cafb87" class="outline-3">
+<h3 id="org2cafb87">compile</h3>
+<div class="outline-text-3" id="text-org2cafb87">
 <p>
 Very useful, very similar to <code>shell-command-async</code>.
 Always uses the same buffer called <code>*compilation*</code>.
@@ -1232,9 +1907,9 @@ it auto makes a compile command in that project.
 </div>
 </div>
 
-<div id="outline-container-org0545058" class="outline-3">
-<h3 id="org0545058">dired</h3>
-<div class="outline-text-3" id="text-org0545058">
+<div id="outline-container-orgf44a77f" class="outline-3">
+<h3 id="orgf44a77f">dired</h3>
+<div class="outline-text-3" id="text-orgf44a77f">
 <p>
 <code>dired-do-shell-command</code> and <code>dired-do-async-shell-command</code>
 are symetrical with <code>shell-command</code> and <code>async-shell-command</code>.
@@ -1249,9 +1924,9 @@ or the marked files, but is implicit as the last arg.
 </div>
 </div>
 
-<div id="outline-container-org5608ffd" class="outline-3">
-<h3 id="org5608ffd">shell-command-on-file</h3>
-<div class="outline-text-3" id="text-org5608ffd">
+<div id="outline-container-org0bf5e7d" class="outline-3">
+<h3 id="org0bf5e7d">shell-command-on-file</h3>
+<div class="outline-text-3" id="text-org0bf5e7d">
 <p>
 Sometimes you are currently visiting a script file and you just want
 to run it.
@@ -1276,9 +1951,9 @@ Thanks to <a href="https://github.com/Gavinok/emacs.d">Gavin Freeborn</a> for th
 </div>
 </div>
 
-<div id="outline-container-org9ce1a17" class="outline-2">
-<h2 id="org9ce1a17">It gets even better</h2>
-<div class="outline-text-2" id="text-org9ce1a17">
+<div id="outline-container-orgcf19b43" class="outline-2">
+<h2 id="orgcf19b43">It gets even better</h2>
+<div class="outline-text-2" id="text-orgcf19b43">
 <p>
 Let me introduce you to the wonders of <code>revert-buffer-function</code>.
 Now, <code>revert-buffer</code> is a powerful command by itself.
@@ -1305,9 +1980,9 @@ nicely. There is no mental burden with this.
 </p>
 </div>
 
-<div id="outline-container-org805e318" class="outline-3">
-<h3 id="org805e318">revert-buffer in compilation buffers</h3>
-<div class="outline-text-3" id="text-org805e318">
+<div id="outline-container-org8fc11b1" class="outline-3">
+<h3 id="org8fc11b1">revert-buffer in compilation buffers</h3>
+<div class="outline-text-3" id="text-org8fc11b1">
 <div class="org-src-container">
 <pre class="src src-elisp">(advice-add
    #'compilation-revert-buffer
@@ -1328,20 +2003,20 @@ compile command, without asking.
 </div>
 
 
-<div id="outline-container-orgaced055" class="outline-2">
-<h2 id="orgaced055">Scripts at the speed of thought</h2>
-<div class="outline-text-2" id="text-orgaced055">
+<div id="outline-container-org85f0707" class="outline-2">
+<h2 id="org85f0707">Scripts at the speed of thought</h2>
+<div class="outline-text-2" id="text-org85f0707">
 
-<div id="orgc97abb4" class="figure">
+<div id="org382deff" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/insta-script.gif?raw=true" alt="insta-script.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Make a script, and run the script. Leveraging <code>bash-completion</code> in <code>shell-script-mode</code>.</p>
 </div>
 </div>
 
-<div id="outline-container-org95e543c" class="outline-3">
-<h3 id="org95e543c">mememacs/create-script</h3>
-<div class="outline-text-3" id="text-org95e543c">
+<div id="outline-container-org1cb279b" class="outline-3">
+<h3 id="org1cb279b">mememacs/create-script</h3>
+<div class="outline-text-3" id="text-org1cb279b">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-script*</span> (file bang setup)
   (find-file file)
@@ -1379,9 +2054,9 @@ Shellcheck makes superb warnings. Firmly in my "adopt" circle.
 </p>
 </div>
 
-<div id="outline-container-org0c28245" class="outline-4">
-<h4 id="org0c28245">bash-completion in <code>sh-mode</code></h4>
-<div class="outline-text-4" id="text-org0c28245">
+<div id="outline-container-org1dffd9e" class="outline-4">
+<h4 id="org1dffd9e">bash-completion in <code>sh-mode</code></h4>
+<div class="outline-text-4" id="text-org1dffd9e">
 <p>
 Here is my full <code>bash-completion</code> config that adds to <code>capf</code>.
 </p>
@@ -1413,9 +2088,9 @@ Here is my full <code>bash-completion</code> config that adds to <code>capf</cod
 </div>
 </div>
 
-<div id="outline-container-orge36b969" class="outline-2">
-<h2 id="orge36b969">async-shell-command, my bread and butter</h2>
-<div class="outline-text-2" id="text-orge36b969">
+<div id="outline-container-org7ca684c" class="outline-2">
+<h2 id="org7ca684c">async-shell-command, my bread and butter</h2>
+<div class="outline-text-2" id="text-org7ca684c">
 <p>
 Of these commands, it is the one I use the most.
 And really, all the other commands could be performed in terms of it.
@@ -1423,9 +2098,9 @@ Here is some of my journey of smoothing out some edges.
 </p>
 </div>
 
-<div id="outline-container-orgd7b84fe" class="outline-3">
-<h3 id="orgd7b84fe">Put the command into the buffer name</h3>
-<div class="outline-text-3" id="text-orgd7b84fe">
+<div id="outline-container-org5623100" class="outline-3">
+<h3 id="org5623100">Put the command into the buffer name</h3>
+<div class="outline-text-3" id="text-org5623100">
 <p>
 When you run a second command, by default, it tries to reuse the old buffer and asks you
 </p>
@@ -1491,9 +2166,9 @@ And the buffers don't have an anonymous name like <code>*async-shell-command&lt;
 </div>
 </div>
 
-<div id="outline-container-org7ecc3ec" class="outline-3">
-<h3 id="org7ecc3ec">shell-command&#x2013;same-buffer-confirm</h3>
-<div class="outline-text-3" id="text-org7ecc3ec">
+<div id="outline-container-org76d74db" class="outline-3">
+<h3 id="org76d74db">shell-command&#x2013;same-buffer-confirm</h3>
+<div class="outline-text-3" id="text-org76d74db">
 <p>
 Sort of a power setting when you do <code>async-shell-command</code> a lot.
 I used to have this to <code>'confirm-kill-process</code>
@@ -1511,9 +2186,9 @@ If I want to kill I can do <code>C-c C-c</code> on the old buffer.
 </div>
 </div>
 
-<div id="outline-container-orga81f9aa" class="outline-3">
-<h3 id="orga81f9aa">shell-mode as a terminal emulator</h3>
-<div class="outline-text-3" id="text-orga81f9aa">
+<div id="outline-container-orgf2fd01c" class="outline-3">
+<h3 id="orgf2fd01c">shell-mode as a terminal emulator</h3>
+<div class="outline-text-3" id="text-orgf2fd01c">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/shell-via-async-shell-command</span> ()
     (switch-to-buffer
@@ -1535,9 +2210,9 @@ I get all the evil stuff for free in <code>shell</code> buffers.
 </div>
 </div>
 
-<div id="outline-container-org4679d59" class="outline-2">
-<h2 id="org4679d59">process-list</h2>
-<div class="outline-text-2" id="text-org4679d59">
+<div id="outline-container-org836203e" class="outline-2">
+<h2 id="org836203e">process-list</h2>
+<div class="outline-text-2" id="text-org836203e">
 <p>
 You get a list of all current processes.
 Here is a function I have bound in <code>process-menu-mode-map</code> :
@@ -1575,17 +2250,17 @@ Then you know <code>ibuffer</code>. They are analogous by design.
 </div>
 </div>
 
-<div id="outline-container-orgcd115ac" class="outline-2">
-<h2 id="orgcd115ac">The next layer on the cake</h2>
-<div class="outline-text-2" id="text-orgcd115ac">
+<div id="outline-container-org8098226" class="outline-2">
+<h2 id="org8098226">The next layer on the cake</h2>
+<div class="outline-text-2" id="text-org8098226">
 <p>
 More context for <code>shell-command</code>.
 </p>
 </div>
 
-<div id="outline-container-org620ac38" class="outline-3">
-<h3 id="org620ac38">project</h3>
-<div class="outline-text-3" id="text-org620ac38">
+<div id="outline-container-org1813c04" class="outline-3">
+<h3 id="org1813c04">project</h3>
+<div class="outline-text-3" id="text-org1813c04">
 <p>
 I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile</code> in the project root. Analogously, there is <code>project-async-shell-command</code>.
 <code>projectile</code>, a big and widely used package, provides similar commands.
@@ -1593,9 +2268,9 @@ I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile<
 </div>
 </div>
 
-<div id="outline-container-org6c9330c" class="outline-3">
-<h3 id="org6c9330c">recompile</h3>
-<div class="outline-text-3" id="text-org6c9330c">
+<div id="outline-container-org42786cc" class="outline-3">
+<h3 id="org42786cc">recompile</h3>
+<div class="outline-text-3" id="text-org42786cc">
 <p>
 Similar to going to the <code>*compilation*</code> buffer and <code>revert-buffer</code>.
 But a single command.
@@ -1603,9 +2278,9 @@ But a single command.
 </div>
 </div>
 
-<div id="outline-container-org5fbc4c0" class="outline-3">
-<h3 id="org5fbc4c0">ansi colors for comint</h3>
-<div class="outline-text-3" id="text-org5fbc4c0">
+<div id="outline-container-orgaab3403" class="outline-3">
+<h3 id="orgaab3403">ansi colors for comint</h3>
+<div class="outline-text-3" id="text-orgaab3403">
 <p>
 If you use <a href="https://github.com/lambdaisland/kaocha">Koacha</a> together with <code>compile</code>,
 you will get output sprinkled with ANSI (color) escape codes.
@@ -1641,7 +2316,7 @@ Koacha output looks like this:
 </p>
 
 
-<div id="orge5c4a53" class="figure">
+<div id="orgec0fa41" class="figure">
 <p><img src="https://i.imgur.com/5vpmnsu.png" alt="5vpmnsu.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>A <code>compile</code> buffer running <code>Koacha</code> with pleasing green colored output text.</p>
@@ -1650,13 +2325,13 @@ Koacha output looks like this:
 </div>
 </div>
 
-<div id="outline-container-orgd4a34dd" class="outline-2">
-<h2 id="orgd4a34dd">Levers are great</h2>
-<div class="outline-text-2" id="text-orgd4a34dd">
+<div id="outline-container-org13f8ab2" class="outline-2">
+<h2 id="org13f8ab2">Levers are great</h2>
+<div class="outline-text-2" id="text-org13f8ab2">
 </div>
-<div id="outline-container-org5480267" class="outline-3">
-<h3 id="org5480267">ssh</h3>
-<div class="outline-text-3" id="text-org5480267">
+<div id="outline-container-org8e1f354" class="outline-3">
+<h3 id="org8e1f354">ssh</h3>
+<div class="outline-text-3" id="text-org8e1f354">
 <p>
 Nice tip in case you did not know:
 You can define preset configs in <code>~/.ssh/config</code> and they will show up
@@ -1677,16 +2352,16 @@ I hit tap and I get <code>dotomic-system-ec2</code> as completion. Yes!
 </div>
 </div>
 
-<div id="outline-container-orgc2ace64" class="outline-3">
-<h3 id="orgc2ace64">embarking</h3>
-<div class="outline-text-3" id="text-orgc2ace64">
+<div id="outline-container-orgc20f86f" class="outline-3">
+<h3 id="orgc20f86f">embarking</h3>
+<div class="outline-text-3" id="text-orgc20f86f">
 <p>
 Through <a href="https://github.com/oantolin/embark">embark</a> the power of completions is further amplified.
 For instance, I can complete git branches via <code>git checkout</code> completions.
 </p>
 
 
-<div id="orga685c57" class="figure">
+<div id="orgb4aab1c" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/embarking-git-branches.gif?raw=true" alt="embarking-git-branches.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Abusing <code>read-shell-command</code> to dispatch with <code>embark</code> on git checkout completions. Invoking <code>embark-insert</code> as an example.</p>
@@ -1694,9 +2369,9 @@ For instance, I can complete git branches via <code>git checkout</code> completi
 </div>
 </div>
 
-<div id="outline-container-org6952832" class="outline-3">
-<h3 id="org6952832">pass</h3>
-<div class="outline-text-3" id="text-org6952832">
+<div id="outline-container-org1e79db7" class="outline-3">
+<h3 id="org1e79db7">pass</h3>
+<div class="outline-text-3" id="text-org1e79db7">
 <p>
 Another example. I used to use <a href="https://github.com/emacs-helm/helm-pass/blob/master/helm-pass.el">helm-pass</a> for <code>pass</code>.
 Guess what, <code>pass</code> has great shell completions.
@@ -1706,13 +2381,13 @@ I get a free interface to <code>pass</code> just with <code>async-shell-command<
 </div>
 </div>
 
-<div id="outline-container-org129d5cb" class="outline-2">
-<h2 id="org129d5cb">Particulars</h2>
-<div class="outline-text-2" id="text-org129d5cb">
+<div id="outline-container-org62b5d7a" class="outline-2">
+<h2 id="org62b5d7a">Particulars</h2>
+<div class="outline-text-2" id="text-org62b5d7a">
 </div>
-<div id="outline-container-org7215455" class="outline-3">
-<h3 id="org7215455">shell-file-name</h3>
-<div class="outline-text-3" id="text-org7215455">
+<div id="outline-container-orgf7e124b" class="outline-3">
+<h3 id="orgf7e124b">shell-file-name</h3>
+<div class="outline-text-3" id="text-orgf7e124b">
 <p>
 It matters.
 For instance, if you use "/bin/bash" and you set up your path in a <code>zshrc</code> that might be a pitfall.
@@ -1724,6 +2399,153 @@ Another thing that happened to me was that <a href="https://www.funtoo.org/Funto
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-09-22 Thu 12:32</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/backing-you-up.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/backing-you-up.html"/>
+    <title>backing-you-up</title>
+    <updated>2022-10-14T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>backing-you-up</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">backing-you-up</h1>
+<p>
+File backups are useful.
+It happenend more than once to me that I found something in a backup
+somewhere from 2 months ago that did no end up being commited in git.
+</p>
+
+<p>
+Frequent file backups will make you more relaxed.
+</p>
+
+<div id="outline-container-org232b132" class="outline-3">
+<h3 id="org232b132"><code>backup-each-save</code></h3>
+<div class="outline-text-3" id="text-org232b132">
+<p>
+Saving buffers is a great joy of life.
+</p>
+
+<p>
+With <code>backup-each-save</code>, each save also makes a backup file in a backup dir.
+</p>
+
+<p>
+config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package backup-each-save
+  <span style="font-weight: bold;">:config</span>
+  (add-hook 'after-save-hook #'backup-each-save)
+  (<span style="font-weight: bold;">setf</span> make-backup-files nil))
+</pre>
+</div>
+
+<p>
+Lol, this is how the backup dir looks for this file I am currently modifying.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">-rw-r--r--  1 benj benj  858 Oct  4 16:06 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_06_00
+-rw-r--r--  1 benj benj  916 Oct  4 16:06 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_06_50
+-rw-r--r--  1 benj benj  935 Oct  4 16:07 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_07_21
+-rw-r--r--  1 benj benj  937 Oct  4 16:07 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_07_45
+-rw-r--r--  1 benj benj  959 Oct  4 16:08 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_08_05
+-rw-r--r--  1 benj benj 1.1K Oct  4 16:10 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_10_08
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:12 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_12_08
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:12 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_12_42
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:13 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_13_15
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:13 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_13_28
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:13 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_13_36
+-rw-r--r--  1 benj benj 1.3K Oct  4 16:13 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_13_40
+-rw-r--r--  1 benj benj 2.7K Oct  4 16:16 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_16_09
+-rw-r--r--  1 benj benj 2.7K Oct  4 16:16 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_16_18
+-rw-r--r--  1 benj benj 2.8K Oct  4 16:16 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_16_42
+-rw-r--r--  1 benj benj 2.8K Oct  4 16:16 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_16_49
+-rw-r--r--  1 benj benj 2.8K Oct  4 16:17 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_17_11
+-rw-r--r--  1 benj benj 2.9K Oct  4 16:17 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_17_47
+-rw-r--r--  1 benj benj 2.9K Oct  4 16:18 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_18_34
+-rw-r--r--  1 benj benj 2.9K Oct  4 16:18 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_18_37
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:19 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_19_07
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:19 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_19_10
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:27 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_27_36
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:27 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_27_54
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:28 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_28_10
+-rw-r--r--  1 benj benj 3.1K Oct  4 16:28 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_28_16
+-rw-r--r--  1 benj benj 3.2K Oct  4 16:28 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_28_52
+-rw-r--r--  1 benj benj 3.2K Oct  4 16:31 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_31_40
+-rw-r--r--  1 benj benj 3.3K Oct  4 16:31 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_31_48
+-rw-r--r--  1 benj benj 3.4K Oct  4 16:32 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_32_34
+-rw-r--r--  1 benj benj 3.3K Oct  4 16:32 20221004T160458--scratching-in-space__emacs.org-2022_10_04_16_32_40
+</pre>
+</div>
+
+<p>
+The backup dir size doesnt matter compared to the vastness of my disk space.
+</p>
+
+<p>
+Laptop:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">du -h -d0 ~/.backups/
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">| 43M | /home/benj/.backups/ |
+</pre>
+</div>
+
+<p>
+It just doesn't matter.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0e9ecf1" class="outline-2">
+<h2 id="org0e9ecf1">The space age</h2>
+<div class="outline-text-2" id="text-org0e9ecf1">
+<p>
+Other instances of emacs in the space age:
+</p>
+
+<ul class="org-ul">
+<li><a href="scratching-in-space.html">scratching in space</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-14 Fri 15:33</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -1764,65 +2586,65 @@ Another thing that happened to me was that <a href="https://www.funtoo.org/Funto
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb41687d">Introduction</a>
+<li><a href="#org976bdda">Introduction</a>
 <ul>
-<li><a href="#org1d4e82d">What are binaural beats?</a></li>
-<li><a href="#org3ade306">Science</a></li>
-<li><a href="#org400d8e8">Frequency</a></li>
-<li><a href="#org621ca6f">The neuroscience of the auditory system </a></li>
-<li><a href="#orge8340b4">I think this is ultra cool</a></li>
-<li><a href="#orge4eaf2e">Give me those binaural beats</a>
+<li><a href="#orga0691a6">What are binaural beats?</a></li>
+<li><a href="#org185faf9">Science</a></li>
+<li><a href="#org67661a1">Frequency</a></li>
+<li><a href="#org5786f20">The neuroscience of the auditory system </a></li>
+<li><a href="#org2aae038">I think this is ultra cool</a></li>
+<li><a href="#org1f261e7">Give me those binaural beats</a>
 <ul>
-<li><a href="#orgec85d18">The problem statement:</a></li>
+<li><a href="#org98132df">The problem statement:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org547c13c">scittle</a>
+<li><a href="#org23eeb08">scittle</a>
 <ul>
-<li><a href="#org5ffeebf">1 ear, 1 sound</a>
+<li><a href="#orgfea49d8">1 ear, 1 sound</a>
 <ul>
-<li><a href="#orgc6c2716">The first playground</a></li>
+<li><a href="#org953c9bf">The first playground</a></li>
 </ul>
 </li>
-<li><a href="#org88928fc">Playing Hz, first round</a></li>
+<li><a href="#org3b0c1b7">Playing Hz, first round</a></li>
 </ul>
 </li>
-<li><a href="#orgd359a2e">binaural!</a>
+<li><a href="#org2b8557b">binaural!</a>
 <ul>
-<li><a href="#orgdee0b09">just put the second sound in the other ear, whatever</a></li>
+<li><a href="#orgc974253">just put the second sound in the other ear, whatever</a></li>
 </ul>
 </li>
-<li><a href="#org804a45d">Intermediate results</a>
+<li><a href="#orgce2e7d0">Intermediate results</a>
 <ul>
-<li><a href="#orgf73a903">Artifacts</a></li>
-<li><a href="#org57c237b">Binaural beat?</a></li>
+<li><a href="#org0c0bc89">Artifacts</a></li>
+<li><a href="#org053f1a6">Binaural beat?</a></li>
 </ul>
 </li>
-<li><a href="#orgca62bb4">Change the base frequency</a>
+<li><a href="#org3291631">Change the base frequency</a>
 <ul>
-<li><a href="#orgc71ad8c">I really need a slider for frequencies in my life.</a>
+<li><a href="#orgb2c9bfe">I really need a slider for frequencies in my life.</a>
 <ul>
-<li><a href="#org171ffa4">nice dev experience, scittle really</a></li>
-<li><a href="#org72b207f">code:</a></li>
+<li><a href="#org02fb1a4">nice dev experience, scittle really</a></li>
+<li><a href="#org87d678f">code:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgfdf3a01">Notes</a>
+<li><a href="#org7c5b3b8">Notes</a>
 <ul>
-<li><a href="#org04919a9">Images</a></li>
-<li><a href="#org33930bd">Update 1</a></li>
-<li><a href="#org515d53f">Update 2</a></li>
+<li><a href="#orgc518874">Images</a></li>
+<li><a href="#org9340d58">Update 1</a></li>
+<li><a href="#orgc199184">Update 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb41687d" class="outline-2">
-<h2 id="orgb41687d">Introduction</h2>
-<div class="outline-text-2" id="text-orgb41687d">
+<div id="outline-container-org976bdda" class="outline-2">
+<h2 id="org976bdda">Introduction</h2>
+<div class="outline-text-2" id="text-org976bdda">
 <p>
 The best thing about being a rationalist is figuring out you are wrong
 about something.
@@ -1840,9 +2662,9 @@ neuroscience and pose a fun engineering problem on top of that!
 </p>
 </div>
 
-<div id="outline-container-org1d4e82d" class="outline-3">
-<h3 id="org1d4e82d">What are binaural beats?</h3>
-<div class="outline-text-3" id="text-org1d4e82d">
+<div id="outline-container-orga0691a6" class="outline-3">
+<h3 id="orga0691a6">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orga0691a6">
 <p>
 <a href="https://simple.wikipedia.org/wiki/Binaural_beats">Wikipedia</a>
 </p>
@@ -1861,9 +2683,9 @@ For example, if a 530 Hz pure tone is presented to a subject's right ear, while 
 </div>
 </div>
 
-<div id="outline-container-org3ade306" class="outline-3">
-<h3 id="org3ade306">Science</h3>
-<div class="outline-text-3" id="text-org3ade306">
+<div id="outline-container-org185faf9" class="outline-3">
+<h3 id="org185faf9">Science</h3>
+<div class="outline-text-3" id="text-org185faf9">
 <p>
 There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
 attention tasks when listening to binaural beats.
@@ -1878,7 +2700,7 @@ Oh yes, I certainly want more of that memory and attention.
 </p>
 
 
-<div id="org12757a5" class="figure">
+<div id="org4fd3e84" class="figure">
 <p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.</p>
@@ -1887,9 +2709,9 @@ Oh yes, I certainly want more of that memory and attention.
 </div>
 
 
-<div id="outline-container-org400d8e8" class="outline-3">
-<h3 id="org400d8e8">Frequency</h3>
-<div class="outline-text-3" id="text-org400d8e8">
+<div id="outline-container-org67661a1" class="outline-3">
+<h3 id="org67661a1">Frequency</h3>
+<div class="outline-text-3" id="text-org67661a1">
 <p>
 Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
 really do not want to listen to those.
@@ -1918,9 +2740,9 @@ memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/B
 </div>
 </div>
 
-<div id="outline-container-org621ca6f" class="outline-3">
-<h3 id="org621ca6f">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
-<div class="outline-text-3" id="text-org621ca6f">
+<div id="outline-container-org5786f20" class="outline-3">
+<h3 id="org5786f20">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-org5786f20">
 <p>
 Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
@@ -1968,9 +2790,9 @@ I'm guessing those then start firing in the 40Hz frequency and that is interpret
 </div>
 </div>
 
-<div id="outline-container-orge8340b4" class="outline-3">
-<h3 id="orge8340b4">I think this is ultra cool</h3>
-<div class="outline-text-3" id="text-orge8340b4">
+<div id="outline-container-org2aae038" class="outline-3">
+<h3 id="org2aae038">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-org2aae038">
 <p>
 You throw some energy at the brain in the right form (in this case
 some sound waves) and it reacts in some special way.
@@ -2001,9 +2823,9 @@ but I really get the same results mix as when I search for <code>binaural beats<
 </div>
 
 
-<div id="outline-container-orge4eaf2e" class="outline-3">
-<h3 id="orge4eaf2e">Give me those binaural beats</h3>
-<div class="outline-text-3" id="text-orge4eaf2e">
+<div id="outline-container-org1f261e7" class="outline-3">
+<h3 id="org1f261e7">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-org1f261e7">
 <p>
 I dint feel like opening a youtube video just to listen to some
 sounds. As an aspiring hacker and engineer, I just want to make my
@@ -2012,9 +2834,9 @@ So I decided to make a simple website that just makes binaural beats and nothing
 </p>
 </div>
 
-<div id="outline-container-orgec85d18" class="outline-4">
-<h4 id="orgec85d18">The problem statement:</h4>
-<div class="outline-text-4" id="text-orgec85d18">
+<div id="outline-container-org98132df" class="outline-4">
+<h4 id="org98132df">The problem statement:</h4>
+<div class="outline-text-4" id="text-org98132df">
 <p>
 Make a sound on 1 ear (e.g. left headphone speaker)
 </p>
@@ -2027,9 +2849,9 @@ Make a second sound on the other ear, with a +40Hz frequency.
 </div>
 </div>
 
-<div id="outline-container-org547c13c" class="outline-2">
-<h2 id="org547c13c">scittle</h2>
-<div class="outline-text-2" id="text-org547c13c">
+<div id="outline-container-org23eeb08" class="outline-2">
+<h2 id="org23eeb08">scittle</h2>
+<div class="outline-text-2" id="text-org23eeb08">
 <p>
 I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
 and get greeted with a friendly <code>Isn't cool? this :)</code>.
@@ -2041,9 +2863,9 @@ Then do the <code>cider-connect-cljs</code>
 </p>
 </div>
 
-<div id="outline-container-org5ffeebf" class="outline-3">
-<h3 id="org5ffeebf">1 ear, 1 sound</h3>
-<div class="outline-text-3" id="text-org5ffeebf">
+<div id="outline-container-orgfea49d8" class="outline-3">
+<h3 id="orgfea49d8">1 ear, 1 sound</h3>
+<div class="outline-text-3" id="text-orgfea49d8">
 <p>
 First I think let's start making a sound in 1 ear.
 </p>
@@ -2060,9 +2882,9 @@ I am figuring something inside the speech area should sound natural
 </p>
 </div>
 
-<div id="outline-container-orgc6c2716" class="outline-4">
-<h4 id="orgc6c2716">The first playground</h4>
-<div class="outline-text-4" id="text-orgc6c2716">
+<div id="outline-container-org953c9bf" class="outline-4">
+<h4 id="org953c9bf">The first playground</h4>
+<div class="outline-text-4" id="text-org953c9bf">
 <p>
 I have a file called playground.clj
 (Later I figured out I should rename to .cljs :) ).
@@ -2101,9 +2923,9 @@ that I move the headphone to the side.
 </div>
 </div>
 
-<div id="outline-container-org88928fc" class="outline-3">
-<h3 id="org88928fc">Playing Hz, first round</h3>
-<div class="outline-text-3" id="text-org88928fc">
+<div id="outline-container-org3b0c1b7" class="outline-3">
+<h3 id="org3b0c1b7">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-org3b0c1b7">
 <p>
 Here is a more endurable sound:
 </p>
@@ -2136,9 +2958,9 @@ Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</
 </div>
 
 
-<div id="outline-container-orgd359a2e" class="outline-2">
-<h2 id="orgd359a2e">binaural!</h2>
-<div class="outline-text-2" id="text-orgd359a2e">
+<div id="outline-container-org2b8557b" class="outline-2">
+<h2 id="org2b8557b">binaural!</h2>
+<div class="outline-text-2" id="text-org2b8557b">
 <p>
 Let's do the thing where I add +40Hz and play that on the other ear.
 First I start generalizing how I make a panner:
@@ -2158,7 +2980,7 @@ First I start generalizing how I make a panner:
 For some reason running this I get:
 </p>
 
-<pre class="example" id="org1fe466c">
+<pre class="example" id="org48b8576">
 Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
 </pre>
 
@@ -2168,9 +2990,9 @@ this error, in the meantime&#x2026;
 </p>
 </div>
 
-<div id="outline-container-orgdee0b09" class="outline-3">
-<h3 id="orgdee0b09">just put the second sound in the other ear, whatever</h3>
-<div class="outline-text-3" id="text-orgdee0b09">
+<div id="outline-container-orgc974253" class="outline-3">
+<h3 id="orgc974253">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-orgc974253">
 <div class="org-src-container">
 <pre class="src src-Clojure">(ns beats)
 
@@ -2213,13 +3035,13 @@ lol, it works.
 </div>
 </div>
 
-<div id="outline-container-org804a45d" class="outline-2">
-<h2 id="org804a45d">Intermediate results</h2>
-<div class="outline-text-2" id="text-org804a45d">
+<div id="outline-container-orgce2e7d0" class="outline-2">
+<h2 id="orgce2e7d0">Intermediate results</h2>
+<div class="outline-text-2" id="text-orgce2e7d0">
 </div>
-<div id="outline-container-orgf73a903" class="outline-3">
-<h3 id="orgf73a903">Artifacts</h3>
-<div class="outline-text-3" id="text-orgf73a903">
+<div id="outline-container-org0c0bc89" class="outline-3">
+<h3 id="org0c0bc89">Artifacts</h3>
+<div class="outline-text-3" id="text-org0c0bc89">
 <p>
 Every now and then there are artifacts in the sound with my headphones setup.
 Some are just rustling and crackling.
@@ -2233,9 +3055,9 @@ sort of slow mow.
 </div>
 </div>
 
-<div id="outline-container-org57c237b" class="outline-3">
-<h3 id="org57c237b">Binaural beat?</h3>
-<div class="outline-text-3" id="text-org57c237b">
+<div id="outline-container-org053f1a6" class="outline-3">
+<h3 id="org053f1a6">Binaural beat?</h3>
+<div class="outline-text-3" id="text-org053f1a6">
 <p>
 Pretty sure I get the third-tone illusion.
 I would describe it as some kind of background or in between "airy"
@@ -2247,9 +3069,9 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 </div>
 </div>
 
-<div id="outline-container-orgca62bb4" class="outline-2">
-<h2 id="orgca62bb4">Change the base frequency</h2>
-<div class="outline-text-2" id="text-orgca62bb4">
+<div id="outline-container-org3291631" class="outline-2">
+<h2 id="org3291631">Change the base frequency</h2>
+<div class="outline-text-2" id="text-org3291631">
 <p>
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
@@ -2257,9 +3079,9 @@ left and right ear invariant. I should then constantly perceive a 3rd tone which
 </p>
 </div>
 
-<div id="outline-container-orgc71ad8c" class="outline-3">
-<h3 id="orgc71ad8c">I really need a slider for frequencies in my life.</h3>
-<div class="outline-text-3" id="text-orgc71ad8c">
+<div id="outline-container-orgb2c9bfe" class="outline-3">
+<h3 id="orgb2c9bfe">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-orgb2c9bfe">
 <p>
 I did not do much web dev in my life and making a slider was a first.
 </p>
@@ -2270,9 +3092,9 @@ I managed to put something together, drawing inspiration from
 </p>
 </div>
 
-<div id="outline-container-org171ffa4" class="outline-4">
-<h4 id="org171ffa4">nice dev experience, scittle really</h4>
-<div class="outline-text-4" id="text-org171ffa4">
+<div id="outline-container-org02fb1a4" class="outline-4">
+<h4 id="org02fb1a4">nice dev experience, scittle really</h4>
+<div class="outline-text-4" id="text-org02fb1a4">
 <ol class="org-ol">
 <li>I did not need to restart my REPL at any point, adding those Html
 elements, then reloading my index.html - it handles that.</li>
@@ -2292,7 +3114,7 @@ At least with cider.
 
 
 
-<div id="org5fed164" class="figure">
+<div id="org2111714" class="figure">
 <p><img src="https://i.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.</p>
@@ -2306,9 +3128,9 @@ I imagine it scurrying and curiously sniffing around.
 </div>
 </div>
 
-<div id="outline-container-org72b207f" class="outline-4">
-<h4 id="org72b207f">code:</h4>
-<div class="outline-text-4" id="text-org72b207f">
+<div id="outline-container-org87d678f" class="outline-4">
+<h4 id="org87d678f">code:</h4>
+<div class="outline-text-4" id="text-org87d678f">
 <p>
 index.html
 </p>
@@ -2419,7 +3241,7 @@ integrating patterns of the brain and mind.
 </p>
 
 
-<div id="org7bee9b3" class="figure">
+<div id="org7172eb2" class="figure">
 <p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.</p>
@@ -2429,13 +3251,13 @@ integrating patterns of the brain and mind.
 </div>
 </div>
 
-<div id="outline-container-orgfdf3a01" class="outline-2">
-<h2 id="orgfdf3a01">Notes</h2>
-<div class="outline-text-2" id="text-orgfdf3a01">
+<div id="outline-container-org7c5b3b8" class="outline-2">
+<h2 id="org7c5b3b8">Notes</h2>
+<div class="outline-text-2" id="text-org7c5b3b8">
 </div>
-<div id="outline-container-org04919a9" class="outline-3">
-<h3 id="org04919a9">Images</h3>
-<div class="outline-text-3" id="text-org04919a9">
+<div id="outline-container-orgc518874" class="outline-3">
+<h3 id="orgc518874">Images</h3>
+<div class="outline-text-3" id="text-orgc518874">
 <p>
 Made with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable-diffusion</a>.
 The captions are the prompts I used.
@@ -2443,9 +3265,9 @@ The captions are the prompts I used.
 </div>
 </div>
 
-<div id="outline-container-org33930bd" class="outline-3">
-<h3 id="org33930bd">Update 1</h3>
-<div class="outline-text-3" id="text-org33930bd">
+<div id="outline-container-org9340d58" class="outline-3">
+<h3 id="org9340d58">Update 1</h3>
+<div class="outline-text-3" id="text-org9340d58">
 <p>
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
@@ -2455,9 +3277,9 @@ slider value works fine (meaning that the scittle code is running fine).
 </div>
 </div>
 
-<div id="outline-container-org515d53f" class="outline-3">
-<h3 id="org515d53f">Update 2</h3>
-<div class="outline-text-3" id="text-org515d53f">
+<div id="outline-container-orgc199184" class="outline-3">
+<h3 id="orgc199184">Update 2</h3>
+<div class="outline-text-3" id="text-orgc199184">
 <p>
 Now it also works on mobile!
 Somebody helpfully pointed out on slack that on mac there was an error
@@ -2505,10 +3327,10 @@ It works, haha!
     </content>
   </entry>
   <entry>
-    <id>https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html</id>
-    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/intro-to-clojure.html"/>
-    <title>intro-to-clojure</title>
-    <updated>2022-09-12T23:59:59+00:00</updated>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/dreaming-code.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/dreaming-code.html"/>
+    <title>dreaming-code</title>
+    <updated>2022-10-20T23:59:59+00:00</updated>
     <content type="html">
       <![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -2517,7 +3339,7 @@ It works, haha!
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>intro-to-clojure</title>
+<title>dreaming-code</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 </head>
@@ -2532,123 +3354,591 @@ It works, haha!
   </h4>
 </div>
 <div id="content" class="content">
-<h1 class="title">intro-to-clojure</h1>
+<h1 class="title">dreaming-code</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5386cf0">Introduction</a></li>
-<li><a href="#org0472f15">A dev environment</a>
-<ul>
-<li><a href="#org4f56b99">Vs Code</a></li>
-<li><a href="#org3f9eefc">Emacs</a></li>
-</ul>
-</li>
-<li><a href="#org2c764b5">Nr 1 book for beginners</a></li>
-<li><a href="#org651c17f">Slack</a></li>
-<li><a href="#org7f19f4c">Other such lists</a></li>
+<li><a href="#orge2ef0f5">Sleep mentations</a></li>
+<li><a href="#orgd5ffb04">The night goes on - REM, NREM</a></li>
+<li><a href="#orgaa47317">Source code in a vivid dream</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org5386cf0" class="outline-2">
-<h2 id="org5386cf0">Introduction</h2>
-<div class="outline-text-2" id="text-org5386cf0">
 <p>
-Clojure is a modern, functional lisp with a fiercely convinced community and
-production orientation.
+I produced source code in a dream once.
+</p>
+
+<p>
+When I dream of coding it is <i>usually</i> sort of "disembodied" just
+concepts and problems + in the earlier part of the night.
+</p>
+
+<p>
+What is the business of these early-night dreams?
+</p>
+
+<div id="outline-container-orge2ef0f5" class="outline-2">
+<h2 id="orge2ef0f5">Sleep mentations</h2>
+<div class="outline-text-2" id="text-orge2ef0f5">
+<blockquote>
+<p>
+NREM dreams are typically shorter, more fragmented, and more thought-like whereas REM dreams are longer, more emotional, and more bizarre
+</p>
+</blockquote>
+<p>
+(<a href="https://www.researchgate.net/publication/320356182_Dream_Recall_and_Content_in_Different_Stages_of_Sleep_and_Time-of-Night_Effect">Carr and Solomonova 2019</a>).
+</p>
+
+<p>
+These <i>dreams</i> from the early part of the night are more like
+thinking with some dream logic.
+</p>
+
+<p>
+Here is an example from my dream diaries:
+</p>
+
+<blockquote>
+<p>
+I have an internet connection in my brain and I need to connect to a
+database, then send some data to my feet.
+It is like thinking about the problem itself more, with some
+disembodied visuals of code.
+The coding itself is a little like being able to modify code
+blocks by raising an eyebrow or a finger.
+Every time I wake up I sort of want to "go back" to the problem, because
+I "know",  I have almost solved it. Always so close.
+</p>
+</blockquote>
+
+<p>
+Another quote from Carr and Solomonova:
+</p>
+
+<blockquote>
+<p>
+Some use a more inclusive dreaming definition, such as ‘sleep mentation’, which is characterized by any cognitive activity, whereas the  original concept of dreaming was more qualified as  hallucinatory, predominantly visual, imagery (see also chapter 5). The questions used by an experimenter can alter a participant’s interpretation of dreaming.  For example, the question, “what was going through your mind just before I called you”, will encourage more frequent dream reports than, “what were you dreaming about?”
+</p>
+</blockquote>
+
+<p>
+I like the idea of calling these <i>sleep mentation</i> instead of dreams.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0472f15" class="outline-2">
-<h2 id="org0472f15">A dev environment</h2>
-<div class="outline-text-2" id="text-org0472f15">
+<div id="outline-container-orgd5ffb04" class="outline-2">
+<h2 id="orgd5ffb04">The night goes on - REM, NREM</h2>
+<div class="outline-text-2" id="text-orgd5ffb04">
+<blockquote>
 <p>
-Get prepared for your journey as a pilot of an alien spaceship.
-As a beginner I suggest either
+Attributes such as length, bizarreness, and perceptual vividness increase for both NREM and REM sleep reports across the night
 </p>
-</div>
-
-<div id="outline-container-org4f56b99" class="outline-3">
-<h3 id="org4f56b99">Vs Code</h3>
-<div class="outline-text-3" id="text-org4f56b99">
+</blockquote>
 <p>
-Easy to make work. A great editor. You will not need to be ashamed of
-your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org3f9eefc" class="outline-3">
-<h3 id="org3f9eefc">Emacs</h3>
-<div class="outline-text-3" id="text-org3f9eefc">
-<p>
-Strong affinity to hacker culture and a program that is more than a
-tool, but eventually an extension to your hands, heart, and mind.
+(<a href="https://www.researchgate.net/publication/320356182_Dream_Recall_and_Content_in_Different_Stages_of_Sleep_and_Time-of-Night_Effect">Carr and Solomonova 2019</a>).
 </p>
 
 <p>
-Here is a config file I tried to make for beginners:
-<a href="https://github.com/benjamin-asdf/simple-easy-emacs">https://github.com/benjamin-asdf/simple-easy-emacs</a>
+Additionally, it is well known that in the later part of the night you have more <a href="https://en.wikipedia.org/wiki/Rapid_eye_movement_sleep">REM sleep</a>.
 </p>
 
 <p>
-A framework by clojurians that might be just right for you:
-<a href="https://github.com/corgi-emacs/corgi">https://github.com/corgi-emacs/corgi</a>
+I was grouping dreams into 2 categories on a continuum:
 </p>
 
-<p>
-There is also doom and spacemacs that enjoy wide appraisal for their
-"out of the box" experience.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2c764b5" class="outline-2">
-<h2 id="org2c764b5">Nr 1 book for beginners</h2>
-<div class="outline-text-2" id="text-org2c764b5">
-<p>
-<a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-org651c17f" class="outline-2">
-<h2 id="org651c17f">Slack</h2>
-<div class="outline-text-2" id="text-org651c17f">
-<p>
-Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
-Seriously a lot of people hang there and answer beginner questions,
-everybody is welcome.
-</p>
+<ol class="org-ol">
+<li>"Episodic" dreams, a reference to <a href="https://en.wikipedia.org/wiki/Episodic_memory">episodic memory</a>.
+Featuring persons, places, <b><b>situations</b></b> with a story.
+In many cases featuring a main character.
+Later in the night.</li>
+<li>"Non-Episodic" dreams: Usually no characters, no real story. More
+like thinking about a problem. Or tool/toy/concept usage in
+the abstract somehow. As if the brain parts for the tool usage are
+online without any of the storytelling, and little of the "world integrating"
+parts.
+More abstract, fewer visuals and perceptions (low "vividness").
+Also, <b>extremely hard</b> to remember any content.
+Also, it is very hard (impossible?) to become lucid during one of those.
+Earlier in the night.</li>
+</ol>
 </div>
 </div>
 
-<div id="outline-container-org7f19f4c" class="outline-2">
-<h2 id="org7f19f4c">Other such lists</h2>
-<div class="outline-text-2" id="text-org7f19f4c">
+<div id="outline-container-orgaa47317" class="outline-2">
+<h2 id="orgaa47317">Source code in a vivid dream</h2>
+<div class="outline-text-2" id="text-orgaa47317">
 <p>
-Carin is cool and has a funny picture of the emacs learning curve here:
-<a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
+It <b>did</b> happen to me recently halfway through the night.
+A dream purely about coding but more on the side of what I would call
+<i>episodic</i>.
+This was a complete first time. Usually, code dreams where these
+ephemeral problem-solve dreams.
 </p>
 
 <p>
-I like that they have a philosophy section mentioning Rich Hickey's talks
-this matters a lot to clojurians.
+I was dreaming about my emacs config.
 </p>
 
 <p>
-<a href="https://thoughtbot.com/blog/tips-for-clojure-beginners">https://thoughtbot.com/blog/tips-for-clojure-beginners</a>
-<a href="https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f">https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f</a>
-<a href="https://www.clojurenewbieguide.com/">https://www.clojurenewbieguide.com/</a>
+I recall a visual of colored source code (+ content!).
+There was also a bit of a first-person main character, thinking along
+the lines of "I want to make this part smoother&#x2026;".
+Here it is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This code came to me in a dream almost verbatim:</span>
+(add-hook 'kill-emacs-hook #'save-some-buffers)
+</pre>
+</div>
+
+<p>
+I was able to type in this code the next morning, haha!
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2022-09-12 Mon 20:23</p>
+<p class="date">Date: 2022-10-20 Thu 19:18</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/scratching-in-space.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/scratching-in-space.html"/>
+    <title>scratching-in-space</title>
+    <updated>2022-10-04T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>scratching-in-space</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">scratching-in-space</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga837803">Introduction</a></li>
+<li><a href="#org583bddb">scratching in space</a>
+<ul>
+<li><a href="#org1be30d9">here is my current hack for this:</a></li>
+</ul>
+</li>
+<li><a href="#org666d1d7">clojure scratch repl?</a></li>
+<li><a href="#org7989660">Further reading</a></li>
+<li><a href="#orgf466c3c">inspiring talks</a></li>
+</ul>
+</div>
+</div>
+<p>
+Emacs scratch buffers have place oriented design.
+</p>
+
+<p>
+A simple alternative: make files.
+</p>
+
+<p>
+Musings about persistent scratch technology.
+</p>
+
+<div id="outline-container-orga837803" class="outline-2">
+<h2 id="orga837803">Introduction</h2>
+<div class="outline-text-2" id="text-orga837803">
+<p>
+If you ever typed something in a buffer called <code>*scratch*</code> you will
+inevitably have found yourself in this situation:
+</p>
+
+<ol class="org-ol">
+<li>Just typed some awesome code.</li>
+<li>Kill scratch buffer accidentally or unthinkingly.</li>
+<li>That awesome text is gone forever&#x2026; and it hurts.</li>
+</ol>
+
+<p>
+I did try <a href="https://github.com/Fanael/persistent-scratch">persistent-scratch</a>, in its simplest form, it persists your
+scratch buffer across sessions.
+You still end up having one place for your "current" scratch.
+It just did not click with me.
+</p>
+
+<p>
+The whole idea of a scratch buffer might be obsolete (<a href="http://xahlee.info/emacs/emacs/modernization_scratch_buffer.html">Xah Lee 2008</a>).
+</p>
+
+<p>
+What I want:
+</p>
+
+<ol class="org-ol">
+<li>Convenient way of writing some code interactively.</li>
+<li>Persist it.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org583bddb" class="outline-2">
+<h2 id="org583bddb">scratching in space</h2>
+<div class="outline-text-2" id="text-org583bddb">
+<p>
+Our disk space is vast, and emacs is great at creating files.
+</p>
+
+<p>
+We can be like Sherlock Holmes and never throw our notes away.
+</p>
+
+<p>
+Horde those scratches. Put them in git.
+Now you can grep through them, see what you were scratching years in the past.
+</p>
+
+<p>
+I have a dir called <code>~/scratches</code> with all my scratches.
+This is a bit similar to <a href="https://start.duckduckgo.com/">denote</a>, which I use for note-taking.
+</p>
+</div>
+
+<div id="outline-container-org1be30d9" class="outline-3">
+<h3 id="org1be30d9">here is my current hack for this:</h3>
+<div class="outline-text-3" id="text-org1be30d9">
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">mememacs/scratch-dir</span> (expand-file-name <span style="font-style: italic;">"~/scratch"</span>))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/latest-scratch</span> (suffix)
+  (<span style="font-weight: bold;">unless</span> (file-exists-p mememacs/scratch-dir)
+    (make-directory mememacs/scratch-dir))
+  (<span style="font-weight: bold;">when-let</span>
+      ((f
+        (car
+         (cl-remove-if-not
+          (<span style="font-weight: bold;">lambda</span> (it)
+            (<span style="font-weight: bold;">and</span> (string-suffix-p suffix it)
+                 (not (string-match-p <span style="font-style: italic;">"#"</span> it))))
+          (process-lines
+           <span style="font-style: italic;">"ls"</span>
+           <span style="font-style: italic;">"-A"</span>
+           <span style="font-style: italic;">"-t"</span>
+           mememacs/scratch-dir)))))
+    (expand-file-name f mememacs/scratch-dir)))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/new-scratch-name</span> (suffix)
+  (<span style="font-weight: bold;">unless</span> (file-exists-p
+           mememacs/scratch-dir)
+    (make-directory
+     mememacs/scratch-dir))
+  (expand-file-name
+   (format <span style="font-style: italic;">"%s.%s"</span> (make-temp-name <span style="font-style: italic;">"scratch-"</span>) suffix)
+   mememacs/scratch-dir))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/scratch</span>
+    (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> create-new suffix)
+  <span style="font-style: italic;">"Visit the latest scratch file with `suffix` (a file extension).</span>
+<span style="font-style: italic;">With prefix arg make a new file."</span>
+  (<span style="font-weight: bold;">interactive</span>
+   (list current-prefix-arg
+         (completing-read <span style="font-style: italic;">"scratch filetype: "</span> '(<span style="font-style: italic;">"cljs"</span> <span style="font-style: italic;">"clj"</span>))))
+  (<span style="font-weight: bold;">let*</span> ((latest (mememacs/latest-scratch suffix))
+         (buff
+          (find-file-noselect
+           (<span style="font-weight: bold;">if</span> (<span style="font-weight: bold;">or</span> create-new (not latest))
+               (mememacs/new-scratch-name suffix)
+             latest))))
+    (pop-to-buffer-same-window buff)
+    (<span style="font-weight: bold;">when</span> (eq major-mode 'emacs-lisp-mode)
+      (elisp-enable-lexical-binding))
+    buff))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/scratch-el</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> arg)
+  (<span style="font-weight: bold;">interactive</span> <span style="font-style: italic;">"P"</span>)
+  (mm/scratch arg <span style="font-style: italic;">"el"</span>))
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-elisp">keybinds:
+leader bs #'mm/scratch-el
+leader bS #'mm/scratch
+</pre>
+</div>
+
+<p>
+With a nice keybind (<code>leader b s</code>) I go to my current scratch file - the latest modified file in my scratch dir.
+With prefix-arg, it makes a new file.
+A second bind will ask me to make a <code>clj</code> or <code>cljs</code> file.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org666d1d7" class="outline-2">
+<h2 id="org666d1d7">clojure scratch repl?</h2>
+<div class="outline-text-2" id="text-org666d1d7">
+<p>
+Whatever. I just do this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'{}'</span> &gt; ~/scratch/bb.edn
+</pre>
+</div>
+
+<p>
+Now I can start a cider repl with bb in my scratch dir.
+If you want to be asked for <code>bb</code> or <code>jvm</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'{}'</span> &gt; ~/scratch/deps.edn
+</pre>
+</div>
+
+<p>
+Also <code>nbb</code>: A nice way to scratch some cljs + javascript + node:
+It currently requires some workaround that you can find <a href="jacking-nbb.html">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7989660" class="outline-2">
+<h2 id="org7989660">Further reading</h2>
+<div class="outline-text-2" id="text-org7989660">
+<ul class="org-ul">
+<li><a href="backing-you-up.html">backups in space</a></li>
+<li><a href="https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/">reddit persistent scratch discussion</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf466c3c" class="outline-2">
+<h2 id="orgf466c3c">inspiring talks</h2>
+<div class="outline-text-2" id="text-orgf466c3c">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=-6BsiVyC1kM">The value of values (place-oriented programming is obsolete)</a></li>
+<li><a href="https://www.youtube.com/watch?v=OUZZKtypink">Program like Sherlock Holmes</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-04 Tue 16:04</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/jacking-nbb.html"/>
+    <title>jacking-nbb</title>
+    <updated>2022-10-14T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jacking-nbb</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+</div>
+<div id="content" class="content">
+<h1 class="title">jacking-nbb</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org937155c">Introduction</a></li>
+<li><a href="#org9ba96a0">Jack-in command</a>
+<ul>
+<li><a href="#org100e944">cider repl workaround</a></li>
+<li><a href="#org13d8b74">the command</a></li>
+<li><a href="#orgf41cfdd">hack for the remaining issue</a></li>
+</ul>
+</li>
+<li><a href="#org1d6b6e9">Results</a></li>
+</ul>
+</div>
+</div>
+<p>
+A cider jack in command for nbb.
+</p>
+<div id="outline-container-org937155c" class="outline-2">
+<h2 id="org937155c">Introduction</h2>
+<div class="outline-text-2" id="text-org937155c">
+<p>
+<a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
+A node script that is an interpreter for Clojurescript.
+You get the upsides of Node.js + it is Clojure.
+</p>
+
+<p>
+Want to try out some npm packages?
+Sure, just make a <code>package.json</code>, works instant, is part of the design
+principles of nbb.
+</p>
+
+<p>
+You get Clojures immutable data structures, polymorphism constructs, a
+repl, etc.
+</p>
+
+<p>
+On the tooling side, you might be surprised how far nbb gets with very little.
+</p>
+
+<p>
+Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and nbb is a natural fit for a quick cljs repl.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9ba96a0" class="outline-2">
+<h2 id="org9ba96a0">Jack-in command</h2>
+<div class="outline-text-2" id="text-org9ba96a0">
+</div>
+<div id="outline-container-org100e944" class="outline-3">
+<h3 id="org100e944">cider repl workaround</h3>
+<div class="outline-text-3" id="text-org100e944">
+<p>
+We currently need this workaround for sci-based cljs repls for cider:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride <span style="font-style: italic;">"(+ 1 2 3)"</span>)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-connected-hook</span> ()
+  (<span style="font-weight: bold;">when</span> (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
+    (<span style="font-weight: bold;">setq-local</span> cider-show-error-buffer nil)
+    (cider-set-repl-type 'cljs)))
+
+(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13d8b74" class="outline-3">
+<h3 id="org13d8b74">the command</h3>
+<div class="outline-text-3" id="text-org13d8b74">
+<p>
+Unfortunately, cider does not have the concept of a nbb repl currently.
+I think <code>cider-jack-in-resolve-command</code> and similar functions could be
+thrown out and replaced with data.
+</p>
+
+<p>
+So I went 1 level deeper to bypass ciders auto-detection of
+project type (+ jack in cmd):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start a nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (<span style="font-weight: bold;">let*</span> ((cider-allow-jack-in-without-project t)
+         (orig-buffer (current-buffer))
+         (params '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+                   <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride))
+         (params (cider--update-project-dir
+                  params)))
+    (nrepl-start-server-process
+     (plist-get params <span style="font-weight: bold;">:project-dir</span>)
+     (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>)
+     (<span style="font-weight: bold;">lambda</span> (server-buffer)
+       (<span style="font-weight: bold;">with-current-buffer</span>
+           orig-buffer
+         (cider-connect-sibling-cljs
+          params
+          server-buffer))))))
+</pre>
+</div>
+
+<p>
+This is what I wanted to say:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/cider-jack-in-nbb</span> ()
+  <span style="font-style: italic;">"Start an nbb nrepl process and connect."</span>
+  (<span style="font-weight: bold;">interactive</span>)
+  (cider-jack-in-cljs
+   '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server :port 0"</span>
+     <span style="font-weight: bold;">:cljs-repl-type</span> nbb-or-scittle-or-joyride)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf41cfdd" class="outline-3">
+<h3 id="orgf41cfdd">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-orgf41cfdd">
+<p>
+With this, you should get an error "ClojureScript is not available&#x2026;".
+<a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">FIXME: https://github.com/clojure-emacs/cider/issues/3255</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-verify-clojurescript-is-present</span> ()
+  <span style="font-style: italic;">"Check whether ClojureScript is present."</span>
+  (<span style="font-weight: bold;">unless</span> (nrepl-dict-get (cider-sync-tooling-eval <span style="font-style: italic;">"cljs.core/inc"</span>) <span style="font-style: italic;">"value"</span>)
+    (<span style="font-weight: bold;">user-error</span> <span style="font-style: italic;">"ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details"</span>)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1d6b6e9" class="outline-2">
+<h2 id="org1d6b6e9">Results</h2>
+<div class="outline-text-2" id="text-org1d6b6e9">
+<p>
+Hehe, insta nbb repl. Works good.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-10-14 Fri 10:22</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
