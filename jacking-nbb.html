@@ -25,24 +25,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org937155c">Introduction</a></li>
-<li><a href="#org9ba96a0">Jack-in command</a>
+<li><a href="#orgf950d89">Introduction</a></li>
+<li><a href="#org6ad1ae8">Jack-in command</a>
 <ul>
-<li><a href="#org100e944">cider repl workaround</a></li>
-<li><a href="#org13d8b74">the command</a></li>
-<li><a href="#orgf41cfdd">hack for the remaining issue</a></li>
+<li><a href="#org71c356a">cider repl workaround</a></li>
+<li><a href="#orgcbc653f">the command</a></li>
+<li><a href="#orga1a630a">hack for the remaining issue</a></li>
 </ul>
 </li>
-<li><a href="#org1d6b6e9">Results</a></li>
+<li><a href="#orgf9388cb">Results</a></li>
 </ul>
 </div>
 </div>
 <p>
 A cider jack in command for nbb.
 </p>
-<div id="outline-container-org937155c" class="outline-2">
-<h2 id="org937155c">Introduction</h2>
-<div class="outline-text-2" id="text-org937155c">
+<div id="outline-container-orgf950d89" class="outline-2">
+<h2 id="orgf950d89">Introduction</h2>
+<div class="outline-text-2" id="text-orgf950d89">
 <p>
 <a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
 A node script that is an interpreter for Clojurescript.
@@ -70,13 +70,13 @@ Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and
 </div>
 </div>
 
-<div id="outline-container-org9ba96a0" class="outline-2">
-<h2 id="org9ba96a0">Jack-in command</h2>
-<div class="outline-text-2" id="text-org9ba96a0">
+<div id="outline-container-org6ad1ae8" class="outline-2">
+<h2 id="org6ad1ae8">Jack-in command</h2>
+<div class="outline-text-2" id="text-org6ad1ae8">
 </div>
-<div id="outline-container-org100e944" class="outline-3">
-<h3 id="org100e944">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org100e944">
+<div id="outline-container-org71c356a" class="outline-3">
+<h3 id="org71c356a">cider repl workaround</h3>
+<div class="outline-text-3" id="text-org71c356a">
 <p>
 We currently need this workaround for sci-based cljs repls for cider:
 </p>
@@ -95,9 +95,9 @@ We currently need this workaround for sci-based cljs repls for cider:
 </div>
 </div>
 
-<div id="outline-container-org13d8b74" class="outline-3">
-<h3 id="org13d8b74">the command</h3>
-<div class="outline-text-3" id="text-org13d8b74">
+<div id="outline-container-orgcbc653f" class="outline-3">
+<h3 id="orgcbc653f">the command</h3>
+<div class="outline-text-3" id="text-orgcbc653f">
 <p>
 Unfortunately, cider does not have the concept of a nbb repl currently.
 I think <code>cider-jack-in-resolve-command</code> and similar functions could be
@@ -147,9 +147,9 @@ This is what I wanted to say:
 </div>
 </div>
 
-<div id="outline-container-orgf41cfdd" class="outline-3">
-<h3 id="orgf41cfdd">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-orgf41cfdd">
+<div id="outline-container-orga1a630a" class="outline-3">
+<h3 id="orga1a630a">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-orga1a630a">
 <p>
 With this, you should get an error "ClojureScript is not available&#x2026;".
 <a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
@@ -167,9 +167,9 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 </div>
 </div>
 
-<div id="outline-container-org1d6b6e9" class="outline-2">
-<h2 id="org1d6b6e9">Results</h2>
-<div class="outline-text-2" id="text-org1d6b6e9">
+<div id="outline-container-orgf9388cb" class="outline-2">
+<h2 id="orgf9388cb">Results</h2>
+<div class="outline-text-2" id="text-orgf9388cb">
 <p>
 Hehe, insta nbb repl. Works good.
 </p>

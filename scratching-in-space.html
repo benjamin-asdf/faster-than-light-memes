@@ -25,15 +25,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga837803">Introduction</a></li>
-<li><a href="#org583bddb">scratching in space</a>
+<li><a href="#orgd573e73">Introduction</a></li>
+<li><a href="#orgfe2b219">scratching in space</a>
 <ul>
-<li><a href="#org1be30d9">here is my current hack for this:</a></li>
+<li><a href="#org8ab64e4">here is my current hack for this:</a></li>
 </ul>
 </li>
-<li><a href="#org666d1d7">clojure scratch repl?</a></li>
-<li><a href="#org7989660">Further reading</a></li>
-<li><a href="#orgf466c3c">inspiring talks</a></li>
+<li><a href="#orgf3f2aa0">clojure scratch repl?</a></li>
+<li><a href="#org8216c57">Further reading</a></li>
+<li><a href="#org94ab792">inspiring talks</a></li>
 </ul>
 </div>
 </div>
@@ -49,9 +49,9 @@ A simple alternative: make files.
 Musings about persistent scratch technology.
 </p>
 
-<div id="outline-container-orga837803" class="outline-2">
-<h2 id="orga837803">Introduction</h2>
-<div class="outline-text-2" id="text-orga837803">
+<div id="outline-container-orgd573e73" class="outline-2">
+<h2 id="orgd573e73">Introduction</h2>
+<div class="outline-text-2" id="text-orgd573e73">
 <p>
 If you ever typed something in a buffer called <code>*scratch*</code> you will
 inevitably have found yourself in this situation:
@@ -85,9 +85,9 @@ What I want:
 </div>
 </div>
 
-<div id="outline-container-org583bddb" class="outline-2">
-<h2 id="org583bddb">scratching in space</h2>
-<div class="outline-text-2" id="text-org583bddb">
+<div id="outline-container-orgfe2b219" class="outline-2">
+<h2 id="orgfe2b219">scratching in space</h2>
+<div class="outline-text-2" id="text-orgfe2b219">
 <p>
 Our disk space is vast, and emacs is great at creating files.
 </p>
@@ -107,9 +107,9 @@ This is a bit similar to <a href="https://start.duckduckgo.com/">denote</a>, whi
 </p>
 </div>
 
-<div id="outline-container-org1be30d9" class="outline-3">
-<h3 id="org1be30d9">here is my current hack for this:</h3>
-<div class="outline-text-3" id="text-org1be30d9">
+<div id="outline-container-org8ab64e4" class="outline-3">
+<h3 id="org8ab64e4">here is my current hack for this:</h3>
+<div class="outline-text-3" id="text-org8ab64e4">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">mememacs/scratch-dir</span> (expand-file-name <span style="font-style: italic;">"~/scratch"</span>))
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/latest-scratch</span> (suffix)
@@ -178,9 +178,9 @@ A second bind will ask me to make a <code>clj</code> or <code>cljs</code> file.
 </div>
 </div>
 
-<div id="outline-container-org666d1d7" class="outline-2">
-<h2 id="org666d1d7">clojure scratch repl?</h2>
-<div class="outline-text-2" id="text-org666d1d7">
+<div id="outline-container-orgf3f2aa0" class="outline-2">
+<h2 id="orgf3f2aa0">clojure scratch repl?</h2>
+<div class="outline-text-2" id="text-orgf3f2aa0">
 <p>
 Whatever. I just do this:
 </p>
@@ -207,9 +207,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-org7989660" class="outline-2">
-<h2 id="org7989660">Further reading</h2>
-<div class="outline-text-2" id="text-org7989660">
+<div id="outline-container-org8216c57" class="outline-2">
+<h2 id="org8216c57">Further reading</h2>
+<div class="outline-text-2" id="text-org8216c57">
 <ul class="org-ul">
 <li><a href="backing-you-up.html">backups in space</a></li>
 <li><a href="https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/">reddit persistent scratch discussion</a></li>
@@ -217,9 +217,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-orgf466c3c" class="outline-2">
-<h2 id="orgf466c3c">inspiring talks</h2>
-<div class="outline-text-2" id="text-orgf466c3c">
+<div id="outline-container-org94ab792" class="outline-2">
+<h2 id="org94ab792">inspiring talks</h2>
+<div class="outline-text-2" id="text-org94ab792">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=-6BsiVyC1kM">The value of values (place-oriented programming is obsolete)</a></li>
 <li><a href="https://www.youtube.com/watch?v=OUZZKtypink">Program like Sherlock Holmes</a></li>

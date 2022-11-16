@@ -25,69 +25,69 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org61cea65">Introduction</a></li>
-<li><a href="#org8e2f13f">Emacs in a magic forest</a></li>
-<li><a href="#orgea0d347">read-shell-command</a></li>
-<li><a href="#orgaa2af70">bash-completion</a></li>
-<li><a href="#orgceacd08">bash completions are now your lever</a>
+<li><a href="#org5547405">Introduction</a></li>
+<li><a href="#org7390d8d">Emacs in a magic forest</a></li>
+<li><a href="#orge0a29f5">read-shell-command</a></li>
+<li><a href="#org14e2e97">bash-completion</a></li>
+<li><a href="#org558d91b">bash completions are now your lever</a>
 <ul>
-<li><a href="#org1dd1b16">Babashka tasks</a></li>
+<li><a href="#org2c67f58">Babashka tasks</a></li>
 </ul>
 </li>
-<li><a href="#org013de53">Commands that leverage <code>read-shell-command</code></a>
+<li><a href="#org9a9d2ae">Commands that leverage <code>read-shell-command</code></a>
 <ul>
-<li><a href="#org923ff83">shell-command</a>
+<li><a href="#orgede7427">shell-command</a>
 <ul>
-<li><a href="#orgf7258f6">Here is a nugget:</a></li>
-<li><a href="#org0204545">Good to know:</a></li>
-<li><a href="#org6902a75">Output buffer</a></li>
+<li><a href="#orgfcfa00a">Here is a nugget:</a></li>
+<li><a href="#org6b499b6">Good to know:</a></li>
+<li><a href="#org2aea082">Output buffer</a></li>
 </ul>
 </li>
-<li><a href="#org2225ec6">shell-command-async</a></li>
-<li><a href="#org2cafb87">compile</a></li>
-<li><a href="#orgf44a77f">dired</a></li>
-<li><a href="#org0bf5e7d">shell-command-on-file</a></li>
+<li><a href="#orgc02900d">shell-command-async</a></li>
+<li><a href="#orga0c3beb">compile</a></li>
+<li><a href="#org8b4d05e">dired</a></li>
+<li><a href="#org8997175">shell-command-on-file</a></li>
 </ul>
 </li>
-<li><a href="#orgcf19b43">It gets even better</a>
+<li><a href="#org34ea961">It gets even better</a>
 <ul>
-<li><a href="#org8fc11b1">revert-buffer in compilation buffers</a></li>
+<li><a href="#org6bbb63b">revert-buffer in compilation buffers</a></li>
 </ul>
 </li>
-<li><a href="#org85f0707">Scripts at the speed of thought</a>
+<li><a href="#orgdbf0f74">Scripts at the speed of thought</a>
 <ul>
-<li><a href="#org1cb279b">mememacs/create-script</a>
+<li><a href="#org83ce0a1">mememacs/create-script</a>
 <ul>
-<li><a href="#org1dffd9e">bash-completion in <code>sh-mode</code></a></li>
+<li><a href="#org16e9935">bash-completion in <code>sh-mode</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org7ca684c">async-shell-command, my bread and butter</a>
+<li><a href="#org0f9077e">async-shell-command, my bread and butter</a>
 <ul>
-<li><a href="#org5623100">Put the command into the buffer name</a></li>
-<li><a href="#org76d74db">shell-command&#x2013;same-buffer-confirm</a></li>
-<li><a href="#orgf2fd01c">shell-mode as a terminal emulator</a></li>
+<li><a href="#orgaf2c2a9">Put the command into the buffer name</a></li>
+<li><a href="#org0e273be">shell-command&#x2013;same-buffer-confirm</a></li>
+<li><a href="#org6eceef8">shell-mode as a terminal emulator</a></li>
 </ul>
 </li>
-<li><a href="#org836203e">process-list</a></li>
-<li><a href="#org8098226">The next layer on the cake</a>
+<li><a href="#org1f8110e">process-list</a></li>
+<li><a href="#org6a347d9">The next layer on the cake</a>
 <ul>
-<li><a href="#org1813c04">project</a></li>
-<li><a href="#org42786cc">recompile</a></li>
-<li><a href="#orgaab3403">ansi colors for comint</a></li>
+<li><a href="#org355e259">project</a></li>
+<li><a href="#org3377a0d">recompile</a></li>
+<li><a href="#org2d8186a">ansi colors for comint</a></li>
 </ul>
 </li>
-<li><a href="#org13f8ab2">Levers are great</a>
+<li><a href="#org30de10d">Levers are great</a>
 <ul>
-<li><a href="#org8e1f354">ssh</a></li>
-<li><a href="#orgc20f86f">embarking</a></li>
-<li><a href="#org1e79db7">pass</a></li>
+<li><a href="#org92d28a7">ssh</a></li>
+<li><a href="#orgc0771b2">embarking</a></li>
+<li><a href="#org093ebdd">pass</a></li>
 </ul>
 </li>
-<li><a href="#org62b5d7a">Particulars</a>
+<li><a href="#org5c9b796">Particulars</a>
 <ul>
-<li><a href="#orgf7e124b">shell-file-name</a></li>
+<li><a href="#org9116c7f">shell-file-name</a></li>
 </ul>
 </li>
 </ul>
@@ -113,9 +113,9 @@ Technology around <code>shell-command</code>.
 Simplicity and joy.
 </p>
 
-<div id="outline-container-org61cea65" class="outline-2">
-<h2 id="org61cea65">Introduction</h2>
-<div class="outline-text-2" id="text-org61cea65">
+<div id="outline-container-org5547405" class="outline-2">
+<h2 id="org5547405">Introduction</h2>
+<div class="outline-text-2" id="text-org5547405">
 <p>
 Ok, let's just do it. You might want to hold tight to your chair because
 the juiciness and elegance of what follow might just blow you over.
@@ -123,7 +123,7 @@ Here is how I build my <a href="https://benjamin-asdf.github.io/faster-than-ligh
 </p>
 
 
-<div id="org92dff98" class="figure">
+<div id="org278681f" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/bb-task-demo.gif?raw=true" alt="bb-task-demo.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Using <code>compile</code> to leverage <code>read-shell-command</code> and thereby <code>bash-completions</code>. Recompiling via <code>revert-buffer</code>. Dismissing the <code>*compilation*</code> buffer.</p>
@@ -149,9 +149,9 @@ Here is the story of a happy little package called <code>bash-completion</code>.
 </div>
 </div>
 
-<div id="outline-container-org8e2f13f" class="outline-2">
-<h2 id="org8e2f13f">Emacs in a magic forest</h2>
-<div class="outline-text-2" id="text-org8e2f13f">
+<div id="outline-container-org7390d8d" class="outline-2">
+<h2 id="org7390d8d">Emacs in a magic forest</h2>
+<div class="outline-text-2" id="text-org7390d8d">
 <p>
 Once upon a time,
 </p>
@@ -199,9 +199,9 @@ make magic in <b>all</b> its corners <b>fast</b>.
 </div>
 </div>
 
-<div id="outline-container-orgea0d347" class="outline-2">
-<h2 id="orgea0d347">read-shell-command</h2>
-<div class="outline-text-2" id="text-orgea0d347">
+<div id="outline-container-orge0a29f5" class="outline-2">
+<h2 id="orge0a29f5">read-shell-command</h2>
+<div class="outline-text-2" id="text-orge0a29f5">
 <p>
 This is like <code>read-from-minibuffer</code> but sets some keymap and history.
 Hit <code>&lt;tab&gt;</code>, you get completions from <code>shell-dynamic-complete-functions</code>.
@@ -211,9 +211,9 @@ Invoke <code>shell-command</code>, then type <code>git checkout</code>, hit tab.
 </div>
 </div>
 
-<div id="outline-container-orgaa2af70" class="outline-2">
-<h2 id="orgaa2af70">bash-completion</h2>
-<div class="outline-text-2" id="text-orgaa2af70">
+<div id="outline-container-org14e2e97" class="outline-2">
+<h2 id="org14e2e97">bash-completion</h2>
+<div class="outline-text-2" id="text-org14e2e97">
 <p>
 Ok your emacs life is about to level up +1 <a href="https://github.com/szermatt/emacs-bash-completion">bash-completion</a>.
 Config:
@@ -244,9 +244,9 @@ opened.
 </div>
 </div>
 
-<div id="outline-container-orgceacd08" class="outline-2">
-<h2 id="orgceacd08">bash completions are now your lever</h2>
-<div class="outline-text-2" id="text-orgceacd08">
+<div id="outline-container-org558d91b" class="outline-2">
+<h2 id="org558d91b">bash completions are now your lever</h2>
+<div class="outline-text-2" id="text-org558d91b">
 <p>
 Now my friends we have entered the realm of harnessing already
 existing shell completions directly into our kingdom of emacs where
@@ -254,9 +254,9 @@ we cozy and effective.
 </p>
 </div>
 
-<div id="outline-container-org1dd1b16" class="outline-3">
-<h3 id="org1dd1b16">Babashka tasks</h3>
-<div class="outline-text-3" id="text-org1dd1b16">
+<div id="outline-container-org2c67f58" class="outline-3">
+<h3 id="org2c67f58">Babashka tasks</h3>
+<div class="outline-text-3" id="text-org2c67f58">
 <p>
 Babashka tasks are one of the great discoveries of our time,
 allowing us to write build tasks in Clojure, with the
@@ -272,18 +272,18 @@ Now you can enjoy those babashka tasks completions.
 </div>
 </div>
 
-<div id="outline-container-org013de53" class="outline-2">
-<h2 id="org013de53">Commands that leverage <code>read-shell-command</code></h2>
-<div class="outline-text-2" id="text-org013de53">
+<div id="outline-container-org9a9d2ae" class="outline-2">
+<h2 id="org9a9d2ae">Commands that leverage <code>read-shell-command</code></h2>
+<div class="outline-text-2" id="text-org9a9d2ae">
 <p>
 They use <code>read-shell-command</code>.
 Making <code>read-shell-command</code> <b>good</b> will pay off for all these.
 </p>
 </div>
 
-<div id="outline-container-org923ff83" class="outline-3">
-<h3 id="org923ff83">shell-command</h3>
-<div class="outline-text-3" id="text-org923ff83">
+<div id="outline-container-orgede7427" class="outline-3">
+<h3 id="orgede7427">shell-command</h3>
+<div class="outline-text-3" id="text-orgede7427">
 <p>
 Bound to <code>M-!</code>
 </p>
@@ -293,9 +293,9 @@ This is the <code>interactive</code> doorway into emacs lisp <code>start-process
 </p>
 </div>
 
-<div id="outline-container-orgf7258f6" class="outline-4">
-<h4 id="orgf7258f6">Here is a nugget:</h4>
-<div class="outline-text-4" id="text-orgf7258f6">
+<div id="outline-container-orgfcfa00a" class="outline-4">
+<h4 id="orgfcfa00a">Here is a nugget:</h4>
+<div class="outline-text-4" id="text-orgfcfa00a">
 <blockquote>
 <p>
 With prefix argument, insert the COMMAND's output at point.
@@ -313,9 +313,9 @@ Like this:
 </div>
 </div>
 
-<div id="outline-container-org0204545" class="outline-4">
-<h4 id="org0204545">Good to know:</h4>
-<div class="outline-text-4" id="text-org0204545">
+<div id="outline-container-org6b499b6" class="outline-4">
+<h4 id="org6b499b6">Good to know:</h4>
+<div class="outline-text-4" id="text-org6b499b6">
 <blockquote>
 <p>
 If COMMAND ends in &amp;, execute it asynchronously.
@@ -324,9 +324,9 @@ If COMMAND ends in &amp;, execute it asynchronously.
 </div>
 </div>
 
-<div id="outline-container-org6902a75" class="outline-4">
-<h4 id="org6902a75">Output buffer</h4>
-<div class="outline-text-4" id="text-org6902a75">
+<div id="outline-container-org2aea082" class="outline-4">
+<h4 id="org2aea082">Output buffer</h4>
+<div class="outline-text-4" id="text-org2aea082">
 <p>
 Your command output is located by default in a buffer named by <code>shell-command-buffer-name</code>.
 Or <code>shell-command-buffer-name-async</code> when async.
@@ -335,9 +335,9 @@ Or <code>shell-command-buffer-name-async</code> when async.
 </div>
 </div>
 
-<div id="outline-container-org2225ec6" class="outline-3">
-<h3 id="org2225ec6">shell-command-async</h3>
-<div class="outline-text-3" id="text-org2225ec6">
+<div id="outline-container-orgc02900d" class="outline-3">
+<h3 id="orgc02900d">shell-command-async</h3>
+<div class="outline-text-3" id="text-orgc02900d">
 <p>
 Bound to <code>M-&amp;</code> and has the same effect as adding a <code>&amp;</code> in <code>shell-command</code>.
 To kill the process I can hit <code>C-c C-c</code>.
@@ -345,9 +345,9 @@ To kill the process I can hit <code>C-c C-c</code>.
 </div>
 </div>
 
-<div id="outline-container-org2cafb87" class="outline-3">
-<h3 id="org2cafb87">compile</h3>
-<div class="outline-text-3" id="text-org2cafb87">
+<div id="outline-container-orga0c3beb" class="outline-3">
+<h3 id="orga0c3beb">compile</h3>
+<div class="outline-text-3" id="text-orga0c3beb">
 <p>
 Very useful, very similar to <code>shell-command-async</code>.
 Always uses the same buffer called <code>*compilation*</code>.
@@ -357,9 +357,9 @@ it auto makes a compile command in that project.
 </div>
 </div>
 
-<div id="outline-container-orgf44a77f" class="outline-3">
-<h3 id="orgf44a77f">dired</h3>
-<div class="outline-text-3" id="text-orgf44a77f">
+<div id="outline-container-org8b4d05e" class="outline-3">
+<h3 id="org8b4d05e">dired</h3>
+<div class="outline-text-3" id="text-org8b4d05e">
 <p>
 <code>dired-do-shell-command</code> and <code>dired-do-async-shell-command</code>
 are symetrical with <code>shell-command</code> and <code>async-shell-command</code>.
@@ -374,9 +374,9 @@ or the marked files, but is implicit as the last arg.
 </div>
 </div>
 
-<div id="outline-container-org0bf5e7d" class="outline-3">
-<h3 id="org0bf5e7d">shell-command-on-file</h3>
-<div class="outline-text-3" id="text-org0bf5e7d">
+<div id="outline-container-org8997175" class="outline-3">
+<h3 id="org8997175">shell-command-on-file</h3>
+<div class="outline-text-3" id="text-org8997175">
 <p>
 Sometimes you are currently visiting a script file and you just want
 to run it.
@@ -401,9 +401,9 @@ Thanks to <a href="https://github.com/Gavinok/emacs.d">Gavin Freeborn</a> for th
 </div>
 </div>
 
-<div id="outline-container-orgcf19b43" class="outline-2">
-<h2 id="orgcf19b43">It gets even better</h2>
-<div class="outline-text-2" id="text-orgcf19b43">
+<div id="outline-container-org34ea961" class="outline-2">
+<h2 id="org34ea961">It gets even better</h2>
+<div class="outline-text-2" id="text-org34ea961">
 <p>
 Let me introduce you to the wonders of <code>revert-buffer-function</code>.
 Now, <code>revert-buffer</code> is a powerful command by itself.
@@ -430,9 +430,9 @@ nicely. There is no mental burden with this.
 </p>
 </div>
 
-<div id="outline-container-org8fc11b1" class="outline-3">
-<h3 id="org8fc11b1">revert-buffer in compilation buffers</h3>
-<div class="outline-text-3" id="text-org8fc11b1">
+<div id="outline-container-org6bbb63b" class="outline-3">
+<h3 id="org6bbb63b">revert-buffer in compilation buffers</h3>
+<div class="outline-text-3" id="text-org6bbb63b">
 <div class="org-src-container">
 <pre class="src src-elisp">(advice-add
    #'compilation-revert-buffer
@@ -453,20 +453,20 @@ compile command, without asking.
 </div>
 
 
-<div id="outline-container-org85f0707" class="outline-2">
-<h2 id="org85f0707">Scripts at the speed of thought</h2>
-<div class="outline-text-2" id="text-org85f0707">
+<div id="outline-container-orgdbf0f74" class="outline-2">
+<h2 id="orgdbf0f74">Scripts at the speed of thought</h2>
+<div class="outline-text-2" id="text-orgdbf0f74">
 
-<div id="org382deff" class="figure">
+<div id="org0503d2c" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/insta-script.gif?raw=true" alt="insta-script.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Make a script, and run the script. Leveraging <code>bash-completion</code> in <code>shell-script-mode</code>.</p>
 </div>
 </div>
 
-<div id="outline-container-org1cb279b" class="outline-3">
-<h3 id="org1cb279b">mememacs/create-script</h3>
-<div class="outline-text-3" id="text-org1cb279b">
+<div id="outline-container-org83ce0a1" class="outline-3">
+<h3 id="org83ce0a1">mememacs/create-script</h3>
+<div class="outline-text-3" id="text-org83ce0a1">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-script*</span> (file bang setup)
   (find-file file)
@@ -504,9 +504,9 @@ Shellcheck makes superb warnings. Firmly in my "adopt" circle.
 </p>
 </div>
 
-<div id="outline-container-org1dffd9e" class="outline-4">
-<h4 id="org1dffd9e">bash-completion in <code>sh-mode</code></h4>
-<div class="outline-text-4" id="text-org1dffd9e">
+<div id="outline-container-org16e9935" class="outline-4">
+<h4 id="org16e9935">bash-completion in <code>sh-mode</code></h4>
+<div class="outline-text-4" id="text-org16e9935">
 <p>
 Here is my full <code>bash-completion</code> config that adds to <code>capf</code>.
 </p>
@@ -538,9 +538,9 @@ Here is my full <code>bash-completion</code> config that adds to <code>capf</cod
 </div>
 </div>
 
-<div id="outline-container-org7ca684c" class="outline-2">
-<h2 id="org7ca684c">async-shell-command, my bread and butter</h2>
-<div class="outline-text-2" id="text-org7ca684c">
+<div id="outline-container-org0f9077e" class="outline-2">
+<h2 id="org0f9077e">async-shell-command, my bread and butter</h2>
+<div class="outline-text-2" id="text-org0f9077e">
 <p>
 Of these commands, it is the one I use the most.
 And really, all the other commands could be performed in terms of it.
@@ -548,9 +548,9 @@ Here is some of my journey of smoothing out some edges.
 </p>
 </div>
 
-<div id="outline-container-org5623100" class="outline-3">
-<h3 id="org5623100">Put the command into the buffer name</h3>
-<div class="outline-text-3" id="text-org5623100">
+<div id="outline-container-orgaf2c2a9" class="outline-3">
+<h3 id="orgaf2c2a9">Put the command into the buffer name</h3>
+<div class="outline-text-3" id="text-orgaf2c2a9">
 <p>
 When you run a second command, by default, it tries to reuse the old buffer and asks you
 </p>
@@ -616,9 +616,9 @@ And the buffers don't have an anonymous name like <code>*async-shell-command&lt;
 </div>
 </div>
 
-<div id="outline-container-org76d74db" class="outline-3">
-<h3 id="org76d74db">shell-command&#x2013;same-buffer-confirm</h3>
-<div class="outline-text-3" id="text-org76d74db">
+<div id="outline-container-org0e273be" class="outline-3">
+<h3 id="org0e273be">shell-command&#x2013;same-buffer-confirm</h3>
+<div class="outline-text-3" id="text-org0e273be">
 <p>
 Sort of a power setting when you do <code>async-shell-command</code> a lot.
 I used to have this to <code>'confirm-kill-process</code>
@@ -636,9 +636,9 @@ If I want to kill I can do <code>C-c C-c</code> on the old buffer.
 </div>
 </div>
 
-<div id="outline-container-orgf2fd01c" class="outline-3">
-<h3 id="orgf2fd01c">shell-mode as a terminal emulator</h3>
-<div class="outline-text-3" id="text-orgf2fd01c">
+<div id="outline-container-org6eceef8" class="outline-3">
+<h3 id="org6eceef8">shell-mode as a terminal emulator</h3>
+<div class="outline-text-3" id="text-org6eceef8">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/shell-via-async-shell-command</span> ()
     (switch-to-buffer
@@ -660,9 +660,9 @@ I get all the evil stuff for free in <code>shell</code> buffers.
 </div>
 </div>
 
-<div id="outline-container-org836203e" class="outline-2">
-<h2 id="org836203e">process-list</h2>
-<div class="outline-text-2" id="text-org836203e">
+<div id="outline-container-org1f8110e" class="outline-2">
+<h2 id="org1f8110e">process-list</h2>
+<div class="outline-text-2" id="text-org1f8110e">
 <p>
 You get a list of all current processes.
 Here is a function I have bound in <code>process-menu-mode-map</code> :
@@ -700,17 +700,17 @@ Then you know <code>ibuffer</code>. They are analogous by design.
 </div>
 </div>
 
-<div id="outline-container-org8098226" class="outline-2">
-<h2 id="org8098226">The next layer on the cake</h2>
-<div class="outline-text-2" id="text-org8098226">
+<div id="outline-container-org6a347d9" class="outline-2">
+<h2 id="org6a347d9">The next layer on the cake</h2>
+<div class="outline-text-2" id="text-org6a347d9">
 <p>
 More context for <code>shell-command</code>.
 </p>
 </div>
 
-<div id="outline-container-org1813c04" class="outline-3">
-<h3 id="org1813c04">project</h3>
-<div class="outline-text-3" id="text-org1813c04">
+<div id="outline-container-org355e259" class="outline-3">
+<h3 id="org355e259">project</h3>
+<div class="outline-text-3" id="text-org355e259">
 <p>
 I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile</code> in the project root. Analogously, there is <code>project-async-shell-command</code>.
 <code>projectile</code>, a big and widely used package, provides similar commands.
@@ -718,9 +718,9 @@ I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile<
 </div>
 </div>
 
-<div id="outline-container-org42786cc" class="outline-3">
-<h3 id="org42786cc">recompile</h3>
-<div class="outline-text-3" id="text-org42786cc">
+<div id="outline-container-org3377a0d" class="outline-3">
+<h3 id="org3377a0d">recompile</h3>
+<div class="outline-text-3" id="text-org3377a0d">
 <p>
 Similar to going to the <code>*compilation*</code> buffer and <code>revert-buffer</code>.
 But a single command.
@@ -728,9 +728,9 @@ But a single command.
 </div>
 </div>
 
-<div id="outline-container-orgaab3403" class="outline-3">
-<h3 id="orgaab3403">ansi colors for comint</h3>
-<div class="outline-text-3" id="text-orgaab3403">
+<div id="outline-container-org2d8186a" class="outline-3">
+<h3 id="org2d8186a">ansi colors for comint</h3>
+<div class="outline-text-3" id="text-org2d8186a">
 <p>
 If you use <a href="https://github.com/lambdaisland/kaocha">Koacha</a> together with <code>compile</code>,
 you will get output sprinkled with ANSI (color) escape codes.
@@ -766,7 +766,7 @@ Koacha output looks like this:
 </p>
 
 
-<div id="orgec0fa41" class="figure">
+<div id="org58ff56c" class="figure">
 <p><img src="https://i.imgur.com/5vpmnsu.png" alt="5vpmnsu.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>A <code>compile</code> buffer running <code>Koacha</code> with pleasing green colored output text.</p>
@@ -775,13 +775,13 @@ Koacha output looks like this:
 </div>
 </div>
 
-<div id="outline-container-org13f8ab2" class="outline-2">
-<h2 id="org13f8ab2">Levers are great</h2>
-<div class="outline-text-2" id="text-org13f8ab2">
+<div id="outline-container-org30de10d" class="outline-2">
+<h2 id="org30de10d">Levers are great</h2>
+<div class="outline-text-2" id="text-org30de10d">
 </div>
-<div id="outline-container-org8e1f354" class="outline-3">
-<h3 id="org8e1f354">ssh</h3>
-<div class="outline-text-3" id="text-org8e1f354">
+<div id="outline-container-org92d28a7" class="outline-3">
+<h3 id="org92d28a7">ssh</h3>
+<div class="outline-text-3" id="text-org92d28a7">
 <p>
 Nice tip in case you did not know:
 You can define preset configs in <code>~/.ssh/config</code> and they will show up
@@ -802,16 +802,16 @@ I hit tap and I get <code>dotomic-system-ec2</code> as completion. Yes!
 </div>
 </div>
 
-<div id="outline-container-orgc20f86f" class="outline-3">
-<h3 id="orgc20f86f">embarking</h3>
-<div class="outline-text-3" id="text-orgc20f86f">
+<div id="outline-container-orgc0771b2" class="outline-3">
+<h3 id="orgc0771b2">embarking</h3>
+<div class="outline-text-3" id="text-orgc0771b2">
 <p>
 Through <a href="https://github.com/oantolin/embark">embark</a> the power of completions is further amplified.
 For instance, I can complete git branches via <code>git checkout</code> completions.
 </p>
 
 
-<div id="orgb4aab1c" class="figure">
+<div id="org068c204" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/embarking-git-branches.gif?raw=true" alt="embarking-git-branches.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Abusing <code>read-shell-command</code> to dispatch with <code>embark</code> on git checkout completions. Invoking <code>embark-insert</code> as an example.</p>
@@ -819,9 +819,9 @@ For instance, I can complete git branches via <code>git checkout</code> completi
 </div>
 </div>
 
-<div id="outline-container-org1e79db7" class="outline-3">
-<h3 id="org1e79db7">pass</h3>
-<div class="outline-text-3" id="text-org1e79db7">
+<div id="outline-container-org093ebdd" class="outline-3">
+<h3 id="org093ebdd">pass</h3>
+<div class="outline-text-3" id="text-org093ebdd">
 <p>
 Another example. I used to use <a href="https://github.com/emacs-helm/helm-pass/blob/master/helm-pass.el">helm-pass</a> for <code>pass</code>.
 Guess what, <code>pass</code> has great shell completions.
@@ -831,13 +831,13 @@ I get a free interface to <code>pass</code> just with <code>async-shell-command<
 </div>
 </div>
 
-<div id="outline-container-org62b5d7a" class="outline-2">
-<h2 id="org62b5d7a">Particulars</h2>
-<div class="outline-text-2" id="text-org62b5d7a">
+<div id="outline-container-org5c9b796" class="outline-2">
+<h2 id="org5c9b796">Particulars</h2>
+<div class="outline-text-2" id="text-org5c9b796">
 </div>
-<div id="outline-container-orgf7e124b" class="outline-3">
-<h3 id="orgf7e124b">shell-file-name</h3>
-<div class="outline-text-3" id="text-orgf7e124b">
+<div id="outline-container-org9116c7f" class="outline-3">
+<h3 id="org9116c7f">shell-file-name</h3>
+<div class="outline-text-3" id="text-org9116c7f">
 <p>
 It matters.
 For instance, if you use "/bin/bash" and you set up your path in a <code>zshrc</code> that might be a pitfall.
