@@ -25,21 +25,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19f41f3">Introduction</a></li>
-<li><a href="#org6959e01">The setup</a>
+<li><a href="#org725eea1">Introduction</a></li>
+<li><a href="#orgca68dc6">The setup</a>
 <ul>
-<li><a href="#org366449f">From the project I currently work on:</a></li>
+<li><a href="#orgd3a8411">From the project I currently work on:</a></li>
 </ul>
 </li>
-<li><a href="#orgb5389b0">Non-file-buffer</a></li>
-<li><a href="#org57fed5b">revert with grace</a></li>
+<li><a href="#orgc1cd9e7">Non-file-buffer</a></li>
+<li><a href="#org3af3c15">revert with grace</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org19f41f3" class="outline-2">
-<h2 id="org19f41f3">Introduction</h2>
-<div class="outline-text-2" id="text-org19f41f3">
+<div id="outline-container-org725eea1" class="outline-2">
+<h2 id="org725eea1">Introduction</h2>
+<div class="outline-text-2" id="text-org725eea1">
 <p>
 Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
 </p>
@@ -55,9 +55,9 @@ What I show here works for <code>compile</code>, <code>shell-command</code>, and
 </div>
 </div>
 
-<div id="outline-container-org6959e01" class="outline-2">
-<h2 id="org6959e01">The setup</h2>
-<div class="outline-text-2" id="text-org6959e01">
+<div id="outline-container-orgca68dc6" class="outline-2">
+<h2 id="orgca68dc6">The setup</h2>
+<div class="outline-text-2" id="text-orgca68dc6">
 <p>
 <code>.dir-locals.el</code>:
 </p>
@@ -89,9 +89,9 @@ The answer mentions <code>setq-local</code>. I tried that without success.
 </p>
 </div>
 
-<div id="outline-container-org366449f" class="outline-3">
-<h3 id="org366449f">From the project I currently work on:</h3>
-<div class="outline-text-3" id="text-org366449f">
+<div id="outline-container-orgd3a8411" class="outline-3">
+<h3 id="orgd3a8411">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-orgd3a8411">
 <div class="org-src-container">
 <pre class="src src-elisp">((nil
   .
@@ -112,9 +112,9 @@ Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task f
 </div>
 </div>
 
-<div id="outline-container-orgb5389b0" class="outline-2">
-<h2 id="orgb5389b0">Non-file-buffer</h2>
-<div class="outline-text-2" id="text-orgb5389b0">
+<div id="outline-container-orgc1cd9e7" class="outline-2">
+<h2 id="orgc1cd9e7">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-orgc1cd9e7">
 <p>
 By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
 (When the local variable <code>buffer-file-name</code> is not set).
@@ -131,9 +131,9 @@ I usually start processes from either a (source) file buffer or dired.
 </div>
 </div>
 
-<div id="outline-container-org57fed5b" class="outline-2">
-<h2 id="org57fed5b">revert with grace</h2>
-<div class="outline-text-2" id="text-org57fed5b">
+<div id="outline-container-org3af3c15" class="outline-2">
+<h2 id="org3af3c15">revert with grace</h2>
+<div class="outline-text-2" id="text-org3af3c15">
 <p>
 When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
 whatever buffer you want to have the effect.
