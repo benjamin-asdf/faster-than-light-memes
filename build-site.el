@@ -22,6 +22,7 @@
 (setf denote-directory "~/notes/")
 
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
+(defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
 
 (defun ftlm/file->denote-links (file)
   (with-current-buffer (find-file-noselect file)
@@ -56,7 +57,7 @@
    (cl-remove-if
     (lambda (s)
       (string-match-p "org_archive$" s))
-    (ftlm/file->denote-links ftlm/index-file))))
+    (ftlm/file->denote-links ftlm/posts-file))))
 
 (defun ftlm/posts+index-files ()
   (cons ftlm/index-file (ftlm/post-files)))
@@ -76,16 +77,46 @@
       (insert
        (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))))
 
+(defun navbar-elm (link desc)
+  (format "<li><a href=\"%s.html\">%s</a></li>\n" link desc))
+
+(defun get-preamble ()
+  (concat
+   (with-current-buffer (find-file-noselect "preamble.html") (buffer-string))
+   (format
+    "<ul id=\"navbar\">\n    %s\n</ul>\n \n"
+     (with-temp-buffer
+       (cl-loop for elm in
+		(with-current-buffer
+		    (find-file-noselect ftlm/posts-file)
+		  (goto-char (point-min))
+		  (cl-loop while
+			   (re-search-forward org-link-any-re nil t)
+			   collect
+			   (let* ((start (match-beginning 0))
+				  (link-object
+				   (save-excursion
+				     (goto-char start)
+				     (save-match-data (org-element-link-parser))))
+				  (link (org-element-property :path link-object))
+				  (path-id (denote-link--ol-resolve-link-to-target link :path-id))
+				  (path (file-name-nondirectory (car path-id)))
+				  (p (file-name-sans-extension path))
+				  (p (dw/strip-file-name-metadata p))
+				  (description
+				   (buffer-substring-no-properties
+				    (org-element-property :contents-begin link-object)
+				    (org-element-property :contents-end link-object))))
+			     (navbar-elm p description))))
+		do (insert elm))
+       (buffer-string)))))
+
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
 	     :org-html-preamble t
 	     :html-preamble-format
-	     `(("en"
-		,(with-current-buffer
-		     (find-file-noselect
-		      "preamble.html")
-		   (buffer-string))))
+	     `(("en" ,(get-preamble)))
              :recursive t
 	     :exclude ".*"
 	     :include (ftlm/posts+index-files)
@@ -99,10 +130,13 @@
              :section-numbers nil
              :time-stamp-file nil)))
 
-(setq org-html-validation-link nil            ;; Don't show validation link
-      org-html-head-include-scripts nil       ;; Use our own scripts
-      org-html-head-include-default-style nil ;; Use our own styles
-      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />")
+(setq org-html-validation-link
+      nil
+      org-html-head-include-scripts
+      nil
+      org-html-head-include-default-style
+      nil
+      org-html-head (with-current-buffer (find-file-noselect "html-head.html") (buffer-string)))
 
 (defun denote-link-ol-export (link description format)
   "Export a `denote:' link from Org files.
