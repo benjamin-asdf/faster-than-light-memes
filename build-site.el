@@ -159,6 +159,9 @@ backend."
 
 (org-publish-all t)
 
+(dolist (file (directory-files-recursively "css" "\\.css$"))
+  (copy-file file "gh-pages/" t))
+
 (with-temp-buffer
   (parseedn-print
    (mapcar #'ftlm/post-data (ftlm/post-files)))
