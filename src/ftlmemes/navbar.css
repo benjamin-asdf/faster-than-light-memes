@@ -1,15 +1,16 @@
 /* vertical navbar on the left */
 
 #navbar {
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #2f2f2f;
-  overflow-x: hidden;
-  padding-top: 20px;
-  padding-inline-start: 0;
+  /* width: 200px; */
+  /* height: 100%; */
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* background-color: #2f2f2f; */
+  /* overflow-x: hidden; */
+  /* padding-top: 20px; */
+  /* padding-inline-start: 0; */
+  /* display: none; */
 }
 
 #navbar a {
@@ -22,12 +23,6 @@
 
 #navbar a:hover {
   color: #f1f1f1;
-}
-
-#main {
-  margin-left: 200px;
-  font-size: 28px;
-  padding: 0px 10px;
 }
 
 @media screen and (max-height: 450px) {
@@ -43,4 +38,8 @@
 
 #navbar ul {
     padding-inline-start: 0;
+}
+
+#navbar .is-open {
+    display: block;
 }
