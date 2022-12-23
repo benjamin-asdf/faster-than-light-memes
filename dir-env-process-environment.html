@@ -9,16 +9,19 @@
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
@@ -36,6 +39,7 @@
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">dir-env-process-environment</h1>
@@ -43,21 +47,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgeab6d90">Introduction</a></li>
-<li><a href="#orgab88336">The setup</a>
+<li><a href="#org12b68d6">Introduction</a></li>
+<li><a href="#org6d57ba0">The setup</a>
 <ul>
-<li><a href="#orgb7d057b">From the project I currently work on:</a></li>
+<li><a href="#orgdd207df">From the project I currently work on:</a></li>
 </ul>
 </li>
-<li><a href="#org57473e8">Non-file-buffer</a></li>
-<li><a href="#org45c715c">revert with grace</a></li>
+<li><a href="#org8fcd432">Non-file-buffer</a></li>
+<li><a href="#orgf1bcffb">revert with grace</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeab6d90" class="outline-2">
-<h2 id="orgeab6d90">Introduction</h2>
-<div class="outline-text-2" id="text-orgeab6d90">
+<div id="outline-container-org12b68d6" class="outline-2">
+<h2 id="org12b68d6">Introduction</h2>
+<div class="outline-text-2" id="text-org12b68d6">
 <p>
 Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
 </p>
@@ -73,9 +77,9 @@ What I show here works for <code>compile</code>, <code>shell-command</code>, and
 </div>
 </div>
 
-<div id="outline-container-orgab88336" class="outline-2">
-<h2 id="orgab88336">The setup</h2>
-<div class="outline-text-2" id="text-orgab88336">
+<div id="outline-container-org6d57ba0" class="outline-2">
+<h2 id="org6d57ba0">The setup</h2>
+<div class="outline-text-2" id="text-org6d57ba0">
 <p>
 <code>.dir-locals.el</code>:
 </p>
@@ -107,9 +111,9 @@ The answer mentions <code>setq-local</code>. I tried that without success.
 </p>
 </div>
 
-<div id="outline-container-orgb7d057b" class="outline-3">
-<h3 id="orgb7d057b">From the project I currently work on:</h3>
-<div class="outline-text-3" id="text-orgb7d057b">
+<div id="outline-container-orgdd207df" class="outline-3">
+<h3 id="orgdd207df">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-orgdd207df">
 <div class="org-src-container">
 <pre class="src src-elisp">((nil
   .
@@ -130,9 +134,9 @@ Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task f
 </div>
 </div>
 
-<div id="outline-container-org57473e8" class="outline-2">
-<h2 id="org57473e8">Non-file-buffer</h2>
-<div class="outline-text-2" id="text-org57473e8">
+<div id="outline-container-org8fcd432" class="outline-2">
+<h2 id="org8fcd432">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-org8fcd432">
 <p>
 By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
 (When the local variable <code>buffer-file-name</code> is not set).
@@ -149,9 +153,9 @@ I usually start processes from either a (source) file buffer or dired.
 </div>
 </div>
 
-<div id="outline-container-org45c715c" class="outline-2">
-<h2 id="org45c715c">revert with grace</h2>
-<div class="outline-text-2" id="text-org45c715c">
+<div id="outline-container-orgf1bcffb" class="outline-2">
+<h2 id="orgf1bcffb">revert with grace</h2>
+<div class="outline-text-2" id="text-orgf1bcffb">
 <p>
 When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
 whatever buffer you want to have the effect.
