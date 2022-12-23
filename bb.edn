@@ -27,6 +27,7 @@
                         {:dir "gh-pages"}
                         "git"
                         "push"
+                        "--force"
                         "git@github.com:benjamin-asdf/faster-than-light-memes.git")}
          build-deploy {:depends [build deploy]}
          browse-qr-code (shell
