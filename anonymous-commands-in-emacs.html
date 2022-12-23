@@ -8,6 +8,7 @@
 <title>anonymous-commands-in-emacs</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">anonymous-commands-in-emacs</h1>
@@ -25,24 +43,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd03ba09">Introduction</a>
+<li><a href="#org1fd4a75">Introduction</a>
 <ul>
-<li><a href="#orgb0b5262">add-hook</a></li>
+<li><a href="#org203e593">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#orgf817a59">Solution</a>
+<li><a href="#orgbf79866">Solution</a>
 <ul>
-<li><a href="#org5fe45c9">defun</a></li>
+<li><a href="#orgaaf1bff">defun</a></li>
 </ul>
 </li>
-<li><a href="#org58b857d">Result</a></li>
+<li><a href="#org9ab0a52">Result</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd03ba09" class="outline-2">
-<h2 id="orgd03ba09">Introduction</h2>
-<div class="outline-text-2" id="text-orgd03ba09">
+<div id="outline-container-org1fd4a75" class="outline-2">
+<h2 id="org1fd4a75">Introduction</h2>
+<div class="outline-text-2" id="text-org1fd4a75">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -60,7 +78,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org7a342f3">
+<pre class="example" id="org48946ac">
 Key             Binding
 f		[closure]
 </pre>
@@ -70,9 +88,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-orgb0b5262" class="outline-3">
-<h3 id="orgb0b5262">add-hook</h3>
-<div class="outline-text-3" id="text-orgb0b5262">
+<div id="outline-container-org203e593" class="outline-3">
+<h3 id="org203e593">add-hook</h3>
+<div class="outline-text-3" id="text-org203e593">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -95,9 +113,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-orgf817a59" class="outline-2">
-<h2 id="orgf817a59">Solution</h2>
-<div class="outline-text-2" id="text-orgf817a59">
+<div id="outline-container-orgbf79866" class="outline-2">
+<h2 id="orgbf79866">Solution</h2>
+<div class="outline-text-2" id="text-orgbf79866">
 <p>
 Alias your function:
 </p>
@@ -112,7 +130,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="org54952e3">
+<pre class="example" id="org46c25a7">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -124,9 +142,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-org5fe45c9" class="outline-3">
-<h3 id="org5fe45c9">defun</h3>
-<div class="outline-text-3" id="text-org5fe45c9">
+<div id="outline-container-orgaaf1bff" class="outline-3">
+<h3 id="orgaaf1bff">defun</h3>
+<div class="outline-text-3" id="text-orgaaf1bff">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -142,9 +160,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-org58b857d" class="outline-2">
-<h2 id="org58b857d">Result</h2>
-<div class="outline-text-2" id="text-org58b857d">
+<div id="outline-container-org9ab0a52" class="outline-2">
+<h2 id="org9ab0a52">Result</h2>
+<div class="outline-text-2" id="text-org9ab0a52">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:

@@ -8,6 +8,7 @@
 <title>scittle-prints-itself</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">scittle-prints-itself</h1>
@@ -25,15 +43,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgca86a66">Introduction</a></li>
-<li><a href="#org9dd6c3b">Problem statement</a></li>
-<li><a href="#orgc7683ef">Some reagent code</a></li>
-<li><a href="#orgf797d39">Fetch</a></li>
-<li><a href="#orgf35be7b">Pretty print the code..?</a></li>
-<li><a href="#org10d8a65">Eval string</a></li>
-<li><a href="#org341d46c">Only fetch once</a></li>
-<li><a href="#org95d8ea8">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#orge8ba41f">Codepen</a></li>
+<li><a href="#orgf66bf29">Introduction</a></li>
+<li><a href="#org81c6275">Problem statement</a></li>
+<li><a href="#org6b00281">Some reagent code</a></li>
+<li><a href="#org05c90c5">Fetch</a></li>
+<li><a href="#org5747355">Pretty print the code..?</a></li>
+<li><a href="#org2c09b6e">Eval string</a></li>
+<li><a href="#orgeb60fd0">Only fetch once</a></li>
+<li><a href="#orgf97e831">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org7e1af45">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -42,9 +60,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-orgca86a66" class="outline-2">
-<h2 id="orgca86a66">Introduction</h2>
-<div class="outline-text-2" id="text-orgca86a66">
+<div id="outline-container-orgf66bf29" class="outline-2">
+<h2 id="orgf66bf29">Introduction</h2>
+<div class="outline-text-2" id="text-orgf66bf29">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -65,9 +83,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-org9dd6c3b" class="outline-2">
-<h2 id="org9dd6c3b">Problem statement</h2>
-<div class="outline-text-2" id="text-org9dd6c3b">
+<div id="outline-container-org81c6275" class="outline-2">
+<h2 id="org81c6275">Problem statement</h2>
+<div class="outline-text-2" id="text-org81c6275">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -81,9 +99,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-orgc7683ef" class="outline-2">
-<h2 id="orgc7683ef">Some reagent code</h2>
-<div class="outline-text-2" id="text-orgc7683ef">
+<div id="outline-container-org6b00281" class="outline-2">
+<h2 id="org6b00281">Some reagent code</h2>
+<div class="outline-text-2" id="text-org6b00281">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -171,9 +189,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-orgf797d39" class="outline-2">
-<h2 id="orgf797d39">Fetch</h2>
-<div class="outline-text-2" id="text-orgf797d39">
+<div id="outline-container-org05c90c5" class="outline-2">
+<h2 id="org05c90c5">Fetch</h2>
+<div class="outline-text-2" id="text-org05c90c5">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -189,15 +207,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-orgf35be7b" class="outline-2">
-<h2 id="orgf35be7b">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-orgf35be7b">
+<div id="outline-container-org5747355" class="outline-2">
+<h2 id="org5747355">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-org5747355">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="org4e9714d" class="figure">
+<div id="org0769aa3" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -234,9 +252,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org10d8a65" class="outline-2">
-<h2 id="org10d8a65">Eval string</h2>
-<div class="outline-text-2" id="text-org10d8a65">
+<div id="outline-container-org2c09b6e" class="outline-2">
+<h2 id="org2c09b6e">Eval string</h2>
+<div class="outline-text-2" id="text-org2c09b6e">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -327,9 +345,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-org341d46c" class="outline-2">
-<h2 id="org341d46c">Only fetch once</h2>
-<div class="outline-text-2" id="text-org341d46c">
+<div id="outline-container-orgeb60fd0" class="outline-2">
+<h2 id="orgeb60fd0">Only fetch once</h2>
+<div class="outline-text-2" id="text-orgeb60fd0">
 <p>
 I update the fetch code like so:
 </p>
@@ -351,9 +369,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-org95d8ea8" class="outline-2">
-<h2 id="org95d8ea8">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-org95d8ea8">
+<div id="outline-container-orgf97e831" class="outline-2">
+<h2 id="orgf97e831">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orgf97e831">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -372,7 +390,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="org8dec275" class="figure">
+<div id="org92020ea" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -397,9 +415,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-orge8ba41f" class="outline-2">
-<h2 id="orge8ba41f">Codepen</h2>
-<div class="outline-text-2" id="text-orge8ba41f">
+<div id="outline-container-org7e1af45" class="outline-2">
+<h2 id="org7e1af45">Codepen</h2>
+<div class="outline-text-2" id="text-org7e1af45">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>

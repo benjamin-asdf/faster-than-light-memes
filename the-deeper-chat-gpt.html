@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>the-deeper-chat-gpt</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
+</head>
+<body>
+<div id="preamble" class="status">
+  <h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
+</div>
+<div id="content" class="content">
+<h1 class="title">the-deeper-chat-gpt</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0d0e973">Updates since first version of the post</a></li>
+<li><a href="#org5333ebb">Introduction</a></li>
+<li><a href="#orge26d71b">Token limit for a single message</a></li>
+<li><a href="#orgab42b30">The fun so far</a>
+<ul>
+<li><a href="#orgd2ce667">code</a></li>
+<li><a href="#orge0525ee">science edges</a></li>
+<li><a href="#org5bf58f4">long output</a></li>
+<li><a href="#org11fb26b">wizard scientists</a></li>
+</ul>
+</li>
+<li><a href="#org19ad6da">uncovering</a></li>
+<li><a href="#org6e16cdc">code</a></li>
+<li><a href="#org5b30913">New kind of interface</a></li>
+<li><a href="#org6f09018">other tips</a></li>
+<li><a href="#org95ac63b">Conclusion</a></li>
+</ul>
+</div>
+</div>
+<p>
+Notes on chat-gpt discoveries.
+</p>
+
+<div id="outline-container-org0d0e973" class="outline-2">
+<h2 id="org0d0e973">Updates since first version of the post</h2>
+<div class="outline-text-2" id="text-org0d0e973">
+<ol class="org-ol">
+<li>They improved the websites, my session rarely resets anymore (also
+chats are saved).</li>
+<li>You probably need these fixes for "Network error" anymore, they
+changed it so you get your long answers, just takes a bit longer</li>
+<li>I have some emacs bindings for openai api now <a href="https://github.com/benjamin-asdf/openai-api.el">here</a>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org5333ebb" class="outline-2">
+<h2 id="org5333ebb">Introduction</h2>
+<div class="outline-text-2" id="text-org5333ebb">
+<p>
+When a child first learns how to draw with colored pens, a world of possibility is opened. Every new picture is a chance for them to explore and experiment with different techniques and ideas. The pens give them a sense of control and creativity as they bring their thoughts to life on paper. The child might proudly show off their creations, going back and forth between drawing and exclaiming <code>Look what I have drawn!</code>
+</p>
+
+<p>
+When I interact with chat-gpt I constantly have this urge to show
+(hence some of the stuff further down in the post).
+</p>
+
+<p>
+I was also starting to dream along the lines of <code>My body is a language
+model and I want to coax it into doing something</code>.
+The feel of this is like there is a certain intelligence on the other
+end, that you can feed the right information to make it grow in some direction.
+</p>
+
+<p>
+The psychology of interacting with it is somewhere on a cross-over of
+pet, houseplant in fast-forward mode and having a text chat with
+somebody on the moon - works only to some degree.
+</p>
+
+<p>
+Formating in this post is like this:
+</p>
+
+<p>
+<i>prompt</i>
+</p>
+<blockquote>
+<p>
+Answer by chat gpt
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orge26d71b" class="outline-2">
+<h2 id="orge26d71b">Token limit for a single message</h2>
+<div class="outline-text-2" id="text-orge26d71b">
+<p>
+I pasted my blog post <a href="binaural-beats-using-scittle.html">binaural beats using scittle</a>. Into <a href="https://chat.openai.com/chat">chat-gpt</a>.
+It responds like this:
+</p>
+
+<blockquote>
+<p>
+The above text appears to be the introduction to a blog post about
+binaural beats and their potential benefits&#x2026;
+</p>
+</blockquote>
+
+<p>
+It seems to only summarize the first part of the post.
+</p>
+
+<p>
+<i>what is the last sentence of the above text?</i>
+</p>
+
+<blockquote>
+<p>
+The last sentence of the above text is: ~These beats are thought to originate&#x2026;
+</p>
+</blockquote>
+
+<p>
+If it doesn't completely make something up in this answer this would
+point towards that there is a cut of your message input. In this case
+around 3.7k characters. Maybe it is 4000 characters, then.
+</p>
+
+<p>
+I find that even if your session is reset for some reason - happens a lot
+currently, as the side goes down, or you hit rate limits - you can
+recover your session by pasting back your previous prompts / the
+conversation.
+</p>
+
+<p>
+What I type is precious, it takes me effort to type. My default mode
+of writing prompts for chat-gpt is keeping what I type in
+files that are source controlled.
+Else there would have been very sad moments of loss for me when a
+thread resets.
+</p>
+
+<p>
+Here is an implementation of copying a good chunk for chat-gpt from
+your buffer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">kill-for-chat-gpt</span> ()
+  (<span style="font-weight: bold;">interactive</span>)
+  (kill-new
+   (buffer-substring
+    (point)
+    (<span style="font-weight: bold;">cl-loop</span>
+     for i below 3500
+     while (not (eobp))
+     do (forward-char 1)
+     finally return (point)))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgab42b30" class="outline-2">
+<h2 id="orgab42b30">The fun so far</h2>
+<div class="outline-text-2" id="text-orgab42b30">
+</div>
+<div id="outline-container-orgd2ce667" class="outline-3">
+<h3 id="orgd2ce667">code</h3>
+<div class="outline-text-3" id="text-orgd2ce667">
+<p>
+I have solved day 13 of <a href="https://adventofcode.com/2022">Advent of code</a> with chat-gpt. (<a href="https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day13.clj">code</a>).
+I pasted the description of the alg and said <code>solve this using
+Clojure</code> or some such.
+It then made a function that was sort of correct. I needed to fiddle
+around a little with it.
+</p>
+
+<p>
+It also works quite well when you ask random programming questions
+like <code>Implement a function to check if a number is divisible by a
+number n in Clojure</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0525ee" class="outline-3">
+<h3 id="orge0525ee">science edges</h3>
+<div class="outline-text-3" id="text-orge0525ee">
+<p>
+Sometimes you have a question in your mind that requires quite some
+knowledge from different fields and is <b>not</b> to google.
+This reminds me of the <code>But Why</code> podcast.
+</p>
+
+<p>
+It was one of these questions on my mind: <code>Is the rainbow that bees
+see different?</code>.
+</p>
+
+<p>
+Behold a new kind of power:
+</p>
+
+<p>
+<i>Summarize how bees see a rainbow. Is it thicker or does it have more colors? Throw in a Richard Feynman quote about refraction. Do it in victorian speech style like sherlock holmes</i>.
+</p>
+
+<blockquote>
+<p>
+My dear fellow, have you ever stopped to consider how a bee perceives a rainbow? You see, unlike us humans who possess three types of cone cells in our eyes, bees have only two. This allows them to see a limited range of colors, with an affinity for blue and ultraviolet hues. Therefore, when it comes to rainbows, it is possible that they may not be able to perceive as many colors or that the colors may appear less vibrant to them.
+</p>
+
+<p>
+As the esteemed physicist Richard Feynman once posited, <code>The rainbow is not a thing, it is a manner in which things behave.</code> This statement highlights the ephemeral nature of rainbows, which are formed when light is refracted through water droplets. The exact colors and intensity of a rainbow can vary depending on the size and shape of the droplets, as well as the angle at which the light hits them.
+</p>
+
+<p>
+In conclusion, while bees can indeed see rainbows, their perception of them may be altered due to the unique structure of their visual system. The exact colors and intensity of a rainbow may vary depending on the specific conditions at the time of observation.
+</p>
+</blockquote>
+
+<p>
+I asked it about a 4 dimensional rubics cube and it answered
+intelligently, too.
+It also feels like it staying honest about what things it knows about and what it doesn't.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5bf58f4" class="outline-3">
+<h3 id="org5bf58f4">long output</h3>
+<div class="outline-text-3" id="text-org5bf58f4">
+<p>
+It currently dies sometimes with long outputs saying <code>Network
+error</code>. That is really annoying and I end up resetting the session.
+</p>
+
+<p>
+idea 1: You say something like <code>Only tell me part 1</code> and later <code>Respond
+with the rest of your answer</code>.
+</p>
+
+<p>
+idea 2: You tell it to base64 encode it's output. Tried it once and it
+didn't do it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org11fb26b" class="outline-3">
+<h3 id="org11fb26b">wizard scientists</h3>
+<div class="outline-text-3" id="text-org11fb26b">
+<p>
+I told it <code>I am developing a hard fantasy magic system based on
+science</code>. Then fed it ideas about my world and the magic. Turned out
+kinda cool. It starts being able to generate text of what a wizard
+scientist might say.
+The magic system is based on lisp with a clojure dialect. The wizards
+are then discovering and studying the magic, and discovering the
+magical language lisp.
+</p>
+
+<p>
+After a while of feeding it with musings about my fantasy world it
+produced text like this:
+</p>
+
+<p>
+<i>I was a young wizard scientist already knowing spells at age 12. After a few months that the magicla academy a mentor wizard wanted to show me a beatiful experi</i>
+</p>
+
+<blockquote>
+<p>
+ment in the reticulum. We stood before a large magical artifact, shaped like a crystal ball. My mentor placed his hand on the ball and began to chant a spell in the ancient language of lisp.
+</p>
+
+<p>
+As he chanted, the crystal ball began to glow with a soft, golden light. My mentor gestured towards the ball, and I watched in amazement as a small fireball appeared, swirling inside the crystal.
+</p>
+
+<p>
+<code>You see, my young apprentice,</code> my mentor said, <code>the reticulum is a wondrous thing. It allows us to manipulate the very fabric of reality, using the power of magic and the ancient art of lisp.</code>
+</p>
+
+<p>
+I nodded, feeling a sense of awe and excitement. I had always been
+fascinated by magic, and now I was beginning to understand its true
+power.
+</p>
+
+
+<p>
+<code>But remember,</code> my mentor continued, ~with great power comes great
+responsibility. The reticulum is a delicate thing, and it must be
+treated with care. If we use it recklessly, we could cause great harm
+to ourselves and others.~
+</p>
+
+
+<p>
+I nodded again, taking his words to heart. I knew that I had much to learn, but I was determined to master the art of magic and unlock the secrets of the reticulum.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+ment involving a magical animal. The mentor took me to a large laboratory, where I saw a magical bat hanging upside down from a perch.
+</p>
+
+<p>
+The mentor explained that this bat had the ability to fly at incredible speeds, using its powerful wings and magical abilities. He then showed me a spell that he had been working on, which would allow us to observe the bat's movements in slow motion.
+</p>
+
+<p>
+I was amazed as the mentor cast the spell, and the bat suddenly slowed down, its wings flapping lazily as it hovered in midair. We were able to watch as the bat shifted its wings and body, adjusting its position to maintain its balance.
+</p>
+
+<p>
+The mentor then asked me to try the spell myself, and I was able to successfully cast it on my first try. I was thrilled by the experience, and I knew that I had just begun to unlock the true potential of the reticulum.
+</p>
+
+<p>
+I continued to study and experiment with magic, learning new spells and honing my skills. I eventually became a respected wizard scientist, known for my knowledge and expertise in the magical arts. I continue to explore the mysteries of the reticulum, always seeking new and greater insights into its workings.
+</p>
+</blockquote>
+
+<p>
+The model has a high <code>temperature</code> so it comes up with random things
+as well. You can put the same prompt and expect different answers.
+A temperature of 0 would mean it is deterministic.
+</p>
+
+
+<p>
+Then you can always swap your medium, the ideas stay the same.
+</p>
+
+<p>
+<i>Give me some clojure reagent code that visualizes the concepts of this thread.</i>
+</p>
+
+<p>
+Output:
+<i>Here is an example of how you might use clojure reagent code to visualize the concepts of the reticulum and its magical abilities:</i>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">  (ns my-app.core
+    (:require [reagent.core :as reagent]))
+
+  ;; define a component for the reticulum
+  (defn reticulum []
+    [:div
+     [:h1 ~Reticulum~]
+     [:p ~The reticulum is a vast network of magical information, where symbols and spells flow like rivers of energy. It is the foundation of our magical abilities, allowing us to manipulate the physical world in ways that would be impossible without its power.~]
+     [:p ~The reticulum uses a dialect of the lisp programming language, which allows us to define symbols and functions that can be invoked to cast spells. For example, we can define a fireball function like this:~
+      [:pre ~(defn fireball [radius]
+	 (* radius 2 pi))~]]
+     [:p ~This simple function takes the radius of a desired fireball and calculates its area. We can then use this function to cast a spell and create a fireball of any size we desire. To do so, we simply need to invoke the fireball function with the desired radius:~
+...
+      [:p ~The reticulum also allows us to create more complex spells, such as teleportation and mind reading. These spells require a deep understanding of the lisp language and the underlying principles of...
+</pre>
+</div>
+
+
+<p>
+There are no limits to the level of detail. For me as a d&amp;d world
+building geek that never actually did play d&amp;d, this is amazing:
+</p>
+
+<p>
+<i>Magical Gemstone Manipulation - an Introduction. This textbook is an introductory text Chapters:</i>
+</p>
+
+<blockquote>
+<p>
+Introduction to Gemstones and their Properties
+</p>
+
+<p>
+Types of Gemstones and their Uses in Magic
+</p>
+
+<p>
+Gemstone Cutting and Shaping Techniques
+</p>
+
+<p>
+Gemstone Enchantment and Infusion with Magic
+</p>
+
+<p>
+Gemstone Crafting and Design
+</p>
+
+<p>
+Advanced Gemstone Manipulation and Applications
+</p>
+
+<p>
+Ethics and Responsibility in Gemstone Magic
+</p>
+
+<p>
+Case Studies and Examples of Gemstone Magic in Practice
+</p>
+
+<p>
+Further Study and Exploration of Gemstone Magic
+</p>
+
+<p>
+The textbook would include chapters on the different types of gemstones, their properties and how they can be used in magic. It would also cover techniques for cutting and shaping gemstones, as well as the process of enchanting and infusing them with magic. Additionally, the book would discuss the ethics and responsibility of using gemstones in magic, and provide case studies and examples of how gemstones are used in practice. The book would be suitable for both beginners and more experienced practitioners of gemstone magic.
+</p>
+</blockquote>
+
+
+<p>
+Here is some imaginary Clojure code from an imaginary wizard science class
+about my imaginary magic.
+</p>
+
+<p>
+"But the true power of the reticulum comes not from individual spells like the fireball function, but from the ability to combine and manipulate these spells to create more complex and powerful effects. For example, we can use the teleportation function to transport ourselves or objects from one location to another:"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(defn teleportation [target location]
+ ;; complex lisp code to transport target to location
+  ())
+</pre>
+</div>
+
+<p>
+"We can then combine this teleportation function with other spells, such as the shield function, to create a powerful defensive spell that can protect us from harm:"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(defn protective-shield [radius strength duration]
+  (let [shield (shield
+		radius
+		strength
+		duration)
+	teleport (teleportation target location)]
+    ( ;; combine shield and teleport spells to create protective shield)
+     )))
+</pre>
+</div>
+
+
+<p>
+I formatted the src blocks, they were all clumped up. The src blocks
+are the same style as the examples I gave it further up in the prompt.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org19ad6da" class="outline-2">
+<h2 id="org19ad6da">uncovering</h2>
+<div class="outline-text-2" id="text-org19ad6da">
+<p>
+Trying more advanced fixes for <code>Network Error</code>.
+</p>
+
+<p>
+Prompt try<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> 1:
+</p>
+
+<blockquote>
+<p>
+Here are some rules you should follow from now on:
+</p>
+
+<p>
+Instead of answering with your answer text; Answer with a high level
+overview of your answers.
+</p>
+
+<p>
+The overview should have the form  of the output of the linux <code>tree</code> shell
+command.
+</p>
+
+<p>
+Your possible answers represent files in the imaginary output.
+</p>
+
+<p>
+From then on, when I say <code>tree</code>, print a tree of the current concepts of the
+conversation.
+Each file is an answer that you might give.
+The files have short descriptive names of their content.
+</p>
+
+<p>
+When I say <code>less &lt;filename&gt;</code> you print the first 50 lines of that
+answer.
+When I then say <code>j</code> you print the next 50 lines. When you reach the
+end of your answer you print a line like <code>&lt;filename&gt; ends here</code>.
+</p>
+
+<p>
+Do you understand these rules?
+</p>
+</blockquote>
+
+<p>
+Lol, I feel like I made it reveal a deeper layer of its programming,
+check this:
+</p>
+
+<blockquote>
+<p>
+Yes, I understand these rules.
+</p>
+
+<p>
+Here is a tree of my possible answers:
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">.</span>
+&#9500;&#9472;&#9472; yes
+&#9500;&#9472;&#9472; no
+&#9500;&#9472;&#9472; i_dont_know
+&#9500;&#9472;&#9472; i_dont_understand
+&#9500;&#9472;&#9472; i_am_a_computer_program
+&#9492;&#9472;&#9472; i_am_not_able_to_brows_the_web
+</pre>
+</div>
+
+<blockquote>
+<p>
+To view the contents of a file, you can use the less command followed by the file name. For example, to view the first 50 lines of the yes file, you would type less yes. To view the next 50 lines, you can type j. When you have reached the end of the file, the program will print a line indicating that the file ends there. For example, if you have reached the end of the yes file, the program will print yes ends here.
+</p>
+</blockquote>
+
+<p>
+Now this could be and I think is it just making things up,
+fugazi. But I suspect that they have a hidden prompt from where those
+come from. A user of chat-gpt is at this point familiar with the
+ever-present possibility of <code>i_am_not_able_to_brows_the_web</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6e16cdc" class="outline-2">
+<h2 id="org6e16cdc">code</h2>
+<div class="outline-text-2" id="text-org6e16cdc">
+<p>
+It can do code, although as you might expect you still need to put it
+together and make it work. For me, it currently outputs a lot of
+Clojure code that is not quite right. Putting locals into a <code>let</code>
+that was supposed to be in <code>loop</code> for example.
+</p>
+
+<p>
+I already started having the effect of thinking <i>I want to do x, I ask
+openai how to do x</i>.
+This must be how it is for google driven developers and I can say that
+is a step down from reading the manual / docs on how to achieve it.
+The most powerful path is one of nuance, using it where it is useful
+but not making your thinking reliant on it. Else you stop
+thinking for a while waiting for the prompt to come back. - that would
+be a horrible thing to get used to.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5b30913" class="outline-2">
+<h2 id="org5b30913">New kind of interface</h2>
+<div class="outline-text-2" id="text-org5b30913">
+<p>
+The bee rainbow example is the use case of a conversation interface to the world's knowledge.
+This is currently hampered by the fact that you might get <code>I cannot
+browse the web</code> answers.
+</p>
+
+<p>
+But I think in principle that is super promising.
+Imagine building a program feeding it some science data
+and you get a conversation interface where you just ask it for trends
+in the data.
+</p>
+
+<p>
+In programming, I could feed such a thing to my repo and then ask it
+things like <i>make a listing of the domain model of this code</i> and
+things like this. (See the <code>tree</code> rule example).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6f09018" class="outline-2">
+<h2 id="org6f09018">other tips</h2>
+<div class="outline-text-2" id="text-org6f09018">
+<p>
+You can just stop in the middle of
+</p>
+
+<p>
+It might then continue with your text.
+</p>
+
+
+<p>
+<i>Here is what an old wizard in a hard fantasy world might say about magic: You have to undestand the intricacies of the elements that</i>
+</p>
+
+<blockquote>
+<p>
+compose magic to wield it effectively. Magic is not something that can be easily learned or mastered; it takes years of study and practice to understand its complexities and tap into its power.
+</p>
+
+<p>
+The key to using magic effectively is understanding the fundamental principles&#x2026;
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>Typos don't matter so much. Just get across what you want to say.</li>
+<li>If you do something like building up ideas about a fantasy world,
+you can randomly paste snippets of text, they don't necessarily
+need a logical continuation.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org95ac63b" class="outline-2">
+<h2 id="org95ac63b">Conclusion</h2>
+<div class="outline-text-2" id="text-org95ac63b">
+<p>
+This is a fascinating new kind of tool/thing in the world.
+</p>
+
+<p>
+It can generate text after you put in ideas/examples/
+prompts that it can work with.
+You can build up some context, which makes it so sad right
+now when your session gets broken.
+At times it feels so precious <code>I have it doing this thing now</code>. Like
+some special place that you went to together with it.
+</p>
+
+<p>
+If you had shown this tool to someone 10 years ago, they would have thought it was science fiction. Many people might have said that AI couldn't have such a high level of understanding. They were wrong then, and they are still wrong now about what the next advancements in AI will be.
+</p>
+
+<p>
+The website interface and the restrictions are annoying. True power will
+come from having a truly open (<i>free</i>?) version of this that is
+my own and that I can hack on.
+I want this in Emacs, I want my prompts source controlled, and I don't want
+weird and made-up restrictions that make it just annoying 2/10 times.
+</p>
+
+<p>
+The real advancement that I feel over chatbots from 5-10 years ago is
+that it keeps the ideas and concepts in a conversation.
+</p>
+
+<p>
+In a similar conversation to the above if I would say <code>j</code> out of
+context: (yes there is a typo it even keeps that straight, lol)
+</p>
+
+<blockquote>
+<p>
+I'm sorry, but I don't have any more information to provide for the file <code>acknoledged.</code> As I mentioned earlier, when you say <code>less &lt;filename&gt;,</code> I will print the first 50 lines of that answer. If you then say <code>j,</code> I will print the next 50 lines. Since the file <code>acknoledged</code> only has one line of text, there are no additional lines to print.
+</p>
+
+<p>
+├── acknoledged
+</p>
+
+<p>
+Here is the tree structure again, showing that the file <code>acknoledged</code> is the only file available at this time. If you would like to see the first 50 lines of this file, please say <code>less acknoledged.</code> Otherwise, please ask a new question or provide a new request.
+</p>
+</blockquote>
+
+<p>
+I had a few moments while interacting with it where I feared it
+<code>dropping</code> the concepts or being confused about things. But it
+never was. It turned around in the next sentences and clarified that
+it is still on track.
+</p>
+
+<p>
+Since it is simulating conversation, you feel some of the limits in your
+conversation parsing part of the brain. It is like it has a certain
+psychology. If it becomes the perfect tool, the annoying bits will be
+replaced with the quiet competence of a computer.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Here is a further version of this prompt.
+</p>
+
+<blockquote>
+<p>
+Here are some rules you should follow from now on:
+</p>
+
+<p>
+Instead of answering with your answer text; Answer with a high level
+overview of your answers.
+</p>
+
+<p>
+The overview should have the form  of the output of the linux <code>tree</code> shell
+command.
+</p>
+
+<p>
+Your possible answers represent files in the imaginary output.
+</p>
+
+<p>
+From then on, when I say <code>tree</code>, print a tree of the current concepts of the
+conversation.
+Each file is an answer that you might give.
+The files have short descriptive names of their content.
+</p>
+
+<p>
+When I say <code>less &lt;filename&gt;</code> you print the first 50 lines of that
+answer.
+When I then say <code>j</code> you print the next 50 lines. When you reach the
+end of your answer you print a line like <code>&lt;filename&gt; ends here</code>.
+</p>
+
+<p>
+Do you understand these rules and can you follow them? Answer with acknoledged
+</p>
+</blockquote>
+
+<p class="footpara">
+When I pasted the (incomplete) conclusion of my blog post it answered
+with this. And yes, asking <code>less limitations</code> will make it output what
+you expect.
+</p>
+
+<pre class="example" id="org8d96564">
+.
+├── blog_post_conclusion
+    ├── praise_for_tool
+    ├── limitations
+    └── potential_improvements
+</pre>
+
+<p class="footpara">
+The above tree structure represents the high-level overview of the conclusion to the blog post. The <code>blog_post_conclusion</code> file represents the overall conclusion of the post, while the <code>praise_for_tool</code> file represents positive comments about the tool and its capabilities. The <code>limitations</code> file represents any limitations or challenges with the tool, and the <code>potential_improvements</code> file represents suggestions for how the tool could be improved in the future. To see the first 50 lines of any of these files, please say <code>less &lt;filename&gt;.</code> For example, to see the first 50 lines of the <code>blog_post_conclusion</code> file, you would say <code>less blog_post_conclusion.</code>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2022-12-13 Tue 16:47</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>

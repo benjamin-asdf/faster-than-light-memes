@@ -8,6 +8,7 @@
 <title>intro-to-clojure</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">intro-to-clojure</h1>
@@ -25,24 +43,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgce492e0">Introduction</a></li>
-<li><a href="#org97894f3">Start</a></li>
-<li><a href="#orgefb5d99">A dev environment</a>
+<li><a href="#org6a9e187">Introduction</a></li>
+<li><a href="#org15f4332">Start</a></li>
+<li><a href="#org4270a84">A dev environment</a>
 <ul>
-<li><a href="#orgbd9b89a">Vs Code</a></li>
-<li><a href="#orgc9d1129">Emacs</a></li>
+<li><a href="#org07772e7">Vs Code</a></li>
+<li><a href="#org832073e">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#org26c67be">Nr 1 book for beginners</a></li>
-<li><a href="#org374c7b7">Slack</a></li>
-<li><a href="#org6609a8e">Other such lists</a></li>
+<li><a href="#orgf48f4d7">Nr 1 book for beginners</a></li>
+<li><a href="#org6454521">Slack</a></li>
+<li><a href="#orgd04e426">Other such lists</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgce492e0" class="outline-2">
-<h2 id="orgce492e0">Introduction</h2>
-<div class="outline-text-2" id="text-orgce492e0">
+<div id="outline-container-org6a9e187" class="outline-2">
+<h2 id="org6a9e187">Introduction</h2>
+<div class="outline-text-2" id="text-org6a9e187">
 <p>
 Clojure is a modern, functional lisp with a fiercely convinced community and
 production orientation.
@@ -50,9 +68,9 @@ production orientation.
 </div>
 </div>
 
-<div id="outline-container-org97894f3" class="outline-2">
-<h2 id="org97894f3">Start</h2>
-<div class="outline-text-2" id="text-org97894f3">
+<div id="outline-container-org15f4332" class="outline-2">
+<h2 id="org15f4332">Start</h2>
+<div class="outline-text-2" id="text-org15f4332">
 <p>
 I highly recommend <a href="https://www.maria.cloud/intro">Maria.Cloud</a>, you can just go there and start coding.
 This is great for anybody that does not know yet x
@@ -60,18 +78,18 @@ This is great for anybody that does not know yet x
 </div>
 </div>
 
-<div id="outline-container-orgefb5d99" class="outline-2">
-<h2 id="orgefb5d99">A dev environment</h2>
-<div class="outline-text-2" id="text-orgefb5d99">
+<div id="outline-container-org4270a84" class="outline-2">
+<h2 id="org4270a84">A dev environment</h2>
+<div class="outline-text-2" id="text-org4270a84">
 <p>
 Get prepared for your journey as a pilot of an alien spaceship.
 As a beginner I suggest either
 </p>
 </div>
 
-<div id="outline-container-orgbd9b89a" class="outline-3">
-<h3 id="orgbd9b89a">Vs Code</h3>
-<div class="outline-text-3" id="text-orgbd9b89a">
+<div id="outline-container-org07772e7" class="outline-3">
+<h3 id="org07772e7">Vs Code</h3>
+<div class="outline-text-3" id="text-org07772e7">
 <p>
 Easy to make work. A great editor. You will not need to be ashamed of
 your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
@@ -79,9 +97,9 @@ your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
 </div>
 </div>
 
-<div id="outline-container-orgc9d1129" class="outline-3">
-<h3 id="orgc9d1129">Emacs</h3>
-<div class="outline-text-3" id="text-orgc9d1129">
+<div id="outline-container-org832073e" class="outline-3">
+<h3 id="org832073e">Emacs</h3>
+<div class="outline-text-3" id="text-org832073e">
 <p>
 Strong affinity to hacker culture and a program that is more than a
 tool, but eventually an extension to your hands, heart, and mind.
@@ -105,18 +123,18 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 </div>
 </div>
 
-<div id="outline-container-org26c67be" class="outline-2">
-<h2 id="org26c67be">Nr 1 book for beginners</h2>
-<div class="outline-text-2" id="text-org26c67be">
+<div id="outline-container-orgf48f4d7" class="outline-2">
+<h2 id="orgf48f4d7">Nr 1 book for beginners</h2>
+<div class="outline-text-2" id="text-orgf48f4d7">
 <p>
 <a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org374c7b7" class="outline-2">
-<h2 id="org374c7b7">Slack</h2>
-<div class="outline-text-2" id="text-org374c7b7">
+<div id="outline-container-org6454521" class="outline-2">
+<h2 id="org6454521">Slack</h2>
+<div class="outline-text-2" id="text-org6454521">
 <p>
 Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
 Seriously a lot of people hang there and answer beginner questions,
@@ -125,9 +143,9 @@ everybody is welcome.
 </div>
 </div>
 
-<div id="outline-container-org6609a8e" class="outline-2">
-<h2 id="org6609a8e">Other such lists</h2>
-<div class="outline-text-2" id="text-org6609a8e">
+<div id="outline-container-orgd04e426" class="outline-2">
+<h2 id="orgd04e426">Other such lists</h2>
+<div class="outline-text-2" id="text-orgd04e426">
 <p>
 Carin is cool and has a funny picture of the emacs learning curve here:
 <a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>

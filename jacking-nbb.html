@@ -8,6 +8,7 @@
 <title>jacking-nbb</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">jacking-nbb</h1>
@@ -25,24 +43,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org45d48cd">Introduction</a></li>
-<li><a href="#org9b74cdf">Jack-in command</a>
+<li><a href="#orgc486f76">Introduction</a></li>
+<li><a href="#orgab953a5">Jack-in command</a>
 <ul>
-<li><a href="#org375b1cc">cider repl workaround</a></li>
-<li><a href="#orgca022c5">the command</a></li>
-<li><a href="#org18b4f47">hack for the remaining issue</a></li>
+<li><a href="#org33efb61">cider repl workaround</a></li>
+<li><a href="#org29bb7fd">the command</a></li>
+<li><a href="#org3726eb7">hack for the remaining issue</a></li>
 </ul>
 </li>
-<li><a href="#org7858ba7">Results</a></li>
+<li><a href="#org15fdc7e">Results</a></li>
 </ul>
 </div>
 </div>
 <p>
 A cider jack in command for nbb.
 </p>
-<div id="outline-container-org45d48cd" class="outline-2">
-<h2 id="org45d48cd">Introduction</h2>
-<div class="outline-text-2" id="text-org45d48cd">
+<div id="outline-container-orgc486f76" class="outline-2">
+<h2 id="orgc486f76">Introduction</h2>
+<div class="outline-text-2" id="text-orgc486f76">
 <p>
 <a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
 A node script that is an interpreter for Clojurescript.
@@ -70,13 +88,13 @@ Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and
 </div>
 </div>
 
-<div id="outline-container-org9b74cdf" class="outline-2">
-<h2 id="org9b74cdf">Jack-in command</h2>
-<div class="outline-text-2" id="text-org9b74cdf">
+<div id="outline-container-orgab953a5" class="outline-2">
+<h2 id="orgab953a5">Jack-in command</h2>
+<div class="outline-text-2" id="text-orgab953a5">
 </div>
-<div id="outline-container-org375b1cc" class="outline-3">
-<h3 id="org375b1cc">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org375b1cc">
+<div id="outline-container-org33efb61" class="outline-3">
+<h3 id="org33efb61">cider repl workaround</h3>
+<div class="outline-text-3" id="text-org33efb61">
 <p>
 We currently need this workaround for sci-based cljs repls for cider:
 </p>
@@ -95,9 +113,9 @@ We currently need this workaround for sci-based cljs repls for cider:
 </div>
 </div>
 
-<div id="outline-container-orgca022c5" class="outline-3">
-<h3 id="orgca022c5">the command</h3>
-<div class="outline-text-3" id="text-orgca022c5">
+<div id="outline-container-org29bb7fd" class="outline-3">
+<h3 id="org29bb7fd">the command</h3>
+<div class="outline-text-3" id="text-org29bb7fd">
 <p>
 Unfortunately, cider does not have the concept of a nbb repl currently.
 I think <code>cider-jack-in-resolve-command</code> and similar functions could be
@@ -147,9 +165,9 @@ This is what I wanted to say:
 </div>
 </div>
 
-<div id="outline-container-org18b4f47" class="outline-3">
-<h3 id="org18b4f47">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-org18b4f47">
+<div id="outline-container-org3726eb7" class="outline-3">
+<h3 id="org3726eb7">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-org3726eb7">
 <p>
 With this, you should get an error "ClojureScript is not available&#x2026;".
 <a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
@@ -167,9 +185,9 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 </div>
 </div>
 
-<div id="outline-container-org7858ba7" class="outline-2">
-<h2 id="org7858ba7">Results</h2>
-<div class="outline-text-2" id="text-org7858ba7">
+<div id="outline-container-org15fdc7e" class="outline-2">
+<h2 id="org15fdc7e">Results</h2>
+<div class="outline-text-2" id="text-org15fdc7e">
 <p>
 Hehe, insta nbb repl. Works good.
 </p>

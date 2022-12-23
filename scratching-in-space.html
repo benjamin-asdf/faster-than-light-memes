@@ -8,6 +8,7 @@
 <title>scratching-in-space</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">scratching-in-space</h1>
@@ -25,15 +43,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf390c08">Introduction</a></li>
-<li><a href="#orgcfac716">scratching in space</a>
+<li><a href="#orga504ab7">Introduction</a></li>
+<li><a href="#orgba3693a">scratching in space</a>
 <ul>
-<li><a href="#orgb57180b">here is my current hack for this:</a></li>
+<li><a href="#org08f7dd3">here is my current hack for this:</a></li>
 </ul>
 </li>
-<li><a href="#org1e418a5">clojure scratch repl?</a></li>
-<li><a href="#orgc16869f">Further reading</a></li>
-<li><a href="#org4e07332">inspiring talks</a></li>
+<li><a href="#org8260cb8">clojure scratch repl?</a></li>
+<li><a href="#org8ebb362">Further reading</a></li>
+<li><a href="#orgffba0c0">inspiring talks</a></li>
 </ul>
 </div>
 </div>
@@ -49,9 +67,9 @@ A simple alternative: make files.
 Musings about persistent scratch technology.
 </p>
 
-<div id="outline-container-orgf390c08" class="outline-2">
-<h2 id="orgf390c08">Introduction</h2>
-<div class="outline-text-2" id="text-orgf390c08">
+<div id="outline-container-orga504ab7" class="outline-2">
+<h2 id="orga504ab7">Introduction</h2>
+<div class="outline-text-2" id="text-orga504ab7">
 <p>
 If you ever typed something in a buffer called <code>*scratch*</code> you will
 inevitably have found yourself in this situation:
@@ -85,9 +103,9 @@ What I want:
 </div>
 </div>
 
-<div id="outline-container-orgcfac716" class="outline-2">
-<h2 id="orgcfac716">scratching in space</h2>
-<div class="outline-text-2" id="text-orgcfac716">
+<div id="outline-container-orgba3693a" class="outline-2">
+<h2 id="orgba3693a">scratching in space</h2>
+<div class="outline-text-2" id="text-orgba3693a">
 <p>
 Our disk space is vast, and emacs is great at creating files.
 </p>
@@ -107,9 +125,9 @@ This is a bit similar to <a href="https://start.duckduckgo.com/">denote</a>, whi
 </p>
 </div>
 
-<div id="outline-container-orgb57180b" class="outline-3">
-<h3 id="orgb57180b">here is my current hack for this:</h3>
-<div class="outline-text-3" id="text-orgb57180b">
+<div id="outline-container-org08f7dd3" class="outline-3">
+<h3 id="org08f7dd3">here is my current hack for this:</h3>
+<div class="outline-text-3" id="text-org08f7dd3">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">mememacs/scratch-dir</span> (expand-file-name <span style="font-style: italic;">"~/scratch"</span>))
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/latest-scratch</span> (suffix)
@@ -178,9 +196,9 @@ A second bind will ask me to make a <code>clj</code> or <code>cljs</code> file.
 </div>
 </div>
 
-<div id="outline-container-org1e418a5" class="outline-2">
-<h2 id="org1e418a5">clojure scratch repl?</h2>
-<div class="outline-text-2" id="text-org1e418a5">
+<div id="outline-container-org8260cb8" class="outline-2">
+<h2 id="org8260cb8">clojure scratch repl?</h2>
+<div class="outline-text-2" id="text-org8260cb8">
 <p>
 Whatever. I just do this:
 </p>
@@ -207,9 +225,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-orgc16869f" class="outline-2">
-<h2 id="orgc16869f">Further reading</h2>
-<div class="outline-text-2" id="text-orgc16869f">
+<div id="outline-container-org8ebb362" class="outline-2">
+<h2 id="org8ebb362">Further reading</h2>
+<div class="outline-text-2" id="text-org8ebb362">
 <ul class="org-ul">
 <li><a href="backing-you-up.html">backups in space</a></li>
 <li><a href="https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/">reddit persistent scratch discussion</a></li>
@@ -217,9 +235,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-org4e07332" class="outline-2">
-<h2 id="org4e07332">inspiring talks</h2>
-<div class="outline-text-2" id="text-org4e07332">
+<div id="outline-container-orgffba0c0" class="outline-2">
+<h2 id="orgffba0c0">inspiring talks</h2>
+<div class="outline-text-2" id="text-orgffba0c0">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=-6BsiVyC1kM">The value of values (place-oriented programming is obsolete)</a></li>
 <li><a href="https://www.youtube.com/watch?v=OUZZKtypink">Program like Sherlock Holmes</a></li>

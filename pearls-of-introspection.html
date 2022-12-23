@@ -8,6 +8,7 @@
 <title>pearls-of-introspection</title>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
 </head>
 <body>
 <div id="preamble" class="status">
@@ -18,6 +19,23 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+
+</ul>
 </div>
 <div id="content" class="content">
 <h1 class="title">pearls-of-introspection</h1>
@@ -25,25 +43,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org63d749b">The describes</a>
+<li><a href="#org11eb66b">The describes</a>
 <ul>
-<li><a href="#orgb1f6434">describe-mode</a></li>
-<li><a href="#org502dccf">describe-char</a></li>
-<li><a href="#orgbba54bf">describe-key</a></li>
-<li><a href="#org5d509dd">describe-function</a></li>
-<li><a href="#org735fb05">describe-keymap</a></li>
-<li><a href="#org4279569">prefix-help-command</a>
+<li><a href="#org0953bb0">describe-mode</a></li>
+<li><a href="#orgf2003f8">describe-char</a></li>
+<li><a href="#org0f65707">describe-key</a></li>
+<li><a href="#org454dbc1">describe-function</a></li>
+<li><a href="#org812cd9d">describe-keymap</a></li>
+<li><a href="#org66a4ae3">prefix-help-command</a>
 <ul>
-<li><a href="#orgdbdec2e">embark-bindings</a></li>
+<li><a href="#org55cab68">embark-bindings</a></li>
 </ul>
 </li>
-<li><a href="#org4442f7d">M-x <code>describe-</code></a></li>
+<li><a href="#org0c6d3bb">M-x <code>describe-</code></a></li>
 </ul>
 </li>
-<li><a href="#org33bbdfb">view-lossage</a></li>
-<li><a href="#orgdea55b7">apropos-value</a></li>
-<li><a href="#orga954c92">find-library</a></li>
-<li><a href="#orga768cc8">where-is</a></li>
+<li><a href="#org6501509">view-lossage</a></li>
+<li><a href="#org9eadb67">apropos-value</a></li>
+<li><a href="#org8cf6cf2">find-library</a></li>
+<li><a href="#orgc4ab705">where-is</a></li>
 </ul>
 </div>
 </div>
@@ -68,13 +86,13 @@ All of Emacs is one bright pearl.
 </p>
 </blockquote>
 
-<div id="outline-container-org63d749b" class="outline-2">
-<h2 id="org63d749b">The describes</h2>
-<div class="outline-text-2" id="text-org63d749b">
+<div id="outline-container-org11eb66b" class="outline-2">
+<h2 id="org11eb66b">The describes</h2>
+<div class="outline-text-2" id="text-org11eb66b">
 </div>
-<div id="outline-container-orgb1f6434" class="outline-3">
-<h3 id="orgb1f6434">describe-mode</h3>
-<div class="outline-text-3" id="text-orgb1f6434">
+<div id="outline-container-org0953bb0" class="outline-3">
+<h3 id="org0953bb0">describe-mode</h3>
+<div class="outline-text-3" id="text-org0953bb0">
 <p>
 Lists all current keybinds in a buffer. Huge output, sometimes what
 you want.
@@ -82,9 +100,9 @@ you want.
 </div>
 </div>
 
-<div id="outline-container-org502dccf" class="outline-3">
-<h3 id="org502dccf">describe-char</h3>
-<div class="outline-text-3" id="text-org502dccf">
+<div id="outline-container-orgf2003f8" class="outline-3">
+<h3 id="orgf2003f8">describe-char</h3>
+<div class="outline-text-3" id="text-orgf2003f8">
 <p>
 Emacs is a text editor, text is made up of chars.
 <code>describe-char</code>  is useful if you want to know what face is rendering.
@@ -125,9 +143,9 @@ Worth binding:
 </div>
 
 
-<div id="outline-container-orgbba54bf" class="outline-3">
-<h3 id="orgbba54bf">describe-key</h3>
-<div class="outline-text-3" id="text-orgbba54bf">
+<div id="outline-container-org0f65707" class="outline-3">
+<h3 id="org0f65707">describe-key</h3>
+<div class="outline-text-3" id="text-org0f65707">
 <p>
 "What does this key do?" - the answer is <code>describe-key</code> and hit the
 key.
@@ -135,9 +153,9 @@ key.
 </div>
 </div>
 
-<div id="outline-container-org5d509dd" class="outline-3">
-<h3 id="org5d509dd">describe-function</h3>
-<div class="outline-text-3" id="text-org5d509dd">
+<div id="outline-container-org454dbc1" class="outline-3">
+<h3 id="org454dbc1">describe-function</h3>
+<div class="outline-text-3" id="text-org454dbc1">
 <p>
 Emacs functions have amazing docstrings.
 </p>
@@ -152,9 +170,9 @@ Highlight: <code>s</code> to go to source.
 </div>
 </div>
 
-<div id="outline-container-org735fb05" class="outline-3">
-<h3 id="org735fb05">describe-keymap</h3>
-<div class="outline-text-3" id="text-org735fb05">
+<div id="outline-container-org812cd9d" class="outline-3">
+<h3 id="org812cd9d">describe-keymap</h3>
+<div class="outline-text-3" id="text-org812cd9d">
 <p>
 Probably faster than describe-mode, renders a keymap in a help buffer.
 Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
@@ -162,17 +180,17 @@ Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
 </div>
 </div>
 
-<div id="outline-container-org4279569" class="outline-3">
-<h3 id="org4279569">prefix-help-command</h3>
-<div class="outline-text-3" id="text-org4279569">
+<div id="outline-container-org66a4ae3" class="outline-3">
+<h3 id="org66a4ae3">prefix-help-command</h3>
+<div class="outline-text-3" id="text-org66a4ae3">
 <p>
 You type <code>?</code> after starting to type a prefix, then you get the binds.
 </p>
 </div>
 
-<div id="outline-container-orgdbdec2e" class="outline-4">
-<h4 id="orgdbdec2e">embark-bindings</h4>
-<div class="outline-text-4" id="text-orgdbdec2e">
+<div id="outline-container-org55cab68" class="outline-4">
+<h4 id="org55cab68">embark-bindings</h4>
+<div class="outline-text-4" id="text-org55cab68">
 <p>
 An alternative to the default <code>?</code>, it is amazing. I get a vertico
  completing-read of the binds.
@@ -181,9 +199,9 @@ An alternative to the default <code>?</code>, it is amazing. I get a vertico
 </div>
 </div>
 
-<div id="outline-container-org4442f7d" class="outline-3">
-<h3 id="org4442f7d">M-x <code>describe-</code></h3>
-<div class="outline-text-3" id="text-org4442f7d">
+<div id="outline-container-org0c6d3bb" class="outline-3">
+<h3 id="org0c6d3bb">M-x <code>describe-</code></h3>
+<div class="outline-text-3" id="text-org0c6d3bb">
 <p>
 There are more, some of them I never used. Emacs is vast like the ocean.
 </p>
@@ -191,9 +209,9 @@ There are more, some of them I never used. Emacs is vast like the ocean.
 </div>
 </div>
 
-<div id="outline-container-org33bbdfb" class="outline-2">
-<h2 id="org33bbdfb">view-lossage</h2>
-<div class="outline-text-2" id="text-org33bbdfb">
+<div id="outline-container-org6501509" class="outline-2">
+<h2 id="org6501509">view-lossage</h2>
+<div class="outline-text-2" id="text-org6501509">
 <p>
 You accidentally hit some key, and something unexpected happens.
 <code>view-lossage</code> is your friend. It shows the last keys + commands.
@@ -222,9 +240,9 @@ up in <code>view-lossage</code>.
 </div>
 </div>
 
-<div id="outline-container-orgdea55b7" class="outline-2">
-<h2 id="orgdea55b7">apropos-value</h2>
-<div class="outline-text-2" id="text-orgdea55b7">
+<div id="outline-container-org9eadb67" class="outline-2">
+<h2 id="org9eadb67">apropos-value</h2>
+<div class="outline-text-2" id="text-org9eadb67">
 <p>
 This helps me about once per year.
 </p>
@@ -250,9 +268,9 @@ shell command. It is quite wild.
 </div>
 </div>
 
-<div id="outline-container-orga954c92" class="outline-2">
-<h2 id="orga954c92">find-library</h2>
-<div class="outline-text-2" id="text-orga954c92">
+<div id="outline-container-org8cf6cf2" class="outline-2">
+<h2 id="org8cf6cf2">find-library</h2>
+<div class="outline-text-2" id="text-org8cf6cf2">
 <p>
 Read code, and do little experiments. I am not sure but I think there
 might be something profound about Elisp and emacs.
@@ -264,9 +282,9 @@ language is to know the program.
 </div>
 </div>
 
-<div id="outline-container-orga768cc8" class="outline-2">
-<h2 id="orga768cc8">where-is</h2>
-<div class="outline-text-2" id="text-orga768cc8">
+<div id="outline-container-orgc4ab705" class="outline-2">
+<h2 id="orgc4ab705">where-is</h2>
+<div class="outline-text-2" id="text-orgc4ab705">
 <p>
 I just discovered this via <code>describe-keymap</code> into <code>help-map</code> lol.
 This is like <code>describe-key</code> but you say the command and it says the
