@@ -1,0 +1,1 @@
+#  FROM temurin-19-tools-deps-alpine

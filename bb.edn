@@ -32,4 +32,9 @@
          browse-qr-code (shell
                          "xdg-open"
                          (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url))
-         browse (shell "xdg-open" url)}}
+         browse (shell "xdg-open" url)
+
+         linode-deploy
+         (shell "find gh-pages/ -type f -not -iname \"*~\" | xargs -I {} scp {} linode:/var/www/ftlm/")
+
+         }}
