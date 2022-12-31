@@ -13,10 +13,10 @@
             (shell "http-server" ":port" port ":dir" "./public")
             (shell "xdg-open" "http://localhost:8081/"))}
          linode-deploy
-         (shell "find public/ -type f -not -iname \"*~\" | xargs -I {} scp {} linode:/var/www/ftlm/")
+         (shell "./publish.sh")
          build-deploy
          {:depends [build linode-deploy]}
          browse-qr-code
          (shell
           "xdg-open"
-          (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url)) browse}}
+          (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url))}}
