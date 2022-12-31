@@ -133,8 +133,8 @@
 
   (def clojure-posts (->>
                       (keep
-                       (->posts {:out-dir "gh-pages/"} [a-post])
-                       (new-files "gh-pages/"))
+                       (->posts {:out-dir "public/"} [a-post])
+                       (new-files "public/"))
                       (filter (fn [{:keys [tags]}]
                                 (some tags ["clojure" "clojurescript"])))
                       sort-posts))
@@ -142,8 +142,8 @@
   (def opts (-> (read-string (slurp "bb.edn")) :blog))
   (atom-feed opts clojure-posts)
   (->>
-   (new-files "gh-pages/")
-   (keep (->posts {:out-dir "gh-pages/"} [a-post]))))
+   (new-files "public/")
+   (keep (->posts {:out-dir "public/"} [a-post]))))
 
 (when (= *file* (System/getProperty "babashka.file"))
   (let [opts (-> (read-string (slurp "bb.edn")) :blog)

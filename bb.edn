@@ -1,40 +1,22 @@
 {:blog
  {:blog-title "Faster-than-Light memes"
   :blog-author "Benjamin Schwerdtner"
-  :out-dir "gh-pages/"
-  :blog-root "https://benjamin-asdf.github.io/faster-than-light-memes/"}
+  :out-dir "public/"
+  :blog-root "https://faster-than-light-memes.xyz/"}
  :tasks {:init
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
-         setup-once
-         {:requires ([babashka.fs :as fs])
-          :task (when-not (fs/exists? "gh-pages") (shell "git" "worktree" "add" "gh-pages"))}
          build (shell "emacs" "-Q" "--script" "build-site.el" )
          serve-local
          {:depends [build]
           :task
           (let [port 8081]
-            (shell "http-server" ":port" port ":dir" "./gh-pages")
-            (shell "xdg-open"
-                   "http://localhost:8081/"))}
-         browse-local
-         {:task (shell "xdg-open" "http://localhost:8081/")}
-         deploy-add {:depends [setup-once] :task (shell {:dir "gh-pages"} "git" "add" "--" ".")}
-         deploy-commit (shell
-                        {:dir "gh-pages"}
-                        "git" "commit" "--allow-empty" "-m" "deploy")
-         deploy {:depends [deploy-add deploy-commit]
-                 :task (shell
-                        {:dir "gh-pages"}
-                        "git"
-                        "push"
-                        "git@github.com:benjamin-asdf/faster-than-light-memes.git")}
-         build-deploy {:depends [build deploy]}
-         browse-qr-code (shell
-                         "xdg-open"
-                         (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url))
-         browse (shell "xdg-open" url)
-
+            (shell "http-server" ":port" port ":dir" "./public")
+            (shell "xdg-open" "http://localhost:8081/"))}
          linode-deploy
-         (shell "find gh-pages/ -type f -not -iname \"*~\" | xargs -I {} scp {} linode:/var/www/ftlm/")
-
-         }}
+         (shell "find public/ -type f -not -iname \"*~\" | xargs -I {} scp {} linode:/var/www/ftlm/")
+         build-deploy
+         {:depends [build linode-deploy]}
+         browse-qr-code
+         (shell
+          "xdg-open"
+          (str "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" url)) browse}}
