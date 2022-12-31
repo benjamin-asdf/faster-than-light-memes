@@ -1,14 +1,14 @@
 Benjamin Schwerdtners blog
 
 This is up here:
-https://benjamin-asdf.github.io/faster-than-light-memes/
+https://faster-than-light-memes.xyz/
 
 Make a blog using org and use babashka as build tool.
 
 I take the website content straight from my [[https://github.com/protesilaos/denote][denote]] notes dir.
+Deploying is currently =scp= into a linode server.
 
 * build
-
 
 #+begin_src shell
 bb tasks
