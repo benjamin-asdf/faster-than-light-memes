@@ -84,32 +84,32 @@
   (concat
    (with-current-buffer (find-file-noselect "preamble.html") (buffer-string))
    (format
-    "<ul id=\"navbar\">\n    %s\n</ul>\n \n"
-     (with-temp-buffer
-       (cl-loop for elm in
-		(with-current-buffer
-		    (find-file-noselect ftlm/posts-file)
-		  (goto-char (point-min))
-		  (cl-loop while
-			   (re-search-forward org-link-any-re nil t)
-			   collect
-			   (let* ((start (match-beginning 0))
-				  (link-object
-				   (save-excursion
-				     (goto-char start)
-				     (save-match-data (org-element-link-parser))))
-				  (link (org-element-property :path link-object))
-				  (path-id (denote-link--ol-resolve-link-to-target link :path-id))
-				  (path (file-name-nondirectory (car path-id)))
-				  (p (file-name-sans-extension path))
-				  (p (dw/strip-file-name-metadata p))
-				  (description
-				   (buffer-substring-no-properties
-				    (org-element-property :contents-begin link-object)
-				    (org-element-property :contents-end link-object))))
-			     (navbar-elm p description))))
-		do (insert elm))
-       (buffer-string)))))
+    "<div>\n  <!-- <button id=\"navbar-toggle\">☰</button> -->\n<ul id=\"navbar\">\n    %s\n</ul>\n </div>\n"
+    (with-temp-buffer
+      (cl-loop for elm in
+	       (with-current-buffer
+		   (find-file-noselect ftlm/posts-file)
+		 (goto-char (point-min))
+		 (cl-loop while
+			  (re-search-forward org-link-any-re nil t)
+			  collect
+			  (let* ((start (match-beginning 0))
+				 (link-object
+				  (save-excursion
+				    (goto-char start)
+				    (save-match-data (org-element-link-parser))))
+				 (link (org-element-property :path link-object))
+				 (path-id (denote-link--ol-resolve-link-to-target link :path-id))
+				 (path (file-name-nondirectory (car path-id)))
+				 (p (file-name-sans-extension path))
+				 (p (dw/strip-file-name-metadata p))
+				 (description
+				  (buffer-substring-no-properties
+				   (org-element-property :contents-begin link-object)
+				   (org-element-property :contents-end link-object))))
+			    (navbar-elm p description))))
+	       do (insert elm))
+      (buffer-string)))))
 
 (setq org-publish-project-alist
       (list
@@ -158,6 +158,11 @@ backend."
      (t path))))
 
 (org-publish-all t)
+
+(dolist (file
+         (append (directory-files-recursively "src" "\\.js$")
+                 (directory-files-recursively "src" "\\.css$")))
+  (copy-file file "gh-pages/" t))
 
 (with-temp-buffer
   (parseedn-print
