@@ -75,7 +75,9 @@
       (goto-char (point-min))
       (re-search-forward "^$")
       (insert
-       (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))))
+       (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))
+    (let ((before-save-hook nil))
+      (save-buffer))))
 
 (defun navbar-elm (link desc)
   (format "<li><a href=\"%s.html\">%s</a></li>\n" link desc))
