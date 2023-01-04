@@ -24,6 +24,7 @@
   <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -37,6 +38,8 @@
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
  </div>
@@ -47,22 +50,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9a59aa8">Updates since first version of the post</a></li>
-<li><a href="#orgdbe8b2e">Introduction</a></li>
-<li><a href="#orgcca6b83">Token limit for a single message</a></li>
-<li><a href="#org566984c">The fun so far</a>
+<li><a href="#orgd2fb92a">Updates since first version of the post</a></li>
+<li><a href="#orgaa11d8b">Introduction</a></li>
+<li><a href="#org75d0b70">Token limit for a single message</a></li>
+<li><a href="#org6f8c231">The fun so far</a>
 <ul>
-<li><a href="#org99f80e9">code</a></li>
-<li><a href="#org7bf3d73">science edges</a></li>
-<li><a href="#orgf92446d">long output</a></li>
-<li><a href="#org6bd52e5">wizard scientists</a></li>
+<li><a href="#orgc47ea9e">code</a></li>
+<li><a href="#org4721429">science edges</a></li>
+<li><a href="#org3db3b50">long output</a></li>
+<li><a href="#org9dceeb9">wizard scientists</a></li>
 </ul>
 </li>
-<li><a href="#org308cdc4">uncovering</a></li>
-<li><a href="#orgd4ea08b">code</a></li>
-<li><a href="#orgce1b36a">New kind of interface</a></li>
-<li><a href="#org4210a14">other tips</a></li>
-<li><a href="#org04fb3bd">Conclusion</a></li>
+<li><a href="#org8ec5a74">uncovering</a></li>
+<li><a href="#orgd0364ed">code</a></li>
+<li><a href="#orgfec012e">New kind of interface</a></li>
+<li><a href="#org1a79123">other tips</a></li>
+<li><a href="#orge924337">Conclusion</a></li>
 </ul>
 </div>
 </div>
@@ -70,9 +73,9 @@
 Notes on chat-gpt discoveries.
 </p>
 
-<div id="outline-container-org9a59aa8" class="outline-2">
-<h2 id="org9a59aa8">Updates since first version of the post</h2>
-<div class="outline-text-2" id="text-org9a59aa8">
+<div id="outline-container-orgd2fb92a" class="outline-2">
+<h2 id="orgd2fb92a">Updates since first version of the post</h2>
+<div class="outline-text-2" id="text-orgd2fb92a">
 <ol class="org-ol">
 <li>They improved the websites, my session rarely resets anymore (also
 chats are saved).</li>
@@ -83,9 +86,9 @@ changed it so you get your long answers, just takes a bit longer</li>
 </div>
 </div>
 
-<div id="outline-container-orgdbe8b2e" class="outline-2">
-<h2 id="orgdbe8b2e">Introduction</h2>
-<div class="outline-text-2" id="text-orgdbe8b2e">
+<div id="outline-container-orgaa11d8b" class="outline-2">
+<h2 id="orgaa11d8b">Introduction</h2>
+<div class="outline-text-2" id="text-orgaa11d8b">
 <p>
 When a child first learns how to draw with colored pens, a world of possibility is opened. Every new picture is a chance for them to explore and experiment with different techniques and ideas. The pens give them a sense of control and creativity as they bring their thoughts to life on paper. The child might proudly show off their creations, going back and forth between drawing and exclaiming <code>Look what I have drawn!</code>
 </p>
@@ -123,9 +126,9 @@ Answer by chat gpt
 </div>
 </div>
 
-<div id="outline-container-orgcca6b83" class="outline-2">
-<h2 id="orgcca6b83">Token limit for a single message</h2>
-<div class="outline-text-2" id="text-orgcca6b83">
+<div id="outline-container-org75d0b70" class="outline-2">
+<h2 id="org75d0b70">Token limit for a single message</h2>
+<div class="outline-text-2" id="text-org75d0b70">
 <p>
 I pasted my blog post <a href="binaural-beats-using-scittle.html">binaural beats using scittle</a>. Into <a href="https://chat.openai.com/chat">chat-gpt</a>.
 It responds like this:
@@ -194,13 +197,13 @@ your buffer.
 </div>
 </div>
 
-<div id="outline-container-org566984c" class="outline-2">
-<h2 id="org566984c">The fun so far</h2>
-<div class="outline-text-2" id="text-org566984c">
+<div id="outline-container-org6f8c231" class="outline-2">
+<h2 id="org6f8c231">The fun so far</h2>
+<div class="outline-text-2" id="text-org6f8c231">
 </div>
-<div id="outline-container-org99f80e9" class="outline-3">
-<h3 id="org99f80e9">code</h3>
-<div class="outline-text-3" id="text-org99f80e9">
+<div id="outline-container-orgc47ea9e" class="outline-3">
+<h3 id="orgc47ea9e">code</h3>
+<div class="outline-text-3" id="text-orgc47ea9e">
 <p>
 I have solved day 13 of <a href="https://adventofcode.com/2022">Advent of code</a> with chat-gpt. (<a href="https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day13.clj">code</a>).
 I pasted the description of the alg and said <code>solve this using
@@ -217,9 +220,9 @@ number n in Clojure</code>.
 </div>
 </div>
 
-<div id="outline-container-org7bf3d73" class="outline-3">
-<h3 id="org7bf3d73">science edges</h3>
-<div class="outline-text-3" id="text-org7bf3d73">
+<div id="outline-container-org4721429" class="outline-3">
+<h3 id="org4721429">science edges</h3>
+<div class="outline-text-3" id="text-org4721429">
 <p>
 Sometimes you have a question in your mind that requires quite some
 knowledge from different fields and is <b>not</b> to google.
@@ -261,9 +264,9 @@ It also feels like it staying honest about what things it knows about and what i
 </div>
 </div>
 
-<div id="outline-container-orgf92446d" class="outline-3">
-<h3 id="orgf92446d">long output</h3>
-<div class="outline-text-3" id="text-orgf92446d">
+<div id="outline-container-org3db3b50" class="outline-3">
+<h3 id="org3db3b50">long output</h3>
+<div class="outline-text-3" id="text-org3db3b50">
 <p>
 It currently dies sometimes with long outputs saying <code>Network
 error</code>. That is really annoying and I end up resetting the session.
@@ -281,9 +284,9 @@ didn't do it.
 </div>
 </div>
 
-<div id="outline-container-org6bd52e5" class="outline-3">
-<h3 id="org6bd52e5">wizard scientists</h3>
-<div class="outline-text-3" id="text-org6bd52e5">
+<div id="outline-container-org9dceeb9" class="outline-3">
+<h3 id="org9dceeb9">wizard scientists</h3>
+<div class="outline-text-3" id="text-org9dceeb9">
 <p>
 I told it <code>I am developing a hard fantasy magic system based on
 science</code>. Then fed it ideas about my world and the magic. Turned out
@@ -490,9 +493,9 @@ are the same style as the examples I gave it further up in the prompt.
 </div>
 </div>
 
-<div id="outline-container-org308cdc4" class="outline-2">
-<h2 id="org308cdc4">uncovering</h2>
-<div class="outline-text-2" id="text-org308cdc4">
+<div id="outline-container-org8ec5a74" class="outline-2">
+<h2 id="org8ec5a74">uncovering</h2>
+<div class="outline-text-2" id="text-org8ec5a74">
 <p>
 Trying more advanced fixes for <code>Network Error</code>.
 </p>
@@ -580,9 +583,9 @@ ever-present possibility of <code>i_am_not_able_to_brows_the_web</code>.
 </div>
 </div>
 
-<div id="outline-container-orgd4ea08b" class="outline-2">
-<h2 id="orgd4ea08b">code</h2>
-<div class="outline-text-2" id="text-orgd4ea08b">
+<div id="outline-container-orgd0364ed" class="outline-2">
+<h2 id="orgd0364ed">code</h2>
+<div class="outline-text-2" id="text-orgd0364ed">
 <p>
 It can do code, although as you might expect you still need to put it
 together and make it work. For me, it currently outputs a lot of
@@ -603,9 +606,9 @@ be a horrible thing to get used to.
 </div>
 </div>
 
-<div id="outline-container-orgce1b36a" class="outline-2">
-<h2 id="orgce1b36a">New kind of interface</h2>
-<div class="outline-text-2" id="text-orgce1b36a">
+<div id="outline-container-orgfec012e" class="outline-2">
+<h2 id="orgfec012e">New kind of interface</h2>
+<div class="outline-text-2" id="text-orgfec012e">
 <p>
 The bee rainbow example is the use case of a conversation interface to the world's knowledge.
 This is currently hampered by the fact that you might get <code>I cannot
@@ -627,9 +630,9 @@ things like this. (See the <code>tree</code> rule example).
 </div>
 </div>
 
-<div id="outline-container-org4210a14" class="outline-2">
-<h2 id="org4210a14">other tips</h2>
-<div class="outline-text-2" id="text-org4210a14">
+<div id="outline-container-org1a79123" class="outline-2">
+<h2 id="org1a79123">other tips</h2>
+<div class="outline-text-2" id="text-org1a79123">
 <p>
 You can just stop in the middle of
 </p>
@@ -662,9 +665,9 @@ need a logical continuation.</li>
 </div>
 </div>
 
-<div id="outline-container-org04fb3bd" class="outline-2">
-<h2 id="org04fb3bd">Conclusion</h2>
-<div class="outline-text-2" id="text-org04fb3bd">
+<div id="outline-container-orge924337" class="outline-2">
+<h2 id="orge924337">Conclusion</h2>
+<div class="outline-text-2" id="text-orge924337">
 <p>
 This is a fascinating new kind of tool/thing in the world.
 </p>
@@ -781,7 +784,7 @@ with this. And yes, asking <code>less limitations</code> will make it output wha
 you expect.
 </p>
 
-<pre class="example" id="orge28eb05">
+<pre class="example" id="org892c764">
 .
 ├── blog_post_conclusion
     ├── praise_for_tool

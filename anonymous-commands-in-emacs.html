@@ -24,6 +24,7 @@
   <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -37,6 +38,8 @@
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
  </div>
@@ -47,24 +50,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org798ab1b">Introduction</a>
+<li><a href="#orgb8ded91">Introduction</a>
 <ul>
-<li><a href="#orgceb2331">add-hook</a></li>
+<li><a href="#org49eadaa">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#org4e12554">Solution</a>
+<li><a href="#org87f5ca8">Solution</a>
 <ul>
-<li><a href="#org3df2826">defun</a></li>
+<li><a href="#org324b14a">defun</a></li>
 </ul>
 </li>
-<li><a href="#org38d709d">Result</a></li>
+<li><a href="#orga079ad0">Result</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org798ab1b" class="outline-2">
-<h2 id="org798ab1b">Introduction</h2>
-<div class="outline-text-2" id="text-org798ab1b">
+<div id="outline-container-orgb8ded91" class="outline-2">
+<h2 id="orgb8ded91">Introduction</h2>
+<div class="outline-text-2" id="text-orgb8ded91">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -82,7 +85,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org48154ee">
+<pre class="example" id="org3878f41">
 Key             Binding
 f		[closure]
 </pre>
@@ -92,9 +95,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-orgceb2331" class="outline-3">
-<h3 id="orgceb2331">add-hook</h3>
-<div class="outline-text-3" id="text-orgceb2331">
+<div id="outline-container-org49eadaa" class="outline-3">
+<h3 id="org49eadaa">add-hook</h3>
+<div class="outline-text-3" id="text-org49eadaa">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -117,9 +120,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-org4e12554" class="outline-2">
-<h2 id="org4e12554">Solution</h2>
-<div class="outline-text-2" id="text-org4e12554">
+<div id="outline-container-org87f5ca8" class="outline-2">
+<h2 id="org87f5ca8">Solution</h2>
+<div class="outline-text-2" id="text-org87f5ca8">
 <p>
 Alias your function:
 </p>
@@ -134,7 +137,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="orgdd510aa">
+<pre class="example" id="org1b2e036">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -146,9 +149,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-org3df2826" class="outline-3">
-<h3 id="org3df2826">defun</h3>
-<div class="outline-text-3" id="text-org3df2826">
+<div id="outline-container-org324b14a" class="outline-3">
+<h3 id="org324b14a">defun</h3>
+<div class="outline-text-3" id="text-org324b14a">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -164,9 +167,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-org38d709d" class="outline-2">
-<h2 id="org38d709d">Result</h2>
-<div class="outline-text-2" id="text-org38d709d">
+<div id="outline-container-orga079ad0" class="outline-2">
+<h2 id="orga079ad0">Result</h2>
+<div class="outline-text-2" id="text-orga079ad0">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:

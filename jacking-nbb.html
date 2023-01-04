@@ -24,6 +24,7 @@
   <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -37,6 +38,8 @@
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
  </div>
@@ -47,24 +50,57 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd5daf5d">Introduction</a></li>
-<li><a href="#org6f56562">Jack-in command</a>
+<li><a href="#org9f7eba1">Update:</a></li>
+<li><a href="#org391d098">Original post:</a></li>
+<li><a href="#org7a46b36">Introduction</a></li>
+<li><a href="#org8b5c8b0">Jack-in command</a>
 <ul>
-<li><a href="#org0188b46">cider repl workaround</a></li>
-<li><a href="#orga2f8b52">the command</a></li>
-<li><a href="#org144445f">hack for the remaining issue</a></li>
+<li><a href="#orgd99ccb9">cider repl workaround</a></li>
+<li><a href="#orgf3daed4">the command</a></li>
+<li><a href="#org3e433a6">hack for the remaining issue</a></li>
 </ul>
 </li>
-<li><a href="#orgd766bcb">Results</a></li>
+<li><a href="#org7f96161">Results</a></li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org9f7eba1" class="outline-2">
+<h2 id="org9f7eba1">Update:</h2>
+<div class="outline-text-2" id="text-org9f7eba1">
+<p>
+This is no longer needed with cider 1.6.
+There is a dedicated nbb cider build tool now.
+I still also think my proposal <a href="https://github.com/clojure-emacs/cider/pull/3286">here</a> would be useful.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">the equivalent of the proposed change</span>
+(advice-add
+ 'cider--update-jack-in-cmd
+ <span style="font-weight: bold;">:before-until</span>
+ (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-dont-update-jack-in-cmd-when-given</span> (params)
+   (<span style="font-weight: bold;">when</span> (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>) params)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">now a nbb jack in command becomes:</span>
+(cider-jack-in '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server"</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org391d098" class="outline-2">
+<h2 id="org391d098">Original post:</h2>
+<div class="outline-text-2" id="text-org391d098">
 <p>
 A cider jack in command for nbb.
 </p>
-<div id="outline-container-orgd5daf5d" class="outline-2">
-<h2 id="orgd5daf5d">Introduction</h2>
-<div class="outline-text-2" id="text-orgd5daf5d">
+</div>
+</div>
+
+<div id="outline-container-org7a46b36" class="outline-2">
+<h2 id="org7a46b36">Introduction</h2>
+<div class="outline-text-2" id="text-org7a46b36">
 <p>
 <a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
 A node script that is an interpreter for Clojurescript.
@@ -92,13 +128,13 @@ Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and
 </div>
 </div>
 
-<div id="outline-container-org6f56562" class="outline-2">
-<h2 id="org6f56562">Jack-in command</h2>
-<div class="outline-text-2" id="text-org6f56562">
+<div id="outline-container-org8b5c8b0" class="outline-2">
+<h2 id="org8b5c8b0">Jack-in command</h2>
+<div class="outline-text-2" id="text-org8b5c8b0">
 </div>
-<div id="outline-container-org0188b46" class="outline-3">
-<h3 id="org0188b46">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org0188b46">
+<div id="outline-container-orgd99ccb9" class="outline-3">
+<h3 id="orgd99ccb9">cider repl workaround</h3>
+<div class="outline-text-3" id="text-orgd99ccb9">
 <p>
 We currently need this workaround for sci-based cljs repls for cider:
 </p>
@@ -117,9 +153,9 @@ We currently need this workaround for sci-based cljs repls for cider:
 </div>
 </div>
 
-<div id="outline-container-orga2f8b52" class="outline-3">
-<h3 id="orga2f8b52">the command</h3>
-<div class="outline-text-3" id="text-orga2f8b52">
+<div id="outline-container-orgf3daed4" class="outline-3">
+<h3 id="orgf3daed4">the command</h3>
+<div class="outline-text-3" id="text-orgf3daed4">
 <p>
 Unfortunately, cider does not have the concept of a nbb repl currently.
 I think <code>cider-jack-in-resolve-command</code> and similar functions could be
@@ -169,9 +205,9 @@ This is what I wanted to say:
 </div>
 </div>
 
-<div id="outline-container-org144445f" class="outline-3">
-<h3 id="org144445f">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-org144445f">
+<div id="outline-container-org3e433a6" class="outline-3">
+<h3 id="org3e433a6">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-org3e433a6">
 <p>
 With this, you should get an error "ClojureScript is not available&#x2026;".
 <a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
@@ -189,9 +225,9 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 </div>
 </div>
 
-<div id="outline-container-orgd766bcb" class="outline-2">
-<h2 id="orgd766bcb">Results</h2>
-<div class="outline-text-2" id="text-orgd766bcb">
+<div id="outline-container-org7f96161" class="outline-2">
+<h2 id="org7f96161">Results</h2>
+<div class="outline-text-2" id="text-org7f96161">
 <p>
 Hehe, insta nbb repl. Works good.
 </p>

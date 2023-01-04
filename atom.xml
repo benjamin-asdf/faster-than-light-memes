@@ -3,7 +3,7 @@
   <title>Faster-than-Light memes</title>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/atom.xml" rel="self"/>
   <link href="https://benjamin-asdf.github.io/faster-than-light-memes/"/>
-  <updated>2022-12-23T09:12:43+00:00</updated>
+  <updated>2023-01-04T07:01:10+00:00</updated>
   <id>https://benjamin-asdf.github.io/faster-than-light-memes/</id>
   <author>
     <name>Benjamin Schwerdtner</name>
@@ -25,18 +25,22 @@
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -50,8 +54,11 @@
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">anonymous-commands-in-emacs</h1>
@@ -59,24 +66,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1fd4a75">Introduction</a>
+<li><a href="#orgb8ded91">Introduction</a>
 <ul>
-<li><a href="#org203e593">add-hook</a></li>
+<li><a href="#org49eadaa">add-hook</a></li>
 </ul>
 </li>
-<li><a href="#orgbf79866">Solution</a>
+<li><a href="#org87f5ca8">Solution</a>
 <ul>
-<li><a href="#orgaaf1bff">defun</a></li>
+<li><a href="#org324b14a">defun</a></li>
 </ul>
 </li>
-<li><a href="#org9ab0a52">Result</a></li>
+<li><a href="#orga079ad0">Result</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1fd4a75" class="outline-2">
-<h2 id="org1fd4a75">Introduction</h2>
-<div class="outline-text-2" id="text-org1fd4a75">
+<div id="outline-container-orgb8ded91" class="outline-2">
+<h2 id="orgb8ded91">Introduction</h2>
+<div class="outline-text-2" id="text-orgb8ded91">
 <p>
 Generally, you do not want to make keybindings to anonymous lambdas.
 Here is the primary reason that comes to mind:
@@ -94,7 +101,7 @@ Here is the primary reason that comes to mind:
 I get help buffer with this content:
 </p>
 
-<pre class="example" id="org48946ac">
+<pre class="example" id="org3878f41">
 Key             Binding
 f		[closure]
 </pre>
@@ -104,9 +111,9 @@ It is not really useful to just get the info [closure] here.
 </p>
 </div>
 
-<div id="outline-container-org203e593" class="outline-3">
-<h3 id="org203e593">add-hook</h3>
-<div class="outline-text-3" id="text-org203e593">
+<div id="outline-container-org49eadaa" class="outline-3">
+<h3 id="org49eadaa">add-hook</h3>
+<div class="outline-text-3" id="text-org49eadaa">
 <p>
 The same thing goes for <code>add-hook</code>. From the doc string:
 </p>
@@ -129,9 +136,9 @@ Some of the hooks functionality is meant for symbols.
 </div>
 
 
-<div id="outline-container-orgbf79866" class="outline-2">
-<h2 id="orgbf79866">Solution</h2>
-<div class="outline-text-2" id="text-orgbf79866">
+<div id="outline-container-org87f5ca8" class="outline-2">
+<h2 id="org87f5ca8">Solution</h2>
+<div class="outline-text-2" id="text-org87f5ca8">
 <p>
 Alias your function:
 </p>
@@ -146,7 +153,7 @@ Alias your function:
 </pre>
 </div>
 
-<pre class="example" id="org46c25a7">
+<pre class="example" id="org1b2e036">
 Key             Binding
 b		foo-b
 f		foo-a
@@ -158,9 +165,9 @@ Foo-b works because <code>defalias</code> returns the symbol.
 </p>
 </div>
 
-<div id="outline-container-orgaaf1bff" class="outline-3">
-<h3 id="orgaaf1bff">defun</h3>
-<div class="outline-text-3" id="text-orgaaf1bff">
+<div id="outline-container-org324b14a" class="outline-3">
+<h3 id="org324b14a">defun</h3>
+<div class="outline-text-3" id="text-org324b14a">
 <p>
 <code>(defalias 'foo (lambda () (interactive)))</code>
 </p>
@@ -176,9 +183,9 @@ is essentially the same as
 </div>
 </div>
 
-<div id="outline-container-org9ab0a52" class="outline-2">
-<h2 id="org9ab0a52">Result</h2>
-<div class="outline-text-2" id="text-org9ab0a52">
+<div id="outline-container-orga079ad0" class="outline-2">
+<h2 id="orga079ad0">Result</h2>
+<div class="outline-text-2" id="text-orga079ad0">
 <p>
 I end up just using  <code>defun</code> inline.
 Examples:
@@ -230,18 +237,22 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -255,8 +266,11 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">scittle-prints-itself</h1>
@@ -264,15 +278,15 @@ After writing this post, <a href="https://github.com/benjamin-asdf/dotfiles/comm
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf66bf29">Introduction</a></li>
-<li><a href="#org81c6275">Problem statement</a></li>
-<li><a href="#org6b00281">Some reagent code</a></li>
-<li><a href="#org05c90c5">Fetch</a></li>
-<li><a href="#org5747355">Pretty print the code..?</a></li>
-<li><a href="#org2c09b6e">Eval string</a></li>
-<li><a href="#orgeb60fd0">Only fetch once</a></li>
-<li><a href="#orgf97e831">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
-<li><a href="#org7e1af45">Codepen</a></li>
+<li><a href="#orge009cb0">Introduction</a></li>
+<li><a href="#org8bc2c10">Problem statement</a></li>
+<li><a href="#org8dffc6f">Some reagent code</a></li>
+<li><a href="#org7e49026">Fetch</a></li>
+<li><a href="#org15926c5">Pretty print the code..?</a></li>
+<li><a href="#orgd14174e">Eval string</a></li>
+<li><a href="#org49edfee">Only fetch once</a></li>
+<li><a href="#orga07f0f9">Make a big aquamarine rectangle into a small magenta rectangle</a></li>
+<li><a href="#org63c052c">Codepen</a></li>
 </ul>
 </div>
 </div>
@@ -281,9 +295,9 @@ Description of the crafting of a website.
 Up <a href="https://benjamin-asdf.github.io/scittle-prints-itself/">here</a>.
 </p>
 
-<div id="outline-container-orgf66bf29" class="outline-2">
-<h2 id="orgf66bf29">Introduction</h2>
-<div class="outline-text-2" id="text-orgf66bf29">
+<div id="outline-container-orge009cb0" class="outline-2">
+<h2 id="orge009cb0">Introduction</h2>
+<div class="outline-text-2" id="text-orge009cb0">
 <p>
 I was wondering about what is cool for a newcomer to coding.
 I love lisp and I think one of the real joys in programming is interactive programming.
@@ -304,9 +318,9 @@ go into the code and hack around.
 </div>
 </div>
 
-<div id="outline-container-org81c6275" class="outline-2">
-<h2 id="org81c6275">Problem statement</h2>
-<div class="outline-text-2" id="text-org81c6275">
+<div id="outline-container-org8bc2c10" class="outline-2">
+<h2 id="org8bc2c10">Problem statement</h2>
+<div class="outline-text-2" id="text-org8bc2c10">
 <ol class="org-ol">
 <li>print your source code</li>
 <li>ability to update code</li>
@@ -320,9 +334,9 @@ file into the browser.</li>
 </div>
 </div>
 
-<div id="outline-container-org6b00281" class="outline-2">
-<h2 id="org6b00281">Some reagent code</h2>
-<div class="outline-text-2" id="text-org6b00281">
+<div id="outline-container-org8dffc6f" class="outline-2">
+<h2 id="org8dffc6f">Some reagent code</h2>
+<div class="outline-text-2" id="text-org8dffc6f">
 <p>
 I do some StackOverflow-driven development for a drag-and-drop area.
 </p>
@@ -410,9 +424,9 @@ Evaluating <code>(swap! state assoc :code-text "foi110")</code> makes <code>reag
 </div>
 </div>
 
-<div id="outline-container-org05c90c5" class="outline-2">
-<h2 id="org05c90c5">Fetch</h2>
-<div class="outline-text-2" id="text-org05c90c5">
+<div id="outline-container-org7e49026" class="outline-2">
+<h2 id="org7e49026">Fetch</h2>
+<div class="outline-text-2" id="text-org7e49026">
 <p>
 I also want to show the default code on the first load.
 After some StackOverflow research, I determine <a href="https://www.w3schools.com/jsref/api_fetch.asp">fetch</a> should work.
@@ -428,15 +442,15 @@ After some StackOverflow research, I determine <a href="https://www.w3schools.co
 </div>
 </div>
 
-<div id="outline-container-org5747355" class="outline-2">
-<h2 id="org5747355">Pretty print the code..?</h2>
-<div class="outline-text-2" id="text-org5747355">
+<div id="outline-container-org15926c5" class="outline-2">
+<h2 id="org15926c5">Pretty print the code..?</h2>
+<div class="outline-text-2" id="text-org15926c5">
 <p>
 At this point my website looks like this:
 </p>
 
 
-<div id="org0769aa3" class="figure">
+<div id="orgd4ee4d3" class="figure">
 <p><img src="https://i.imgur.com/VU5LqMM.png" alt="VU5LqMM.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Halfway there. Sort of printing the source code now.</p>
@@ -473,9 +487,9 @@ It is how all coding should be.
 </div>
 </div>
 
-<div id="outline-container-org2c09b6e" class="outline-2">
-<h2 id="org2c09b6e">Eval string</h2>
-<div class="outline-text-2" id="text-org2c09b6e">
+<div id="outline-container-orgd14174e" class="outline-2">
+<h2 id="orgd14174e">Eval string</h2>
+<div class="outline-text-2" id="text-orgd14174e">
 <p>
 Now for the magic of updating the website with whatever you upload.
 First, I ask Borkdude on slack how to evaluate a string.
@@ -566,9 +580,9 @@ Another piece in place, another hit of dopamine, wonderful coding moments.
 </div>
 </div>
 
-<div id="outline-container-orgeb60fd0" class="outline-2">
-<h2 id="orgeb60fd0">Only fetch once</h2>
-<div class="outline-text-2" id="text-orgeb60fd0">
+<div id="outline-container-org49edfee" class="outline-2">
+<h2 id="org49edfee">Only fetch once</h2>
+<div class="outline-text-2" id="text-org49edfee">
 <p>
 I update the fetch code like so:
 </p>
@@ -590,9 +604,9 @@ put expressions anywhere.
 </div>
 </div>
 
-<div id="outline-container-orgf97e831" class="outline-2">
-<h2 id="orgf97e831">Make a big aquamarine rectangle into a small magenta rectangle</h2>
-<div class="outline-text-2" id="text-orgf97e831">
+<div id="outline-container-orga07f0f9" class="outline-2">
+<h2 id="orga07f0f9">Make a big aquamarine rectangle into a small magenta rectangle</h2>
+<div class="outline-text-2" id="text-orga07f0f9">
 <p>
 I want something on the eyes so I change the style of the drop area:
 </p>
@@ -611,7 +625,7 @@ Drag and drop, and:
 </p>
 
 
-<div id="org92020ea" class="figure">
+<div id="org16b9f6e" class="figure">
 <p><img src="https://i.imgur.com/IUrSY7t.png" alt="IUrSY7t.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Visuals updated via dragging and dropping a source file.</p>
@@ -636,9 +650,9 @@ an <code>undo</code> button. So that the user can go back in the history of the 
 </div>
 </div>
 
-<div id="outline-container-org7e1af45" class="outline-2">
-<h2 id="org7e1af45">Codepen</h2>
-<div class="outline-text-2" id="text-org7e1af45">
+<div id="outline-container-org63c052c" class="outline-2">
+<h2 id="org63c052c">Codepen</h2>
+<div class="outline-text-2" id="text-org63c052c">
 <p>
 An arguably more mature version of this is up on <a href="https://codepen.io/Prestance/pen/PoOdZQw">codepen</a>.
 </p>
@@ -680,18 +694,22 @@ If I may say so I think this is cute.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -705,8 +723,11 @@ If I may say so I think this is cute.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">intro-to-clojure</h1>
@@ -714,24 +735,24 @@ If I may say so I think this is cute.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6a9e187">Introduction</a></li>
-<li><a href="#org15f4332">Start</a></li>
-<li><a href="#org4270a84">A dev environment</a>
+<li><a href="#org7318af1">Introduction</a></li>
+<li><a href="#orga07f027">Start</a></li>
+<li><a href="#orgb37bea8">A dev environment</a>
 <ul>
-<li><a href="#org07772e7">Vs Code</a></li>
-<li><a href="#org832073e">Emacs</a></li>
+<li><a href="#org0f51be3">Vs Code</a></li>
+<li><a href="#org691e3a7">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#orgf48f4d7">Nr 1 book for beginners</a></li>
-<li><a href="#org6454521">Slack</a></li>
-<li><a href="#orgd04e426">Other such lists</a></li>
+<li><a href="#org01fe5e0">Nr 1 book for beginners</a></li>
+<li><a href="#orga8d42e2">Slack</a></li>
+<li><a href="#org1597a94">Other such lists</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6a9e187" class="outline-2">
-<h2 id="org6a9e187">Introduction</h2>
-<div class="outline-text-2" id="text-org6a9e187">
+<div id="outline-container-org7318af1" class="outline-2">
+<h2 id="org7318af1">Introduction</h2>
+<div class="outline-text-2" id="text-org7318af1">
 <p>
 Clojure is a modern, functional lisp with a fiercely convinced community and
 production orientation.
@@ -739,9 +760,9 @@ production orientation.
 </div>
 </div>
 
-<div id="outline-container-org15f4332" class="outline-2">
-<h2 id="org15f4332">Start</h2>
-<div class="outline-text-2" id="text-org15f4332">
+<div id="outline-container-orga07f027" class="outline-2">
+<h2 id="orga07f027">Start</h2>
+<div class="outline-text-2" id="text-orga07f027">
 <p>
 I highly recommend <a href="https://www.maria.cloud/intro">Maria.Cloud</a>, you can just go there and start coding.
 This is great for anybody that does not know yet x
@@ -749,18 +770,18 @@ This is great for anybody that does not know yet x
 </div>
 </div>
 
-<div id="outline-container-org4270a84" class="outline-2">
-<h2 id="org4270a84">A dev environment</h2>
-<div class="outline-text-2" id="text-org4270a84">
+<div id="outline-container-orgb37bea8" class="outline-2">
+<h2 id="orgb37bea8">A dev environment</h2>
+<div class="outline-text-2" id="text-orgb37bea8">
 <p>
 Get prepared for your journey as a pilot of an alien spaceship.
 As a beginner I suggest either
 </p>
 </div>
 
-<div id="outline-container-org07772e7" class="outline-3">
-<h3 id="org07772e7">Vs Code</h3>
-<div class="outline-text-3" id="text-org07772e7">
+<div id="outline-container-org0f51be3" class="outline-3">
+<h3 id="org0f51be3">Vs Code</h3>
+<div class="outline-text-3" id="text-org0f51be3">
 <p>
 Easy to make work. A great editor. You will not need to be ashamed of
 your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
@@ -768,9 +789,9 @@ your choice. <a href="https://calva.io/getting-started/">calva for vscode</a>
 </div>
 </div>
 
-<div id="outline-container-org832073e" class="outline-3">
-<h3 id="org832073e">Emacs</h3>
-<div class="outline-text-3" id="text-org832073e">
+<div id="outline-container-org691e3a7" class="outline-3">
+<h3 id="org691e3a7">Emacs</h3>
+<div class="outline-text-3" id="text-org691e3a7">
 <p>
 Strong affinity to hacker culture and a program that is more than a
 tool, but eventually an extension to your hands, heart, and mind.
@@ -794,18 +815,18 @@ There is also doom and spacemacs that enjoy wide appraisal for their
 </div>
 </div>
 
-<div id="outline-container-orgf48f4d7" class="outline-2">
-<h2 id="orgf48f4d7">Nr 1 book for beginners</h2>
-<div class="outline-text-2" id="text-orgf48f4d7">
+<div id="outline-container-org01fe5e0" class="outline-2">
+<h2 id="org01fe5e0">Nr 1 book for beginners</h2>
+<div class="outline-text-2" id="text-org01fe5e0">
 <p>
 <a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">Clojure for the Brave and True</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6454521" class="outline-2">
-<h2 id="org6454521">Slack</h2>
-<div class="outline-text-2" id="text-org6454521">
+<div id="outline-container-orga8d42e2" class="outline-2">
+<h2 id="orga8d42e2">Slack</h2>
+<div class="outline-text-2" id="text-orga8d42e2">
 <p>
 Meet nice people that are excited about the tech <a href="https://clojurians.slack.com/?redir">on slack</a>.
 Seriously a lot of people hang there and answer beginner questions,
@@ -814,9 +835,9 @@ everybody is welcome.
 </div>
 </div>
 
-<div id="outline-container-orgd04e426" class="outline-2">
-<h2 id="orgd04e426">Other such lists</h2>
-<div class="outline-text-2" id="text-orgd04e426">
+<div id="outline-container-org1597a94" class="outline-2">
+<h2 id="org1597a94">Other such lists</h2>
+<div class="outline-text-2" id="text-org1597a94">
 <p>
 Carin is cool and has a funny picture of the emacs learning curve here:
 <a href="https://howistart.org/posts/clojure/1/">https://howistart.org/posts/clojure/1/</a>
@@ -861,18 +882,22 @@ this matters a lot to clojurians.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -886,8 +911,11 @@ this matters a lot to clojurians.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">dir-env-process-environment</h1>
@@ -895,21 +923,21 @@ this matters a lot to clojurians.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgeab6d90">Introduction</a></li>
-<li><a href="#orgab88336">The setup</a>
+<li><a href="#org2307a03">Introduction</a></li>
+<li><a href="#org4288873">The setup</a>
 <ul>
-<li><a href="#orgb7d057b">From the project I currently work on:</a></li>
+<li><a href="#org5f92af9">From the project I currently work on:</a></li>
 </ul>
 </li>
-<li><a href="#org57473e8">Non-file-buffer</a></li>
-<li><a href="#org45c715c">revert with grace</a></li>
+<li><a href="#orgdf72328">Non-file-buffer</a></li>
+<li><a href="#org045170c">revert with grace</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgeab6d90" class="outline-2">
-<h2 id="orgeab6d90">Introduction</h2>
-<div class="outline-text-2" id="text-orgeab6d90">
+<div id="outline-container-org2307a03" class="outline-2">
+<h2 id="org2307a03">Introduction</h2>
+<div class="outline-text-2" id="text-org2307a03">
 <p>
 Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
 </p>
@@ -925,9 +953,9 @@ What I show here works for <code>compile</code>, <code>shell-command</code>, and
 </div>
 </div>
 
-<div id="outline-container-orgab88336" class="outline-2">
-<h2 id="orgab88336">The setup</h2>
-<div class="outline-text-2" id="text-orgab88336">
+<div id="outline-container-org4288873" class="outline-2">
+<h2 id="org4288873">The setup</h2>
+<div class="outline-text-2" id="text-org4288873">
 <p>
 <code>.dir-locals.el</code>:
 </p>
@@ -959,9 +987,9 @@ The answer mentions <code>setq-local</code>. I tried that without success.
 </p>
 </div>
 
-<div id="outline-container-orgb7d057b" class="outline-3">
-<h3 id="orgb7d057b">From the project I currently work on:</h3>
-<div class="outline-text-3" id="text-orgb7d057b">
+<div id="outline-container-org5f92af9" class="outline-3">
+<h3 id="org5f92af9">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-org5f92af9">
 <div class="org-src-container">
 <pre class="src src-elisp">((nil
   .
@@ -982,9 +1010,9 @@ Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task f
 </div>
 </div>
 
-<div id="outline-container-org57473e8" class="outline-2">
-<h2 id="org57473e8">Non-file-buffer</h2>
-<div class="outline-text-2" id="text-org57473e8">
+<div id="outline-container-orgdf72328" class="outline-2">
+<h2 id="orgdf72328">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-orgdf72328">
 <p>
 By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
 (When the local variable <code>buffer-file-name</code> is not set).
@@ -1001,9 +1029,9 @@ I usually start processes from either a (source) file buffer or dired.
 </div>
 </div>
 
-<div id="outline-container-org45c715c" class="outline-2">
-<h2 id="org45c715c">revert with grace</h2>
-<div class="outline-text-2" id="text-org45c715c">
+<div id="outline-container-org045170c" class="outline-2">
+<h2 id="org045170c">revert with grace</h2>
+<div class="outline-text-2" id="text-org045170c">
 <p>
 When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
 whatever buffer you want to have the effect.
@@ -1014,6 +1042,184 @@ It hacks the local variables again for the buffer.
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-10-17 Mon 09:56</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/resume.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/resume.html"/>
+    <title>Resume</title>
+    <updated>2023-01-02T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
+</head>
+<body>
+<div id="preamble" class="status">
+<h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
+
+</ul>
+ </div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Resume</h1>
+<p>
+<a href="mailto:Benjamin.Schwerdtner@gmail.com">Benjamin.Schwerdtner@gmail.com</a>
+</p>
+
+<div id="outline-container-org4aa6c58" class="outline-2">
+<h2 id="org4aa6c58">Summary:</h2>
+<div class="outline-text-2" id="text-org4aa6c58">
+<p>
+Passionate <b>mid-level</b> programmer. Enthusiastic about <b>Clojure and
+functional programming</b>. Striving for a deep understanding of the philosophy of
+Clojure and <b>Lisp</b>. I have a particular focus on <b>Clojure, Linux and
+Emacs</b>. Experienced with unity, situated applications, CI scripts,
+tooling, and making <b>open-source contributions</b>. Fluent in English and
+German. Committed to <b>delivering solid information systems</b> and
+<b>understanding</b> the problem, iterating on the ideas, and <b>communicating</b>
+effectively as a programmer.
+</p>
+
+<ul class="org-ul">
+<li>2018-present: Living and working with the <a href="https://singularitygroup.net/">Singularity Group</a></li>
+<li>2014-2018: Studied biology at the University of Hohenheim (discontinued)</li>
+<li>2013-2014: Studied cognitive science at the University of Osnabrueck (discontinued)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org311fc0f" class="outline-2">
+<h2 id="org311fc0f">Skills/Experience</h2>
+<div class="outline-text-2" id="text-org311fc0f">
+<ul class="org-ul">
+<li><b>4-5 year experience with software development</b></li>
+<li><b>Linux, docker, AWS, SQL, JVM, dotnet, Clojure, babashka, nbb, python</b></li>
+<li><b>Developed a <a href="https://l.linklyhq.com/l/1SFTp">mobile game</a> with csharp / unity</b>
+<ul class="org-ul">
+<li>Unity UI logic, Facebook integration, game development</li>
+<li>Static code analysis (Roslyn)</li>
+<li>Mentored junior team members</li>
+<li>Analytics/data science using SQL, tech.ml.dataset and clerk</li>
+</ul></li>
+<li><b>Developer productivity, ci tools, scripting</b>
+<ul class="org-ul">
+<li>Committed to a smooth dev setup. For me and my team.</li>
+<li>Linux shell, a little bash, babashka</li>
+</ul></li>
+<li><b>Tools:</b> git, Emacs, rider, vim keybindings, Jira</li>
+<li><b>3-4 years learning Lisp, mostly by writing Emacs Lisp on the side</b></li>
+<li><b>18 months Clojure experience, discord bot and internal tools</b>
+<ul class="org-ul">
+<li>Datomic cloud, AWS EC2</li>
+<li>Tests and property-based testing</li>
+<li>Repl into production for record speed bug fixes</li>
+<li>AWS lambda with holy lambda and nbb</li>
+</ul></li>
+<li><b>Website <a href="https://faster-than-light-memes.xyz/">https://faster-than-light-memes.xyz/</a></b></li>
+<li><b>Frontend:</b>
+<ul class="org-ul">
+<li>Some CSS, HTML and js (willingness to learn more)</li>
+<li>I did a little clojurescript, scittle, reagent, re-frame:</li>
+<li><a href="https://faster-than-light-memes.xyz/binaural-beats-using-scittle.html">Blog post about scittle</a></li>
+<li><a href="https://github.com/benjamin-asdf/lawn-mower-game">Toy website with reagent and re-frame</a></li>
+</ul></li>
+<li><b>Open source contributions to babashka, clj-kondo, nbb, cider, Emacs packages, etc.</b>
+<ul class="org-ul">
+<li>I contributed to cider nbb support and improvements for <a href="https://github.com/clojure-emacs/cider/pull/3272">cider v1.6.0</a></li>
+<li>Recently, I made an <a href="https://github.com/benjamin-asdf/openai-api.el">Emacs package for openai-api</a></li>
+<li>I had the opportunity to work with Borkdude
+(<a href="https://github.com/clj-kondo/clj-kondo/issues/1817">clj-kondo</a>, <a href="https://github.com/babashka/nbb/pull/192">nbb</a>,
+<a href="https://github.com/babashka/babashka.nrepl/commits?author=benjamin-asdf">babashka nrepl</a>).</li>
+<li>I also contribute to open source projects via <a href="https://github.com/techascent/tech.ml.dataset/issues/312">bug reports</a>, and <a href="https://faster-than-light-memes.xyz/jacking-nbb.html">blog posts</a>.</li>
+</ul></li>
+<li><b>Strong base knowledge of all major topics of biology and neuroscience</b>
+<ul class="org-ul">
+<li>molecular biology lab experience, zoology, botany, genetics, cell
+biology, biochemistry, etc.</li>
+</ul></li>
+<li><b>Self-taught</b>
+<ul class="org-ul">
+<li>I learned to love textbooks. Some manuals have the same spirit.</li>
+<li>A hard work ethic that allows me to spend hours learning.</li>
+<li>Classic Rich Hickey talks. Eric Normand, Clojure books, sicp, Paul Graham, etc.</li>
+</ul></li>
+</ul>
+
+<p>
+<b><a href="https://github.com/benjamin-asdf">Github</a></b>:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/clj-kondo/clj-kondo/issues/1817">Clj-kondo</a>, <a href="https://github.com/babashka/nbb/pull/192">nbb</a>, <a href="https://github.com/babashka/babashka.nrepl/commits?author=benjamin-asdf">babashka nrepl</a></li>
+<li><a href="https://github.com/benjamin-asdf/openai-api.el">Openai-api emacs package</a> (recent)</li>
+<li><a href="https://github.com/benjamin-asdf/just-40hz-binaural-beats">Binaural beats (scittle)</a></li>
+<li><a href="https://github.com/benjamin-asdf/lawn-mower-game">Toy website</a> (reagent, re-frame)</li>
+<li><a href="https://github.com/benjamin-asdf/faster-than-light-memes">My webstie</a> (emacs denote notes to html, babashka for the atom feed)</li>
+<li><a href="https://github.com/clojure-emacs/cider/pull/3291">Cider contributions</a></li>
+<li><a href="https://github.com/benjamin-asdf/advent-of-code/tree/master/src/Y2022">Advent of code</a></li>
+<li><a href="https://github.com/benjamin-asdf/simple-easy-emacs">A getting started emacs config</a></li>
+</ul>
+
+<p>
+<b>Interests</b>: Alternative programming paradigms, <a href="https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day21_logic.clj">relational programming</a>, chemical computing
+</p>
+
+<p>
+<b>Availability</b>: Available for remote work. CET.
+</p>
+
+<p>
+<b>Location</b>: Forst (Lausitz), Germany.
+</p>
+
+<p>
+<b>Languages</b>: English, German: Fluent. Latin: rudimentary
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-01-02 Mon 11:50</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -1038,18 +1244,22 @@ It hacks the local variables again for the buffer.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -1063,8 +1273,11 @@ It hacks the local variables again for the buffer.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">not-even-the-sky-is-the-limit</h1>
@@ -1072,10 +1285,10 @@ It hacks the local variables again for the buffer.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6b9a24f">Introduction</a></li>
-<li><a href="#orgdb74aee">One way to learn is to learn on a playground</a></li>
-<li><a href="#org2fb5082">Huberman</a></li>
-<li><a href="#orgb9f1a49">The practice</a></li>
+<li><a href="#org79153e1">Introduction</a></li>
+<li><a href="#org27032eb">One way to learn is to learn on a playground</a></li>
+<li><a href="#orgce03997">Huberman</a></li>
+<li><a href="#org3030085">The practice</a></li>
 </ul>
 </div>
 </div>
@@ -1083,9 +1296,9 @@ It hacks the local variables again for the buffer.
 Cold showers are a hello world for being determined.
 </p>
 
-<div id="outline-container-org6b9a24f" class="outline-2">
-<h2 id="org6b9a24f">Introduction</h2>
-<div class="outline-text-2" id="text-org6b9a24f">
+<div id="outline-container-org79153e1" class="outline-2">
+<h2 id="org79153e1">Introduction</h2>
+<div class="outline-text-2" id="text-org79153e1">
 <p>
 I have been practicing <a href="https://en.wikipedia.org/wiki/Wim_Hof">Wim Hof</a> Method for years.
 It is a spiritual path of sorts.
@@ -1128,9 +1341,9 @@ clicked clicked in me that will try to share here.
 </div>
 </div>
 
-<div id="outline-container-orgdb74aee" class="outline-2">
-<h2 id="orgdb74aee">One way to learn is to learn on a playground</h2>
-<div class="outline-text-2" id="text-orgdb74aee">
+<div id="outline-container-org27032eb" class="outline-2">
+<h2 id="org27032eb">One way to learn is to learn on a playground</h2>
+<div class="outline-text-2" id="text-org27032eb">
 <p>
 There is a reason we make hello world programs. We learn in the small
 what is similar for the large.
@@ -1193,9 +1406,9 @@ The only place where you can grow is at the edge.
 </div>
 </div>
 
-<div id="outline-container-org2fb5082" class="outline-2">
-<h2 id="org2fb5082">Huberman</h2>
-<div class="outline-text-2" id="text-org2fb5082">
+<div id="outline-container-orgce03997" class="outline-2">
+<h2 id="orgce03997">Huberman</h2>
+<div class="outline-text-2" id="text-orgce03997">
 <p>
 <a href="https://hubermanlab.com/">Professor Huberman</a> is since recently one of the great science
 communicators of our time.
@@ -1229,9 +1442,9 @@ I agree. I call this learning how to be determined.
 </div>
 </div>
 
-<div id="outline-container-orgb9f1a49" class="outline-2">
-<h2 id="orgb9f1a49">The practice</h2>
-<div class="outline-text-2" id="text-orgb9f1a49">
+<div id="outline-container-org3030085" class="outline-2">
+<h2 id="org3030085">The practice</h2>
+<div class="outline-text-2" id="text-org3030085">
 <p>
 I can recommend the Wim hof app to get started. There is a diary thing
 where you start with 10-second cold showers after a warm shower etc.
@@ -1288,18 +1501,22 @@ stretching.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -1313,8 +1530,11 @@ stretching.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">pearls-of-introspection</h1>
@@ -1322,25 +1542,25 @@ stretching.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org11eb66b">The describes</a>
+<li><a href="#orgc3d6b53">The describes</a>
 <ul>
-<li><a href="#org0953bb0">describe-mode</a></li>
-<li><a href="#orgf2003f8">describe-char</a></li>
-<li><a href="#org0f65707">describe-key</a></li>
-<li><a href="#org454dbc1">describe-function</a></li>
-<li><a href="#org812cd9d">describe-keymap</a></li>
-<li><a href="#org66a4ae3">prefix-help-command</a>
+<li><a href="#org2a9a91f">describe-mode</a></li>
+<li><a href="#org07472ea">describe-char</a></li>
+<li><a href="#org8d4d54e">describe-key</a></li>
+<li><a href="#org4b13fc2">describe-function</a></li>
+<li><a href="#orga0a7f82">describe-keymap</a></li>
+<li><a href="#org3102527">prefix-help-command</a>
 <ul>
-<li><a href="#org55cab68">embark-bindings</a></li>
+<li><a href="#org5f1fe34">embark-bindings</a></li>
 </ul>
 </li>
-<li><a href="#org0c6d3bb">M-x <code>describe-</code></a></li>
+<li><a href="#org043433e">M-x <code>describe-</code></a></li>
 </ul>
 </li>
-<li><a href="#org6501509">view-lossage</a></li>
-<li><a href="#org9eadb67">apropos-value</a></li>
-<li><a href="#org8cf6cf2">find-library</a></li>
-<li><a href="#orgc4ab705">where-is</a></li>
+<li><a href="#org6c0c077">view-lossage</a></li>
+<li><a href="#orgb3b997a">apropos-value</a></li>
+<li><a href="#org210e2be">find-library</a></li>
+<li><a href="#orgfdbb110">where-is</a></li>
 </ul>
 </div>
 </div>
@@ -1365,13 +1585,13 @@ All of Emacs is one bright pearl.
 </p>
 </blockquote>
 
-<div id="outline-container-org11eb66b" class="outline-2">
-<h2 id="org11eb66b">The describes</h2>
-<div class="outline-text-2" id="text-org11eb66b">
+<div id="outline-container-orgc3d6b53" class="outline-2">
+<h2 id="orgc3d6b53">The describes</h2>
+<div class="outline-text-2" id="text-orgc3d6b53">
 </div>
-<div id="outline-container-org0953bb0" class="outline-3">
-<h3 id="org0953bb0">describe-mode</h3>
-<div class="outline-text-3" id="text-org0953bb0">
+<div id="outline-container-org2a9a91f" class="outline-3">
+<h3 id="org2a9a91f">describe-mode</h3>
+<div class="outline-text-3" id="text-org2a9a91f">
 <p>
 Lists all current keybinds in a buffer. Huge output, sometimes what
 you want.
@@ -1379,9 +1599,9 @@ you want.
 </div>
 </div>
 
-<div id="outline-container-orgf2003f8" class="outline-3">
-<h3 id="orgf2003f8">describe-char</h3>
-<div class="outline-text-3" id="text-orgf2003f8">
+<div id="outline-container-org07472ea" class="outline-3">
+<h3 id="org07472ea">describe-char</h3>
+<div class="outline-text-3" id="text-org07472ea">
 <p>
 Emacs is a text editor, text is made up of chars.
 <code>describe-char</code>  is useful if you want to know what face is rendering.
@@ -1422,9 +1642,9 @@ Worth binding:
 </div>
 
 
-<div id="outline-container-org0f65707" class="outline-3">
-<h3 id="org0f65707">describe-key</h3>
-<div class="outline-text-3" id="text-org0f65707">
+<div id="outline-container-org8d4d54e" class="outline-3">
+<h3 id="org8d4d54e">describe-key</h3>
+<div class="outline-text-3" id="text-org8d4d54e">
 <p>
 "What does this key do?" - the answer is <code>describe-key</code> and hit the
 key.
@@ -1432,9 +1652,9 @@ key.
 </div>
 </div>
 
-<div id="outline-container-org454dbc1" class="outline-3">
-<h3 id="org454dbc1">describe-function</h3>
-<div class="outline-text-3" id="text-org454dbc1">
+<div id="outline-container-org4b13fc2" class="outline-3">
+<h3 id="org4b13fc2">describe-function</h3>
+<div class="outline-text-3" id="text-org4b13fc2">
 <p>
 Emacs functions have amazing docstrings.
 </p>
@@ -1449,9 +1669,9 @@ Highlight: <code>s</code> to go to source.
 </div>
 </div>
 
-<div id="outline-container-org812cd9d" class="outline-3">
-<h3 id="org812cd9d">describe-keymap</h3>
-<div class="outline-text-3" id="text-org812cd9d">
+<div id="outline-container-orga0a7f82" class="outline-3">
+<h3 id="orga0a7f82">describe-keymap</h3>
+<div class="outline-text-3" id="text-orga0a7f82">
 <p>
 Probably faster than describe-mode, renders a keymap in a help buffer.
 Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
@@ -1459,17 +1679,17 @@ Try <code>describe-keymap</code> -&gt; <code>help-map</code> hehe.
 </div>
 </div>
 
-<div id="outline-container-org66a4ae3" class="outline-3">
-<h3 id="org66a4ae3">prefix-help-command</h3>
-<div class="outline-text-3" id="text-org66a4ae3">
+<div id="outline-container-org3102527" class="outline-3">
+<h3 id="org3102527">prefix-help-command</h3>
+<div class="outline-text-3" id="text-org3102527">
 <p>
 You type <code>?</code> after starting to type a prefix, then you get the binds.
 </p>
 </div>
 
-<div id="outline-container-org55cab68" class="outline-4">
-<h4 id="org55cab68">embark-bindings</h4>
-<div class="outline-text-4" id="text-org55cab68">
+<div id="outline-container-org5f1fe34" class="outline-4">
+<h4 id="org5f1fe34">embark-bindings</h4>
+<div class="outline-text-4" id="text-org5f1fe34">
 <p>
 An alternative to the default <code>?</code>, it is amazing. I get a vertico
  completing-read of the binds.
@@ -1478,9 +1698,9 @@ An alternative to the default <code>?</code>, it is amazing. I get a vertico
 </div>
 </div>
 
-<div id="outline-container-org0c6d3bb" class="outline-3">
-<h3 id="org0c6d3bb">M-x <code>describe-</code></h3>
-<div class="outline-text-3" id="text-org0c6d3bb">
+<div id="outline-container-org043433e" class="outline-3">
+<h3 id="org043433e">M-x <code>describe-</code></h3>
+<div class="outline-text-3" id="text-org043433e">
 <p>
 There are more, some of them I never used. Emacs is vast like the ocean.
 </p>
@@ -1488,9 +1708,9 @@ There are more, some of them I never used. Emacs is vast like the ocean.
 </div>
 </div>
 
-<div id="outline-container-org6501509" class="outline-2">
-<h2 id="org6501509">view-lossage</h2>
-<div class="outline-text-2" id="text-org6501509">
+<div id="outline-container-org6c0c077" class="outline-2">
+<h2 id="org6c0c077">view-lossage</h2>
+<div class="outline-text-2" id="text-org6c0c077">
 <p>
 You accidentally hit some key, and something unexpected happens.
 <code>view-lossage</code> is your friend. It shows the last keys + commands.
@@ -1519,9 +1739,9 @@ up in <code>view-lossage</code>.
 </div>
 </div>
 
-<div id="outline-container-org9eadb67" class="outline-2">
-<h2 id="org9eadb67">apropos-value</h2>
-<div class="outline-text-2" id="text-org9eadb67">
+<div id="outline-container-orgb3b997a" class="outline-2">
+<h2 id="orgb3b997a">apropos-value</h2>
+<div class="outline-text-2" id="text-orgb3b997a">
 <p>
 This helps me about once per year.
 </p>
@@ -1547,9 +1767,9 @@ shell command. It is quite wild.
 </div>
 </div>
 
-<div id="outline-container-org8cf6cf2" class="outline-2">
-<h2 id="org8cf6cf2">find-library</h2>
-<div class="outline-text-2" id="text-org8cf6cf2">
+<div id="outline-container-org210e2be" class="outline-2">
+<h2 id="org210e2be">find-library</h2>
+<div class="outline-text-2" id="text-org210e2be">
 <p>
 Read code, and do little experiments. I am not sure but I think there
 might be something profound about Elisp and emacs.
@@ -1561,9 +1781,9 @@ language is to know the program.
 </div>
 </div>
 
-<div id="outline-container-orgc4ab705" class="outline-2">
-<h2 id="orgc4ab705">where-is</h2>
-<div class="outline-text-2" id="text-orgc4ab705">
+<div id="outline-container-orgfdbb110" class="outline-2">
+<h2 id="orgfdbb110">where-is</h2>
+<div class="outline-text-2" id="text-orgfdbb110">
 <p>
 I just discovered this via <code>describe-keymap</code> into <code>help-map</code> lol.
 This is like <code>describe-key</code> but you say the command and it says the
@@ -1629,18 +1849,22 @@ Ace-window has the same paradigm.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -1654,8 +1878,11 @@ Ace-window has the same paradigm.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">aws-iam-and-cloudwatch-logs-start-query</h1>
@@ -1733,18 +1960,22 @@ websites and you think you do it right from reading the documentation.
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -1758,8 +1989,11 @@ websites and you think you do it right from reading the documentation.
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">Bashing is better than extending</h1>
@@ -1767,68 +2001,68 @@ websites and you think you do it right from reading the documentation.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5decd33">Introduction</a></li>
-<li><a href="#org3aaa01e">read-shell-command</a></li>
-<li><a href="#orgbdd6ba7">bash-completion</a></li>
-<li><a href="#org2a046a9">bash completions are now your lever</a>
+<li><a href="#org11ec47e">Introduction</a></li>
+<li><a href="#org604e2fa">read-shell-command</a></li>
+<li><a href="#org2764eec">bash-completion</a></li>
+<li><a href="#org0e8973e">bash completions are now your lever</a>
 <ul>
-<li><a href="#org2474aa7">Babashka tasks</a></li>
+<li><a href="#orgf970f75">Babashka tasks</a></li>
 </ul>
 </li>
-<li><a href="#orga1b95ba">Commands that leverage <code>read-shell-command</code></a>
+<li><a href="#org824e174">Commands that leverage <code>read-shell-command</code></a>
 <ul>
-<li><a href="#org9521355">shell-command</a>
+<li><a href="#org4b64f1f">shell-command</a>
 <ul>
-<li><a href="#org5e6323c">Here is a nugget:</a></li>
-<li><a href="#org5eb2e68">Good to know:</a></li>
-<li><a href="#org9ba7c79">Output buffer</a></li>
+<li><a href="#org1fdaafd">Here is a nugget:</a></li>
+<li><a href="#org4400036">Good to know:</a></li>
+<li><a href="#org9fdf3c3">Output buffer</a></li>
 </ul>
 </li>
-<li><a href="#org2439764">shell-command-async</a></li>
-<li><a href="#orgabf38de">compile</a></li>
-<li><a href="#orgb8f490f">dired</a></li>
-<li><a href="#org221353c">shell-command-on-file</a></li>
+<li><a href="#org2f38121">shell-command-async</a></li>
+<li><a href="#org7b1def4">compile</a></li>
+<li><a href="#org8e0c5f0">dired</a></li>
+<li><a href="#org45c3559">shell-command-on-file</a></li>
 </ul>
 </li>
-<li><a href="#orgb450801">It gets even better</a>
+<li><a href="#org209a233">It gets even better</a>
 <ul>
-<li><a href="#org9d2f380">revert-buffer in compilation buffers</a></li>
+<li><a href="#org9574a54">revert-buffer in compilation buffers</a></li>
 </ul>
 </li>
-<li><a href="#org2e6017d">Scripts at the speed of thought</a>
+<li><a href="#orgb840cbe">Scripts at the speed of thought</a>
 <ul>
-<li><a href="#orgb3c41dd">mememacs/create-script</a>
+<li><a href="#orgd458104">mememacs/create-script</a>
 <ul>
-<li><a href="#org0f95c3a">bash-completion in <code>sh-mode</code></a></li>
+<li><a href="#orgec3d26c">bash-completion in <code>sh-mode</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org8450535">Oh async-shell-command, my trusted friend</a>
+<li><a href="#org6aa123d">Oh async-shell-command, my trusted friend</a>
 <ul>
-<li><a href="#org2e5f269">Put the command into the buffer name</a></li>
-<li><a href="#org67c1585">shell-command&#x2013;same-buffer-confirm</a></li>
-<li><a href="#org8da2099">shell-mode as a terminal emulator</a></li>
+<li><a href="#org0fe5db7">Put the command into the buffer name</a></li>
+<li><a href="#orgd6dfc28">shell-command&#x2013;same-buffer-confirm</a></li>
+<li><a href="#org849a9e5">shell-mode as a terminal emulator</a></li>
 </ul>
 </li>
-<li><a href="#org071479d">The next layer on the cake</a>
+<li><a href="#org077d4d0">The next layer on the cake</a>
 <ul>
-<li><a href="#org5d76de6">project</a></li>
-<li><a href="#org4fe515f">recompile</a></li>
-<li><a href="#org868a82d">ansi colors for comint</a></li>
+<li><a href="#orga5adcfc">project</a></li>
+<li><a href="#org6baad61">recompile</a></li>
+<li><a href="#orgf92fb75">ansi colors for comint</a></li>
 </ul>
 </li>
-<li><a href="#org9ca55b4">Levers are great</a>
+<li><a href="#orgd74003b">Levers are great</a>
 <ul>
-<li><a href="#org10b4a06">ssh</a></li>
-<li><a href="#org3c1b70b">embarking</a></li>
-<li><a href="#orgc75ec35">pass</a></li>
+<li><a href="#org594019b">ssh</a></li>
+<li><a href="#orgf33f9f9">embarking</a></li>
+<li><a href="#orgbb6767b">pass</a></li>
 </ul>
 </li>
-<li><a href="#org34a6b15">Particulars</a>
+<li><a href="#org409448e">Particulars</a>
 <ul>
-<li><a href="#org37f5ef0">shell-file-name</a></li>
-<li><a href="#orge1a5ff1">troubleshoot</a></li>
+<li><a href="#org1974963">shell-file-name</a></li>
+<li><a href="#org58fbe2c">troubleshoot</a></li>
 </ul>
 </li>
 </ul>
@@ -1854,9 +2088,9 @@ Technology around <code>shell-command</code>.
 Simplicity and joy.
 </p>
 
-<div id="outline-container-org5decd33" class="outline-2">
-<h2 id="org5decd33">Introduction</h2>
-<div class="outline-text-2" id="text-org5decd33">
+<div id="outline-container-org11ec47e" class="outline-2">
+<h2 id="org11ec47e">Introduction</h2>
+<div class="outline-text-2" id="text-org11ec47e">
 <p>
 Ok, let's just do it. You might want to hold tight to your chair because
 the juiciness and elegance of what follow might just blow you over.
@@ -1864,7 +2098,7 @@ Here is how I build my <a href="https://benjamin-asdf.github.io/faster-than-ligh
 </p>
 
 
-<div id="org93f5ca2" class="figure">
+<div id="org83612e4" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/bb-task-demo.gif?raw=true" alt="bb-task-demo.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Using <code>compile</code> to leverage <code>read-shell-command</code> and thereby <code>bash-completions</code>. Recompiling via <code>revert-buffer</code>. Dismissing the <code>*compilation*</code> buffer.</p>
@@ -1890,9 +2124,9 @@ Here is the story of a happy little package called <code>bash-completion</code>.
 </div>
 </div>
 
-<div id="outline-container-org3aaa01e" class="outline-2">
-<h2 id="org3aaa01e">read-shell-command</h2>
-<div class="outline-text-2" id="text-org3aaa01e">
+<div id="outline-container-org604e2fa" class="outline-2">
+<h2 id="org604e2fa">read-shell-command</h2>
+<div class="outline-text-2" id="text-org604e2fa">
 <p>
 This is like <code>read-from-minibuffer</code> but sets some keymap and history.
 Hit <code>&lt;tab&gt;</code>, you get completions from <code>shell-dynamic-complete-functions</code>.
@@ -1902,9 +2136,9 @@ Invoke <code>shell-command</code>, then type <code>git checkout</code>, hit tab.
 </div>
 </div>
 
-<div id="outline-container-orgbdd6ba7" class="outline-2">
-<h2 id="orgbdd6ba7">bash-completion</h2>
-<div class="outline-text-2" id="text-orgbdd6ba7">
+<div id="outline-container-org2764eec" class="outline-2">
+<h2 id="org2764eec">bash-completion</h2>
+<div class="outline-text-2" id="text-org2764eec">
 <p>
 Ok your emacs life is about to level up +1 <a href="https://github.com/szermatt/emacs-bash-completion">bash-completion</a>.
 Config:
@@ -1935,17 +2169,17 @@ opened.
 </div>
 </div>
 
-<div id="outline-container-org2a046a9" class="outline-2">
-<h2 id="org2a046a9">bash completions are now your lever</h2>
-<div class="outline-text-2" id="text-org2a046a9">
+<div id="outline-container-org0e8973e" class="outline-2">
+<h2 id="org0e8973e">bash completions are now your lever</h2>
+<div class="outline-text-2" id="text-org0e8973e">
 <p>
 We have entered the realm of harnessing already existing shell completions directly.
 </p>
 </div>
 
-<div id="outline-container-org2474aa7" class="outline-3">
-<h3 id="org2474aa7">Babashka tasks</h3>
-<div class="outline-text-3" id="text-org2474aa7">
+<div id="outline-container-orgf970f75" class="outline-3">
+<h3 id="orgf970f75">Babashka tasks</h3>
+<div class="outline-text-3" id="text-orgf970f75">
 <p>
 Babashka tasks are one of the great discoveries of our time,
 allowing us to write build tasks in Clojure, with the
@@ -1961,18 +2195,18 @@ Now you can enjoy those babashka tasks completions.
 </div>
 </div>
 
-<div id="outline-container-orga1b95ba" class="outline-2">
-<h2 id="orga1b95ba">Commands that leverage <code>read-shell-command</code></h2>
-<div class="outline-text-2" id="text-orga1b95ba">
+<div id="outline-container-org824e174" class="outline-2">
+<h2 id="org824e174">Commands that leverage <code>read-shell-command</code></h2>
+<div class="outline-text-2" id="text-org824e174">
 <p>
 They use <code>read-shell-command</code>.
 Making <code>read-shell-command</code> <b>good</b> will pay off for all these.
 </p>
 </div>
 
-<div id="outline-container-org9521355" class="outline-3">
-<h3 id="org9521355">shell-command</h3>
-<div class="outline-text-3" id="text-org9521355">
+<div id="outline-container-org4b64f1f" class="outline-3">
+<h3 id="org4b64f1f">shell-command</h3>
+<div class="outline-text-3" id="text-org4b64f1f">
 <p>
 Bound to <code>M-!</code>
 </p>
@@ -1982,9 +2216,9 @@ This is the <code>interactive</code> doorway into emacs lisp <code>start-process
 </p>
 </div>
 
-<div id="outline-container-org5e6323c" class="outline-4">
-<h4 id="org5e6323c">Here is a nugget:</h4>
-<div class="outline-text-4" id="text-org5e6323c">
+<div id="outline-container-org1fdaafd" class="outline-4">
+<h4 id="org1fdaafd">Here is a nugget:</h4>
+<div class="outline-text-4" id="text-org1fdaafd">
 <blockquote>
 <p>
 With prefix argument, insert the COMMAND's output at point.
@@ -2002,9 +2236,9 @@ Like this:
 </div>
 </div>
 
-<div id="outline-container-org5eb2e68" class="outline-4">
-<h4 id="org5eb2e68">Good to know:</h4>
-<div class="outline-text-4" id="text-org5eb2e68">
+<div id="outline-container-org4400036" class="outline-4">
+<h4 id="org4400036">Good to know:</h4>
+<div class="outline-text-4" id="text-org4400036">
 <blockquote>
 <p>
 If COMMAND ends in &amp;, execute it asynchronously.
@@ -2013,9 +2247,9 @@ If COMMAND ends in &amp;, execute it asynchronously.
 </div>
 </div>
 
-<div id="outline-container-org9ba7c79" class="outline-4">
-<h4 id="org9ba7c79">Output buffer</h4>
-<div class="outline-text-4" id="text-org9ba7c79">
+<div id="outline-container-org9fdf3c3" class="outline-4">
+<h4 id="org9fdf3c3">Output buffer</h4>
+<div class="outline-text-4" id="text-org9fdf3c3">
 <p>
 Your command output is located by default in a buffer named by <code>shell-command-buffer-name</code>.
 Or <code>shell-command-buffer-name-async</code> when async.
@@ -2024,9 +2258,9 @@ Or <code>shell-command-buffer-name-async</code> when async.
 </div>
 </div>
 
-<div id="outline-container-org2439764" class="outline-3">
-<h3 id="org2439764">shell-command-async</h3>
-<div class="outline-text-3" id="text-org2439764">
+<div id="outline-container-org2f38121" class="outline-3">
+<h3 id="org2f38121">shell-command-async</h3>
+<div class="outline-text-3" id="text-org2f38121">
 <p>
 Bound to <code>M-&amp;</code> and has the same effect as adding a <code>&amp;</code> in <code>shell-command</code>.
 To kill the process I can hit <code>C-c C-c</code>.
@@ -2034,9 +2268,9 @@ To kill the process I can hit <code>C-c C-c</code>.
 </div>
 </div>
 
-<div id="outline-container-orgabf38de" class="outline-3">
-<h3 id="orgabf38de">compile</h3>
-<div class="outline-text-3" id="text-orgabf38de">
+<div id="outline-container-org7b1def4" class="outline-3">
+<h3 id="org7b1def4">compile</h3>
+<div class="outline-text-3" id="text-org7b1def4">
 <p>
 Very useful, very similar to <code>shell-command-async</code>.
 Always uses the same buffer called <code>*compilation*</code>.
@@ -2046,9 +2280,9 @@ it auto makes a compile command in that project.
 </div>
 </div>
 
-<div id="outline-container-orgb8f490f" class="outline-3">
-<h3 id="orgb8f490f">dired</h3>
-<div class="outline-text-3" id="text-orgb8f490f">
+<div id="outline-container-org8e0c5f0" class="outline-3">
+<h3 id="org8e0c5f0">dired</h3>
+<div class="outline-text-3" id="text-org8e0c5f0">
 <p>
 <code>dired-do-shell-command</code> and <code>dired-do-async-shell-command</code>
 are symetrical with <code>shell-command</code> and <code>async-shell-command</code>.
@@ -2063,9 +2297,9 @@ or the marked files, but is implicit as the last arg.
 </div>
 </div>
 
-<div id="outline-container-org221353c" class="outline-3">
-<h3 id="org221353c">shell-command-on-file</h3>
-<div class="outline-text-3" id="text-org221353c">
+<div id="outline-container-org45c3559" class="outline-3">
+<h3 id="org45c3559">shell-command-on-file</h3>
+<div class="outline-text-3" id="text-org45c3559">
 <p>
 Sometimes you are currently visiting a script file and you just want
 to run it.
@@ -2090,9 +2324,9 @@ Thanks to <a href="https://github.com/Gavinok/emacs.d">Gavin Freeborn</a> for th
 </div>
 </div>
 
-<div id="outline-container-orgb450801" class="outline-2">
-<h2 id="orgb450801">It gets even better</h2>
-<div class="outline-text-2" id="text-orgb450801">
+<div id="outline-container-org209a233" class="outline-2">
+<h2 id="org209a233">It gets even better</h2>
+<div class="outline-text-2" id="text-org209a233">
 <p>
 Let me introduce you to the wonders of <code>revert-buffer-function</code>.
 Now, <code>revert-buffer</code> is a powerful command by itself.
@@ -2119,9 +2353,9 @@ nicely. There is no mental burden with this.
 </p>
 </div>
 
-<div id="outline-container-org9d2f380" class="outline-3">
-<h3 id="org9d2f380">revert-buffer in compilation buffers</h3>
-<div class="outline-text-3" id="text-org9d2f380">
+<div id="outline-container-org9574a54" class="outline-3">
+<h3 id="org9574a54">revert-buffer in compilation buffers</h3>
+<div class="outline-text-3" id="text-org9574a54">
 <div class="org-src-container">
 <pre class="src src-elisp">(advice-add
    #'compilation-revert-buffer
@@ -2142,20 +2376,20 @@ compile command, without asking.
 </div>
 
 
-<div id="outline-container-org2e6017d" class="outline-2">
-<h2 id="org2e6017d">Scripts at the speed of thought</h2>
-<div class="outline-text-2" id="text-org2e6017d">
+<div id="outline-container-orgb840cbe" class="outline-2">
+<h2 id="orgb840cbe">Scripts at the speed of thought</h2>
+<div class="outline-text-2" id="text-orgb840cbe">
 
-<div id="org59eb73f" class="figure">
+<div id="orgf6baa78" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/insta-script.gif?raw=true" alt="insta-script.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Make a script, and run the script. Leveraging <code>bash-completion</code> in <code>shell-script-mode</code>.</p>
 </div>
 </div>
 
-<div id="outline-container-orgb3c41dd" class="outline-3">
-<h3 id="orgb3c41dd">mememacs/create-script</h3>
-<div class="outline-text-3" id="text-orgb3c41dd">
+<div id="outline-container-orgd458104" class="outline-3">
+<h3 id="orgd458104">mememacs/create-script</h3>
+<div class="outline-text-3" id="text-orgd458104">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/create-script*</span> (file bang setup)
   (find-file file)
@@ -2193,9 +2427,9 @@ Shellcheck makes superb warnings. Firmly in my "adopt" circle.
 </p>
 </div>
 
-<div id="outline-container-org0f95c3a" class="outline-4">
-<h4 id="org0f95c3a">bash-completion in <code>sh-mode</code></h4>
-<div class="outline-text-4" id="text-org0f95c3a">
+<div id="outline-container-orgec3d26c" class="outline-4">
+<h4 id="orgec3d26c">bash-completion in <code>sh-mode</code></h4>
+<div class="outline-text-4" id="text-orgec3d26c">
 <p>
 Here is my full <code>bash-completion</code> config that adds to <code>capf</code>.
 </p>
@@ -2227,9 +2461,9 @@ Here is my full <code>bash-completion</code> config that adds to <code>capf</cod
 </div>
 </div>
 
-<div id="outline-container-org8450535" class="outline-2">
-<h2 id="org8450535">Oh async-shell-command, my trusted friend</h2>
-<div class="outline-text-2" id="text-org8450535">
+<div id="outline-container-org6aa123d" class="outline-2">
+<h2 id="org6aa123d">Oh async-shell-command, my trusted friend</h2>
+<div class="outline-text-2" id="text-org6aa123d">
 <p>
 Of these commands, it is the one I use the most.
 The other commands could be performed in terms of it.
@@ -2237,9 +2471,9 @@ Here is some of my journey smoothing out some edges.
 </p>
 </div>
 
-<div id="outline-container-org2e5f269" class="outline-3">
-<h3 id="org2e5f269">Put the command into the buffer name</h3>
-<div class="outline-text-3" id="text-org2e5f269">
+<div id="outline-container-org0fe5db7" class="outline-3">
+<h3 id="org0fe5db7">Put the command into the buffer name</h3>
+<div class="outline-text-3" id="text-org0fe5db7">
 <p>
 When you run a second command, by default, it tries to reuse the old buffer and asks you
 </p>
@@ -2305,9 +2539,9 @@ And the buffers don't have an anonymous name like <code>*async-shell-command&lt;
 </div>
 </div>
 
-<div id="outline-container-org67c1585" class="outline-3">
-<h3 id="org67c1585">shell-command&#x2013;same-buffer-confirm</h3>
-<div class="outline-text-3" id="text-org67c1585">
+<div id="outline-container-orgd6dfc28" class="outline-3">
+<h3 id="orgd6dfc28">shell-command&#x2013;same-buffer-confirm</h3>
+<div class="outline-text-3" id="text-orgd6dfc28">
 <p>
 Sort of a power setting when you do <code>async-shell-command</code> a lot.
 Nowadays I do:
@@ -2324,9 +2558,9 @@ If I want to kill I can do <code>C-c C-c</code> on the old buffer.
 </div>
 </div>
 
-<div id="outline-container-org8da2099" class="outline-3">
-<h3 id="org8da2099">shell-mode as a terminal emulator</h3>
-<div class="outline-text-3" id="text-org8da2099">
+<div id="outline-container-org849a9e5" class="outline-3">
+<h3 id="org849a9e5">shell-mode as a terminal emulator</h3>
+<div class="outline-text-3" id="text-org849a9e5">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mm/shell-via-async-shell-command</span> ()
     (switch-to-buffer
@@ -2347,17 +2581,17 @@ Even though I have a cool zsh config with vi mode. I get all emacs editing power
 </div>
 </div>
 
-<div id="outline-container-org071479d" class="outline-2">
-<h2 id="org071479d">The next layer on the cake</h2>
-<div class="outline-text-2" id="text-org071479d">
+<div id="outline-container-org077d4d0" class="outline-2">
+<h2 id="org077d4d0">The next layer on the cake</h2>
+<div class="outline-text-2" id="text-org077d4d0">
 <p>
 More context for <code>shell-command</code>.
 </p>
 </div>
 
-<div id="outline-container-org5d76de6" class="outline-3">
-<h3 id="org5d76de6">project</h3>
-<div class="outline-text-3" id="text-org5d76de6">
+<div id="outline-container-orga5adcfc" class="outline-3">
+<h3 id="orga5adcfc">project</h3>
+<div class="outline-text-3" id="text-orga5adcfc">
 <p>
 I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile</code> in the project root. Analogously, there is <code>project-async-shell-command</code>.
 <code>projectile</code>, a big and widely used package, provides similar commands.
@@ -2365,9 +2599,9 @@ I use <code>project.el</code>. <code>project-compile</code>  runs <code>compile<
 </div>
 </div>
 
-<div id="outline-container-org4fe515f" class="outline-3">
-<h3 id="org4fe515f">recompile</h3>
-<div class="outline-text-3" id="text-org4fe515f">
+<div id="outline-container-org6baad61" class="outline-3">
+<h3 id="org6baad61">recompile</h3>
+<div class="outline-text-3" id="text-org6baad61">
 <p>
 Similar to going to the <code>*compilation*</code> buffer and <code>revert-buffer</code>.
 But a single command.
@@ -2375,9 +2609,9 @@ But a single command.
 </div>
 </div>
 
-<div id="outline-container-org868a82d" class="outline-3">
-<h3 id="org868a82d">ansi colors for comint</h3>
-<div class="outline-text-3" id="text-org868a82d">
+<div id="outline-container-orgf92fb75" class="outline-3">
+<h3 id="orgf92fb75">ansi colors for comint</h3>
+<div class="outline-text-3" id="text-orgf92fb75">
 <p>
 If you use <a href="https://github.com/lambdaisland/kaocha">Koacha</a> together with <code>compile</code>,
 you will get output sprinkled with ANSI (color) escape codes.
@@ -2413,7 +2647,7 @@ Koacha output looks like this:
 </p>
 
 
-<div id="orgddea227" class="figure">
+<div id="orgecefc7b" class="figure">
 <p><img src="https://i.imgur.com/5vpmnsu.png" alt="5vpmnsu.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>A <code>compile</code> buffer running <code>Koacha</code> with pleasing green colored output text.</p>
@@ -2422,13 +2656,13 @@ Koacha output looks like this:
 </div>
 </div>
 
-<div id="outline-container-org9ca55b4" class="outline-2">
-<h2 id="org9ca55b4">Levers are great</h2>
-<div class="outline-text-2" id="text-org9ca55b4">
+<div id="outline-container-orgd74003b" class="outline-2">
+<h2 id="orgd74003b">Levers are great</h2>
+<div class="outline-text-2" id="text-orgd74003b">
 </div>
-<div id="outline-container-org10b4a06" class="outline-3">
-<h3 id="org10b4a06">ssh</h3>
-<div class="outline-text-3" id="text-org10b4a06">
+<div id="outline-container-org594019b" class="outline-3">
+<h3 id="org594019b">ssh</h3>
+<div class="outline-text-3" id="text-org594019b">
 <p>
 Nice tip in case you did not know:
 You can define preset configs in <code>~/.ssh/config</code> and they will show up
@@ -2449,16 +2683,16 @@ I hit tap and I get <code>dotomic-system-ec2</code> as completion. Yes!
 </div>
 </div>
 
-<div id="outline-container-org3c1b70b" class="outline-3">
-<h3 id="org3c1b70b">embarking</h3>
-<div class="outline-text-3" id="text-org3c1b70b">
+<div id="outline-container-orgf33f9f9" class="outline-3">
+<h3 id="orgf33f9f9">embarking</h3>
+<div class="outline-text-3" id="text-orgf33f9f9">
 <p>
 Through <a href="https://github.com/oantolin/embark">embark</a> the power of completions is further amplified.
 For instance, I can complete git branches via <code>git checkout</code> completions.
 </p>
 
 
-<div id="org41724c0" class="figure">
+<div id="org45991e5" class="figure">
 <p><img src="https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/embarking-git-branches.gif?raw=true" alt="embarking-git-branches.gif?raw=true" />
 </p>
 <p><span class="figure-number">Figure 4: </span>Abusing <code>read-shell-command</code> to dispatch with <code>embark</code> on git checkout completions. Invoking <code>embark-insert</code> as an example.</p>
@@ -2466,9 +2700,9 @@ For instance, I can complete git branches via <code>git checkout</code> completi
 </div>
 </div>
 
-<div id="outline-container-orgc75ec35" class="outline-3">
-<h3 id="orgc75ec35">pass</h3>
-<div class="outline-text-3" id="text-orgc75ec35">
+<div id="outline-container-orgbb6767b" class="outline-3">
+<h3 id="orgbb6767b">pass</h3>
+<div class="outline-text-3" id="text-orgbb6767b">
 <p>
 Another example. I used to use <a href="https://github.com/emacs-helm/helm-pass/blob/master/helm-pass.el">helm-pass</a> for <code>pass</code>.
 Guess what, <code>pass</code> has great shell completions.
@@ -2478,13 +2712,13 @@ I get a free interface to <code>pass</code> just with <code>async-shell-command<
 </div>
 </div>
 
-<div id="outline-container-org34a6b15" class="outline-2">
-<h2 id="org34a6b15">Particulars</h2>
-<div class="outline-text-2" id="text-org34a6b15">
+<div id="outline-container-org409448e" class="outline-2">
+<h2 id="org409448e">Particulars</h2>
+<div class="outline-text-2" id="text-org409448e">
 </div>
-<div id="outline-container-org37f5ef0" class="outline-3">
-<h3 id="org37f5ef0">shell-file-name</h3>
-<div class="outline-text-3" id="text-org37f5ef0">
+<div id="outline-container-org1974963" class="outline-3">
+<h3 id="org1974963">shell-file-name</h3>
+<div class="outline-text-3" id="text-org1974963">
 <p>
 It matters.
 For instance, if you use "/bin/bash" and you set up your path in a <code>zshrc</code> that might be a pitfall.
@@ -2493,9 +2727,9 @@ Another thing that happened to me was that <a href="https://www.funtoo.org/Funto
 </div>
 </div>
 
-<div id="outline-container-orge1a5ff1" class="outline-3">
-<h3 id="orge1a5ff1">troubleshoot</h3>
-<div class="outline-text-3" id="text-orge1a5ff1">
+<div id="outline-container-org58fbe2c" class="outline-3">
+<h3 id="org58fbe2c">troubleshoot</h3>
+<div class="outline-text-3" id="text-org58fbe2c">
 <ol class="org-ol">
 <li>can you start `bash` and have completions? (on arch, maybe you want
 to install <code>bash-completion</code>).</li>
@@ -2506,6 +2740,407 @@ to install <code>bash-completion</code>).</li>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2022-09-22 Thu 12:32</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/extending-your-reach.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/extending-your-reach.html"/>
+    <title>extending-your-reach</title>
+    <updated>2023-01-01T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>extending-your-reach</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
+</head>
+<body>
+<div id="preamble" class="status">
+<h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
+
+</ul>
+ </div>
+</div>
+<div id="content" class="content">
+<h1 class="title">extending-your-reach</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd3ac3ca">Introduction</a></li>
+<li><a href="#org6745186">A real tool is part of your mind and body</a>
+<ul>
+<li><a href="#org26d253d">The mind tracks the space around us that we can grasp and manipulate</a></li>
+<li><a href="#org99fffaf">Reach into the computer, or reach somewhere else, ssh'ing into a server</a></li>
+</ul>
+</li>
+<li><a href="#org3222385">Which tools?</a></li>
+<li><a href="#orgfd32ffe">This is also an aspect of the REPL I think</a></li>
+<li><a href="#orge3e74bb">Further inquiry</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd3ac3ca" class="outline-2">
+<h2 id="orgd3ac3ca">Introduction</h2>
+<div class="outline-text-2" id="text-orgd3ac3ca">
+<p>
+Putting love into your setup will pay off.
+</p>
+
+<p>
+When your mind becomes one with the computer. When it starts feeling like it is expanding your reach.
+This is where the computer as a tool starts unfolding its true potential.
+</p>
+
+
+<div id="orgc9597e0" class="figure">
+<p><img src="https://i.imgur.com/MbnkaGg.jpeg" alt="MbnkaGg.jpeg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Linux user reaching into the computer, becoming one with the computer. In space. A tomato. A fork. The stars.</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6745186" class="outline-2">
+<h2 id="org6745186">A real tool is part of your mind and body</h2>
+<div class="outline-text-2" id="text-org6745186">
+</div>
+<div id="outline-container-org26d253d" class="outline-3">
+<h3 id="org26d253d">The mind tracks the space around us that we can grasp and manipulate</h3>
+<div class="outline-text-3" id="text-org26d253d">
+<p>
+I was recently learning a bit about <a href="https://www.sciencedirect.com/science/article/abs/pii/S0028393214004230">peripersonal space</a> and the
+connection to <code>tool usage</code>.
+</p>
+
+<p>
+Our mind is tracking the space around us, importantly specifically <b>the space we can interact with</b>.
+</p>
+
+<p>
+When this is broken via strokes or developmental issues, the person bumps into things and can not use tools well. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+
+<p>
+From the introduction of a <a href="https://www.jneurosci.org/content/27/4/731">paper</a> on the topic:
+</p>
+
+<blockquote>
+<p>
+Peripersonal space is the multisensory space immediately surrounding our body, or more specifically the sector of space that closely surrounds a certain body part (Rizzolatti et al., 1981, 1997). A crucial factor that distinguishes the perception of our immediate surroundings from that of more distant space is our potential ability to interact with (i.e., to reach and grasp, or to avoid) objects within peripersonal space. Electrophysiological studies in macaque monkeys suggest that multisensory peripersonal space is represented in body part-centered coordinate frames, within both subcortical structures (the putamen), and in cortical regions of the frontal and parietal lobes (Hyvärinen, 1981; Rizzolatti et al., 1981; Colby et al., 1993; Graziano and Gross, 1993)
+</p>
+</blockquote>
+
+<p>
+One cool aspect of this is that our internal map of the space
+grows and shrinks with whatever tools you use.
+</p>
+
+<p>
+From <a href="https://www.sciencedirect.com/science/article/abs/pii/S1364661303003450">Maravita A, Iriki A (2004)</a>:
+</p>
+
+<blockquote>
+<p>
+What happens in our brain when we use a tool to reach for a distant object? &#x2026; research suggests that this extended motor capability is followed by changes in specific neural networks that hold an updated map of body shape and posture (the putative "Body Schema" of classical neurology). These changes are compatible with the notion of the inclusion of tools in the "Body Schema", as if our own effector (e.g. the hand) were elongated to the tip of the tool.
+</p>
+</blockquote>
+
+<p>
+This is when you have a pen or fork in your hand and you can move it
+as if this was part of your body.
+</p>
+
+<p>
+Similar: You drive a car and it is as if you take on the shape of the
+car.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org99fffaf" class="outline-3">
+<h3 id="org99fffaf">Reach into the computer, or reach somewhere else, ssh'ing into a server</h3>
+<div class="outline-text-3" id="text-org99fffaf">
+<p>
+Here is what I think happens if you use your computer right:
+</p>
+
+<p>
+When you can navigate and interact with the computer
+effortlessly, it can feel like you are extending your body and mind
+into the digital realm, reaching out to grasp and manipulate the vast expanse of information and tasks at your fingertips.
+</p>
+
+<p>
+This feeling of expansion and reach is not just a metaphor - it is a
+citizen of the mind that comes from utilizing the natural structures in
+our brains that have evolved for tool usage. It is the same
+confidence and efficiency we feel when picking up a tomato with a fork.
+</p>
+
+<p>
+What I am saying is that when you have this mind-expanding and
+reaching thing going; You are using the tool usage hand coordinate parts of the brain.
+</p>
+
+<p>
+It is <b>not</b> that a clunky and cluttered computer experience is the
+<i>worse tool</i> and a keyboard-driven, smoothed-out experience is a
+<i>better tool</i>.
+</p>
+
+<p>
+It is that the smoothed-out experience is a <i>real tool</i> and anything
+else you do with a computer is just something you are waging battles with.
+</p>
+
+<blockquote>
+<p>
+If it expands your mind, it is a real tool.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3222385" class="outline-2">
+<h2 id="org3222385">Which tools?</h2>
+<div class="outline-text-2" id="text-org3222385">
+<p>
+(You can achieve this otherwise, I just want to be more concrete about example
+technology rather than staying on the philosophy of tool usage level).
+This technology does the mind-expanding stuff for me:
+<code>Linux</code>, <code>emacs</code>, a good package manager <code>pacman</code>, a tiling window manager with a
+lisp REPL <code>stumpwm</code>, <code>qutebrowser</code> at least for the surface level of
+the web.
+</p>
+
+<p>
+One way to get stuff under the fingertips is to have an emacs package
+for it, this is sort of the infrastructure that allows reach:
+Files - <code>dired</code>, Git - <code>magit</code>, Notes - <code>denote</code>, Remote files and shell -
+<code>Tramp</code>, email - <code>mu4e</code>.
+</p>
+
+<p>
+In general, <b>growing by removing</b> makes for <b>more control and focus</b>.
+</p>
+
+<p>
+The one thing in my daily life that is like a block of UI that I
+cannot reach into is the slack client. I wish I would be able to have
+an emacs interface. (<a href="https://github.com/yuya373/emacs-slack">emacs-slack</a> doesn't work last time I checked
+because slack changed how their tokens work. They don't want
+alternative clients for some reason).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfd32ffe" class="outline-2">
+<h2 id="orgfd32ffe">This is also an aspect of the REPL I think</h2>
+<div class="outline-text-2" id="text-orgfd32ffe">
+<p>
+When you have a lisp program running with a REPL you get this reach for the process and
+(more or less) the entities in the process.
+Doing this together with the source code (I mean <code>eval-last-sexp</code> and friends)
+makes the source code come alive. The process becomes a tomato I can move around with my fork.
+This mind-expanding nature of the REPL is one of its magics. <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+Because this is a tacit process, it is
+impossible to convey it via words. Similarly, I cannot convey what
+music does or how it is to ride a bike.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge3e74bb" class="outline-2">
+<h2 id="orge3e74bb">Further inquiry</h2>
+<div class="outline-text-2" id="text-orge3e74bb">
+<p>
+<a href="https://brainsciencepodcast.com/bsp/2018/142-graziano?rq=graziano">Brain science podcast with Micheal Graziano who did work in this field</a>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://brainsciencepodcast.com/bsp/2018/142-graziano?rq=graziano">https://brainsciencepodcast.com/bsp/2018/142-graziano?rq=graziano</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+There is a lot more to say. A big aspect is instant feedback, it
+makes it so you do not have to mentally track uncertainties. You
+<b>know</b> that each form you are crafting works (You <code>def</code> an example
+input and code your forms 1 by 1).
+To follow this thread of philosophical inquiry into Lisp development, see Paul Graham
+<i>On Lisp</i> and <i>Hackers and Painters</i>.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-01-01 Sun 20:03</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
+</div>
+</body>
+</html>
+]]>
+    </content>
+  </entry>
+  <entry>
+    <id>https://benjamin-asdf.github.io/faster-than-light-memes/a-system-like-water.html</id>
+    <link href="https://benjamin-asdf.github.io/faster-than-light-memes/a-system-like-water.html"/>
+    <title>a-system-like-water</title>
+    <updated>2023-01-01T23:59:59+00:00</updated>
+    <content type="html">
+      <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>a-system-like-water</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
+</head>
+<body>
+<div id="preamble" class="status">
+<h4>
+    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
+       style="background-color:black;;text-decoration:none;padding:0.3rem">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+    </a>
+  </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
+<ul id="navbar">
+    <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
+<li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
+<li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
+<li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
+<li><a href="intro-to-clojure.html">Intro to Clojure</a></li>
+<li><a href="scratching-in-space.html">Scratching in space</a></li>
+<li><a href="jacking-nbb.html">Jacking in nbb</a></li>
+<li><a href="backing-you-up.html">Backing you up</a></li>
+<li><a href="anonymous-commands-in-emacs.html">Anonymous lambdas in emacs binds</a></li>
+<li><a href="dreaming-code.html">Dreaming code</a></li>
+<li><a href="pearls-of-introspection.html">Pearls of Introspection</a></li>
+<li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
+<li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
+<li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
+
+</ul>
+ </div>
+</div>
+<div id="content" class="content">
+<h1 class="title">a-system-like-water</h1>
+<p>
+I want to use my computer at the speed of thought. I want my mind to
+reach into the realm of files and websites and ssh servers and do
+things the way I am doing things with objects in the real world.
+</p>
+
+<p>
+Here is the one thing that will make your setup instantly feel much more like water.
+</p>
+
+<p>
+This setting changed my life. If I had discovered it later I would have
+wished I had discovered it earlier. I had it from one of <a href="https://www.youtube.com/@LukeSmithxyz/search?query=vim">Luke smith vim videos</a>.
+</p>
+
+<p>
+You put this in .xinitrc.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">xset r rate 120 250
+</pre>
+</div>
+
+<p>
+This controls how quickly you are repeating your key after holding it down.
+</p>
+
+<blockquote>
+<p>
+The first specifies the delay before autorepeat starts and the  second  specifies the repeat rate.
+</p>
+</blockquote>
+
+<p>
+If you use vim bindings j/k are now the way you can scroll. Oh yeaa.
+This feels sooo smooth - like water.
+</p>
+
+<p>
+Once you get used to this going back will make your fingers feel like they're wading through molasses.
+</p>
+
+<p>
+Start with
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">xset r rate 200 200
+</pre>
+</div>
+
+<p>
+or something. You need to build up your ability to hit keys quickly.
+I needed to slowly increase the numbers for this.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2023-01-01 Sun 18:40</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.5.5)</p>
 </div>
 </body>
@@ -2530,18 +3165,22 @@ to install <code>bash-completion</code>).</li>
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -2555,8 +3194,11 @@ to install <code>bash-completion</code>).</li>
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">the-deeper-chat-gpt</h1>
@@ -2564,22 +3206,22 @@ to install <code>bash-completion</code>).</li>
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0d0e973">Updates since first version of the post</a></li>
-<li><a href="#org5333ebb">Introduction</a></li>
-<li><a href="#orge26d71b">Token limit for a single message</a></li>
-<li><a href="#orgab42b30">The fun so far</a>
+<li><a href="#orgd2fb92a">Updates since first version of the post</a></li>
+<li><a href="#orgaa11d8b">Introduction</a></li>
+<li><a href="#org75d0b70">Token limit for a single message</a></li>
+<li><a href="#org6f8c231">The fun so far</a>
 <ul>
-<li><a href="#orgd2ce667">code</a></li>
-<li><a href="#orge0525ee">science edges</a></li>
-<li><a href="#org5bf58f4">long output</a></li>
-<li><a href="#org11fb26b">wizard scientists</a></li>
+<li><a href="#orgc47ea9e">code</a></li>
+<li><a href="#org4721429">science edges</a></li>
+<li><a href="#org3db3b50">long output</a></li>
+<li><a href="#org9dceeb9">wizard scientists</a></li>
 </ul>
 </li>
-<li><a href="#org19ad6da">uncovering</a></li>
-<li><a href="#org6e16cdc">code</a></li>
-<li><a href="#org5b30913">New kind of interface</a></li>
-<li><a href="#org6f09018">other tips</a></li>
-<li><a href="#org95ac63b">Conclusion</a></li>
+<li><a href="#org8ec5a74">uncovering</a></li>
+<li><a href="#orgd0364ed">code</a></li>
+<li><a href="#orgfec012e">New kind of interface</a></li>
+<li><a href="#org1a79123">other tips</a></li>
+<li><a href="#orge924337">Conclusion</a></li>
 </ul>
 </div>
 </div>
@@ -2587,9 +3229,9 @@ to install <code>bash-completion</code>).</li>
 Notes on chat-gpt discoveries.
 </p>
 
-<div id="outline-container-org0d0e973" class="outline-2">
-<h2 id="org0d0e973">Updates since first version of the post</h2>
-<div class="outline-text-2" id="text-org0d0e973">
+<div id="outline-container-orgd2fb92a" class="outline-2">
+<h2 id="orgd2fb92a">Updates since first version of the post</h2>
+<div class="outline-text-2" id="text-orgd2fb92a">
 <ol class="org-ol">
 <li>They improved the websites, my session rarely resets anymore (also
 chats are saved).</li>
@@ -2600,9 +3242,9 @@ changed it so you get your long answers, just takes a bit longer</li>
 </div>
 </div>
 
-<div id="outline-container-org5333ebb" class="outline-2">
-<h2 id="org5333ebb">Introduction</h2>
-<div class="outline-text-2" id="text-org5333ebb">
+<div id="outline-container-orgaa11d8b" class="outline-2">
+<h2 id="orgaa11d8b">Introduction</h2>
+<div class="outline-text-2" id="text-orgaa11d8b">
 <p>
 When a child first learns how to draw with colored pens, a world of possibility is opened. Every new picture is a chance for them to explore and experiment with different techniques and ideas. The pens give them a sense of control and creativity as they bring their thoughts to life on paper. The child might proudly show off their creations, going back and forth between drawing and exclaiming <code>Look what I have drawn!</code>
 </p>
@@ -2640,9 +3282,9 @@ Answer by chat gpt
 </div>
 </div>
 
-<div id="outline-container-orge26d71b" class="outline-2">
-<h2 id="orge26d71b">Token limit for a single message</h2>
-<div class="outline-text-2" id="text-orge26d71b">
+<div id="outline-container-org75d0b70" class="outline-2">
+<h2 id="org75d0b70">Token limit for a single message</h2>
+<div class="outline-text-2" id="text-org75d0b70">
 <p>
 I pasted my blog post <a href="binaural-beats-using-scittle.html">binaural beats using scittle</a>. Into <a href="https://chat.openai.com/chat">chat-gpt</a>.
 It responds like this:
@@ -2711,13 +3353,13 @@ your buffer.
 </div>
 </div>
 
-<div id="outline-container-orgab42b30" class="outline-2">
-<h2 id="orgab42b30">The fun so far</h2>
-<div class="outline-text-2" id="text-orgab42b30">
+<div id="outline-container-org6f8c231" class="outline-2">
+<h2 id="org6f8c231">The fun so far</h2>
+<div class="outline-text-2" id="text-org6f8c231">
 </div>
-<div id="outline-container-orgd2ce667" class="outline-3">
-<h3 id="orgd2ce667">code</h3>
-<div class="outline-text-3" id="text-orgd2ce667">
+<div id="outline-container-orgc47ea9e" class="outline-3">
+<h3 id="orgc47ea9e">code</h3>
+<div class="outline-text-3" id="text-orgc47ea9e">
 <p>
 I have solved day 13 of <a href="https://adventofcode.com/2022">Advent of code</a> with chat-gpt. (<a href="https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day13.clj">code</a>).
 I pasted the description of the alg and said <code>solve this using
@@ -2734,9 +3376,9 @@ number n in Clojure</code>.
 </div>
 </div>
 
-<div id="outline-container-orge0525ee" class="outline-3">
-<h3 id="orge0525ee">science edges</h3>
-<div class="outline-text-3" id="text-orge0525ee">
+<div id="outline-container-org4721429" class="outline-3">
+<h3 id="org4721429">science edges</h3>
+<div class="outline-text-3" id="text-org4721429">
 <p>
 Sometimes you have a question in your mind that requires quite some
 knowledge from different fields and is <b>not</b> to google.
@@ -2778,9 +3420,9 @@ It also feels like it staying honest about what things it knows about and what i
 </div>
 </div>
 
-<div id="outline-container-org5bf58f4" class="outline-3">
-<h3 id="org5bf58f4">long output</h3>
-<div class="outline-text-3" id="text-org5bf58f4">
+<div id="outline-container-org3db3b50" class="outline-3">
+<h3 id="org3db3b50">long output</h3>
+<div class="outline-text-3" id="text-org3db3b50">
 <p>
 It currently dies sometimes with long outputs saying <code>Network
 error</code>. That is really annoying and I end up resetting the session.
@@ -2798,9 +3440,9 @@ didn't do it.
 </div>
 </div>
 
-<div id="outline-container-org11fb26b" class="outline-3">
-<h3 id="org11fb26b">wizard scientists</h3>
-<div class="outline-text-3" id="text-org11fb26b">
+<div id="outline-container-org9dceeb9" class="outline-3">
+<h3 id="org9dceeb9">wizard scientists</h3>
+<div class="outline-text-3" id="text-org9dceeb9">
 <p>
 I told it <code>I am developing a hard fantasy magic system based on
 science</code>. Then fed it ideas about my world and the magic. Turned out
@@ -3007,9 +3649,9 @@ are the same style as the examples I gave it further up in the prompt.
 </div>
 </div>
 
-<div id="outline-container-org19ad6da" class="outline-2">
-<h2 id="org19ad6da">uncovering</h2>
-<div class="outline-text-2" id="text-org19ad6da">
+<div id="outline-container-org8ec5a74" class="outline-2">
+<h2 id="org8ec5a74">uncovering</h2>
+<div class="outline-text-2" id="text-org8ec5a74">
 <p>
 Trying more advanced fixes for <code>Network Error</code>.
 </p>
@@ -3097,9 +3739,9 @@ ever-present possibility of <code>i_am_not_able_to_brows_the_web</code>.
 </div>
 </div>
 
-<div id="outline-container-org6e16cdc" class="outline-2">
-<h2 id="org6e16cdc">code</h2>
-<div class="outline-text-2" id="text-org6e16cdc">
+<div id="outline-container-orgd0364ed" class="outline-2">
+<h2 id="orgd0364ed">code</h2>
+<div class="outline-text-2" id="text-orgd0364ed">
 <p>
 It can do code, although as you might expect you still need to put it
 together and make it work. For me, it currently outputs a lot of
@@ -3120,9 +3762,9 @@ be a horrible thing to get used to.
 </div>
 </div>
 
-<div id="outline-container-org5b30913" class="outline-2">
-<h2 id="org5b30913">New kind of interface</h2>
-<div class="outline-text-2" id="text-org5b30913">
+<div id="outline-container-orgfec012e" class="outline-2">
+<h2 id="orgfec012e">New kind of interface</h2>
+<div class="outline-text-2" id="text-orgfec012e">
 <p>
 The bee rainbow example is the use case of a conversation interface to the world's knowledge.
 This is currently hampered by the fact that you might get <code>I cannot
@@ -3144,9 +3786,9 @@ things like this. (See the <code>tree</code> rule example).
 </div>
 </div>
 
-<div id="outline-container-org6f09018" class="outline-2">
-<h2 id="org6f09018">other tips</h2>
-<div class="outline-text-2" id="text-org6f09018">
+<div id="outline-container-org1a79123" class="outline-2">
+<h2 id="org1a79123">other tips</h2>
+<div class="outline-text-2" id="text-org1a79123">
 <p>
 You can just stop in the middle of
 </p>
@@ -3179,9 +3821,9 @@ need a logical continuation.</li>
 </div>
 </div>
 
-<div id="outline-container-org95ac63b" class="outline-2">
-<h2 id="org95ac63b">Conclusion</h2>
-<div class="outline-text-2" id="text-org95ac63b">
+<div id="outline-container-orge924337" class="outline-2">
+<h2 id="orge924337">Conclusion</h2>
+<div class="outline-text-2" id="text-orge924337">
 <p>
 This is a fascinating new kind of tool/thing in the world.
 </p>
@@ -3298,7 +3940,7 @@ with this. And yes, asking <code>less limitations</code> will make it output wha
 you expect.
 </p>
 
-<pre class="example" id="org8d96564">
+<pre class="example" id="org892c764">
 .
 ├── blog_post_conclusion
     ├── praise_for_tool
@@ -3339,18 +3981,22 @@ The above tree structure represents the high-level overview of the conclusion to
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -3364,8 +4010,11 @@ The above tree structure represents the high-level overview of the conclusion to
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">backing-you-up</h1>
@@ -3379,9 +4028,9 @@ somewhere from 2 months ago that did no end up being commited in git.
 Frequent file backups will make you more relaxed.
 </p>
 
-<div id="outline-container-orgecf1ca3" class="outline-3">
-<h3 id="orgecf1ca3"><code>backup-each-save</code></h3>
-<div class="outline-text-3" id="text-orgecf1ca3">
+<div id="outline-container-org08b862e" class="outline-3">
+<h3 id="org08b862e"><code>backup-each-save</code></h3>
+<div class="outline-text-3" id="text-org08b862e">
 <p>
 Saving buffers is a great joy of life.
 </p>
@@ -3465,9 +4114,9 @@ It just doesn't matter.
 </div>
 </div>
 
-<div id="outline-container-org3be4969" class="outline-2">
-<h2 id="org3be4969">The space age</h2>
-<div class="outline-text-2" id="text-org3be4969">
+<div id="outline-container-orgad229f7" class="outline-2">
+<h2 id="orgad229f7">The space age</h2>
+<div class="outline-text-2" id="text-orgad229f7">
 <p>
 Other instances of emacs in the space age:
 </p>
@@ -3504,18 +4153,22 @@ Other instances of emacs in the space age:
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -3529,8 +4182,11 @@ Other instances of emacs in the space age:
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">binaural-beats-using-scittle</h1>
@@ -3538,65 +4194,65 @@ Other instances of emacs in the space age:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga690e45">Introduction</a>
+<li><a href="#org9a100d2">Introduction</a>
 <ul>
-<li><a href="#org1eeedbf">What are binaural beats?</a></li>
-<li><a href="#orgeaaa586">Science</a></li>
-<li><a href="#org852c28a">Frequency</a></li>
-<li><a href="#org9b28b1a">The neuroscience of the auditory system </a></li>
-<li><a href="#org66a5185">I think this is ultra cool</a></li>
-<li><a href="#org7047bf0">Give me those binaural beats</a>
+<li><a href="#orgedb7b38">What are binaural beats?</a></li>
+<li><a href="#org9dada70">Science</a></li>
+<li><a href="#org675a3f2">Frequency</a></li>
+<li><a href="#orga056230">The neuroscience of the auditory system </a></li>
+<li><a href="#org80a2e47">I think this is ultra cool</a></li>
+<li><a href="#orgd9c639c">Give me those binaural beats</a>
 <ul>
-<li><a href="#orgbbac144">The problem statement:</a></li>
+<li><a href="#org67dc753">The problem statement:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgaa4bd1a">scittle</a>
+<li><a href="#orga2b037f">scittle</a>
 <ul>
-<li><a href="#orgd4b01fb">1 ear, 1 sound</a>
+<li><a href="#orgc0f8917">1 ear, 1 sound</a>
 <ul>
-<li><a href="#org561df15">The first playground</a></li>
+<li><a href="#org36af5cb">The first playground</a></li>
 </ul>
 </li>
-<li><a href="#orgfa0b0cb">Playing Hz, first round</a></li>
+<li><a href="#orgea03a9a">Playing Hz, first round</a></li>
 </ul>
 </li>
-<li><a href="#org1515598">binaural!</a>
+<li><a href="#orgaeb54b7">binaural!</a>
 <ul>
-<li><a href="#org16c265e">just put the second sound in the other ear, whatever</a></li>
+<li><a href="#org319ee2c">just put the second sound in the other ear, whatever</a></li>
 </ul>
 </li>
-<li><a href="#orgb27eb2c">Intermediate results</a>
+<li><a href="#orgc2ead68">Intermediate results</a>
 <ul>
-<li><a href="#org2cde366">Artifacts</a></li>
-<li><a href="#org079a8ea">Binaural beat?</a></li>
+<li><a href="#org8d273b3">Artifacts</a></li>
+<li><a href="#org71e6014">Binaural beat?</a></li>
 </ul>
 </li>
-<li><a href="#orgd107e00">Change the base frequency</a>
+<li><a href="#org972fb10">Change the base frequency</a>
 <ul>
-<li><a href="#org54e4d0a">I really need a slider for frequencies in my life.</a>
+<li><a href="#org237cd07">I really need a slider for frequencies in my life.</a>
 <ul>
-<li><a href="#org3a54427">nice dev experience, scittle really</a></li>
-<li><a href="#org9981462">code:</a></li>
+<li><a href="#orgf23a601">nice dev experience, scittle really</a></li>
+<li><a href="#orgb7dacc3">code:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5f9f211">Notes</a>
+<li><a href="#orgc25e659">Notes</a>
 <ul>
-<li><a href="#orgf8daba4">Images</a></li>
-<li><a href="#org6c410c6">Update 1</a></li>
-<li><a href="#org8c9c208">Update 2</a></li>
+<li><a href="#orgb7cb40d">Images</a></li>
+<li><a href="#org916558a">Update 1</a></li>
+<li><a href="#org6d66321">Update 2</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga690e45" class="outline-2">
-<h2 id="orga690e45">Introduction</h2>
-<div class="outline-text-2" id="text-orga690e45">
+<div id="outline-container-org9a100d2" class="outline-2">
+<h2 id="org9a100d2">Introduction</h2>
+<div class="outline-text-2" id="text-org9a100d2">
 <p>
 The best thing about being a rationalist is figuring out you are wrong
 about something.
@@ -3614,9 +4270,9 @@ neuroscience and pose a fun engineering problem on top of that!
 </p>
 </div>
 
-<div id="outline-container-org1eeedbf" class="outline-3">
-<h3 id="org1eeedbf">What are binaural beats?</h3>
-<div class="outline-text-3" id="text-org1eeedbf">
+<div id="outline-container-orgedb7b38" class="outline-3">
+<h3 id="orgedb7b38">What are binaural beats?</h3>
+<div class="outline-text-3" id="text-orgedb7b38">
 <p>
 <a href="https://simple.wikipedia.org/wiki/Binaural_beats">Wikipedia</a>
 </p>
@@ -3635,9 +4291,9 @@ For example, if a 530 Hz pure tone is presented to a subject's right ear, while 
 </div>
 </div>
 
-<div id="outline-container-orgeaaa586" class="outline-3">
-<h3 id="orgeaaa586">Science</h3>
-<div class="outline-text-3" id="text-orgeaaa586">
+<div id="outline-container-org9dada70" class="outline-3">
+<h3 id="org9dada70">Science</h3>
+<div class="outline-text-3" id="text-org9dada70">
 <p>
 There has developed a <a href="https://pubmed.ncbi.nlm.nih.gov/30073406/">growing science</a> about improvements in memory and
 attention tasks when listening to binaural beats.
@@ -3652,7 +4308,7 @@ Oh yes, I certainly want more of that memory and attention.
 </p>
 
 
-<div id="org48e8bac" class="figure">
+<div id="org1ef38e7" class="figure">
 <p><img src="https://i.imgur.com/eHaaoYF.png" alt="eHaaoYF.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>A brain with headphones flying at the speed of light through space. Lightning on the brain. There is a sine wave in the background. Stylized, Colorful, Cinematic, Digital Art.</p>
@@ -3661,9 +4317,9 @@ Oh yes, I certainly want more of that memory and attention.
 </div>
 
 
-<div id="outline-container-org852c28a" class="outline-3">
-<h3 id="org852c28a">Frequency</h3>
-<div class="outline-text-3" id="text-org852c28a">
+<div id="outline-container-org675a3f2" class="outline-3">
+<h3 id="org675a3f2">Frequency</h3>
+<div class="outline-text-3" id="text-org675a3f2">
 <p>
 Theta waves (5Hz) <a href="https://pubmed.ncbi.nlm.nih.gov/29222722/">actually decrease memory task performance</a>. So I
 really do not want to listen to those.
@@ -3692,9 +4348,9 @@ memory, and memory processes. Also, the <a href="https://en.wikipedia.org/wiki/B
 </div>
 </div>
 
-<div id="outline-container-org9b28b1a" class="outline-3">
-<h3 id="org9b28b1a">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
-<div class="outline-text-3" id="text-org9b28b1a">
+<div id="outline-container-orga056230" class="outline-3">
+<h3 id="orga056230">The neuroscience of the <a href="https://en.wikipedia.org/wiki/Hearing">auditory system </a></h3>
+<div class="outline-text-3" id="text-orga056230">
 <p>
 Hearing is cool because the neuronal neural information first goes into the brainstem
 and then goes up some nuclei up to the thalamus. And eventually to the
@@ -3742,9 +4398,9 @@ I'm guessing those then start firing in the 40Hz frequency and that is interpret
 </div>
 </div>
 
-<div id="outline-container-org66a5185" class="outline-3">
-<h3 id="org66a5185">I think this is ultra cool</h3>
-<div class="outline-text-3" id="text-org66a5185">
+<div id="outline-container-org80a2e47" class="outline-3">
+<h3 id="org80a2e47">I think this is ultra cool</h3>
+<div class="outline-text-3" id="text-org80a2e47">
 <p>
 You throw some energy at the brain in the right form (in this case
 some sound waves) and it reacts in some special way.
@@ -3775,9 +4431,9 @@ but I really get the same results mix as when I search for <code>binaural beats<
 </div>
 
 
-<div id="outline-container-org7047bf0" class="outline-3">
-<h3 id="org7047bf0">Give me those binaural beats</h3>
-<div class="outline-text-3" id="text-org7047bf0">
+<div id="outline-container-orgd9c639c" class="outline-3">
+<h3 id="orgd9c639c">Give me those binaural beats</h3>
+<div class="outline-text-3" id="text-orgd9c639c">
 <p>
 I dint feel like opening a youtube video just to listen to some
 sounds. As an aspiring hacker and engineer, I just want to make my
@@ -3786,9 +4442,9 @@ So I decided to make a simple website that just makes binaural beats and nothing
 </p>
 </div>
 
-<div id="outline-container-orgbbac144" class="outline-4">
-<h4 id="orgbbac144">The problem statement:</h4>
-<div class="outline-text-4" id="text-orgbbac144">
+<div id="outline-container-org67dc753" class="outline-4">
+<h4 id="org67dc753">The problem statement:</h4>
+<div class="outline-text-4" id="text-org67dc753">
 <p>
 Make a sound on 1 ear (e.g. left headphone speaker)
 </p>
@@ -3801,9 +4457,9 @@ Make a second sound on the other ear, with a +40Hz frequency.
 </div>
 </div>
 
-<div id="outline-container-orgaa4bd1a" class="outline-2">
-<h2 id="orgaa4bd1a">scittle</h2>
-<div class="outline-text-2" id="text-orgaa4bd1a">
+<div id="outline-container-orga2b037f" class="outline-2">
+<h2 id="orga2b037f">scittle</h2>
+<div class="outline-text-2" id="text-orga2b037f">
 <p>
 I set up a beautiful hello world <a href="https://github.com/babashka/scittle/tree/main/doc/nrepl">and connect with nrepl</a>
 and get greeted with a friendly <code>Isn't cool? this :)</code>.
@@ -3815,9 +4471,9 @@ Then do the <code>cider-connect-cljs</code>
 </p>
 </div>
 
-<div id="outline-container-orgd4b01fb" class="outline-3">
-<h3 id="orgd4b01fb">1 ear, 1 sound</h3>
-<div class="outline-text-3" id="text-orgd4b01fb">
+<div id="outline-container-orgc0f8917" class="outline-3">
+<h3 id="orgc0f8917">1 ear, 1 sound</h3>
+<div class="outline-text-3" id="text-orgc0f8917">
 <p>
 First I think let's start making a sound in 1 ear.
 </p>
@@ -3834,9 +4490,9 @@ I am figuring something inside the speech area should sound natural
 </p>
 </div>
 
-<div id="outline-container-org561df15" class="outline-4">
-<h4 id="org561df15">The first playground</h4>
-<div class="outline-text-4" id="text-org561df15">
+<div id="outline-container-org36af5cb" class="outline-4">
+<h4 id="org36af5cb">The first playground</h4>
+<div class="outline-text-4" id="text-org36af5cb">
 <p>
 I have a file called playground.clj
 (Later I figured out I should rename to .cljs :) ).
@@ -3875,9 +4531,9 @@ that I move the headphone to the side.
 </div>
 </div>
 
-<div id="outline-container-orgfa0b0cb" class="outline-3">
-<h3 id="orgfa0b0cb">Playing Hz, first round</h3>
-<div class="outline-text-3" id="text-orgfa0b0cb">
+<div id="outline-container-orgea03a9a" class="outline-3">
+<h3 id="orgea03a9a">Playing Hz, first round</h3>
+<div class="outline-text-3" id="text-orgea03a9a">
 <p>
 Here is a more endurable sound:
 </p>
@@ -3910,9 +4566,9 @@ Checking out <a href="https://pages.mtu.edu/~suits/notefreq432.html">a website</
 </div>
 
 
-<div id="outline-container-org1515598" class="outline-2">
-<h2 id="org1515598">binaural!</h2>
-<div class="outline-text-2" id="text-org1515598">
+<div id="outline-container-orgaeb54b7" class="outline-2">
+<h2 id="orgaeb54b7">binaural!</h2>
+<div class="outline-text-2" id="text-orgaeb54b7">
 <p>
 Let's do the thing where I add +40Hz and play that on the other ear.
 First I start generalizing how I make a panner:
@@ -3932,7 +4588,7 @@ First I start generalizing how I make a panner:
 For some reason running this I get:
 </p>
 
-<pre class="example" id="org46ead71">
+<pre class="example" id="orgee958c1">
 Failed to execute 'connect' on 'AudioNode': Overload resolution failed.
 </pre>
 
@@ -3942,9 +4598,9 @@ this error, in the meantime&#x2026;
 </p>
 </div>
 
-<div id="outline-container-org16c265e" class="outline-3">
-<h3 id="org16c265e">just put the second sound in the other ear, whatever</h3>
-<div class="outline-text-3" id="text-org16c265e">
+<div id="outline-container-org319ee2c" class="outline-3">
+<h3 id="org319ee2c">just put the second sound in the other ear, whatever</h3>
+<div class="outline-text-3" id="text-org319ee2c">
 <div class="org-src-container">
 <pre class="src src-Clojure">(ns beats)
 
@@ -3987,13 +4643,13 @@ lol, it works.
 </div>
 </div>
 
-<div id="outline-container-orgb27eb2c" class="outline-2">
-<h2 id="orgb27eb2c">Intermediate results</h2>
-<div class="outline-text-2" id="text-orgb27eb2c">
+<div id="outline-container-orgc2ead68" class="outline-2">
+<h2 id="orgc2ead68">Intermediate results</h2>
+<div class="outline-text-2" id="text-orgc2ead68">
 </div>
-<div id="outline-container-org2cde366" class="outline-3">
-<h3 id="org2cde366">Artifacts</h3>
-<div class="outline-text-3" id="text-org2cde366">
+<div id="outline-container-org8d273b3" class="outline-3">
+<h3 id="org8d273b3">Artifacts</h3>
+<div class="outline-text-3" id="text-org8d273b3">
 <p>
 Every now and then there are artifacts in the sound with my headphones setup.
 Some are just rustling and crackling.
@@ -4007,9 +4663,9 @@ sort of slow mow.
 </div>
 </div>
 
-<div id="outline-container-org079a8ea" class="outline-3">
-<h3 id="org079a8ea">Binaural beat?</h3>
-<div class="outline-text-3" id="text-org079a8ea">
+<div id="outline-container-org71e6014" class="outline-3">
+<h3 id="org71e6014">Binaural beat?</h3>
+<div class="outline-text-3" id="text-org71e6014">
 <p>
 Pretty sure I get the third-tone illusion.
 I would describe it as some kind of background or in between "airy"
@@ -4021,9 +4677,9 @@ It is as if the fabric of the sound is richer. Like there is sound in more place
 </div>
 </div>
 
-<div id="outline-container-orgd107e00" class="outline-2">
-<h2 id="orgd107e00">Change the base frequency</h2>
-<div class="outline-text-2" id="text-orgd107e00">
+<div id="outline-container-org972fb10" class="outline-2">
+<h2 id="org972fb10">Change the base frequency</h2>
+<div class="outline-text-2" id="text-org972fb10">
 <p>
 It occurred to me, that if I get the 40Hz sound illusion, then I would
 predict that I can change the base frequency, keeping the 40Hz difference between
@@ -4031,9 +4687,9 @@ left and right ear invariant. I should then constantly perceive a 3rd tone which
 </p>
 </div>
 
-<div id="outline-container-org54e4d0a" class="outline-3">
-<h3 id="org54e4d0a">I really need a slider for frequencies in my life.</h3>
-<div class="outline-text-3" id="text-org54e4d0a">
+<div id="outline-container-org237cd07" class="outline-3">
+<h3 id="org237cd07">I really need a slider for frequencies in my life.</h3>
+<div class="outline-text-3" id="text-org237cd07">
 <p>
 I did not do much web dev in my life and making a slider was a first.
 </p>
@@ -4044,9 +4700,9 @@ I managed to put something together, drawing inspiration from
 </p>
 </div>
 
-<div id="outline-container-org3a54427" class="outline-4">
-<h4 id="org3a54427">nice dev experience, scittle really</h4>
-<div class="outline-text-4" id="text-org3a54427">
+<div id="outline-container-orgf23a601" class="outline-4">
+<h4 id="orgf23a601">nice dev experience, scittle really</h4>
+<div class="outline-text-4" id="text-orgf23a601">
 <ol class="org-ol">
 <li>I did not need to restart my REPL at any point, adding those Html
 elements, then reloading my index.html - it handles that.</li>
@@ -4066,7 +4722,7 @@ At least with cider.
 
 
 
-<div id="org6a25c42" class="figure">
+<div id="orge29c0e9" class="figure">
 <p><img src="https://i.imgur.com/M8rSuZ3.png" alt="M8rSuZ3.png" />
 </p>
 <p><span class="figure-number">Figure 2: </span>A mouse with headphones typing on a laptop. Intelligent. Sparks of magic are flying around. There is lightning on the mouse and laptop. Computer programming source code. Colorful, playful.</p>
@@ -4080,9 +4736,9 @@ I imagine it scurrying and curiously sniffing around.
 </div>
 </div>
 
-<div id="outline-container-org9981462" class="outline-4">
-<h4 id="org9981462">code:</h4>
-<div class="outline-text-4" id="text-org9981462">
+<div id="outline-container-orgb7dacc3" class="outline-4">
+<h4 id="orgb7dacc3">code:</h4>
+<div class="outline-text-4" id="text-orgb7dacc3">
 <p>
 index.html
 </p>
@@ -4193,7 +4849,7 @@ integrating patterns of the brain and mind.
 </p>
 
 
-<div id="org29ba203" class="figure">
+<div id="orgbb66105" class="figure">
 <p><img src="https://i.imgur.com/xijojsT.png" alt="xijojsT.png" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Harry potter wearing headphones having spiritual enlightenment about magic. Glowing magic sparks fly around. Colorful, cinematic, video game concept art.</p>
@@ -4203,13 +4859,13 @@ integrating patterns of the brain and mind.
 </div>
 </div>
 
-<div id="outline-container-org5f9f211" class="outline-2">
-<h2 id="org5f9f211">Notes</h2>
-<div class="outline-text-2" id="text-org5f9f211">
+<div id="outline-container-orgc25e659" class="outline-2">
+<h2 id="orgc25e659">Notes</h2>
+<div class="outline-text-2" id="text-orgc25e659">
 </div>
-<div id="outline-container-orgf8daba4" class="outline-3">
-<h3 id="orgf8daba4">Images</h3>
-<div class="outline-text-3" id="text-orgf8daba4">
+<div id="outline-container-orgb7cb40d" class="outline-3">
+<h3 id="orgb7cb40d">Images</h3>
+<div class="outline-text-3" id="text-orgb7cb40d">
 <p>
 Made with <a href="https://huggingface.co/spaces/stabilityai/stable-diffusion">stable-diffusion</a>.
 The captions are the prompts I used.
@@ -4217,9 +4873,9 @@ The captions are the prompts I used.
 </div>
 </div>
 
-<div id="outline-container-org6c410c6" class="outline-3">
-<h3 id="org6c410c6">Update 1</h3>
-<div class="outline-text-3" id="text-org6c410c6">
+<div id="outline-container-org916558a" class="outline-3">
+<h3 id="org916558a">Update 1</h3>
+<div class="outline-text-3" id="text-org916558a">
 <p>
 Currently does not work on mobile. Seems like I have the
 opportunity for another web dev feat, then.
@@ -4229,9 +4885,9 @@ slider value works fine (meaning that the scittle code is running fine).
 </div>
 </div>
 
-<div id="outline-container-org8c9c208" class="outline-3">
-<h3 id="org8c9c208">Update 2</h3>
-<div class="outline-text-3" id="text-org8c9c208">
+<div id="outline-container-org6d66321" class="outline-3">
+<h3 id="org6d66321">Update 2</h3>
+<div class="outline-text-3" id="text-org6d66321">
 <p>
 Now it also works on mobile!
 Somebody helpfully pointed out on slack that on mac there was an error
@@ -4295,18 +4951,22 @@ It works, haha!
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -4320,8 +4980,11 @@ It works, haha!
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">dreaming-code</h1>
@@ -4329,9 +4992,9 @@ It works, haha!
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3f0f756">Sleep mentations</a></li>
-<li><a href="#org7fa6188">The night goes on - REM, NREM</a></li>
-<li><a href="#orgee4aa74">Source code in a vivid dream</a></li>
+<li><a href="#orgf152d1e">Sleep mentations</a></li>
+<li><a href="#org1a4cd9b">The night goes on - REM, NREM</a></li>
+<li><a href="#org7fa7b30">Source code in a vivid dream</a></li>
 </ul>
 </div>
 </div>
@@ -4348,9 +5011,9 @@ concepts and problems + in the earlier part of the night.
 What is the business of these early-night dreams?
 </p>
 
-<div id="outline-container-org3f0f756" class="outline-2">
-<h2 id="org3f0f756">Sleep mentations</h2>
-<div class="outline-text-2" id="text-org3f0f756">
+<div id="outline-container-orgf152d1e" class="outline-2">
+<h2 id="orgf152d1e">Sleep mentations</h2>
+<div class="outline-text-2" id="text-orgf152d1e">
 <blockquote>
 <p>
 NREM dreams are typically shorter, more fragmented, and more thought-like whereas REM dreams are longer, more emotional, and more bizarre
@@ -4398,9 +5061,9 @@ I like the idea of calling these <i>sleep mentation</i> instead of dreams.
 </div>
 </div>
 
-<div id="outline-container-org7fa6188" class="outline-2">
-<h2 id="org7fa6188">The night goes on - REM, NREM</h2>
-<div class="outline-text-2" id="text-org7fa6188">
+<div id="outline-container-org1a4cd9b" class="outline-2">
+<h2 id="org1a4cd9b">The night goes on - REM, NREM</h2>
+<div class="outline-text-2" id="text-org1a4cd9b">
 <blockquote>
 <p>
 Attributes such as length, bizarreness, and perceptual vividness increase for both NREM and REM sleep reports across the night
@@ -4436,9 +5099,9 @@ Earlier in the night.</li>
 </div>
 </div>
 
-<div id="outline-container-orgee4aa74" class="outline-2">
-<h2 id="orgee4aa74">Source code in a vivid dream</h2>
-<div class="outline-text-2" id="text-orgee4aa74">
+<div id="outline-container-org7fa7b30" class="outline-2">
+<h2 id="org7fa7b30">Source code in a vivid dream</h2>
+<div class="outline-text-2" id="text-org7fa7b30">
 <p>
 It <b>did</b> happen to me recently halfway through the night.
 A dream purely about coding but more on the side of what I would call
@@ -4496,18 +5159,22 @@ I was able to type in this code the next morning, haha!
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -4521,8 +5188,11 @@ I was able to type in this code the next morning, haha!
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">scratching-in-space</h1>
@@ -4530,15 +5200,15 @@ I was able to type in this code the next morning, haha!
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga504ab7">Introduction</a></li>
-<li><a href="#orgba3693a">scratching in space</a>
+<li><a href="#org9b17cc1">Introduction</a></li>
+<li><a href="#org0b8fe6e">scratching in space</a>
 <ul>
-<li><a href="#org08f7dd3">here is my current hack for this:</a></li>
+<li><a href="#org03570b3">here is my current hack for this:</a></li>
 </ul>
 </li>
-<li><a href="#org8260cb8">clojure scratch repl?</a></li>
-<li><a href="#org8ebb362">Further reading</a></li>
-<li><a href="#orgffba0c0">inspiring talks</a></li>
+<li><a href="#orgd20e2ff">clojure scratch repl?</a></li>
+<li><a href="#orgd0db132">Further reading</a></li>
+<li><a href="#orgeecb30c">inspiring talks</a></li>
 </ul>
 </div>
 </div>
@@ -4554,9 +5224,9 @@ A simple alternative: make files.
 Musings about persistent scratch technology.
 </p>
 
-<div id="outline-container-orga504ab7" class="outline-2">
-<h2 id="orga504ab7">Introduction</h2>
-<div class="outline-text-2" id="text-orga504ab7">
+<div id="outline-container-org9b17cc1" class="outline-2">
+<h2 id="org9b17cc1">Introduction</h2>
+<div class="outline-text-2" id="text-org9b17cc1">
 <p>
 If you ever typed something in a buffer called <code>*scratch*</code> you will
 inevitably have found yourself in this situation:
@@ -4590,9 +5260,9 @@ What I want:
 </div>
 </div>
 
-<div id="outline-container-orgba3693a" class="outline-2">
-<h2 id="orgba3693a">scratching in space</h2>
-<div class="outline-text-2" id="text-orgba3693a">
+<div id="outline-container-org0b8fe6e" class="outline-2">
+<h2 id="org0b8fe6e">scratching in space</h2>
+<div class="outline-text-2" id="text-org0b8fe6e">
 <p>
 Our disk space is vast, and emacs is great at creating files.
 </p>
@@ -4612,9 +5282,9 @@ This is a bit similar to <a href="https://start.duckduckgo.com/">denote</a>, whi
 </p>
 </div>
 
-<div id="outline-container-org08f7dd3" class="outline-3">
-<h3 id="org08f7dd3">here is my current hack for this:</h3>
-<div class="outline-text-3" id="text-org08f7dd3">
+<div id="outline-container-org03570b3" class="outline-3">
+<h3 id="org03570b3">here is my current hack for this:</h3>
+<div class="outline-text-3" id="text-org03570b3">
 <div class="org-src-container">
 <pre class="src src-elisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">mememacs/scratch-dir</span> (expand-file-name <span style="font-style: italic;">"~/scratch"</span>))
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">mememacs/latest-scratch</span> (suffix)
@@ -4683,9 +5353,9 @@ A second bind will ask me to make a <code>clj</code> or <code>cljs</code> file.
 </div>
 </div>
 
-<div id="outline-container-org8260cb8" class="outline-2">
-<h2 id="org8260cb8">clojure scratch repl?</h2>
-<div class="outline-text-2" id="text-org8260cb8">
+<div id="outline-container-orgd20e2ff" class="outline-2">
+<h2 id="orgd20e2ff">clojure scratch repl?</h2>
+<div class="outline-text-2" id="text-orgd20e2ff">
 <p>
 Whatever. I just do this:
 </p>
@@ -4712,9 +5382,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-org8ebb362" class="outline-2">
-<h2 id="org8ebb362">Further reading</h2>
-<div class="outline-text-2" id="text-org8ebb362">
+<div id="outline-container-orgd0db132" class="outline-2">
+<h2 id="orgd0db132">Further reading</h2>
+<div class="outline-text-2" id="text-orgd0db132">
 <ul class="org-ul">
 <li><a href="backing-you-up.html">backups in space</a></li>
 <li><a href="https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/">reddit persistent scratch discussion</a></li>
@@ -4722,9 +5392,9 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 </div>
 </div>
 
-<div id="outline-container-orgffba0c0" class="outline-2">
-<h2 id="orgffba0c0">inspiring talks</h2>
-<div class="outline-text-2" id="text-orgffba0c0">
+<div id="outline-container-orgeecb30c" class="outline-2">
+<h2 id="orgeecb30c">inspiring talks</h2>
+<div class="outline-text-2" id="text-orgeecb30c">
 <ul class="org-ul">
 <li><a href="https://www.youtube.com/watch?v=-6BsiVyC1kM">The value of values (place-oriented programming is obsolete)</a></li>
 <li><a href="https://www.youtube.com/watch?v=OUZZKtypink">Program like Sherlock Holmes</a></li>
@@ -4758,18 +5428,22 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
 <link rel="stylesheet" href="navbar.css" />
+<!-- <script src="navbar_toggle.js"></script> -->
 </head>
 <body>
 <div id="preamble" class="status">
-  <h4>
+<h4>
     <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
        style="background-color:black;;text-decoration:none;padding:0.3rem">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+<div>
+  <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -4783,8 +5457,11 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
+ </div>
 </div>
 <div id="content" class="content">
 <h1 class="title">jacking-nbb</h1>
@@ -4792,24 +5469,57 @@ It currently requires some workaround that you can find <a href="jacking-nbb.htm
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc486f76">Introduction</a></li>
-<li><a href="#orgab953a5">Jack-in command</a>
+<li><a href="#org9f7eba1">Update:</a></li>
+<li><a href="#org391d098">Original post:</a></li>
+<li><a href="#org7a46b36">Introduction</a></li>
+<li><a href="#org8b5c8b0">Jack-in command</a>
 <ul>
-<li><a href="#org33efb61">cider repl workaround</a></li>
-<li><a href="#org29bb7fd">the command</a></li>
-<li><a href="#org3726eb7">hack for the remaining issue</a></li>
+<li><a href="#orgd99ccb9">cider repl workaround</a></li>
+<li><a href="#orgf3daed4">the command</a></li>
+<li><a href="#org3e433a6">hack for the remaining issue</a></li>
 </ul>
 </li>
-<li><a href="#org15fdc7e">Results</a></li>
+<li><a href="#org7f96161">Results</a></li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-org9f7eba1" class="outline-2">
+<h2 id="org9f7eba1">Update:</h2>
+<div class="outline-text-2" id="text-org9f7eba1">
+<p>
+This is no longer needed with cider 1.6.
+There is a dedicated nbb cider build tool now.
+I still also think my proposal <a href="https://github.com/clojure-emacs/cider/pull/3286">here</a> would be useful.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">the equivalent of the proposed change</span>
+(advice-add
+ 'cider--update-jack-in-cmd
+ <span style="font-weight: bold;">:before-until</span>
+ (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">cider-dont-update-jack-in-cmd-when-given</span> (params)
+   (<span style="font-weight: bold;">when</span> (plist-get params <span style="font-weight: bold;">:jack-in-cmd</span>) params)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">now a nbb jack in command becomes:</span>
+(cider-jack-in '(<span style="font-weight: bold;">:jack-in-cmd</span> <span style="font-style: italic;">"nbb nrepl-server"</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org391d098" class="outline-2">
+<h2 id="org391d098">Original post:</h2>
+<div class="outline-text-2" id="text-org391d098">
 <p>
 A cider jack in command for nbb.
 </p>
-<div id="outline-container-orgc486f76" class="outline-2">
-<h2 id="orgc486f76">Introduction</h2>
-<div class="outline-text-2" id="text-orgc486f76">
+</div>
+</div>
+
+<div id="outline-container-org7a46b36" class="outline-2">
+<h2 id="org7a46b36">Introduction</h2>
+<div class="outline-text-2" id="text-org7a46b36">
 <p>
 <a href="https://github.com/babashka/nbb">Nbb</a> is a beatiful <a href="https://www.youtube.com/watch?v=tX4wg4wOFuU">parasite</a>.
 A node script that is an interpreter for Clojurescript.
@@ -4837,13 +5547,13 @@ Scratching (<a href="scratching-in-space.html">in space</a>) is very usefull and
 </div>
 </div>
 
-<div id="outline-container-orgab953a5" class="outline-2">
-<h2 id="orgab953a5">Jack-in command</h2>
-<div class="outline-text-2" id="text-orgab953a5">
+<div id="outline-container-org8b5c8b0" class="outline-2">
+<h2 id="org8b5c8b0">Jack-in command</h2>
+<div class="outline-text-2" id="text-org8b5c8b0">
 </div>
-<div id="outline-container-org33efb61" class="outline-3">
-<h3 id="org33efb61">cider repl workaround</h3>
-<div class="outline-text-3" id="text-org33efb61">
+<div id="outline-container-orgd99ccb9" class="outline-3">
+<h3 id="orgd99ccb9">cider repl workaround</h3>
+<div class="outline-text-3" id="text-orgd99ccb9">
 <p>
 We currently need this workaround for sci-based cljs repls for cider:
 </p>
@@ -4862,9 +5572,9 @@ We currently need this workaround for sci-based cljs repls for cider:
 </div>
 </div>
 
-<div id="outline-container-org29bb7fd" class="outline-3">
-<h3 id="org29bb7fd">the command</h3>
-<div class="outline-text-3" id="text-org29bb7fd">
+<div id="outline-container-orgf3daed4" class="outline-3">
+<h3 id="orgf3daed4">the command</h3>
+<div class="outline-text-3" id="text-orgf3daed4">
 <p>
 Unfortunately, cider does not have the concept of a nbb repl currently.
 I think <code>cider-jack-in-resolve-command</code> and similar functions could be
@@ -4914,9 +5624,9 @@ This is what I wanted to say:
 </div>
 </div>
 
-<div id="outline-container-org3726eb7" class="outline-3">
-<h3 id="org3726eb7">hack for the remaining issue</h3>
-<div class="outline-text-3" id="text-org3726eb7">
+<div id="outline-container-org3e433a6" class="outline-3">
+<h3 id="org3e433a6">hack for the remaining issue</h3>
+<div class="outline-text-3" id="text-org3e433a6">
 <p>
 With this, you should get an error "ClojureScript is not available&#x2026;".
 <a href="https://github.com/clojure-emacs/cider/issues/3255">Until there is a fix in cider</a>, you can hack it by redefining <code>cider-verify-clojurescript-is-present</code>:
@@ -4934,9 +5644,9 @@ With this, you should get an error "ClojureScript is not available&#x2026;".
 </div>
 </div>
 
-<div id="outline-container-org15fdc7e" class="outline-2">
-<h2 id="org15fdc7e">Results</h2>
-<div class="outline-text-2" id="text-org15fdc7e">
+<div id="outline-container-org7f96161" class="outline-2">
+<h2 id="org7f96161">Results</h2>
+<div class="outline-text-2" id="text-org7f96161">
 <p>
 Hehe, insta nbb repl. Works good.
 </p>

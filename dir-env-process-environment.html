@@ -24,6 +24,7 @@
   <!-- <button id="navbar-toggle">☰</button> -->
 <ul id="navbar">
     <li><a href="binaural-beats-using-scittle.html">Binaural Beats with Scittle</a></li>
+<li><a href="extending-your-reach.html">Extending your Reach (Good Tools Part 1)</a></li>
 <li><a href="bashing-is-better-than-extending.html">Bashing is better than extending</a></li>
 <li><a href="dir-env-process-environment.html">Dir env for process-environment</a></li>
 <li><a href="scittle-prints-itself.html">Scittle prints itself</a></li>
@@ -37,6 +38,8 @@
 <li><a href="not-even-the-sky-is-the-limit.html">Not even the Sky is the limit</a></li>
 <li><a href="aws-iam-and-cloudwatch-logs-start-query.html">Cloudwatch Logs Query Iam Example</a></li>
 <li><a href="the-deeper-chat-gpt.html">The Deeper Chat-Gpt</a></li>
+<li><a href="a-system-like-water.html">A System Like Water 1</a></li>
+<li><a href="resume.html">Resume</a></li>
 
 </ul>
  </div>
@@ -47,21 +50,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org12b68d6">Introduction</a></li>
-<li><a href="#org6d57ba0">The setup</a>
+<li><a href="#org2307a03">Introduction</a></li>
+<li><a href="#org4288873">The setup</a>
 <ul>
-<li><a href="#orgdd207df">From the project I currently work on:</a></li>
+<li><a href="#org5f92af9">From the project I currently work on:</a></li>
 </ul>
 </li>
-<li><a href="#org8fcd432">Non-file-buffer</a></li>
-<li><a href="#orgf1bcffb">revert with grace</a></li>
+<li><a href="#orgdf72328">Non-file-buffer</a></li>
+<li><a href="#org045170c">revert with grace</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org12b68d6" class="outline-2">
-<h2 id="org12b68d6">Introduction</h2>
-<div class="outline-text-2" id="text-org12b68d6">
+<div id="outline-container-org2307a03" class="outline-2">
+<h2 id="org2307a03">Introduction</h2>
+<div class="outline-text-2" id="text-org2307a03">
 <p>
 Making <a href="bashing-is-better-than-extending.html">shell commands</a> is one of the great joys of emacs.
 </p>
@@ -77,9 +80,9 @@ What I show here works for <code>compile</code>, <code>shell-command</code>, and
 </div>
 </div>
 
-<div id="outline-container-org6d57ba0" class="outline-2">
-<h2 id="org6d57ba0">The setup</h2>
-<div class="outline-text-2" id="text-org6d57ba0">
+<div id="outline-container-org4288873" class="outline-2">
+<h2 id="org4288873">The setup</h2>
+<div class="outline-text-2" id="text-org4288873">
 <p>
 <code>.dir-locals.el</code>:
 </p>
@@ -111,9 +114,9 @@ The answer mentions <code>setq-local</code>. I tried that without success.
 </p>
 </div>
 
-<div id="outline-container-orgdd207df" class="outline-3">
-<h3 id="orgdd207df">From the project I currently work on:</h3>
-<div class="outline-text-3" id="text-orgdd207df">
+<div id="outline-container-org5f92af9" class="outline-3">
+<h3 id="org5f92af9">From the project I currently work on:</h3>
+<div class="outline-text-3" id="text-org5f92af9">
 <div class="org-src-container">
 <pre class="src src-elisp">((nil
   .
@@ -134,9 +137,9 @@ Also I have a <a href="https://github.com/babashka/babashka">babashka</a> task f
 </div>
 </div>
 
-<div id="outline-container-org8fcd432" class="outline-2">
-<h2 id="org8fcd432">Non-file-buffer</h2>
-<div class="outline-text-2" id="text-org8fcd432">
+<div id="outline-container-orgdf72328" class="outline-2">
+<h2 id="orgdf72328">Non-file-buffer</h2>
+<div class="outline-text-2" id="text-orgdf72328">
 <p>
 By default, <code>.dir-locals.el</code> does not apply to buffers without file names.
 (When the local variable <code>buffer-file-name</code> is not set).
@@ -153,9 +156,9 @@ I usually start processes from either a (source) file buffer or dired.
 </div>
 </div>
 
-<div id="outline-container-orgf1bcffb" class="outline-2">
-<h2 id="orgf1bcffb">revert with grace</h2>
-<div class="outline-text-2" id="text-orgf1bcffb">
+<div id="outline-container-org045170c" class="outline-2">
+<h2 id="org045170c">revert with grace</h2>
+<div class="outline-text-2" id="text-org045170c">
 <p>
 When you make a change to your <code>.dir-locals</code>, call <code>revert-buffer</code> in
 whatever buffer you want to have the effect.
