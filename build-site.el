@@ -19,6 +19,7 @@
 (require 'denote)
 (require 'parseedn)
 
+(setf make-backup-files nil)
 (setf denote-directory "~/notes/")
 
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
@@ -74,8 +75,9 @@
 	(re-search-forward "#\\+EXPORT_FILE_NAME:" nil t)
       (goto-char (point-min))
       (re-search-forward "^$")
-      (insert
-       (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path))))
+      (let ((inhibit-read-only t))
+        (insert
+         (format "#+EXPORT_FILE_NAME: %s\n" (dw/strip-file-name-metadata path)))))
     (let ((before-save-hook nil))
       (save-buffer))))
 
@@ -164,7 +166,9 @@ backend."
 (dolist (file
          (append (directory-files-recursively "src" "\\.js$")
                  (directory-files-recursively "src" "\\.css$")))
-  (copy-file file "gh-pages/" t))
+  (copy-file file "public/" t))
+
+(copy-file "assets/favicon.ico" "public/" t)
 
 (with-temp-buffer
   (parseedn-print
