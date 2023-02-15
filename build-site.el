@@ -115,12 +115,23 @@
 	       do (insert elm))
       (buffer-string)))))
 
+;; </body>
+;;  <script src="./darkmode-button.js"></script>
+;; </html>
+
 (setq org-publish-project-alist
       (list
        (list "org-site:main"
 	     :org-html-preamble t
+             ;; :html-postamble-format
+;;              '(("en"
+;;                 "<div> LOL </div>
+;; <p class=\"author\">Author: %a (%e)</p>
+;; <p class=\"date\">Date: %d</p>
+;; <p class=\"creator\">%c</p>
+;; <p class=\"validation\">%v</p>"))
 	     :html-preamble-format
-	     `(("en" ,(get-preamble)))
+             `(("en" ,(get-preamble)))
              :recursive t
 	     :exclude ".*"
 	     :include (ftlm/posts+index-files)
@@ -129,7 +140,6 @@
              :publishing-directory "./public/"
              :with-author nil
              :with-creator t
-             :auto-sitemap t
              :with-toc t
              :section-numbers nil
              :time-stamp-file nil)))
