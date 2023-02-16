@@ -19,12 +19,16 @@
 (require 'denote)
 (require 'parseedn)
 
+(setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
+
 (setf make-backup-files nil)
+
+
+
 (setf denote-directory "~/notes/")
-
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
-(defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
 
+(defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
 (defun ftlm/file->denote-links (file)
   (with-current-buffer (find-file-noselect file)
     (denote-link--expand-identifiers "\\[\\[denote:\\(?1:\\([0-9]\\{8\\}\\)\\(T[0-9]\\{6\\}\\)\\)]\\[.*?]]")))
@@ -86,63 +90,109 @@
 
 (defun get-preamble ()
   (concat
-   (with-current-buffer (find-file-noselect "preamble.html") (buffer-string))
+   (with-current-buffer
+       (find-file-noselect
+        "preamble.html")
+     (buffer-string))
    (format
-    "<div>\n  <!-- <button id=\"navbar-toggle\">☰</button> -->\n<ul id=\"navbar\">\n    %s\n</ul>\n </div>\n"
+    "<link rel=\"stylesheet\" href=\"navbar.css\" />
+<div>
+  <button id=\"navbar-toggle\">☰</button>
+<ul id=\"navbar\">
+    %s
+</ul>
+ </div>
+"
     (with-temp-buffer
-      (cl-loop for elm in
-	       (with-current-buffer
-		   (find-file-noselect ftlm/posts-file)
-		 (goto-char (point-min))
-		 (cl-loop while
-			  (re-search-forward org-link-any-re nil t)
-			  collect
-			  (let* ((start (match-beginning 0))
-				 (link-object
-				  (save-excursion
-				    (goto-char start)
-				    (save-match-data (org-element-link-parser))))
-				 (link (org-element-property :path link-object))
-				 (path-id (denote-link--ol-resolve-link-to-target link :path-id))
-				 (path (file-name-nondirectory (car path-id)))
-				 (p (file-name-sans-extension path))
-				 (p (dw/strip-file-name-metadata p))
-				 (description
-				  (buffer-substring-no-properties
-				   (org-element-property :contents-begin link-object)
-				   (org-element-property :contents-end link-object))))
-			    (navbar-elm p description))))
-	       do (insert elm))
+      (cl-loop
+       for
+       elm
+       in
+       (with-current-buffer
+           (find-file-noselect
+            ftlm/posts-file)
+         (goto-char (point-min))
+         (cl-loop
+          while (re-search-forward
+                 org-link-any-re
+                 nil
+                 t)
+          collect
+          (let* ((start (match-beginning 0))
+                 (link-object (save-excursion
+                                (goto-char start)
+                                (save-match-data
+                                  (org-element-link-parser))))
+                 (link (org-element-property
+                        :path link-object))
+                 (path-id (denote-link--ol-resolve-link-to-target
+                           link
+                           :path-id))
+                 (path (file-name-nondirectory
+                        (car path-id)))
+                 (p (file-name-sans-extension path))
+                 (p (dw/strip-file-name-metadata p))
+                 (description (buffer-substring-no-properties
+                               (org-element-property
+                                :contents-begin link-object)
+                               (org-element-property
+                                :contents-end link-object))))
+            (navbar-elm p description))))
+       do
+       (insert elm))
       (buffer-string)))))
 
 ;; </body>
 ;;  <script src="./darkmode-button.js"></script>
 ;; </html>
 
+(defun build-postamle (info)
+  (let* ((spec (org-html-format-spec info))
+         (date (cdr (assq ?d spec)))
+         (author (cdr (assq ?a spec)))
+         (email (cdr (assq ?e spec)))
+         (creator (cdr (assq ?c spec)))
+         (validation-link (cdr (assq ?v spec))))
+    (concat
+     "<script src=\"navbar_toggle.js\"></script>\n"
+     (and (plist-get info :with-date)
+          (org-string-nw-p date)
+          (format
+           "<p class=\"date\">%s: %s</p>
+"
+           (org-html--translate
+            "Date"
+            info)
+           date))
+     (and (plist-get info :with-email)
+          (org-string-nw-p email)
+          (format
+           "<p class=\"email\">%s: %s</p>
+"
+           (org-html--translate
+            "Email"
+            info)
+           email)))))
+
 (setq org-publish-project-alist
       (list
-       (list "org-site:main"
-	     :org-html-preamble t
-             ;; :html-postamble-format
-;;              '(("en"
-;;                 "<div> LOL </div>
-;; <p class=\"author\">Author: %a (%e)</p>
-;; <p class=\"date\">Date: %d</p>
-;; <p class=\"creator\">%c</p>
-;; <p class=\"validation\">%v</p>"))
-	     :html-preamble-format
-             `(("en" ,(get-preamble)))
-             :recursive t
-	     :exclude ".*"
-	     :include (ftlm/posts+index-files)
-             :base-directory "~/notes/"
-             :publishing-function 'org-html-publish-to-html
-             :publishing-directory "./public/"
-             :with-author nil
-             :with-creator t
-             :with-toc t
-             :section-numbers nil
-             :time-stamp-file nil)))
+       (list
+        "org-site:main"
+        :org-html-preamble t
+        :html-postamble #'build-postamle
+        :html-preamble-format `(("en" ,(get-preamble)))
+        :recursive t
+        :exclude ".*"
+        :include (ftlm/posts+index-files)
+        :base-directory "~/notes/"
+        :publishing-function 'org-html-publish-to-html
+        :publishing-directory "./public/"
+        :with-author nil
+        :with-email t
+        :with-creator t
+        :with-toc t
+        :section-numbers nil
+        :time-stamp-file nil)))
 
 (setq org-html-validation-link
       nil

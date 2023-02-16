@@ -1,36 +1,24 @@
-/* vertical navbar on the left */
-
 #navbar {
-  /* width: 200px; */
-  /* height: 100%; */
-  /* position: fixed; */
-  /* top: 0; */
-  /* left: 0; */
-  /* background-color: #2f2f2f; */
-  /* overflow-x: hidden; */
-  /* padding-top: 20px; */
-  /* padding-inline-start: 0; */
-  /* display: none; */
+  display: none;
+}
+
+#navbar.is-open {
+    display: block;
 }
 
 #navbar a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #ffa500;
   display: block;
+  border-radius: 5px;
 }
 
 #navbar a:hover {
-  color: #f1f1f1;
+    color: #F689FF;
+    background-color: black;
+    font-weight: bold;
 }
-
-@media screen and (max-height: 450px) {
-  #navbar {padding-top: 15px;}
-  #navbar a {font-size: 18px;}
-}
-
-/* Remove the dots in the list elements of the navbar */
 
 #navbar li {
     list-style-type: none;
@@ -38,8 +26,4 @@
 
 #navbar ul {
     padding-inline-start: 0;
-}
-
-#navbar .is-open {
-    display: block;
 }
