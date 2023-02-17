@@ -95,7 +95,37 @@
         "preamble.html")
      (buffer-string))
    (format
-    "<link rel=\"stylesheet\" href=\"navbar.css\" />
+    "<style>
+#navbar {
+  display: none;
+}
+
+#navbar.is-open {
+  display: block;
+}
+
+#navbar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  border-radius: 5px;
+}
+
+#navbar a:hover {
+    color: #F689FF;
+    background-color: black;
+    font-weight: bold;
+}
+
+#navbar li {
+    list-style-type: none;
+}
+
+#navbar ul {
+    padding-inline-start: 0;
+}
+</style>
 <div>
   <button id=\"navbar-toggle\">☰</button>
 <ul id=\"navbar\">
