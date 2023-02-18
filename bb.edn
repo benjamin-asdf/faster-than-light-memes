@@ -12,6 +12,11 @@
           (let [port 8081]
             (shell "http-server" ":port" port ":dir" "./public")
             (shell "xdg-open" "http://localhost:8081/"))}
+         serve-quiz
+         {:task
+          (let [port 8081]
+            (shell "http-server" ":port" port ":dir" "./src/ftlmemes/clojure_function_quiz/")
+            (shell {:dir "./scittle-server/"} "bb" "browser-nrepl"))}
          linode-deploy
          (shell "./publish.sh")
          build-deploy
