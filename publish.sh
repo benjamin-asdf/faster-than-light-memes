@@ -1,3 +1,5 @@
 #!/bin/sh
 
-scp public/* linode:/var/www/ftlm/
+
+scp -r public/* linode:/var/www/ftlm/
+
