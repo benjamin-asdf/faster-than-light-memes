@@ -259,6 +259,7 @@ backend."
   (copy-file file "public/" t))
 
 (copy-file "assets/favicon.ico" "public/" t)
+(copy-directory "src/ftlmemes/clojure_function_quiz/" "public/" t t)
 
 (with-temp-buffer
   (parseedn-print

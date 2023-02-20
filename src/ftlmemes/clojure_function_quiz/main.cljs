@@ -276,7 +276,9 @@
         answer @(rf/subscribe [::current-page-answer])]
     (cond
       viewing-all-outcomes
-      [all-outcomes]
+      [:div
+       [:div "(Refresh to play again)"]
+       [all-outcomes]]
       intro?
       [intro]
       (and won? user-outcome)
@@ -293,7 +295,6 @@
       :else
       [:div
        [question-page {:page page :answer answer}]])))
-
 
 (comment
   (rf/reg-sub ::whole-db (fn [db _] db))
