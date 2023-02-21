@@ -112,7 +112,6 @@
      [:span ", which allows you to gather and organize information to make sense of complex problems. Just like the Earthbenders, you have a natural talent for analysis and are able to make informed decisions based on the data available."]]
     [:p "Keep up the great work and continue to use your analytical skills to make informed decisions with Clojure's powerful into function."]]})
 
-
 ;; on load/refresh, we shuffle a fresh quiz-data
 
 (def quiz-data
@@ -263,11 +262,12 @@
    [user-answers]
    (ffirst (sort-by (comp - val) (frequencies user-answers)))))
 
-
 (defn all-outcomes []
   (into [:div] (map (fn [text] [:div text])) (vals outcome-page)))
 
-(defn ui []
+(defn ui
+  "The main UI component for the clojure quiz."
+  []
   (let [intro? @(rf/subscribe [::intro?])
         won? @(rf/subscribe [::won?])
         page @(rf/subscribe [::page])
