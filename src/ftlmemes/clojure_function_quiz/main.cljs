@@ -6,12 +6,6 @@
 
 (rf/reg-event-fx ::set-db (fn [_ [_ db]] {:db db}))
 
-(def bender->clojure-function
-  {:element/air :conj
-   :element/fire :reduce
-   :element/water :juxt
-   :element/tinkerer :swap!})
-
 (def
   quiz-data-1
   [{:quiz/question "How do you approach a new challenge?"
@@ -182,7 +176,6 @@
    (if v
      (assoc db ::viewing-all-outcomes true)
      (dissoc db ::viewing-all-outcomes))))
-
 
 (rf/reg-sub
  ::current-page-answer
