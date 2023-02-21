@@ -314,7 +314,6 @@
      :ftlmemes.clojure-function-quiz.main/page 0,
      :ftlmemes.clojure-function-quiz.main/won? true}])
 
-  (second (max-key second (frequencies @(rf/subscribe [::user-answers]))))
   (ffirst
    (sort-by
     (comp - val)
@@ -340,7 +339,6 @@
   (user-answers
    (keep identity @(rf/subscribe [::answers])))
 
-  
   @(rf/subscribe [::user-answers])
   (rf/dispatch [:forward-page 5])
   (rf/dispatch [:forward-page -1])
