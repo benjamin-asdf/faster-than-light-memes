@@ -331,7 +331,7 @@
       user-answers)))
 
   (user-answers
-   @(rf/subscribe [::answers]))
+   (keep identity @(rf/subscribe [::answers])))
 
   
   @(rf/subscribe [::user-answers])
