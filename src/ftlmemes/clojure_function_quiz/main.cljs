@@ -232,7 +232,7 @@
               (rf/dispatch [:forward-page 1])
               (rf/dispatch [::set-answer [page i]]))}
            (str text " "
-                type " "
+                ;; type " "
                 (when (== answer i) 
                   " (selected)"))]))]])])
 
