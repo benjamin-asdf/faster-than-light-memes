@@ -140,8 +140,7 @@
   {::answers (into
               []
               (repeat (count quiz-data) nil))
-   ::page 0
-   :last-history[]})
+   ::page 0})
 
 (defn intro []
   [:div
