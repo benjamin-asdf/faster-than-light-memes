@@ -78,7 +78,10 @@
     [:p "Your Clojure core function of choice is "
      [:span {:style {:font-weight :bold :font-size "1.5rem" :color "orange"}} "swap!"]
      [:span ", which allows you to build scalable and efficient solutions to even the most complex challenges. With swap!, you can easily update values and reorganize data in a way that suits your needs."]]
-    [:p "Just like Asami, you have a strong sense of resourcefulness and are not afraid to take on new challenges. Keep up the great work and continue using your skills to overcome any obstacle that comes your way."]]
+    [:p "Just like Asami, you have a strong sense of resourcefulness and are not afraid to take on new challenges. Keep up the great work and continue using your skills to overcome any obstacle that comes your way."]
+    [:h4
+     "-> "
+     [:a {:href "https://clojuredocs.org/clojure.core/swap!"} "Your documentation"]]]
    :element/fire
    [:div
     [:h1 "Congratulations, you are aligned with Firebending!"]
@@ -86,7 +89,10 @@
     [:p "Your Clojure core function is "
      [:span {:style {:font-weight :bold :font-size "1.5rem" :color "red"}} "reduce"]
      [:span ", which allows you to break down complex problems into smaller parts and solve each one individually. With reduce, you can efficiently analyze large amounts of data and make informed decisions."]]
-    [:p "Just like Firebenders, you have a strong sense of determination and are not afraid to take on new challenges. Keep up the great work and continue using your skills to overcome any obstacle that comes your way."]]
+    [:p "Just like Firebenders, you have a strong sense of determination and are not afraid to take on new challenges. Keep up the great work and continue using your skills to overcome any obstacle that comes your way."]
+    [:h4
+     "-> "
+     [:a {:href "https://clojuredocs.org/clojure.core/reduce"} "Your documentation"]]]
    :element/air
    [:div
     [:h1 "Congratulations, you are a visionary problem solver like the Airbenders!"]
@@ -94,7 +100,10 @@
     [:p "The clojure.core function of your heart is "
      [:span {:style {:font-weight :bold :font-size "1.5rem" :color "#1E90FF"}} "conj"]
      [:span ", which allows you to combine different ideas and perspectives to create something new and innovative. Just like the Airbenders, you have a natural talent for creativity and are always seeking to explore new possibilities."]]
-    [:p "Keep up the great work and continue to use your imagination and innovative spirit to create amazing solutions with Clojure's powerful conj function."]]
+    [:p "Keep up the great work and continue to use your imagination and innovative spirit to create amazing solutions with Clojure's powerful conj function."]
+    [:h4
+     "-> "
+     [:a {:href "https://clojuredocs.org/clojure.core/conj"} "Your documentation"]]]
    :element/water
    [:div
     [:h1 "Congratulations, you are an adaptive problem solver like the Waterbenders!"]
@@ -102,7 +111,10 @@
     [:p "The clojure.core function of your heart is "
      [:span {:style {:font-weight :bold :font-size "1.5rem" :color "#0074D9"}}  "juxt"]
      [:span  ", which allows you to approach problems from multiple angles and adapt your strategy as needed. Just like the Waterbenders, you have a natural talent for flexibility and can navigate complex situations with ease."]]
-    [:p "Keep up the great work and continue to use your adaptive skills to find creative solutions with Clojure's powerful juxt function."]]
+    [:p "Keep up the great work and continue to use your adaptive skills to find creative solutions with Clojure's powerful juxt function."]
+    [:h4
+     "-> "
+     [:a {:href "https://clojuredocs.org/clojure.core/juxt"} "Your documentation"]]]
    :element/earth
    [:div
     [:h1 "Congratulations, you are an analytical problem solver like the Earthbenders!"]
@@ -110,7 +122,10 @@
     [:p "The clojure.core function of your heart is "
      [:span {:style {:font-weight :bold :font-size "1.5rem" :color "green"}} "into"]
      [:span ", which allows you to gather and organize information to make sense of complex problems. Just like the Earthbenders, you have a natural talent for analysis and are able to make informed decisions based on the data available."]]
-    [:p "Keep up the great work and continue to use your analytical skills to make informed decisions with Clojure's powerful into function."]]})
+    [:p "Keep up the great work and continue to use your analytical skills to make informed decisions with Clojure's powerful into function."]
+    [:h4
+     "-> "
+     [:a {:href "https://clojuredocs.org/clojure.core/into"} "Your documentation"]]]})
 
 ;; on load/refresh, we shuffle a fresh quiz-data
 
