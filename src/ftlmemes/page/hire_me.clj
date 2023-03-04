@@ -125,7 +125,7 @@ I understand that technology is used by humans and built by humans."]
         [:a {:href "/extending-your-reach.html"} "good tool"]
         [:span "."]
         [:span " I believe software that works well is beautiful and "]
-        [:span " there is just to much garbage nowadays."]]]
+        [:span " there is just too much garbage nowadays."]]]
       [:div.card
        {:style {:grid-column 1}}
        [:h3
