@@ -65,9 +65,13 @@
     (ftlm/file->denote-links ftlm/posts-file))))
 
 (defun ftlm/posts+index-files ()
-  (cons ftlm/index-file (ftlm/post-files)))
+  (append
+   (list ftlm/index-file)
+   (ftlm/post-files)
+   '("/home/benj/notes/20230301T123854--contact__public.org")))
 
-(defun ftlm/posts (files) (mapcar #'ftlm/post-data files))
+(defun ftlm/posts (files)
+  (mapcar #'ftlm/post-data files))
 
 (defun note->path (lst) (cdr (assq :path lst)))
 

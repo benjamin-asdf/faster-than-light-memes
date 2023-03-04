@@ -1,11 +1,15 @@
-{:blog
+{:deps {ftlm/ftlm {:local/root "."}}
+ :blog
  {:blog-title "Faster-than-Light memes"
   :blog-author "Benjamin Schwerdtner"
   :out-dir "public/"
   :blog-root "https://faster-than-light-memes.xyz/"}
  :tasks {:init
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
-         build (shell "emacs" "-Q" "--script" "build-site.el" )
+         build
+         (do
+           (shell "emacs" "-Q" "--script" "build-site.el" )
+           (shell "bb" "src/ftlmemes/gen_pages.clj"))
          serve-local
          {:depends [build]
           :task

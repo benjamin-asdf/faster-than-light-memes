@@ -1,24 +1,2 @@
-;; not sure yet if I need a full java server app
 {:paths ["src" "resources"]
- :deps {
-        luminus/ring-undertow-adapter {:mvn/version "1.3.0"}
-
-
-        ring/ring-defaults {:mvn/version "0.3.3"}
-        radicalzephyr/ring.middleware.logger {:mvn/version "0.6.0"}
-        buddy/buddy-auth {:mvn/version "3.0.323"}
-        ring-oauth2/ring-oauth2 {:mvn/version "0.2.0"}
-        ring-middleware-format/ring-middleware-format {:mvn/version "0.7.5"}
-
-        metosin/reitit {:mvn/version "0.5.18"
-                        :exclusions
-                        [metosin/reitit-swagger-ui metosin/reitit-swagger]}
-
-
-        nrepl/nrepl {:mvn/version  "1.0.0"}
-        ;; check cider-required-middleware-version
-        cider/cider-nrepl {:mvn/version "0.29.0"}
-        hiccup/hiccup {:mvn/version "2.0.0-alpha2"}
-
-        }
- }
+ :deps {hiccup/hiccup {:mvn/version "2.0.0-alpha2"}}}
