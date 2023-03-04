@@ -12,6 +12,10 @@
    :font-size "1.2rem"
    :font-weight :bold})
 
+
+(defn icon [unicode]
+  [:span {:style (merge (button-style) {:padding "0.8rem" :margin "0.4rem" :font-size "2.3rem"})} unicode])
+
 (defn
   page
   []
@@ -38,7 +42,16 @@
 a:visited {
     color: %s
 }
-"
+
+@media only screen and (max-width: 425px) {
+    h3 {
+        font-size: 1rem;
+    }
+    h3 .long {
+        font-size: 0.8rem;
+    }
+
+}"
        tert)]
      [:title "Hire Benjamin"]]
     [:body
@@ -59,7 +72,7 @@ a:visited {
          {:style {:color primary}}
          "Benjamin Schwerdtner"]
         [:div
-         "Driven Clojure Programmer, contractor for inspired projects."]
+         "Clojure Programmer, contractor, pushing the limits."]
         [:div
          {:style {:color "#666"}}
          "University dropout because I decided to become a wizard instead."]]
@@ -75,28 +88,19 @@ a:visited {
          {:style (merge
                   (button-style)
                   {:margin "1.5rem"})
-          :onclick "scrollToBottom()"}
+          :onclick "scrollToSecondPart()"}
          "Not convinced"]]]]
      [:div
       [:img
        {:src "https://i.imgur.com/GeM8EQM.jpg"}]]
-     [:div
-      ;; make a grid with 4 cards
+     [:div#pitch-div
       {:style {:display "grid"
                :grid-template-columns "min(45rem, 50%)"
                :grid-gap "1rem"}}
       [:div.card
        {:style {:grid-column 1}}
-       [:h2
-        [:div
-         [:span
-          {:style (merge
-                   (button-style)
-                   {:padding "0.8rem"
-                    :margin "0.4rem"
-                    :font-weight "800"
-                    :font-size "2rem"})}
-          "()"]
+       [:h3
+        [:div (icon "λ")
          [:span
           {:style {:color tert}}
           "Clojure"]]]
@@ -107,67 +111,45 @@ The REPL, Emacs and Clojure together with functional, bottom-up programming allo
 me to deliver more robust systems quicker."]]
       [:div.card
        {:style {:grid-column 2}}
-       [:h2
-        [:div
-         [:span
-          {:style (merge
-                   (button-style)
-                   {:padding "0.8rem"
-                    :margin "0.4rem"
-                    :font-size "2rem"})}
-          "Ψ"]
-         [:span
-          {:style {:color tert}}
-          "Thought"]]]
+       [:h3
+        [:div (icon "Ψ") [:span {:style {:color tert}} "Thought"]]]
        [:p
-        "Thoughtfulness, careful design. Empathy for users and programmers alike.
-I understand that technology has to do with humans."]]
+        "Thoughtfulness, careful design.
+Empathy for your users, your vision and future programmers alike.
+I understand that technology has to do with humans on all levels."]]
       [:div.card
        {:style {:grid-column 1}}
-       [:h2
+       [:h3
         [:div
-         [:span
-          {:style (merge
-                   (button-style)
-                   {:padding "0.8rem"
-                    :margin "0.4rem"
-                    :font-size "2rem"})}
-          "🫀"]
+         (icon "🫀")
          [:span
           {:style {:color tert}}
           "Passion"]]]
        [:p
         "Real interest in science and technology.
 Driven to contribute to the world.
-Discounts when your project contributes to human flourishing.
-"]]
+I make a discount when your project contributes to human flourishing.
+I have a problem with buggy software and I want things to be simple and functional.
+I have a bias towards free and open software because it leads to more robust, focused tools
+and it it alignes more strongly with my values."]]
       [:div.card
        {:style {:grid-column 2}}
-       [:h2
-        [:div
-         [:span
-          {:style (merge
-                   (button-style)
-                   {:padding "0.8rem"
-                    :margin "0.4rem"
-                    :font-size "2rem"})}
-          "🔍"]
-         [:span
-          {:style
-           {:color tert :font-size "1.5rem"}}
-          "Scientist Programmer"]]]
+       [:h3.long [:div (icon "🔍") [:span.long {:style {:color tert}} "Technologist"]]]
        [:p
         "Scientist at heart. I challenge my assumptions and go where the evidence leads me.
 Code is a series of best guesses. Imagination and note-taking are powerful tools of the mind.
 I am not ashamed of using anything to help me understand a problem.
 I speak up when I see anything amiss and document limitations with the software I produce.
-I keep records of the issues I have encountered and their fixes."]]]
+I keep records of the issues I have encountered and their fixes."]
+       ]]
      [:script
-      "function scrollToBottom() {
-          window.scrollTo(0,
- document.body.scrollHeight);
-      };
-"]]]))
+      "function scrollToSecondPart() {
+         var divToScrollTo = document.getElementById(\"pitch-div\");
+         divToScrollTo.scrollIntoView({
+                     behavior: 'smooth',
+                     block: 'start'
+});
+      };"]]]))
 
 [{:gen/file "hire-benjamin.html"
   :gen/content (page)}]
