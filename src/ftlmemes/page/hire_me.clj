@@ -124,7 +124,8 @@ I understand that technology is used by humans and built by humans."]
        [:p "I am constantly learning and improving my understanding of what makes a "
         [:a {:href "/extending-your-reach.html"} "good tool"]
         [:span "."]
-        [:span " And I believe software that works well is beautiful."]]]
+        [:span " I believe software that works well is beautiful and "]
+        [:span " there is just to much garbage nowadays."]]]
       [:div.card
        {:style {:grid-column 1}}
        [:h3
