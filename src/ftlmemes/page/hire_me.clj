@@ -70,18 +70,18 @@ a:visited {
         [:h1
          {:style {:color primary}}
          "Benjamin Schwerdtner"]
-        [:div
-         "Clojure Programmer, contractor, pushing the limits."]
-        [:div
-         {:style {:color "#666"}}
-         "University dropout because I wanted to become a wizard."]]
+        [:h3 {:style {:color secondary}}
+         [:span "Clojure Programmer"]
+         [:span ",  Contractor, Artisan, Crafter"]]
+        [:div "Dreaming big, I want to build great software and have a real impact."]]
        [:div
         {:sytle {:margin-top "2rem"}}]
        [:div
         [:a
          {:href "/contact.html"}
          [:button
-          {:style (button-style)}
+          {:style
+           (button-style)}
           "Hire Benjamin"]]
         [:button
          {:style (merge
@@ -99,24 +99,31 @@ a:visited {
       [:div.card
        {:style {:grid-column 1}}
        [:h3
-        [:div (icon "λ")
+        [:div
+         (icon "(λ☯)")
          [:span
           {:style {:color tert}}
           "Clojure"]]]
        [:p
-        "Preaching and practicing interactive programing. I don't believe in any set of limitations.
-Ancient Lisp wisdom combinend with next generation ideas.
-The REPL, Emacs and Clojure together with functional, bottom-up programming allow
-me to deliver more robust systems quicker."]]
+        "Preaching and practicing interactive programming. I
+don't believe in any set of limitations.
+Clojure combines the wisdom of the ancient hackers, who discovered Lisp, with real-world tradeoffs and practicalities.
+The REPL, Emacs and Clojure together with functional, bottom-up, data oriented programming allow
+me to deliver more robust systems more quickly.
+"]
+       [:p "Did I mention I love the "
+        [:a
+         {:href "/the-joy-of-clojure.html"} "Joy of Clojure"]
+        [:span "?"]]]
       [:div.card
        {:style {:grid-column 2}}
        [:h3
         [:div (icon "Ψ") [:span {:style {:color tert}} "Thought"]]]
        [:p
-        "Thoughtfulness, careful design.
-Empathy for your users and future programmers alike.
+        "Thoughtfulness. Careful design.
+Empathy for your users and the next programmer alike.
 I try to share your vision of your product.
-I understand that technology has to do with humans on all levels."]
+I understand that technology is used by humans and built by humans."]
        [:p "I am constantly learning and improving my understanding of what makes a "
         [:a {:href "/extending-your-reach.html"} "good tool"]
         [:span "."]]]
@@ -135,9 +142,11 @@ I understand that technology has to do with humans on all levels."]
           {:href "/mid-term-goals.html"}
           "Real goals for humantity"]
          [:span ". "]]
-        [:span "I give you a discount when I believe your project contributes to human flourishing.
-I don't accept buggy software.
-FOSS bias because it leads to more useful, focused tools and it it alignes more strongly with my values."]]]
+        [:span
+         "I give you a discount when I believe your project contributes to human flourishing.
+I don't accept buggy software and want to rid the world of it.
+I have FOSS bias because it leads to more useful, focused tools and it
+it aligns more strongly with my values."]]]
       [:div.card
        {:style {:grid-column 2}}
        [:h3.long [:div (icon "🔍") [:span.long {:style {:color tert}} "Technologist"]]]
@@ -155,12 +164,14 @@ I speak up when I see anything amiss and document limitations with the software 
          [:span "."]]
         [:li
          [:span "Products: "]
-         [:span
-          [:a {:href "https://play.google.com/store/apps/details?id=com.gamingforgood.clashofstreamers"}
-           "Mobile Minigames"]
-          [:span ", "]]
-         [:span [:a {:href "https://hotreload.net/"} "Unity Hot Reload"]
-          [:span "."]]]
+         [:ul
+          [:li
+           [:a {:href "https://play.google.com/store/apps/details?id=com.gamingforgood.clashofstreamers"}
+            "Mobile Minigames"]
+           [:div "I worked on the mobile app."]]
+          [:li
+           [:a {:href "https://hotreload.net/"} "Unity Hot Reload"]
+           [:div "I worked on polishing the Roslyn worker and made it work on Mac + Linux."]]]]
         [:li "Countless Emacs and Clojure tooling FOSS contributions. "
          [:a {:href "https://github.com/benjamin-asdf"} "Github"]
          [:span "."]]
@@ -169,8 +180,15 @@ I speak up when I see anything amiss and document limitations with the software 
        {:style {:grid-column 2}}
        [:h3.long [:div (icon "📚") [:span.long {:style {:color tert}} "Stacks"]]]
        [:p
-        "Clojure(script), Emacs Lisp, Linux, shell, Babashka, Python, Javascript, Typescript, Golang, HTML, CSS, Git, Datomic, postgres, AWS, graphql, docker, linode,
-structural code editing, REPL, datastructures and algorithms, logic programming, functional programming."]]
+        "Clojure(script)🗲, Emacs Lisp, Linux, shell, Babashka, Python, Javascript, Typescript, Golang, HTML, CSS, Git, Datomic postgres, AWS, graphql, docker, linode, REPL, datastructures and algorithms, logic programming, functional programming.
+5 years C#. Made .Net MsBuild targets work in Anger on Linux and MacOs.
+I know enough of distrubuted systems to be paranoid."]
+       [:p "I believe "
+        [:span {:style {:font-size :bold :color tert}}
+         "understanding the problem"]
+        [:span  " and "]
+        [:span {:style {:font-size :bold :color tert}} "the Art of keeping complex things simple"]
+        [:span " are the most important aspect of programming."]]]
       [:div.card
        {:style {:grid-column 1}}
        [:h3.long [:div (icon "⛏") [:span.long {:style {:color tert}} "The Plan"]]]
@@ -179,17 +197,17 @@ structural code editing, REPL, datastructures and algorithms, logic programming,
          [:a {:href "/contact.html"} "contact me"]
          [:span " with an initial pitch of your project."]]
         [:li "2. We have a chat and see if I can share your vision and whether I can help you build it, free for you."]
-        [:li "3. We might have mutliple rounds of this, because I might discover that xyz is hard but xyb is feasible etc."]
-        [:li "4. I come back to you with an offer 💰, on per-project basis, depending on complexity and operational requirements of the project."]
+        [:li "3. We might have multiple rounds of this because I might discover that XYZ is hard but XYB is feasible etc.\n"]
+        [:li "4. I come back to you with an offer 💰, on a per-project basis,\n   depending on the complexity and operational requirements of the project.\n"]
         [:li
-         "5. If you are already a startup or Clojure workshop we can skip 3/4 and talk on per hour basis."]
+         "5. If you are already a startup or Clojure workshop we can skip 3/4 and talk on per hour basis.\n"]
         [:div
          [:span {:style {:font-weight "bold"}} "Q:"]
          " What is human flourishing?"]
         [:div
          [:span {:style {:font-weight "bold"}} "A:"]
          " Something like a cool science tool, or the website for your NGO. I know it when I see it."]
-        [:div "I preserve the right to decide that seeminlgy decoupled from any objective or subjective measures."]]]]
+        [:div "I reserve the right to decide that seemingly decoupled from any objective or subjective measures.\n"]]]]
      [:script
       "function scrollToSecondPart() {
          var divToScrollTo = document.getElementById(\"pitch-div\");
