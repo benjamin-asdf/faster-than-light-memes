@@ -79,14 +79,9 @@ a:visited {
        [:div
         [:a
          {:href "/contact.html"}
-         [:button
-          {:style
-           (button-style)}
-          "Hire Benjamin"]]
+         [:button {:style (button-style)} "Hire Benjamin"]]
         [:button
-         {:style (merge
-                  (button-style)
-                  {:margin "1.5rem"})
+         {:style (merge (button-style) {:margin "1.5rem"})
           :onclick "scrollToSecondPart()"}
          "Not convinced"]]]]
      [:div
