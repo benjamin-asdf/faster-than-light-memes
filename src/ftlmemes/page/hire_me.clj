@@ -123,7 +123,8 @@ I try to share your vision of your product.
 I understand that technology is used by humans and built by humans."]
        [:p "I am constantly learning and improving my understanding of what makes a "
         [:a {:href "/extending-your-reach.html"} "good tool"]
-        [:span "."]]]
+        [:span "."]]
+       [:p "I believe software that works well is beautiful."]]
       [:div.card
        {:style {:grid-column 1}}
        [:h3
