@@ -56,8 +56,10 @@ a:visited {
     [:body
      [:div.content
       [:div
-       {:style {:text-align "center"
-                :font-size "1.3rem"}}
+       {:style
+        {:text-align "center"
+         :margin "0.4rem"
+         :font-size "1.3rem"}}
        [:a
         {:style {:margin "1.5rem"}
          :href "https://faster-than-light-memes.xyz/"}
