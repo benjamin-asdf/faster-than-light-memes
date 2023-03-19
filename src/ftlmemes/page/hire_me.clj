@@ -65,7 +65,7 @@ a:visited {
          :href "https://faster-than-light-memes.xyz/"}
         "Blog"]
        [:a
-        {:href "https://faster-than-light-memes.xyz/"}
+        {:href "/contact.html"}
         "Contact"]
        [:hr]
        [:div
@@ -77,7 +77,7 @@ a:visited {
          [:span ",  Contractor, Artisan, Crafter"]]
         [:div "Dreaming big, I want to build great software and have a real impact."]]
        [:div
-        {:sytle {:margin-top "2rem"}}]
+        {:style {:margin-top "2rem"}}]
        [:div
         [:a
          {:href "/contact.html"}
