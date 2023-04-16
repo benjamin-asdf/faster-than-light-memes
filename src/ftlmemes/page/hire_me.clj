@@ -90,11 +90,7 @@ a:visited {
       [:img
        {:src "https://i.imgur.com/GeM8EQM.jpg"}]]
      [:div#pitch-div
-      {:style {:display "grid"
-               :grid-template-columns "min(45rem, 50%)"
-               :grid-gap "1rem"}}
       [:div.card
-       {:style {:grid-column 1}}
        [:h3
         [:div
          (icon "(λ☯)")
@@ -126,7 +122,6 @@ I understand that technology is used by humans and built by humans."]
         [:span "."]
         [:span " I believe software that works well is beautiful."]]]
       [:div.card
-       {:style {:grid-column 1}}
        [:h3
         [:div
          (icon "🫀")
@@ -143,10 +138,11 @@ I understand that technology is used by humans and built by humans."]
         [:span
          "I give you a discount when I believe your project contributes to human flourishing.
 I don't accept buggy software and want to rid the world of it.
-I have FOSS bias because it leads to more useful, focused tools and it
+I have "
+         [:strong "FOSS"]
+         " bias because it leads to more useful, focused tools and it
 it aligns more strongly with my values."]]]
       [:div.card
-       {:style {:grid-column 2}}
        [:h3.long [:div (icon "🔍") [:span.long {:style {:color tert}} "Technologist"]]]
        [:p
         "Scientist at heart. I challenge my assumptions and go where the evidence leads me.
@@ -154,7 +150,6 @@ Code is a series of best guesses. Imagination and note-taking are powerful tools
 I am not ashamed of using anything to help me understand a problem.
 I speak up when I see anything amiss and document limitations with the software I produce."]]
       [:div.card
-       {:style {:grid-column 1}}
        [:h3.long [:div (icon "🪙") [:span.long {:style {:color tert}} "Track Record"]]]
        [:ul
         [:li "5 years activism in the fight against poverty,"
@@ -175,20 +170,16 @@ I speak up when I see anything amiss and document limitations with the software 
          [:span "."]]
         [:li "Worked with Borkdude (Babashka, Nbb, Scittle) and Bozhidar (Emacs Cider), sponsored by Nextjournal."]]]
       [:div.card
-       {:style {:grid-column 2}}
-       [:h3.long [:div (icon "📚") [:span.long {:style {:color tert}} "Stacks"]]]
+       [:h3.long [:div (icon "📚") [:span.long {:style {:color tert}} "(word-bag 'buzz)"]]]
        [:p
-        "Clojure(script)🗲, Emacs Lisp, Linux, shell, Babashka, Python, Javascript, Typescript, Golang, HTML, CSS, Git, Datomic postgres, AWS, graphql, docker, linode, REPL, datastructures and algorithms, logic programming, functional programming.
-5 years C#. Made .Net MsBuild targets work in Anger on Linux and MacOs.
-I know enough of distrubuted systems to be paranoid."]
+        "Clojure(script)🗲, Emacs Lisp, Linux, shell, Babashka, Python, Javascript, Typescript, Golang, HTML, CSS, Git, Datomic postgres, AWS, graphql, docker, linode, REPL, datastructures and algorithms, logic programming, functional programming. C#, .Net."]
        [:p "I believe "
         [:span {:style {:font-size :bold :color tert}}
          "understanding the problem"]
-        [:span  " and "]
+        [:span " and "]
         [:span {:style {:font-size :bold :color tert}} "the Art of keeping complex things simple"]
         [:span " are the most important aspect of programming."]]]
       [:div.card
-       {:style {:grid-column 1}}
        [:h3.long [:div (icon "⛏") [:span.long {:style {:color tert}} "The Plan"]]]
        [:ul
         [:li "1. You "
@@ -204,8 +195,7 @@ I know enough of distrubuted systems to be paranoid."]
          " What is human flourishing?"]
         [:div
          [:span {:style {:font-weight "bold"}} "A:"]
-         " Something like a cool science tool, or the website for your NGO. I know it when I see it."]
-        [:div "I reserve the right to decide that seemingly decoupled from any objective or subjective measures.\n"]]]]
+         " Something like a cool science tool, or the website for your NGO. I know it when I see it."]]]]
      [:script
       "function scrollToSecondPart() {
          var divToScrollTo = document.getElementById(\"pitch-div\");
@@ -217,4 +207,3 @@ I know enough of distrubuted systems to be paranoid."]
 
 [{:gen/file "hire-benjamin.html"
   :gen/content (page)}]
-
