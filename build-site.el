@@ -264,6 +264,7 @@ backend."
 
 (copy-file "assets/favicon.ico" "public/" t)
 (copy-directory "src/ftlmemes/clojure_function_quiz/" "public/" t t)
+(copy-directory "src/ftlmemes/flipcoin//" "public/" t t)
 
 (with-temp-buffer
   (parseedn-print

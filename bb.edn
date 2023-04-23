@@ -21,6 +21,11 @@
           (let [port 8081]
             (shell "http-server" ":port" port ":dir" "./src/ftlmemes/clojure_function_quiz/")
             (shell {:dir "./scittle-server/"} "bb" "browser-nrepl"))}
+         serve-flipcoin
+         {:task
+          (let [port 8081]
+            (shell "http-server" ":port" port ":dir" "./src/ftlmemes/flipcoin/")
+            (shell {:dir "./scittle-server/"} "bb" "browser-nrepl"))}
          linode-deploy
          (shell "./publish.sh")
          build-deploy
