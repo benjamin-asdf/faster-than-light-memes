@@ -22,19 +22,24 @@
     (let [v @state]
       [:div
        [:style
-        ".scale-in-animation {
-  animation: scale-in 0.2s ease-out;
-}
+ ".scale-in-animation {
+   animation: bounce-in 0.2s ease-in-out;
+ }
 
-@keyframes scale-in {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}"]
-       [:h1 {:style {:display "flex" :justify-content "center"}} "Just flip a coin!"]
+ @keyframes bounce-in {
+   0%, 100% {
+     transform: scale(1);
+   }
+   40% {
+     transform: scale(0.4);
+   }
+   60% {
+     transform: scale(1.1);
+   }
+ }"]
+
+
+       [:h2 {:style {:display "flex" :justify-content "center"}} "Just flip a coin!"]
        [:div
         [:div
          {:key (:counter v)
