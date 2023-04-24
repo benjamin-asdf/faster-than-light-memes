@@ -43,7 +43,8 @@
            :justify-content "center"
            :align-items "center"
            :flex-direction :column
-           :height "20vh"}}
+           :height "25vh"
+           :margin-top "5rem"}}
          [:div
           {:class "scale-in-animation"}
           (if
@@ -60,24 +61,28 @@
          [:button
           {:style {:margin-top "1rem"}
            :on-click
-           (fn [_] (swap! state flip-coin))}
-          "Flip again"]]
+           (fn [_] (swap! state flip-coin))} "Flip!"]]
         [:div
-         {:style {:display "flex"
+         {:style {:margin-top "5rem"
+                  :display "flex"
                   :justify-content "center"
                   :align-items "center"}}
          [:div
-          {:style {:margin-right "2rem"}}
           [:input
            {:type "range" :min 0 :max 100 :value (* 100 (:chance @state))
             :onChange #(swap! state assoc :chance (/ (js/parseInt (-> % .-target .-value)) 100))}]
           [:div
            [:span "Heads Chance: "]
-           [:strong (str (:chance v))]]]
-         [:div {:style {:margin-left "1rem"}}
+           [:strong
+            (.toFixed (js/Number (:chance v)) 2)]]]
+         [:div {:style {:margin-left "3rem"}}
           [:button
            {:on-click
             (fn [_] (swap! state assoc :chance 1/2))}
-           "Reset to 1/2 chance"]]]]])))
+           "Reset to 1/2 chance"]]]]
+       [:div
+        {:style {:margin-top "2rem"}}
+        [:a {:href "https://faster-than-light-memes.xyz/emacs-clojure-lispy-mind-meld.html"}
+         "Blog post"]]])))
 
 (rdom/render [ui] (.getElementById js/document "app"))
