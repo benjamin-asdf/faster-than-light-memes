@@ -7,10 +7,13 @@
   (< (rand) p))
 
 (defonce state (r/atom {:chance 1/2
-                        :current-coin (rand-with-prop 1/2)}))
+                        :current-coin (rand-with-prop 1/2)
+                        :counter 0}))
 
 (defn flip-coin [{:keys [chance] :as state}]
-  (assoc state :current-coin (rand-with-prop chance)))
+  (-> state
+      (assoc :current-coin (rand-with-prop chance))
+      (update :counter inc)))
 
 (defn ui
   "The main UI component for the flipcoin."
@@ -18,22 +21,42 @@
   (fn []
     (let [v @state]
       [:div
+       [:style
+        ".scale-in-animation {
+  animation: scale-in 0.2s ease-out;
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}"]
        [:h1 {:style {:display "flex" :justify-content "center"}} "Just flip a coin!"]
        [:div
-        [:div {:style
-               {:display "flex"
-                :justify-content "center"
-                :align-items "center"
-                :flex-direction :column
-                :height "20vh"}}
-         (if
-             (:current-coin v)
-             [:svg {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
-              [:circle {:cx "50" :cy "50" :r "50" :fill "magenta"}]
-              [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "HEADS"]]
-             [:svg {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
-              [:circle {:cx "50" :cy "50" :r "50" :fill "#90AFC5"}]
-              [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "TAILS"]])
+        [:div
+         {:key (:counter v)
+          :style
+          {:display "flex"
+           :justify-content "center"
+           :align-items "center"
+           :flex-direction :column
+           :height "20vh"}}
+         [:div
+          {:class "scale-in-animation"}
+          (if
+              (:current-coin v)
+              [:svg
+               {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
+               [:circle {:cx "50" :cy "50" :r "50" :fill "magenta"}]
+               [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "HEADS"]]
+              [:svg
+
+               {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
+               [:circle {:cx "50" :cy "50" :r "50" :fill "#90AFC5"}]
+               [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "TAILS"]])]
          [:button
           {:style {:margin-top "1rem"}
            :on-click
