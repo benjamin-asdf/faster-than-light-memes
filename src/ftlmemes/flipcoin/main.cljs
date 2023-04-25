@@ -15,6 +15,19 @@
       (assoc :current-coin (rand-with-prop chance))
       (update :counter inc)))
 
+(defn coin-ui [{:keys [fill text]}]
+  [:svg
+   {:xmlns "http://www.w3.org/2000/svg" :width "200" :height "200" :viewBox "0 0 100 100"
+    ;; :tabindex 0
+    ;; doesnt work..?
+    ;; :on-keydown (fn [_] (swap! state flip-coin))
+    }
+   [:circle {:cx "50" :cy "50" :r "50" :fill fill}]
+   [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} text]
+   [:rect
+    {:x "0" :y "0" :width "150" :height "150" :fill-opacity "0"
+     :on-click (fn [_] (swap! state flip-coin))}]])
+
 (defn ui
   "The main UI component for the flipcoin."
   []
@@ -22,7 +35,7 @@
     (let [v @state]
       [:div
        [:style
- ".scale-in-animation {
+        ".scale-in-animation {
    animation: bounce-in 0.2s ease-in-out;
  }
 
@@ -54,15 +67,8 @@
           {:class "scale-in-animation"}
           (if
               (:current-coin v)
-              [:svg
-               {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
-               [:circle {:cx "50" :cy "50" :r "50" :fill "magenta"}]
-               [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "HEADS"]]
-              [:svg
-
-               {:xmlns "http://www.w3.org/2000/svg" :width "100" :height "100" :viewBox "0 0 100 100"}
-               [:circle {:cx "50" :cy "50" :r "50" :fill "#90AFC5"}]
-               [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} "TAILS"]])]
+            (coin-ui {:fill "magenta" :text "HEADS"})
+            (coin-ui {:fill "#90AFC5" :text "TAILS"}))]
          [:button
           {:style {:margin-top "1rem"}
            :on-click
