@@ -6,27 +6,45 @@
 (defn rand-with-prop [p]
   (< (rand) p))
 
-(defonce state (r/atom {:chance 1/2
-                        :current-coin (rand-with-prop 1/2)
-                        :counter 0}))
-
 (defn flip-coin [{:keys [chance] :as state}]
-  (-> state
-      (assoc :current-coin (rand-with-prop chance))
-      (update :counter inc)))
+  (let [next-coin (if (rand-with-prop chance) :heads :tails)]
+    (-> state
+        (assoc :current-coin next-coin)
+        (update :history conj next-coin)
+        (update :counter inc))))
 
-(defn coin-ui [{:keys [fill text]}]
-  [:svg
-   {:xmlns "http://www.w3.org/2000/svg" :width "200" :height "200" :viewBox "0 0 100 100"
-    ;; :tabindex 0
-    ;; doesnt work..?
-    ;; :on-keydown (fn [_] (swap! state flip-coin))
-    }
-   [:circle {:cx "50" :cy "50" :r "50" :fill fill}]
-   [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} text]
-   [:rect
-    {:x "0" :y "0" :width "150" :height "150" :fill-opacity "0"
-     :on-click (fn [_] (swap! state flip-coin))}]])
+(defonce state (r/atom
+                (flip-coin {:chance 1/2 :counter 0 :history []})))
+
+(def
+  coin-fill
+  {:heads {:fill "magenta" :text "HEADS"}
+   :tails {:fill "#90AFC5" :text "TAILS"}})
+
+(defn coin-ui [heads?]
+  (let [{:keys [fill text]} (coin-fill heads?)]
+    [:svg
+     {:xmlns "http://www.w3.org/2000/svg" :width "200" :height "200" :viewBox "0 0 100 100"}
+     [:circle {:cx "50" :cy "50" :r "50" :fill fill}]
+     [:text {:x "50%" :y "50%" :text-anchor "middle" :dy ".3em" :font-size "20" :fill "#000"} text]
+     [:rect
+      {:x "0" :y "0" :width "150" :height "150" :fill-opacity "0"
+       :on-click (fn [_] (swap! state flip-coin))}]]))
+
+(defn preview-coin [heads?]
+  (let [{:keys [fill]} (coin-fill heads?)]
+    [:svg
+     {:xmlns "http://www.w3.org/2000/svg" :width "25" :height "25" :viewBox "0 0 100 100"}
+     [:circle {:cx "50" :cy "50" :r "50" :fill fill}]]))
+
+(defn how-many-ui [{:keys [history]}]
+  (let [{:keys [heads tails]} (frequencies (:history @state))]
+    [:div
+     {:style
+      {:display :flex :justify-content :space-between
+       :margin-top "1rem"}}
+     [:div "Heads: " [:strong heads]]
+     [:div {:style {:margin-left "1rem"}} "Tails: " [:strong tails]]]))
 
 (defn ui
   "The main UI component for the flipcoin."
@@ -62,17 +80,30 @@
            :align-items "center"
            :flex-direction :column
            :height "25vh"
-           :margin-top "5rem"}}
+           :margin-top "10rem"}}
          [:div
           {:class "scale-in-animation"}
-          (if
-              (:current-coin v)
-            (coin-ui {:fill "magenta" :text "HEADS"})
-            (coin-ui {:fill "#90AFC5" :text "TAILS"}))]
+          (coin-ui (:current-coin v))]
          [:button
           {:style {:margin-top "1rem"}
            :on-click
-           (fn [_] (swap! state flip-coin))} "Flip!"]]
+           (fn [_] (swap! state flip-coin))} "Flip!"]
+         [how-many-ui v]
+         [:div
+          {:style
+           {:display "flex"
+            :justify-content "center"
+            :max-width "100%"
+            :overflow-x "hidden"
+            :overflow "hidden"
+            :margin-top "1rem"
+            :margin-bottom "5rem"
+            :padding "2rem"}}
+          (doall
+           (map
+            (fn [coin]
+              [preview-coin coin])
+            (take-last 20 (:history v))))]]
         [:div
          {:style {:margin-top "5rem"
                   :display "flex"
