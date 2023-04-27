@@ -43,8 +43,8 @@
      {:style
       {:display :flex :justify-content :space-between
        :margin-top "1rem"}}
-     [:div "Heads: " [:strong heads]]
-     [:div {:style {:margin-left "1rem"}} "Tails: " [:strong tails]]]))
+     [:div "Heads: " [:strong (or heads 0)]]
+     [:div {:style {:margin-left "1rem"}} "Tails: " [:strong (or tails 0)]]]))
 
 (defn ui
   "The main UI component for the flipcoin."
