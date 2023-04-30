@@ -38,7 +38,7 @@
      [:circle {:cx "50" :cy "50" :r "50" :fill fill}]]))
 
 (defn how-many-ui [{:keys [history]}]
-  (let [{:keys [heads tails]} (frequencies (:history @state))]
+  (let [{:keys [heads tails]} (frequencies history)]
     [:div
      {:style
       {:display :flex :justify-content :space-between
