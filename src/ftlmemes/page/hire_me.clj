@@ -152,9 +152,7 @@ I speak up when I see anything amiss and document limitations with the software 
       [:div.card
        [:h3.long [:div (icon "🪙") [:span.long {:style {:color tert}} "Track Record"]]]
        [:ul
-        [:li "5 years activism in the fight against poverty,"
-         [:span " raised $25M+ for charity"]
-         [:span "."]]
+        [:li "5 years activism in the fight against poverty as programer in an idealistic team."]
         [:li
          [:span "Products: "]
          [:ul
