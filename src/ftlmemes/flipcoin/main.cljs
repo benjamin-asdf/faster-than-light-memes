@@ -51,7 +51,7 @@
   []
   (fn []
     (let [v @state]
-      [:div
+      [:div {:style {:display :flex :flex-direction :column}}
        [:style
         ".scale-in-animation {
    animation: bounce-in 0.2s ease-in-out;
