@@ -23,8 +23,6 @@
 
 (setf make-backup-files nil)
 
-
-
 (setf denote-directory "~/notes/")
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
 
@@ -217,10 +215,29 @@
         :html-preamble-format `(("en" ,(get-preamble)))
         :recursive t
         :exclude ".*"
-        :include (ftlm/posts+index-files)
+        :include (ftlm/post-files)
         :base-directory "~/notes/"
         :publishing-function 'org-html-publish-to-html
         :publishing-directory "./public/"
+        :with-author nil
+        :with-email t
+        :with-creator t
+        :with-toc t
+        :section-numbers nil
+        :time-stamp-file nil)
+       (list
+        "org-site:index"
+        :org-html-preamble t
+        :html-postamble #'build-postamle
+        :html-preamble-format `(("en" ,(get-preamble)))
+        :html-head (with-current-buffer (find-file-noselect "src/ftlmemes/index-head.html") (buffer-string))
+        :base-extension "org"
+        :base-directory "~/notes/"
+        :publishing-function 'org-html-publish-to-html
+        :publishing-directory "./public/"
+        :exclude ".*"
+        :include (list ftlm/index-file)
+        :recursive nil
         :with-author nil
         :with-email t
         :with-creator t
@@ -259,7 +276,8 @@ backend."
 
 (dolist (file
          (append (directory-files-recursively "src" "\\.js$")
-                 (directory-files-recursively "src" "\\.css$")))
+                 (directory-files-recursively "src" "\\.css$")
+                 (directory-files-recursively "src/ftlmemes/cljs/" "\\.cljs$")))
   (copy-file file "public/" t))
 
 (copy-file "assets/favicon.ico" "public/" t)
