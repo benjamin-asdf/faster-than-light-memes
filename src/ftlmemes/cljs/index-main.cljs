@@ -62,6 +62,6 @@
 
 (def head-elem (js/document.getElementById "head-img"))
 
-(.addEventListener
+(.addEventListener head-elem
                    (fn [event]
                      (rotate-on-mouse-move head-elem (.-pageX event) (.-pageY event))))
