@@ -6,3 +6,6 @@ public
 /favicon/
 /.nrepl-port
 /.cpcache/
+/target/
+/data/
+/.shadow-cljs/
