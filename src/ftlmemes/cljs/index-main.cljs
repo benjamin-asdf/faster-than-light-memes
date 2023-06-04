@@ -49,19 +49,23 @@
          (rect-scroll-move-with-mouse-1 node [x y] virtual-rect-ratio)]
      (.scrollTo node scroll-x scroll-y))))
 
-
-(defn rotate-on-mouse-move [node mouse-x mouse-y]
-  (let [{:keys [left top width height right]} (get-client-rect node)
+(defn rotate-on-mouse-move [node mouse-x mouse-y scale]
+  (let [{:keys [left top width height]} (get-client-rect node)
         centerX (+ left (/ width 2))
         centerY (+ top (/ height 2))
         dx (- centerX mouse-x)
         dy (- centerY mouse-y)
         angle-rad (Math/atan2 dy dx)
-        rotation-offset-radians (- Math/PI (/ Math/PI 2))]
-    (.setAttribute node "style" (str "transform: rotate(" (+ angle-rad rotation-offset-radians) "rad)"))))
+        rotation-offset-radians (- Math/PI (/ Math/PI 2))
+        style-value (str "transform: scale(" scale ") rotate(" (+ angle-rad rotation-offset-radians) "rad)")]
+    (.setAttribute node "style" style-value)))
 
 (def head-elem (js/document.getElementById "head-img"))
 
+(def zooming? (atom nil))
+
+(.addEventListener head-elem "mouseup" (fn [_] (swap! zooming? not)))
+
 (.addEventListener head-elem "mousemove"
                    (fn [event]
-                     (rotate-on-mouse-move head-elem (.-pageX event) (.-pageY event))))
+                     (rotate-on-mouse-move head-elem (.-pageX event) (.-pageY event) (if @zooming? 2 1))))

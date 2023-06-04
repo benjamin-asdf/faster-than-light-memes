@@ -1,27 +1,34 @@
 (require 'ox-publish)
 
-;; Set the package installation directory so that packages aren't stored in the
-;; ~/.emacs.d/elpa path.
-(require 'package)
-(setq package-user-dir (expand-file-name "./.packages"))
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(if noninteractive
 
-;; Initialize the package system
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
+    ;; Set the package installation directory so that packages aren't stored in the
+    ;; ~/.emacs.d/elpa path.
+    (progn
+      (message
+       "Note: build by evaling build-site buffer in your current emacs to get the source code font colors.")
+      (require 'package)
+      (setq package-user-dir (expand-file-name "./.packages"))
+      (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                               ("elpa" . "https://elpa.gnu.org/packages/")))
 
-;; Install dependencies
-(package-install 'htmlize)
-(package-install 'denote)
-(package-install 'parseedn)
+      ;; Initialize the package system
+      (package-initialize)
+      (unless package-archive-contents
+        (package-refresh-contents))
+
+      ;; Install dependencies
+      (package-install 'htmlize)
+      (package-install 'denote)
+      (package-install 'parseedn)
+
+      (setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
+      (setf make-backup-files nil))
+  (use-package htmlize))
+
 (require 'denote)
 (require 'parseedn)
 
-(setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
-
-(setf make-backup-files nil)
 
 (setf denote-directory "~/notes/")
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
@@ -46,10 +53,6 @@
 
 (defun dw/strip-file-name-metadata (file-name)
   (replace-regexp-in-string "^.*--\\(.*?\\)__.*$" "\\1" file-name))
-
-;; (declare
-;;  (ftlm/denote-file-data
-;;   "/home/benj/notes/20220919T110439--binaural-beats-using-scittle__clojure.org"))
 
 (defun ftlm/post-data (file)
   (cons (cons :path file) (ftlm/denote-file-data file)))
@@ -174,10 +177,6 @@
        (insert elm))
       (buffer-string)))))
 
-;; </body>
-;;  <script src="./darkmode-button.js"></script>
-;; </html>
-
 (defun build-postamle (info)
   (let* ((spec (org-html-format-spec info))
          (date (cdr (assq ?d spec)))
@@ -206,6 +205,39 @@
             info)
            email)))))
 
+
+
+
+
+(setq org-html-head-include-default-style t
+      org-html-style-default
+      "<style>
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: black;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: black;
+  }
+
+</style>
+")
+
 (setq org-publish-project-alist
       (list
        (list
@@ -218,6 +250,7 @@
         :include (ftlm/post-files)
         :base-directory "~/notes/"
         :publishing-function 'org-html-publish-to-html
+        :htmlize-output-type 'css
         :publishing-directory "./public/"
         :with-author nil
         :with-email t
@@ -234,6 +267,7 @@
         :base-extension "org"
         :base-directory "~/notes/"
         :publishing-function 'org-html-publish-to-html
+        :htmlize-output-type 'css
         :publishing-directory "./public/"
         :exclude ".*"
         :include (list ftlm/index-file)
@@ -245,12 +279,8 @@
         :section-numbers nil
         :time-stamp-file nil)))
 
-(setq org-html-validation-link
-      nil
-      org-html-head-include-scripts
-      nil
-      org-html-head-include-default-style
-      nil
+(setq org-html-validation-link nil
+      org-html-head-include-scripts nil
       org-html-head (with-current-buffer (find-file-noselect "html-head.html") (buffer-string)))
 
 (defun denote-link-ol-export (link description format)
