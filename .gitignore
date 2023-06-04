@@ -10,3 +10,4 @@ public
 /data/
 /.shadow-cljs/
 /simple.min.css
+/.clj-kondo/.cache/v1/cljs/
