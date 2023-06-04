@@ -209,7 +209,8 @@
 
 
 
-(setq org-html-head-include-default-style t
+(setq org-html-head-include-default-style
+      t
       org-html-style-default
       "<style>
   pre {
@@ -231,7 +232,7 @@
     top: -8px;
     right: 12px;
     padding: 3px;
-    color: #555;
+    color: #faf7f7;
     background-color: black;
   }
 

@@ -9,3 +9,4 @@ public
 /target/
 /data/
 /.shadow-cljs/
+/simple.min.css
