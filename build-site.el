@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'ox-publish)
 
 (if noninteractive
@@ -28,7 +30,6 @@
 
 (require 'denote)
 (require 'parseedn)
-
 
 (setf denote-directory "~/notes/")
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
@@ -91,7 +92,45 @@
       (save-buffer))))
 
 (defun navbar-elm (link desc)
-  (format "<li><a href=\"%s.html\">%s</a></li>\n" link desc))
+  (format "<li><a href=\"%s\">%s</a></li>\n" link desc))
+
+(advice-add
+ 'denote-directory-files
+ :around
+ (defalias
+   'denote-directory-files-around-advice
+   (let ((m nil))
+     (lambda (old-fn)
+       (or m (setf m (funcall old-fn)))))))
+
+(defun ftlm/navbar-posts-denote-links ()
+  (with-current-buffer
+      (find-file-noselect ftlm/posts-file)
+    (goto-char (point-min))
+    (cl-loop
+     while (re-search-forward org-link-any-re nil t)
+     collect
+     (let* ((start (match-beginning 0))
+            (link-object (save-excursion
+                           (goto-char start)
+                           (save-match-data
+                             (org-element-link-parser))))
+            (link (org-element-property
+                   :path link-object))
+            (path-id (denote-link--ol-resolve-link-to-target
+                      link
+                      :path-id))
+            (path (file-name-nondirectory
+                   (car path-id)))
+            (p (file-name-sans-extension path))
+            (p (dw/strip-file-name-metadata p))
+            (description (buffer-substring-no-properties
+                          (org-element-property
+                           :contents-begin link-object)
+                          (org-element-property
+                           :contents-end link-object))))
+       `((:path . ,(format "%s.html" p))
+         (:description . ,description))))))
 
 (defun get-preamble ()
   (concat
@@ -132,52 +171,22 @@
 }
 </style>
 <div>
-  <button id=\"navbar-toggle\">☰</button>
+    <button id=\"navbar-toggle\">☰</button>
+    <span style=\"margin-left: 1rem;\">
+    <button id=\"rand-page-button\">random page</button>
+  </span>
 <ul id=\"navbar\">
     %s
 </ul>
  </div>
 "
     (with-temp-buffer
-      (cl-loop
-       for
-       elm
-       in
-       (with-current-buffer
-           (find-file-noselect
-            ftlm/posts-file)
-         (goto-char (point-min))
-         (cl-loop
-          while (re-search-forward
-                 org-link-any-re
-                 nil
-                 t)
-          collect
-          (let* ((start (match-beginning 0))
-                 (link-object (save-excursion
-                                (goto-char start)
-                                (save-match-data
-                                  (org-element-link-parser))))
-                 (link (org-element-property
-                        :path link-object))
-                 (path-id (denote-link--ol-resolve-link-to-target
-                           link
-                           :path-id))
-                 (path (file-name-nondirectory
-                        (car path-id)))
-                 (p (file-name-sans-extension path))
-                 (p (dw/strip-file-name-metadata p))
-                 (description (buffer-substring-no-properties
-                               (org-element-property
-                                :contents-begin link-object)
-                               (org-element-property
-                                :contents-end link-object))))
-            (navbar-elm p description))))
-       do
-       (insert elm))
+      (cl-loop for elm in (ftlm/navbar-posts-denote-links)
+               do (insert (navbar-elm (assoc-default :path elm)
+                                      (assoc-default :description elm))))
       (buffer-string)))))
 
-(defun build-postamle (info)
+(defun build-postamle (info &optional more)
   (let* ((spec (org-html-format-spec info))
          (date (cdr (assq ?d spec)))
          (author (cdr (assq ?a spec)))
@@ -185,7 +194,14 @@
          (creator (cdr (assq ?c spec)))
          (validation-link (cdr (assq ?v spec))))
     (concat
-     "<script src=\"navbar_toggle.js\"></script>\n"
+     "
+    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.5.14/dist/scittle.js\" type=\"application/javascript\"></script>
+    <!-- <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script> -->
+    <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.5.14/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
+    <script src=\"navbar_toggle.js\"></script>
+    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>
+"
+     more
      (and (plist-get info :with-date)
           (org-string-nw-p date)
           (format
@@ -204,10 +220,6 @@
             "Email"
             info)
            email)))))
-
-
-
-
 
 (setq org-html-head-include-default-style
       t
@@ -262,7 +274,10 @@
        (list
         "org-site:index"
         :org-html-preamble t
-        :html-postamble #'build-postamle
+        :html-postamble (lambda (info)
+                          (build-postamle
+                           info
+                           "<script type=\"application/x-scittle\" src=\"index-main.cljs\"></script>"))
         :html-preamble-format `(("en" ,(get-preamble)))
         :html-head (with-current-buffer (find-file-noselect "src/ftlmemes/index-head.html") (buffer-string))
         :base-extension "org"
@@ -312,9 +327,9 @@ backend."
   (copy-file file "public/" t))
 
 (copy-file "assets/favicon.ico" "public/" t)
+
 (copy-directory "src/ftlmemes/clojure_function_quiz/" "public/" t t)
 (copy-directory "src/ftlmemes/flipcoin//" "public/" t t)
-
 (with-temp-buffer
   (parseedn-print
    (mapcar #'ftlm/post-data (ftlm/post-files)))
@@ -328,3 +343,14 @@ backend."
 	 b)
 	b)
     (message (buffer-string))))
+
+(defun print-posts-list ()
+  (with-current-buffer
+      (find-file-noselect "public/posts-list.edn")
+    (erase-buffer)
+    (parseedn-print
+     (ftlm/navbar-posts-denote-links))
+    (save-buffer)))
+
+(print-posts-list)
+

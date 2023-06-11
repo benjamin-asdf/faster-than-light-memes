@@ -34,6 +34,8 @@
             (shell {:dir "./scittle-server/"} "bb" "browser-nrepl"))}
          linode-deploy
          (shell "./publish.sh")
+         scittle-server
+         (shell {:dir "./scittle-server/"} "bb" "browser-nrepl")
          build-deploy
          {:depends [build linode-deploy]}
          browse-qr-code
