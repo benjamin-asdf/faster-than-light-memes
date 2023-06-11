@@ -8,13 +8,7 @@
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
          build
          (do
-           (println "Evaling build-site.el for build!")
-           (shell
-            "emacsclient"
-            "-e"
-            "(let ((default-directory \"/home/benj/repos/faster-than-light-memes/\"))
-  (load (expand-file-name \"build-site.el\")))")
-           ;; (shell "emacs" "-Q" "--script" "build-site.el" )
+           (shell "emacs" "-Q" "--script" "build-site.el")
            (shell "bb" "src/ftlmemes/gen_pages.clj"))
          serve-local
          {:depends [build]
