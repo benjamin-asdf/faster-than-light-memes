@@ -194,10 +194,9 @@
          (creator (cdr (assq ?c spec)))
          (validation-link (cdr (assq ?v spec))))
     (concat
-     "
-    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.5.14/dist/scittle.js\" type=\"application/javascript\"></script>
+     "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
     <!-- <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script> -->
-    <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.5.14/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
+    <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
     <script src=\"navbar_toggle.js\"></script>
     <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>
 "

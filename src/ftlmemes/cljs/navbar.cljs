@@ -8,16 +8,19 @@
    (.then (fn [x] (.text x)))
    (.then (fn [x] (cb x)))))
 
-(defn random-page [cb]
+(defn pages [cb]
   (fetch-text
    "posts-list.edn"
    (fn [s]
-     (let [lst (into [] (read-string s))]
-       (cb (rand-nth lst))))))
+     (cb (read-string s)))))
 
 (defn rand-page! [_]
-  (random-page
-   (fn [{:keys [path]}]
-     (set! (.-location js/window) path))))
+  (pages
+   (fn [lst]
+     (let [path
+           (:path
+            (rand-nth
+             (into [] (remove (comp #{"contact.html"} :path)) lst)))]
+       (set! (.-location js/window) path)))))
 
 (.addEventListener rand-button "click" rand-page!)
