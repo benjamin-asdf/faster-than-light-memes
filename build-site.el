@@ -1,33 +1,37 @@
 ;; -*- lexical-binding: t; -*-
 
+;; I just load my config for the visuals
+(load-file "~/.emacs.d/init.el")
+
+;; (if noninteractive
+
+;;     ;; Set the package installation directory so that packages aren't stored in the
+;;     ;; ~/.emacs.d/elpa path.
+;;     (progn
+;;       (message
+;;        "Note: build by evaling build-site buffer in your current emacs to get the source code font colors.")
+;;       (require 'package)
+;;       (setq package-user-dir (expand-file-name "./.packages"))
+;;       (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+;;                                ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;;       ;; Initialize the package system
+;;       (package-initialize)
+;;       (unless package-archive-contents
+;;         (package-refresh-contents))
+
+;;       ;; Install dependencies
+;;       (package-install 'htmlize)
+;;       (package-install 'denote)
+;;       (package-install 'parseedn)
+
+;;       (setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
+;;       (setf make-backup-files nil))
+;;   (use-package htmlize))
+
+(use-package htmlize)
+
 (require 'ox-publish)
-
-(if noninteractive
-
-    ;; Set the package installation directory so that packages aren't stored in the
-    ;; ~/.emacs.d/elpa path.
-    (progn
-      (message
-       "Note: build by evaling build-site buffer in your current emacs to get the source code font colors.")
-      (require 'package)
-      (setq package-user-dir (expand-file-name "./.packages"))
-      (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                               ("elpa" . "https://elpa.gnu.org/packages/")))
-
-      ;; Initialize the package system
-      (package-initialize)
-      (unless package-archive-contents
-        (package-refresh-contents))
-
-      ;; Install dependencies
-      (package-install 'htmlize)
-      (package-install 'denote)
-      (package-install 'parseedn)
-
-      (setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
-      (setf make-backup-files nil))
-  (use-package htmlize))
-
 (require 'denote)
 (require 'parseedn)
 
