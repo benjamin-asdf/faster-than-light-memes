@@ -178,6 +178,8 @@
     <button id=\"navbar-toggle\">☰</button>
     <span style=\"margin-left: 1rem;\">
     <button id=\"rand-page-button\">random page</button>
+    <a href=\"screencasts.html\"><button>foo</button></a>
+
   </span>
 <ul id=\"navbar\">
     %s
@@ -185,9 +187,17 @@
  </div>
 "
     (with-temp-buffer
-      (cl-loop for elm in (ftlm/navbar-posts-denote-links)
-               do (insert (navbar-elm (assoc-default :path elm)
-                                      (assoc-default :description elm))))
+      (cl-loop
+       for
+       elm
+       in
+       (ftlm/navbar-posts-denote-links)
+       do
+       (insert
+        (navbar-elm
+         (assoc-default :path elm)
+         (assoc-default
+          :description elm))))
       (buffer-string)))))
 
 (defun build-postamle (info &optional more)
