@@ -178,7 +178,7 @@
     <button id=\"navbar-toggle\">☰</button>
     <span style=\"margin-left: 1rem;\">
     <button id=\"rand-page-button\">random page</button>
-    <a href=\"screencasts.html\"><button>foo</button></a>
+    <a href=\"screencasts.html\"><button>screencasts</button></a>
 
   </span>
 <ul id=\"navbar\">
