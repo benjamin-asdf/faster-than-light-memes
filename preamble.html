@@ -5,3 +5,44 @@
       <span style="color:#F689FF">/memes</span>
     </a>
   </h4>
+
+<style>
+#navbar {
+  display: none;
+}
+
+#navbar.is-open {
+  display: block;
+}
+
+#navbar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  border-radius: 5px;
+}
+
+#navbar a:hover {
+    color: #F689FF;
+    background-color: black;
+    font-weight: bold;
+}
+
+#navbar li {
+    list-style-type: none;
+}
+
+#navbar ul {
+    padding-inline-start: 0;
+}
+</style>
+
+<div>
+    <button id="navbar-toggle">☰</button>
+    <span style="margin-left: 1rem;">
+    <button id="rand-page-button">random page</button>
+    <button onclick="location.href='screencasts.html'">screencasts</button>
+    <button onclick="location.href='ftlm-navbar.html'">all posts</button>
+    </span>
+</div>

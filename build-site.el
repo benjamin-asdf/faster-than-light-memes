@@ -37,8 +37,8 @@
 
 (setf denote-directory "~/notes/")
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
-
 (defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
+
 (defun ftlm/file->denote-links (file)
   (with-current-buffer (find-file-noselect file)
     (denote-link--expand-identifiers "\\[\\[denote:\\(?1:\\([0-9]\\{8\\}\\)\\(T[0-9]\\{6\\}\\)\\)]\\[.*?]]")))
@@ -72,7 +72,7 @@
 
 (defun ftlm/posts+index-files ()
   (append
-   (list ftlm/index-file)
+   (list ftlm/index-file ftlm/posts-file)
    (ftlm/post-files)
    '("/home/benj/notes/20230301T123854--contact__public.org")))
 
@@ -143,49 +143,7 @@
         "preamble.html")
      (buffer-string))
    (format
-    "<style>
-#navbar {
-  display: none;
-}
-
-#navbar.is-open {
-  display: block;
-}
-
-#navbar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  display: block;
-  border-radius: 5px;
-}
-
-#navbar a:hover {
-    color: #F689FF;
-    background-color: black;
-    font-weight: bold;
-}
-
-#navbar li {
-    list-style-type: none;
-}
-
-#navbar ul {
-    padding-inline-start: 0;
-}
-</style>
-<div>
-    <button id=\"navbar-toggle\">☰</button>
-    <span style=\"margin-left: 1rem;\">
-    <button id=\"rand-page-button\">random page</button>
-    <a href=\"screencasts.html\"><button>screencasts</button></a>
-
-  </span>
-<ul id=\"navbar\">
-    %s
-</ul>
- </div>
-"
+    "    <div>\n<ul id=\"navbar\">\n    %s\n</ul>\n </div>\n"
     (with-temp-buffer
       (cl-loop
        for
@@ -273,7 +231,7 @@
         :html-preamble-format `(("en" ,(get-preamble)))
         :recursive t
         :exclude ".*"
-        :include (ftlm/post-files)
+        :include (append (ftlm/post-files) (list ftlm/posts-file))
         :base-directory "~/notes/"
         :publishing-function 'org-html-publish-to-html
         :htmlize-output-type 'css
