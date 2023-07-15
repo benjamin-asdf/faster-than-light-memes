@@ -1,5 +1,3 @@
 #!/bin/sh
 
-
-scp -r public/* linode:/var/www/ftlm/
-
+rsync -avz public/* linode:/var/www/ftlm/
