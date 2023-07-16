@@ -55,16 +55,20 @@
               [:-cdata html]]]))])
       xml/indent-str))
 
+(def is-feed-post? (comp #(contains? % "feed") :tags))
+
 (defn- spit-feeds [{:keys [out-dir new-files posts] :as opts}]
   (let [feed-file (fs/file out-dir "atom.xml")
         clojure-feed-file (fs/file out-dir "planetclojure.xml")
         all-posts (sort-posts posts)
+        all-posts (filter (comp is-feed-post? val) all-posts)
         clojure-post? (fn [{:keys [tags]}] (some tags ["clojure" "clojurescript"]))
         clojure-posts
-        (->> (vals posts) (filter clojure-post?))
+        (->> (vals all-posts) (filter clojure-post?))
         new-clojure-posts
         (->> clojure-posts (filter (comp new-files :file)))
         clojure-posts-modified? (seq new-clojure-posts)]
+    ;; clojure-posts-modified?
     (if (and (not clojure-posts-modified?) (fs/exists? clojure-feed-file))
       (println "No new Clojure posts; skipping Clojure feed")
       (do
@@ -74,7 +78,8 @@
       (println "No posts modified; skipping main feed")
       (do
         (println "Writing feed" (str feed-file))
-        (spit feed-file (atom-feed opts (vals all-posts)))))))
+        (spit feed-file (atom-feed opts (vals all-posts)))))
+    (seq new-clojure-posts)))
 
 (defn
   parse-date-1
@@ -88,6 +93,7 @@
         (clojure.walk/keywordize-keys org-data)
         file (str EXPORT_FILE_NAME ".html")
         html-file (fs/file (:out-dir opts) file)]
+    (spit (str identifier ".edn") (prn-str {:tags (into #{} (remove str/blank? (str/split filetags #":")))}))
     (println file identifier EXPORT_FILE_NAME)
     (assoc
      d
@@ -104,6 +110,8 @@
     (map (juxt :file identity)))
    sx))
 
+;; I guess this made sense when it was gh-pages
+;; I should check modified since the feed updated time
 (defn
   new-files
   [dir]
@@ -118,7 +126,10 @@
         {:dir dir :out :string}))))))
 
 (comment
-  (def a-post '{:path "/home/benj/notes/20220923T112406--foo__public.org",
+  (is-feed-post? {:tags #{"ftlm" "mind" "public" "physiology"}})
+  (is-feed-post? {:tags #{"ftlm" "mind" "public" "physiology" "feed"}})
+
+  (def a-post '{:path "./feed.clj",
                 :tags ("public"),
                 :date #inst
                 "2022-09-23T11:24:06.000-00:00",
@@ -126,7 +137,7 @@
                 :file "foo.html",
                 :title "foo",
                 :identifier "20220923T112406",
-                :EXPORT_FILE_NAME "foo"})
+                :EXPORT_FILE_NAME "/home/benj/repos/faster-than-light-memes/public/index"})
 
   (type (:date (->post {:out-dir "public"} a-post)))
 

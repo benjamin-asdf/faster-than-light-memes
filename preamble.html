@@ -1,10 +1,12 @@
 <h4>
-    <a href="https://benjamin-asdf.github.io/faster-than-light-memes/"
-       style="background-color:black;;text-decoration:none;padding:0.3rem">
+  <button onclick="location.href='/'"
+          style="background-color:black;;text-decoration:none;padding:0.5rem;font-size:1.5em;">
       <span style="color:#feb48f">:faster-than-light</span>
       <span style="color:#F689FF">/memes</span>
-    </a>
-  </h4>
+    <span class="tooltip-text">Joyful ideas are better ideas</span>
+</button>
+</h4>
+
 
 <style>
 #navbar {
@@ -36,15 +38,66 @@
 #navbar ul {
     padding-inline-start: 0;
 }
+
+
+.tooltip-text {
+    display: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    white-space: nowrap;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+}
+
+button:hover .tooltip-text {
+    display: block;
+}
+
+a:hover .tooltip-text {
+    display: block;
+}
+
+@media only screen and (max-width: 800px) {
+
+button:hover .tooltip-text {
+    display: none;
+}
+
+a:hover .tooltip-text {
+    display: none;
+}
+
+
+}
+
+
+
 </style>
 
 <div>
-    <button id="navbar-toggle">☰</button>
+  <button id="navbar-toggle">☰
+    <span class="tooltip-text">This is your fathers rock. I mean this is the hamburger to list all posts.</span>
+  </button>
     <span style="margin-left: 1rem;">
-    <button id="rand-page-button">random page</button>
-    <button onclick="location.href='screencasts.html'">screencasts</button>
-    <button onclick="location.href='lisp.html'">Lisp</button>
-    <button onclick="location.href='faq.html'">FAQ</button>
-    <button onclick="location.href='ftlm-navbar.html'">all posts</button>
+<button id="rand-page-button">
+    Explore!
+    <span class="tooltip-text">Get a random piece of Bennis mind!</span>
+</button>
+<button onclick="location.href='screencasts.html'">Screencasts
+    <span class="tooltip-text">How to dance with a computer.</span>
+</button>
+<button onclick="location.href='lisp.html'">Lisp
+    <span class="tooltip-text">What does it mean for a language to be beautiful?</span>
+</button>
+<button onclick="location.href='faq.html'">FAQ
+    <span class="tooltip-text">Answers and reasons for everything.</span>
+</button>
+<button onclick="location.href='ftlm-navbar.html'">Posts
+    <span class="tooltip-text">A list of all posts.</span>
+</button>
     </span>
 </div>

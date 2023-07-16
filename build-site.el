@@ -2,33 +2,6 @@
 
 ;; I just load my config for the visuals
 (load-file "~/.emacs.d/init.el")
-
-;; (if noninteractive
-
-;;     ;; Set the package installation directory so that packages aren't stored in the
-;;     ;; ~/.emacs.d/elpa path.
-;;     (progn
-;;       (message
-;;        "Note: build by evaling build-site buffer in your current emacs to get the source code font colors.")
-;;       (require 'package)
-;;       (setq package-user-dir (expand-file-name "./.packages"))
-;;       (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-;;                                ("elpa" . "https://elpa.gnu.org/packages/")))
-
-;;       ;; Initialize the package system
-;;       (package-initialize)
-;;       (unless package-archive-contents
-;;         (package-refresh-contents))
-
-;;       ;; Install dependencies
-;;       (package-install 'htmlize)
-;;       (package-install 'denote)
-;;       (package-install 'parseedn)
-
-;;       (setf user-mail-address "Benjamin.Schwerdtner@gmail.com")
-;;       (setf make-backup-files nil))
-;;   (use-package htmlize))
-
 (use-package htmlize)
 
 (require 'ox-publish)
@@ -136,27 +109,32 @@
        `((:path . ,(format "%s.html" p))
          (:description . ,description))))))
 
+(defun escape-fmt-str (str)
+  (replace-regexp-in-string "%" "%%" str))
+
 (defun get-preamble ()
-  (concat
-   (with-current-buffer
-       (find-file-noselect
-        "preamble.html")
-     (buffer-string))
-   (format
-    "    <div>\n<ul id=\"navbar\">\n    %s\n</ul>\n </div>\n"
-    (with-temp-buffer
-      (cl-loop
-       for
-       elm
-       in
-       (ftlm/navbar-posts-denote-links)
-       do
-       (insert
-        (navbar-elm
-         (assoc-default :path elm)
-         (assoc-default
-          :description elm))))
-      (buffer-string)))))
+  (escape-fmt-str
+   (with-temp-buffer
+     (insert
+      (with-current-buffer
+          (find-file-noselect
+           "preamble.html")
+        (buffer-substring-no-properties (point-min)
+                                        (point-max))))
+     (insert "    <div>\n<ul id=\"navbar\">\n    ")
+     (cl-loop
+      for
+      elm
+      in
+      (ftlm/navbar-posts-denote-links)
+      do
+      (insert
+       (navbar-elm
+        (assoc-default :path elm)
+        (assoc-default
+         :description elm))))
+     (insert "\n</ul>\n </div>\n")
+     (buffer-string))))
 
 (defun build-postamle (info &optional more)
   (let* ((spec (org-html-format-spec info))
@@ -298,22 +276,25 @@ backend."
   (copy-file file "public/" t))
 
 (copy-file "assets/favicon.ico" "public/" t)
-
 (copy-directory "src/ftlmemes/clojure_function_quiz/" "public/" t t)
 (copy-directory "src/ftlmemes/flipcoin//" "public/" t t)
+
 (with-temp-buffer
   (parseedn-print
    (mapcar #'ftlm/post-data (ftlm/post-files)))
   (with-current-buffer
       (let ((b (get-buffer-create "bb")))
-	(call-shell-region
+        (call-shell-region
 	 (point-min)
 	 (point-max)
 	 "bb src/ftlmemes/feed.clj"
 	 nil
 	 b)
-	b)
-    (message (buffer-string))))
+        b)
+    (message (buffer-string))
+    (kill-buffer)))
+
+(pop-to-buffer (get-buffer-create "bb"))
 
 (defun print-posts-list ()
   (with-current-buffer
