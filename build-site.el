@@ -294,8 +294,6 @@ backend."
     (message (buffer-string))
     (kill-buffer)))
 
-(pop-to-buffer (get-buffer-create "bb"))
-
 (defun print-posts-list ()
   (with-current-buffer
       (find-file-noselect "public/posts-list.edn")

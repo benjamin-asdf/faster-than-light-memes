@@ -93,7 +93,6 @@
         (clojure.walk/keywordize-keys org-data)
         file (str EXPORT_FILE_NAME ".html")
         html-file (fs/file (:out-dir opts) file)]
-    (spit (str identifier ".edn") (prn-str {:tags (into #{} (remove str/blank? (str/split filetags #":")))}))
     (println file identifier EXPORT_FILE_NAME)
     (assoc
      d
