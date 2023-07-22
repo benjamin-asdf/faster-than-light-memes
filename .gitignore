@@ -11,3 +11,4 @@ public
 /.shadow-cljs/
 /simple.min.css
 /.clj-kondo/.cache/v1/cljs/
+/.clj-kondo/.cache/v1/clj/
