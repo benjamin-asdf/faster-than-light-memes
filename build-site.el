@@ -168,7 +168,9 @@
            (org-html--translate
             "Email"
             info)
-           email)))))
+           email))
+     "\n<div><a href=\"/about.html\">About</a></div>"
+     "<div><a href=\"/contact.html\">Contact</a></div>")))
 
 (setq org-html-head-include-default-style
       t

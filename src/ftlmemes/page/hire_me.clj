@@ -97,49 +97,34 @@ a:visited {
      [:div
       [:img
        {:src "https://i.imgur.com/GeM8EQM.jpg"}]]
-     (let [id "bio"]
-       [:div
-        [:div
-         {:style {:display "flex" :align-items "center"}}
-         [:h3 "Short Bio"]
-         [:button
-          {:style
-           {:margin-left "1rem"
-            :margin-top "1.5rem"
-            :background-color "transparent"
-            :color primary
-            :text-decoration "underline"}
-           :onClick (format "toggleCollapsable('%s')" id)}
-          "toggle"]]
-        [:div
-         {:id id :style {:display "none"}}
-         [:div
-          [:p
-           "I am excited about technology and programming. Especially Lisp, Clojure, Emacs and Linux.
+     [:details
+      [:summary "Short Bio"]
+      [:div
+       [:p
+        "I am excited about technology and programming. Especially Lisp, Clojure, Emacs and Linux.
 Many think I am joyful and curious. I like simple, straightforward and playful ideas. This fits with working at a Clojure Repl."]
-          [:p
-           "I am committed to building great software, understanding the problem and thinking about the design.
+       [:p
+        "I am committed to building great software, understanding the problem and thinking about the design.
 I choose Clojure as my weapon because it is an amazingly practical Lisp with a great community and an evolved data-oriented paradigm."]
-          [:p
-           "I have spent much of the last 5 years programming all day with a team of philanthropists.
+       [:p
+        "I have spent much of the last 5 years programming all day with a team of philanthropists.
 I am inspired by Paul Graham, Rich Hickey, Eric Normand, Sherlock Holmes and other thinkers around Lisp and Clojure.
 "]
-          [:p
-           "I was born in the lovely German town Esslingen am Neckar, known for its historical city core and a big medieval market.
+       [:p
+        "I was born in the lovely German town Esslingen am Neckar, known for its historical city core and a big medieval market.
 From my dad, a master baker and probably one of the finest gingerbread makers in Germany, I learned to put love into my craft
 and the value of having the heart in the right place.
 I studied biology and got to appreciate clear and simple thinking,
 "
-           [:span "starting by reading "
-            [:span {:style {:font-style "italic"}} "The Selfish Gene."]
-            " I do not want to go back to the lab after knowing how fast I can make experiments with the computer."]]
-          [:p
-           "In my free time, I like to think about how the brain, evolution and computers work.
+        [:span "starting by reading "
+         [:span {:style {:font-style "italic"}} "The Selfish Gene."]
+         " I do not want to go back to the lab after knowing how fast I can make experiments with the computer."]]
+       [:p
+        "In my free time, I like to think about how the brain, evolution and computers work.
 I do Inline-skating, juggling, and Rubik's Cube. I like finding little things that I am not good at yet and then dominating them.
 "]
-          [:p "I read a lot of science fiction and science, especially about neuroscience, computers and big history."]
-          [:p "I express my ideas and document my growth on my blog: " [:a {:href " https://faster-than-light-memes.xyz/"} "faster-than-light-memes"]]]]
-        [:hr]])
+       [:p "I read a lot of science fiction and science, especially about neuroscience, computers and big history."]
+       [:p "I express my ideas and document my growth on my blog: " [:a {:href " https://faster-than-light-memes.xyz/"} "faster-than-light-memes"]]]]
      [:div#pitch-div
       [:div.card
        [:h3
@@ -226,7 +211,6 @@ I speak up when I see anything amiss and document limitations with the software 
         [:li
          "5 years activism in the fight against poverty as programer in an idealistic team."]
         [:li
-         [:span "Products: "]
          [:ul
           [:li
            [:a
