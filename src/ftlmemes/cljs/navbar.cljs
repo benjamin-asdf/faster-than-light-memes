@@ -48,31 +48,32 @@
 (defn toggle-tag-fn [tag on?] (fn [std] (update std :tags (if on? disj conj) tag)))
 
 (defn tag-ui [tag the-tags]
-  [:div
-   [:button
-    {:style
-     {:margin-left "1rem"
-      :height "1.5rem"
-      :padding "4px"
-      :font-size "0.9rem"
-      :color
-      (if (the-tags tag) "black" "white")
-      :background-color
-      (if (the-tags tag) "#ffb300" "#2b2b2b")}
-     :on-click
-     (fn [e]
-       (let [on? (the-tags tag)]
-         (swap! state (toggle-tag-fn tag on?)))
-       (. e stopPropagation)
-       (. e preventDefault))}
-    tag]
-   [:strong
-    {:style
-     {:padding "2px" :border "1px solid" :border-radius "20%"}}
-    (count
-     (filter
-      (fn [{:keys [tags]}] (tags tag))
-      (-> @state :pages)))]])
+  [:button
+   {:style
+    {:margin-left "1rem"
+     :height "1.5rem"
+     :padding "4px"
+     :font-size "0.9rem"
+     :color
+     (if (the-tags tag) "black" "white")
+     :background-color
+     (if (the-tags tag) "#ffb300" "#2b2b2b")}
+    :on-click
+    (fn [e]
+      (let [on? (the-tags tag)]
+        (swap! state (toggle-tag-fn tag on?)))
+      (. e stopPropagation)
+      (. e preventDefault)
+      (. js/window scrollTo 0 0))}
+   [:div
+    tag
+    [:strong
+     {:style
+      {:padding "2px" :border "1px solid" :border-radius "20%"}}
+     (count
+      (filter
+       (fn [{:keys [tags]}] (tags tag))
+       (-> @state :pages)))]]])
 
 (defn page-ui [{:keys [path description tags]} state-tags]
   [:li {:style {:display "block"
