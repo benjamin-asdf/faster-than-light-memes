@@ -70,11 +70,11 @@
    tag])
 
 (defn page-ui [{:keys [path description tags]} state-tags]
-  [:li
-   [:div {:style {:display "flex"}}
-    [:div [:a {:href path} description]]
+  [:li {:style {:display "flex" :background-color "var(--accent-pg)" :border "1px solid var(--border)"} }
+   [:div {:style {:display "flex" :justify-content "space-between" :align-items "center" :flex-wrap "wrap"}}
     [:div
-     {:style {:margin-left "auto"}}
+     [:a {:href path} description]]
+    [:div
      (doall (map #(tag-ui % state-tags) (sort tags)))]]])
 
 (def relevant-tag? (complement #{"public" "feed"}))
@@ -97,13 +97,13 @@
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
-    [:ul
+    [:ul {:style {:max-width "100vw" :display "inline-block"}}
      (doall
       (for [[idx page] (map-indexed vector posts)]
         ^{:key idx} [page-ui page tags]))]))
 
 (defn tags-ui [{:keys [tags]} all-tags]
-  [:div {:style {:display "flex"}}
+  [:div {:style {:display "flex" :align-content "flex-start" :flex-wrap "wrap"}}
    (doall (map #(tag-ui % tags) (sort all-tags)))])
 
 (defn all-tags [{:keys [pages]}] (into #{}

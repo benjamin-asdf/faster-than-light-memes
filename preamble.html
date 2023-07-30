@@ -31,13 +31,17 @@
   display: block;
 }
 
+
 #navbar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  display: block;
-  border-radius: 5px;
+    padding: 4px;
+    text-decoration: none; 
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
 }
+
 
 #navbar a:hover {
     color: #F689FF;
@@ -92,7 +96,7 @@ a:hover .tooltip-text {
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <button style="padding-top 12px; padding-bottom 12px;" id="navbar-toggle"><span>🔍</span>
-  <span class="tooltip-text">This is your fathers rock. I mean this is the hamburger to list all posts.</span>
+  <span class="tooltip-text">This is your fathers rock. I mean this is the searchbar.</span>
   </button>
     <span style="margin-left: 1rem;">
 <button id="rand-page-button">
@@ -123,4 +127,4 @@ a:hover .tooltip-text {
     </span>
 </div>
 
-<div id="navbar"></div>
+<div id="navbar" style="width: 100%"></div>
