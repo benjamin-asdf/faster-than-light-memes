@@ -45,8 +45,6 @@
         :placeholder "Search..."
         :on-change (fn [e] (on-change (reset! query (-> e .-target .-value))))}])))
 
-(defn tag-on? [tags tag] (tags tag))
-
 (defn toggle-tag-fn [tag on?] (fn [std] (update std :tags (if on? disj conj) tag)))
 
 (defn tag-ui [tag the-tags]
@@ -57,20 +55,21 @@
      :padding "4px"
      :font-size "0.9rem"
      :color
-     (if (tag-on? the-tags tag) "black" "white")
+     (if (the-tags tag) "black" "white")
      :background-color
-     (if (tag-on? the-tags tag) "#ffb300" "#2b2b2b")}
+     (if (the-tags tag) "#ffb300" "#2b2b2b")}
     :on-click
     (fn [e]
       (let [on? (the-tags tag)]
         (swap! state (toggle-tag-fn tag on?)))
       (. e stopPropagation)
-      (. e preventDefault)
-      )}
+      (. e preventDefault))}
    tag])
 
 (defn page-ui [{:keys [path description tags]} state-tags]
-  [:li {:style {:display "flex" :background-color "var(--accent-pg)" :border "1px solid var(--border)"} }
+  [:li {:style {:display "block"
+                :background-color "var(--accent-bg)"
+                :margin-bottom "0.4rem"} }
    [:div {:style {:display "flex" :justify-content "space-between" :align-items "center" :flex-wrap "wrap"}}
     [:div
      [:a {:href path} description]]
@@ -97,13 +96,17 @@
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
-    [:ul {:style {:max-width "100vw" :display "inline-block"}}
+    [:ul {:style {:max-width "100vw"
+                  :display "flex"
+                  :justify-content "center"
+                  :flex-direction "column"}}
      (doall
       (for [[idx page] (map-indexed vector posts)]
         ^{:key idx} [page-ui page tags]))]))
 
 (defn tags-ui [{:keys [tags]} all-tags]
-  [:div {:style {:display "flex" :align-content "flex-start" :flex-wrap "wrap"}}
+  [:div {:style {:display "flex" :justify-content "center"
+                 :flex-wrap "wrap" :align-items "center"}}
    (doall (map #(tag-ui % tags) (sort all-tags)))])
 
 (defn all-tags [{:keys [pages]}] (into #{}
