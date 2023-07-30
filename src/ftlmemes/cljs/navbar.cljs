@@ -76,13 +76,13 @@
     [:div [:a {:href path} description]]
     [:div
      {:style {:margin-left "auto"}}
-     (doall (map #(tag-ui % state-tags) tags))]]])
+     (doall (map #(tag-ui % state-tags) (sort tags)))]]])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
 (defn filtered-posts [{:keys [q pages tags]}]
   (let [{:keys [query]} q
-        filter-tags (fn [page] (seq (set/intersection (:tags page) tags)))
+        filter-tags (fn [page] (every? (:tags page) tags))
         filter-q (fn []
                    (let [query (str/lower-case query)
                          words (str/split query #"\s+")
@@ -105,7 +105,7 @@
 
 (defn tags-ui [{:keys [tags]} all-tags]
   [:div {:style {:display "flex"}}
-   (doall (map #(tag-ui % tags) all-tags))])
+   (doall (map #(tag-ui % tags) (sort all-tags)))])
 
 (defn all-tags [{:keys [pages]}] (into #{}
                                        (comp
