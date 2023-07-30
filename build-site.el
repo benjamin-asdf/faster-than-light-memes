@@ -80,6 +80,14 @@
      (lambda (old-fn)
        (or m (setf m (funcall old-fn)))))))
 
+
+(defun ftlm/denote-curr-keywords (file)
+  (if-let* ((file-type (denote-filetype-heuristics file)))
+      (with-current-buffer
+          (find-file-noselect file)
+        (denote-retrieve-keywords-value file file-type))
+    (error "not a denote file: %s" file)))
+
 (defun ftlm/navbar-posts-denote-links ()
   (with-current-buffer
       (find-file-noselect ftlm/posts-file)
@@ -107,7 +115,8 @@
                           (org-element-property
                            :contents-end link-object))))
        `((:path . ,(format "%s.html" p))
-         (:description . ,description))))))
+         (:description . ,description)
+         (:tags . ,(ftlm/denote-curr-keywords (buffer-file-name))))))))
 
 (defun escape-fmt-str (str)
   (replace-regexp-in-string "%" "%%" str))
@@ -143,16 +152,14 @@
          (email (cdr (assq ?e spec)))
          (creator (cdr (assq ?c spec)))
          (validation-link (cdr (assq ?v spec))))
-    ;;     <!-- <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script> -->
-    ;; <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
-    (concat
-     "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
 
-    <script src=\"./navbar_toggle.js\"></script>
-    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>
-    <script src=\"./pixel.js\"></script>
-    
-"
+    (concat
+     "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>\n\n    <script crossorigin src=\"https://unpkg.com/react@17/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js\"> </script>\n\n\n\n    <script src=\"./navbar_toggle.js\"></script>\n    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>\n    <script src=\"./pixel.js\"></script>\n    \n"
+     
+     (concat
+      "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\"></script>")
+     
      more
      (and (plist-get info :with-date)
           (org-string-nw-p date)
