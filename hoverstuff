@@ -1,0 +1,155 @@
+/home/benj/repos/searx-space/html/main.css
+
+search for tooltip this is exactly what I want
+
+
+
+
+.info-tooltip {
+  display: none;
+  position: absolute;
+  padding: 0.5rem;
+  margin: 0rem 0 0 2rem;
+  border: 1px solid black;
+  background: white;
+  font-family: monospace;
+  font-style: inherit;
+  font-variant: normal;
+  font-weight: normal;
+  z-index: 1000000;
+  text-align: left;
+}
+
+.info-tooltip p {
+  margin: 0.125rem;
+}
+
+.info-tooltip td {
+  padding: 0.25rem;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  white-space: nowrap;
+  max-width: 90rem;
+}
+
+.info-tooltip a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info-tooltip a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a:hover + .info-tooltip,
+span:hover + .info-tooltip,
+.info-tooltip:hover {
+  display: block;
+}
+
+
+
+
+
+
+==========     
+.tooltip-text {
+    display: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    white-space: nowrap;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+}
+
+button:hover .tooltip-text {
+    display: block;
+}
+
+a:hover .tooltip-text {
+    display: block;
+}
+
+.tooltip {
+position: relative;
+display: inline-block;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltiptext:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  top: 100%;
+  left: 50%;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+@media only screen and (max-width: 800px) {
+
+button:hover .tooltip-text {
+    display: none;
+}
+
+a:hover .tooltip-text {
+    display: none;
+}
+
+.tooltip:hover .hoverable,
+.hoverable:hover {
+    visibility: visible;
+}
+```
+
+
+.hoverable {
+    position: absolute;
+    width: 200px;  /* adjust as needed */
+    height: 200px;  /* adjust as needed */
+    top: -50px; /* adjust as needed to position hoverable */
+    left: -50px; /* adjust as needed to position hoverable */
+    z-index: 1; /* keep it on top */
+    visibility: hidden;  /* starts hidden */
+}
+
+
+}
+
+
+<div class="tooltip">
+    <a href="#">Hover me! </a>
+    <div class="hoverable">
+        <div class="tooltiptext">
+            I am the tooltip!
+        </div>
+    </div>
+</div>
+

@@ -116,7 +116,7 @@
                            :contents-end link-object))))
        `((:path . ,(format "%s.html" p))
          (:description . ,description)
-         (:tags . ,(ftlm/denote-curr-keywords (buffer-file-name))))))))
+         (:tags . ,(ftlm/denote-curr-keywords path)))))))
 
 (defun escape-fmt-str (str)
   (replace-regexp-in-string "%" "%%" str))
@@ -130,19 +130,6 @@
            "preamble.html")
         (buffer-substring-no-properties (point-min)
                                         (point-max))))
-     (insert "    <div>\n<ul id=\"navbar\">\n    ")
-     (cl-loop
-      for
-      elm
-      in
-      (ftlm/navbar-posts-denote-links)
-      do
-      (insert
-       (navbar-elm
-        (assoc-default :path elm)
-        (assoc-default
-         :description elm))))
-     (insert "\n</ul>\n </div>\n")
      (buffer-string))))
 
 (defun build-postamle (info &optional more)
