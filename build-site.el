@@ -143,12 +143,15 @@
          (email (cdr (assq ?e spec)))
          (creator (cdr (assq ?c spec)))
          (validation-link (cdr (assq ?v spec))))
+    ;;     <!-- <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script> -->
+    ;; <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
     (concat
      "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
-    <!-- <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script> -->
-    <!-- <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script> -->
-    <script src=\"navbar_toggle.js\"></script>
+
+    <script src=\"./navbar_toggle.js\"></script>
     <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>
+    <script src=\"./pixel.js\"></script>
+    
 "
      more
      (and (plist-get info :with-date)
@@ -169,7 +172,8 @@
             "Email"
             info)
            email))
-     "\n<div><a href=\"/about.html\">About</a></div>"
+     "
+<div><a href=\"/about.html\">About</a></div>"
      "<div><a href=\"/contact.html\">Contact</a></div>")))
 
 (setq org-html-head-include-default-style
