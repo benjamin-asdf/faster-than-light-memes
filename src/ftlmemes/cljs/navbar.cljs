@@ -1,6 +1,5 @@
 (ns navbar
   (:require
-   [clojure.set :as set]
    [clojure.string :as str]
    [reagent.core :as r]
    [reagent.dom :as rdom]))
@@ -17,6 +16,7 @@
   (fetch-text
    "posts-list.edn"
    (fn [s]
+     #_{:clj-kondo/ignore [:unresolved-symbol]}
      (cb (read-string s)))))
 
 (defn rand-page! [_]
