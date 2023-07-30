@@ -94,7 +94,7 @@
         pages
         (seq tags) (filter filter-tags)
         (<= 2 (count query)) (filter (filter-q))
-        :always (map (fn [page] (update page :tags #(filter relevant-tag? %)))))))
+        :always (map (fn [page] (update page :tags #(into #{} (filter relevant-tag? %))))))))
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
