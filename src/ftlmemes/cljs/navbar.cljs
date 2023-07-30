@@ -43,8 +43,7 @@
        {:type "text"
         :value @query
         :placeholder "Search..."
-        :on-change (fn [e]
-                     (on-change (reset! query (-> e .-target .-value))))}])))
+        :on-change (fn [e] (on-change (reset! query (-> e .-target .-value))))}])))
 
 (defn tag-on? [tags tag] (tags tag))
 
@@ -114,8 +113,8 @@
                                        pages))
 (defn ui []
   [:div
-   [search-bar {:style {:margin-bottom "1rem"}}
-    {:on-change #(swap! state assoc-in [:q :query] %)}]
+   [search-bar
+    {:style {:margin-bottom "1rem"} :on-change #(swap! state assoc-in [:q :query] %)}]
    [tags-ui @state (all-tags @state)]
    (let [{:keys [tags] :as std} @state]
      [posts-list {:posts (filtered-posts std) :tags tags}])])
