@@ -80,7 +80,7 @@
                 :background-color "var(--accent-bg)"
                 :margin-bottom "0.4rem"} }
    [:div {:style {:display "flex" :justify-content "space-between" :align-items "center" :flex-wrap "wrap"}}
-    [:div
+    [:div.hoverable
      [:a {:href path} description]]
     [:div
      (doall (map #(tag-ui % state-tags) (sort tags)))]]])
