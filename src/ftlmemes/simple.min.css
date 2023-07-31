@@ -205,52 +205,6 @@ input:enabled:focus-visible:where([type="submit"], [type="reset"], [type="button
     outline: 2px solid var(--accent);
     outline-offset: 1px;
 }
-header > nav {
-    font-size: 1rem;
-    line-height: 2;
-    padding: 1rem 0 0 0;
-}
-header > nav ol,
-header > nav ul {
-    align-content: space-around;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-header > nav ol li,
-header > nav ul li {
-    display: inline-block;
-}
-header > nav a,
-header > nav a:visited {
-    margin: 0 0.5rem 1rem 0.5rem;
-    border: 1px solid var(--border);
-    border-radius: var(--standard-border-radius);
-    color: var(--text);
-    display: inline-block;
-    padding: 0.1rem 1rem;
-    text-decoration: none;
-}
-header > nav a.current,
-header > nav a:hover,
-header > nav a[aria-current="page"] {
-    border-color: var(--accent);
-    color: var(--accent);
-    cursor: pointer;
-}
-@media only screen and (max-width: 720px) {
-    header > nav a {
-        border: none;
-        padding: 0;
-        text-decoration: underline;
-        line-height: 1;
-    }
-}
 
 pre {
     border: 1px solid var(--border);

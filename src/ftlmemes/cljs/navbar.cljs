@@ -76,14 +76,21 @@
        (-> @state :pages)))]]])
 
 (defn page-ui [{:keys [path description tags]} state-tags]
-  [:li {:style {:display "block"
-                :background-color "var(--accent-bg)"
-                :margin-bottom "0.4rem"} }
-   [:div {:style {:display "flex" :justify-content "space-between" :align-items "center" :flex-wrap "wrap"}}
-    [:div.hoverable
-     [:a {:href path} description]]
+  [:li.hoverable
+   {:style {:padding "4px"
+            :display "block"
+            :background-color "var(--accent-bg)"
+            :margin-bottom "0.4rem"} }
+   [:a
+    {:href path :style {:display "block"}}
     [:div
-     (doall (map #(tag-ui % state-tags) (sort tags)))]]])
+     {:style {:display "flex"
+              :justify-content "space-between"
+              :align-items "center"
+              :flex-wrap "wrap"}}
+     [:div description]
+     [:div
+      (doall (map #(tag-ui % state-tags) (sort tags)))]]]])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
@@ -95,8 +102,8 @@
                          words (str/split query #"\s+")
                          words-match? (fn [cand] (every? (fn [word] (str/index-of cand word)) words))]
                      (fn [{:keys [path description]}]
-                       (or (words-match? description)
-                           (words-match? path)))))]
+                       (or (words-match? (str/lower-case description))
+                           (words-match? (str/lower-case path))))))]
     (cond->>
         pages
         (seq tags) (filter filter-tags)

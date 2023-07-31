@@ -43,11 +43,18 @@
 }
 
 
-hoverable:hover {
+.hoverable:hover {
     color: #F689FF;
-    background-color: black;
-    font-weight: bold;
+    background-color: black !important;
+    font-weight: bold !important;
 }
+
+.hoverable:hover a {
+    color: #F689FF;
+}
+
+
+
 
 #navbar li {
     list-style-type: none;
@@ -124,6 +131,11 @@ a:hover .tooltip-text {
 <button onclick="location.href='ftlm-navbar.html'">Posts
   <span class="tooltip-text">A list of all posts.</span>
 </button>
+
+<button onclick="location.href='/hire-benjamin.html'">Hire Benjamin
+  <span class="tooltip-text">The code I write today is better than 2 weeks ago.</span>
+</button>
+
     </span>
 </div>
 
