@@ -86,6 +86,33 @@ a:hover .tooltip-text {
     display: block;
 }
 
+.spinner div {
+  width: 20px;
+  height: 20px;
+  background: limegreen;
+  animation: spinner 4s linear infinite;
+}
+
+.spinner div:nth-child(1) {
+    animation-delay: 2s;
+}
+.spinner div:nth-child(2) {
+    animation-delay: 1.5s;
+}
+.spinner div:nth-child(3) {
+    animation-delay: 0s;
+}
+.spinner div:nth-child(4) {
+    animation-delay: 1s;
+    background: var(--text);
+}
+
+@keyframes spinner {
+  0%, 100% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+}
+
+
 @media only screen and (max-width: 800px) {
 
 button:hover .tooltip-text {
@@ -96,13 +123,12 @@ a:hover .tooltip-text {
     display: none;
 }
 
-
 }
 
 </style>
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <button style="padding-top 12px; padding-bottom 12px;" id="navbar-toggle"><span>🔍</span>
+  <button style="padding-top 12px; padding-bottom 12px;" id="navbar-toggle"><span>[λ]</span>
   <span class="tooltip-text">This is your fathers rock. I mean this is the searchbar.</span>
   </button>
     <span style="margin-left: 1rem;">

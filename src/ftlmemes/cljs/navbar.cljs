@@ -130,6 +130,18 @@
                                         (mapcat :tags)
                                         (filter relevant-tag?))
                                        pages))
+
+(defn spinner []
+  [:div.spinner
+   {:style
+    {:width "40px"
+     :display :flex
+     :flex-wrap :wrap}}
+   [:div {:style {:grid-area :spinner-item}}]
+   [:div {:style {:grid-area :spinner-item}}]
+   [:div {:style {:grid-area :spinner-item}}]
+   [:div {:style {:grid-area :spinner-item}}]])
+
 (defn ui []
   [:div
    [search-bar
