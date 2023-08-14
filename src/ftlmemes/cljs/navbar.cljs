@@ -75,22 +75,41 @@
        (fn [{:keys [tags]}] (tags tag))
        (-> @state :pages)))]]])
 
-(defn page-ui [{:keys [path description tags]} state-tags]
-  [:li.hoverable
-   {:style {:padding "4px"
-            :display "block"
-            :background-color "var(--accent-bg)"
-            :margin-bottom "0.4rem"} }
-   [:a
-    {:href path :style {:display "block"}}
-    [:div
-     {:style {:display "flex"
-              :justify-content "space-between"
-              :align-items "center"
-              :flex-wrap "wrap"}}
-     [:div description]
+(defn highlight-search [text search-term]
+  (let [
+        ;; s "foo bar foo"
+        ;; search-term "bar"
+        s text]
+    (if-let [start (str/index-of s search-term)]
+      (let [end (+ (count search-term) start)]
+        {:prefix (subs s 0 start)
+         :highlight
+         (subs s start end)
+         :postfix (subs s end)})
+      {:postfix text})))
+
+(defn page-ui [{:keys [path description tags search-preview]} state-tags]
+  [:div {:style {:padding "4px" :margin-bottom "0.4rem"}}
+   [:li.hoverable
+    {:style {
+             :display "block"
+             :background-color
+             "var(--accent-bg)"} }
+    [:a
+     {:href path :style {:display "block"}}
      [:div
-      (doall (map #(tag-ui % state-tags) (sort tags)))]]]])
+      {:style {:display "flex"
+               :justify-content "space-between"
+               :align-items "center"
+               :flex-wrap "wrap"}}
+      [:div description]
+      [:div
+       (doall (map #(tag-ui % state-tags) (sort tags)))]]]]
+   (when (seq (:preview-lines search-preview))
+     [:div {:style {:margin-top "0.4rem"}}
+      (doseq [line (:preview-lines search-preview)]
+        (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
+          [:span prefix [:span {:style {:color "var(--accent)"}} highlight] postfix]))])])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
@@ -109,6 +128,12 @@
         (seq tags) (filter filter-tags)
         (<= 2 (count query)) (filter (filter-q))
         :always (map (fn [page] (update page :tags #(into #{} (filter relevant-tag? %))))))))
+
+(defn +search-result [pages search-result]
+  (if-not (seq search-result)
+    pages
+    (into {})
+    ))
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
@@ -134,20 +159,54 @@
 (defn spinner []
   [:div.spinner
    {:style
-    {:width "40px"
-     :display :flex
-     :flex-wrap :wrap}}
-   [:div {:style {:grid-area :spinner-item}}]
+    {:display :flex
+     :justify-content :center}}
    [:div {:style {:grid-area :spinner-item}}]
    [:div {:style {:grid-area :spinner-item}}]
    [:div {:style {:grid-area :spinner-item}}]])
 
+(defn search! [_q]
+  ;; (.then (js/fetch "/search" (clj->js {:method :post})) (comp println :foo reader/read-string))
+
+  )
+
+;; debounce
+;; then loading
+;; when back
+;; render
+;; posts -> lines
+
 (defn ui []
-  [:div
-   [search-bar
-    {:style {:margin-bottom "1rem"} :on-change #(swap! state assoc-in [:q :query] %)}]
-   [tags-ui @state (all-tags @state)]
-   (let [{:keys [tags] :as std} @state]
-     [posts-list {:posts (filtered-posts std) :tags tags}])])
+  (let [std @state]
+    [:div
+     [search-bar
+      {:style {:margin-bottom "1rem"} :on-change #(swap! state assoc-in [:q :query] %)}]
+     [tags-ui @state (all-tags @state)]
+     (let [{:keys [tags]} std]
+       [posts-list {:posts (take 3 (filtered-posts std)) :tags tags}])
+     (when (-> std :loading #{:posts})
+       [spinner])
+     ;; (let [{:keys [tags] :as std} @state]
+     ;;   [posts-list {:posts (filtered-posts std) :tags tags}])
+     ]))
 
 (rdom/render [ui] (.getElementById js/document "navbar"))
+
+(comment
+  (swap! state assoc :loading :posts)
+  (-> @state :loading #{:posts})
+  (def search-result
+    [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}])
+
+  (let [pages (:pages @state)
+        searched-pages (into {} (map (juxt :path identity)) search-result)]
+    (into {}
+          (map
+           (fn [{:keys [path]}]
+             ))
+          pages)
+    )
+
+
+
+  )
