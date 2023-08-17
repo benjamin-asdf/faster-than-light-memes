@@ -6,11 +6,13 @@
 
 (def rand-button (js/document.getElementById "rand-page-button"))
 
-(defn fetch-text [file cb]
-  (->
-   (js/fetch file)
-   (.then (fn [x] (.text x)))
-   (.then (fn [x] (cb x)))))
+(defn fetch-text
+  ([file cb] (fetch-text file cb {}))
+  ([file cb opts]
+   (->
+    (js/fetch file (clj->js opts))
+    (.then (fn [x] (.text x)))
+    (.then (fn [x] (cb x))))))
 
 (defn pages [cb]
   (fetch-text
@@ -89,6 +91,7 @@
       {:postfix text})))
 
 (defn page-ui [{:keys [path description tags search-preview]} state-tags]
+  (println search-preview)
   [:div {:style {:padding "4px" :margin-bottom "0.4rem"}}
    [:li.hoverable
     {:style {
@@ -107,9 +110,10 @@
        (doall (map #(tag-ui % state-tags) (sort tags)))]]]]
    (when (seq (:preview-lines search-preview))
      [:div {:style {:margin-top "0.4rem"}}
-      (doseq [line (:preview-lines search-preview)]
-        (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
-          [:span prefix [:span {:style {:color "var(--accent)"}} highlight] postfix]))])])
+      (doall
+       (for [line (:preview-lines search-preview)]
+         (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
+           [:span prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
@@ -129,11 +133,25 @@
         (<= 2 (count query)) (filter (filter-q))
         :always (map (fn [page] (update page :tags #(into #{} (filter relevant-tag? %))))))))
 
+#_(def search-result
+  {:results
+   [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}]
+   :q "alter"})
+
+(defn pages->lut [pages]
+  (into {} (map (juxt :path identity)) pages))
+
 (defn +search-result [pages search-result]
-  (if-not (seq search-result)
-    pages
-    (into {})
-    ))
+  (let [{:keys [results q]} search-result]
+    (if-not (seq results)
+      pages
+      (filter
+       :description
+       (vals
+        (merge-with
+         (fn [{:keys [lines]} p] (assoc p :search-preview {:preview-lines lines :q q}))
+         (pages->lut results)
+         (pages->lut pages)))))))
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
@@ -165,48 +183,75 @@
    [:div {:style {:grid-area :spinner-item}}]
    [:div {:style {:grid-area :spinner-item}}]])
 
-(defn search! [_q]
-  ;; (.then (js/fetch "/search" (clj->js {:method :post})) (comp println :foo reader/read-string))
+(defn debounce [f interval]
+  (let [id (atom nil)]
+    (fn [& args]
+      (when-let [last-id @id]
+        (js/clearTimeout last-id))
+      (reset!
+       id
+       (js/setTimeout
+        #(apply f args)
+        interval)))))
 
-  )
+(defn on-search-sucess [search-result]
+  (swap!
+   state
+   (fn [s]
+     (-> s
+         (assoc :search-result search-result)
+         (update :loading (fnil disj #{}) :posts)))))
 
-;; debounce
-;; then loading
-;; when back
-;; render
-;; posts -> lines
+(defn search-1 [q]
+  (swap! state update :loading (fnil conj #{}) :posts)
+  (fetch-text
+   "/search"
+   {:method :post
+    :headers {"Content-Type" "application/edn"
+              "accept" "application/edn"}
+    :body (prn-str {:q (subs q 0 255)})}
+   (comp on-search-sucess read-string))
+  #_(js/setTimeout (fn [] (on-search-sucess search-result)) 1000))
+
+(def search! (debounce search-1 500))
+
+(def no-result? :no-result?)
+
+(defn no-result-ui [{:keys [q]}] [:div "no content search results for " [:strong q]])
 
 (defn ui []
   (let [std @state]
     [:div
      [search-bar
-      {:style {:margin-bottom "1rem"} :on-change #(swap! state assoc-in [:q :query] %)}]
+      {:style {:margin-bottom "1rem"}
+       :on-change
+       (fn [q]
+         (when (< 3 (count q)) (search! q))
+         (swap! state assoc-in [:q :query] q))}]
      [tags-ui @state (all-tags @state)]
-     (let [{:keys [tags]} std]
-       [posts-list {:posts (take 3 (filtered-posts std)) :tags tags}])
-     (when (-> std :loading #{:posts})
-       [spinner])
-     ;; (let [{:keys [tags] :as std} @state]
-     ;;   [posts-list {:posts (filtered-posts std) :tags tags}])
-     ]))
+     (let [{:keys [tags search-result]} std
+           posts (filtered-posts std)
+           posts (if (no-result? search-result)
+                   posts
+                   (+search-result posts search-result))]
+       [:<>
+        [posts-list {:posts posts :tags tags}]
+        (when (no-result? search-result) [no-result-ui search-result])])
+     (when (-> std :loading :posts)
+       [spinner])]))
 
 (rdom/render [ui] (.getElementById js/document "navbar"))
 
 (comment
+  (search! "small")
+  (on-search-sucess {:q "foo" :no-result? true})
+  (-> @state :loading :posts)
   (swap! state assoc :loading :posts)
+  ;; (swap! state (fn [s]
+  ;;                (-> s
+  ;;                    (assoc :search-result search-result)
+  ;;                    (update :loading (fnil disj #{}) :posts))))
   (-> @state :loading #{:posts})
-  (def search-result
-    [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}])
-
-  (let [pages (:pages @state)
-        searched-pages (into {} (map (juxt :path identity)) search-result)]
-    (into {}
-          (map
-           (fn [{:keys [path]}]
-             ))
-          pages)
-    )
-
-
-
-  )
+  (first (+search-result (filtered-posts @state) @state))
+  {:path "screencasts.html", :description "Screencasts", :tags #{"video" "clojure" "emacs" "flow" "system"}}
+  (-> @state :search-result :results))
