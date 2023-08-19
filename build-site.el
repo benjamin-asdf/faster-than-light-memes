@@ -175,6 +175,7 @@
       org-html-style-default
       "<style>
   pre {
+
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     background-color: black;

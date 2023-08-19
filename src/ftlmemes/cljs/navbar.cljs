@@ -110,7 +110,7 @@
    (when (seq (:preview-lines search-preview))
      [:div {:style {:margin-top "0.4rem"}}
       (doall
-       (for [line (:preview-lines search-preview)]
+       (for [line (take 2 (:preview-lines search-preview))]
          (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
            [:span prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
 
@@ -203,7 +203,7 @@
 
 (defn search-1 [q]
   (swap! state update :loading (fnil conj #{}) :posts)
-  (.then
+  (->
    (js/fetch
     "/search"
     (clj->js
@@ -211,7 +211,8 @@
       :headers {"Content-Type" "application/edn"
                 "accept" "application/edn"}
       :body (prn-str {:q (subs q 0 255)})}))
-   (comp on-search-sucess read-string))
+   (.then #(.text %))
+   (.then (comp on-search-sucess read-string)))
   #_(js/setTimeout (fn [] (on-search-sucess search-result)) 1000))
 
 (def search! (debounce search-1 500))
