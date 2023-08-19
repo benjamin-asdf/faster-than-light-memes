@@ -91,7 +91,6 @@
       {:postfix text})))
 
 (defn page-ui [{:keys [path description tags search-preview]} state-tags]
-  (println search-preview)
   [:div {:style {:padding "4px" :margin-bottom "0.4rem"}}
    [:li.hoverable
     {:style {
@@ -204,12 +203,14 @@
 
 (defn search-1 [q]
   (swap! state update :loading (fnil conj #{}) :posts)
-  (fetch-text
-   "/search"
-   {:method :post
-    :headers {"Content-Type" "application/edn"
-              "accept" "application/edn"}
-    :body (prn-str {:q (subs q 0 255)})}
+  (.then
+   (js/fetch
+    "/search"
+    (clj->js
+     {:method :post
+      :headers {"Content-Type" "application/edn"
+                "accept" "application/edn"}
+      :body (prn-str {:q (subs q 0 255)})}))
    (comp on-search-sucess read-string))
   #_(js/setTimeout (fn [] (on-search-sucess search-result)) 1000))
 
