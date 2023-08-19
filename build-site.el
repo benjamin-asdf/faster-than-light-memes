@@ -143,9 +143,9 @@
     (concat
      "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>\n\n    <script crossorigin src=\"https://unpkg.com/react@17/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js\"> </script>\n\n\n\n    <script src=\"./navbar_toggle.js\"></script>\n    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>\n    <script src=\"./pixel.js\"></script>\n    \n"
      
-     (concat
-      "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
-<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\"></script>")
+     ;; (concat
+;;       "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+;; <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\"></script>")
      
      more
      (and (plist-get info :with-date)
