@@ -110,47 +110,41 @@
    (when (seq (:preview-lines search-preview))
      [:div {:style {:margin-top "0.4rem"}}
       (doall
-       (for [line (take 2 (:preview-lines search-preview))]
+       (for [line (take 25 (:preview-lines search-preview))]
          (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
-           [:span prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
+           [:span {:style {:margin-bottom "1px"} :display "block"} prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
-(defn filtered-posts [{:keys [q pages tags]}]
+(defn pages->lut [pages]
+  (into {} (map (juxt :path identity)) pages))
+
+(defn ->search-preview [{:keys [lines]} q]
+  {:preview-lines lines :q q})
+
+(defn filtered-posts [{:keys [q pages tags search-result]}]
   (let [{:keys [query]} q
         filter-tags (fn [page] (every? (:tags page) tags))
+        path->search-result (pages->lut (:results search-result))
         filter-q (fn []
                    (let [query (str/lower-case query)
                          words (str/split query #"\s+")
                          words-match? (fn [cand] (every? (fn [word] (str/index-of cand word)) words))]
                      (fn [{:keys [path description]}]
-                       (or (words-match? (str/lower-case description))
+                       (or (path->search-result path)
+                           (words-match? (str/lower-case description))
                            (words-match? (str/lower-case path))))))]
     (cond->>
         pages
         (seq tags) (filter filter-tags)
         (<= 2 (count query)) (filter (filter-q))
-        :always (map (fn [page] (update page :tags #(into #{} (filter relevant-tag? %))))))))
-
-#_(def search-result
-  {:results
-   [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}]
-   :q "alter"})
-
-(defn pages->lut [pages]
-  (into {} (map (juxt :path identity)) pages))
-
-(defn +search-result [pages search-result]
-  (let [{:keys [results q]} search-result]
-    (if-not (seq results)
-      pages
-      (filter
-       :description
-       (vals
-        (merge-with
-         (fn [{:keys [lines]} p] (assoc p :search-preview {:preview-lines lines :q q}))
-         (pages->lut results)
-         (pages->lut pages)))))))
+        :always (map (fn [page] (update page :tags #(into #{} (filter relevant-tag? %)))))
+        :always (map (fn [{:keys [path] :as page}]
+                       (assoc
+                        page
+                        :search-preview
+                        (when-let [prew (path->search-result path)]
+                          (->search-preview prew (:q search-result)))))))))
 
 (defn posts-list [{:keys [posts tags]}]
   (when (seq posts)
@@ -232,10 +226,7 @@
          (swap! state assoc-in [:q :query] q))}]
      [tags-ui @state (all-tags @state)]
      (let [{:keys [tags search-result]} std
-           posts (filtered-posts std)
-           posts (if (no-result? search-result)
-                   posts
-                   (+search-result posts search-result))]
+           posts (filtered-posts std)]
        [:<>
         [posts-list {:posts posts :tags tags}]
         (when (no-result? search-result) [no-result-ui search-result])])
@@ -249,10 +240,16 @@
   (on-search-sucess {:q "foo" :no-result? true})
   (-> @state :loading :posts)
   (swap! state assoc :loading :posts)
-  ;; (swap! state (fn [s]
-  ;;                (-> s
-  ;;                    (assoc :search-result search-result)
-  ;;                    (update :loading (fnil disj #{}) :posts))))
+  (def search-result
+  {:results
+   [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}]
+   :q "alter"})
+  (swap! state (fn [s]
+                 (-> s
+                     (assoc :search-result search-result)
+                     (update :loading (fnil disj #{}) :posts))))
+  (filtered-posts @state)
+  (->search-preview ((pages->lut (-> @state :search-result :results)) "the-joy-of-clojure.html") "fo")
   (-> @state :loading #{:posts})
   (first (+search-result (filtered-posts @state) @state))
   {:path "screencasts.html", :description "Screencasts", :tags #{"video" "clojure" "emacs" "flow" "system"}}

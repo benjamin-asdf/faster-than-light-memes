@@ -54,12 +54,13 @@
 
 (defun note->path (lst) (cdr (assq :path lst)))
 
+
 (dolist (path (ftlm/posts+index-files))
   (with-current-buffer
       (find-file-noselect path)
     (goto-char (point-min))
     (unless
-	(re-search-forward "#\\+EXPORT_FILE_NAME:" nil t)
+        (re-search-forward "#\\+EXPORT_FILE_NAME:" nil t)
       (goto-char (point-min))
       (re-search-forward "^$")
       (let ((inhibit-read-only t))
@@ -143,9 +144,9 @@
     (concat
      "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>\n\n    <script crossorigin src=\"https://unpkg.com/react@17/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js\"> </script>\n\n\n\n    <script src=\"./navbar_toggle.js\"></script>\n    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>\n    <script src=\"./pixel.js\"></script>\n    \n"
      
-     ;; (concat
-;;       "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
-;; <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\"></script>")
+     (concat
+      "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\"></script>")
      
      more
      (and (plist-get info :with-date)
@@ -303,5 +304,20 @@ backend."
      (ftlm/navbar-posts-denote-links))
     (save-buffer)))
 
+(defun build-search-index ()
+  (let ((dir "./public/search-index/"))
+    (make-directory dir t)
+    (cl-loop for f in (ftlm/posts+index-files)
+             for p = (with-current-buffer
+                         (find-file-noselect f)
+                       (goto-char (point-min))
+                       (re-search-forward "#\\+EXPORT_FILE_NAME:\\s-+\\(.*\\)")
+                       (match-string 1))
+             do (copy-file f (expand-file-name p dir) t))))
+
 (print-posts-list)
+
+(build-search-index)
+
+
 
