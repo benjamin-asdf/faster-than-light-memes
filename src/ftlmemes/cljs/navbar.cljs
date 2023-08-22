@@ -39,13 +39,16 @@
      (swap! state assoc :pages v))))
 
 (defn search-bar [{:keys [on-change]}]
-  (let [query (r/atom "")]
-    (fn []
-      [:input
-       {:type "text"
-        :value @query
-        :placeholder "Search..."
-        :on-change (fn [e] (on-change (reset! query (-> e .-target .-value))))}])))
+  (fn []
+    [:input
+     {:style {:margin-bottom "0px"}
+      :type "text"
+      :value (-> @state :q :query)
+      :placeholder "Search..."
+      :on-change (fn [e] (on-change
+                          (let [q (-> e .-target .-value)]
+                            (swap! state assoc-in [:q :query] q)
+                            q)))}]))
 
 (defn toggle-tag-fn [tag on?] (fn [std] (update std :tags (if on? disj conj) tag)))
 
@@ -112,7 +115,7 @@
       (doall
        (for [line (take 25 (:preview-lines search-preview))]
          (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
-           [:span {:style {:margin-bottom "1px"} :display "block"} prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
+           [:span {:style {:margin-bottom "1px" :display "block"}} prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
@@ -218,12 +221,16 @@
 (defn ui []
   (let [std @state]
     [:div
-     [search-bar
-      {:style {:margin-bottom "1rem"}
-       :on-change
-       (fn [q]
-         (when (< 3 (count q)) (search! q))
-         (swap! state assoc-in [:q :query] q))}]
+     [:div {:style {:display :flex
+                    :justify-content "center"
+                    :align-items "center"
+                    :margin-bottom "1rem"
+                    :margin-top "0.5rem"}}
+      [search-bar
+       {:on-change
+        (fn [q]
+          (when (< 3 (count q)) (search! q)))}]
+      [:button {:style {:margin-left "4px"} :on-click (fn [_] (swap! state dissoc :q :search-result))} "clear"]]
      [tags-ui @state (all-tags @state)]
      (let [{:keys [tags search-result]} std
            posts (filtered-posts std)]
