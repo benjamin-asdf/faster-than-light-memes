@@ -208,6 +208,7 @@
         "org-site:main"
         :org-html-preamble t
         :html-postamble #'build-postamle
+        :with-broken-links t
         :html-preamble-format `(("en" ,(get-preamble)))
         :recursive t
         :exclude ".*"
@@ -225,6 +226,8 @@
        (list
         "org-site:index"
         :org-html-preamble t
+        :with-broken-links t
+
         :html-postamble (lambda (info)
                           (build-postamle
                            info
