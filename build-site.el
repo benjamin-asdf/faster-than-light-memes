@@ -3,6 +3,13 @@
 ;; I just load my config for the visuals
 (load-file "~/.emacs.d/init.el")
 (use-package htmlize)
+(require 'edraw)
+(with-eval-after-load
+      "ox"
+    (require 'edraw-org)
+    (edraw-org-setup-exporter))
+
+
 
 (require 'ox-publish)
 (require 'denote)
@@ -53,7 +60,6 @@
   (mapcar #'ftlm/post-data files))
 
 (defun note->path (lst) (cdr (assq :path lst)))
-
 
 (dolist (path (ftlm/posts+index-files))
   (with-current-buffer
