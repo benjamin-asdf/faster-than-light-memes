@@ -11,7 +11,7 @@
     --text-light: #585858;
     --border: #898ea4;
     --accent: #0d47a1;
-    --code: #F689FF;
+    --code: #C900DB; 
     --preformatted: #444;
     --marked: #ffdd33;
     --disabled: #efefef;
@@ -20,11 +20,11 @@
     ::backdrop,
     :root {
         color-scheme: dark;
-        --bg: #212121;
-        --accent-bg: #2b2b2b;
-        --text: #dcdcdc;
-        --text-light: #ababab;
-        --accent: #ffb300;
+        --bg: #121218
+        --accent-bg: black;
+        --text: #faf7f7;
+        --text-light: #404040
+        --accent: #feb48f;
         --code: #F689FF;
         --preformatted: #ccc;
         --disabled: #111;
@@ -59,9 +59,8 @@ body {
     
 }
 
-
 #content {
-    max-width: 1500px;
+    max-width: 80ch;
     margin-left: auto;
     margin-right: auto;
 }
@@ -508,3 +507,12 @@ dialog::backdrop {
     margin: 2rem 0;
 }
 
+
+.org-src-container {
+    margin-left: -5vw;
+    min-width: 50vw;
+}
+
+/* .figure { */
+/*     margin-left: -5vw; */
+/* } */
