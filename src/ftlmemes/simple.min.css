@@ -20,18 +20,16 @@
     ::backdrop,
     :root {
         color-scheme: dark;
-        --bg: #121218
-        --accent-bg: black;
+        --bg: #121218;
+        --mint: #a1fe9a;
+        --accent-bg: #feb48f;
         --text: #faf7f7;
-        --text-light: #404040
+        --text-light: white;
+        --text-accent: #404040;
         --accent: #feb48f;
         --code: #F689FF;
         --preformatted: #ccc;
         --disabled: #111;
-    }
-    img,
-    video {
-        opacity: 0.8;
     }
 }
 *,
@@ -95,7 +93,7 @@ body > #postamble {
     color: var(--text-light);
     font-size: 1rem;
     border-top: 1px solid var(--border);
-    max-width: 1500px;
+    max-width: 80ch;
     margin-left: auto;
     margin-right: auto;
 }
@@ -163,9 +161,9 @@ input[type="submit"],
 label[type="button"] {
     border: none;
     border-radius: var(--standard-border-radius);
-    background-color: var(--accent);
+    background-color: var(--accent-bg);
+    color: var(--text-accent);
     font-size: 1rem;
-    color: var(--bg);
     padding: 0.7rem 0.9rem;
     margin: 0.5rem 0;
     text-decoration: none;

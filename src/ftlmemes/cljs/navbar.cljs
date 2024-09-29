@@ -32,7 +32,7 @@
 
 (.addEventListener rand-button "click" rand-page!)
 
-(def state (r/atom {:tags #{}}))
+(def state (r/atom {:tags #{} :navbar-open? false}))
 (pages
  (fn [v]
    (let [v (map #(update % :tags set) v)]
@@ -56,9 +56,9 @@
   [:button
    {:style
     {:margin-left "1rem"
-     :height "1.5rem"
-     :padding "4px"
-     :font-size "0.9rem"
+     ;; :height ""
+     :padding "1rem"
+     :font-size "16px"
      :color
      (if (the-tags tag) "black" "white")
      :background-color
@@ -74,11 +74,15 @@
     tag
     [:strong
      {:style
-      {:padding "2px" :border "1px solid" :border-radius "20%"}}
-     (count
-      (filter
-       (fn [{:keys [tags]}] (tags tag))
-       (-> @state :pages)))]]])
+      {:padding "1px"
+       }}
+     (str
+      " "
+      (count
+       (filter
+        (fn [{:keys [tags]}] (tags tag))
+        (-> @state :pages)))
+      "")]]])
 
 (defn highlight-search [text search-term]
   (let [
@@ -93,29 +97,33 @@
          :postfix (subs s end)})
       {:postfix text})))
 
-(defn page-ui [{:keys [path description tags search-preview]} state-tags]
-  [:div {:style {:padding "4px" :margin-bottom "0.4rem"}}
-   [:li.hoverable
-    {:style {
-             :display "block"
-             :background-color
-             "var(--accent-bg)"} }
-    [:a
-     {:href path :style {:display "block"}}
+(defn page-ui
+  [{:keys [path description tags search-preview]}
+   state-tags]
+  [:div {:style {:margin-bottom "0.4rem" :padding "4px"}}
+   [:li.hoverable {:style {:display "block"}}
+    [:a {:href path :style {:display "block"}}
      [:div
-      {:style {:display "flex"
-               :justify-content "space-between"
-               :align-items "center"
-               :flex-wrap "wrap"}}
+      {:style {:align-items "center"
+               :display "flex"
+               :flex-wrap "wrap"
+               :justify-content "space-between"}}
       [:div description]
       [:div
        (doall (map #(tag-ui % state-tags) (sort tags)))]]]]
    (when (seq (:preview-lines search-preview))
      [:div {:style {:margin-top "0.4rem"}}
       (doall
-       (for [line (take 25 (:preview-lines search-preview))]
-         (let [{:keys [prefix highlight postfix]} (highlight-search line (:q search-preview))]
-           [:span {:style {:margin-bottom "1px" :display "block"}} prefix [:span {:style {:color "var(--accent)"}} highlight] postfix])))])])
+        (for [line (take 25
+                         (:preview-lines search-preview))]
+          (let [{:keys [prefix highlight postfix]}
+                  (highlight-search line
+                                    (:q search-preview))]
+            [:span
+             {:style {:display "block"
+                      :margin-bottom "1px"}} prefix
+             [:span {:style {:color "var(--accent)"}}
+              highlight] postfix])))])])
 
 (def relevant-tag? (complement #{"public" "feed"}))
 
@@ -218,7 +226,7 @@
 
 (defn no-result-ui [{:keys [q]}] [:div "no content search results for " [:strong q]])
 
-(defn ui []
+(defn navbar-ui []
   (let [std @state]
     [:div
      [:div {:style {:display :flex
@@ -240,17 +248,46 @@
      (when (-> std :loading :posts)
        [spinner])]))
 
-(rdom/render [ui] (.getElementById js/document "navbar"))
+(defn ui [] [navbar-ui])
+
+(defn topbar-button
+  []
+  [:div {:style {:display "flex"}}
+   [:button
+    {:onClick (fn []
+                (let
+                  [e (.getElementById js/document "topbar")]
+                  (swap! state update :navbar-open? not)
+                  (if (:navbar-open? @state)
+                    (set! (.. e -style -display) "block")
+                    (set! (.. e -style -display) "none"))
+                  (.. js/console (log e))))} "navbar"]])
+
+(rdom/render [navbar-ui] (.getElementById js/document "navbar"))
+(rdom/render [topbar-button] (.getElementById js/document "topbar-button"))
 
 (comment
+  (set!
+   (.getElementById js/document "topbar")
+   )
+
+
+
+  (.getElementById js/document "topbar-button")
+
+
+  (println (.getElementById js/document "navbar2"))
+
+  (reset! state nil)
+
   (search! "small")
   (on-search-sucess {:q "foo" :no-result? true})
   (-> @state :loading :posts)
   (swap! state assoc :loading :posts)
   (def search-result
-  {:results
-   [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}]
-   :q "alter"})
+    {:results
+     [{:lines ["An alternative title for this post could be <i>Joy is power</i>"], :path "the-joy-of-clojure.html"} {:lines ["The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully."], :path "conversation-1.html"} {:lines ["alternative clients for some reason)."], :path "extending-your-reach.html"} {:lines ["A simple alternative: make files."], :path "scratching-in-space.html"}]
+     :q "alter"})
   (swap! state (fn [s]
                  (-> s
                      (assoc :search-result search-result)
