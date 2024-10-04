@@ -8,9 +8,11 @@
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
          build
          (do
-           (shell "emacs"
-                  ;; "-Q"
-                  "--script" "build-site.el")
+           (shell
+            ;; "emacs"
+            "/home/benj/repos/emacs/src/emacs"
+            ;; "-Q"
+            "--script" "build-site.el")
            (shell "bb" "src/ftlmemes/gen_pages.clj"))
          serve-local
          {:depends [build]
