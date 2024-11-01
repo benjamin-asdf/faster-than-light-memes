@@ -73,7 +73,7 @@
                "zoology"]
     :title "Konrad Lorenz"
     :youtube-link
-      "https://www.youtube.com/embed/IysBMqaSAC8?si=Kz1LJ8TMj_voYQC4"}])
+    "https://www.youtube.com/embed/IysBMqaSAC8?si=Kz1LJ8TMj_voYQC4"}])
 
 (defn keyword-button
   []
@@ -141,7 +141,8 @@
                      ;; :ml-20
                      ;; {:max-height "26px"}
                      ;; :bg-red-200
-                )} (keyword-button)]]
+                     )}
+        (keyword-button)]]
       [:div
        {:class (css :grid
                     [:sm :grid-cols-1]
