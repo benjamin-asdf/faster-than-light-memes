@@ -156,10 +156,10 @@
        {:src "documentaries.cljs"
         :type "application/x-scittle"}]]]))
 
-[{:gen/file "documentaries.html"
-  :gen/content (page)}]
-
 (comment
   (ftlmemes.page.gen/gen-html!
    {:gen/file "documentaries.html"
     :gen/content (page)}))
+
+[{:gen/file "documentaries.html"
+  :gen/content (page)}]

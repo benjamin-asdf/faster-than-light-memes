@@ -18,7 +18,7 @@
                       {})
                      (cb/generate
                       '{:ui {:entries [ftlmemes.page.pages.documentaries]}})
-                     ;; (cb/minify)
+                     (cb/minify)
                      (cb/write-outputs-to
                       (io/file "public" "css")))]
     (doseq

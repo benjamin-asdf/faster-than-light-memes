@@ -6,20 +6,26 @@
   :blog-root "https://faster-than-light-memes.xyz/"}
  :tasks {:init
          (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
-         build
-         (do
-           (shell
-            ;; "emacs"
-            "/home/benj/repos/emacs/src/emacs"
-            ;; "-Q"
-            "--script" "build-site.el")
-           (shell "bb" "src/ftlmemes/gen_pages.clj"))
+
+
          build-css
          ;; -----------------------------
          {:requires ([dev.build])
           :task
           (dev.build/css-release)}
          ;; -------------------------------
+
+
+         build {:depends [build-css]
+                :task
+                (do
+                  (shell
+                   ;; "emacs"
+                   "/home/benj/repos/emacs/src/emacs"
+                   ;; "-Q"
+                   "--script" "build-site.el")
+                  (shell "bb" "src/ftlmemes/gen_pages.clj"))}
+
          css-watch
          (clojure "-X:dev dev.repl/watch-css")
          serve-local

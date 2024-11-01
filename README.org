@@ -22,6 +22,36 @@ You need to set ~ftlm/index-file~ and ~denote-directory~ in =build-site.el=.
 
 https://github.com/babashka/http-server
 
+** gen html with clojure, gen css with shadow-css
+
+Resources:
+
+- [[https://github.com/thheller/shadow-css][shadow-css]]
+- [[https://code.thheller.com/blog/shadow-cljs/2024/10/30/supercharging-the-repl-workflow.html][Thomas Heller REPL blog post]]
+- screencast (soon)
+
+Files:
+
+- [[file:src/dev/build.clj]] - shadow-css build
+- [[file:src/dev/repl.clj]] - shadow-css file watcher
+- [[file:src/ftlmemes/gen_pages.clj]] - script for building html
+
+Bb tasks:
+
+- build-css
+- css-watch
+- build:
+
+#+begin_src
+  (shell "bb" "src/ftlmemes/gen_pages.clj")
+#+end_src
+
+All build steps run with babashka, which is fast!
+For development, I run a clj repl.
+
+(Currently, the build duration is dominated by the emacs org html gen).
+
+
 * Acknowledgments
 
 Thanks to System Crafters for getting me started:
