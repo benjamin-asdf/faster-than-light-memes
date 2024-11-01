@@ -1,7 +1,10 @@
-(ns ftlmemes.page.hire-me
-  (:require
-   [hiccup.util :as html]
-   [hiccup.page :as hp]))
+(ns
+    ftlmemes.page.pages.hire-me
+    (:require
+     [hiccup.util :as html]
+     [hiccup.page :as hp]))
+
+
 
 (def primary "#00FF00")
 (def secondary "#00FFFF")
@@ -249,11 +252,12 @@ I speak up when I see anything amiss and document limitations with the software 
      (html/raw-string
       "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
 ")
+
      ;; (html/raw-string
-;;       "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
-;;     <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
-;;     <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script>
-;; ")
+     ;;       "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>
+     ;;     <script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+     ;;     <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script>
+     ;; ")
      [:script {:type "application/x-scittle" :src "hire-me.cljs"}]]]))
 
 [{:gen/file "hire-benjamin.html"

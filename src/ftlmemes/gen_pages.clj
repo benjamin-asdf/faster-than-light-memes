@@ -1,18 +1,19 @@
 (ns ftlmemes.gen-pages
   (:require
    [clojure.string :as str]
-   [babashka.fs :as fs]))
+   [babashka.fs :as fs]
+   [ftlmemes.page.gen]))
 
-(def output-dir "public")
+(defn gen-all []
+  (run!
+   ftlmemes.page.gen/gen-html!
+   (sequence
+    (comp
+     (map str)
+     (filter #(re-find #"\.clj$" %))
+     (mapcat load-file))
+    (file-seq (fs/file "src/ftlmemes/page/pages")))))
 
-(doseq [{:gen/keys [file content]} (sequence
-                                    (comp
-                                     (map str)
-                                     (filter #(re-find #"\.clj$" %))
-                                     (mapcat load-file))
-                                    (file-seq (fs/file "src/ftlmemes/page")))
-        :let [file (fs/file output-dir file)]]
-  (println (str file))
-  (spit file content))
+(gen-all)
 
 ;; http://localhost:8081/hire-benjamin.html

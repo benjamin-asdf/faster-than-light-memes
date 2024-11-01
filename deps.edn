@@ -1,7 +1,15 @@
-{:paths ["src" "resources"],
+{
+ :paths ["src" "resources"],
  :deps
- {selmer/selmer #:mvn{:version "1.12.50"},
-  org.clojure/clojure #:mvn{:version "1.11.1"},
+ {
+
+  com.thheller/shadow-css {:mvn/version "0.4.6"}
+  thheller/shadow-cljs {:mvn/version "2.28.18"}
+
+  selmer/selmer #:mvn{:version "1.12.50"},
+
+  ;; org.clojure/clojure #:mvn{:version "1.11.1"},
+
   ftlm/ftlm #:local{:root "."},
   org.clojure/tools.logging #:mvn{:version "1.1.0"},
   insn/insn #:mvn{:version "0.5.2"},
@@ -30,4 +38,8 @@
   org.clojure/data.priority-map #:mvn{:version "1.1.0"},
   nrepl/bencode #:mvn{:version "1.1.0"},
   org.clojure/core.async #:mvn{:version "1.6.673"},
-  http-kit/http-kit #:mvn{:version "2.6.0-RC1"}}}
+  http-kit/http-kit #:mvn{:version "2.6.0-RC1"}}
+
+ :aliases
+ {:dev
+  {:extra-paths ["src/dev"]}}}

@@ -14,6 +14,12 @@
             ;; "-Q"
             "--script" "build-site.el")
            (shell "bb" "src/ftlmemes/gen_pages.clj"))
+         build-css
+         ;; -----------------------------
+         {:requires ([dev.build])
+          :task
+          (dev.build/css-release)}
+         ;; -------------------------------
          serve-local
          {:depends [build]
           :task
