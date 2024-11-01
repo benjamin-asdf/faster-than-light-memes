@@ -1,34 +1,36 @@
 (ns dev.repl
   (:require
-   [shadow.cljs.devtools.server :as server]
-   [shadow.cljs.devtools.api :as cljs]
-   [shadow.cljs.devtools.cli]
-   [shadow.cljs.devtools.server.fs-watch :as fs-watch]
    [clojure.java.io :as io]
-   [shadow.css.build :as build]))
+   [dev.build :as build]
+   [shadow.cljs.devtools.api :as shadow]
+   [shadow.cljs.devtools.server.fs-watch :as fs-watch]))
 
 (defonce css-watch-ref (atom nil))
 
-(comment
-  (generate-css))
+(defn start
+  {:shadow/requires-server true}
+  []
 
-(defn start []
-  (server/start!)
+  ;; this is optional
+  ;; if using shadow-cljs you can start a watch from here
+  ;; same as running `shadow-cljs watch your-build` from the command line
+  ;; (shadow/watch :your-build)
 
-  ;; (cljs/watch :ui)
-
+  ;; build css once on start
   (build/css-release)
 
+  ;; then setup the watcher that rebuilds everything on change
   (reset! css-watch-ref
     (fs-watch/start
-     {}
-     [(io/file "src" "ftlmemes" "page" "pages")]
-     ["cljs" "cljc" "clj"]
-     (fn [updates]
-       (try
-         (build/css-release)
-         (catch Exception e
-           (prn [:css-failed e]))))))
+      {}
+      [(io/file "src" "ftlmemes" "page" "pages")]
+      ["cljs" "cljc" "clj"]
+      (fn [_]
+        (try
+          (println "refresh css")
+          (build/css-release)
+          (catch Exception e
+            (prn [:css-failed e]))))))
 
   ::started)
 
@@ -36,9 +38,16 @@
   (when-some [css-watch @css-watch-ref]
     (fs-watch/stop css-watch))
 
-  (server/stop!)
   ::stopped)
 
 (defn go []
   (stop)
   (start))
+
+(defn watch-css [_]
+  (go)
+  (println "started watch-css")
+  (deref (promise)))
+
+(comment
+  (go))

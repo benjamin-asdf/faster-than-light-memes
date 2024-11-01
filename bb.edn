@@ -20,6 +20,8 @@
           :task
           (dev.build/css-release)}
          ;; -------------------------------
+         css-watch
+         (clojure "-X:dev dev.repl/watch-css")
          serve-local
          {:depends [build]
           :task
