@@ -12,6 +12,18 @@
 (def button-text-color "#FFFFFF")
 
 (defn
+  grid-card
+  [{:keys []}]
+  [:div
+   {:class (css
+             :shadow
+             :bg-red-500
+             {:min-height "350px"}
+             {:min-width "250px"}
+             )}
+   ""])
+
+(defn
   page
   []
   (hp/html5
@@ -37,14 +49,44 @@
         [:title
          "FTLM - Historical Science Documentaries"]]
        [:body
+        {:class (css
+                  :w-full
+                  :h-full
+                  :bg-black
+                  {:color "white"}
+                  :font-mono)}
         [:div
+         ;; title area
          {:class (css
                    :flex
-                   :px-6
-                   :shadow
-                   {:color "yellow"})
-          }
-         "foo 3"]
+                   :items-center
+                   :justify-center
+                   :w-full
+                   :h-full
+                   )}
+         [:div
+          {:class (css
+                    :mt-6
+                    :font-bold
+                    :text-4xl)}
+          "Documentaries"]]
+        [:div
+         {:class
+          (css :bg-purple-800
+               :grid
+               :grid-cols-3
+               :gap-3
+               :p-3
+               :w-full
+               :h-full
+               )}
+
+         (list
+          (grid-card {})
+          (grid-card {})
+          (grid-card {}))
+         ]
+
         ;;     <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js\" type=\"application/javascript\"></script>
         ;; ")
         ;; [:script {:type "application/x-scittle" :src ""}]
