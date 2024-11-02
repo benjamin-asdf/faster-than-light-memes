@@ -1,5 +1,8 @@
 /* thanks https://cdn.simplecss.org/simple.min.css */
 
+
+/* thanks https://cdn.simplecss.org/simple.min.css */
+
 ::backdrop,
 :root {
     --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif;
@@ -49,10 +52,11 @@ html {
     font-family: var(--sans-font);
     scroll-behavior: smooth;
 }
+
 body {
     color: var(--text);
     background-color: var(--bg);
-    font-size: 1.15rem;
+    font-size: 18px;
     line-height: 1.5;
     
 }
@@ -214,6 +218,7 @@ aside,
 details,
 progress {
     background-color: var(--accent-bg);
+    color: var(--text-accent);
     border: 1px solid var(--border);
     border-radius: var(--standard-border-radius);
     margin-bottom: 1rem;
@@ -293,11 +298,14 @@ th {
 }
 th {
     background-color: var(--accent-bg);
+    color: var(--text-accent);
     font-weight: 700;
 }
 tr:nth-child(even) {
     background-color: var(--accent-bg);
+    color: var(--text-accent);
 }
+
 table caption {
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -465,10 +473,14 @@ progress {
 }
 progress:indeterminate {
     background-color: var(--accent-bg);
+        color: var(--text-accent);
+
 }
 progress::-webkit-progress-bar {
     border-radius: var(--standard-border-radius);
     background-color: var(--accent-bg);
+        color: var(--text-accent);
+
 }
 progress::-webkit-progress-value {
     border-radius: var(--standard-border-radius);
@@ -482,6 +494,8 @@ progress::-moz-progress-bar {
 }
 progress:indeterminate::-moz-progress-bar {
     background-color: var(--accent-bg);
+        color: var(--text-accent);
+
 }
 dialog {
     max-width: 40rem;
@@ -499,6 +513,7 @@ dialog::backdrop {
 }
 .notice {
     background: var(--accent-bg);
+    color: var(--text-accent);
     border: 2px solid var(--border);
     border-radius: 5px;
     padding: 1.5rem;
@@ -511,6 +526,4 @@ dialog::backdrop {
     min-width: 50vw;
 }
 
-/* .figure { */
-/*     margin-left: -5vw; */
-/* } */
+
