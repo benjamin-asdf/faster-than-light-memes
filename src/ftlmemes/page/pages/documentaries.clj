@@ -4,19 +4,25 @@
             [hiccup.util :as html]
             [hiccup.page :as hp]))
 
+
+
 (defn keywords-ui
   [words]
-  [:div
-   {:class (css :font-bold)}
-   (interpose
-    [:span ", "]
-    (map
-     (fn [w]
-       [:button
-        {:data-word w
-         :onClick (str "onClickKeyword(event," (format "'%s'" w) ");")}
-        [:span w]])
-     words))])
+  [:div {:class (css :font-bold)}
+   (map-indexed
+    (fn [idx w]
+      [:button
+       {:data-word w
+        :onClick (str "onClickKeyword(event,"
+                      (format "'%s'" w)
+                      ");")}
+       [:span (str w (when (< idx (dec (count words))) ","))]])
+    words)])
+
+(comment
+  (def words ["foo" "bar"])
+  (keywords-ui words))
+
 
 (defmulti render-content (fn [kind _] kind))
 (defmethod render-content :content/keywords
@@ -24,7 +30,9 @@
   (keywords-ui keywords))
 
 (defn grid-card
-  [{:as opts :keys [content youtube-link title link]}]
+  [{:as opts
+    :keys [content youtube-link title link preview
+           youtube-link-no-embed]}]
   [:div
    {:class (css "grid-card"
                 :shadow
@@ -38,41 +46,33 @@
     :data-grid-config (json/write-str opts)}
    [:div {:class (css :flex :flex-col :h-full)}
     [:div {:class (css :flex :justify-center)}
-     [:div
-      {:class (css :rounded
-                   :overflow-hidden
-                   ;; {:width "250"
-                   ;;  :height "250"}
-              )}
-      (html/raw-string
-        (format
-          "<iframe height=\"250\" width=\"250\" src=\"%s\" title=\"%s\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+     (list
+       (when youtube-link
+         [:div
+          {:class (css :rounded
+                       :overflow-hidden
+                       ;; {:width "250"
+                       ;;  :height "250"}
+                  )}
+          (html/raw-string
+            (format
+              "<iframe height=\"250\" width=\"250\" src=\"%s\" title=\"%s\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
 "
-          youtube-link
-          title))]]
+              youtube-link
+              title))])
+       preview)]
     [:div
      {:class (css :flex :flex-col
                   :justify-between :h-full
                   :mt-2 :rounded
-
-                  :border-2
-                  :p-2
-                  :border-black
-                  :bg-red-100
-
-                  )}
+                  :border-2 :p-2
+                  :border-black :bg-red-100)}
      [:div
       {:class (css :w-full
                    :text-xl :py-1
                    :flex :items-center
                    :text-center :justify-center)} title]
-     [:div
-      {:class (css
-                :rounded
-                :p-2
-                :bg-green-200
-
-                )}
+     [:div {:class (css :rounded :p-2 :bg-green-200)}
       (map (fn [k] (render-content k opts)) content)]]]])
 
 (def documentaries-config
@@ -91,10 +91,30 @@
    {:content [:content/keywords]
     :keywords ["theoretical" "physics" "time-travel"
                "sci-fy"]
+    :preview
+      [:a
+       {:href
+          "https://youtu.be/C6_gxoLwrWw?si=3SPJcI4UrW9o1h7B"}
+       [:img
+        {:height "250"
+         :src
+           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXHRHFpjiFI7n-U0cpRcXD18czNsWJ_npzFA&s"
+         :width "250"}]]
     :title
-      "David Deutsch - Time Travel amongst other things"
-    :youtube-link
-      "https://www.youtube.com/embed/C6_gxoLwrWw?si=Kq_O0r4Fy-Wi6cki"}
+      "David Deutsch - Time Travel amongst other things"}
+   {:content [:content/keywords]
+    :keywords ["computer-science" "computer" "Ada Lovelace"]
+    :preview
+      [:a
+       {:href
+          "https://youtu.be/QgUVrzkQgds?si=2Qrbb0jKpA2_llgY"}
+       [:img
+        {:height "250"
+         :src
+           "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg"
+         :width "250"}]]
+    :title
+      "BC DOCUMENTARY : Calculating Ada - The Countess of Computing"}
    {:content [:content/keywords]
     :keywords ["theoretical" "physics" "cybernetics"
                "design" "beauty" "elegance" "art"
@@ -117,14 +137,6 @@
     :title "Vectors of Cognitive AI: Self-Organization"
     :youtube-link
       "https://www.youtube.com/embed/NEf8LnTD0AA?si=5fCPywETdZRxzzhq"}
-   ;; <iframe width="560" height="315"
-   ;; src="https://www.youtube.com/embed/Mc6YFUoPWSI?si=kg0PF0OiBl3nF810"
-   ;; title="YouTube video player" frameborder="0"
-   ;; allow="accelerometer; autoplay; clipboard-write;
-   ;; encrypted-media; gyroscope; picture-in-picture;
-   ;; web-share"
-   ;; referrerpolicy="strict-origin-when-cross-origin"
-   ;; allowfullscreen></iframe>
    {:content [:content/keywords]
     :keywords ["neurophilosophy" "cybernetics" "philosophy"
                "Heinz Von Foerster" "Humberto Maturana"
@@ -170,8 +182,8 @@
   []
   [:button#keyword-button
    {:class (css {:display
-                   ;; "flex"
-                   "none"}
+                 ;; "flex"
+                 "none"}
                 ;; :flex
                 :justify-center
                 :items-center {:color "black"
@@ -251,14 +263,9 @@
          {:src "documentaries.cljs"
           :type "application/x-scittle"}]]]))
 
-(comment
-  (ftlmemes.page.gen/gen-html!
-   {:gen/file "documentaries.html"
-    :gen/content (page)}))
-
 [{:gen/file "documentaries.html"
   :gen/content (page)}]
 
-;; (ftlmemes.page.gen/gen-html!
-;;    {:gen/file "documentaries.html"
-;;     :gen/content (page)})
+(ftlmemes.page.gen/gen-html!
+   {:gen/file "documentaries.html"
+    :gen/content (page)})
