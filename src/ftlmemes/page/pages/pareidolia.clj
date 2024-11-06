@@ -3,20 +3,8 @@
    ;; [clojure.data.json :as json]
    [shadow.css :refer (css)]
    ;; [hiccup.util :as html]
-   ;; [ftlmemes.page.ui.ui :as ui]
+   [ftlmemes.page.ui.ui :as ui]
    [hiccup.page :as hp]))
-
-(defn home-button
-  []
-  [:a
-   {:class (css :rounded
-                :p-3
-                ;; :bg-red-100
-                {:background "#feb48f"
-                 :color "black"
-                 :height "25px"
-                 :width "25px"})
-    :href "/"} "Home"])
 
 (defn divider
   []
@@ -240,7 +228,7 @@
                    {:color "white"}
                    :font-mono)}
       [:div {:class (css :absolute {:left "5%" :top "5%"})}
-       (home-button)]
+       (ui/home-button)]
       [:div
        {:class (css :flex :items-center
                     :justify-end :w-full)}
