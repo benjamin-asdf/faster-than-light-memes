@@ -17,7 +17,9 @@
                        "pages")
                       {})
                      (cb/generate
-                      '{:ui {:entries [ftlmemes.page.pages.documentaries]}})
+                      '{:ui {:entries
+                             [ftlmemes.page.pages.documentaries
+                              ftlmemes.page.pages.pareidolia]}})
                      (cb/minify)
                      (cb/write-outputs-to
                       (io/file "public" "css")))]

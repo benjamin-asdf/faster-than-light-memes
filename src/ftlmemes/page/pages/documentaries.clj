@@ -4,20 +4,33 @@
             [hiccup.util :as html]
             [hiccup.page :as hp]))
 
-
+(defn home-button
+  []
+  [:a
+   {:class (css :rounded
+                :p-3
+                ;; :bg-red-100
+                {
+                 :background "#feb48f"
+                 :color "black"
+                 :height "25px"
+                 :width "25px"})
+    :href "/"} "Home"])
 
 (defn keywords-ui
   [words]
   [:div {:class (css :font-bold)}
-   (map-indexed
-    (fn [idx w]
-      [:button
-       {:data-word w
-        :onClick (str "onClickKeyword(event,"
-                      (format "'%s'" w)
-                      ");")}
-       [:span (str w (when (< idx (dec (count words))) ","))]])
-    words)])
+   (interpose
+    [:span " "]
+    (map-indexed
+     (fn [idx w]
+       [:button
+        {:data-word w
+         :onClick (str "onClickKeyword(event,"
+                       (format "'%s'" w)
+                       ");")}
+        [:span (str w (when (< idx (dec (count words))) ","))]])
+     words))])
 
 (comment
   (def words ["foo" "bar"])
@@ -40,7 +53,7 @@
                 :p-2
                 {:color "black"}
                 :font-semibold
-                :rounded-sm
+                :rounded
                 {:min-height "350px"}
                 {:min-width "250px"})
     :data-grid-config (json/write-str opts)}
@@ -66,7 +79,9 @@
                   :justify-between :h-full
                   :mt-2 :rounded
                   :border-2 :p-2
-                  :border-black :bg-red-100)}
+                  :border-black
+                  :bg-red-100
+                  )}
      [:div
       {:class (css :w-full
                    :text-xl :py-1
@@ -176,7 +191,7 @@
     :title
       " BS 172 \"The Brain from the Inside Out\" with György Buzsáki"
     :youtube-link
-      "https://www.youtube.com/embed/pJhlMsc2UKQ?si=foBnhrtW_TQ_k9xJ"}])
+    "https://www.youtube.com/embed/pJhlMsc2UKQ?si=foBnhrtW_TQ_k9xJ"}])
 
 (defn keyword-button
   []
@@ -225,6 +240,9 @@
                      {:color "white"}
                      :font-mono)}
         [:div
+         {:class (css :absolute {:top "5%" :left "5%"})}
+         (home-button)]
+        [:div
          {:class (css :flex :items-center
                       :justify-end :w-full)}
          [:div
@@ -238,8 +256,8 @@
            [:div
             {:class (css :font-bold :text-4xl)}
             "Documentaries"]
-           [:div {:class (css :mt-2 :font-bold :text-sm)}
-            "timeless, relevant, fascinating, joyful"]]]
+           [:div {:class (css :mt-2 :font-bold)}
+            "timeless, relevant, joyful"]]]
          [:div
           {:class (css :absolute
                        ;; :ml-auto
@@ -266,6 +284,6 @@
 [{:gen/file "documentaries.html"
   :gen/content (page)}]
 
-(ftlmemes.page.gen/gen-html!
-   {:gen/file "documentaries.html"
-    :gen/content (page)})
+;; (ftlmemes.page.gen/gen-html!
+;;    {:gen/file "documentaries.html"
+;;     :gen/content (page)})
