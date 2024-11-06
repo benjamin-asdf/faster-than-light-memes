@@ -216,70 +216,69 @@
 (defn page
   []
   (hp/html5
-      [:html
-       [:head [:meta {:charset "UTF-8"}]
-        [:meta
-         {:content "width=device-width, initial-scale=1"
-          :name "viewport"}]
-        [:link {:href "data:," :rel "shortcut icon"}]
-        [:link {:href "data:," :rel "apple-touch-icon"}]
-        ;; [:link
-        ;;  {:rel "stylesheet"
-        ;;   :href
-        ;;   "https://cdn.simplecss.org/simple.min.css"}]
-        [:link {:href "/css/ui.css" :rel "stylesheet"}]
-        [:style]
-        [:script
-         {:src
+    [:html
+     [:head [:meta {:charset "UTF-8"}]
+      [:meta
+       {:content "width=device-width, initial-scale=1"
+        :name "viewport"}]
+      [:link {:href "data:," :rel "shortcut icon"}]
+      [:link {:href "data:," :rel "apple-touch-icon"}]
+      ;; [:link
+      ;;  {:rel "stylesheet"
+      ;;   :href
+      ;;   "https://cdn.simplecss.org/simple.min.css"}]
+      [:link {:href "/css/ui.css" :rel "stylesheet"}]
+      [:style]
+      [:script
+       {:src
           "https://cdn.jsdelivr.net/npm/scittle@0.6.19/dist/scittle.js"}]
-        [:title "FTLM - Historical Science Documentaries"]]
-       [:body
-        {:class (css :w-full
-                     :h-full
-                     :bg-black
-                     {:color "white"}
-                     :font-mono)}
+      [:title "FTLM - Historical Science Documentaries"]]
+     [:body
+      {:class (css :w-full
+                   :h-full
+                   :bg-black
+                   {:color "white"}
+                   :font-mono)}
+      [:div
+       {:class (css :hidden [:md :block]
+                    :absolute {:left "5%" :top "5%"})}
+       (home-button)]
+      [:div
+       {:class (css :flex :items-center
+                    :justify-end :w-full)}
+       [:div
+        ;; title area
+        {:class (css :flex :items-center
+                     :justify-center :w-full)}
         [:div
-         {:class (css :absolute {:top "5%" :left "5%"})}
-         (home-button)]
-        [:div
-         {:class (css :flex :items-center
-                      :justify-end :w-full)}
-         [:div
-          ;; title area
-          {:class (css :flex :items-center
-                       :justify-center :w-full)}
-          [:div
-           {:class (css
-                     :mt-6 :mb-4
-                     :flex :flex-col :items-center :justify-center)}
-           [:div
-            {:class (css :font-bold :text-4xl)}
-            "Documentaries"]
-           [:div {:class (css :mt-2 :font-bold)}
-            "timeless, relevant, joyful"]]]
-         [:div
-          {:class (css :absolute
-                       ;; :ml-auto
-                       {:right "5%"}
-                       :self-end
-                       ;; :ml-20
-                       ;; {:max-height "26px"}
-                       ;; :bg-red-200
-                       )}
-          (keyword-button)]]
-        [:div
-         {:class (css :grid
-                      [:sm :grid-cols-1]
-                      [:md :grid-cols-2]
-                      [:lg :grid-cols-3]
-                      :gap-3
-                      :p-3 :px-6
-                      :w-full :h-full)}
-         (map grid-card documentaries-config)]
-        [:script
-         {:src "documentaries.cljs"
-          :type "application/x-scittle"}]]]))
+         {:class (css :mt-6 :mb-4
+                      :flex :flex-col
+                      :items-center :justify-center)}
+         [:div {:class (css :font-bold :text-4xl)}
+          "Documentaries"]
+         [:div {:class (css :mt-2 :font-bold)}
+          "timeless, relevant, joyful"]]]
+       [:div
+        {:class (css :absolute
+                     ;; :ml-auto
+                     {:right "5%"}
+                     :self-end
+                     ;; :ml-20
+                     ;; {:max-height "26px"}
+                     ;; :bg-red-200
+                )} (keyword-button)]]
+      [:div
+       {:class (css :grid
+                    [:sm :grid-cols-1]
+                    [:md :grid-cols-2]
+                    [:lg :grid-cols-3]
+                    :gap-3
+                    :p-3 :px-6
+                    :w-full :h-full)}
+       (map grid-card documentaries-config)]
+      [:script
+       {:src "documentaries.cljs"
+        :type "application/x-scittle"}]]]))
 
 [{:gen/file "documentaries.html"
   :gen/content (page)}]
