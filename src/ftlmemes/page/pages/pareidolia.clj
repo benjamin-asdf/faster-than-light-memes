@@ -58,94 +58,93 @@
 (defn bottom-part
   []
   (list
-   [:p {:class (css :my-2 :text-xl)}
-    "Seeing the minds everywhere?"]
-   [:p {:class (css :my-2)}
-    " The spirits, memes, software agents that animate the world are having certain comebacks in computational science, cognitive science and cybernetics. "]
-   [:p {:class (css :my-2)}
-    "Perhaps it is exactly this agentness-detector that allows us to perceive (and make ad-hoc models of) information processing systems. "]
-   [:p {:class (css :my-2)}
-    "This would be a psychological basis for animism. "
-    "Animism just stretches the idea a little further, into the 'non-living' world, too"
-    " I have sympathy for such a view, when I consider my animals. "
-    "The happy little triangles on the screen."]
-   (divider)
-   [:p {:class (css :text-lg)} "Josha Bach: "
-    [:a
-     {:class (link-style)
-      :href
-      "https://youtu.be/3MkJEGE9GRY?si=5BW5dRM5oyqSP4Sh"}
-     "Cyberanimism"] " "]
-   (divider)
-   [:p
-    [:span {:class (css :my-2 :text-lg)}
-     "Steven Wolfram: "]
-    [:span
-     "Some people say 'The weather has mind of it's own.'"]]
-   (divider)
-   [:p
-    [:span {:class (css :my-2 :text-lg)}
+    [:p {:class (css :my-2 :text-xl)}
+     "Seeing the minds everywhere?"]
+    [:p {:class (css :my-2)}
+     " The spirits, memes, software agents that animate the world are having certain comebacks in computational science, cognitive science and cybernetics. "]
+    [:p {:class (css :my-2)}
+     "Perhaps it is exactly this agentness-detector that allows us to perceive (and make ad-hoc models of) information processing systems. "]
+    [:p {:class (css :my-2)}
+     "This would be a psychological basis for animism. "
+     "Animism just stretches the idea a little further, into the 'non-living' world, too"
+     " I have sympathy for such a view, when I consider my animals. "
+     "The happy little triangles on the screen."]
+    (divider)
+    [:p {:class (css :text-lg)} "Josha Bach: "
      [:a
       {:class (link-style)
        :href
-       "https://computingup.com/michael-levin-tames-life-66th-conversation"}
-      "Micheal Levin"] ":"]
-    [:p "Intelligence might be "
-     [:a
-      {:class (link-style)
-       :href
-       "https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2022.768201/full"}
-      "everywhere"] ", don't make assumptions."]
+         "https://youtu.be/3MkJEGE9GRY?si=5BW5dRM5oyqSP4Sh"}
+      "Cyberanimism"] " "]
+    (divider)
     [:p
-     "Stuff like 'biological systems have a kind of psychology'. "
-     "And 'development is a collective intelligence problem'."]]
-   (divider)
-   [:p
-    [:span {:class (css :my-2 :text-lg)}
-     "Valentino Braitenberg: "]
-    [:span
-     "In his philosophical book 'Information, Der Geist in der Natur', the talks about the spirits in the world."
-     " Gestalt is a Synomym for 'Form' in German, the arrangment, the 'form' in 'information'."
-     [:p {:class (css :my-2)} "The spirit is the "
-      "'organisation principle' of a thing."
-      " It is very similar to Joscha Bach's recent view. "
-      "The world is 'animated/inhabited' by software agents."]]]
-   ;; (divider)
-   ;; [:p {:class (css :my-2)}
-   ;;  "Since I am inspired by Dawkins, Dennett, Deutsch, Marletto and Blackmore, the meme people, I want to make that a memetics. And perhaps a constructor theory of memetics and software."
-   ;;  " What are genotypes, vehicles, phenotypes, extended phenotypes of software animals?"
-   ;;  " More on that elsewhere."]
-   ))
+     [:span {:class (css :my-2 :text-lg)}
+      "Steven Wolfram: "]
+     [:span
+      "Some people say 'The weather has mind of it's own.'"]]
+    (divider)
+    [:p
+     [:span {:class (css :my-2 :text-lg)}
+      [:a
+       {:class (link-style)
+        :href
+          "https://computingup.com/michael-levin-tames-life-66th-conversation"}
+       "Micheal Levin"] ":"]
+     [:p "Intelligence might be "
+      [:a
+       {:class (link-style)
+        :href
+          "https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2022.768201/full"}
+       "everywhere"] ", don't make assumptions."]
+     [:p
+      "Stuff like 'biological systems have a kind of psychology'. "
+      "And 'development is a collective intelligence problem'."]]
+    (divider)
+    [:p
+     [:span {:class (css :my-2 :text-lg)}
+      "Valentino Braitenberg: "]
+     [:span
+      "In his philosophical book 'Information, Der Geist in der Natur', the talks about the spirits in the world."
+      " Gestalt is a Synomym for 'Form' in German, the arrangment, the 'form' in 'information'."
+      [:p {:class (css :my-2)} "The spirit is the "
+       "'organisation principle' of a thing."
+       " It is very similar to Joscha Bach's recent view. "
+       "The world is 'animated/inhabited' by software agents."]]]
+    (divider)
+    [:p {:class (css :my-2)}
+     "Since I am inspired by Dawkins, Dennett, Deutsch, Marletto and Blackmore, the meme people, I want to make that a memetics. And perhaps a constructor theory of memetics and software."
+     " What are genotypes, vehicles, phenotypes, extended phenotypes of software animals?"
+     " The meme-view would emphasize design and adaptation and separate it from mere stability. More on that elsewhere."]))
 
 (defn experiment-setup
   []
   (list
-    [:p {:class (css :my-2 :text-xl)} "Experiment - Setup"]
+   [:p {:class (css :my-2 :text-xl)} "Experiment - Setup"]
+   [:p
+    [:p "Start some "
+     [:a
+      {:class (link-style)
+       :href
+       "https://courtesy707.bandcamp.com/track/courtesy-im-happy-i-am-not-susan-sontag"}
+      "Music"] ", any music. "]
     [:p
-     [:p "Start some "
-      [:a
-       {:class (link-style)
-        :href
-          "https://courtesy707.bandcamp.com/track/courtesy-im-happy-i-am-not-susan-sontag"}
-       "Music"] ", any music. "]
-     [:p
-      [:a {:class (link-style) :href "/pareidolia.html"}
-       "Refresh"] " for best results. " "Or visit the "
-      [:a {:class (link-style) :href ""} "fullscreen"
-       " version"] "."]
-     [:p {:class (css :text-sm :my-1)} "I also have a "
-      [:a
-       {:class (link-style)
-        :href "https://youtu.be/Q7FAbs8kn7k"}
-       "Youtube Video"] " from developing this."]
-     [:p {:class (css :mt-1)}
-      "Why shouldn't it decide to dance with the music?"]]
-    [:p {:class (css :non-italic :my-2)} "Note: "
-     "A typical reaction to these is thinking there is some signal between music and picture."
-     " Let me reveal a kind of magic trick, there are only random timers nothing else."]
-    [:p "I want to  call this "
-     [:span {:class (css :italic :font-bold)}
-      "rhythm pareidolia"] " or something."]))
+     [:a {:class (link-style) :href "/pareidolia.html"}
+      "Refresh"] " for best results. " "Or visit the "
+     [:a {:class (link-style) :href ""} "fullscreen"
+      " version"] "."]
+    [:p {:class (css :text-sm :my-1)} "I also have a "
+     [:a
+      {:class (link-style)
+       :href "https://youtu.be/Q7FAbs8kn7k"}
+      "Youtube Video"] " from developing this."]
+    [:p {:class (css :mt-1)}
+     "Why shouldn't it decide to dance with the music?"]]
+   [:p {:class (css :non-italic :my-2)} "Note: "
+    "A typical reaction to these is thinking there is some signal between music and picture."
+    " Let me reveal a kind of magic trick, there are only random timers nothing else."]
+   [:p "I want to  call this "
+    [:span {:class (css :italic :font-bold)}
+     "rhythm pareidolia"] " or something."]))
 
 (defn character-detection
   []
