@@ -1,7 +1,6 @@
-{:deps {
-io.github.babashka/sci.nrepl {:mvn/version "0.0.2"}
-}
+{:deps
+ {io.github.babashka/sci.nrepl {:mvn/version "0.0.2"}}
  :tasks {browser-nrepl
-           {:doc "Start browser nREPL"
-            :requires ([sci.nrepl.browser-server :as bp])
-            :task (do (bp/start! {}) (deref (promise)))}}}
+         {:doc "Start browser nREPL"
+          :requires ([sci.nrepl.browser-server :as bp])
+          :task (do (bp/start! {}) (deref (promise)))}}}

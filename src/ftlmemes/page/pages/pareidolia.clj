@@ -58,66 +58,64 @@
 (defn bottom-part
   []
   (list
-    [:p {:class (css :my-2 :text-xl)}
-     "Seeing the minds everywhere?"]
-    [:p {:class (css :my-2)}
-     " The spirits, memes, software agents that animate the world are having certain comebacks in computational science, cognitive science and cybernetics. "]
-    [:p {:class (css :my-2)}
-     "Perhaps it is exactly this agentness-detector that allows us to perceive (and make ad-hoc models of) information processing systems. "
-     "What it all means is unclear, but it seems to me it points towards space where we would understand intelligence, creativity."]
-    " How that relates to life and the physical world and so forth."
-    (divider)
-    [:p {:class (css :text-lg)} "Josha Bach: "
+   [:p {:class (css :my-2 :text-xl)}
+    "Seeing the minds everywhere?"]
+   [:p {:class (css :my-2)}
+    " The spirits, memes, software agents that animate the world are having certain comebacks in computational science, cognitive science and cybernetics. "]
+   [:p {:class (css :my-2)}
+    "Perhaps it is exactly this agentness-detector that allows us to perceive (and make ad-hoc models of) information processing systems. "]
+   [:p {:class (css :my-2)}
+    "This would be a psychological basis for animism. "
+    "Animism just stretches the idea a little further, into the 'non-living' world, too"
+    " I have sympathy for such a view, when I consider my animals. "
+    "The happy little triangles on the screen."]
+   (divider)
+   [:p {:class (css :text-lg)} "Josha Bach: "
+    [:a
+     {:class (link-style)
+      :href
+      "https://youtu.be/3MkJEGE9GRY?si=5BW5dRM5oyqSP4Sh"}
+     "Cyberanimism"] " "]
+   (divider)
+   [:p
+    [:span {:class (css :my-2 :text-lg)}
+     "Steven Wolfram: "]
+    [:span
+     "Some people say 'The weather has mind of it's own.'"]]
+   (divider)
+   [:p
+    [:span {:class (css :my-2 :text-lg)}
      [:a
       {:class (link-style)
        :href
-         "https://youtu.be/3MkJEGE9GRY?si=5BW5dRM5oyqSP4Sh"}
-      "Cyberanimism"] " "]
+       "https://computingup.com/michael-levin-tames-life-66th-conversation"}
+      "Micheal Levin"] ":"]
+    [:p "Intelligence might be "
+     [:a
+      {:class (link-style)
+       :href
+       "https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2022.768201/full"}
+      "everywhere"] ", don't make assumptions."]
     [:p
-     [:span {:class (css :my-2 :text-lg)}
-      "Steven Wolfram: "]
-     [:span
-      "Some people say 'The weather has mind of it's own.'"]]
-    [:p
-     [:span {:class (css :my-2 :text-lg)} "Micheal Levin: "]
-     [:span
-      "Intelligence might be everywhere, don't make assumptions."]
-     ;; [:span
-     ;;  " In Levin's bio-philosophy, biological
-     ;;  systems are a kind of software." " 'Cognition'
-     ;;  is a spectrum. And the question of mind is one
-     ;;  of interoperability." " Building a tower out
-     ;;  of bricks is a different thing from building a
-     ;;  tower out of dogs." " If you build a tower out
-     ;;  of dogs, you probably need to treat your
-     ;;  substrate in terms of" " Dennets 'intentional
-     ;;  stance', Pavlovian
-     ;;  conditioning and so forth."]
-    ]
-    [:p
-     [:span {:class (css :my-2 :text-lg)}
-      "Valentino Braitenberg: "]
-     [:span
-      "In his philosophical book 'Information, Der Geist in der Natur', the talks about the spirits in the world."
-      ;; " Made from the arrangement of things, "
-      " "] [:span]]
-    [:p {:class (css :my-2)}
-     "For me, they are memes, replicators with causal power, made from information."
-     " More on this elsewhere."
-     ;; " My hunch is that it is not coincidence,  we are made from sub-agents and we perceive agents."
-     ;; [:p {:class (css :my-2)}
-     ;;  " Perhaps modeling agents is 'for free' in brains, because it is a primitive."
-     ;;  [:p {:class (css :my-2)}
-     ;;   " The idea that perceptions, Gestalts, Memories, mental datastructures are software animals is what I called "
-     ;;   [:a
-     ;;    {:class (link-style)
-     ;;     :href
-     ;;     "biological-notes-on-the-vehicles-cell-assemblies.html"}
-     ;;    "Neuronal Ensemble Memetics"]
-     ;;   " (the link is kinda my early neurophilosophy stuff. Now want to make software using some of such ideas.)"
-     ;;   " In that idea, the basic datastructure of the mind "
-     ;;   [:strong "is an agent"] ". "]]
-     ]))
+     "Stuff like 'biological systems have a kind of psychology'. "
+     "And 'development is a collective intelligence problem'."]]
+   (divider)
+   [:p
+    [:span {:class (css :my-2 :text-lg)}
+     "Valentino Braitenberg: "]
+    [:span
+     "In his philosophical book 'Information, Der Geist in der Natur', the talks about the spirits in the world."
+     " Gestalt is a Synomym for 'Form' in German, the arrangment, the 'form' in 'information'."
+     [:p {:class (css :my-2)} "The spirit is the "
+      "'organisation principle' of a thing."
+      " It is very similar to Joscha Bach's recent view. "
+      "The world is 'animated/inhabited' by software agents."]]]
+   ;; (divider)
+   ;; [:p {:class (css :my-2)}
+   ;;  "Since I am inspired by Dawkins, Dennett, Deutsch, Marletto and Blackmore, the meme people, I want to make that a memetics. And perhaps a constructor theory of memetics and software."
+   ;;  " What are genotypes, vehicles, phenotypes, extended phenotypes of software animals?"
+   ;;  " More on that elsewhere."]
+   ))
 
 (defn experiment-setup
   []
@@ -135,6 +133,11 @@
        "Refresh"] " for best results. " "Or visit the "
       [:a {:class (link-style) :href ""} "fullscreen"
        " version"] "."]
+     [:p {:class (css :text-sm :my-1)} "I also have a "
+      [:a
+       {:class (link-style)
+        :href "https://youtu.be/Q7FAbs8kn7k"}
+       "Youtube Video"] " from developing this."]
      [:p {:class (css :mt-1)}
       "Why shouldn't it decide to dance with the music?"]]
     [:p {:class (css :non-italic :my-2)} "Note: "
@@ -238,9 +241,9 @@
                    :bg-black
                    {:color "white"}
                    :font-mono)}
-
-      [:div {:class (css :hidden [:md :block]
-                         :absolute {:left "5%" :top "5%"})}
+      [:div
+       {:class (css :hidden [:md :block]
+                    :absolute {:left "5%" :top "5%"})}
        (home-button)]
       [:div
        {:class (css :flex :items-center
@@ -262,7 +265,7 @@
       ;; ------------------------------------------------
       [:div
        {:class
-        (css :mt-2 :p-4 :flex :w-full :justify-center)}
+          (css :mt-2 :p-4 :flex :w-full :justify-center)}
        [:div {:class (css {:max-width "650px"})} (divider)
         [:p "Welcome to a new version you."]
         [:p
@@ -277,14 +280,14 @@
         [:span
          {:class (css :font-bold
                       ;; {:color "#F689FF"}
-                      )} "Leonardo da Vinci"]
+                 )} "Leonardo da Vinci"]
         [:span " Talks about a way to make art: "]
         [:p
          {:class (css :p-2
                       :font-semibold
                       :italic
                       ;; {:color "#F689FF"}
-                      )}
+                 )}
          "If you look at any walls spotted with various stains or with a mixture of different kinds of stones, if you are about to invent some scene you will be able to see in it a resemblance to various different landscapes adorned with mountains, rivers, rocks, trees, plains, wide valleys, and various groups of hills. You will also be able to see divers combats and figures in quick movement, and strange expressions of faces, and outlandish costumes, and an infinite number of things which you can then reduce into separate and well conceived forms."]
         (divider) (experiment-setup)
         ;; ------------------
@@ -303,7 +306,7 @@
          [:a
           {:class (link-style)
            :href
-           "https://youtu.be/ubFq-wV3Eic?si=YZLQAznD7QKTyMud"}
+             "https://youtu.be/ubFq-wV3Eic?si=YZLQAznD7QKTyMud"}
           "static noise"] ". " "Very eerie isn't it?"
          " There is something ghostly and perhaps insubstantial to it."
          " Not to mention the association with the voices of the psychotic."
@@ -315,7 +318,7 @@
          [:a
           {:class (link-style)
            :href
-           "https://en.wikipedia.org/wiki/Sensory_deprivation"}
+             "https://en.wikipedia.org/wiki/Sensory_deprivation"}
           "Sensory Deprivation"]]
         [:p {:class (css :my-2)}
          [:a
@@ -323,11 +326,12 @@
            :href "https://en.wikipedia.org/wiki/Nocebo"}
           "Nocebo"]]]]]]))
 
-(do
-  (require '[ftlmemes.page.gen])
-  (ftlmemes.page.gen/gen-html!
-   {:gen/file "pareidolia.html"
-    :gen/content (page)}))
+
+;; (do
+;;   (require '[ftlmemes.page.gen])
+;;   (ftlmemes.page.gen/gen-html!
+;;    {:gen/file "pareidolia.html"
+;;     :gen/content (page)}))
 
 [{:gen/file "pareidolia.html"
   :gen/content (page)}]

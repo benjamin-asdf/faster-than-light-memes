@@ -85,7 +85,6 @@
      (lambda (old-fn)
        (or m (setf m (funcall old-fn)))))))
 
-
 (defun ftlm/denote-curr-keywords (file)
   (if-let* ((file-type (denote-filetype-heuristics file)))
       (with-current-buffer
@@ -95,33 +94,44 @@
 
 (defun ftlm/navbar-posts-denote-links ()
   (with-current-buffer
-      (find-file-noselect ftlm/posts-file)
+      (find-file-noselect
+       ftlm/posts-file)
     (goto-char (point-min))
-    (cl-loop
-     while (re-search-forward org-link-any-re nil t)
-     collect
-     (let* ((start (match-beginning 0))
-            (link-object (save-excursion
-                           (goto-char start)
-                           (save-match-data
-                             (org-element-link-parser))))
-            (link (org-element-property
-                   :path link-object))
-            (path-id (denote-link--ol-resolve-link-to-target
-                      link
-                      :path-id))
-            (path (file-name-nondirectory
-                   (car path-id)))
-            (p (file-name-sans-extension path))
-            (p (dw/strip-file-name-metadata p))
-            (description (buffer-substring-no-properties
-                          (org-element-property
-                           :contents-begin link-object)
-                          (org-element-property
-                           :contents-end link-object))))
-       `((:path . ,(format "%s.html" p))
-         (:description . ,description)
-         (:tags . ,(ftlm/denote-curr-keywords path)))))))
+    (cl-remove-if-not
+     #'identity
+     (cl-loop
+      while (re-search-forward
+             org-link-any-re
+             nil
+             t)
+      collect
+      (let* ((start (match-beginning 0))
+             (link-object (save-excursion
+                            (goto-char start)
+                            (save-match-data
+                              (org-element-link-parser))))
+             (link (org-element-property
+                    :path link-object))
+             (path-id (denote-link--ol-resolve-link-to-target
+                       link
+                       :path-id))
+             (path (when-let*
+                       ((p (car path-id)))
+                     (file-name-nondirectory p))))
+        (when path
+          (let* ((p (file-name-sans-extension path))
+                 (p (dw/strip-file-name-metadata p))
+                 (description (buffer-substring-no-properties
+                               (org-element-property
+                                :contents-begin link-object)
+                               (org-element-property
+                                :contents-end link-object))))
+            `((:path . ,(format "%s.html" p))
+              (:description . ,description)
+              (:tags . ,(ftlm/denote-curr-keywords
+                         path))))))))))
+
+
 
 (defun escape-fmt-str (str)
   (replace-regexp-in-string "%" "%%" str))
