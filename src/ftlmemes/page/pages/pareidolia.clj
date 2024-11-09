@@ -110,11 +110,12 @@
        "'organisation principle' of a thing."
        " It is very similar to Joscha Bach's recent view. "
        "The world is 'animated/inhabited' by software agents."]]]
-    (divider)
-    [:p {:class (css :my-2)}
-     "Since I am inspired by Dawkins, Dennett, Deutsch, Marletto and Blackmore, the meme people, I want to make that a memetics. And perhaps a constructor theory of memetics and software."
-     " What are genotypes, vehicles, phenotypes, extended phenotypes of software animals?"
-     " The meme-view would emphasize design and adaptation and separate it from mere stability. More on that elsewhere."]))
+    ;; (divider)
+    ;; [:p {:class (css :my-2)}
+    ;;  "Since I am inspired by Dawkins, Dennett, Deutsch, Marletto and Blackmore, the meme people, I want to make that a memetics. And perhaps a constructor theory of memetics and software."
+    ;;  " What are genotypes, vehicles, phenotypes, extended phenotypes of software animals?"
+    ;;  " The meme-view would emphasize design and adaptation and separate it from mere stability. More on that elsewhere."]
+    ))
 
 (defn experiment-setup
   []
