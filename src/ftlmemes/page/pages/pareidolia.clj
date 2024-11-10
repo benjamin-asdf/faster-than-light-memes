@@ -53,7 +53,18 @@
     [:div
      {:class (css [:md {:display "block"}]
                   {:display "none"})}
-     (picture-iframe 600 500)]]])
+     (picture-iframe 600 500)]
+    [:div
+     [:a
+      {:class (link-style)
+       :href
+         "https://vehicles.faster-than-light-memes.xyz/art/p/pareidolia/0"}
+      "fullscreen"]
+     [:a
+      {:class (link-style)
+       :href
+         "https://vehicles.faster-than-light-memes.xyz/art/g/pareidolia?page=0"}
+      "gallery"]]]])
 
 (defn bottom-part
   []
@@ -130,8 +141,9 @@
     [:p
      [:a {:class (link-style) :href "/pareidolia.html"}
       "Refresh"] " for best results. " "Or visit the "
-     [:a {:class (link-style) :href ""} "fullscreen"
-      " version"] "."]
+     [:a
+      {:class (link-style) :href "https://vehicles.faster-than-light-memes.xyz/art/p/pareidolia/0"}
+      "fullscreen version"] "."]
     [:p {:class (css :text-sm :my-1)} "I also have a "
      [:a
       {:class (link-style)
