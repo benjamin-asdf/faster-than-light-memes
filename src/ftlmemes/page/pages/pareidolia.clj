@@ -44,17 +44,18 @@
   [:div
    {:class (css :flex :w-full
                 :items-center :justify-center)}
-   [:div {:class (css :border :bg-black :rounded)}
-    [:div
-     {:class (css [:md {:display "none"}]
-                  {:display "block"})}
-     (picture-iframe 300 300)]
-    ;; ------------------------------------------------
-    [:div
-     {:class (css [:md {:display "block"}]
-                  {:display "none"})}
-     (picture-iframe 600 500)]
-    [:div
+   [:div {:class (css :flex :flex-col)}
+    [:div {:class (css :border :bg-black :rounded)}
+     [:div
+      {:class (css [:md {:display "none"}]
+                   {:display "block"})}
+      (picture-iframe 300 300)]
+     ;; ------------------------------------------------
+     [:div
+      {:class (css [:md {:display "block"}]
+                   {:display "none"})}
+      (picture-iframe 600 500)]]
+    [:div {:class (css :flex :justify-between :px-8 :mt-2)}
      [:a
       {:class (link-style)
        :href
@@ -77,7 +78,7 @@
      "Perhaps it is exactly this agentness-detector that allows us to perceive (and make ad-hoc models of) information processing systems. "]
     [:p {:class (css :my-2)}
      "This would be a psychological basis for animism. "
-     "Animism just stretches the idea a little further, into the 'non-living' world, too"
+     "Animism just stretches the idea a little further, into the 'non-living' world."
      " I have sympathy for such a view, when I consider my animals. "
      "The happy little triangles on the screen."]
     (divider)
@@ -270,14 +271,14 @@
          [:div {:class (css :font-bold :text-4xl)}
           "Pareidolia"]
          [:div {:class (css :mt-2 :font-bold)}
-          "'Rhythmic' pareidolia?"]]]]
+          "'Rhythm' or 'Character' pareidolia? "]]]]
       ;; -----------------------------------------
       (picture)
       ;; ------------------------------------------------
       [:div
        {:class
           (css :mt-2 :p-4 :flex :w-full :justify-center)}
-       [:div {:class (css {:max-width "650px"})} (divider)
+       [:div {:class (css {:max-width "650px"})}
         [:p "Welcome to a new version you."]
         [:p
          "The you that has checked out the fascinating Wikipedia article to "
@@ -336,7 +337,6 @@
           {:class (link-style)
            :href "https://en.wikipedia.org/wiki/Nocebo"}
           "Nocebo"]]]]]]))
-
 
 ;; (do
 ;;   (require '[ftlmemes.page.gen])
