@@ -29,7 +29,6 @@
                  :width "25px"})
     :href "/"} "Home"])
 
-
 (defn keywords-ui
   [words]
   [:div
@@ -110,59 +109,66 @@
                "neurophilosophy"]
     :title "McCulloch being spry"
     :youtube-link
-    "https://www.youtube.com/embed/wawMjJUCMVw?si=T3C"}
+      "https://www.youtube.com/embed/wawMjJUCMVw?si=T3C"}
    {:content [:content/keywords]
     :keywords ["ethology" "behaviour" "animals"
                "cybernetics" "zoology"]
     :title "Konrad Lorenz"
     :youtube-link
-    "https://www.youtube.com/embed/IysBMqaSAC8?si=Kz1LJ8TMj_voYQC4"}
+      "https://www.youtube.com/embed/IysBMqaSAC8?si=Kz1LJ8TMj_voYQC4"}
    {:content [:content/keywords]
     :keywords ["theoretical" "physics" "time-travel"
                "sci-fy"]
     :preview
-    [:a
-     {:href
-      "https://youtu.be/C6_gxoLwrWw?si=3SPJcI4UrW9o1h7B"}
-     [:img
-      {:height "250"
-       :src
-       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXHRHFpjiFI7n-U0cpRcXD18czNsWJ_npzFA&s"
-       :width "250"}]]
+      [:a
+       {:href
+          "https://youtu.be/C6_gxoLwrWw?si=3SPJcI4UrW9o1h7B"}
+       [:img
+        {:height "250"
+         :src
+           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXHRHFpjiFI7n-U0cpRcXD18czNsWJ_npzFA&s"
+         :width "250"}]]
     :title
-    "David Deutsch - Time Travel amongst other things"}
+      "David Deutsch - Time Travel amongst other things"}
    {:content [:content/ui :content/keywords]
-    :href "https://plato.stanford.edu/entries/einstein-philscience/"
+    :href
+      "https://plato.stanford.edu/entries/einstein-philscience/"
     :keywords ["meta" "history" "science"]
     :title "Albert Einstein"
     :ui (einstein-quote)}
    {:content [:content/keywords]
     :keywords ["computer-science" "computer" "Ada Lovelace"]
     :preview
-    [:a
-     {:href
-      "https://youtu.be/QgUVrzkQgds?si=2Qrbb0jKpA2_llgY"}
-     [:img
-      {:height "250"
-       :src
-       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg"
-       :width "250"}]]
+      [:a
+       {:href
+          "https://youtu.be/QgUVrzkQgds?si=2Qrbb0jKpA2_llgY"}
+       [:img
+        {:height "250"
+         :src
+           "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg"
+         :width "250"}]]
     :title
-    "BC DOCUMENTARY : Calculating Ada - The Countess of Computing"}
+      "BC DOCUMENTARY : Calculating Ada - The Countess of Computing"}
    {:content [:content/keywords]
     :keywords ["theoretical" "physics" "cybernetics"
                "design" "beauty" "elegance" "art"
                "philosophy"]
     :title
-    "David Deutsch - Why Are Flowers Beautiful? A not-yet classic."
+      "David Deutsch - Why Are Flowers Beautiful? A not-yet classic."
     :youtube-link
-    "https://www.youtube.com/embed/gT7DFCF1Fn8?si=hhJ_59vg_CDjqB92"}
+      "https://www.youtube.com/embed/gT7DFCF1Fn8?si=hhJ_59vg_CDjqB92"}
    {:content [:content/keywords]
     :keywords ["cybernetics" "philosophy" "dennett"]
     :title
-    "Daniel Dennett - \"Where am I?\" - This inspired the movie The Matrix"
+      "Daniel Dennett - \"Where am I?\" - This inspired the movie The Matrix"
     :youtube-link
-    "https://www.youtube.com/embed/KP7rTp2vwTs?si=9sgkXa44k1zJszqr"}
+      "https://www.youtube.com/embed/KP7rTp2vwTs?si=9sgkXa44k1zJszqr"}
+   {:content [:content/keywords]
+    :keywords ["neuroscience" "neurophilosophy" "agency"
+               "rhythms"]
+    :title "Rodolfo Llinás"
+    :youtube-link
+      "https://www.youtube.com/embed/6T3ovN7JHPo?si=ZlzGSVjSUdjjrNte"}
    {:content [:content/keywords]
     :keywords ["neurophilosophy" "cybernetics" "programming"
                "computer-science" "Dave Ackley"
@@ -170,47 +176,119 @@
                "Christoph von der Malsburg"]
     :title "Vectors of Cognitive AI: Self-Organization"
     :youtube-link
-    "https://www.youtube.com/embed/NEf8LnTD0AA?si=5fCPywETdZRxzzhq"}
+      "https://www.youtube.com/embed/NEf8LnTD0AA?si=5fCPywETdZRxzzhq"}
    {:content [:content/keywords]
     :keywords ["neurophilosophy" "cybernetics" "philosophy"
                "Heinz Von Foerster" "Humberto Maturana"
                "second-order-cybernetics"]
     :title "Heinz Von Foerster and Humberto Maturana"
     :youtube-link
-    "https://www.youtube.com/embed/Mc6YFUoPWSI?si=ATn27aprI9xwcnw0"}
+      "https://www.youtube.com/embed/Mc6YFUoPWSI?si=ATn27aprI9xwcnw0"}
    {:content [:content/keywords]
     :keywords ["cybernetics" "philosophy" "Stafford Beer"]
     :title "Cybernetics, History & Origins - Stafford Beer"
     :youtube-link
-    "https://www.youtube.com/embed/XbcBWdeIcyY?si=ALW4r7o2AhpmPna-"}
+      "https://www.youtube.com/embed/XbcBWdeIcyY?si=ALW4r7o2AhpmPna-"}
    {:content [:content/keywords]
     :keywords ["programming" "lisp" "scheme"
                "Gerald Sussman" "Harold Abelson"
-               "philosophy"]
+               "bottom-up-design" "philosophy"]
     :title "SCIP Lectures"
     :youtube-link
-    "https://www.youtube.com/embed/-J_xL4IGhJA?si=y0wbVLHgYfVxq_Jb"}
+      "https://www.youtube.com/embed/-J_xL4IGhJA?si=y0wbVLHgYfVxq_Jb"}
    {:content [:content/keywords]
     :keywords ["neurophilosophy" "neuroscience" "cortex"
                "thalamus" "Murray Sherman"]
     :title "Murray Sherman - Thalamocortical System Part I"
     :youtube-link
-    "https://www.youtube.com/embed/aB2M1gg_1sU?si=XifGjAmP-CRr03bm"}
+      "https://www.youtube.com/embed/aB2M1gg_1sU?si=XifGjAmP-CRr03bm"}
    {:content [:content/keywords]
     :keywords
-    ["neurophilosophy" "cybernetics" "computer-science"
-     "hyperdimensional-computing" "biological-computing"]
+      ["neurophilosophy" "cybernetics" "computer-science"
+       "hyperdimensional-computing" "biological-computing"
+       "synthetic-psychology"]
     :title
-    "Pentti Kanerva - The computer and the brain - If Von Neuman would have lived longer"
+      "Pentti Kanerva - The computer and the brain - If Von Neuman would have lived longer"
     :youtube-link
-    "https://www.youtube.com/embed/1g5VEcnG6fI?si=3FAcvI3AuZuAAvkm"}
+      "https://www.youtube.com/embed/1g5VEcnG6fI?si=3FAcvI3AuZuAAvkm"}
    {:content [:content/keywords]
     :keywords ["neurophilosophy" "engineering"
                "György Buzsáki" "rhythms"]
     :title
-    " BS 172 \"The Brain from the Inside Out\" with György Buzsáki"
+      " BS 172 \"The Brain from the Inside Out\" with György Buzsáki"
     :youtube-link
-    "https://www.youtube.com/embed/pJhlMsc2UKQ?si=foBnhrtW_TQ_k9xJ"}])
+      "https://www.youtube.com/embed/pJhlMsc2UKQ?si=foBnhrtW_TQ_k9xJ"}
+   {:content [:content/keywords]
+    :keywords ["neurophilosophy" "music" "rhythms" "harmony"
+               "dissonance"]
+    :title
+      "Peter Pesic - “Music and the Making of Modern Science.”"
+    :youtube-link
+      "https://www.youtube.com/embed/hlEDFe4YmRo?si=6TUCH7sd11b-RGJG"}
+   {:content [:content/keywords]
+    :keywords ["neurophilosophy" "ensembles"
+               "hyperdimensional-computing"
+               "biological-computing"]
+    :title
+      "\"Role of neuronal ensembles and pattern completion in perception\" by Rafael Yuste"
+    :youtube-link
+      "https://www.youtube.com/embed/fIk6jQn9Cds?si=DuyRuNYBb8c5niwN"}
+   {:content [:content/ui :content/keywords]
+    :keywords ["agency" "animals" "zoology" "evolution"
+               "basal-cognition" "rhythms"]
+    :preview
+      [:a
+       {:class (css :flex :w-full)
+        :href "https://petergodfreysmith.com/"}
+       [:div
+        {:class (css :flex
+                     :flex-col :items-center
+                     :gap-2 :w-full)}
+        [:div
+         {:class (css :flex :w-full :justify-center :gap-4)}
+         [:img
+          {:alt ""
+           :src
+             "https://petergodfreysmith.com/wp-content/uploads/2018/09/OM-for-site-high-197x300.jpg"}]
+         [:img
+          {:alt ""
+           :src
+             "https://petergodfreysmith.com/wp-content/uploads/2020/10/Metazoa-cover-April-2020-196x300.jpg"}]]
+        [:p {:class (css :text-sm)} "pictures curtesy "
+         "https://petergodfreysmith.com"]]]
+    :title "Peter Godfrey-Smith"
+    :ui
+      [:div {:class (css :text-center :mb-2)}
+       "This is a two part journey, absolutely mind-expanding"]}
+   {:content [:content/ui :content/keywords]
+    :keywords ["agency" "basal-cognition" "cybernetics"
+               "behaviour" "neurophilosophy"
+               "bottom-up-design" "synthetic-psychology"]
+    :preview
+      [:a
+       {:class (css :w-full)
+        :href
+          "https://en.wikipedia.org/wiki/Braitenberg_vehicle"}
+       [:div
+        {:class (css :flex :flex-col
+                     :items-center :justify-center
+                     :w-full :h-full)}
+        [:div {:class (css :w-full :flex :justify-center)}
+         [:img
+          {:alt ""
+           :class (css :w-3of4)
+           :src
+             "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Braitenberg_Vehicle_2ab.png/330px-Braitenberg_Vehicle_2ab.png"}]]]]
+    :title "Braitenberg Vehicles"
+    :ui
+      [:a
+       {:class (css :text-center :w-full
+                    :my-2 :text-blue-600)
+        :href
+          "https://faster-than-light-memes.xyz/vehicles.html"}
+       "My current work programming Vehicles"]}])
+
+;; --------------------------------------------------------------
 
 (defn keyword-button
   []
@@ -300,8 +378,6 @@
 
 [{:gen/file "documentaries.html"
   :gen/content (page)}]
-
-
 
 (do
   (require '[ftlmemes.page.gen])
