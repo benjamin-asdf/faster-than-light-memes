@@ -379,8 +379,8 @@
 [{:gen/file "documentaries.html"
   :gen/content (page)}]
 
-(do
-  (require '[ftlmemes.page.gen])
-  (ftlmemes.page.gen/gen-html!
-   {:gen/file "documentaries.html"
-    :gen/content (page)}))
+;; (do
+;;   (require '[ftlmemes.page.gen])
+;;   (ftlmemes.page.gen/gen-html!
+;;    {:gen/file "documentaries.html"
+;;     :gen/content (page)}))
