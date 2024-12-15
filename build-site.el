@@ -183,6 +183,8 @@
            email))
      "
 <div><a href=\"/about.html\">About</a></div>"
+     "<div><a>href=\"atom.xml\"</div>"
+     "<div><a href=\"planetclojure.xml\"></div>"
      "<div><a href=\"/contact.html\">Contact</a></div>")))
 
 (setq org-html-head-include-default-style
