@@ -218,7 +218,7 @@
 
 (defn question-page
   [{:keys [page answer]}]
-  [:div 
+  [:div
    (let [{:quiz/keys [question answers]} (quiz-data page)]
      [:div [:h3 question]
       [:div
@@ -230,7 +230,7 @@
              :background-color "gainsboro"
              :color "black"
              :font-size "2rem"
-             :border (when (== answer i) 
+             :border (when (== answer i)
                        "0.6rem solid greenyellow")}
             :on-click
             (fn
@@ -239,7 +239,7 @@
               (rf/dispatch [::set-answer [page i]]))}
            (str text " "
                 ;; type " "
-                (when (== answer i) 
+                (when (== answer i)
                   " (selected)"))]))]])])
 
 (defn user-answers [current-answers]
@@ -309,7 +309,7 @@
   @(rf/subscribe [::whole-db])
 
   (rf/dispatch
-   [::set-db 
+   [::set-db
     {:ftlmemes.clojure-function-quiz.main/answers [0 0 0 0 1]
      :ftlmemes.clojure-function-quiz.main/page 0,
      :ftlmemes.clojure-function-quiz.main/won? true}])
@@ -324,7 +324,7 @@
                    :element/air
                    :element/air])))
 
-  
+
   (let [user-answers (repeat 5 0)]
     (into
      []
