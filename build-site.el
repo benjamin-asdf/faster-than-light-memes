@@ -183,9 +183,11 @@
            email))
      "
 <div><a href=\"/about.html\">About</a></div>"
-     "<div><a>href=\"atom.xml\"</div>"
+     "<div><a href=\"atom.xml\"</div>"
      "<div><a href=\"planetclojure.xml\"></div>"
-     "<div><a href=\"/contact.html\">Contact</a></div>")))
+     "<div><a href=\"/contact.html\">Contact</a></div>"
+     "<div><a href=\"/gen-ai-critic.html\">This website is made without the use of generative AI</a></div>"
+     )))
 
 (setq org-html-head-include-default-style
       t
