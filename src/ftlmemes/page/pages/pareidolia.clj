@@ -20,8 +20,8 @@
                 :p-3
                 {:background "#feb48f"
                  :color "black"
-                 :height "25px"
-                 :width "25px"})
+                 :min-height "2rem"
+                 :min-width "3rem"})
     :href "/"} "Home"])
 
 (defn link-style [] (css :font-bold {:color "#feb48f"}))
@@ -253,10 +253,20 @@
                    :bg-black
                    {:color "white"}
                    :font-mono)}
+
       [:div
-       {:class (css :hidden [:md :block]
-                    :absolute {:left "5%" :top "5%"})}
-       (home-button)]
+       [:div
+        {:class
+         (css :hidden [:md :block]
+              :absolute {:left "5%" :top "5%"})}
+        (home-button)]
+       [:div
+        {:class
+         (css :block [:md :hidden]
+              :p-2
+              :flex :items-center :w-full)}
+        (home-button)]]
+
       [:div
        {:class (css :flex :items-center
                     :justify-end :w-full)}
@@ -277,7 +287,7 @@
       ;; ------------------------------------------------
       [:div
        {:class
-          (css :mt-2 :p-4 :flex :w-full :justify-center)}
+        (css :mt-2 :p-4 :flex :w-full :justify-center)}
        [:div {:class (css {:max-width "650px"})}
         [:p "Welcome to a new version you."]
         [:p
@@ -292,14 +302,14 @@
         [:span
          {:class (css :font-bold
                       ;; {:color "#F689FF"}
-                 )} "Leonardo da Vinci"]
+                      )} "Leonardo da Vinci"]
         [:span " Talks about a way to make art: "]
         [:p
          {:class (css :p-2
                       :font-semibold
                       :italic
                       ;; {:color "#F689FF"}
-                 )}
+                      )}
          "If you look at any walls spotted with various stains or with a mixture of different kinds of stones, if you are about to invent some scene you will be able to see in it a resemblance to various different landscapes adorned with mountains, rivers, rocks, trees, plains, wide valleys, and various groups of hills. You will also be able to see divers combats and figures in quick movement, and strange expressions of faces, and outlandish costumes, and an infinite number of things which you can then reduce into separate and well conceived forms."]
         (divider) (experiment-setup)
         ;; ------------------
@@ -318,7 +328,7 @@
          [:a
           {:class (link-style)
            :href
-             "https://youtu.be/ubFq-wV3Eic?si=YZLQAznD7QKTyMud"}
+           "https://youtu.be/ubFq-wV3Eic?si=YZLQAznD7QKTyMud"}
           "static noise"] ". " "Very eerie isn't it?"
          " There is something ghostly and perhaps insubstantial to it."
          " Not to mention the association with the voices of the psychotic."
@@ -330,7 +340,7 @@
          [:a
           {:class (link-style)
            :href
-             "https://en.wikipedia.org/wiki/Sensory_deprivation"}
+           "https://en.wikipedia.org/wiki/Sensory_deprivation"}
           "Sensory Deprivation"]]
         [:p {:class (css :my-2)}
          [:a
