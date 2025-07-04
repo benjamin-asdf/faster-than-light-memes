@@ -89,6 +89,7 @@
    (.parse s)))
 
 (defn ->post [opts org-data]
+
   (let [{:keys [identifier filetags EXPORT_FILE_NAME] :as d}
         (clojure.walk/keywordize-keys org-data)
         file (str EXPORT_FILE_NAME ".html")

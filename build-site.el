@@ -17,6 +17,26 @@
 (defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
 (defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
 
+(defun denote-link--collect-identifiers (regexp)
+  "Return collection of identifiers in buffer matching REGEXP."
+  (let (matches)
+    (save-excursion
+      (goto-char (point-min))
+      (while (or (re-search-forward regexp nil t)
+                 (re-search-forward denote-id-only-link-in-context-regexp nil t))
+        (push (match-string-no-properties 1) matches)))
+    matches))
+
+(defun denote-link--expand-identifiers (regexp)
+  "Expend identifiers matching REGEXP into file paths."
+  (let ((files (denote-directory-files))
+        found-files)
+    (dolist (file files)
+      (dolist (i (denote-link--collect-identifiers regexp))
+        (when (string= i (denote-retrieve-filename-identifier file))
+          (push file found-files))))
+    found-files))
+
 (defun ftlm/file->denote-links (file)
   (with-current-buffer (find-file-noselect file)
     (denote-link--expand-identifiers "\\[\\[denote:\\(?1:\\([0-9]\\{8\\}\\)\\(T[0-9]\\{6\\}\\)\\)]\\[.*?]]")))

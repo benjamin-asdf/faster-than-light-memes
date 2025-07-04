@@ -15,5 +15,3 @@
     (file-seq (fs/file "src/ftlmemes/page/pages")))))
 
 (gen-all)
-
-;; http://localhost:8081/hire-benjamin.html
