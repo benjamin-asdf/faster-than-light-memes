@@ -12,3 +12,6 @@ public
 /simple.min.css
 /.clj-kondo/.cache/v1/cljs/
 /.clj-kondo/.cache/v1/clj/
+/.clj-kondo/.cache/v1/cljc/
+/.clj-kondo/.cache/v1/java/
+/.lsp/

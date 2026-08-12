@@ -20,8 +20,9 @@
                 :task
                 (do
                   (shell
+                   "emacs"
                    ;; "emacs"
-                   "/home/benj/repos/emacs/src/emacs"
+                   ;; "/home/benj/repos/emacs/src/emacs"
                    ;; "-Q"
                    "--script" "build-site.el")
                   (shell "bb" "src/ftlmemes/gen_pages.clj"))}
