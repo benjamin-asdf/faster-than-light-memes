@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Installed as /etc/init.d/ftlm-vehicles-server on the linode.
+
+description="FTLM vehicles server (jetty on :8095, vehicles.faster-than-light-memes.xyz)"
+
+directory="/var/www/ftlm-vehicles"
+command="/usr/bin/java"
+command_args="-Xmx300m -jar ./release.jar"
+# Must stay "yes": a foreground command blocks the whole OpenRC boot,
+# which means sshd and the login gettys never start.
+command_background="yes"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/var/log/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}.err"
+
+depend() {
+	need net
+}

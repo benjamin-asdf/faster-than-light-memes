@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Installed as /etc/init.d/geomaxing on the linode.
+# App code is synced from the game repo (scripts/geomaxing/deploy.sh).
+# PORT and DB_* come from /etc/conf.d/geomaxing, which build/deploy.sh generates from
+# game/scripts/geomaxing/deploy.env. It holds the DB password, so it isn't in this repo.
+
+description="geomaxing (babashka on :8099, proxied by nginx at /janoshi/geomaxing)"
+
+directory="/opt/geomaxing/code"
+command="/usr/local/bin/bb"
+command_args="-m geomaxing-server.core"
+command_background="yes"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/opt/geomaxing/log/app.log"
+error_log="/opt/geomaxing/log/app.log"
+
+# bb looks up its pods (postgresql) under $HOME/.babashka, and HOME is unset at boot.
+export HOME=/root
+export KB_DIR=/opt/geomaxing/kb RUN_DIR=/opt/geomaxing/run
+
+depend() {
+	need net postgresql
+}

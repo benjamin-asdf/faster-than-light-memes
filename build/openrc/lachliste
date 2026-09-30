@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Installed as /etc/init.d/lachliste on the linode.
+# App code is synced from the game repo (scripts/lachliste/deploy.sh).
+# PORT and DB_* come from /etc/conf.d/lachliste, which build/deploy.sh generates from
+# game/scripts/lachliste/deploy.env. It holds the DB password, so it isn't in this repo.
+
+description="lachliste (babashka on :8098, proxied by nginx at /janoshi/lachliste)"
+
+directory="/opt/lachliste/code"
+command="/usr/local/bin/bb"
+command_args="-m janoshi-server.core"
+command_background="yes"
+
+pidfile="/run/${RC_SVCNAME}.pid"
+output_log="/opt/lachliste/log/app.log"
+error_log="/opt/lachliste/log/app.log"
+
+# bb looks up its pods (postgresql) under $HOME/.babashka, and HOME is unset at boot.
+export HOME=/root
+
+depend() {
+	need net postgresql
+}
