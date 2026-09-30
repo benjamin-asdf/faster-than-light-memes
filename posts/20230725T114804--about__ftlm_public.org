@@ -1,0 +1,37 @@
+#+title:      About
+#+date:       [2023-07-25 Tue 11:48]
+#+filetags:   :ftlm:public:
+#+identifier: 20230725T114804
+#+EXPORT_FILE_NAME: about
+
+My name is Benjamin Schwerdtner. I am excited about life and technology.
+Here I write about Emacs, Clojure, dreaming and other kinds of magic.
+
+- [[https://github.com/benjamin-asdf][github]]
+- [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140/][LinkedIn]]
+- [[https://www.youtube.com/channel/UCa489obTo6UE2sh4bXq670A][YouTube main channel]]
+- [[https://bsky.app/profile/ftl-mentality.bsky.social][bluesky]]
+- [[https://www.youtube.com/@benni-mentality][YouTube secondary]]
+
+This website is served on
+
+https://benjamin-schwerdtner.de
+
+and
+
+https://faster-than-light-memes.xyz/
+
+- Braitenberg [[https://github.com/benjamin-asdf/ftlm-vehicles][Vehicles]] / art
+
+[[https://benjamin-asdf.github.io/faster-than-light-memes/atom.xml][Feed]]
+
+[[https://benjamin-asdf.github.io/faster-than-light-memes/planetclojure.xml][Clojure Feed]]
+
+I am a professional Clojure Developer. [[denote:20250627T183258]['Work With Benjamin' page]].
+
+
+Sponsor me with a message of what you want to see more of:
+
+#+begin_export html
+<iframe src="https://github.com/sponsors/benjamin-asdf/button" title="Sponsor benjamin-asdf" height="35" width="116" style="border: 0;"></iframe>
+#+end_export

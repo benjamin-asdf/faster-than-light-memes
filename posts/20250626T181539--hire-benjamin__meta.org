@@ -1,0 +1,41 @@
+#+date:       [2025-06-26 Thu 18:15]
+#+filetags:   :meta:
+#+identifier: 20250626T181539
+#+EXPORT_FILE_NAME: hire-benjamin
+#+OPTIONS: toc:nil
+#+title:     Work With Benjamin Landing Page
+
+*Benjamin Schwerdtner* is fullstack developer with creative, non linear background.
+
+I am regarded as nice to work with by professionals. I self-start contributions and translate your needs and problems into actionable, technical solutions.
+
+I emphasise practicality, straight forward design, product velocity without ever trading off solid, extensible software that 'just works'.
+
+#+begin_export html
+<img src="./benjamin-2.png">
+#+end_export
+
+
+* Experience:
+
+Mid-Senior engineer, 7 years experience with a variety of technologies.
+
+Lisp, Clojure, Browser (javascript, typescript, HTML, CSS, Clojurescript), Mobile, Unity, C#, Java, Python, Unix.
+Directly integrated frontend and backends. Open source contributions in the emacs and Clojure ecosystem.
+
+Specialities: functional programming, data oriented design, can build your frontend for you, neuroscience and biology background
+
+* Biggest Ideas:
+
+#+begin_quote
+Solving a problem without writing new software is one of the most character building moments as software engineer.
+Because once 'do nothing', and 'use existing stuff' is on the table, the space of possible problem solving solutions is that much wider.
+#+end_quote
+
+#+begin_quote
+Design is when you write down at least a second idea and then say which is better.
+#+end_quote
+
+* Links
+
+[[denote:20230102T115024][Resume]], [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140][LinkedIn]], [[https://github.com/benjamin-asdf][Github]], [[https://faster-than-light-memes.xyz/][Personal website]], [[denote:20230301T123854][Contact]]

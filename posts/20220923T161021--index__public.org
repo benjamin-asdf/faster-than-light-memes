@@ -1,0 +1,651 @@
+
+#+title:      Faster-than-Light memes
+#+date:       [2022-09-23 Fri 16:10]
+#+filetags:   :public:
+#+identifier: 20220923T161021
+#+EXPORT_FILE_NAME: index
+#+OPTIONS: toc:nil title:nil
+
+#+begin_export html
+<h3>Benjamin Janos Schwerdtner is software developer with multidisciplinary background.</h3>
+#+end_export
+
+[[denote:20230617T130706][Emacs]], [[denote:20251003T195352][Clojure/Lisp]], [[denote:20230707T090418][Interactive Programming]], [[denote:20250619T182010][Philosphy of Design]], [[denote:20250627T183258][Work with me]], [[./consider-the-animals.html][Consider the Animals]]
+
+Simplicity is the ultimate sophistication. And beyond simplicity lies /self evidence/.
+
+#+begin_export html
+<iframe width="100%" height="600px" src="https://vehicles.faster-than-light-memes.xyz/art/pe/not-fire/8"></iframe>
+#+end_export
+
+=not-fire #8=, quill on clojurescript | [[https://vehicles.faster-than-light-memes.xyz/art/p/not-fire/8][fullscreen]] | [[https://vehicles.faster-than-light-memes.xyz/art/g/not-fire?page=8][gallery]] | [[https://github.com/benjamin-asdf/ftlm-vehicles/blob/c3b5601d076f34dcecaa36aa5661079f8f651a0d/src/ftlm/vehicles/art/not_fire.cljs#L1073][code]]
+
+--------------------------------
+
+I am inspired by David Deutsch, Karl Popper, Richard Dawkins, Valentino Braitenberg.
+
+The spirit of a thing is it's *principle of organisation*, it's principle of living - =Lebensprinzip=.
+Even though the atoms of our cells are in flux, somethings stays.
+Just as software is the /soul that lives inside the computer/, biological software is /information with causal power/ living in the genes.
+
+* A Vector-Symbolic Clojure
+
+A Clojure in which every value is one high-dimensional vector: lists, maps, closures, even the interpreter's own state.
+And programs that compute on superpositions of worlds at once.
+
+[[./vector-symbolic-clojure/][notebook]] | [[https://github.com/benjamin-asdf/vector-symbolic-clj][code]]
+
+* Slime Smoke
+
+file:./slime.gif
+
+An algorithm combining fluid + physarium.
+
+[[https://github.com/benjamin-asdf/bjs-smoke-viz][code]]
+
+I was inspired by real world smoke drifting in the saune recently.
+
+* Reflector App
+
+A bonfire feeling visual that reacts to audio. It's a flutter app.
+
+[[https://play.google.com/store/apps/details?id=benjamin.schwerdtner.reflector&hl=de][Playstore]].
+
+* Permutation Beats
+
+[[https://beatperm.benjamin-schwerdtner.de/][permutation beats v1]]
+
+- completely browser based, static website using quill, matter-js, clojurescript + javascript.
+- upload an audio file.
+- Looks similar to [[https://youtu.be/pGhCUlDsTFQ?si=JDLCLEMPnBMAsKpF][this]].
+
+
+* Pareidolia
+
+#+begin_export html
+<iframe width="100%" height="600px" src="https://vehicles.faster-than-light-memes.xyz/art/pe/not-fire/6"></iframe>
+#+end_export
+
+=not-fire #6=, quill on clojurescript | [[https://vehicles.faster-than-light-memes.xyz/art/p/not-fire/6][fullscreen]] | [[https://vehicles.faster-than-light-memes.xyz/art/g/not-fire?page=6][gallery]] | [[https://github.com/benjamin-asdf/ftlm-vehicles/blob/c3b5601d076f34dcecaa36aa5661079f8f651a0d/src/ftlm/vehicles/art/not_fire.cljs#L1073][code]]
+
+#+begin_quote
+If you look at any walls spotted with various stains or with a mixture of different kinds of stones, if you are about to invent some scene you will be able to see in it a resemblance to various different landscapes adorned with mountains, rivers, rocks, trees, plains, wide valleys, and various groups of hills. You will also be able to see divers combats and figures in quick movement, and strange expressions of faces, and outlandish costumes, and an infinite number of things which you can then reduce into separate and well conceived forms.
+#+end_quote
+
+Leonardo da Vinci
+
+Experiment:
+
+- start some music
+- look at the picture above
+- Why shouldn't it decide to dance with the music?
+
+Post here: [[./pareidolia.html][Character Pareidolia]].
+
+Other recent mind/brain blog posts:
+
+- [[denote:20250309T170424][Lip Reading]]
+
+* Plurality of Worlds + Simulated Realities Reading List
+
+/Let the question of virtual realities dissolve in your mind/.
+
+Information is a strange thing: Not the stuff, but the /arrangement/ (/formation/) of stuff. It is an /emergent property/,
+and the basis for the higher level sciences biology, computer science (cybernetics), psychology, etc.
+
+According to Everettian quantum theory, the algorithm making our world is a multiverse.
+Everything that is possible exists as multiverse snapshots.
+And time and causality emerge from their /arrangement/.
+
+Daniel Dennett said consciousness is a virtual software. Yes, but what is a virtual world? Why is it /real/ (i.e. why does some software have qualia)?
+
+** /Permutation City/, Greg Egan (2013)
+
+Ravishing journey exploring topics around simulatied realities.
+The question: Why should information patterns give rise to virtual realities?
+
+The daring /dust hypothesis/ idea: A simulated world recruits patterns, anywhere in reality, for it's existence.
+
+The book gives a feel for the concept of emergence in this line of reasoning.
+
+** David Deutsch: /The Beginning of Infinity/ + /The Fabrik of Reality/
+
+Multiverse, simulated realities, the role of knowledge, explanation and personhood in reality.
+Summarizes Popperian epistemology in eye opening ways.
+
+** Abstract Replicator Theory
+- /The Selfish Gene/, Richard Dawkins (1976)
+- /The Extended Phenotype/, Richard Dawkins (1982)
+
+** /Anathem/, Neal Stephenson 2008
+
+Beautiful and epic, with multiverse topics.
+
+** /Monadology/, Gottfried Wilhelm Leibniz 1714
+
+This is a timeless physics system, where the basic entities that exist are /monads/.
+
+Monad: A thing that is not made from multiple parts, maximally simple i.e. non-compound.
+A monad is analogous to a point in euclidean geometry, infinitely small.
+But monads also don't have a location property.
+They are like symbols in a LISP system.
+
+Causality is an emergent property of the monads, a 'pre-established harmony'.
+It is the same move, by assuming a large quantity of stuff, physics and perhaps things like qualia can be emergent.
+
+* Counting Things, Parsimony and Abundance
+
+Imagine the one comes to you and says "Evolution by natural selection is not parsimonious, it requires such a large count of generations.".
+This one would be confused indeed. He would succumb to the 'runtime footprint fallacy'.
+
+The theory of evolution by natural selection is a 3 line algorithm.
+Writing down the /software design/ does not mean that I need to write down the /state of the successive generations/.
+I.e. /The theory does not enumarate the generations in the algorithm/.
+
+This is the same situation we find with Everettian quantum theory ('many worlds').
+
+
+|                        | Software / Algorithms              | Theory of Evolution                  | Many Worlds (Everettian QT)            |
+|------------------------+------------------------------------+--------------------------------------+----------------------------------------|
+| Theory (algorithm)     | The program (source code, design)  | Natural selection algorithm           | Quantum mechanical equations           |
+| Factual layer          | Does the hardware exist to run it? | Did life have enough time to evolve? | Is reality large enough for the worlds? |
+| Runtime entities       | Memory, state, execution trace     | Generations, organisms               | Worlds (branches of the multiverse)    |
+| Parsimony of the theory | Small, elegant software design     | 3 line algorithm                     | Few simple equations                   |
+| Abundance of runtime   | Vast compute and memory            | Large count of generations           | Large count of worlds                  |
+| The fallacy "It is not parsimonious, because" | "It uses too much memory"          | "It requires too many generations"   | "It requires too many worlds"          |
+
+In the case of evolution, it is obvious how absurd of an argument is being made. /Not even wrong/.
+In the case of many worlds, the exact same confusion is somehow disabling the minds of people.
+
+The question only is, "is reality large enough run the algorithm?". If it does, then nothing more is required.
+
+To me, the grandour, size, /abundance/, of reality is beautiful.
+Like when Giordano Bruno proposed that the stars are distant suns.
+
+
+--------------------------------------
+
+A software design is *not* /more complicated/ by requiring a large amount of runtime memory.
+A large count of entities is not complicated, if the /description/ of the entities is small.
+
+The *reverse* is /more true/. By having large amount of memroy available, we can make *simpler* algorithms.
+
+We live in 'the space age' [[[https://youtu.be/-6BsiVyC1kM?si=kIWhy6CwtfgrplHf][Hickey 2012]]], we live in /abundance/.
+
+
+
+* Should people have a copyright of their genes?
+
+I am pretty sure the answer is no. Because persons are memetic entities, which merely populate brains.
+Personal rights make only sense for memetic knowledge.
+
+People are not organismic, people are memetic.
+
+For a similiar reason, genetic modification is not unethical. Genes are merely a building material, made from adaptive information.
+
+For some reason there exists a fallacy, the 'gene == soul fallacy'. It's close the truth that the spirit of an organism is it's genome.
+The genome is the software, which persists across time (immortal gene) and across metamorphosis (butterfly, seed becomes tree, ...)  - the spirit that carries on.
+
+The spirit of a person, on the other hand, is not organismic. As they say: "It is multilayered.".
+It is the cultural, memetic software which grow on top of high dimensional, plastic hardware modules of human brain.
+
+I don't have any rights impinging on the rights of a clone of mine -- they are a person.
+So obviously it does not make sense to have personal rights regarding genomes.
+
+-------------------------
+
+The Deutsch / Popper 'knowledge based view' often comes with slightly counterintuitive notions like this.
+
+* The Knowledge Based View
+
+- [[https://youtu.be/FVNjVuu2mrI?si=BhpNYz1LzzFnI95f][The Farthest Reaches - The Audiobook]]
+- [[https://carlosd.org/][Carlos De la Guardia]]
+
+* Glossary (work in progress)
+
+*knowledge*: /information with causal power/.
+
+*software*: Knowledge made from information transformation rules (instructions). Biology is 'software archeology' (G. Chaitin).
+
+*interpreter*: A mechanism executing the instructions of a software, in terms of a lower level.
+For computers this bottoms out at physical circuits. In biology, ribosomes and cell metabolism are the interpreter of genes.
+
+*design*: Knowledge about being effective in reality. Software incoorperates design. In biology: /adaptations/.
+
+*institution*: Mental software that coordinates processes of conjecture and criticism.
+
+*top-down causation*: When knowledge / design / institutions cause physical transformations (See /interpreter/).
+
+*replicator* (generic) [Dawkins 1976]: Knowledge that causes itself to be stable, given a /niche/.
+
+*error correction*: Not sure.
+For replicators: Mechanisms that preserve their information content (fidelity, longevity, fecundity).
+For organisms: Regeneration.
+Error correction of scientific ideas implies *fallabilism*, the truth is out there and we get closer and closer to it.
+
+*meme* [Dawkins 1976]: A social replicator. A piece of software replicating between persons.
+
+*evolution*: A search process in some space of possible software (replicators), open ended.
+
+*person*: A software capable of open ended knowledge creation (*creativity*), explanation making and having memes, therefore participating in culture.
+
+*meme machine* [Blackmore 1999]: An information processing system capable of having memes. I.e. a computer capable of growing persons.
+
+*creativity*: An information processing based, evolutionary mechanism for knowledge creation. We don't know what algorithm makes creativity.
+
+*AGI*: Dito /person/.
+
+The gap between persons and current AI is in need of more advanced software, better *programming philosophy*.
+
+------------------------------------------------------------------------
+
+** Simplicity
+
+*** simple
+
+From /simplex/ (sim- "one", -plex "having parts"), one fold, one braid - that is no folds.
+Simplicity is a *objective* property.
+
+*** complex
+
+'braided together', consisting of many different connected parts.
+
+*** to complect
+
+Causing a system to be complex. [[[https://youtu.be/SxdOUGdseq4?si=TRATN8KJcOh-Xokr][Hickey 2011]]].
+
+#+begin_export html
+<div style="width: 100% display: flex; justify-content: center; align-items: center;">
+  <img style="width: 100%; max-width: 500px" src="./simple-complex.svg">
+</div>
+#+end_export
+
+** Elegance
+
+The property of a 'good design'. Elegant design combines function, pragmatism and =delight=.
+"Durability, convenience, and beauty" - the [[https://en.wikipedia.org/wiki/Firmness,_commodity,_and_delight][Vitruvian Triad]].
+
+#+begin_export html
+<iframe width="100%" height="600px" src="https://vehicles.faster-than-light-memes.xyz/art/pe/not-fire/11"></iframe>
+#+end_export
+
+[[http://localhost:8095/art/g/not-fire?page=11][not-fire #11]].
+
+Art and design is a kind of dialog of the artist with the piece [[[https://youtu.be/tTN_9mJIWNw?si=UYkPm_9zbq-1Gs1P][Ranulph Glanville]]].
+
+David Deutsch in /The Beginning Of Infinity/, also [[https://youtu.be/gT7DFCF1Fn8?si=uns6YxGLYzFIGK_f][Why Are Flowers Beautiful?]] makes the case for
+a missing theory of *objective beauty*. The 'aesthetics part' of Deutsch's ideas.
+
+Flowers evolved to signal ("I have nectar for you") to insects; Still /humans/ find flowers beautiful - why?.
+
+Deutsch conjectures that /the gap in knowledge between persons is as large as between species/;
+And that the human sense of aesthetics includes one for objective beauty, yet to be described.
+
+An artist creates knowledge, 'gets closer to the truth' by conjecture and criticism when they try different versions of a piece.
+The discarded papers in Beethovan's waste basket really contain (more) 'wrong' versions of a symphony.
+
+Not all art captures aesthetic beauty, but some should. And do so much better than flowers.
+
+Elegance is a criterion for good scientific theory, also mathematical proof.
+Beauty and truth have some sort of relationship - why?
+
+This makes elegance a subtle but actually sort of obvious problem, one /the/ problems.
+
+The missing theory of /elegance/ should unify epistemology, science and the arts;
+It seems be related to issues of creativiy, personhood, consciousness / mentality / AGI.
+
+The (human) brain should have adaptations, /elegance detectors/.
+Perhaps those play a central role in the algorithms of the brains ad-hoc epistemology.
+
+/[[https://en.wikipedia.org/wiki/Constructor_theory][Constructor theory]]/ (David Deutsch, Chiara  Marletto) is an approach to theoretical physics
+that takes higher level issues like design seriously;
+
+** Parsimony-based hypothesis of elegance
+
+#+begin_quote
+Big Tao approaching simple / The Tao is simple
+#+end_quote
+
+Lao Tzu, 571 BC
+
+#+begin_quote
+Numquam ponenda est pluralitas sine necessitate
+
+Plurality should not be posited wihtout necessity
+#+end_quote
+
+William of Ockahm, 1287 - 1347 AD.
+
+#+begin_quote
+Simplicity is the ultimate sophistication.
+#+end_quote
+
+Leonardo da Vinci
+
+The best design is not merely /simple/, it is even "self evident" ([[https://youtu.be/cidchWg74Y4?si=vyOIgzTIdKZW4l0u][Stuart Halloway 2012]]).
+
+----------------------------------
+
+In software, it is *not* the smallest amount of code that makes the best design.
+In my opinion something else is happening, that has to do with practicality, getting things done, /obviousness/ and causal efficacy (Wirkungsmächtigkeit).
+
+----------------------------------
+
+Braitenberg thought that if the brain's elegance heuristic is explaining (he thought that means predicting, i.e. having a world model) many things with
+a small amount of neuronal activation - the fewest =neuronal ensembles=.
+
+If they brain finds a 'good idea that fits well', the overall activation would increase suddenly - even though the excitability might be low.
+
+German: *Gendankenblitz*, 'Lightning thought':  An epiphany, a 'flash of insight'.
+
+Perhaps such a situation is the biological basis for humor. It would make sense that we evolved 'elegance detectors', using existing circuitry
+to train the neuronal nets - using some kind of reward signal.
+
+Aristotelian physics is a 'marshmellow'. It doesn't cut the world at the joints as it were, but is a list of special cases.
+For instance, 'rocks natural place is the ground so they sink in water', 'woods natural place is above water', etc.
+
+Compare it with Newtonian physics: There are only few simple entities (force, mass, acceleration, ...) explaining a large amount of stuff.
+
+[[denote:20250619T182010][design philosophy]].
+
+** Adaptationism
+
+The best available theory about desing in nature.
+It says that all biological design is an /adaptation/.
+
+Adaptation desiderata:
+
+- The trait is a variation of an earlier form.
+- The trait is heritable through the transmission of genes.
+- The trait enhances reproductive success. [of genes]
+
+[[https://en.wikipedia.org/wiki/Adaptationism][wikipedia]].
+
+Adaptationism is the theory that puts *knowledge* at the center of biology. Biology is a science about software.
+
+*** Adaptationism critic
+
+**** Randomness-based
+
+- *Genetic drift*: Saying genes / allele frequencies change due to randomness.
+
+- It should make one thoughtfull, that /adaptationism predicts random gentic drift/ - for those genes that don't contribute to fitness.
+
+- The 'evolutionary background mutation rate' should be maximal for junk DNA, and diminish with a function of it's contribution to adaptive traits.
+  The /adaptationism/ framework allows us to make sense of this.
+
+- *bottleneck effects*: For instance a founder population on an island with a random, small subset of original population.
+
+- As for founders/ bottleneck etc. effects; They concern 'hyperparameter' details, not the algorithmic structure of natural selection.
+
+- It could turn out to be true that every single trait needs a bottleneck effect to evolve.
+  But it is still the adaptationistic framework that explains where the design comes from.
+  It is still /nonrandom selection of random variations/, just that there is some more detail in the /variation/ part.
+
+- Natural selection might have different speeds, be faster if there islands for instance, or proceed in jerks ('punctuated equilibria').
+- This is not completely uninteresting, but also not foundational.
+- The speed of natural selection is a much less interesting problem than it's algorithmic structure.
+
+**** Constraint-based
+
+- *spandrels* [Gould, Lewintin 1979], developmental-constraints, historical contingency:
+- A spandrel is a feature without adaptative value.
+- Saying that a thing /is not x/, implies that the theory /for x/ is true.
+- /spandrels are a concept that only make sense in the framework of adaptationism./
+- It is a simple matter of sloppy thinking, to present it as an alternative to adaptationism.
+
+----------------------
+
+- 'why do we have a belly button?': The answer has to do with engineering problems and constraints,
+  there are traits that are /problems to be worked around/.
+- But why is a thing either a /problem to be worked around/ (with constraints), or /no problem/?
+- The answer is in the space of *design*.
+- Design work includes situations where the solution to a problem matters less - a spandrel situation if you want.
+- The theory that says how biology makes design is called *adaptationism*.
+
+**** Self-organisation based
+
+...
+
+That the structure of reality is a kind of resource for evolutionary, adaptative systems is a trivial.
+Ultimately, those notions are reductionistic, they attempt to get rid of the defining feature of biology, *knowledge*, in my view.
+
+** Adaptive domain / Adaptive space
+
+The causal, implementation - phase of replicating software.
+
+See /replicator/, /extended phenotype/, /genetic material/.
+
+** adaptation
+
+A feature of a /design/, made /adaptive/ by /natural selection/.
+
+** extended phenotype
+
+The set of effects - in the /adaptive domain/ - that cause a /replicator/ to be /replicated/.
+
+In particular, the /extended/ phenotype is not limited to morphology.
+The effects of a replicator do not 'end at the skin' as it were, they stretch into the /behavioural domain/,
+even the biochemistry of other organisms and so forth.
+
+Beavers build dams, spiders nests, some parasite influence the biochemistry of a snail host to strenghten its shell.
+
+The Extended Phenotype (Dawkins 1982) is /as the second part/ of the genes eye view(!). 👈
+Yet strangely underrated.
+
+Technology is not an extended phenotype, since there are no genes selecting for /variations/ of technology.
+It is the capacity for technology, 'runtime dynamism', a Baldwin effect, that is the phenotype.
+
+Also: /abstract replicator theory/.
+
+** tree of life
+
+A causally contingend design space object made out of ancestor descendant relationships.
+There should be one tree of life per /origin of life event/.
+
+The tree of life is an invisible, theoretical entity predicted by natural selection (Darwin 1959),
+it is one of the most scientifically substantiated aspects of our world.
+
+Science is often about /invisible things/ or *counterfactuals*, that serve as /explanations/. 👈
+
+The fact that all life is connected and descendant of a *single life form* (what a 'grandeur' ... ),
+the last universal common ancestor (LUCA), is at first glance counter intuitive and sometimes overlooked.
+
+The tree of life exists in a space of /counterfactuals/, the /design space/.
+A branch on the tree of life only exists because it's /alternatives/ were /possible/.
+
+This is because the mechanism of evolution, natural selection, operates on the /selection among alternatives/.
+
+- /adaptation/ requires /alternatives/,
+- Design is always about /tradeoffs/ ([[https://youtu.be/f84n5oFoZBc?si=jVGceFVFlG9Soarh][Hickey 2011]]),
+- Likewise a theory only exists because of it's alternatives
+
+See also: [[https://en.wikipedia.org/wiki/Last_universal_common_ancestor][last universal common ancestor (LUCA)]], adaptation
+
+** knowledge
+
+'Information with causal power'.
+
+Knowledge of a genome: A software program that causes an organism (development) to replicate the genome.
+
+Knowledge in science: Ideas that stand in a tradition of criticism.
+
+Knowledge is /hard to come by/.
+
+** meme (cultural)
+
+Information with causal power that replicates between persons.
+
+/Imitation/ (of action patterns) is not sufficient for memes (and therefore true culture).
+
+Memes must be /understood/ in terms of /counterfactual explanations/, in terms of the invisible.
+
+For example, to use a rock to crack open a nut -
+
+An onlooker must understand:
+
+- Mental states, i.e. 'they are hungry and want to eat the nut'.
+- The nut can be eaten when cracked open etc.
+
+** neuronal meme / neuronal replicator
+
+Information that replicates (is stable) within a brain.
+
+Also: autopoetic system, neuronal Darwinism.
+
+** software synthesis
+
+A search process in the domain (or a subdomain) of possible software.
+
+Brain / psychological development solves a software synthesis task.
+
+I.e. a *person* must /grow/ as a software that runs on the brain.
+
+** Person
+
+A software capable of open ended creative knowledge creation, understanding.
+
+A /universal explainer/ [Deutsch].
+
+Persons are capabable of /understanding memes/, and will /partake in culture/.
+
+** AGI (speculative)
+
+A person that was programmed artificially.
+
+I.e. we program a software synthesis task that is sort of like the one the brain uses to grow a person.
+
+Why can the brain grow persons but our computers cannot? This is the missing theory of personhood.
+
+The problem of personhood is one of /the/ problems of our time.
+
+*agi disiderata*
+
+- Prohibiting an AGI to partake in culture would be unethical.
+- Forcing an AGI to behave in some / constraining it it in some way would be slavery and unethical.
+- Running AGI on computers might be generally ill-adviced, is not figured out. Erring on the side of caution is ethical.
+
+** coercive
+
+Pointed against creativity, prohibiting open ended knowledge creation in same way.
+
+** non coercive technology
+
+(first attempt) Technology that serves the creativity of persons.
+The opposite, /coercive technology/ is pointed against creativity and /live sucking/.
+
+Non-coercive tech allows for information processing systems to have wiggle room, just like normal local person-person interactions had previously.
+
+The law is not applied 100% accurately (obviously), also because a certain wiggle room is left in the behavioural domain;
+E.g. police - user situations.
+
+If I have to fill form =x= in order to make the information processing system go into state =Y=, from which I can do form =z=, ...
+
+This is /life sucking/; Because the creative understanding of the persons involved is already created.
+
+** non coercive programming
+
+(attempt...)
+
+Programming in a paradigm that has creativity (Poppers critical rationalism) at the center of concerns.
+
+#+begin_quote
+It is easy to program a computer that plays correct chess. It is hard to program a computer that plays good chess.
+#+end_quote
+
+Gary Sussman
+
+Programming is not about solving puzzles, but about using ones complete set of creative problem solving capacity
+to explore and make progress on solving the problem at hand.
+
+Programming languages should support the programmers open ended creativity, and be a medium of artistic expression.
+
+This is why /pragmatism/ is a core value of the most powerful language that ever existed, Clojure.
+
+** Sufferning, Capability to Suffer (Leidensfähigkeit)
+
+A hiethertho not-understood property of software connected with the loss, absence or hindrance of creative flourishing.
+
+Related, *pain* is an adaptation of organism, signaling a problem situation for reproductive success.
+
+A theory of /suffering/ is connected to the mind-body problem and *relationship of biological information processing and ethics*.
+
+-----------------------------------
+
+It is not required to know one is suffering, for suffering to occur.
+The phenomon of [[https://en.wikipedia.org/wiki/Anosognosia][anosognosia]] provides the counter example.
+
+Similiarly, perhaps animals don't suffer from the concept of death like we do.
+
+Then, it also seems strange that phenomological consciousness would be required for suffering to occur.
+
+-----------------------------------
+
+Yuval Noah Harari [2018] says that /suffering is the most real thing/.
+
+Even if our world was simulated on a computer by aliens, matrix style, then those aliens
+would have to be accountable for running such a simulation, involving this suffering.
+
+Ethics is deeper than worlds. A typical inversion of reasoning that comes with a knowledge-based view.
+
+-------------------------
+
+Marvin Minsky thought that suffering is when something is preventing one from solving ones problem;
+A resource-based, intelligence - notion of suffering.
+
+-------------------------
+
+Dennett thought that pain is the way a software system says 'red alarm', similiar to the notion of Minsky - it needs to be something that cannot be ignored,
+and is annoying. Else it would not have the intended effect on the system.
+
+** Veganism (generalized)
+
+[[./consider-the-animals.html][Consider the Animals]] — a page for the rationalist who hasn't looked yet.
+
+Minimizing the suffering of all sentient beings across time, space or all of reality is ethical.
+Be it aliens, artificial persons (AGI) or non-human animals.
+I consider veganism almost self evidently true.
+
+Zoologists generally assume animals suffer.
+Things like insect pain are research topics (/Metazoa: Animal Minds and the Birth of Consciousness/, Peter Godfrey-Smith is a cool overview).
+
+Even though we have no theory of suffering, the decent thing to do is to err on the side of doubt and consider them suffering.
+Obviously so!
+
+** Lucid Dreaming
+
+A dream where the person becomes aware that it is a dream.
+
+How to proceed is up to the user, the control over the dream varies.
+I usually do one of flying, fucking, fighting, magic.
+
+Others try to talk to relatives or meditate on the dream itself.
+
+** Post-lucid dream
+
+A lucid dream with a narrative where the main character knows they are dreaming, but without the locus of control.
+
+Examples for the usually kafkaesque narrative:
+
+The user is dreaming, aware that he is dreaming...
+
+- ... and investigated by dream police ...
+- ... and faces his inner deamons, which control his subconsciousness and dream (damn you, Freud!)...
+- ... and faces characters from other dimensions etc. with the power to appear in persons dreams...
+
+Of course these range from mystical to somewhat plausible, and rational thought can liberate from nonsensical believes, even while dreaming.
+
+** Platonic Anismism
+
+If all patterns (of information and therefore software) already exist in the multiverse, then the ideas exist out there.
+In a perspective flip, it is up the ideas to populate and recruit other parts of reality.
+Wherever there is a search process, an idea has the chance to invade the substrate.
+
+This way around the brain is a kind of reciever of ideas and the ideas populate /brain/ more or less succesfully.
+The ideas are 'alive', they are adapted to be better or worse ideas.
+
+'Software animals' in the 'computational universe' [Steven Wolfram].
+
+* Archived Thought Feed
+
+[[denote:20250619T175458][Feed Archive]]

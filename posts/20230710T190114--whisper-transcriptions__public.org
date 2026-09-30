@@ -1,0 +1,31 @@
+#+title:      whisper-transcriptions
+#+date:       [2023-07-10 Mon 19:01]
+#+filetags:   :public:
+#+identifier: 20230710T190114
+
+
+#+begin_src elisp
+
+  (async-shell-command
+ "ffmpeg -i /storage-disk/phone-audio/202303/20220915_205241.m4a -vn -acodec copy output1.aac")
+
+(async-shell-command
+ "ffmpeg -i /storage-disk/phone-audio/202303/20220915_205241.m4a -vn -acodec copy output1.aac")
+
+
+#+end_src
+
+
+#+begin_src shell
+
+  OPENAI_API_KEY=$(pass us-openai-test-key)
+
+curl https://api.openai.com/v1/audio/transcriptions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: multipart/form-data" \
+  -F file="@/home/benj/scratch/two_min_output.mp4" \
+  -F model="whisper-1"
+
+#+end_src
+
+Imagine, you try to make a project that is hard to understand, there would be something like remorse, but yeah, short of that, short of completely trolling, or like to only trolling, like some of the best things you can do is just disguise your project as like this, oh yeah, yeah, best practices, right, type script, static types, yeah, and then like, yeah, I made interfaces where that is so good, yeah, yeah, yeah, yeah, yeah, yeah, yeah, yeah, yeah, that part is sort of fine, there's sort of a lot of things that are kind of fine, it's only like one thing that is so annoying is that, yeah you're bound to, but then I guess you're not bound to these stupid types because you can just, you get a way out of it by just saying any song, it's like typescript, I'm being pissed about it, yeah I still have like the issue when somebody asks me why are interfaces better than inheritance, because with inheritance you get this class, with interface you just say this is this kind of thing, you don't get a half-baked implementation.

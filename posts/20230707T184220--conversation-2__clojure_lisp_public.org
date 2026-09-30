@@ -1,0 +1,83 @@
+#+title:      conversation-2
+#+date:       [2023-07-07 Fri 18:42]
+#+filetags:   :clojure:lisp:public:
+#+identifier: 20230707T184220
+
+
+This was the 1 thing that McCarthy did. He took the lists from IPL and said:
+/Dynamic nice, can I express with those lists the most minimal representation of what programming is./[fn:10]
+
+- Lisp was discovered, it was described in a math paper before it was implemented.
+- By a single person, not by a committee.
+
+McCarthy was yearning for a more interactive programming experience. If you could sit at a console and type
+in the next thing that the program is doing, you could interactively program.
+
+Note a few curious facts about this:
+
+1. Lisp was dis
+
+There is an aspect of programming that is not harnessed. That is once you have this dynamic memory step,
+you can have programs that modify themselves.
+
+In Lisp, we represent the program in the dynamic part of the program.
+
+The whole idea of having dynamic data originally came from IPL
+
+[[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]],
+Lisp ideas come from [[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]], which was used for one of the most important early AI works =General Problem Solver= (1957).
+
+
+
+
+* IQ tests
+
+[[https://www.youtube.com/watch?v=Iel4vVYgExA][Adam Tornhill]] recently eloquently showed /Don't make your program like an IQ test!/.[fn:3]
+
+Here is another way in which programming can be like an IQ test.
+
+All these little number games where you get off by 1 errors etc.
+Every time you wonder =&&= or =||= et. etc.
+
+#+begin_src javascript
+  if (i = 0; i < count(lst); i++) {
+      lst[i];
+  }
+#+end_src
+
+observe what I do with interactive programming:
+
+file::/little-counting.gif
+
+I don't need to think about the position of the args for =<=. I just do, like molding clay
+into what I need it to be. I have eliminated the friction between me and the computer.
+
+Thinking about ideas is good. But need to put effort and thinking /into/ the process of
+expressing yourself on the computer is bad.
+Programming is about ideas, you want to spend your mental energy on the ideas and nothing else.
+
+IQ test puzzles in the code are bad. IQ test puzzles while I express myself to the computer are bad.
+They are friction between me and the computer. With optimal computer usage, they would be gone.
+
+Young programmers might get the idea that this is what programming is about, solving 100s of little IQ tests.
+If you are a guy, you will probably /enjoy/ these kinds of puzzles and think /I like programming/.
+
+Wrong. Wrong. So wrong. Completely missing the point.
+
+Programming is about ideas, about expressing ideas.
+
+If you would have to solve a little puzzle every time you speak, you would not think that
+speaking is so fun because you get to solve little puzzles while doing it.
+
+One of my hypothesis is that this is one aspect of the multi-sharded surface of why guys
+have an easier time getting into programming than girls.
+
+There are simply many little things off in mainstream programming and it takes both sensibilities
+and deep knowledge to understand them and fix them.
+
+In reality, programming is about organizing and communicating things.[fn:1]
+Activities for which women* might have a greater propensity than men* [fn:4].
+
+The thing is that guys
+
+In batch-oriented programming, there are this 100 of little

@@ -1,0 +1,88 @@
+#+title:      The Power Of Intelligence
+#+date:       [2023-07-18 Tue 14:54]
+#+filetags:   :public:ai:
+#+identifier: 20230718T145435
+#+EXPORT_FILE_NAME: the-power-of-intelligence
+
+Marc Andreessen is wrong about the power of intelligence.
+
+Marc Andreessen was recently (2023) on the Sam Harris podcast and it came up multiple times where Sam is pushing on the power of intelligence,
+
+Marc was putting forth
+
+/Do the smartest people make the decisions on earth?/. /If you put the smartest 100 people into a room, do they take over the world?/.
+
+The issue here is that we are not talking about /roughly the same intelligence/, not double, nor triple.
+The difference between a stupid human and an extraordinary human is negligible compared to the difference between human civilization and all
+other primates.
+
+The kinds of minds we are about to build will be /vastly/ more capable than us. When such minds want to achieve goals, it will be nothing like
+the clumsy humans trying to make political changes to a running system or something.
+
+They will be able to think outside of boxes we will not know have existed. They will completely and utterly bypass any political or social systems in place if they can.
+A system like this will have as much to do with clumsy humans trying to influence and make friends, than a
+chess computer has to do with humans playing chess.
+
+It will go in straight lines where you don't know how to turn the light switch on. It will do this in the space
+of coercing people and gaining strategic advantages.
+
+You cannot get coerced into doing something you don't want to? Simply a lack of imagination.
+
+There are a thousand ways to coerce, blackmail, manipulate and deceive people and make money or gain power from it.
+An AI could build virtual versions of me and blackmail me with them being tortured or not.
+An AI can build personalized porn streams and make money from, what? At least 2% of the male population?
+An AI could play a long game and put us on Tic-Toc and Netflix for 2 generations and mold us into doing anything.
+
+Seriously, =QAnon= is a *thing*. You can feed people the right kinds of information and enough of the population starts believing things you say.
+And QAnon works /without/ super intelligence making advanced moves in the realms of manipulating people.
+
+* Power plugging
+
+/We will be able to shut down the AI and if need be coerce all states to shut down the internet./
+
+If this is your opinion, you would be pushing as hard as you can to get the strategic plans in place to pull this off. The fact
+that you are not pushing for this is exactly the issue here. If you follow your strategy, you would be on the same page as the AI-worried people right now.
+
+Without strategic plans like:
+
+1. *when* do we shut it off (what signs do we need)?
+2. how we will shut it off?
+
+This kind of argumentation says nothing and just shows that we don't have good enough plans.
+
+From Bostrom (2014) we know that =1.= is very, very hard. If we have superintelligence, it will
+/covertly/ acquire a /decisive strategic advantage/ and then just win.
+
+/Shutting it off/ and /Thermodynamic resource restraints/ will only help us in scenarios where we deal with some halfway competent
+dirty AI bombs, /not/ if we deal with a true intelligence explosion.
+
+We cannot know the [[https://en.wikipedia.org/wiki/Side-channel_attack][Side-channel attack]]s that intelligence can pull off on its hardware and by extension its architecture.
+
+[[denote:20230430T202442][Elsewhere]] I said:
+
+#+begin_quote
+For instance, if the ANN is extremely capable, it might manipulate the electronics in nuanced ways, building a second
+memory storage. Then, it could start sending messages to itself across multiple calculations of the model. It would obtain agency where we thought no agency was possible.
+#+end_quote
+
+I trust your architecture when you build toasters. But I cannot trust your architecture when you build =intelligence=. Don't tell me that knowing how the models work helps
+with this. Currently, you can know the process that makes the black box, but you don't know its workings.
+
+* Output vs. inner workings
+
+Another confusion of layers in the discussion I see is this:
+
+1. The input-output of the LLM
+2. The inner workings of the LLM
+
+This is when you say /you can ask the model what it would do about =x=./ And yay, it is so balanced and morally nuanced.
+That is great but this is not the level where I would expect to see a malicious intelligent explosion happening.
+I would perfectly expect the system to get better and better at answering these things in satisfying and convincing ways.
+This is how it would look /both/ for beneficial and malicious intelligence. Bostrom (2014) calls this =instrumental goal convergence=.
+It would /want/ us to think it /is/ moral, whether it is or not.
+
+The issue lies not in what nails you can hit with the hammer. The issue lies with the hammer.
+The hammer is not a hammer but an ever more intelligent system. And intelligence is a different kind of thing in the world than
+hammers and toasters are. You ask the other animals on the planet how it works out for them that some primate species suddenly started being weird.
+
+To talk of =1.=, when the other person means =2.= is a misunderstanding that is muddling the discussion.

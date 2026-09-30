@@ -1,0 +1,125 @@
+#+title:      hire-benjamin
+#+date:       [2023-02-28 Tue 09:00]
+#+filetags:   :code:job:public:
+#+identifier: 20230228T090010
+#+EXPORT_FILE_NAME: hire-benjamin
+
+* Benjamin Schwerdtner
+
+Driven Clojure programmer contractor, making websites, apps, and other
+digital products.
+
+know what I am doing.
+
+#+begin_export html
+<a href="/contact.html">
+  <button type="button">Hire Benjamin</button>
+</a>
+#+end_export
+
+* Practical, flexible, scientific
+
+My goal is to produce value for your customer.
+I want to deliver robust systems that are easy to reason about, using
+whatever technology makes sense for the job.
+I follow where the evidence is leading me:
+I speak up if I see anything amiss and I document limitations and
+flaws in the software I touch.
+
+* Craft
+
+I take pride in the software I produce and I take great care to
+deliver solid simple programs that just work.
+I use Clojure, functional programming techniques and domain modeling
+because in knowing the power of thinking things through.
+I have acquired sensibilities of what makes good tools and how to build them.
+
+* Technology
+
+My choice of weapon is Clojure(script), because of [[denote:20230126T094804][the joy]] of it.
+I know .Net + C#, python, golang, typescript, js, HTML + CSS.
+I used datomic, dynamo db, PostgreSQL in the past.
+I know reagent, re-frame, babashka and other Clojure libraries.
+I am relaxed when using Git, because I know =git-reflog=.
+I write Emacs Lisp in my [[denote:20221020T191814][dreams]].
+
+* Philanthropist that wants to get things done
+
+I have a future [[denote:20221117T201102][in mind]] that I am working towards.
+If you are an NGO, university or similar and you can convince me
+that your project contributes to *human flourishing*,
+I will do the job for half the price.
+
+* Rate
+Fixed price billing per project because I want to think through your
+problem on my own time.
+- 500 euros per deliverable, which corresponds roughly to half a week.
+- *half the price currently* because I am starting as a freelancer.
+
+* thought
+
+I bring thoughtfulness to my work and I practice empathy
+for users and future programmers alike.
+I understand that technology is intertwined with human factors.
+
+
+Thoughtfulness. Careful design.
+Empathy for your users and the next programmer alike.
+I try to share your vision of your product.
+I understand that technology is used by humans and built by humans.
+
+* scientist programmer
+
+As a scientist at heart, I challenge my assumptions and go where the evidence leads me.
+Code is a series of best guesses. Imagination and note-taking are powerful tools of the mind.
+I keep extensive documentation on issues and bugs I encountered.
+I am not ashamed of using any hints, trifles or half-remembered pieces of information to help me understand
+how the world works and how to fix a problem.
+I speak up when I see anything amiss and document limitations and tolerated issues with the software I produce.
+
+
+I am constantly learning and improving my understanding of what makes a
+
+Genuine interest in science and technology.
+
+I give you a discount when I believe your project contributes to human flourishing.
+I don't accept buggy software and want to rid the world of it.
+I have FOSS bias because it leads to more useful, focused tools and it
+it aligns more strongly with my values.
+
+* the strings
+
+3. We might have multiple rounds of this because I might discover that XYZ is hard but XYB is feasible etc.
+4. I come back to you with an offer 💰, on a per-project basis,
+   depending on the complexity and operational requirements of the project.
+
+5. If you are already a startup or Clojure workshop we can skip 3/4 and talk on per hour basis.
+Q: What is human flourishing?
+A: Something like a cool science tool, or the website for your NGO. I know it when I see it.
+I reserve the right to decide that seemingly decoupled from any objective or subjective measures.
+
+
+
+
+
+
+Clojure combines the wisdom of the ancient hackers that discovered
+interactive programming with real-world tradeoffs, practicalities and
+modern approaches to polymorphism, concurrency and immutability.
+
+I'm a craftsman, and I take pride in the software I produce.
+I take great care to deliver solid simple programs that just work.
+
+
+Preaching and practicing interactive programming. I
+don't believe in any set of limitations.
+Clojure combines the wisdom of the ancient hackers who discovered
+interactive programming with real-world tradeoffs and practicalities.
+The REPL, Emacs and Clojure together with functional, bottom-up programming allow
+me to deliver more robust systems more quickly.
+
+
+Dreaming big, I want to build great software and have a real impact.
+
+
+ there is just too much garbage nowadays.

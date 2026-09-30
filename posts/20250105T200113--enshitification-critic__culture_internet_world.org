@@ -1,0 +1,309 @@
+#+title:      critic-of-pure-bogus
+#+date:       [2025-01-05 Sun 20:01]
+#+filetags:   :culture:internet:world:
+#+identifier: 20250105T200113
+#+EXPORT_FILE_NAME: gen-ai-critic
+
+
+*This website is made without the use of generative AI* (except in paragraphs marked as such).
+
+Thought feed on the ongoing accelerating [[https://en.wikipedia.org/wiki/Enshittification][enshittification]] of the internet and everything.
+
+Credentials: I am just a software engineer.
+
+#+begin_quote
+They will be hearers of many things and will have learned nothing; they will appear to be omniscient and will generally know nothing; they will be tiresome company, having the show of wisdom without the reality.
+#+end_quote
+
+Jowett, Benjamin. The Dialogues of Plato in Five Volumes. 3rd ed. Oxford University, 1892. ([[https://www.john-uebersax.com/plato/myths/phaedrus.htm][here]])
+
+
+* YT Content trails
+
+- [[https://youtu.be/YD9Tgmeo8-0?feature=shared][Some heavy hitters (Gary Marcus, Rodney Brooks, Thomas Dietterich, Peter Stone)]]
+- [[https://www.youtube.com/live/eCUtGU4qKVY?feature=shared&t=25278][Kristinn R. Thorisson (technical)]]
+- [[https://youtu.be/8enXRDlWguU?si=VU13RqkAGZME2UHa][Silicon Valley Insider EXPOSES Cult-Like AI Companies | Aaron Bastani Meets Karen Hao]]
+- [[https://youtu.be/G-cdVurdoeA?si=WiLuldVMZBtv1MYv][AI is Making You Dumber]]
+
+* Conclusions
+
+- Gary Marcus describes how the current gen AI just doesn't work that well.
+  How it can be used by bad actors to spread misinformation and erode democracy.
+- We are in the age of the information bubbles ('memepools' if you like).
+- Yuval Noah Harari, (2024 /Nexus/) describes how information processing systems are powerful, and it is not a given that they are a force of good.
+- AI, computing and deep learning provide awesome new approaches to science and engineering, which we totally don't want to miss out on.
+- But /gen AI/ in text and art is contributing to /commercial bullshitting/ of the internet, general loss of quality, enshittification.
+- Malgingant information processing sucks our live, *brainrots* adults and children, and is /pointed against/ human creativity.
+
+- *Bullshit* or 'fluent bullshit is now the philosohpically correct way to refer to the modus opperandi of LLM's
+- The term Hallucination was a mistake because it suggest /perception/ or a web of understanding.
+  Aka. Rich datastructures corresponding to cognition states and a living, intelligent system with some embedding in the world
+  controlling it's continuous learning.
+  Multiple lines of reasoning point to the fact that generative AI does not have these.
+- Epistomologically speaking, gen AI is still not sufficiently different from behaviorism to be interesting.
+  That is: "The mind is made from from many, small input-output relationships, learned by reward."
+- This model explains why LLM's need large amounts of data to work.
+
+
+
+-------------
+
+1. Make *Not made with gen AI* a quality badge, similar to /fair trade/.
+
+2. We want useful information processing. If tech causes harm without benefits, away with it.
+
+3. Free media essential for democracy. Floodig the internet with garbage 'factoids' erodes democracy.
+
+4. /Counterfit People/ (Dennett 2023), and non consensual deep fakes should be outlawed similar to counterfit money.
+
+---------
+
+- Current chat bots don't have the requisite 'cognitive structure' to take a command like "Don't spread misinformation".
+
+- Artists need to be compensated when their work is used to train models and make money.
+
+- A similar issue exists for GPL-licensed code.
+
+  From the GNU GENERAL PUBLIC LICENSE Version 2:
+
+  #+begin_quote
+
+    b) You must cause any work that you distribute or publish, that in
+    whole or in part contains or is derived from the Program or any
+    part thereof, to be licensed as a whole at no charge to all third
+    parties under the terms of this License.
+
+  #+end_quote
+
+  This means that LLMs trained on GPL code are a /free/ product and should be licensed with GPL.
+
+  No misenterpretation possible in my opinion!
+
+  We know that LLMs even store text verbatim.
+
+- This is a blatant violation of the spirit of free software.
+- Consider on what shoulders these companies stand when they make their fortunes. It is disgraceful.
+- Ilya Sutskever says current AI runs on the data of the internet, "the oil of AI".
+- Oil taken without license.
+- And then pressure artists, writers, software develpoper with 'soon job xyz not needed anymore'?
+
+- AI data centers consume huge amounts of recources.
+
+--------------
+
+AI, intelligence, personhood
+
+- My fear is that gargabe "AI" does damage without working that well.
+
+- "True AI", AGI would be a person, because it would have to have a /universal dynamism/ (Deutsch: a universal explainer).
+- It would be capable of /common sense/, understanding and therefore explanatory memes.
+- *It would participate in our culture as person*.
+
+- AGI technology will come from a breakthrough in the philosophy of programming.
+- Big data-centers are making negative progress on AGI, because they cause confusion.
+
+- /Simplicity is the ultimate sophistication/ (Leonardo Da Vinci) And AGI software will run on a laptop.
+
+- Person: A software that is capable of creating explanations (engage in open ended knowledge creation). A person would be AGI.
+- Personhood: The property of being a person.
+  Understanding personhood will require breakthroughts in the philosophy of programming, epistemology, aesthetics, ethics.
+
+* Bogon
+
+From Neal Stephenson's /Anathem/.
+
+Similar to a virus, a meme-like entity that floods the internet with plausible looking factoids, making it useless.
+
+*bogon*: A memetic piece of information, replicating akin to a computer virus. It is usually generated by a computerized process. It usually contains information that is not easily recognized as fake by a human reader (*fluent bullshit*).
+
+See also /treme/, /meme/, /bullshit/, /slop/.
+
+It lives in Harari's /computer intersubjective reality/ (Harari 2024).
+That is the shared narritive that information processing systems create.
+
+The warning is that this might /break the internet/.
+Once there is enough garbage, you won't trust anything on the internet anymore. Then, it becomes /mere bogus/, or /total garbage/.
+This concept was already called /information apocalypse/ ([[https://youtu.be/GmlrEgLGozw?si=QHEiXQzKYU7chVgG][Sam Harris]] with guests).
+It is unethical to contribute to /bogus/. It is one of the great cultural problems of our time to fight the bogus.
+
+* Intersubjective Computer Reality
+
+Now you laugh about AI proofreading or writing your job application or master thesis.
+What if tomorrow, nobody but computers will read it in the first place?
+
+And your grade, your outcome, ... depends on the shared 'myths' of the systems.
+
+* Brainrot
+
+- LLMs / Gen AI live in a world of face facts, not reality.
+
+Apparently Plato wrote this down.
+A story of [[https://en.wikipedia.org/wiki/Thoth][Thoth]], the Egyptian god of writing, giving the "gift" of writing to a pharao guy Thamus.
+
+#+begin_quote
+Thamus replied: O most ingenious Theuth, the parent or inventor of an art is not always the best judge of the utility or inutility of his own inventions to the users of them. And in this instance, you who are the
+
+The written word an image only of the spoken
+
+father of letters, from a paternal love of your own children have been led to attribute to them a quality which they cannot have; for this discovery of yours will create forgetfulness in the learners' souls, because they will not use their memories; they will trust to the external written characters and not remember of themselves. The specific which you have discovered is an aid not to memory, but to reminiscence, and you give your disciples not truth, but only the semblance of truth; they will be hearers of many things and will have learned nothing; they will appear to be omniscient and will generally know nothing; they will be tiresome company, having the show of wisdom without the reality.
+#+end_quote
+
+Excerpted here [[https://www.john-uebersax.com/plato/myths/phaedrus.htm][Thamus and Theuth]].
+
+When you make a map, the map is not the territory. This is a blessing, but also a danger.
+You know the story of the person driving into a lake because they followed the navigation system?
+
+It is as if we create a web of information, and now the gen AI live there.
+Operating not on reality but the shadows of reality. Reproducing our biases is only the least of our problems.
+
+# Our problem is how do we know what is real in an ocean of gargabe?
+
+-----------------------------
+
+When the AI's are there to form opinions, when the AI reads your job application, when it says how to understand the law.
+
+We enter the era of computerized bureaucratic (top down causation) authoritarianism.
+
+We would be coerced to please the systems, by automating our own facade. By all doing /search engine optimization/ on our /own brand/.
+
+Such a future sounds like a kind of hell to me; Unless we gain understanding of what creativity is, and create structures which value creativity.
+
+-----------------------------
+
+Platos /memory/ is almost synomous with the mind in this context. It is the 'finding the context' that Ian McGilchrist calls 'having a life'.
+This is closer to the concept of /common sense/ in current AI and cognitive science.
+
+It is the embedding, the putting into relationship, into the rest of what one knows (remembers), that puts a fact into the world.
+
+Losing this ability means losing touch with reality - living in a fake world of bullshit.
+
+
+-----------------------------
+
+I would add to this the "executive control," to be able to have the free will of making a judgment. I.e. /using/ ones /memory/ as basis for decisions.
+
+My worry is that the chat windows are brainrotting both memory and executive control.
+In this way, the current AI chats are creating the very world in which their existence is exalted.
+If we lose the ability to produce creative text and to judge text, we use the AI chats for these tasks. My logic is "use it or lose it".
+
+"Outsourcing thinking" is a terrible idea, leading to [[https://en.wikipedia.org/wiki/Brain_rot][Brainrot]].
+
+-------------------------------------
+
+
+In terms of Ian McGilchrist, it is a left-hemispheric delusion. It is mistaking the map for the terrain.
+
+The same also happens when a 'math benchmark' is mistaken for 'doing math' (creativity).
+It is thinking that some symbolic representation of "test" says something about the high-dimensional activity of personhood.
+
+
+* Thought Feed
+
+A thought feed is a website with snippets of text, produced diary-style. The coherence between snippets might be low. The idea is that it reflects the ongoing thought process of a person.
+
+-----------------------------
+
+Currently, artists are being ripped off, the world is flooded with unethical gargabe AI generated content.
+Google search is full of commercial bullshit (SEO is a discipline - Jesus). Code quality goes down from generated code.
+
+It's not the case that all deep learning is garbage. For instance, AlphaFold seems to be an impressively useful tool.
+
+-----------------------------
+
+The world is flooded with bogus. We have to create spaces where this is kept out; we have to do something like watermark the information we put out there. Like "this is not made with gen AI".
+
+
+** Brainrotting the Ability to Have Opinions
+
+I notice this myself:
+
+Instead of forming an opinion, I paste into an AI chat nowadays. This is not good. This means that we are "outsourcing" and therefore losing the ability to form aesthetic judgments.
+
+Especially if we have now a wave of 20-year-olds who should be growing their prefrontal cortex; that should be growing their ability to represent the structure and design of systems, and forming aesthetic judgment on it.
+
+Not even mentioning the social-emotional domain.
+
+If those things are outsourced to chat windows now, it would constitute brainrot.
+
+---------------------
+
+[[https://arxiv.org/abs/2408.04681][Conversational AI Powered by Large Language Models Amplifies False Memories in Witness Interviews]].
+
+We have studies now that LLM chat interaction can create false memories. Outsourcing "what you know" to a stochastic database of internet text.
+
+Plato really was onto something when he said this thing with deteriorating memory.
+
+-----------------------------------------
+
+This should give reason to pause:
+
+[[https://www.google.com/search?q=anthropic%20applications%20dont%20use%20ai][Anthropic says "please don't use AI"]] in your applications.
+
+This is one of the companies that contribute to the current problem of AI-generated applications. It is exactly this burden on society that down-to-earth people like Gary Marcus and Angela Collier have warned about.
+
+----------------------
+
+Gary Marcus has called LLMs a /fluent spouter of bullshit/.
+
+*Hallucination*
+
+dictionary: https://www.merriam-webster.com/dictionary/hallucination:
+
+#+begin_quote
+computing : a plausible but false or misleading response generated by an artificial intelligence algorithm
+#+end_quote
+
+But /hallucination/ is the /modus operandi/ of generative AI. In a deep sense, all its outputs are /hallucinated/.
+
+I am a fan of ordinary, useful, solid information processing, like GPS. This used to be /AI/ ("GOFAI").
+
+-----------------------------
+
+Powerful computer technologies are Linux, the internet, programming languages, Git.
+
+When these technologies are brought to the user in the right way, they enable what we experience to be "the modern world".
+
+The internet is so powerful and solid; it feels like a force of nature rather than a human artifact.
+
+There are plently of problems we can solve with solid, ordinary software.
+
+-----------------------------
+
+The only thing missing is that AI systems talk to each other, producing bulshyt /catered to/ AI. Then they become /tremes/ (S. Blackmore), replicators that replicate on information processing systems. In the /inter-computer reality/ (Y. Harari 2024), the shared fiction created between computers.
+
+* Slop
+
+[[https://en.wikipedia.org/wiki/AI_slop#cite_note-25][AI slop]]
+
+#+begin_quote
+AI slop, commonly referred to simply as slop, is low-quality media—including writing and images—made using generative artificial intelligence technology. Coined in the 2020s, the term has a derogatory connotation akin to "spam".
+#+end_quote
+
+[[https://www.ign.com/articles/coca-colas-new-ai-generated-holiday-ad-slammed-as-soulless-and-embarrassing-this-is-such-slop][Coca-Cola's New AI-Generated Holiday Ad Slammed as 'Soulless' and 'Embarrassing': 'This Is Such Slop']]
+
+------------------------------
+
+*Commercial Bulshit*: /marketing speech/. It is /bulshit/ in the service of selling stuff.
+
+# * Gen AI Critic on Yotube (selected)
+
+# #+begin_export html
+# <iframe width="100%" height="315" src="https://www.youtube.com/embed/EUrOxh_0leE?si=WaA9Bfed4XUwvcFh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+# #+end_export
+
+# Angela Collier is refreshingly down to earth and non-bullshit.
+
+# #+begin_export html
+# <iframe width="100%" height="315" src="https://www.youtube.com/embed/-opBifFfsMY?si=auDfPrXc8-rON4-f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+# #+end_export
+
+# Thanks to Freya Holmér, you are not alone.
+
+# #+begin_export html
+# <iframe width="100%" height="315" src="https://www.youtube.com/embed/P7NHABs76mg?si=o8QvsF_ypNLb-M1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+# #+end_export
+
+
+# #+begin_export html
+# <iframe width="100%" height="315" src="https://www.youtube.com/embed/QFMyyAKOOQ0?si=neACJVgh4dZfOFiG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+# #+end_export

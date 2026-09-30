@@ -13,9 +13,11 @@
 (require 'denote)
 (require 'parseedn)
 
-(setf denote-directory "~/notes/")
-(defvar ftlm/index-file "/home/benj/notes/20220923T161021--index__public.org")
-(defvar ftlm/posts-file "/home/benj/notes/20221210T171258--ftlm-navbar__ftlm_public.org")
+;; Blog posts live in posts/ of this repo, separate from the private denote notes.
+(defvar ftlm/posts-dir (expand-file-name "posts/"))
+(setf denote-directory ftlm/posts-dir)
+(defvar ftlm/index-file (expand-file-name "20220923T161021--index__public.org" ftlm/posts-dir))
+(defvar ftlm/posts-file (expand-file-name "20221210T171258--ftlm-navbar__ftlm_public.org" ftlm/posts-dir))
 
 (defun denote-link--collect-identifiers (regexp)
   "Return collection of identifiers in buffer matching REGEXP."
@@ -72,7 +74,7 @@
   (append
    (list ftlm/index-file ftlm/posts-file)
    (ftlm/post-files)
-   '("/home/benj/notes/20230301T123854--contact__public.org")))
+   (list (expand-file-name "20230301T123854--contact__public.org" ftlm/posts-dir))))
 
 (defun ftlm/posts (files)
   (mapcar #'ftlm/post-data files))
@@ -251,7 +253,7 @@
         :recursive t
         :exclude ".*"
         :include (append (ftlm/post-files) (list ftlm/posts-file))
-        :base-directory "~/notes/"
+        :base-directory ftlm/posts-dir
         :publishing-function 'org-html-publish-to-html
         :htmlize-output-type 'css
         :publishing-directory "./public/"
@@ -273,7 +275,7 @@
         :html-preamble-format `(("en" ,(get-preamble)))
         :html-head (with-current-buffer (find-file-noselect "src/ftlmemes/index-head.html") (buffer-string))
         :base-extension "org"
-        :base-directory "~/notes/"
+        :base-directory ftlm/posts-dir
         :publishing-function 'org-html-publish-to-html
         :htmlize-output-type 'css
         :publishing-directory "./public/"
@@ -296,12 +298,13 @@
 The LINK, DESCRIPTION, and FORMAT are handled by the export
 backend."
   (let* ((path-id (denote-link--ol-resolve-link-to-target link :path-id))
-         (path (file-name-nondirectory (car path-id)))
-         (p (file-name-sans-extension path))
-	 (p (dw/strip-file-name-metadata p))
-         (id (cdr path-id))
+         (path (and (car path-id) (file-name-nondirectory (car path-id))))
+         (p (and path (dw/strip-file-name-metadata (file-name-sans-extension path))))
+         (id (or (cdr path-id) link))
          (desc (or description (concat "denote:" id))))
     (cond
+     ;; Links to private notes outside posts/ do not resolve: export just the text.
+     ((null path) desc)
      ;; I also do not want target=_blank. I want _self (the default)
      ((eq format 'html) (format "<a href=\"%s.html\">%s</a>" p desc))
      ((eq format 'latex) (format "\\href{%s}{%s}" (replace-regexp-in-string "[\\{}$%&_#~^]" "\\\\\\&" path) desc))
@@ -321,6 +324,11 @@ backend."
 (copy-file "assets/favicon.ico" "public/" t)
 (copy-directory "src/ftlmemes/clojure_function_quiz/" "public/" t t)
 (copy-directory "src/ftlmemes/flipcoin//" "public/" t t)
+
+;; Hand-made pages and images. static-private/ is gitignored: deployed, but not in the public repo.
+(dolist (dir '("static/" "static-private/"))
+  (when (file-directory-p dir)
+    (copy-directory dir "public/" t t t)))
 
 (with-temp-buffer
   (parseedn-print

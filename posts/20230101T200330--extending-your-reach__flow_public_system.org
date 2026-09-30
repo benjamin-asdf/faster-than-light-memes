@@ -1,0 +1,120 @@
+#+title:      extending-your-reach
+#+date:       [2023-01-01 Sun 20:03]
+#+filetags:   :flow:public:system:feed:emacs:mind:
+#+identifier: 20230101T200330
+#+EXPORT_FILE_NAME: extending-your-reach
+
+* Introduction
+
+Putting love into your setup will pay off.
+
+When your mind becomes one with the computer. When it starts feeling like it is expanding your reach.
+This is where the computer as a tool starts unfolding its true potential.
+
+#+CAPTION: Linux user reaching into the computer, becoming one with the computer. In space. A tomato. A fork. The stars.
+https://i.imgur.com/MbnkaGg.jpeg
+
+* A real tool is part of your mind and body
+
+** The mind tracks the space around us that we can grasp and manipulate
+
+I was recently learning a bit about [[https://www.sciencedirect.com/science/article/abs/pii/S0028393214004230][peripersonal space]] and the
+connection to ~tool usage~.
+
+Our mind is tracking the space around us, importantly specifically *the space we can interact with*.
+
+When this is broken via strokes or developmental issues, the person bumps into things and can not use tools well. [fn:1]
+
+From the introduction of a [[https://www.jneurosci.org/content/27/4/731][paper]] on the topic:
+
+#+begin_quote
+Peripersonal space is the multisensory space immediately surrounding our body, or more specifically the sector of space that closely surrounds a certain body part (Rizzolatti et al., 1981, 1997). A crucial factor that distinguishes the perception of our immediate surroundings from that of more distant space is our potential ability to interact with (i.e., to reach and grasp, or to avoid) objects within peripersonal space. Electrophysiological studies in macaque monkeys suggest that multisensory peripersonal space is represented in body part-centered coordinate frames, within both subcortical structures (the putamen), and in cortical regions of the frontal and parietal lobes (Hyvärinen, 1981; Rizzolatti et al., 1981; Colby et al., 1993; Graziano and Gross, 1993)
+#+end_quote
+
+One cool aspect of this is that our internal map of the space
+grows and shrinks with whatever tools you use.
+
+From [[https://www.sciencedirect.com/science/article/abs/pii/S1364661303003450][Maravita A, Iriki A (2004)]]:
+
+#+begin_quote
+What happens in our brain when we use a tool to reach for a distant object? ... research suggests that this extended motor capability is followed by changes in specific neural networks that hold an updated map of body shape and posture (the putative "Body Schema" of classical neurology). These changes are compatible with the notion of the inclusion of tools in the "Body Schema", as if our own effector (e.g. the hand) were elongated to the tip of the tool.
+#+end_quote
+
+This is when you have a pen or fork in your hand and you can move it
+as if this was part of your body.
+
+Similar: You drive a car and it is as if you take on the shape of the
+car.
+
+** Reach into the computer, or reach somewhere else, ssh'ing into a server
+
+Here is what I think happens if you use your computer right:
+
+When you can navigate and interact with the computer
+effortlessly, it can feel like you are extending your body and mind
+into the digital realm, reaching out to grasp and manipulate the vast expanse of information and tasks at your fingertips.
+
+This feeling of expansion and reach is not just a metaphor - it is a
+citizen of the mind that comes from utilizing the natural structures in
+our brains that have evolved for tool usage. It is the same
+confidence and efficiency we feel when picking up a tomato with a fork.
+
+What I am saying is that when you have this mind-expanding and
+reaching thing going; You are using the tool usage hand coordinate parts of the brain.
+
+It is *not* that a clunky and cluttered computer experience is the
+/worse tool/ and a keyboard-driven, smoothed-out experience is a
+/better tool/.
+
+It is that the smoothed-out experience is a /real tool/ and anything
+else you do with a computer is just something you are waging battles with.
+
+#+begin_quote
+If it expands your mind, it is a real tool.
+#+end_quote
+
+* Which tools?
+(You can achieve this otherwise, I just want to be more concrete about example
+technology rather than staying on the philosophy of tool usage level).
+This technology does the mind-expanding stuff for me:
+=Linux=, =emacs=, a good package manager =pacman=, a tiling window manager with a
+lisp REPL =stumpwm=, =qutebrowser= at least for the surface level of
+the web.
+
+One way to get stuff under the fingertips is to have an emacs package
+for it, this is sort of the infrastructure that allows reach:
+Files - =dired=, Git - =magit=, Notes - =denote=, Remote files and shell -
+=Tramp=, email - =mu4e=.
+
+In general, *growing by removing* makes for *more control and focus*.
+
+The one thing in my daily life that is like a block of UI that I
+cannot reach into is the slack client. I wish I would be able to have
+an emacs interface. ([[https://github.com/yuya373/emacs-slack][emacs-slack]] doesn't work last time I checked
+because slack changed how their tokens work. They don't want
+alternative clients for some reason).
+
+* This is also an aspect of the REPL I think
+When you have a lisp program running with a REPL you get this reach for the process and
+(more or less) the entities in the process.
+Doing this together with the source code (I mean =eval-last-sexp= and friends)
+makes the source code come alive. The process becomes a tomato I can move around with my fork.
+This mind-expanding nature of the REPL is one of its magics. [fn:2]
+Because this is a tacit process, it is
+impossible to convey it via words. Similarly, I cannot convey what
+music does or how it is to ride a bike.
+
+* Further inquiry
+
+[[https://brainsciencepodcast.com/bsp/2018/142-graziano?rq=graziano][Brain science podcast with Micheal Graziano who did work in this field]]
+
+* Footnotes
+
+[fn:1] https://brainsciencepodcast.com/bsp/2018/142-graziano?rq=graziano
+
+[fn:2] There is a lot more to say. A big aspect is instant feedback, it
+makes it so you do not have to mentally track uncertainties. You
+*know* that each form you are crafting works (You =def= an example
+input and code your forms 1 by 1).
+To follow this thread of philosophical inquiry into Lisp development, see Paul Graham
+/On Lisp/ and /Hackers and Painters/.

@@ -1,0 +1,237 @@
+#+title:      boltzman-chromosomes-are-equivalent-to-design-spaces
+#+date:       [2023-12-09 Sat 16:46]
+#+filetags:   :cybernetics:ftlm:mind:multiverse:neuroscience:reality:
+#+identifier: 20231209T164656
+
+- boltzman brains: all possible minds, too
+- boltzman chromosomes: all possible animal designs
+
+multiverse : everything possible
+
+reality : (=identity= multiverse)
+
+nature : (=physics= reality)
+
+physics: ? everything physically possible or something
+
+life : (evolution nature)
+
+contigous design space : physically possible but also causally (time) contiguous,
+one step at a time.
+
+
+evolution is a subset of possible realities.
+
+One thing that immediatly becomes apparent is that in the computer and idea space,
+we do not have to limit evolution to nature.
+Unnatural evolutionary paths are thinkable.
+
+Boltzman chromosomes are all genetically possible designs.
+
+There are boltzman back of the envolopes, too.
+And boltzaman whiteboard drawings.
+
+And boltzman computer programs.
+
+These cover the all possible engineer and design spaces.
+
+See the library of babel as a thought experiment of virtually the same idea.
+All boltzman 200 page books exist in there.
+
+
+---
+
+What I am after here is a general theory of what the kind of thing natural selection is in the world.
+
+Can I fabricate a better one?
+
+---
+
+This is a kinda cute view, one where multiverse theory is 1. at the bottom of everything, as it should.
+and 2. the same kind of thing as natural selection.
+
+---
+
+- We observe that stableness is a key concept,
+- stable in which context matters
+- stable in nature is life
+- stable in a mind is thought... ?
+
+
+---
+
+- deforming the enginneer space of a building material is a subset operation
+- if you then have the nature subset on top of that (where time goes forward), you see
+  these physically possible systems
+-
+
+---
+
+- assembler theory talks exactly about this
+- I just realized by talking about the minimum steps, you make a general theory of where good design comes from
+- where toolkits come from
+- you develop a higher order language, and now you have smaller steps to make complicated things
+-
+
+- assembler theory literally has names for the spaces I draw
+
+
+
+---
+
+take assembler theory,
+
+1. shortest path
+2. creates higher levels (toolkits)
+3. how to meassure success?
+   - how much 1 step allows you to fit to more environments
+     (stableness)
+     including across time
+     note that time is allowed to be abstracted away if I speak of possible environments
+   - the meassure of complexity / of abstraction is how much effect you have with a single step modification
+   - what is the effect? stableness of the of the assembled system across environemnts
+   - in other words, what are the spaces that this system can move through, and with what kind of efford does it do it?
+   - I love that it brings in time and resource constraints, which are deeply cybernetic concepts
+
+4. this is a path to a general description of something like natural selection
+   - you can imagine doing other searches through assembler possible space
+   - you don't need to do time stepwise
+     (you can look ahead etc)
+   - sounds like some tree search alg now
+
+---
+
+
+Does time exist?
+
+It is a similar question to "does life exist"?
+It doesn't matter that much, the answer is more fundamental, so it depends on what you mean.
+
+It exists, but it is made from things that are simpler by themselve, how else could it be?
+
+
+The deep enticing intuition to me here is how these cybernetic principles of stableness and organisation,
+are responsible for making space and time, too.
+
+
+---
+
+It is ok, if physics has multiple layers of abstraction building to the stuff we observe.
+Kinda the biologist giving a shrug, for them there were already multiple layers of physics below the systems
+they study which didn't matter.
+
+
+
+everything possible -> physics 1 -> physics 2 -> ... -> space time, observable universe -> ...
+
+information primitives ->
+
+
+---
+
+nice: time and resource constraints are part of the description, just as is the intuition of the biologist and cybernetician.
+
+It seemed deeply obvious, that timescale matter. That being fast is being more powerful.
+
+This clashed with the timeless algorithmic complexity view of computer science.
+
+Having more effects in fewer timesteps, this is part of what competence is.
+
+---
+
+We can quickly imagine higher levels of this happening.
+A machine that speeks of factories.
+A toolkit for making different kinds of machines.
+
+For instance, a toolkit for making different kinds of neuronal tissue.
+
+Say the mind is programming a society of factories, which contribute to the idea pool the mind is about.
+
+An intermediate objective of a mind might just be to build competencies. To build layers of languages,
+or in other words; To build toolkits and building blocks that allow it to explore different design spaces.
+
+The mind might be predictably curious in this way. Predicting itself to grow new capabilities simply for the joy of growing new capabilities.
+
+
+---
+
+The role of specialization.
+
+Becomes slightly clearer. Make better building blocks, it is a goal of the system.
+
+
+What if you have higher order processes that find things that could be made into better building blocks?
+
+Just thinking out loud, but what if there there is mechanism in the brain that finds more cloudy capabilities and compresses them into a more
+effective representation of that knowledge / of that capability. [fn:1]
+
+Freeing up more of the system to be more explorative again.
+
+Here is literally a framwork of thinking to say why that is useful. - Better building blocks. Means less steps to get stuff done later.
+
+
+I used to only have my enginner intuition. That abstraction is power. That languages are power. That making a toolkit for solving a general kind of
+problem and then going and solving problems /in terms of/ that higher language is powerful.
+
+Now there is a mathematical description of this idea. It takes less steps, to not need to speak of the details of the building blocks, but to be able to speek in terms of building blocks.
+
+---
+
+So far that has been building blocks and factories and toolkits.
+
+This view is a *chemistry* view and maps nicely to things like the evo-devo animal body plan / genetic toolkit / mapping.
+
+
+
+Now I want to stretch this view into a realm of process, behaviour and ideas. Because I am a programmer thinking about how to make a computer program that
+self-evolves into having thoughts.
+
+Let's see if the tools of thinking about process from cybernetics, biology and computer science are sufficient to ..
+
+
+- refactor to "command language"
+- dynamic contents (are assembled objects on more powerful timescales)
+- dynamic contents are more ephemeral
+-
+- see cell. electric fields
+- neuronal activity,
+  - it has an evolutionary drive to operate on shorter timescales
+- Ideas are building blocks
+  source code
+  maps
+
+- languages
+- ideas are dynamic
+
+- I feel like the bigges twist to take here
+  Or the plane to see is in a way data oriented programming
+  In other words, the power of making intermediate plans
+  plans are objects, too
+  plans can be fabrikated
+  if you have a language of plans,
+  this is a perspective on what the mind is
+
+
+
+---
+
+
+
+- genetic toolkit
+- Micheal Levin
+- genetic algorithm "building block hypothesis"
+
+
+---
+
+My intuition is  that with this I can theoretically proof why Lisp is the most powerful programming language.
+
+
+
+* Footnotes
+
+[fn:1]
+
+
+And now you can half jokingly ask if that is what the cerebellum does, for procedural memory.
+If that is what the hippocampus does, for episodic memory

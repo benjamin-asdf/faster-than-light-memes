@@ -1,0 +1,88 @@
+#+title:      dawkins-flights-of-fancy
+#+date:       [2023-07-31 Mon 09:49]
+#+filetags:   :books:evolution:ideas:mind:science:
+#+identifier: 20230731T094917
+#+EXPORT_FILE_NAME: dawkins-flights-of-fancy
+#+OPTIONS: toc:nil
+
+This is a book recommendation for anyone interested in the exploration of our understanding of the natural world, evolution, and the complexity of species.
+I can recommend Flights of Fancy.
+
+Dawkins is at this date and age so masterful at explaining and talking about the kingdom of plants and animals that he can write a book about flying that /takes your mind flying/ through the ideas.
+This book stretches the imagination and makes a call for exploring the frontiers of our understanding.
+Zoology is such a beautifully, infinitely intricate stepping ground into myriad topics of the world.
+
+You can take a single aspect of some animal and go into infinite detail, making excursions into paleontology, physics, or economic theory.
+And Dawkins can do this and make it feel seamless like a complete whole. Building ideas gradually and sensually, jumping around playfully among topics.
+He is beautifully, poetically, warmly guiding us here and there; Then bringing in some history of science and there bringing in some paleontology of insects.
+
+Scientific ideas in an evolved poetic, flourishing, style. Dawkins has acquired the ability to do scientific poetry because he is a lover of both endeavors.
+
+The overlap of these, together with his gentleness, kind-heartedness and childish curiosity make Dawkins one of the great communicators and writers of our time.
+
+There is something deep about biology, the fact that it is about one topic, evolution, and about all topics, how to navigate the world.
+
+One of the things I learned: [[https://en.wikipedia.org/wiki/Great_auk][Great auk]] /the penguin of the north/. Dammit, we will bring those cool animals back one day, why shouldn't we.
+There were elephant birds (/Aepyornis/) 5-6m tall on Madagascar with the largest now egg volume of 5.6-13 liters, what the hell[fn:1].
+Nature is so trippy man.
+
+#+CAPTION: Size of Aepyornis maximus (purple) compared to a human, a common ostrich, and some non-avian theropod dinosaurs
+https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Giantbirds.svg/2560px-Giantbirds.svg.png
+
+There is a lot of physics of flying, both human-engineered, engine-powered flight and different wing flights.
+
+Anybody that thinks that knowing animal species and the Tree of Life is somehow unworthy knowledge is badly mistaken.
+Good zoologists know a lot of animals, extinct or not.
+What you mistake as trivia on the surface, is, underneath, the world to walk and breathe to understand how animals work.
+
+The world of animals and their evolution is like an orchestra to listen to. To listen to 1 instrument from 1 corner for 1 time and to ask /what is the point?/, is to miss the point.
+
+In this orchestra, we find awe-inspiring solos, harmonious duets, and dramatic crescendos. The mysterious and patient song of the whales, the beat of wings from a hummingbird, the synchronized march of ants.
+In a dance with the rest of the physical world.
+
+It is a great zoologist that can think, /where in nature is there something like hot air balloons?/, and discerns the relevant characteristics of the idea and can say /the closest I can think of is those =x,y,z= water spiders.../.
+
+* What good is half a wing?
+
+The answer is there are a thousand ways in which it is good to have something half on the way to being a wing.
+The issue was the lack of imagination to think about what half a wing /is/.
+
+You can only get from here to there via graduate, viable intermediates that are slightly better at reproducing than their alternatives.
+This kind of stuff Dawkins has explained in whole books, /The Blind Watchmaker/ or /Climbing Mount Improbable/.
+
+I cannot help but notice that David Deutsch (1996) was mentioning more than 20 years ago is still the case. Dawkins must defend his ideas against unscientific thinking.
+Instead of for instance having a theoretical chapter on musing on the flights of memes and ideas in the idea pool.[fn:2]
+
+* To go where nobody went before
+
+The last chapter is a call to action. We need to get out of here. There is nobody but us here to make sure life on Earth survives.
+The book is dedicated to Elon, the man that puts our eyes on Mars.
+
+/The outward urge/, maybe this is something that is the same for explorers and the animals going beyond, into the sky out of the water and these...
+
+The beauty exploration, the broadening of our horizons. The places we can go in an increasing capability to take our imagination to flight.
+
+I cried:
+
+#+begin_quote
+I think of science itself as an epic flight into the unknown. Whether it's literal migration to another world or whether it is a flight of the mind, soring abstractly through strange mathematical spaces.
+
+Perhaps it's leaping upwards through a telescope to distant retreating galaxies or diving through a glowing microscope tube deep into the engine room of the living cell or racing the particles through the giant circle of the large hadron collider
+or maybe it's flying through time either forward in the company of the majestically expanding universe or back through the rocks beyond the birth of the solar system towards the origin of time itself.
+
+Just as flying is an escape from gravity into the third dimension so science is an escape from the mundane normality of the everyday. Spiraling up through rarified heights of the imagination.
+Come let's spread our wings and see where they make take us!
+#+end_quote
+
+The audiobook is read by Dawkins, as usual for his books. He is a really great narrator also, so you can see how the oomph of a song to the glory of scientific curiosity is emotional for me.
+
+If you are looking or Dawkins's main evolutionary theory ideas, /The Selfish Gene/ and /The Extended Phenotype/ are mind-expanding.
+
+* Footnotes
+
+[fn:1]
+
+[[https://en.wikipedia.org/wiki/Aepyornis][wikipedia]]
+
+[fn:2]
+One day, I might make an attempt at that: [[denote:20230518T185739][memetics overview page]]

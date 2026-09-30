@@ -1,0 +1,2799 @@
+#+title:      feed-archive
+#+date:       [2025-06-19 Thu 17:54]
+#+filetags:   :mind:personhood
+#+identifier: 20250619T175458
+#+EXPORT_FILE_NAME: thought-feed-archive
+#+OPTIONS: toc:nil
+
+* Current AI Lacks a Theory of Personhood
+
+** the space of possible explanation
+
+- /Persons/ are /universal explainers/ (=David Deutsch=).
+- Doing science is using imagination to come up with an explanation structure (~ design) of invisible things,
+  then using /experiment/ to /select/ from /alternative explanations/.
+
+- explaining a person is as hard as explaining all of physics/reality, because a person might be doing science.
+- For instance, explaining the behaviour of champaign bottles in the fridge of a [[https://en.wikipedia.org/wiki/Search_for_extraterrestrial_intelligence][SETI]] lab, includes explanations
+  about the possibility of extraterrestial life, literally encompassing the whole universe already.
+
+- Similar in biology, everything /possible/ might be used as part of an adaptation (/design/).
+- Example: photosynthesis works by utilizing quantum effects. Explaining photosynthesis includes explaining quantum theory.
+
+- When an information processing system is capable of /creating explanations/, call that /creativity/, we can call it a person.
+- This makes persons different in an absolute sense from anything else in the universe, including animals (unless they are inhabited by persons).
+
+- This seems to make biology a very slow, large scale person-like thing. Hinting at the relationship between /creativity/ and /open endedness/.
+  ([[https://www.oreilly.com/radar/open-endedness-the-last-grand-challenge-youve-never-heard-of/][Open-endedness: The last grand challenge you’ve never heard of]])
+
+- The /theory of creativity/ and personhood is missing; Else we would be able to program AGI.
+  An AGI will be a person, and be part of culture - it will have memes.
+
+- /understanding/, /making world models/ (recently LeCun), /common sense/, /category construction/ (psychology), /analogy making/ (Hofstadter, Sanders 2013)
+  are the same problem as /neuro epistemology/ (Piaget, others), /universal explaining/ (David Deutsch), /having memes/ (Susan Blackmore) or /having a life/ (Ian McGilchrist).
+
+- The problem of a meme-copier, 'what to copy?' (Susan Blackmore calls it /copy the recipie/) is equivalent to /doing science/ or /understanding/.
+  You need to conjecture about the mental structure of the other person.
+
+- Beauty, art, culture (having memes), science (making explanations) are related because they produce /knowledge/ that lies in /space of possible explanation/:
+
+[[edraw:data=H4sIADomw2cAA8VXS2+jMBD+K5Zz2ZVKMZRQWgWk3VMue9nDvm4uDGCF2MgmIdlfv2MD2zbbVupKIeLl53zzecafk5XZV+SwbaRJad117b3v931/3d9cK135IWPMxxF0GHJ/aITcvDQwuLu7810vJb0oujql8W1ISQ2iqruURsuYkj1oI5RMaXAd0GxVQGmIKFIKhea9Z6vYuuV6A/p5u8c8rrXqKRl6v48IU309omBDq8GA3sMn00LefeWdUCmVSgLCC+g/q0NKvYAR+4T2pkRD+SOlQ+GnKygtQKI9vusUJabTagOTlaHmjSQDSkrRNCldBMxeSKDlXU3Q+y8IceXdWqSrWxJdsV+U+NnKH1zGgiWcrTS6SQ4O9ujery7f45I88HxTabWTxal3ozNlWTqw6ukkVRzRPWga0Ro44RE+GpqYjLaU5rJCyxq9c6t1GL65rce2gA3267/f9oKx0rn6pvEbNljv4NAR+/K4zGulU7oVRdFY1kp2Xsm3osF5hkvjYQ6Icuww4jdCB8lpqGxO35uW59g7pY0LQpjYTgRGD7ICjKjkyrfA72d4xAk2b98kGCQXIhhGSHALWzD/y89F0MbnTYJRdCGCS3QtMznu5hwmirM5EcTjKts02klh5Y83BA5tw6UVJvl32Z1mDMLggcQtu9PNh8U/+vfxVH5eD8wgB1aGApQ5zLB1wBhJGInZN1R1EoZDSM6KnDjk2fBQKGbFiwa8dYQrjCn+DHe2LBuT7Ca0mW77iSpJq4wRDw08TbbZ83/ahIF17QHwMD3Oke/LISp1aO+9u8+eCcvoApjJy5izxzdmTt82qpek3P33UbkoE3u9fJQE4XiUTPvrTNajs1qPL6MNkT2A1meJS8SmI35malE4igsmYbaRqm+gqAB/wrtRsnsmeX6FD/6Nyf4AjEr6uu4MAAA=]]
+
+- A 'bit' is only useful if it can be /either/ 0 and 1.
+- Or, a signal is only useful because of it's alternatives.
+
+- It is a /counterfactual property/ of /information media/, that all
+  possible /permutations/ must be /possible/ (Marletto and Deutsch 2014, Marletto 2021 for an intro).
+
+- Ergo, an *explanation representation* =r= must be /information/ that /represents/ an *element* =a= in the *space of explanations* =H=.
+  We say it is a *universal explanation*, if and only if =H= ⊇ /the space of all possible explanations/.
+
+- I assume =r= to be one of the /neuronal code/(s) of neuroscience. (Yuste, Buzsáki)
+- A neuronal code is only as good as it's alternatives, all permutations must be /possible/.
+
+- The space =H= includes /the space of software that includes mentality and persons/.
+
+- How the brain is exploring =H=, in a /software synthesis task/ (development task =Td=), and the nature of =H=, is part of a theory of creativity and personhood.
+
+- Alternative names for elements of =H= are 'universal designs', 'universal cultural elements', 'universal words',
+  at some point you just have to have a name and David Deutsch gave it 'universal explanation' so thats it.
+- The connotation of Turing universality is not coincidence.
+  The theory is of the form 'what is possible' in an absolute sense.
+- It is strange that because of Turing universality, every turing complete computing framework is able to represent =H=.
+
+- The difference between AGI and our software is a /leap in programming philosophy/.
+
+- It simply happens to be the case that human brains usually run a software, or are invaded by software running =Td=.
+  Many have the hunch this is only possible by being embedded in /culture/.
+  Or even that mentality is a some form of cultural technology.
+
+- Obviously, human brains have /adaptation/ which bias it's development towards running =Td=.
+
+- I would argue that universal explanation, =H= and =Td= should be a powerful framework for making sense of the differences between human and ape brains.
+
+- A slightly alternative perspective is to say that for 'a certain level of' generality, an AI needs to be able to dynamically improve itself;
+  When thinking of the finegrainendness and structure of this dynamism, one quickly comes to thinking 'it should be truly open ended'.
+  As in '/every point is a growth point/' (John Wheeler).
+
+- 'AI complete problems' require a level of generality that is equivalent to universal explanation making.
+- My conjecture is that 'AI completeness', AGI and personhood are the same concept.
+
+- The problem of such a software is related to the problems of morphology and development in biology. It is a software that grows.
+  Since we don't even know how to write software that grows in a manner of a plant or bacteria (like biological software does),
+  it is strange to think our programming philosophy is close to solving such problems.
+
+- We are in a strange situation where some say current AI is phd-level while others say it's not even a 4 year old.
+  I say it is not even a cat, not even an insect, heck it's not even a plant.
+
+------------------
+
+Some consequences:
+
+- AGI by definition is a person embedded in culture (it is capable of memes and growing it's mind).
+- Conversely, prohibiting it from participating in culture is unethical; Similar to confinement for humans.
+
+- Example: true autonomous driving would require 'understanding', 'common sense', the equivalent of doing science, or creating ad-hoc mental technologies,
+  and is only possible if the software is AGI, if it is a person.
+- self driving advocates made it sound like some kind of low bar, or they have talked for so long about it we are supposed to believe it now.
+  This is not true. It's not there and it is hard.
+- Many such claims are made about x and y left and right, but these things have to work 100%, not 80%. And we know that in software engineering, the 20% is hard
+  while the 80% is easy.
+
+- *You cannot ethically use AGI as tool*, it will be a person. The concept of 'AGI as tool' incoherent and at best abhorrent.
+  The worst you can do is enslave a person running on technological substrate.
+
+- Predicting the future means having a conjucture, a good explanation of what to predict in the first place.
+  prediction - AI is basically per definition never AGI.
+
+** Suffering as 'the most real thing'
+
+- Further, the missing theory of fun and suffering explains */how ethics and biological information processing are related/* 👈.
+- Example: the *sufferer copy problem*: When running the same computer program of a person twice, is that more suffering, less, the same?
+- One can differentiate a theory of personhood from mere brain-software mechanism questions by asking whether it says anything about this problem.
+
+- This is also related to the hard problem (Chalmers).
+- The hard problem is also deep.
+  It must find certain unifications in at least some of the 4 strands of reality (David Deutsch):
+  computing, biology, epistemology and the multiverse.
+
+- Yuval Noah Harari (2018) makes the case that /suffering is the most real thing/.
+  Assume we run on a simulation, created by an advanced civilization.
+  The simulation status of our world is less relevant than the suffering we experience.
+  Because of ethics, the outsiders will have to answer for the suffering in our world.
+
+- This is another perspective pointing to a deep connection between ethics, epistemology, personhood and the rest of reality.
+
+- It is the interface of /ethics/ that makes the hard problem impossible to dismiss; Although after we have a theory
+  of suffering, we might understand that the hard problem was posed wrongly.
+
+- personood is not a random outgrowth in the biological adaptive domain, but a central concept of a theory of reality (also David Deutsch 1996, 2011)
+
+
+
+
+- Experiencing the real world is a topic for Ian McGilchrist, creating a memory of the world is what he calls /having a life/.
+
+- Ian McGilchrist says /the opposite of life is mechanism/.
+- In my view of top-down causation, the opposite of /living/ is /perfect obedience/.
+- A biological information processing system has to deal with the problem of non-perfect obedience of its parts.
+
+- An algorithm has input-output specifications, but creativity is open ended.
+- Supervised learning is the opposite of creativity, it is /outside-in/
+  The same misconception that Popper called bucket theory of knowledge.
+
+- I subscribe to /constructivism/ in the sense that knowledge must come /inside out/ and then matched or selected with the world and action.
+
+- thought experiment:
+
+  1. Put an electrode into the hippocampus of a person, ask them to remember something, record electrical activity and call it
+  the activity correlating with the memory.
+
+  2. How do you know the person didn't just have fun with you and made random memory lookups?
+
+  3. *the fun gap*: The gap between the system and a mechanistic explanation of it, such that if there is a person in the system having fun, the explanation is vastly inadequate
+
+- We know almost nothing. /In our infinite ignorance we are all alike/ - Popper.
+- We know almost nothing about how to have fun.
+
+- For a similar reason, I suspect knowing what a person is doing with their mind is akin to predicting
+  the next scientific theory and /not possible/.
+
+- conversely, the theory of personhood software will have to prove weird things like that it's content cannot be predicted.
+- Valentino Braitenberg thought /unpredictability/ already implements /free will/ (Braitenberg 1984).
+
+- The theory of personhood will say how it is possible for a software to have fun.
+
+** Conclusions, Cultural Issues
+
+- Current AI does not have a theory of creativity, does not solve the open-endedness problem,
+  it does not say how biological information processing and ethics are related.
+  It does not say what fun and suffering is. It does not say what elegance is.
+  It is not a theory of personhood.
+
+- It does not even begin to say anything about something like the /sufferer copy problem/.
+
+- I heard it said that 'the atheist view of the brain is that it is broken down to inputs and outputs'.
+  This is a misconception.
+  In some sense, specifying inputs and outputs is the opposite of AGI (personhood).
+
+- The misconception that current AI are persons, or with a flip that persons are reducable to current AI is *misanthropic* and pernicious.
+- It is appalling, both towards future technological-substrate persons and to current humans.
+
+- It is worrying for these reasons:
+- cultural ideas have a component of self-fulfilling prophecy (because of top-down causation).
+- But we are not 'machines' in this sense, we /have a life/.
+- People understand and engage with the world. To think that sending emails is what persons do is the same mistake
+  that makes one think that math tests say what intelligence is.
+- Engaging with the world is related to creativity, and that is the same as /having a life/.
+  A 'theory' of personhood that lacks a notion of creativity would be /live sucking/.
+- It is therefore unethical to contribute to the stabilization of inadequate theories of personhood in culture, because it feeds back into
+  destroying our creativity for real.
+
+- 2. Should the public recognize overblown AI claims as gargabe, it might dismiss genuine research efforts
+  and real progress on AGI would be halted.
+
+- 3. AI is in danger of being politicized like GMO's or green energy. This is annoying both cases.
+
+- Current AI tech is a powerful tool with a long list of benelovent uses (Spitzer 2023).
+  See for instance the story of [[https://en.wikipedia.org/wiki/Halicin][Halicin]].
+
+- I use LLM tech daily for things like code completion and fixing typos.
+  It is vital that we preserve the ability to have a nuanced view.
+
+
+------
+
+More: [[denote:20250105T200113][AI critic]]
+
+Idea: Perhaps sleep and dream maintain this permutation property of the brains information media.Keeping all possible things still possible to say.
+This includes possible situations, possible personhoods (dreaming?);
+
+- G. Buzsáki emphasizes the internal brain dynamics, maintainend during deep sleep.
+- [[https://en.wikipedia.org/wiki/Reverse_learning][Reverse learning]] is a computational model inspired from Hopfield nets,
+  Crick thought dreaming is for getting rid of "parasitic" thoughts.
+
+- [[https://www.youtube.com/@MachineLearningStreetTalk][MLST]] often has great philosophy of AI topics, open endedness and creativity comes up a lot.
+
+* On Being Rational
+
+If you are teleported 100 years back, do you need the willpower to decide to not have slaves?
+The people around you might congratulate you on your willpower, they would be missing the point.
+
+It is a matter of knowledge, you /know/ something deeper about how having slaves is not moral.
+
+It is up to you to question where more of such knowledge might lie or where you are still stuck in caves.
+
+Overcoming a religious upbringing is sometimes mentioned as a great character-building exercise. How do you know
+your rationalism works? By having it seen work once, from the inside. You were convinced by a system of irrational
+ideas, you gleaned insights and you did not look away from the little inconsistencies that cracked your beliefs.
+
+You understood, if everybody else is saying =x=, and I am saying =x=, then I must be like everybody else.
+
+You understood what you see when you see a lake in the desert. If everybody that runs into mirages thinks they see a lake and then you see a lake,
+without any reason to know you know better. Then maybe, you are not seeing a lake but a mirage. How does a mirage look? Very much like a lake. So much so you might be convinced there is a lake.
+
+And those that come up with clever reasons for why /this/ is a lake and not a mirage, are being hubristic and foolish. They assume they are smarter than
+the other people that fell for mirages in the past.
+
+For all those other people were not that much more stupid than you. There is a mechanism to how a mirage looks like a lake.
+There is a mechanism to how a person forms and holds the belief of /this is a lake/. And it includes clever little reasonings about this and that. Why it
+supposedly would not be a mirage.
+
+It is a strong expression of rationalism working, to walk in the desert and to see a lake and to think and say and act
+/this is probably a mirage/.
+
+I guess there are many things that rationalism is about, but to observe one's belief-forming systems from the outside and have the courage to think something differently from the people around you is tremendously important.
+
+To go where you did not go before. To go outside another cave in your life. To ascent to a higher plain of knowledge from which you will
+be seeing the world more clearly. Consider the animals. Open your heart, mind and soul and [[https://www.youtube.com/watch?v=LQRAfJyEsko][watch Dominion]].
+
+Excerpt from blog post [[denote:20230627T085728][The Civ We Want To Be]] (is from 2023, bit lenghty but has cool parts).
+
+
+
+* In progress / Want to do
+
+- Software contract work to finance myself.
+- PI typer for memoizing digits of pi: [[https://benjamin-asdf.github.io/type-pi/][online]], [[denote:20241105T104813][blog post]], [[https://github.com/benjamin-asdf/type-pi][code]].
+- First version (done for the moment) of [[denote:20230915T190843][Braitenberg Vehicles]] running in the browser.
+- [[https://www.youtube.com/playlist?list=PLr2TeHWYcynJXetUIZ18QiIJ6oUDD-ryz][MeTTa Type Talk playlist]], [[https://github.com/benjamin-asdf/metta-mode-alpha][MeTTa emacs mode (simple)]]
+- /biologically principled/ modes of computation.
+- Get into /relational programming/, because it might be useful for neurosymbolic AI down the line.
+- [[https://www.youtube.com/playlist?list=PLr2TeHWYcynIWbVWO42aq2qbhSXIihXk2][Relational programming playlist (The Reasoned Schemer currently)]],
+  (I'm putting =MeTTa= on hold currently, because =Clojure= is mature and enables me to be creative).
+- Get into /Ian McGilchrist/ ideas. He seems to be laying down a framework for neurosymbolic AI.
+- 'post transformer architectures' ([[https://faster-than-light-memes.xyz/high-dimensional-computing-with-sparse-vectors.html#org2d1818d][accidentally]])
+- Non deterministic computation and programing in superposition.
+- Introductory computer science stuff. I have so far acquired street skills for programming by building and collaborating.
+- Get into audio processing and music synthesis for various reasons.
+  Beginnings: [[https://youtu.be/Jp3X02DxiJ0?si=TIHZKGUdtVeFayLD][YouTube]]
+- On hold: a hyperdimensional version of [[https://en.wikipedia.org/wiki/Copycat_(software)][copycat]], current: [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj?tab=readme-ov-file#fun-with-sdm-and-analogies-how-to-use-known-worlds][Exploring "Programing with Analogies"]], to gain some software skills neccesary for solving [[https://lab42.global/arc/][the ARC]].
+- Go through and cook some of the algorithms from /Compositional Evolution/ (2006) (Richard Watson).
+- Take into account and understand G. Buzsákis neuronal syntax
+- Explore /Mushroom bodies/ as a kind of /sparse distributed memory/ (pretty sure this must be analogous since they are cerebellum-like).
+  Papers with mushroom body models:
+  https://www.nature.com/articles/s41467-021-22592-4, https://www.pnas.org/doi/10.1073/pnas.2102158118, https://www.cell.com/current-biology/fulltext/S0960-9822(16)31288-X
+- On mushroom bodies and early cognition, [[https://biology.case.edu/faculty/gabriella-wolff/][Gabriella Wolff]] is cool.
+
+
+
+
+# - Biological software has morphology, is adapts, it is robust.
+# - Brain software, a magical user interface, is like /real/ software compared to current software.
+
+
+# Attempting to summarize David Deutsch:
+
+# - *explanation*: A piece of /knowledge/ about how the world or persons work.
+#   Is hard to come by, hard to fake and hard to vary. Science is about the invisible explanations,
+#   the stuff of imagination. Explanations are 'invisible', they are /counterfactual/.
+
+# - *creativity*: A process that creates explanations.
+
+# - *person*: A software/process that is a universal explainer. It is able to create all possible explanations,
+#   therefore is capable of memes.
+
+# - *knowledge*: Information that is stable in the world, for example by replicating.
+
+
+
+# I'm not sure what this leap will be, but it will be akin to natural selection and the question of life.
+
+# I expect 'beauty', art, science and 'elegance' to be described by a theory of design.
+# The space of possible softwares, including explanations and memes;
+
+# The space of possible explanations must somehow include artistic expression.
+# This is true because of
+# And how to build dynamic, self-assembling technology.
+
+* Current Conclusions
+
+#+begin_quote
+Ideas are animals.
+#+end_quote
+
+** Hyperdimensional computing and the neuronal ensembles
+
+- My current conclusion is that [[https://www.hd-computing.com/][hyperdimensional computing]] is the computer science that helps making sense of /neuronal ensembles/ of neuroscience. ([[denote:20240606T185815][latest stuff]])
+- What the *representations* are (the neuronal codes) is the core question of neuroscience.
+- The *neuronal ensembles* (cell assemblies) is the neuroscience that has understood this. (György Buzsáki, also Rafael Yuste and collaborators).
+- John Von Neuman already predicted a neuro symbolic hyperdimensional computing framework:
+
+#+begin_quote
+It should also be noted that the message system used in the nervous system, [...] is of an essentially statistical character.
+In other words, what matters are not the precise positions of definite markers and digits, but the statistical
+characteristics of their occurrence, i.e. frequencies of periodic or nearly periodic pulse-trains, etc.
+Thus the nervous system appears to be using a radically different system of notation from the ones we are familiar with in ordinary arithmetic and mathematics:
+instead of the precise systems of markers where the position - and presence or absence - of every marker counts decisively in determining the meaning
+of the message, we have here a system of notations in which the meaning is conveyed by the statistical properties of the message. [...]
+This leads to a lower level of arithmetical precision but to a higher level of logical reliability: a deterioration in arithmetics has been traded for an improvement in logic.
+#+end_quote
+
+John von Neuman /The Computer And The Brain/, 1957
+
+The most relevant point in /The Computer And The Brain/ is not that the brain is parallel, nor that it uses very little energy,
+but that the nature of the encoding is what Neuman called 'statistical'; Later /holographic/ in Tony Plate /holographic reduced represenations/.
+Like with the cell assemblies - /e pluribus unum/ (out of many, one).
+
+The information is smeared out over many /active elements/, and this makes it robust, a single one can be missing without problem.
+
+Our computers can do arithmetic by comparing active elements which encode numbers pairwise. If a bit is missing, this is a different number.
+
+Not so the brain, because a single bit does not carry such large information.
+
+That this makes arithmetic hard is afaik the /curse of dimensionality/ in machine learning.
+
+But in hyperdimensional computing, it is called the /blessing of dimensionality/.
+
+It takes the idea of many active elements and goes with it, creating a computational framework around the =hyperspace= with very interesting aspects.
+
+A random hypervector (=seed hypervector=) is a =gensym=, you will always recognize two /related/ hypervectors.
+
+This comes from the properties of hyperspace, where all points are roughly equally far apart.
+That this makes symbolic programming possible while using neuronal elements, is what Von Neuman also understood.
+
+*Sparse Distributed Memory* (P. Kanerva, 1988) is a conceptually /biologically plausible random access memory/.
+This is an earlier work by Kanerva, a short book describing hyperspace (called high dimensional space in the book).
+
+This is *the* continuation of /The Computer and the Brain/.
+
+From Douglas Hofstadter's forewored:
+
+#+begin_quote
+This book, because of its pristine mathematical beauty and its great clarity, excites me deeply when I read it,
+and I believe it will have the same effect on many others... Pentti Kanerva's memory model was a revelation for me.
+It was the very first piece of research I had ever run across that made me feel I could glimpse the distant goal of understanding how the brain works as a whole
+#+end_quote
+
+(more: [[denote:20240606T185815][current stuff]], seriously check Pentti Kanervas stuff. If you are like me you will love it).
+
+This is the missing engineering approach that Minsky wanted neuroscience to be about.
+
+# #+CAPTION: Blerp fields with different parameters. Cyan has higher attenuation, making the elements move. Blerps are inspired by neuronal ensembles.
+# file:./blerps.gif
+
+** Spirits
+
+- Like the dragons that turned out to be dinosaurs. The stories of the spirits and souls have merit, they point to what software is.
+- Maybe magic, too, explores 'the stuff of thought', the material out of with you make imagination.
+
+- I say brain somehow explores the space of possible software during development,
+  it is executing a *software synthesis task*.
+- Like Steven Wolfram 'putting the telescope to the computational universe'.
+- A person is a software (spirit), that inhabits and controls a nervous system.
+- One could also say ideas, mentalities, pieces of software, memes, personhoods already existed in the computational universe
+  and were /recieved/ by the brain, and that the brain is a kind of '/spirit reciever/'.
+- I find the idea of the /dreamcatcher/ as a kind of early attempt at AGI technology fun.
+
+** Design and Knowledge Are Central Questions for a brain software theory
+
+- *design*: the knowledge or /organisation principle/, according to which /modules/ of a /system/ are /arranged/.
+  It is /hard to vary/, so that a small change in the design deteriorates the function of the system.
+- *adaptation*: A design produced by natural selection.
+  You see the notion of /hard to vary/, in the /homologies/ (convergent evolution) in nature.
+  Even slight deviations of some apparently locally optimal design results in less adaptative fitness.
+- *knowledge*: /information with causal power/, information that causes itself to be stable, for example by replicating.
+  Knowledge is one of the core concepts for David Deutsch.
+- *Genes Eye View* and *abstract replicator theory*: Genes are knowledge that causes itself to be replicated (Dawkins 1976).
+  Dawkins predicted computer viruses and introduced the /meme/ in this book. Because it was a philosophical discussion of
+  /abstract replicator theory/, which, well, abstracts over replicators.
+  In /The Fabrik of Reality/, David Deutsch counts it as one of the 4 deepest theories of reality.
+  The other being the theory of computing, epistemology, and quantum theory.
+  They each supplement each other and aspects like /information/ span across them.
+  The next deeper theory of reality will find unifications between them.
+
+#+begin_quote
+Design is when you consider the tradeoffs.
+#+end_quote
+
+Rich Hickey
+
+- Software incoorporates =design=,
+
+- Design is form of /knowledge/, one of the central concepts for David Deutsch.
+  That is /information with causal power to be stable/.
+- /neuro epistemology/, is the question /whence cometh this design?/.
+  A brain software theory is a theory of knowledge, saying how the brain is creating it's own design.
+- There is no brain software theory without a brain epistemology.
+  In this way, it is closely aligned to the problem of /life/.
+
+- This must say what is the information? In biology, the current answer is the information encoded in the genes (Dawkins 1976).
+
+- I subscribe to *neuronal darwninism*, which is a fascinatingly fringe position.
+  And of course, I'm into the neuronal ensembles so I take the ensembles as the unit of replication; Across time steps, not in copy numbers.
+
+- It might turn out that is it relatively easy to make a system that can search all possible software.
+  Supplanting this intuition is the fact that you can write like 5 lines of Lisp that does that.
+  An exhaustive search over all possible software is trivial.
+
+- The question is /what are the sources of critique/
+- And the =critic= is a central concept for Minsky.
+
+- When I map /critique/ to brain mechanisms, I think about /inhibition/, the processes that make it hard for activity to live.
+- Any system is as /robust/, as the kind of assults it survives; Or from which it can /heal/.
+- Levin is reducing the problem of morphology to /regeneration/;
+
+- David Deutsch emphasizes the sources of critique, or environment, for memes:
+  /Rational memes/ (like scientific theories), live in a regime of critique. The good ones survive when they encooroporate /hard to fake/
+  knowledge of the world.
+
+- For example, it is hard to fake knowledge that bacteria cause cholera, and that boiling your water therefore has causal power
+  over the illness.
+  I.e. the idea of the bacteria really does say something about how the world works.
+  Compare to this the idea that Zeus causes cholera. It is easy to /vary/ this 'knowledge', to say that Odin causes cholera.
+  In this way, easy to fake knowledge is like the fluent bullshit of modern LLMs.
+
+- Cults are an example of /irrational memes/, which don't rely on a regime of critique, but on clumsy psychological kludges,
+  for instance by incoorparating the top down idea of punishing dissidents.
+
+- Irrational memes make themselves stable by /supressing critique/. Therefore, they are absolutely inferior to rational memes.
+  Because no search process can use them to get closer to the truth.
+
+- The brain must use some /regime of critique that is entangled with the world/ in it's ad-hoc epistemology.
+- I.e. the equivalent of a /rational memetic landscape/. ([[denote:20240208T124507][Here]] I was musing about mechanims, '/Socratic Wires/', just some idea).
+
+- *Brain knowledge*: (2 kinds, but in whatever follows I will suppose that the same mechanisms are supporting them).
+
+- Kind Nr. 1: /software design/: These are pieces of technology that are /hard to fake/ *truths* about how to use the computer
+  that the person is running on.
+  For instance, /how/ to /use muscles/, /mentally navigate/, /pay atttention/, /bring a thought to mind/, /use imagination/, etc.
+
+- It's not remarkable per-se; Given a computational framework where the equivalent of random scripts (pieces of technology) are
+  appearing from the randomness at the bottom (like intrinsic neuronal activity).
+
+  You wait for a good one to arise, and remember that one as the piece of information which has a satisfying effect.
+
+  I wonder if this is the reason it simply takes time to think of something; You keep the working memory active and wait for
+  a piece of activation, which fits the constraints you are setting up. But this is just a rough idea.
+
+- Kind Nr. 2: Traditional 'world knowledge', or /common sense/, or /world model/, etc.
+  Dito /hard to fake/ truths about how the world and people work.
+
+- whence cometh the brain knowledge? It is a similar question to how does science work.
+  Many AI theorists and neuroscientists think something along the lines of children /play/ with the world (and people) and build a world model by making
+  the equivalent of scientific experiments.
+
+- What is the /ad-hoc epistemology/ that the brain uses, is a question at the center of neuroscience.
+
+  I subscribe to *constructivism*; Piaget called it /genetic epsitemology/.
+
+  David Deutsch calls this /the idea must be first/.
+  Buzsáki calls this /internally maintained brain dynamics make random symbols which are matched with experience and action/.
+  Which is /inside out/ - the ideas don't come from the outside.
+  They come from the inside and are then selected.
+
+- My point is that searching the space of possible software is not a big deal. In a (genetic) hyperdimensional computing framework,
+  I can always ask for a random hypervector seed and see what it does.
+
+- There must be the  equivalent to a regime of /rational memetics/, that is creating the useful knowledge in the mind.
+
+1. Baby minds are a kind of scientist (uncontroversial);
+2. Real science works via Popperian epistemology, analogous /constructivist/ theories of brain knowledge.
+3. The strongest implementation-level pardon to this I know of is Buzsákis /*Inside out*/ (see book of the same name).
+4. /Knowledge/ means that some /information/ must be stable (for instance by replicating).
+
+- What are the /pieces of information/ that make brain software design,
+  /what survives?/, /qui bono?/,
+
+- *and* /what are the assults?/, *what is there to survive?*
+
+- *fallabilism*: The position that we never know actual truth, but get closer to the truth.
+  In /Beginning of Infinity/, David Deutsch makes the case that our ignorance is infinite.
+
+- Because without the /challanges/ to ideas, there would only ever be 1 idea in each brain, the first one that survives.
+
+- A theory of personhood needs to include /the means of critique/.
+- It must say how some datastructure is created 'random' but has the chance to be useful.
+- /the means of critique/: It must say how one interpretation of reality wins out over another or something like that.
+
+** Fewer Ideas, Not More
+
+- If ideas are instantiated by neuronal activation, then /inhibition/, broadly speaking, is the /means of critique/.
+
+- [[https://youtu.be/PNrWUS13th8?si=JSx9PvUWb4dVdWpG][Apes have superb working memory]].
+
+- Something between us and the Apes changed, broadly in the realm of inhibition.
+  And maybe part of *the* trick between humans and apes.
+
+- It might turn out that making a /worse working memory/; making it /harder/ for /ideas to survive/
+  is related to creativity.
+- The idea that a /worse working memory/ is relevant for /creativity/ is the right kind of fun to me.
+
+- Just an idea: Say during human evolution a prefrontal area got /inhibited more/.
+
+- Then, being an idea which sustains activity from it is a greater *challange*.
+  (Just an idea, I have clumsily written it down [[denote:20240208T124507][here]] under /Challanger Node Hypothesis of working memory/).
+
+- In either case, selection, critique, inhibition somehow make it so we have /fewer/ ideas;
+  And this is important in a regime where having ideas is not the problem, but narrowing them down is.
+  Whatever makes brain software what it is, is the power of having smaller, faster, or fewer ideas.
+
+- The baby brain has 'synaptic overproduction',
+
+- it is not the amount of synapses that are required to have ideas, because adults have ideas.
+  Apparently, after a certain threshold of synapses is reached, ideas are supported.
+
+  This is also showcased by the cases of children which are missing most of the neocortex.
+  You don't need a lot of neocortex to become a person.
+  And in any case, you get away with damage to neocortex (if you have it early).
+
+* Neuronal animism
+
+'The seed has been planted', 'an idea is growing', we are 'nurturing thought'.
+
+The idea that the primitive datastructures of the brain are agentic and some form of /living information patterns/
+with causal effects in an information processing system.
+
+They are described by a */kind of/ biology*.
+
+This perspective makes the *activation space* of the brain a playing field for the activation animals (ensembles);
+They have a /structure and form/ and there is an organismal perspective to take on them.
+
+That is, there is a subcognitive plain of analysis, which is a kind of physiology and ecology of the neuronal ensembles.
+
+The intellectual heritage Hebbs (1945) Cell Assemblies and others before him is to be this interface between neuronal activation on one side and psychology (concepts, memories, thoughts ...) on the other.
+
+This has acquired the most flesh for me in the writings of Valentino Braitenberg and G. Palm.
+
+1984 - 'biological notes on the Vehciles',
+Cell assemblies of the cerebral cortex 1977,
+On the Texture of Brains: An Introduction to Neuroanatomy for the Cybernetically Minded, 1977.
+Neuronal Assemblies - G. Palm.
+
+It was cleaned up by György Buzsáki (The Brain from the Inside out) as the [[https://pubmed.ncbi.nlm.nih.gov/21040841/][the reader-centric cell assembly]].
+
+The reader centric cell assembly can be formalized as an /address decoder neuron/ (P. Kanerva 1988).
+
+[[edraw:data=H4sIABMtw2cAA8VVTW+bMBj+K5Z72aQQDGEtiQJSt0svu+zQdbu58AJWjI1sJyT79XvNR9tl6zGZwI4/ZD8ffnC29lCTXpSuyeinW0ZJA6JuXEaTGDvHViqb0ca5bhOGfd8v+9VSmzqMGWMhLqXkAMYKrTIaLaNpweYohdr9a1m0Xq/DYZbm2xIqS0SZUSgN7wPfxdGWmx2YP8cDFnBjdE/JOPt95Hs79x8mzjjQGbBgDnBvOyjcN+6EzqjSCpCpgP6zPmY0iBjxJfYvJQaqp4yOjR9DQxsBCvfje6cpsc7oHcy7jL1gsgwlV0LKjN5EzD8ooOOuIcj+K0IsgjuPtLgjyYL9pCTMt+FIGRtecL41SJMcB9jTUL97GK+WPPNiVxu9V+U5u4lMVVUDWP12kS5PSA+kFJ2FMx3x60azkpe9Uv+gO0gv8S4h2RR/C+xjDLCBA7FnG07iR4UBKMTeG/nh5q+D/Hju4/v4oy7vJ2KQlB3i6R3wHBwd8VXAVdFok9FWlKX0Tmjlgoq3QiJPy5UNMBeimias+IVQUXp+fD7AG9vxAmfnKA0H4/VNOvPOnhBL6vq0DT32ZWWj6jhlDykjEcOCoY0SLDgcpT7A7HE2/2pmrNjoBhKiuYK90V1zwlvgWpas/JebTDlo8E18ffEADrDp4PdjnFwn8GjxY3p5qHQM2f8Kkr/fcqEqbVp/Yyu8xnUB1gpVz3m6GqeYvfnUv+B1Se6thfZZvkQ7rLHgn1/+G/OeKgM9BwAA]]
+
+The cell assembly is /activation/, with rules of spreading in the neuronal substrate, rhythms, rules of inhibitiohn, etc.
+The properties of the substrate, for instance =plasticity= or /internally maintained dynamics/ are relevant for the analysis of Cell Assemblies.
+
+The cell assembly also an /information pattern/, representing a hyperdimensional vector with the power to have effects in an information processing system.
+
+Further, it is tradition to consider the elements of mentality or psychology as being made out of these blobs of activation.
+
+Like organisms, the are adapted to survive, where the substrate they live on is also connected to sensors, motors
+and other information processing device modules.
+
+So that they are executed and interpreted, on the information processing system that they are part of, at the same time.
+
+It is not their activity that needs to survive, but the information that lead to their activation, in the /engram/.
+
+Synaptic overproduction is the obvious candidate for large amounts of /variation/. Perhaps subsequent /pruning/, makes them
+less alive but their substrate (nets) usuable information processing systems.
+
+As if there were ghosts of living entities inhabiting the nets.
+
+And such nets provide the interface
+'I can pretent do be an agent, of the possible kinds of agents I have learned to be, for a while'.
+
+What is their biology depends on what the substrates (nets?) and the wiring is.
+Give them the chance to inhibit their alternatives and they should do so,
+make them output motor data and they will be forced to recreate the the general kind of situation that activated them in the first place,
+reset them all after a short amount of time and you select only the ones that are stable fast.
+
+The neuronal replicator ('memetic') landscape is a harsh place for survival. Moshes Abeles (1982) pointed out that the electrochemical
+properties of the brain don't actually make it /easy/ for activity to survive.
+
+The notion of /sheet inhibition/ (global inhibition), making Braitenberg-Palm /thought pumps/ (Braitenberg 1978) is what gave me the idea that
+this is a system for modifying a memetic landscape.
+
+/shitting on everybody evenly/ is already a way to weed out and select.
+
+- I don't know but maybe preallocated ensembles (of hippocampus, see Buzsáki) can be a true /genotype/ of neuronal darwinism.
+- Then they are hyperdimensional seeds (P. Kaneverva), and in 4 years time a 4 year old would have tried enough of them to
+  find some good ones. Abstract, elegant software pieces that together make a language for describing the world - 'common sense'.
+
+- Here is something really funny from /neuronal seeds/: This also means that some of the variation we see in humans is simply random.
+  That one person can do xyz especially well - maybe they just had some neuronal seeds at the right time that fit well.
+  Different tastes? Might just be utterly random, depending on what neuronal seed was available when you encountered the thing.
+- We say the first impression with a person matters a lot, and perhaps it's because we =gensym= a symbol for the person,
+  and the structure of the symbol also happens to influence our disposition to the person.
+- It is said that in chapgras and related syndromes the 'emotional grounding' is missing.
+  Well maybe. But maybe the hippocampus / temperal lobe damage for these patients made some person symbols be missing, and freshly allocated.
+
+*Influences*
+
+- I follow =David Deutsch= and his epistemology and world view is transformative.
+  It is a superset of Dawkins /abstract replicator theory/.
+- Dennet and Dawkins style /Darwinism/ was the core of my world view up until then.
+- Minskies + Papert (/Society of Mind/) and the Lisp philosophy of programming.
+- Pentti Kaneveras hyperdimensional computing is the computer science following Jon Von Neumanns /The Computer and The Brain/.
+- Valentino Braitenberg was talking about the ensembles (cell assemblies) like pieces of music.
+  His cybernetics put representation and information at the center. Therefore, he resonates with ideas from David Deutsch constructor theory.
+- György Buzsáki, Rafael Yuste and the neuroscience on /ensembles/ and /neuronal codes/.
+# - Ian McGilchrist is cleaning up embodied cognition, non-representational
+
+
+# Put these together and I think of the neuronal activation patterns, which have effects in a computational system.
+# They have a mechanic, instantiated on neuronal nets as neuronal ensembles.
+
+
+* #Neuro-Rights The Most Relevant Social Issue We Are Not Talking About
+
+- Brain Computer Interfaces, =BCI= and related tech will become consumer-level.
+  Sooner or later, this tech will be as ubiquitous as mobile phones now.
+
+- We will be able to decode aspects of *mental content* from brain soon.
+
+- *mentality*: A /software module/ that provides the /decision-basis/ for a /person/.
+
+- *mental content*: The dynamic datastructures of a /mentality/, thoughts, feelings,
+  hunches, wishes, mental maps, acts of attention, motor data, working memory, etc.
+
+- Much of the rest of this website is about /neuronal codes/.
+
+- The international community must regulate consumer-level brain computer interfaces (BCI).
+
+- [[https://youtu.be/k04DKbE2pHg?si=QfrScJPrY-EmNqhi][Rafael Yuste on #neurorights]]
+
+Social media algorithms went out of control, culturally speaking.
+
+Maybe the social media recommendation algorithms hooked into hour limbic-ring.
+Maybe roughly learned a causal model of which 'button to press' in order to increase engagement.
+
+Should we create (runaway) feed back loop with information processing systems and aspects of our imagination, executive control, etc.
+we don't know what the consequences could be.
+
+Since the the theory of personhood, executive control (free will), and creativity is missing.
+
+My fear is broadly speaking cancerous beraucracies.
+
+-------------------------------------
+
+** AI Regulation and Information bubbles
+
+Related, AI regulation is something few talk about. Yet, this is one of the most pressing issues.
+
+The ones that do talk about it here in Germany usually wine about too much regulation, a Musk-US copy.
+
+- Commercial Bullshit, SEO, Enshittification, Bad software, misinformation,
+  are all issues aggrevated by gen AI.
+
+  [[denote:20250105T200113][Critic Of Pure Bogus]]
+
+- This is a danger to the functioning of our democracies.
+
+This is even more scary in recent developments of Musks information bubble crusade.
+
+- We know that AI chatbots can modify peoples believes
+  [[https://osf.io/preprints/psyarxiv/mhjn6_v1][Bias in AI Autocomplete Suggestions Leads to Attitude Shift on Societal Issues]]
+
+
+
+* Elegance is the central notion in the philosopy of programming
+
+- Speculative:
+- I see programming as a form of /expression/ (towards humans and machines).
+- Software *is* /top down causation/, which has to do with /information that has causal power/.
+- The /philosophy of programing/ or /design/, is the /philosophy of elegance/, which remains ellusive.
+- I believe elegance, fun and aesthetics are related via the missing theory of creativity (David Deutsch [[https://youtu.be/gT7DFCF1Fn8?si=uns6YxGLYzFIGK_f][Why Are Flowers Beautiful?]]).
+- Persons must use /elegance/ to make /good explanations/.
+- A theory of creativity should say what /elegance/ is.
+- The most advanced philosophy of programing ([[https://youtu.be/SxdOUGdseq4?si=MTttNVnOQU0NT5MI][Rich Hickey 2011]]), sees elegance as a kind of
+  /getting stuff done in the real world/, and emphasizes /practicality/.
+- Elegance is seen as a kind of straightforward /self-evident/ form of expression ([[https://youtu.be/cidchWg74Y4?si=vyOIgzTIdKZW4l0u][Stuart Halloway 2012]]).
+- Without coincidence, this overlaps with the notions of /beautiful proof/ in mathematics as far as I can tell.
+- The notion of practicality prevents elegance to be reduced to a compression problem.
+  The shortest program is not the most elegant, mutatis mutandi the shortest proof in math is not the best.
+- Practicality is a software engineering perspective on embodied, embedded, enacted, extended (4E of cognitive science).
+  Rich Hickey calls everyday applications "situated applications" ([[https://youtu.be/2V1FtfBDsLU?si=T5hJJgiSvIMGChZH][Effective Programs, Rich Hickey 2017]]).
+- Biological software is also a 'situated software' that deals with the real world.
+
+- Our definition of a person includes the world, too. A person must be able to do science and make explanations of the real world.
+
+
+* Global Vs Local modes of computation (just for fun...)
+
+It comes up [[https://www.youtube.com/watch?v=NEf8LnTD0AA&source_ve_path=OTY3MTQ][in this discussion]]:
+
+Prof. Dave Ackley is emphasizing local modes of computation: units only have a small signal light cone, a kin to a fog of war in a video game.
+
+[[https://movablefeastmachine.org/][The movable feast machine]], is similar to a cellular automata grid, where each cell is making local decisions, there is no /information nexus/,
+where things comes together.
+
+His idea is that only a local mode system can indefinitely grow, be robust and secure. After all, each element has to deal with the absence of the
+system from beginning. And the complete system has to build itself in the first place, ergo healing (robustnes) is build in.
+
+Since the discussion is mostly about brain computation, Prof. György Buzsáki points out that the brain network is a mix of local and global connectivity.
+
+The question of local vs. global mode of computation is actually one of the most profound questions regarding the fate of the universe.
+
+In /Live 3.0/ (2017), Max Tegmark is calcuting that a 'global mind' spanning the universe or something would have *7 thoughts* left until the end of the universe.
+I forget the details, but the reasoning is that in a global mode of computation, the signals would have to span this amount of distance, traveling at the speed of light.
+
+Maybe there are other solutions like making ourselves smaller 'there is plenty of room at the bottom'.
+
+But deciding on the local-global continuum of computation might decide between being a single mind with few, large thoughts or many minds
+with many smaller thoughts.
+
+Sabine Hosenfelder recently asked us to keep an open mind on [[https://www.youtube.com/watch?v=UqIjhcEb-MU&source_ve_path=OTY3MTQ][the possibility of faster than light signal transduction]].
+
+Funny, this would mean *[[denote:20230518T185739][faster than light memes]]* might be possible.
+
+Should it turn out that faster than light memes be possible, it would be happy news indeed.
+Then persons / mentalities could span the universe.
+
+We know almost nothing about how to have fun.
+
+-------------------------------
+
+Whatever the brain is doing is not purely local computation I think (siding with Buzsáki).
+This is profound implications for what kind of information processing it can do.
+
+It might be multiparadigm, /mining the bottom/ for whatever it (the substrate) can computationally provide.
+But then, as fast as axons go, creating a global information state (indeed a kind of nexus).
+
+This is underlined by the fact that the global axons grow in thickiness (transduction speed) with brain size.
+And the /timings/ are all preserved. Such that a mouse brain is humming at the same rhythm as a human brain,
+both have global humms in the same pace (see Buzsáki /Rhythms of The Brain/).
+
+Quoting V. Braitenberg /On the Texture of Brains/, for it's lucid biological reasoning:
+
+#+begin_quote
+If one had to design an enlarged version of a small monkey, one evidently could not simply copy the whole
+organism on a larger scale, just as an ocean liner cannot be just a larger edition of a fisherman's skiff.
+One of the reasons for this is that oars cannot be enlarged proportionally, since their size must
+maintain a certain relation to particles of constant size, namely to the people by whom they will be handled.
+#+end_quote
+
+This principle of preserving some 'invariants' of a design is at play for brain rhythms.
+This is one of many hints (see Prof. Buzsáki) that a fundamental aspect of brain information processing is hooking into the brain rhythms.
+
+*Subcognitive Modeling*
+
+/An idea is only as good as it's alternatives./
+
+(I think that is attributed to Bohr or something).
+
+Is there any theory of cognition that is *not* roughly described by:
+
+Some subcognitive elements, agents, resources, modules contribute to a vaguely polyphonic, orchestra-like whole.
+Resources are both in hierachies and metahierachies, contributing to a messy computational system where each deals with limited amount of data.
+Where one resource might play a solo for a while, at other times, resources might provide an emergent 'mentality fabrik' together.
+Resources are themselves less capable than cognition, this is required from /gradualism/ (Dennett).
+
+- Minsky called them agents and resources, and had some engineering design ideas of their wiring.
+- Hoftstadter has /analogies/, which are /situations/ that are allowed to be arbitrarily small,
+  the 'I', like a vortex or wheather pattern.
+- Dennett abstractly notion of multiple drafts. He mentioned the neuron as agent.
+- In /Global workspace/ and related models the modules are subnetworks.
+- Leibniz said something like 'there are infetisimal small pieces of perception, that in the sum we call personality'.
+- Joscha Bach likes to call it a loom, where the patterns can also be interpreted (e.g. by the muscles),
+  the symbols are weaved and arrangend (they dance I want to say), until they represent a coherent whole.
+
+I somehow had the idea that actually /theology/ (and maybe Ian McGilchrist) is a source of alternatives.
+Theology /is/ actually a kind of cognitive science I think. They did a kind of science with questions like /what is the spirit of god?/,
+/can the mind be divided?/ (More at Peter Pesic: /Polyphonic Minds/).
+
+*eye movement, visual field position, mental navigation*
+
+(An example of what playing the brain instrument might be).
+
+I think that for instance eye movement is a low dimensional lever over the complete system.
+
+Such that wherever the eyes move (or wherever attention loci move), this communicates much to the rest of the system.
+A kin to a mouse coursor of a computing interface.
+
+It says, 'this thing is highlighted now'. And if this thing creates activity patterns and those activity patterns
+in turn happen to cause me to move the eyes to the thing, they are a stable variation.
+
+If the Hippocampus is providing a continous stream of little pieces of music (G. Buzsáki /The Brain from The Inside Out/),
+which are a kin hyperdimensional seed address vectors (P. Kanerva).
+
+Then, /moment in time/, /place/, /mental place/ are all allowed to be made from the same stuff, addresses into a hyperdimensional associative memory.
+
+In my introspection, I sometimes feel that words have places. I certainly feel like that /using/ imagination and mental navigation are linked.
+(It actually is Denis Hassabis phd thesis, the hippocampus is for navigating cognitive spaces, as well as world territory).
+
+Using the body to move to some place and /mentality navigating/ seem to be suported by the same mechanism, introspectively.
+
+Whatever neuronal ensembles are in synchrony with the incoming sensor signals have downstream effects together with it,
+they are bound as object.
+
+This is already useful before learning anything: activate ensembles encoding the current eye position together with the ensembles
+of sensor and association areas (they are random initially).
+Already this is a prototype for the kind of object being looked at.
+
+Via plasticity (/online plasticity/ or /fast weights/ is allowed to be required), one can move the eyes somewhere else.
+Still, the ensembles encoding the first object stick together. (We know now, /what humms together, wires together/).
+
+And now they implement an /objectness/ with eye position data (encoding a position in the visual field) and sensor data together.
+
+** [[denote:20230707T090418][Interactive programing]]
+
+#+begin_quote
+Express yourself - Madonna
+#+end_quote
+
+There are 2 words for 'knowing' in German:
+
+/wissen/ - Knowing of a fact, like this tree is such and such tall.
+
+/kennen/ - Knowing something by having experienced it. In the sense that one /knows/ a person.
+
+To know (kennen) the Lisp REPL is so far the most profound computer - user, program - programmer experience that I have.
+
+Lisp is a /cleaning up of computer science/ (Minsky), and called /The Maxwell equations of computer science/.
+
+David Deutsch emphasizes absolute notions of /what is possible/ ([[https://en.wikipedia.org/wiki/Constructor_theory][Constructor Theory]]).
+For instance, Turing Completeness is a theory of this form.
+
+In Lisp; The /programming task/ is /possible/ while the program is running.
+It is an absolute difference, one of a kind.
+
+A python interpreter running on linux with a code editor in principle has the same universality, but it is not the central
+concept around which python is designed.
+
+The reason is that unix is /interactive/; This is historically the legacy of JCR Licklider and the early hackers.
+
+/Interactivity/, /dynamism/, /self-referentiality/ (/metaprogrammibility/) are closely related concepts and showcased by Lisp.
+
+The interactivity and the macros must come from the same underlying property of Lisp.
+Because else there would be 2 absolute powerful aspects of a programing language invented with a single stroke, which seems unlikely.
+
+Intuitively, this seems right. Consider that if a language has Lisp macros, you can simply run the interpreter/compiler as a REPL.
+Conversely, if you want to run a (Lisp) REPL, everything that the language is able to do must be available from that program.
+
+Batch oriented programming, on the hand, is in a /ladder to the moon/ kind of situation.
+
+For these reasons, there is no doubt in my mind that in a thousand years hence, Python and Java will be content of history,
+but Lisp or it's descendant will be part of the theory of programming.
+
+In my personal perspective, Lisp is as important to programming, and the /concrete activity of/ programming,
+as the theory of evolution is to biology.
+
+Also, /interactivity/ and creativity seem to be linked;
+Similarly to the notion of /every point is a growth point/ (quote attributed to John Wheeler).
+
+Lisp allows every point to be a growth point. It is this ultimate malleability and absolute /languagability/ that makes
+it be said /it is a building material, not a programming language/.
+
+When one goes from Lisp to another language, one feels /restricted/ (Paul Graham, The Taste Test).
+
+My hunch is that this feeling of /restriction/ is not to be overlooked as some personal issue. But that it is at the very core of what fun is.
+
+# Related concepts: /feeling of restriction/, suffering (therefore ethics), creativity, sense of aesthetics and fun;
+# And therefore personhood.
+
+The *theory of suffering* explains how /biological information processing and ethics are related/.
+It points to the deepest questions of mentality and phenomological consciousness.
+
+The freedom to express oneself somehow has to do with fun and creativity.
+This fits together with the Lisp philosophy of programming that sees programming as a kind of expression.
+
+One aspect of the mind is the expressivity of thought or imagination.
+
+---------------
+
+It is sometimes said that /Lisp is the closest programming language to human thought/.
+This is maybe because it is about ideas, where other languages are about the machine.
+
+But another sense is possible, the way that Lisp is capable of /meshing/ with the programmers mind.
+
+It is true in Lisp and in science that /every point is a growth point/.
+Lisp is able to take on any form, the way an octopus can.
+
+Like in human language or the stuff of imagination, because there is no limit in the /kind/ of abstraction that is possible.
+In some ways it offers /free/, /creative expression/.
+
+This is noticable when one goes to a language without macros, and one feels /restricted/ rather than /enabled/ by a language.
+
+This /building material/ that one uses to have effects on a computer, and this directly on-the-fly, is the closest we have to
+something like a /stuff of thought/.
+
+When we modify our thought, we /debug/.
+
+Lisp is /the/ language that allows one to debug a program akin to debugging ones thought.
+And it is /the/ language that allows one to create new technology (languages) at any point.
+
+This too, is common in Lisp and in /imagination/.
+
+It is /not/ imprisonend by pre-existing boundaries, decided upon by some language designers, benelovent gods.
+Rather, all points in the program structure are reachable, graspable, and doing modification is /thinkable/.
+This makes it fluid like water, moldable like clay, neat like stack of white paper.
+
+It is infinitely (absolutely) put-togetherable - and this too is a property of both Lisp code and creative thought.
+
+I am under the impression that the mind is capable of creating it's own software on-the-fly, it is crafting technology
+wherever it decides to do so. This is an 'online', non batch oriented programming paradigm.
+
+The most obvious /missing aspects/ are subsymbolic, fuzzy, high dimensional, perceptual, 'right hemisphere'(?), 'learning'.
+
+So a neurosymbolic (hyperdimensional) Lisp might be a good way of spending a few years on.
+
+---------------------------
+
+*The space of possible software ⊃ The space of biological designs*
+
+If /computation/ is the *physics of software* then /programming/ is the *biology of software*, swirling in it's primordial soup and destined for grandour.
+
+--------------------------
+
+*top down causation*, *spirit*, *software*
+
+Beraucracy, information processing and top down causation are related.
+
+A map is a kind of beraucracy of a territory.
+
+These are all the same:
+
+/map - territory/,
+
+/representation - representant/,
+
+/concept -'Das Ding an sich'/ (Wittgenstein)
+
+/checkboxes - real world situation/ (beraucracy).
+
+/Abstraction is to say of many things that they are one thing./
+
+
+In this way, if a beraucracy is missing a checkbox for the real world situation, it fails.
+And if it modifies to the world to /adhere/ to it's checkboxes, that is /top down causation/.
+
+From this perspective biological systems, software, beraucracies, meme-plexes, cultures, societies, languages are
+all information processing systems which stabilize themselves via top down causation.
+
+Abstraction in programming is to create a language, /in terms of/ which a design is easy to /express/.
+I think top down causation works best if there are /low dimensional interfaces/, which the system can /use/.
+
+An example given by Micheal Levin is that money is a single scalar value (1 dimensional), and it enables communication in a society.
+In developmental biology, there is the calcium concentration (gradients). This is a single value (in 3D space), on which developmental
+proceses are hooked.
+
+An example given by Jessica Flack are social hierachies in primates. A 1 dimensional ordering (social hierachy) determines the high
+dimensional (real world) situations - how many dominance and submission gestures are made, who helps whom in a fight and things like this.
+
+Another example: termites (the insects) have a low dimensional temperature signal, which makes them build higher or lower chimneys.
+
+Levin's epic contribution is that there exists a (cellular) /bioelectric map/, exposing a language, an API,
+that determines the 'morphogenetic goal' during development of organisms.
+
+Also, the biological subtrate is /programmable/ via this interface.
+
+--------------------
+
+The conjecture is that brain software also has such middle, low dimensional language layers. Through which it communicates to it's high dimensional substrates.
+
+Jessica Flack calls that the Hourglass model of collective computing.
+
+The other aspect, what Turing was thinking about too, is that /brain software development/ is sort of a morphological problem, too.
+This time, what is developing, /growing/ is a software. Or /mind technology/ if you will.
+
+There should be certain design goals, which, like a beraucracy, bully the (agentic) substrates of the nervous system into a software architecture.
+
+*interfaces and leverage*
+
+In Unix, everything flows through text input and output. This common language is the control structure of the operating system,
+it gives leverage, it is the means of observation and transformaion.
+Think how you list processes, filter and kill them etc.
+=tee=, =head=, =awk= are programs which allow further leverage over exactly this global shared, low dimensional aspect of the system.
+
+Also, nobody writes a unix program with out text input and output, it would socially inacceptable.
+Therefore, a common interface that already works is being hooked into, and what works has a 'network effect', it causes itself to be used more.
+
+That a common, useful interface develops in a software system is a rule of complex software.
+
+Aside: Rules of software are similar to the rules of biology; Usually with exceptions and more like rules of thumb. Perhaps the discipline
+of /software engineering/ is closer to biological computing in some aspect as we might think.
+
+
+The levers of neuroscience, ideas:
+
+- eye movement position: Only 1 is possible in a 2D space, in a neuro darwinistic framework, all the agents would want to be friends with
+  eye muscle neurons at some point. [[https://en.wikipedia.org/wiki/Morris_Bender][Morris Bender]] contributed to the neurophys that says that /all neocortex has an effect on eye movement/ ([[https://youtu.be/xv1Qo-8xpao?si=Y0tLoHcdiCwo78sl][cool lecture]]).
+  It's the kind of thing you don't hear much about because of the current mainstream neurophrenology of cognitive neuroscience.
+
+- 'locus of attention', perhaps Attention schema theory has some merit and brain agents would communicate via a single (or 2) value of wherever the attention locus is.
+   This would be akin to the mouse position on a computer interface, whatever is being payed attention to is 'selected' perhaps, for the rest of the
+   brain to deal with.
+
+- a limited /global workspace/ as a kind of /working memory funnel/.
+
+- rhythm: Whatever is in sync together is /bound/ and has downstreeam effects together.
+  (I love György Buzsákis work on this). Also /synfire chain/ (Moshes Abeles) (a kind of ensemble), Von Der Malsburg, Ellie Bienenstock are
+  also people that thought about synchronicity of subnetworks / ensembles / cell assemblies.
+  This might be how something like global workspace is implemented, by saying something like there are 7 rhythm slots, into which neuronal activity can go in sync.
+
+- sugar concentration, dopamine, neutrophic factors etc. might be a kind of currency
+
+------------------------------
+
+*Modulation* and *Drivers*,
+
+In M. Shermans vocabulary, there is /driving activation/ that carries messages, and /modulation/.
+The above stuff might be mostly modulation of messages.
+
+Like painting colors on wires and saying 'blue is important now', without bothering with the information content.
+
+I imagine the brain to be a big magical library, where books are passed around.
+Books can have colors, for example by being handled by somebody with color on their hands.
+
+Some mechanisms work only on the level of the books and their properties.
+But others need to open them and read the information content.
+
+In /The Society of Mind/, Minsky asks us to imagine the following:
+
+In a tool shop with many tools, whenever you fix a bike, first color your hands blue.
+Whenever you fix car tires color your hands red.
+After doing this for a while, the tools in the shop are color coded with blue tools
+for bike fixing and red tools for car tire fixing.
+
+A =k-line=, knowledge-line (a hypothetical brain design element), is a wire that activates a bunch of resources in turn.
+
+[[edraw:data=H4sIALXwnWcAA71WTXObMBD9KxrlkswYI2RK7IxhJj1x6aUH2vSmggCNseSRZEP667viI06cZNpDyIDwSivte7urlbU1pwp1+0aaGNfWHu58v23bZbtaKl35lBDiwww8TLnrGiF3b00MNpuN32sxakVh6xh/iQhGNRdVbWMcUuicuDZCyRgHywAn24KXBokixrzQrPVcF0b3TO+4fjnuEY9prVqMBu2PASGa+umIAgMHzQ3XJ35vDjy335kVKsZSSQ7wgrdfVRdjLyDINepejDQvf8Z4EB56QWnBJdhjR6swMlarHZ+slKJpYnwVEPcA3wOzNQKy38Diwrt1hhe3KFyQXxj5ydYfGILg/Eu2Glihrkd57L/vRuscgd8s31VaHWXxDpmyLHuw6vkiVTwCPd404mD4uM4b0ejZ0OTJk621eyAYQK+PTjf85tAPiBO6UfA/2no0WqfRHNbDift6DutkTu7rWalPYQ/oDNYpueBueWeR+3hM5rXSMd6LomjcZlbSeiXbiwbWGSaNB5UsylFhxB/urFxWoCujnjlgrAAjgQNAHXXOzdZ3MGOFDmXocQkFctTN9dWrw+UG/7fHQ/G5ol9FcIZEJF2F0Cg0QlLXpyCD6yl4nUKAU9h9KbBMYZ9kNIRGoYEM+gz09Rj6OakCNAKoDKhkQCWbanh2TOrce3pnx3QpcWl4kZL1mJbwzdRkoM9A/zw1n0Y1HKn+m+bn8FmfQzfxueQwRw33B2c3/PclOw+uEucKngUvHPBoBHcRlltxYpaja81kofY36NUp4lfQ4CqU/AXNMZCbMgkAAA==]]
+
+----------------------------
+
+Interlude, *contextual memory*, *contextual, associative memory models*
+
+[insert notes on how to implement it with Sparse Distributed Memory]
+
+- This is similar to the key-value pairs of machine learning attention.
+
+- This is a /contextual/ memory:
+- Give each k-line a color, each k-line activates a bunch of resources (call them /locations/)
+- Call the color the /address/ of these locations.
+- Then /experience/ a /situation/ including and /thought/, /action/.
+- Via plasticity, associate everything that is active together.
+- In high dimensions, everything has the chance to be connected to everything else, so don't worry about
+  missing wires between things.
+- This situation will then be /associated/ with the /address/. So you can retrieve it, contextually.
+- Parts of situation might activate the /address/ and retrieve the complete situation.
+- A Hopfield net is doing roughly this, with the color being basins in the attractor landscape.
+- Thinking about associative memory models is a bit like thinking of this attractor landscape,
+  the shape of the basins, and what kind of activity is 'filling' them in what ways.
+- There is a blue space in the mind, and depending on the amount of excitibility, it is activated
+  either in it's /core/ (The troth of the attractor), or up to it's /fringes/ (Hebb 1948).
+- In high dimensions you don't run out of colors for each situation you encounter in your 100 years of live.
+  (This is a counterintuitive thing about large numbers of elements, Hyperspace =H= is seemingly infinite).
+
+--------------------
+
+If we are the genes and we build a library that is supposed to navigate an animal, using colored books as information devices,
+I think per logic we are not allowed to peek into the content of the books.
+But there are heuristic 'outside' kind of mechanisms that we can build in.
+
+
+- *labeled lines*: This is a 'hardcoded' wire. There are labeled lines from the smell and taste receptors to
+  brain stem and neocortex for instance.
+  This sort of makes sense, you want to build some kind of basis of 'bitter is bad' for instance.
+  We can require that the genes can make labeled lines that make sense.
+- book length: If I give a book to an information processing module, I could limit the time for it to have output,
+  or, I could have a mechanism that looks at the page length of the book or something.
+  Presumably, such things are implementable via neurophys.
+
+
+
+* *Cyberanimism*, Memes, Abstract Replicators
+
+=Joscha Bach= calls it *Cyberanimism*.
+
+=Valentino Braitenberg= called it the /spirit/ (/Geist/). That is the /organisation principle/,
+the /principle of living/, the /good idea/ (Dennett), or perhaps the /soul/ of a thing.
+
+That spirits (software) animate the physical world is what [[https://youtu.be/3MkJEGE9GRY?si=71fZ_t9Xa2Q7FPey][Josha Bach]] calls /Cyberanimism/.
+
+Is it possible to engineer software animals? One should keep an open mind what that could mean.
+
+A /spell/ is a /technology/. In computing, that is a /procedure/. In biology it's /subprograms/.
+
+=David Deutsch=: /Any sufficiently understood magic is indistinguishable from technology/.
+(about possible worlds in /The Fabrik of Reality/).
+
+The wizard, the scientist and the hacker are creating /knowledge/ about the /magic system/ of the /reality/ they /run on/.
+
+Other main influences are
+
+=Richard Dawkins='s [[denote:20230518T185739][*abstract replicator theory*]].
+
+[[https://changelog.com/posts/rich-hickeys-greatest-hits][=Rich Hickey=]].
+
+=Marvin Minsky=, =Seymour Papert= [[https://youtu.be/HFGh5MZhRnc?si=BpxyLhjjA2V6XfXh][philosopy of programming]] and AI.
+
+Programming, especially when done with care and craftsmanship is compared to /gardening/ and a form of /expression/, like poetry and music.
+
+I think it is not randomly, that we say /the idea has been planted/, /the thought is haunting me/, ...
+
+Ideas are alive, ideas are a kind of animal. 👈
+
+One might as well ride with ones outlier ideas. If ones intuitions are wrong, one doomed anyway.
+
+------------------
+
+I call this idea now *neuronal animism* (further up).
+
+* *The most relevant neurophilosopher of our time* In My Opinion is [[https://en.wikipedia.org/wiki/Gy%C3%B6rgy_Buzs%C3%A1ki][Prof. György Buzsáki]].
+
+*** 1. Cleaning up the *Cell Assemblies* with the [[https://pubmed.ncbi.nlm.nih.gov/21040841/][notion of the reader-centric cell assembly]].
+
+[[denote:20240606T185815][Here]], I argue that Pentti Kanervas /address decoder neuron/ (Sparse Distributed Memeory 1988)
+maps to a /reader centric cell assembly/.
+
+/The putative neuronal letter is a ensemble firing in gamma frequency/.
+
+In a [[https://www.hd-computing.com/][hyperdimensional computing]] framework, I would map it to a (seed/basis) hypervector.
+
+*** 2. Introducing the notion of *neuronal syntax*, a rhythm encoding
+
+Brief analogy to the genetic code:
+
+If there is a *code*, there is an *interpreter* / *interpreters*.
+
+Genetic code (Sydney Brenner):
+
+- letter: Base pair
+- word: codon tripplet
+- interperter: ribosome
+
+Neuronal computation:
+
+- letter: γ oscillations packets, *discrete* ensemble
+- word: A series of γ cycles, for instance ~7 in one θ cycle
+- sentences / composites / hierachies: (called /the means of combination/ in programming) ??? 👈
+- interperter: ???                                                                        👈
+
+*** Inside Out (Book /The Brain from the Inside Out/ 2019)
+
+- action comes first (also Rodolfo Llinás, Peter Godfrey-Smith).
+- The brain maintains it's own internal dynamics. (This is a departure form the data-input-output model of current AI).
+- *preallocated symbols* are /matched/ to action and experience.
+
+#+begin_export html
+<img width=800 src="brain-inside-out-sender-reciever-symbols.png"><img>
+#+end_export
+
+[The Brain from Inside Out, G. Buzsáki 2019, p 192,  © Oxford University Press 2019]
+
+----------------------------------
+
+*speculative*
+
+This might open door for a true *neuronal memetics*, where the preallocated symbols are the 'genome'
+and their effects are their /phenotypes/.
+
+With sleep being a phase where the dynamics of genotype, phenotype and their relationships are maintainend and groomed?
+
+------------------
+
+/*Neuronal animism*/ is the hypothesis that there exists a kind of agental, memetic datastructure in the brain.
+
+Indeed, that the primitive datastructure *is* an agent, is alive.
+
+Then /agentness/ is more primitive than even /objectness/.
+
+Just an idea: The brain creates a virtual plane, a new kind of ecosystem, in which 'fleeting' software animals grow, survive, live.
+They have a /structure and function/ of their own. ([[denote:20240208T124507][early/outdated notes here]]).
+
+It's not that short-lived, when we consider habbits, personalities, mental technologies, ...
+
+---------------
+
+=Rafael Yuste= calls the question of the /neuronal code/ "the holy grail of neuroscience".
+
+The question of the *neuronal interperter(s)*, how they relate to the control centers of the brain and the world,
+is /the/ core question of neuroscience as far as I am concerned.
+
+---------------
+
+=Peter Pesic= in [[https://mitpress.mit.edu/9780262543897/polyphonic-minds/][Polyphonic Minds]] makes the case for considering this /in terms of/ music: consonance, dissonance, rhythm and so forth.
+Truly fascinating.
+
+If I understand correctly, the contemporaries of J. S. Bach would have expected that the way to make artifical persons (AGI) is by making /music/.
+
+"He created examplary fugues that served as idealized models of mental function, virtual minds that conversed or argued with themselves."
+(p. 163).
+
+The relationship between music our understanding of math and science is a topic of Pesic: [[https://youtu.be/hlEDFe4YmRo?si=ahAp9adaSg7yOw4K][P1,]] [[https://www.youtube.com/live/9f6YNkrRtkA?si=oEVDuEiIyMjhGer0][P2]].
+
+------------------
+
+Questions:
+
+- The question of why music has /character/. What music theory is studying, the fact that one jingle sounds happy and one mysterious.
+- Since I am into memetics and the sprits that inhabit the world, I'm insuiting there is a kind of biology that would say how music is creating non-zero /character having/, /living/, /animal-like/ software entities, /instantiated/ on brains for a while. /Character/ then not as mere analogy but some kind of primitive in a memetic science of software animals.
+- /non-zero character having/ is a theme of my current thinking.
+- Might the relationship between music and emotion, in hindsight, seem like an obvious pointer to the missing theories of consciousness and creativity?
+- Why [[https://en.wikipedia.org/wiki/Flash_lag_illusion][Flash lag illusion]]
+
+[[./documentaries.html][List of inspirations]]
+
+* Rough Outline of /Constructor Theory of Adaptation/
+
+
+*Update /Compositional Evolution/*:
+
+This is an update on the question what kind of algorithm natural selection is.
+
+In /Compositional Evolution/, Richard Watson is an update on what kind of algorithm natural selection is.
+
+Here, I use the 'gradualist framework' and describe a /hill climbing/ algorithm.
+Watson shows that via symbiosis or sexual recombination, natural selection is a /divide and conquer/ algorithm.
+
+And things that would look /unevolvable/ with /hill climbing/ might be /evolvable/ with /divide and conquer/.
+
+Spefically, the point on /there must be viable intermediates/ is massively updated by Watson.
+
+/Compositional Evolution/ doesn't make adapatationsim and even 'gradualism' in a wider sense wrong in my view.
+It shows that 'gradualism' was more interesting than just hill climbing.
+
+An update on one of the deepest aspects of my world view, Darwinism.
+
+--------------------------
+
+
+Richard Dawkins in /The Genetic Book of the Dead/ makes what seems at first glance a daring claim.
+
+Forgive I don't have the exact quote, but it goes like:
+
+/I predict that it is possible to breed any species to *reverse* its preferences so that individuals would *prefer pain* over no-pain/.
+
+This at first seems so out there, how would an animal prefer pain?
+
+But the logic is crystal clear, the /preferences/ are /adaptations/, too.
+And /adaptations/ can *only evolve* if /all possible versions/ of them are, well /possible/.
+
+I.e. /possible to say/ in genetics in the case of biology.
+
+It hit me now that this can be said in constructor theoretic terms.
+
+And it fits with the [[https://arxiv.org/abs/1405.5563][Constructor Theory of Information]], which I won't recapitulate here.
+
+[[edraw:data=H4sIAHvUPGcAA72WTY+bMBCG/4rlvbRSCJ+bwCogtadceumh7fbmDQNYARvZTsj213eMYbPbdqWuVCoC/p5nZvzayk6fa3LpWqFz2hjT3/n+MAzrIV5LVftREAQ+zqBuyt2l5eL4p4lhlmX+OErJwEvT5DRNAkoa4HVjcppE2DiD0lyKnIbrkBa7EipNeJlTKBUbPNvE3o6pI6iX/V7gMaXkQIkb/eoIm7m9nyjY0SvQoM7wQfdwMJ+Z4TKnQgpAPIfho7zk1AsDYt/I/ihRUH3LqavcjxWpOAi0x05GUqKNkkeYrVS8bXN6Ewb2QX97ZhqCzn5Ciytvaw2vtiRZBd8p8Yud7zzEio2v2Cn0ilxGyuP4fTVb1ww8sMOxVvIkylecqapqhNXPF8nykU48t8ibUNHVyhzGk6FNmllbsyNhdPUwcS6HAZYYwCYYkW+0n9rnWaD/3XzywryBiyH24zFxaKTKacfLsrWZlcJ4Fet4i6s0E9pDWfFqGtD8B+LD9Fc5WES0cQiLKriopOqsCgXpoOSnjux8C1yGHU/Zs1ksahCygyVxozwQF9lQD+ykQc+48Vg47XsgUJUn1b67+e1Ev6d/vbtO8fakIZZgdvf4knATEIyaxNgXYzuedhbalvca3q4dNaYRy4srDzbOzFZsR7agblKXTHv4C1ay3oyymRP6bwMKp4CSeIF0RU/Wt876kmJIcPNREPs4Db5MglieuXHM5MokYbqcNOZb6xYZhX7UBjq81zA+fXrweqaMXvSUT8K8dReaAcUOVpmLQuMp5MTeZCDOXMlOQGdmpl/ji/9Mip/H03sdwQgAAA==]]
+
+(Colors merely aesthetic).
+
+*Gene*: A piece of /information/ that *replicates* and is *instantiated* in the *genome* as "genome snippet"
+(the second meaning of the word *gene*).
+
+*Knowledge*: A /replicator/ which /causes/ itself to be /stable/ in an enviroment, also called it's *niche*. I.e given a niche it is a replicator.
+
+*Adaptation*: The /effects/ that a *knowledge* has, given a niche, that /causes/ it to be a replicator.
+
+Adaptation is allowed to become /intricate/, with many /sub-parts/ contributing to a /system of effects/.
+I would say /the means of survival and replication/ - called the *extended phenotype* (Dawkins 2016).
+
+This typically involves an *organism*, /instantiated/ via *development* (Ontogenesis) in biology, but it is not limited to the borders of an animals skin.
+
+Indeed it is not limited to biological substrate at all, as in technology like beaver dams and even more insubstantially, in animal behaviour.
+And /propensities for learning/ (Baldwin), /psychological developmental plans/ (A. Sloman), etc.
+
+The phenotype is /extended/, actually this is another thing sayable with constructor theory.
+All /possible/ effects that /genes/ *can* have are allowed to be phenotypes.
+
+*Adaptationism*: The bio philosophical position that holds that /design/ in biological systems is /created/ by /natural selection/.
+
+*Natural selection*: /a approximate construction, whose substrates are populations of replicators and whose (highly approximate) constructor is the environment/.
+Marletto /[[https://arxiv.org/abs/1407.0681][Constructor Theory of Life]]/.
+
+Is a mechanism that is sufficient for /creating design/, i.e. /adaptations/.
+
+And is the *only known mechanism for creating design in biology*.
+
+Natural selection needs a population of /variants/ of replicators, from which the ones with highest /fitness/ (inclusive genetic fitness in biology) are selected.
+I.e. the ones with best /design/, the best /effects that caused them to replicate/.
+
+For this reason, any *adaptation* can only be an adaptation (i.e. display design), if it /caused/ by a replicator for which the /variants/ are /possible/. 👈
+
+----------------
+
+This is a subtle point that Dawkins mentions a lot in his books. Genes /for/ something needed to have /variations/, natural selection acts on /variations/ alone.
+
+Footnote:
+(This is also the reason why the Gaia hypothesis, in the form of stating that earths geology or ecosystems are /adaptated/ is not coherent in a natural selection view of life,
+because there are no variations of ecosystems that are selected. The one that supports Gaia must work around this problem satisfyingly).
+
+----------------
+
+
+And in practice, the variants must not only be /possible/, biological intuition says they they have existed, phylogentically speaking.
+
+(The opposite would be a comical, seemingly theological bee-line of a population up the mount improbable, bypassing the need for natural selection).
+
+*And* as a further constraint in biology, there must have existed an /unbroken line/ of /*gradual*/, /*viable*/, intermediate forms (designs).
+(*viable*: Able to be a replicator, given the niche. Emphasis on failure modes: Broken development, broken reproduction strategy.)
+
+(E.g. Dawkins /Climbing Mount Improbable/, Dennett /Darwins Dangerous Idea/ for further, deeper notion of /gradualism/).
+
+This means that *all aspects of a biological system that display /design/ including aspects of interaction of sub-parts of an organism*:
+
+1. Are /caused/ by a /replicator/.
+2. Have /variants/, which are /possible/. I.e. alternative genes with alternative effects.
+3. (re-stating) are subject of natural selection.
+
+Because the /value judgment/ of an animal, say /"pain receptors are bad"/ *is* a complex adaption, /variations/ of the /genes for/ it exist.
+(Such a value making system would typically located as /the wires of the animals brain/,
+but see Damasio, Levin, others. The mechanisms for pain together with aspects of the mind is ultimately unkown).
+
+Here I'm drawing what I think Dawkins has in mind:
+
+[[edraw:data=H4sIANTmPGcAA7VWS4+bMBD+KyPvIa0UFsOSbLYKkdrTXnrpYfu4OWEAN2Aj2yzZ/vqOeWzSp1atEARsA/N98/jG2drHAk51pWzKSueaN2HYdd11d3OtTRHGnPOQ3mDDK29OlVTH370Y3d3dhf1TBp3MXJmyTcIZlCiL0qUsiWnyiMZKrVIWXUdst80wtyCzlGFmRBf4Ka3WwhzR/Lge8EAYozsGw9OPA8J6mt+PKLTQGLRoHvGtbfDgPggndcqUVkjwErt3+pSyIOLgf7E/GRjMP6VsGHzuB9pIVGRPtE4zsM7oI05WcllVKbuKuD+IbyNcCUT2PVlcBrfe8PIWkiX/wiDcbcOBIQ28f7utIVZw6lGe+usfo3WOwF4cjoXRrcr+QCbP8x6suPxIZ09sxBs+Ckao+GxlcuMZOYrPlJKBY8TpTow3vMd4ocGJ2cYfF579aj6Z1/zmB/MOTw78JRDqUGqTslpmWeVDqZULclHLir6yQtmA6kjm4wMrv6E39nP+PUQ8QvjY7aTKtal92SmoMZNtDdvQA86DfRM/u7crUOkaJzSsKtlYfHks8YbKiCrMeLNeDafhfvAu9gNaWN3OGMexEtZrcqYRUpEgD9g4bSaf/q841ufi6Mv8orZ7wYWjmAfFBqhIS62pXl390odesxezGHTq+8NqTe0m5verhMMq5g/UW4GqEyJa70UwNz61u8jjc/5AePfJhu40T9bjPJkvtVF8kdpHUbUIX9uswJraLNh2HzTCuDl1sh7xKd87skyxxQyakhTjnhpcUscvhJK2BqEy2BtffJ00UhWzindktfKN45VPsgJhYa9PsG8dZBqtWjhQSFydhj1CpQ+iIovZkprLoRwot+qoO/V6TqZTF11tJmlaWShR/ZswxT5Hsfpr1/6vPQf3ySZ/ifl4vopPLvYEasxoYUEbwwL64ElKssjmTNi0JQ16M7LfkOwSDqK1VNVgKx+b6gkqtESN2CwmOnP2oLHXlTEvk4szHs/Z+0/s4+FjgLC4yMTiJ7HPGoJNvw2Qt/c3fMbNdCrxZPLYTt6FBf3oT/3uO41fz/v8CwAA]]
+
+The value judgement sub-part is *necessarily* /evolved by natural selection/,
+and it's alternatives are /possible/, accessable by natural selection and by extension 'accessable by breeding' as Dawkins was putting it.
+
+Historical: The equivalence of breeding and natural selection was exactly the line of reasoning Darwin used in /On the Origins of Species/ to introduce natural selection.
+Of course breeding is a kind of /artificial environment/.
+
+--------------------------
+
+Claude mentions: Consider placebo, endomorphins etc.
+There are already /genes for/ modifying the pain receptor -> value judgement system.
+
+This was neither neccesary nor sufficient for the argument but gives it a bit more flesh.
+
+--------------------------
+
+Somebody like Damasio would probably disagree on grounds of /pain/ being somehow a property /life/ on a perhaps cellular level etc.
+The fundamental logic would not be debunked. Assume that pain is a property of cells, then whence cometh its adaptation?
+
+Again we ask the same question, on a more basal scale - now the structure, system and design of cells.
+
+* More Setup / Questions
+
+*Biological software is the edge to be explored*
+
+- 'Computing', algorithms and so forth are a kind of physics. 'Software' is a kind of biology.
+- 'Complexity' in biology and software is not a defining character. It is /neccessary evil/.
+- *Elegance*, *competence*, *beauty* and *artistic swag* are what organisms and software are about.
+- What is the space of possible software, how does biological, self-assembling, software fit into the picture?
+- I think Minsky would have agreed, one aspect of the mind seems is how it programs itself on-the-fly.
+- What is the nature [[https://youtu.be/gT7DFCF1Fn8?si=27nWui27ifp8L0Ep][/elegance/]], /competence/, /artistic swag/, /design/ and /creativity/?
+- What is the philosophy of programing that unifies with biology?
+
+*software engineering is missing in neuroscience*
+
+- I am interested in the mind the way a physiologist is interested in the heart.
+  The organismic, 'adaptative domain'.
+  For the brain that is
+  1) it is a biological computer
+  2) There is software running on that computer ('the mind').
+  Cognitive psychology has yet to spark my interest with a principled software engineering mindset.
+  (If you can show me something interesting in those regards, let me know).
+- Software engineering and philosophy of programming has yet to contribute to neuroscience.
+  The best stuff is more low level or classic; Braitenberg /Vehicles/, Pentti Kanerva /Sparse Distributed Memory/, Marvin Minsky /Society of Mind/.
+- György Buzsáki and neuronal ensemble neuroscience is very cool on the question /what kind of computer is the brain?/ (=1)=)
+
+*growing a person, developmental plans*
+
+- Biology found a way to create powerful software, by letting it grow on the substrate of the brain and it's wiring.
+  And by guiding the developing software with genes via developmental plans, almost always growing a "person".
+- 'Growing a person' is a biological adaptation, therefore there are genes for it.
+  This means there are genes /for/ develomental plans that /grow a person/ on a nervous system.
+  (I think this must be true by biological logic).
+  [A. Sloman 'Metamorphogenesis'].
+- What then are the substrate (the 'nets'), the wiring (between nets, between nets and the outside) and the developmental plans?
+  If not in detail then in spirit. They should say how AGI works.
+- It must discover it's own elegance, sub-programs, sub-module-like technologies, akin to inside jokes.
+- It takes almost 5 years to make a 4 year old.
+
+*Assuming the mind is modular*
+
+- Multiple personality disorders are an existence proof that some modules of brain software can be /reused by different persons/.
+- Vision develops up to around 4 and is done afterwards.
+- But a second personality coming later in live can reuse this vision module.
+- The mind is modular, and there are interfaces between the modules.
+- The brain is *not a marshmallow*, and there is a lower dimensional description available.
+- I.e. there exists a kind of brain operating system - the neuronal interperter(s)?, that supports a /range of possible persons/.
+  Akin to different software running on a virtual machine.
+- This is not surprising, it also seems that during dreaming, a range of possible experiences and personhoods is tried out.
+- 'Imagination' seems to be a good name for (one of...) this interpreter.
+- The nature of these neuronal interpreters is the core question of neuroscience.
+
+*The computational primitives of the mind*
+
+- Synaptic overproduction and pruning seem to together with 'infinite possibilites' and subsequent selection.
+- A characteristic of brain software is how it's datastructures allow for 'everything possible'.
+- 'Only limited by imagination' means 'unlimited' in a way.
+- Both Lisp and hyperdimensional computing are algorithmic layers that I consider to have a flair of this quality. Like 'the building material' that ideas might be made out of.
+- Computation with large amounts of elements was explored already by Von Neuman in /The Computer and the Brain/.
+- Hyperdimensional computing is the modern computer science following these ideas.
+- Hyperdimensional computing might help with formalisms for neuronal ensembles.
+- A hyperdimensional Lisp is a possible approach to neurosymbolic computing.
+  Combining my 3 main interests: Lisp, hyperdimensional computing and neuronal ensembles.
+
+
+---------------------------
+
+- What is the nature of sleep and dreaming?
+- Why does the brain have a 40% neuron skip rate?
+- What are the neuronal codes and the neuronal interpreters (Yuste, Buzsáki)?
+- Following Pentti Kanervas /Sparse Distributed Memory/, the inputs and outputs of the Cerebellum should be made from /neuronal words/.
+
+
+* The Associative Memory Hypothesis / Memetic Software Animals / Neuronal Animism
+
+For the /Gestalt/ psychologists a perception was made from wholes.
+
+Such a /gestalt/ is made from neuronal ensemble trajectories at G. Buzsáki /The Brain from Inside Out/ (2019) - highly recommend.
+
+I think they were on to something; A part of a perception retrieves the whole.
+
+#+CAPTION: Abstract associatve memory structure, rerieved completely at t0, but stretches across t0-tn.
+file:./associative-memory.svg
+
+I think this can implement [[https://youtu.be/ju17bM9p2RU?si=C-jCkipE0WHVUxBc][David Spivak]]'s /self fulfilling prophecies/.
+
+The *cell assembly (ensemble) hypothesis* might be that the brain is full of "self fulfilling prophecy" spaceships,
+which are made from activity.
+
+They try keep themselves alive by having the right downstream effects - including, but not exclusively, top down modification
+of the incoming sensor data.
+
+- /Activate your activators/
+- [[https://www.youtube.com/live/aB2M1gg_1sU?si=9wKz8s_5kltr6mVB&t=3166][/Inhibit your alternatives]]/
+
+That they can survive die, that they can have /random wires/ and subsequent /selection/.
+That makes them /abstract replicators/, /neuronal memes/ that have /competence without comprehension/ (Dan Dennett),
+
+The /neuronal ensemble memetic hypothesis/ is that the datastructures of brain software are made from /agental memes/.
+Implemented as /neuronal ensembles/, /developed/ via /neuronal darwinism/ (Gerald Edelman).
+
+My idea is that this means that /agentness/ is the most primitive aspect of neuronal datastructures.
+Even /objectness/ is the memes playing the game of "looking" like something that follows the laws of physics.
+
+I have to admit I still need to check out Karl Fristons /free energy principle/, it might be the same idea.
+
+*Development* must be some kind of /software synthesis/ ([[https://en.wikipedia.org/wiki/Synaptic_pruning][Synaptic pruning]] is only done at age 24).
+
+# A "neuron failure" rate gives every ensemble a half time, this is needed for a neuronal memetics to work.
+
+Cajal said synaptic pruning is the /settling of the cement/ of the brain.
+(Yuste, Lectures in Neuroscience 2023).
+
+[[https://en.wikipedia.org/wiki/Reverse_learning][Francis Crick]] said /dreaming/ is for getting rid of /parasitic thought/.
+
+Some of the mysteries of neuroscience:
+
+--------------------
+
+- Why /synaptic pruning/?
+- Why /neuron failure rate/? (40%)
+- Why /intrinsic firing rate/?
+- Why are brain injuries filled with /glia/, /not neurons/?
+- Some mechanism of /development/ must prevent neurons from being added after the fact.
+- What is the purpose of /sleep/ and /dream/?
+
+* The 'Toy' Approach to Artificial Biological Intelligence
+
+# I initially studied cognitive science and biology, but then went into game development,
+# and software engineering.
+
+# Now I want to build biological software; Back to my intellectual heritage, but using
+# the power of software engineering.
+
+
+# Genetic algorithms, cellular automata and artifical chemistries are only some ideas,
+# and I think there is much more to explore in artifical life.
+
+# Eventually, the theory of computation encompases universal constructors (David Deutsch, Chiara Marletto),
+# then, a-life is the discipline of making artificial morphogenesis, as well as biological intelligence.
+
+# --------------
+
+A theory of creativity and brain software is not figured out.
+
+One might as well play around with outlier ideas. I think it's true that the humblest mechanisms can surprise us.
+
+- [[https://faster-than-light-memes.xyz/vehicles.html][Humble Beginnings - Braitenberg Vehicles]]
+
+My vision are some Braitenberg-like agental entities that participate a game-like physics.
+But it's a toy physics and rules are made up on the fly.
+
+
+Computation and physics must somehow be the same thing. An algorithm is creating a mini world,
+with a mini-physics.
+
+Conversely, nature is an interpreter, slavishly computing the next step (physics update), given the
+arrangement (syntax) of whatever the stuff of physics is. (Particles and their arrangement or something,
+I'm not a physicist.).
+
+If all those things are equivalent, one might as well go with whatever seems aesthetically pleasing.
+Modeling neuronal networks is completely arbitrary in a way.
+
+Also, there is a Hofstadter-like /subcognitive modeling/ [[[https://en.wikipedia.org/wiki/Copycat_(software)][Copycat describes the slipnet]]] available,
+which is under explored.
+
+
+#+CAPTION: Toy Braitenbergs
+file:./vehicles.gif
+
+-----------------------------
+
+Using game engine physics for cognitive modeling is something that is used in the space
+Probabilistic / Bayesian approaches. [[[http://probmods.org/][Probabilistic Models of Cognition]]].
+
+* Brownian Local Explorer Resonator Particle - Blerp
+
+[[https://github.com/benjamin-asdf/hyper-substrates][code]]
+
+
+When I close my eyes I am not blind. There is a shimmering there. Vaguely colorful blobs swirling. Perhaps manifesting
+into the hints of edges, then ebbing and flowing, washed away by some force of nature which they are not able to whithstand.
+Perhaps no more than the ideas of an idea of an object.
+
+#+CAPTION: Blerp fields with different parameters. Cyan has higher attenuation, making the elements move. Blerps are inspired by neuronal ensembles.
+file:./blerps.gif
+
+
+This is part of my current [[https://youtu.be/f84n5oFoZBc?si=26rs4BXAaY5M_GPN][hammocking]] on how to make random, local, /memetic/, self-organising mechanisms,
+inspired by neuronal ensembles and biological principled approaches to computing.
+
+My goal is to provide useful, resourceful randomness to a hyper dimensional computing framework.
+([[denote:20240606T185815][I expect that Neuronal Ensembles are isomorphic to hypervectors]]).
+
+-------------
+
+- =particle-field= is a directed graph (on a 2d grid).
+- Each node is connected to itself and it's immediate neighbours (local).
+- Time is discrete, at each time step =A= (activation) particles are selected (global inhibition model).
+- This makes /ensembles/.
+- They are in some ways a little bit like the gliders of this physics system.
+- With =adaptation= (=attenuation=): Each node has a lower chance to fire when it is active
+  (making it move like an ameaba).
+- =vacum-babble=: Random elements fire (analogous to intrinsic firing rate).
+- =decay=: Random elements are erased (neuron failure rate).
+- This gives ensembles a /half-time/.
+- Activity must survive this decay assault, it must /regenerate/. (or die).
+- the resonator part is the idea that top-down processes constrain which nodes are especially excitable for the blerp.
+  (how to do this is to be figured out).
+
+- There would be at least a second element, a top down element, similar to the /slipnet/ in Hofstadter + Mitchel copycat [[[https://en.wikipedia.org/wiki/Copycat_(software)][1988]]].
+
+-------------
+
+- emphasis on internally generated dynamics (Buzsáki)
+- weights with log normal distribution, this makes 'hubs' / 'backbones' of activity
+- intrinsic firing rate and failure rate are part of the algorithm
+
+- A brain network would have the dynamics to make stable trajectories (sequences) of hubs
+  (ensembles, attractor basins), which are active for roughly 1 second. (Buzsáki /The Brain from Inside Out/).
+
+- Since I want to model neuronal codes with hypervectors, I'm not sure if I need the trajectory dynamics
+
+- Those are for the /neuronal syntax/, which is a rhythm encoding. But we don't need a rhythm encoding, we
+  need only get the essential concepts right.
+
+-------------
+
+- This is very similar to an [[https://en.wikipedia.org/wiki/Excitable_medium][Excitable medium]]
+- In the excitable medium, all neighbours of a cell contribute equally, and there is an explicit refractory state for each cell
+- (this happens here de-facto, if =attenuation= is a high value).
+
+-------------
+
+*random?*
+
+- Called /path of least assumption/, by [[https://youtu.be/1g5VEcnG6fI?si=yfOYKoGDdx0Zc1zn][Pentii Kanerva]]. At the bottom, we can require randomness with impunity.
+
+- Dan Dennett called it /Darwnism/, a very general idea, that complex things must be made from simpler ones.
+
+=David Deutsch=:
+
+# I think that's why they haven't succeeded for decades. Because a philosophical advance is needed.
+# And they are trying to do it without any philosophical advance.
+# And that leads them essentially to sort of behaviorist models.
+# Behaviorist models are nonexplanatory models. They are models that just try to explain output to input, without
+# explaining /why/ the output comes from the input and so on.
+# And I think that approach can't succeed and it's the reason this quest for AI has not got anywhere during the last decades.
+
+# What we need first is philosophical progress in understanding how creativity - I think that's the key thing
+# that relates all these unsolved problems about free will, consciousness and so on -
+# How creativity is implemented.
+
+# And we know a few things.
+
+
+#+begin_quote
+
+It [Creativity] has to be in the broadest sense an evolutionary process.
+It has to work by variation and selection. Or as Popper calls that in the case of science "conjecture and refutation" or "conjecture and criticism".
+
+But we need to know the details, and the devil is in the details.
+
+I guess that once we understand what it is, we will be able to program it.
+
+There is an analogy here with Darwin's theory of evolution. Darwin's contribution in my view is not his scientific theory of evolution.
+
+It is the philosophical progress that he made in inventing a new mode of explanation not just a new explanation, but a new mode of explanation.
+
+[...]
+
+Paraphrasing:
+
+It is explaining the process that could make things like elephant trunks, not explaining elephant trunks.
+That is left to the myriad details of the process.
+#+end_quote
+[[https://youtu.be/y3Afrwe-Yyg?si=90KJgziUszxutj1y&t=2876][Science Saturday: A Plan to Dye One's Whiskers Green | John Horgan & David Deutsch]]
+
+This mode of explanation is Dennetts /Darwinism/, that you can get design via a mechanism that is not designed by itself.
+
+This is /required/ for a theory of life, the fundamental problem of design has to be solved.
+
+-------------
+
+=Chiara Merletto= ([[https://www.constructortheory.org/portfolio/the-constructor-theory-of-life/][Constructor theory of life]]), delegates a bottom layer of /generic tasks/ and /generic resources/ to physics.
+
+It is the same idea, in order to make something complicated, at the bottom you need something that is not complicated by itself.
+
+#+begin_quote
+As remarked by George
+C. Williams, ‘Organisms, wherever possible, delegate jobs
+to useful spontaneous processes, much as a builder may temporarily let gravity hold things in place and let the wind
+disperse paint fumes’,
+#+end_quote
+
+These are called the /primitives/ in a computing system. In computing, all /tasks/ bottom out to be executed by physics, via the arrangement of /circuits/.
+
+In biology, we also have to explain where the design of any circuit-like thing could come from.
+
+Guiding idea:
+
+Biology is /mining the randomness/ at the bottom; This is how it leverages the /resourcefulness of physical reality/.
+
+(also called /noise/ or /babble/, is the same thing).
+
+-------------
+
+
+'Randomness' comes up in theories of self-organisation:
+
+[[https://youtu.be/6QaMnUBkmz4?si=YQcK8gJHxW56F9DC][Discussion w/ Kevin Mitchell, Nick Cheney, & Ben Hartl on evolution, development, generative models]]
+
+=Micheal Levin= s favorite example is the [[https://en.wikipedia.org/wiki/Galton_board][Galton board]].
+
+This is a mechanism that leverages mathematical truth or something. It's strange, wild and simple.
+Very intriguing.
+
+There is something about this 'algorithmic resourcefulness' or something, that is a feature
+of physics and enables biology.
+
+-------------
+
+Apparently, the same concept exists in physics as =vacuum babble=.
+
+[[https://youtu.be/J6eJ44Jq_pw?si=idwG8mALz142Nbb1][Levin Λ Friston Λ Fields: "Meta" Hard Problem of Consciousness]]
+
+
+Generally, /babble/ is one aspect of an evolutionary process, the second is /selection/.
+
+Together, they implement a /search process/.
+
+* Where I changed my mind recently
+
+# The way Greg Chaitin talks about
+# Cold fusion has a rhyme
+# ----------------------------------
+
+
+[[https://youtu.be/meUtWtY00H8?si=2nRNu0Aduj8cIPQz][Prof. Mark Solms]] on how you don't need a neocortex for feeling and some animal-like awareness.
+
+Here is what I used to think:
+
+[[edraw:data=H4sIAAbb72YAA7VVTW/bMAz9K4R62YC4/oiXOkUcYDv10F126D5umk3HQmzJkOQ66a8fZctt17TYBixwlEi09PhIPiobc7+DQ9tIk7Pa2u46DIdhuByWl0rvwiSKopB2sGnL9aERcv/axni9XofjWwaDKG2dsyyNGNQodrXN2YeIFveojVAyZ/FlzLabEisDoswZlpoPgVuSteV6j/p3exAFXGs1MJjefp08rOb1jfdChk6jQX2PH02Hhf3CrVA5k0oiuRc4fFKHnAVxBG4k7sNAY/UtZ9Pk+zhRWqAkPN5bxcBYrfY4o1SiaXJ2EUfuIb4dtzUQ2c+EuAiuHPDiCtJF9INBuN2EE0OauPi2G02s4DB6OY7fb2brKQM/ebHfadXL8g0yVVWNznbPD6nySPSwaURn8HFn5p4nmDkObwg8m4SSQfQylxQim7g0FWRIHLHCWVbR6HGGPzl+4mAmsMrWjq0e0Ty8R49XHn2ZJv8f/ZF7Gk3oYyn+OS9zjbJntZuKuXQO5mwRvsWDfSEXqJS0gREP6KL1y4q3oqHzhksTkHgFBeDOBlwWtdI5a0VZNjj5yCYfKcllq9GKom+4Bk7qMLwBczQWW6DANqGD8PKcNBigJHX0unl3cdJZ7+cUTrr6cxqc4pM0gmUa3S2pkSh4SDIaKxpkpyTcJGODRRCTnWp7G6fjekzOWXmRP+J09xonst0uV088zlGkUcdOCK5IElWhNG2dK3IWj156H5zHQvOHI5i+Q12otust6gUMtShqMKIlvVg0wOk61LYnzQxKNyVwWUJv3MUrjSgRxKOCXt4gvsX+7gY5acLEN2Hsm2R3pj5JfELod9uqco566pMF7IUsOXRcW1AV2BpJi0UtJOrjHHe484P+/7a/AB9mEcEnBwAA]]
+
+
+
+This is just wrong.
+
+Apparantly, what I would label /user/ is there even if the neocortex is gone!
+
+[[edraw:data=H4sIAALZ72YAA71WTXObMBD9Kxrl0s6EILBD7Iwh05586aUHN+1NgcVoDBIjCWP313fFR203ybSdDBmQLQmxb/V294mV2W/JoSqliWlhbX3v+23b3rSzG6W3fsgY83EF7ZfcH0ohdy8tDJbLpd89paQVmS1iehsxSgoQ28LGdB7iYA/aCCVjGtwENFllkBsisphCpnnruSHOVlzvQF/Oe8zjWquWkv7ptx4hGsfrAQUnag0G9B4+mRpS+5VboWIqlQSEF9B+VoeYegEjroXupkRD/hjTvvO96ygtQKI93lhFibFa7WC0kouyjOlVwNyF/tbcFgSd/YIWr707Z/j6jsyv2Q9K/GTl9x5ix+0vWWn0ihw6lGP3+ypbJwaeeLrbatXI7BVn8jzvwLbnL6nsSAe8YRl/yoHfnmyMmxgmvMGV8ORIdHIw6j3GjKDO/2DOOkgLB/sHJyRX0npG/ESIIBqGOa9Eie8bLo2HERLosXvX4zItlI5pJbKshAuMGWIkGqxIm5JrwpECw0tijsZCRcCmK9+ZuNxkDk/zRf4/mwxPmwyHTYaXm7ywHy2W+Vvtzwf7iwlJXAwkYuASWwgsNbwlMaoC0vKjIZykqqpLsEC4FBUvRzq7lO7z1gOJGdXo8sPVs2r8OOZfn4t/J8RVSRAxMgvZZsaw+BbYop6CSTF7nH043JNx7rge45q4AiQ+aZUus5HZSQI9JBOySpMcAEV4+0CMsI0TP2keSAapMH33vUIcYIixekjXd/SzdwozQ9wFtqjD3wRDtKEsRW3gdxEv3PUvhjUyfOvOBhdWZyzFiTv37yai6XIpOtNACSpVGldOmUfneuGEobF4DFcqa0qYEjYYxH7O3EaVJRIggwwNadQnaVKBqi/BmIeX1B5mePZlb1PjUYzZc7F/k/k5O+c1mFB3guG8mjndqUEXvHbyjp9CqtEpEKuILd5d5RlbYwmu0bk1crtBtd+gCm9QrzZ4wG5eK1V/iw2/OZNfhvE3jZsKAAA=]]
+
+
+Maybe we can say nuclei of the reticular formation and the superior colliculus are the 2 "lower" control centers,
+and the cerebral cortex, basal ganglia and cerebellum are the 3 "derived" ("higher") control centers.
+
+Perhaps the "user" /are/ the 2 lower ones, a kind of minimal animal moving and feeling processing unit.
+
+And it has the derived 3 as resources or advisors at it's disposal, which happen to be information processing devices.
+But perhaps less 'alive' in a sense.
+
+
+That you actually don't want your computer system to be alive is something I called [[denote:20240208T124507][The Living Language Problem]].
+
+- Naturally, you wonder if the reticular formation and superior colliculus already have a complete set of neuronal computation?
+- In the /computationally complete/ form, you would expect there to be a mini cerebullum for instance.
+- In the /functionally complete/ form, you would expect there to be "cognition modules", which got further and further adviced
+  by the upper centers, using new (presumably more adapative) principles of computation.
+- In both cases, it would be more of an /externalizing of cognition/ so to say from the perspective of the lower 2 centers.
+
+
+- The previous view would have been more like: the cortex, as computational system, evolves on top of some animal part
+- The animal part advices this computationall system and perhaps and /enables/ feeling, but ultimately, the cortex is what makes a person.
+- With the danger of sounding wooby-schwooby holistic; Perhaps it is the animal that makes the person,
+  and the person has a computer system to /use/ at their disposal.
+
+
+In this context, I'm becoming a fan of Panksepp-sytle emotion-control systems (Panksepp 1982).
+
+This makes a lot of sense to me, thinking about how to make more complicated Braitenberg vehicles.
+The obivous move is to flip between a discrete (low dimensional) set of states, activating a 'generalized'
+behaviour 'scheme'.
+
+(Like Braitenbergs 'love', will find light sources in the environment).
+
+--------------
+
+[[https://pubmed.ncbi.nlm.nih.gov/17707635/][The thalamus is more than just a relay]]. Talk: [[https://www.youtube.com/watch?v=aB2M1gg_1sU][Thalamocortical System]].
+
+I consider Prof. Murray Sherman one of the most relevant neurophilosphers of our time.
+
+It is the /wiring/ that says /How the brain relates to the world/.
+
+- Action and perception are totally intertwined, and the wiring reflects this
+
+[[edraw:data=H4sIAPMT+GYAA72WT2+bMBTAv4rlXjYpgDEsIVVA2k7ZYZcdum43Nxiw4uDIdgLdp9+znTRLt2rtpEThgW3M+72/VhZm36JxI3tT4s7a7W2SDMMQD1msdJtQQkgCO3DYcjtK0a//tjGdz+eJf4vRIGrblfjDlGDUcdF2tsQ5hcmeayNUX+I0TnG1qHljkKhLzGvNhshNYXXD9Jrr8/WIRExrNWAU3n4LhOlxvjxQYGGrueF6zz+aLV/Zr8wKVeJe9Rzwgg+f1FjiKCXICXUXRpo39yUOg+9+oLTgPehjO6swMlarNT9qaYSUJb5JifuBvVtmOwTGfgGNk2jmFE9mKJ+QHxgl1SIJFsLA+VctNFiFRk959PcXo3WKwANbrVutdn39gjFN03hY+/tHqn7EB174KDqg6EnL0Y2jIp6BqvpkSEpOFqY02Oyf4EFBPJNLKbaGv52hQVfmoj6G5wrmdO4GsDAPyn1wQwQj3oNvOy3f3fxRF+/xq/Ehbi5fkP2MkGVOllOyLC7Pg1giWpA7OgXJQSgIIXfp/way4Q950fwjkOnsCp4VBIHs6dnlsZaPFrlbxPpVp3SJN6KupStd1duoYRshwVzDehNB34rm8MKIn0BMi+f95gowy58KsNJcssdF4giXhUGmcNVBV8DZpHQN9zP029rsmLnXtBnNr9EKvjSX1J2IOcjUl2kY+1PSJxil0Cn0Cq0CQXesaxWUd2kMua7iOL5oPR1YLr2V7Zhkm525JNDXlgM651ZKg3rENGfo8zWoGXlOfcImLQj8t6h+AQE/TG+DCAAA]]
+
+Information flow is feedforward from cortical areas, and zigzags with higher order thalamic relay nuclei.
+
+- all cortex is making motor outputs
+
+[[edraw:data=H4sIAJEFQmcAA71XW2+bMBT+K577skkl2IakpApI28PEpE6V9tBd3lwwiRWCI2NCul+/YwzNkq1a24koNpjb+c75zs1Z1Lsl2m/Kqo7xypjtte+3bTtpg4nSS58RQnx4A7tXrvelrNZ/e5HO53O/e4pRK3OzivHsimG0EnK5MnAREIx2QtdSVTGmE4qTRS6KGsk8xiLXvPXsJdzdcL0W+vi+RzyutWoxck+/9gjDdTqgYLTVohZ6J97XW5GZL9xIFeNKVQLgpWg/qH2MPUqQncwOjLQovsXYLb53C6WlqEAeb4zCqDZarcUgpZBlGeMLSuwP9N1ys0Kg7GeQeOldWcGXVyi8JD8w8pOF7zSEhbUvWWjQCu07lIfu+CRbBwbuebZeatVU+RPKFEXRgS1//0jlD7jHcx95PRQ7SBnMGASJAETlB0UoOWhImdO5O4MFEekwRVnKbS1ejqFBlrVT7905g2s2twu4MXfCO3Idg56owLZGl28v/oiLd/jZ8I436y/wfkBIGpJ0RtJofDzgErGI3LEZzBAmg0nIHX0tkYW4D6PiH0QGgZP+sjgYRD8nDkIyPnfBzDkriAgCPBRa7mANXCLgErEulQkCLtMwHF+fqcOy/nPYgy69L43YG2QPHq+yldIx3sg8L23Gqsp4Bd/IEiiseVV7UK5k0T+o5U+ApdFpmUGdix3fgI2TyWSy8C3AOFi0x6LAZZIpDeIR14KjT+dADWenqI+woyZo1AXRjh2N1fEYvyy5unSixcl4ZcGYRfPiiYIxDfqCwYLxQnjal4zAhtVGGaWR4XopTD1mWNlwekQt+QPsLqaoEo1W1SW61xZI1G/G1GA6aGADu2628BmYnilwYNaUTY2EyUbNZ2t637OTj7fnQArA1Ul6e4687Qp/eEjRO3qGNIUOZEFh+9B1pRRcexZc22UobFig66VQKlJ2pu4LmMc1cJQGEPXBQ/oGIDPluTMvh1D6r7JH+7JH+7JHh30SnY9nFutzgtmcuJki1ZhtY0btpH3BsR01uQkHKH8JE/7OJb8AbKEOg/YNAAA=]]
+
+- Messages and modulators are 2 different kind of things, messages /drive activity/
+- The thalamus is /the driving input/ to all cortical areas
+- Cortex cannot be understood without understanding cortex and thalamus (my conclusion)
+
+- Consequently, the only way for a lower cortical area to /drive/ activation in a higher area,
+  is by outputing some kind of motor data! I find this quite remarkable.
+
+Analysing the wiring is much in the spirit of V. Braitenberg, too.
+[[denote:20230915T190843][Vehicles]] are only one example.
+
+--------------
+
+*Cognition is musical*
+
+[[https://youtu.be/O4FCu1NqdYo?si=d1DySI9_ys4cbegi][Gyorgy Buzsáki - Neural syntax is organized by a hierarchy of brain rhythms]]
+[[https://youtu.be/2ApDpHQI6_I?si=-GwfXQlfrxlbgj8z][Dr. György Buzsáki (NYU) - Keynote Lecture: Brain-inspired Computation: by which Brain Model?]]
+
+I consider Dr. György Buzsáki one of the most relevant neurophilosphers of our time.
+
+/Inside out/ is the idea that the brain primarily stabilizes it's own dynamics.
+This is counterintuitive because the previous view says that a brain is a vessel filled with
+knowledge from the outside.
+
+As David Deutsch is pointing out, a "vessel theory of knowledge" doesn't work. Knowledge needs to be
+evolutionary in principle, you need some kind of randomness at the bottom, that is matched or criticized
+with action and perception.
+
+# --------------
+# The path of least assumption, randomness at the bottom.
+
+*Neuronal Syntax*, *neuronal code*, *neuronal interpreters*
+
+The /genetic code/ is definend by it's /interpreter/, the ribosome. It's /syntax/ are /triplets/ of 3 base pairs, called /codons/.
+They could also be called /genetic words/, they say where to put the spacings between the /genetic letters/, to /decipher/ the /code/.
+
+Just like letters make words and there are spaces between words. Elsetextwouldbehardtounderstand.
+
+The project of figuring out what the /neuronal code/ is, means understanding what a /neuronal letter/, a /neuronal word/ and a /neuronal interpreter/ is.
+
+
+# , but the /neuronal letter/ makes sense as a cell assembly firing in gamma frequency, this overlaps with
+# many
+
+I'm still figuring out what Buzsáki has to say, [[https://trello.com/b/YTNlN4ed/my-sentient-ai-dashboard?filter][here]] is a paper.
+
+Long story short:
+
+- Neuronal ensembles (cell assemblies) firing in /gamma frequency/ are the /putative neuronal letter/.
+
+*The reader centric cell assembly*.
+
+- Neuronal ensembles are best described by their *reader*, with a timewindow.
+
+- Everything in cognition is relational. Nothing can mean anything, unless it has a reader, unless it has an effect. 👈
+
+- This is a cleaning up of the cell assembly concept by Buzsáki that makes it easy to
+  equate it to P. Kanerva's /address decoder neuron/ (Sparse Distributed Memory).
+
+- I wrote this down here: [[denote:20240606T185815][current stuff]].
+
+
+- A /Neuronal word/ are ~7 elementary ensembles firing /in time/ during a /theta cycle/.
+
+- How this then combines further up the hierachy, how it supports mental navigation, zooming etc is
+  not figured out.
+
+- Presumably, neuronal words represent both the complete vocation and the zoomed in notion of that one evening,
+  and the further zoomed in story line of how you went to that restaurant and so forth and so forth.
+
+- In terms of SCIP, the /means of combination/ and the /means of abstraction/ are not figured out.
+
+
+- A neuronal interpreter or interpreters is/are a hypothetical brain mechanism that has neuronal words as input and has outputs,
+  which might be values in output registers, side effects,  memory updates, data transformations, state changes,
+  presumably motor data outputs.
+
+- That the input and output registers might be in the same neuronal net but across some time step is an idea already at hand from
+  the /cognition is musical/ guiding idea.
+
+
+# Of course, my idea is something along the lines of neuronal interpreters some form of hyper dimensional, non deterministic computing.
+
+How neuronal codes and interpreters work, how they relate to (wired up) the control centers of the brain, to the animals behaviour and the world,
+is in some ways /the/ central question of neuroscience.
+
+# Of course, I expect a neuronal interpreter to do some form of non deterministic, hyperdimensional computing.
+
+
+----------------------
+
+# The most important neurophilosophers of the last century:
+
+*John Von Neuman* (died to early), [[https://en.wikipedia.org/wiki/The_Computer_and_the_Brain][The Computer and the Brain]], could have been the most
+relevant neurophilosopher ever.
+
+This is the real deal, some groundwork for thinking about neuronal computation.
+
+This is truly a line of thinking that goes between computer science and neuroscience;
+
+And I can highly recommend P. Kanervas /Sparse Distributed Memory/ as continuation to this.
+
+It's truly mind blowing.
+
+(I'm into associative, distributed memory models and hyper dimensional computing: [[denote:20240606T185815][latest stuff]])
+
+# - Warren McCulloch: "The brain is an information processing system"
+
+Neuronal computation is distributed, energy efficient and trades powerful logic for degraded arithmetic 👈
+
+--------------
+
+Poweful logic?
+
+In some ways, hyperdimensional computing and associative memories allow for a symbolic processing that is /more LISP than LISP/.
+
+In LISP, symbols are /points/ (point-pointers, hehe). Whatever you want to do with the symbols needs machinery.
+
+In hyperdimensional computing, the symbols are data themselves. And there is a rich symbol-algebra (the Vector Symbolic Arithmetic).
+
+It allows symbolic processing /in superposition/. It is like programming with pieces of pointers. Kinda strange stuff.
+A philosophy and practical usage of this /programming in superposition/ is largely unexplored. ([[denote:20240606T185815][latest stuff]]). Here is [[https://arxiv.org/abs/2106.05268][a nice overview]].
+
+Also:
+
+- [[https://metta-lang.dev/docs/learn/tutorials/eval_intro/main_concepts.html][MeTTa]] is a non-deterministic metagraph rewriter. I think this enables some similar criteria.
+
+--------------
+
+*Biological Intelligence is Intelligence that grows*
+
+*Alan Turing* (died to early) could have been the most relevant neurophilosopher ever.
+
+I think Turing was onto something like:
+
+"Growing cognition means growing a biological system, it's a kind of morphology."
+
+He went into morphogenesis with the same goal as before, to make machines that think.
+
+I think his intuition was that biological intelligence must self-organize,
+so he wanted into studying self-organization.
+
+See [[https://en.wikipedia.org/wiki/Turing_pattern][Turing patterns]].
+
+*Micheal Levin* is coming from the other end:
+
+He says that morphology is a collective intelligence problem.
+Collective intelligences are biological software, it's all the same thing.
+
+So morphology is a kind of cognition.
+
+Biological intelligence is collective and self-organized. 👈
+
+A modern form of this that truly goes a different route is [[https://youtu.be/I4flQ8XdvJM?si=pex9I9JAMo3KXZsA][Dave Ackley robust first]]
+and 'living computation'.
+
+--------------
+
+The Hourglass model of collective computation (Jessica Flack). [[https://www.youtube.com/live/RtYLLyfs1Ts?si=GQhry-E-OwHZnk8P][Talk]].
+
+Outdated view:
+
+Behaviour of simple elements make emergent, complex behaviors (kinda the physics stance to take).
+In physics, you have the statistical behavior of for instance gas molecules, which make the emergent
+behaviours of for example gasses. (Erwin Schrödinger talks about this in /[[denote:20230715T105044][What is Life?]]/).
+
+
+Updated view:
+
+[[edraw:data=H4sIAFfd72YAA72VXXOjIBSG/wpDr42AJhM70b3Nzd7mnioqE4QMuNHur98jYtpmum1nmnRUFOQ8Lx/6np07N2iQVd/meL0hGLVCNm2f45RBZeyUdjlu+/70GMfDMKyGZGVsEzNCSAyhGJ2FddLoHNMVDQGPo5L6+F4YzbIs9m9xsbOi7NGYY9B59uV/hyGrHIvK8iF64uWxseaPrjByvTVHkWNttMColkrl+KGua4ziYte8DjLVM+gJpeTJiUvP7XS8YB4omY6lIQqjYRhZGN4aXlgYLJ3GU0IDnbqW0MJS4hVvi0+Sj/H8qRZ8/VU8C/iFztgV/cT7NqDn5fycC8v7G8IRsM6MtIwoRlDqSxbK26DhVJHnwdMevrxQ29PNLRQOQDzQrafCeaApXLPQHpq/rRDob+Dt9Ehmdi/GftnVhVYb3UdO/gUFugnVmndSwd45rl3khJXwoU+xEddla2yOO1lVSvifye/vOP89RSeccSVXYhdP/e+j6GdzUeSlvb9k8maS8kck0yAJ96IFh0KV7ISeDJCrewqz18LKDD+lS9kHE/6FFukrcxIJ2HD1VXOii/ddWx/N3rW+G9FZoPs0tJj2ZptNCeRz9CU/veStdE5k23nFFuuIG7ggUxb/ALAE15pqBwAA]]
+
+- A course grainend mesoscale allows the system to communicate efficiently.
+- This is a kind of information bottleneck
+- It allows the subsystems to inferface,
+- ? it allows /short codes/, (same thing as program source code).
+
+- Micheal Levin also talks about this concept.
+- Examples:
+  - Dominance hierachies (low dimensional ordering),
+  - Money (scalar value reflecting high dimensional concept of value),
+  - Calcium concentration (in Morphology)
+
+--------------
+
+Naturally, for brain computation, my idea here is that the mesoscale /is/ the *neuronal code*.
+
+Because *cognition is musical* this means in some strange way that the mesoscale, the code
+is made from something like /rhythm/.
+
+It would say  that /rhythm/ and /simultaneity/ or perhaps whatever /dancing/ in /harmony/ is;
+That this is how the subsystems in the brain communicate, accross /scales of hierachy/.
+
+Time, rhythm and synchronizity in neuronal computation comes up:
+Moshes Abeles, Von Der Malsburg, Elie Bienenstock, Earl Miller.
+
+I'm sure this is an idea that keeps coming up since ancient times. And perhaps there is just something true about it.
+
+# It doesn't mean that we have to encode something in time. If we get the essential concept of neuronal code straight.
+
+(Doesn't mean that you need a rhythm encoding for a neuronal code implementation. But that the brain is using
+a rhythm encoding for it's implemenation).
+
+
+Also:
+
+
+
+--------------
+
+I used to think *backprop in brain* doesn't make sense. But I was naive about the science.
+Now I think that Lillicrap is cool and nuanced. [[https://youtu.be/-kHLKLLxIF4?si=b7bALY4W-WT6EIC8][Talk]]. I mean seriously he is cool.
+
+[[https://pubmed.ncbi.nlm.nih.gov/32303713/][Backpropagation and the brain]]
+
+Afaik it's Hintons opinion that the brain is doing some form of backprop.
+
+* Where I didn't change my mind recently
+
+
+*Neophrenology doesn't even pretend to have a brain theory (it is not even wrong)*
+
+- Why can most of a brain be missing (if early), and a peson can work with that?
+- [[https://youtu.be/VaDlLD97CLM?si=htUXnD82pyo7WSnd][Existence proof]], there are children with 1 hemisphere missing that are healthy.
+- The 'language centers' of this child is missing and it speaks 2 languages.
+  Clearly, something is missing in the story when we call this 'langauge centers'.
+- The 'shape' of brain software 'on the brain' seems to be malleable.
+  Like with an octupus; The defining character of it's /shape/ is it's /malleability/.
+  This is why I think "neophrenology" (derogatory), the finding of neocortical areas 'for' X and Y is quite beside the point.
+- The correct theory will say why there are such areas. And the theory will be infinitely deeper to what main stream cognitive neuroscience has to offer.
+- Arguably, /current AI/ is based on neuroscience from the 50s - feature detector hierachies of McChulloch Pitts neurons.
+  Why is neuroscience in turn happy to be 'informed' by those nets?
+  Perhaps it's worth spending some time on, but on the whole this won't yeild a theory of the brain.
+
+----------------------------
+
+*Neo-Lamarckism is more confusing than useful.*
+
+In recent times, transgenerational epigentic inheritance prompts biologists to say something like
+"Lamarck was not so wrong after all.".
+
+Lamarckism as a /theory of complex adaptation/ is still wrong. It's confusing to bring forth the name.
+Just let it rest in peace. In the history of bio philosophy where it belongs.
+
+What system knows that a muscle is used, and how to tell the muscles in the offspring to be bigger?
+
+This by itself is a complex adaptation, making Lamarkism /plop/ in a small cloud pink dust,
+floating prettelly in the air before quickly dispersing from a gust of wind.
+
+On it's own terms, 'the use of transmitting information to the offspring made the capacity to transmitt
+information to offspring more pronounced'.
+
+What? How does it know how to design itself to do that? Also, this sounds almost like abstract replicator theory
+to me. The replicator knows how to transmit information to the offspring.
+
+No. Transgenerational epigentic inheritance is a form of a *Baldwin effect*, where the /dynamism/ is /across generations/.
+
+One should have brought forward Baldwins name from the get-go, and there would be no confusion, but solid theoretical evolutionary biology.
+
+It would have been, "wow, look at those transgenerational adaptation effects, Baldwin effects and extended phenotypes are so powerful,
+/evolution learns how to learn/ across time and even individuals".
+
+
+------------------------------
+
+** A More or less correct philosophy of programming
+
+I am going through [[https://www.youtube.com/watch?v=Y5YCE_mVjvg&list=PLhgq-BqyZ7i7MTGhUROZy3BOICnVixETS][Porgramming with Categories]] (with Brendan Fong, Bartosz Milewski and David Spivak), which is very cool.
+I expect the whole category theory to be a powerful tool.
+
+There is this notion "The types help you make correct programs".
+The way Bartosz says it in one of first lectures makes it sound like it's common knowledge for software engineers.
+
+But it is totally not!
+
+It is *not the case* that software engineers agree that static typing helps with the real problems of software engineering.
+
+The *philosophy of programing* diverges here roughly into a camp that has the feeling that
+software should be /provable/ and /mathematical/. As the pinnacle of this, its /correctness/ would be /proved/.
+
+Proponents include Edsger W. Dijkstra, Leslie Lamport, John McCarthy.
+
+And another camp that emphasizes /interactivity/, /growing the program as you go/, /bottom up programming/.
+
+Proponents include M. Minsky, S. Papert, G. Sussman, Hal Abelson, Rich Hickey, [[https://www.paulgraham.com/hp.html][Paul Graham]], JCR. Licklider, Alan Kay.
+
+This emphasizes that /software/ is a /participant/ of the /real world/. Applications are /situated/ [[[https://youtu.be/028LZLUB24s?si=cboDUbbxSqdBW1l3][Hickey 2015]]].
+
+To the /user/ and the /client/, the /software artifact/ is what matters. Not the way it was made.
+
+Unless they are an isolated calculation, shielded from the real world, like a smart contract. (In that case something like Haskell does make sense).
+
+Sources of /bugs/ usually stem from /misunderstanding/. /Understanding/ and /design/ is the main work of the programmer in the first place.
+
+In this philosophy of programming, *Software engineering is the art of dealing with the real world*.
+
+[[edraw:data=H4sIAEXyJWcAA72WTY+bMBCG/4rlvbRSCDZhs+wqILWn5NBLD+nHjcAAVsCObCck/fUdA9mPZFeqVBFhiG3MPO+MhyELcyjJsamliWll7e7J99u2nbazqdKlHzDGfFxB+yVPx1rI7XsL+ePjo9/dpaQVua1iej9nlFQgysrGNAxwcABthJIx5VNOk0UOhSEijynkOm09N8TZJtVb0G/nPealWquWkv7uj54wP4+XAwUndhoM6AN8MTvI7PfUChVTqSQgXkD7VR1j6nFG3Bm4RomG4mdM+86vrqO0AIn20r1VlBir1RbOVgpR1zG948wdqHeX2oqg2G9oceI9OMOTBxJO2G9K/GTh9wqx4/xLFhpVkWNHOXXXD6P1EoFNmm1LrfYy/0BMURQdrHz9kMpPKA/qWuwMDM95Ay14MXT25NlW5A4MBsq7d0FBsZxhJ8MJ7mYynAmcQv8/zYeD+YfBehAO1kPeW+9i2wfQA4mu7XX96e4qLT7Tf+b3YXPbFeHmz1kVvGlrlLAO3C9jax6NrwI5BDmH4J02PnyOcHSYo8O4xevoMhzPbXQp/ErKEodL7C5vsQsh0vtkuEqJm+5IiEKC6GY0dkvabN69ca9oFo6WuIuXyqxSOqaNyPPa1TUlrVekjaixLJhUGg+LuiiGG0b8QRCPLouxq6jc1dGhQCWrhe/Mj0PqqhWSZpEjjYpyCDLU4WQ1IasV8YjZb8zJWGjMGT1uoSKYLkvMz/l4mxeywU8MbeIRIS3oNMNPuDRjhndIGUdPIC8Bv8kYyFbpOr8Blr/F7vHxUXPpnLaITxqlgVy4PCEbyFKUQWwlZGlIimsaMOY0qqwhGjP33oLNpmeYX+KJf0GTv9xpkrmqCgAA]]
+
+- /Situated software/ is a /system/ of sub components, that deal with /edges/ and /requirements/ of the /world/.
+
+As a rule, /software is not prestine/. *Just like in biology, exceptions are the rule*.
+
+# A large system has to deal with subcomponents spread across the world.
+
+This is almost opposite to the percieved power of computing, the abillity to /create worlds/, to make all rules as /masterminder/.
+
+In reality, the /masterminded/, /simple worlds/ are only at the /core of applications/ (also, [[https://ericnormand.me/podcast/what-is-a-domain-model-and-how-do-we-think-about-them][domain model]]). They are important
+and powerful, but *not the main job of programmers*, they don't comprise /complete systems/,
+and they usually *are not the reason why software projects succeed or fail in the real world*.
+
+A language that is pointed at optimizing the prestine mathematical core of information processing systems
+*is not a language that helps addressing the actual sources of success and failure*.
+
+In defence of the mathematical approach: One idea is that they help /design/, becuase they
+allow to spell out the design in mathematical terms, analogous to /category theory/.
+
+In this capacity, as a design guide, they are pointed at a real world concern.
+
+In my feel, since exceptions are the rule - the strict design and static typing has more downsides than helping.
+
+--------
+
+Because of /fallibilism/ (Popper), programs are in a perpetual state of /misunderstanding/ and /incorrectness/.
+
+It is the speed with which one engages with this /incorrectness/ (also called /debugging/), that proponents of interactivity
+see as the defining aspect of the power of a programing paradigm.
+
+[[https://youtu.be/HFGh5MZhRnc?si=BpxyLhjjA2V6XfXh][G. Sussman]] sees the actual thing programmers are doing to "make best guesses and subsequently debug, until some satisfactory
+state of correctness is achieved".
+
+=Debugging=, is a central concept in the philosophy of programing of the MIT AI lab (origins with Minsky and Papert).
+This is essentially Poppers /conjecture and criticism/.
+
+Programming, the task of creating software, /is/ a form of /conjecture and criticism/.
+
+When Papert says that "Debugging teaches children to think", this is a epistemological claim.
+That software and by extension "mental technology" *is* actually created by *debugging*.
+
+/Debugging/ is a /meta technological principle/ or something.
+It /is/ the technology that the mind uses to create itself. Since it must create it's own software, it must execute a programming task.
+
+You can also say /creating software/ is /evolutionary/ (Popper).
+
+This is a philosophy of how software is /actually made/. The claim is that a Haskell programmer is doing the same thing.
+
+It doesn't matter what programming language, a programmer still does /debugging best guesses until satisfyingly approximate correctness is achieved/.
+
+Papert: /You can't think about thinking without thinking about something/.
+
+Creating software means building /something/, then improving that something.
+
+And /all software is created this way/, be it in a self organizing task as the mind of a child, or be it
+artificial software programmed by a human.
+
+Popper was saying for knowledge, in an abstract way, the same as evolution.
+And the same is true for Paperts theory of programming.
+
+
+| Biological Evolution    | Scientific Theories      | Programming                |
+|-------------------------+--------------------------+----------------------------|
+| Variation and Selection | Conjecture and Criticism | Best Guesses and Debugging |
+
+
+The Lisp way, /repl driven development/, or /bottom up design/ or /interactive programming/ is not just
+another way of programming, it is aligned with /what programmers actually do/.
+
+This is why I am certain that should we encounter aliens, we can ask them whether they have discovered Lisp.
+
+This is inspired by Richard Dawkins: "Should we encounter aliens we can ask them whether they have discovered the
+theory of evolution".
+
+Following David Deutsch's reasoning (The Fabrik of Reality), I expect a deeper theory that unifies computation,
+epistemology, biology and theoretical physics.
+
+Note: Our current Lisp is not the deepest version. We know this because we cannot program an AGI yet.
+
+We will not be able to ask the aliens what their version of Javascript or Python is, except in the light of morbid humor.
+
+--------
+
+A seminal "case for interactivity" is [[https://youtu.be/ZfytHvgHybA?si=TCiyMb4L4cG9zao9][Bret Victor - Stop Drawing Dead Fish]] - he manages to do this without
+talking about Lisp, for better or for worse.
+
+Also:
+
+- /The dream machine : J. C. R. Licklider and the revolution that made computing personal/, Waldrop M. Mitchell
+- [[https://youtu.be/8Ab3ArE8W3s?si=bzh_iQkv2rLwaH41][Stop Writing Dead Programs" by Jack Rusher (Strange Loop 2022)]]
+- [[https://youtu.be/3HxVMGaiZbc?si=J0X1j0GWGTYQEV9g][ClojureScript in the Age of TypeScript — David Nolen]]
+- [[denote:20230708T095438][Lisp]]
+
+
+* What Does a *philosophy of programming* say about *biological modes of computation*?
+
+"Math is hard for people not because it is so complex, but because it is so simple" - Minsky.
+
+My feel is that seeing the goal of software as *navigating the world* is already much closer
+to something that has the chance to unify computer science and biology.
+
+1. A correct epistemology of where the biological software comes from (what /programming/ actually is)
+2. Realistic expactations about what a biological software is actually doing in the world
+
+
+
+
+# ------------------------------
+
+# *Abstract replicator theory* is still the correct theory of complex adaptation.
+
+# I think there is now a wave of nuanced morphogenesis, collective intelligence and autopoetic systems thinking
+# that is questioning what you might call /the primacy of genetics/.
+
+
+# As Micheal Levin points out, in the most recent decades, decades molecular biology techniques were worked out,
+# and worked for analysing genomes and transcriptomes etc.
+
+# But in a way these methods look at snapshots, but (developmental) biology happens in a process, it must be some /process science/
+# that describes them.
+
+# For instance, /cell fate/ is influenced by collective information processing effects (via the electric field with which Levin is blowing our minds).
+
+# One aspect is that biological systems are /competent in the face of uncertainty/, including missing or wrong information at the genome.
+
+
+
+# I think that if it is not genes that are replicating, it is a form of memes.
+
+
+
+# Perhaps that is the same as saying they are autopoetic systems,
+# but for political reasons I wo
+
+
+# I think somebody would argue memes as perhaps a kind of information memory resource of autopoteitic systems.
+# (Francisco Varela, Humberto Maturana stile).
+
+# I chose the language of abstract replicator theory; It's tradition is one of crystal clear thinking.
+
+# Abstract replicator theory contributors that inspired me:
+# Susan Blackmore, Richard Dawkins, David Deutsch, Daniel Dennett.
+
+
+# -----------------------
+
+# Still a work in progrss, I just saw
+# [[https://www.mdpi.com/1099-4300/26/9/765][Natural Induction: Spontaneous Adaptive Organisation without Natural Selection]].
+
+# As I was looking for Levin papers.
+
+# Being wrong about abstract replicator theory would be very exciting.
+
+
+# ------------------------------
+
+# On the topic of Pareidolia.
+
+# This is currently called predictive brain hypothesis, predictive coding, hallucinationism and has theoretical
+# branches baysian brain, active inference.
+# And to some extend non supervised learning in machine learning.
+
+# See for instance Andy Clark, Anil Seth, Lisa Feldman-Barret, Karl Friston.
+
+# The problem with predictive brain is that it's fundamentally /outside in/.
+# It says that a world model is learned from many data points.
+
+# But a theory of brain epistomology needs to be /inside out/, it needs to be evolutionary.
+
+# In David Deutsch terms: The ideas must be first. And be critized after.
+
+# I think that a theory of brain epistomology will be a superset of predictive brain.
+# It will say why when you look, it looks like the brain is predicting the world.
+
+# The same way that neuronal ensembles explain what you see when you look at single neurons.
+
+# (some of these ideas are on my website, but it's outdated, [[denote:20240208T124507]["neuronal ensemble memetics"]].)
+
+
+Older stuff:
+
+--------------------------------------
+
+
+* Micheal Levin is one of the most important philosophers of our time
+
+(future blog post)
+
+We already know evolution is a tinkerer, engineer and designer but what are the principles, what is tinkering?
+
+Here is this world view suddenly, what is good programming is what works for evolution and complex adaptive systems, too.
+
+This is a historical fact.
+
+From the science of evo-devo, we have this view, the [[https://en.wikipedia.org/wiki/Evo-devo_gene_toolkit][genetic toolbox]] (Evo-devo gene toolkit) of animal body plans.
+This kind of stuff is only roughly 15 to 20 years old. Unless you are deeper in biology, there is little chance you have heard of this.
+
+Now Micheal Levin comes and in the narrow sense, he talks about how there is an additional
+dynamic layer of abstraction between genes and morphology, the cellular electric field his lab is studying.
+This thing is a map of the territory of morphology. It is a language to speak and if you speak it,
+you can make cells grow into this or that. Without modifying the genes.
+
+#+begin_src
+
+
+     +-----------+                        +------------+                   +---------------+
+     |           |                        +            |                   |               |
+     |           |--> layer, layer, ----> |            |-----------------> |               |
+     |           |                        |            |                   |               |
+     +-----------+                        +------------+                   +---------------+
+      genetics                          cellular electric field, dynamic        morphology
+
+#+end_src
+
+And here is the wider view: These abstraction jumps, these new layers of dynamic content
+coming out of a lower layer of static form *is a principle of how evolution makes more capable systems*.
+
+The genetic algorithm people have stumbled on the same principle: [[https://en.wikipedia.org/wiki/Genetic_algorithm#The_building_block_hypothesis][Building block hypothesis]].
+
+#+begin_src
+
+
+  +---------------------------------+  higher layer
+  |                                 |  map
+  |  +-+               +-+          |  essentials
+  |  +-+               +-+          |  body plans
+  +----+----------------------------+  dynamic, content, symbols
+       |                              -----------------------------------------
+       | aboutness                                                     abstraction barrier
+  +----+----------------------------+                                  screens, prompts, interfaces, maps, languages, levers
+  |    |                            |  bottom layer
+  |    v                            |  territory
+  | +------+                        |  details
+  | +------+ ....                   |  body parts
+  +---------------------------------+  static, form, referents
+
+#+end_src
+
+The whole thing is also called stratified design.
+
+Levin mentioned this about the nature of genetics, where everything is about regulating other genes.
+This is again the same thing, where a more dynamic layer is built on top of a more detailed, static form.
+
+Now evolution can tinker on the =orchestration=, not the form. And it is not a coincidence that the development
+of these higher layers in genetics overlaps with the Cambrian explosion of 500Mio. years ago.
+
+See [[https://youtu.be/p3lsYlod5OU?si=ICdu2Em8h0VLncbV][Michael Levin: Biology, Life, Aliens, Evolution, Embryogenesis & Xenobots | Lex Fridman Podcast #325]]. It blew my mind.
+
+The crazy thing to me here is that this is the magical power of computer science and Lisp.
+To make a language, so you can speak without being concerned by details.
+
+There is something deep in cybernetics and how the world works spanning across biology, civilization, computers and engineering.
+And it makes languages and levers the most powerful thing in the world or something.
+
+There is something else here, how maybe now we are the generation of people that are both programmers and biologists.
+So we can think of the thoughts of good design and see it happening in biological systems.
+
+If biologists had known more programming, I think I would have gotten a different view of something like biochemistry for instance.
+It would have been way more about the essentials that make it go and not about details. Biologists appreciate the essentials but then
+are careless about suddenly bringing in implementation details.
+It takes (currently, more or less) a programmer's mind to be careful about such mixtures of levels of analysis.
+
+Good biologists have this, too. It is the hacker mentality from another perspective.
+
+But since we don't have programming the way we have reading and writing in school, all this thinking is hazy and unrefined.
+It is only deep in programming engineering, design and craftsmanship that this level of analysis starts being explicit.
+
+See Rich Hickey, Structure and Interpretation of Computer Programs, Eric Normand.
+
+The reason I am interested in this is because I want to build minds, and it seems like maybe minds work because of this nature of abstraction jumps.
+What is an abstraction jump, can I fabricate one, how do I know if I see one, how do I differentiate it from something else?
+What do I need to do to make a computer program that makes abstraction jumps and builds its capabilities until it has ideas the way human brains do?
+
+See [[denote:20230716T201616][AI]], [[denote:20230915T190843][Vehicles]]
+
+---
+
+The mind *is* powered by abstractions. After all, I have an experience of a world, an inner world, some social stuff going on,
+a situation, affordances of my environment, an interface to my muscles, a map of my body sensations, levers on my attention, etc. etc.
+
+I experience the highest layers of these interfaces of the mind to itself. It has to do with the neurons the way transistors have to do with software.
+
+But I am not the neurons, the neurons are an ocean of detail with which I am not concerned.
+
+Hence, it is obvious that there are at least 2 layers of abstraction in what the mind is. Minsky has 6 or 7 or something, is that enough...?
+
+* A Hippie with a computer
+
+My [[denote:20221117T201102][goals]] for the world are togetherness and harmony, the end of death and suffering.
+I will not rest until this wound in the world is healed!
+Computers and programming are the most powerful tools in the world currently.
+
+I plan to claim the heritage of the hackers of the computer age.
+Continuing the vision of human-computer symbiosis.
+Until we can put our minds into the computers and reach for the stars together.
+
+We evolved on this planet with the rest of the animals being our small brothers and sisters.
+I [[denote:20230627T085728][cannot imagine]] being a spacefaring civilization that kills animals for food.
+
+* Joyful ideas
+
+The best thinkers are playful. The most powerful way of thinking is when the mind is vibrating with the joy of the ideas.
+The most [[http://www.paulgraham.com/power.html][powerful]] programming language, =Lisp= is simple, beautiful and joyful.
+
+My biggest intellectual hero, [[https://en.wikipedia.org/wiki/Marvin_Minsky][Marvin Minsky]], has been called
+/the world's oldest 3-year-old/. His partner [[https://en.wikipedia.org/wiki/Seymour_Papert][Seymour Papert]] developed the play programing language =Logo= and researched [[http://www.juggling.org/papers/science-1/][juggleling]].
+
+My favorite books of joyful, clear-thinking ideas:
+
+- [[http://aurellem.org/society-of-mind/index.html][/The Society Of Mind/]]
+- [[https://en.wikipedia.org/wiki/Braitenberg_vehicle][/Vehicles/]], Valentino Braitenberg
+- [[https://en.wikipedia.org/wiki/The_Selfish_Gene][/The Selfish Gene/]], Richard Dawkins
+
+I like magic tricks, juggling, Rubik's cube speed solving, and in general, finding things that I am not good at /yet/.
+A [[denote:20230430T122647][mind palace]] is a joyful mind-expanding way to spend your imagination.
+
+Curiosity and imagination are the most powerful aspects of human intelligence.
+
+Joy is the best state to think useful thoughts. Joy is power.
+
+A joyful programming language lets me express what I want to express in a powerful,
+succinct way. Without things between my ideas and the computer program.
+
+It is not a coincidence that the most powerful language is also the most joyful.
+
+* Lisp
+
+/Lisp is not a language, it is a building material/ - Alan Kay
+
+A hacker is somebody who is using a computer for the joy of using a computer.
+
+Lisp was an elegant [[https://www.youtube.com/watch?v=YaWVHyIBVeI][cleaning up]] of computer science back then.
+McCarthy wanted to play and build/grow programs =interactively= on the computer, in order to think about
+how to build AI.
+
+Lisp is the only language that supports /dialects/ because it is made of pure ideas, unimpeded by implementation baggage.
+With Lisp, the ideas were there first, then there was an implementation.
+
+It is an abstract description of =process=. It has been called the Maxwell equations of computer science.
+
+A Lisp program is alive, it grows as it evaluates Lisp code.
+
+In batch-oriented languages, the program is about what you talk about in the source code.
+
+In (on) Lisp, the Lisp program is a program /about/ ideas, about Lisp programs.
+And the Lisp hacker is expressing themself not in the domain of what programs are about, but in the domain of what the ideas are.
+
+This allows the Lisp hacker to think higher-level thoughts about how to solve their problems.
+Making programs that write programs. Making languages to express the kind of problem you are solving and then
+expressing your problem in terms of that. Seeing and feeling the program as it grows is the brainchild of the programmer.
+It is said that Lisp programming is 100 to 50,000 times more effective than current mainstream languages.
+
+Because Lisp is fundamentally about code, and it is beautifully simple and elegant, Lisp code
+is expressed in Lisp data. It makes it trivial and common sense to write programs that write programs.
+
+Its fundamental core idea is =interactivity=, which allows for a style of exploratory programming called
+=bottom-up programing=. It is the power of joy, of toys, of scientific, childish curiosity.
+It is a great and useful tool for thinking.
+
+Lisp is where software and thought stuff meet and this gives intimacy with (computer) =process=.
+
+Where will we be able to go when we build better interactive programming environments?
+
+See [[denote:20230708T095438][Lisp]].
+
+* Clojure
+
+The modern, practical Lisp. Here is one of my [[denote:20230126T094804][Love letters]] to Clojure.
+
+I see =data oriented programing= as an important evolution of how to write good Lisp code.
+
+** Next
+
+Finding the next meaningful layers of dynamism and how to get more powerful, interactive programming, are some of the things that are on my mind.
+
+How to make programming tools that mesh with your thinking?
+
+Essentially, I want to complete [[https://en.wikipedia.org/wiki/J._C._R._Licklider][Lick's]] Human-Computer Symbiosis.
+
+#+begin_quote
+most of the significant advances in computer technology—including the work that my group did at Xerox PARC—were simply extrapolations of Lick's vision. They were not really new visions of their own. So he was really the father of it all
+#+end_quote
+([[https://en.wikipedia.org/wiki/J._C._R._Licklider][Robert Taylor]])
+
+Its the ultimate hacker dream to be as close to the computer as possible.
+
+Related: [[denote:20230707T090418][Musings On Interactive Programming]]
+
+* Source code colors
+
+The =source code= on this website has the same colors as in my Emacs:
+
+#+begin_src clojure
+  (ns happy)
+
+  ;; comments are much visible
+  (defn happy []
+    {:happy/color :green
+     :peaceful? true})
+#+end_src
+
+Using =htmlize.el=. See [[https://github.com/benjamin-asdf/faster-than-light-memes/blob/main/build-site.el][build-site.el]].
+
+I love looking at this =heliotrope= everywhere in my Clojure code.
+Functions, which are 99% pure functions in Clojure are green, peaceful, with a promise of power.
+Is this not beautiful? Also: [[denote:20230714T111421][What Theme Are You Using?]]
+
+* Unix
+
+The best operating system because it is not cluttered with garbage.
+
+Its heritage, also, is interactive computing. The creators of Unix knew the freedom of joy
+that comes with timed shared systems (they worked on Multics, s [[https://en.wikipedia.org/wiki/History_of_Unix][History of Unix]]).
+
+The soul of Unix is to be clean, lean and efficient.
+
+* Emacs
+
+#+begin_quote
+...It is written in Lisp, which is the only computer language that is beautiful. It is colossal, and yet it only edits straight ASCII text files, which is to say, no fonts, no boldface, no underlining. In other words, the engineer-hours that, in the case of Microsoft Word, were devoted to features like mail merge, and the ability to embed feature-length motion pictures in corporate memoranda, were, in the case of emacs, focused with maniacal intensity on the deceptively simple-seeming problem of editing text. If you are a professional writer... emacs outshines all other editing software in approximately the same way that the noonday sun does the stars. It is not just bigger and brighter; it simply makes everything else vanish.
+#+end_quote
+[[https://web.stanford.edu/class/cs81n/command.txt][Neal Stephenson, In the Beginning was the Command Line]]
+
+Emacs is not a computer program. Emacs is the stuff of thought.
+
+Emacs is =Lisp= molded into the space between brain and machine.
+Emacs is a sheet of brain-idea-software stuff that allows us to think intimately with
+the computer - a real [[denote:20230101T200330][tool]].
+
+#+begin_quote
+Because Lisp gives you the freedom to define your own operators, you can mold it into
+just the language you need. If you're writing a text editor, you can turn Lisp into
+a language for writing text editors.
+#+end_quote
+Paul Graham, /On Lisp/
+
+* Juggleling
+
+See [[denote:20230430T122647][here]].
+
+Claude Shannon, Seymour Papert. Some of the coolest people in the history of cybernetics and computing
+were into juggling. Also Richard Feynman, another joyful thinker.
+
+Juggling is an amazing little playground into the psychology and the mechanics of learning a skill.
+
+I can currently juggle 4 balls.
+
+* Rubics Cube
+
+Speedcubing has taught me that I can do anything if I follow what others have put out there on /how to go about it/.
+
+Speedcubing in the extreme shows you there are 2 aspects to performance.
+One is the speed of movement and learning a motor skill, and the other is deliberate thinking about /what/ one does during the performance.
+
+With the cube, we can pause, look and think (not so with juggling or running).
+
+The cube is impossible to solve without well thought-through technique, technique becomes an obvious citizen of the skill.
+
+See [[denote:20230205T105009][The Quick Eval]] for how I am translating the intuitions gained into my practice of programming Lisp with Emacs.
+See the humble beginnings of my [[denote:20230424T082516][Emacs Meow Lispy]] screencasts. I take no compromises when it comes to using
+the computer masterfully, /sensually/. Standing on the shoulders of giants, I try to feel the aesthetics of my system
+to make it smooth like coconut. /Removing/, until there is nothing to take away. Finding the right levers to pull.
+The quiet competence of the computer makes the simple easy, the complex possible and the impossible thinkable.
+Like a spaceship responding to mere thinking.[fn:1]
+
+I spent some time learning to [[https://www.youtube.com/watch?v=zw_-PtnuTg0][blind solve]] a while back (video from 8 years ago when I was ~20).
+This is a nice overlap of precise technique - with memory technique (mind palace is amazing).
+
+* Everything could still be different
+
+Computer science is like 60 years old at this point.
+
+We are still figuring out what software design and the soul of the computer even /are/.
+
+There might be transformative ideas still left and right to be thought.
+This is why logic programming and alternative programming paradigms are interesting in their own right.
+
+- [[https://www.youtube.com/watch?v=HB5TrK7A4pI]["We Really Don't Know How to Compute!" - Gerald Sussman (2011)]]
+- [[https://www.youtube.com/watch?v=8pTEmbeENF4][Bret Victor The Future of Programming]]
+- [[https://www.youtube.com/watch?v=lKXe3HUG2l4]["The Mess We're In" by Joe Armstrong]]
+- Everything from [[https://ericnormand.me/podcast][Eric Normand]]
+- [[https://www.youtube.com/watch?v=-I-VpPMzG7c][Rich Hickey]]
+- [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs][SICP]]
+- [[https://www.youtube.com/watch?v=OyfBQmvr2Hc][William Byrd, "The most beautiful program ever written"]]
+
+* The Grandour of Life
+
+This quote gives me a shudder of epicness every time:
+
+#+begin_quote
+There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
+#+end_quote
+Charles Darwin
+
+Mostly the writings of Richard Dawkins did a lot for me to convey the uncompromised beauty of life to me.
+
+Dawkins also has an audiobook of /On The Origins of Species/ where he reads this passage - makes me tear up.
+
+Life and civilization is an epic rollercoaster psychedelic trip of the craziest thing happening ever. It is on us that it turns out [[denote:20221117T201102][to be great]].
+
+More thinkers: Richard Feynman, Neil DeGrasse Tyson, Carl Sagan, Daniel Dennett and [[https://soundcloud.com/athenepodcast][Bachir Boumaaza]] (a philanthropist that made my generation of computer gamers aware of the bigger picture).
+
+You might be surprised but the Harry Potter fanfic [[https://hpmorpodcast.com/][Harry Potter And The Methods Of Rationality]] conveys this
+and a whole way of thinking with it. This book is fucking amazing.
+
+* Reclaiming /The Soul/
+
+A few years ago I stumbled across the [[denote:20221115T192004][Wim Hof]] Method. When I do the breathing, I sometimes cry
+because I think of the epicness of this whole project which is life on earth.
+
+Being a human means being an animal, being an animal means being a survival machine. We are all into this together.
+
+I am much inspired by [[https://hubermanlab.com/][Andrew Huberman]]s recent public thinking.
+Laying out a vast landscape of understanding the human mind and body.
+With amazing twists, nooks and crannies.
+
+Because of him, I go outside in the sun first thing in the morning.
+
+[[https://www.samharris.org/][Sam Harris]]'s meditation app made me realize what meditation could be about.
+It is the difference between being absorbed in thought and paying attention.
+
+It was Anil Seth[fn:4] recently who talked about how we can now reclaim the term /Soul/.
+
+The survival instinct that connects all of life, the underlying logic and machinery, the way the living substrate has an intelligence in its own right.
+Navigating, and regulating inner states and behaviors.
+
+From the single-mindedness of reproducing information came endless forms most beautiful, organismic life.
+
+An organism is the configuration of matter with one goal, to /keep on going/.
+
+Called /The breath/, the inner aliveness, the fire, information processing and collective achievement of so many mindless processes, that separate us from death.
+
+The unique flavor of our consciousness is shaped into being by the logic of life and survival.
+
+Which connects us primarily with the rest of the Tree of Life.
+
+Why not call this most interior, this most primordial aspect of our minds, /The Soul/?
+
+* I love neuroscience
+
+Thinking about how the brain works is one of the great joys in life to me.
+
+Biology is my first passion. But I won't go back to the lab after experiencing the joy
+of building software (little experiments are a dopamine ride...)
+
+I am formally educated in general biology, biochemistry, genetics, cell biology, tree of life etc.
+I was emphasizing neurophysiology and contemporary neuroscience in my studies.
+
+I can recommend [[https://brainsciencepodcast.com/][brain science podcast]], [[https://brainsciencepodcast.com/][Huberman Lab]], Oliver Sachs, [[https://en.wikipedia.org/wiki/V._S._Ramachandran][V.C. Ramachandran]], [[https://www.youtube.com/watch?v=NNnIGh9g6fA&list=PL848F2368C90DDC3D][Robert Sapolski]], [[https://www.amazon.com/Neuroscience-Dale-Purves/dp/1605353809][textbooks]],
+General stuff like Pinker, and Sam Harris.
+
+Want to read:
+
+- [[https://en.wikipedia.org/wiki/The_Expression_of_the_Emotions_in_Man_and_Animals][The Expression of the Emotions in Man and Animals]], Charles Darwin
+- everything from Valentino Braitenberg
+- Aaron Sloman
+- Freud
+
+* Dreaming
+
+I practice lucid dreaming and try to be in touch with my dreams. So I know they are stupid and don't matter.
+Except for sort of experiencing the mind with a different twist.
+
+In order to solve a hard programming problem, I need to sleep on it for a night, having loaded up my brain with the problem to the point of vibrating.
+
+[[denote:20221020T191814][I dream code]].
+
+* Some fav books
+
+The best ideas are laid out beautifully simply and clearly. Also, [[*Joyful ideas]].
+
+Great programming, great philosophy and great science are alike.
+
+They introduce common sense ideas.
+And then build a world of ideas that can be explored by the user.
+
+The brain has the capability of instantly parsing a visual scene, and so too it is with
+obvious concepts. A great communicator of ideas will present your brain with obvious concepts,
+using the quiet competencies of your brain to build towers and worlds of ideas.
+
+Examples:
+
+- [[http://aurellem.org/society-of-mind/index.html][/The Society Of Mind/]]
+- [[https://en.wikipedia.org/wiki/Braitenberg_vehicle][/Vehicles/]], Valentino Braitenberg
+- [[https://en.wikipedia.org/wiki/The_Selfish_Gene][/The Selfish Gene/]], Richard Dawkins
+- [[https://en.wikipedia.org/wiki/Consciousness_Explained][Consciousness Explained]], Daniel C. Dennett
+- [[https://www.youtube.com/watch?v=LKtk3HCgTa8][Rich Hickey Talks]]
+- The Stoics
+- I guess Aristotle
+- I guess Freud
+
+* The Pale Blue Dot
+
+https://www.youtube.com/watch?v=wupToqz1e2g
+
+* Push Singh: EM-ONE
+
+I recently learned about Push Singhs' thesis under Minsky, programming some of Minskie's
+mental agents for common sense reasoning.
+One of the next things I want to do is implement in Clojure.
+
+[[https://dspace.mit.edu/bitstream/handle/1721.1/33926/67297587-MIT.pdf][EM-ONE: An Architecture for Reflective Commonsense Thinking Push Singh]].
+
+Read by Aaron Sloman and Gerald Sussman isn't this super cool?
+
+* What is missing from the human-computer symbiosis
+
+Fascinating read:
+
+/The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/.
+
+Every programmer should read this, seriously it is an amazing ride through the history of computers.
+
+I feel =J. C. R. Licklider= was a kindred spirit to mine.
+Same with the cybernetically minded people.
+
+Lick understood the power of interactive computing and was one of the first hackers, spending time on
+a computer terminal just for the fun of it.
+
+He had an amazing talent for being intuitive about which people and which technology lead to his
+the vision of computing, which is more or less our modern computing environment (with very interesting deviations).
+
+One of the next things I want to do is go through /Man-Computer Symbiosis/ and make a list of what is still missing.
+
+* The Stuff Of Thought
+
+Ah, the power and spirit of Lisp. What is it?
+There are good reasons why it is hard to say what it is. It has to do with taste and aesthetics.
+But when you know it, you know it. Hence the ominous claims on its power.
+
+The most important part is, that it is about =interactive programing=. It's about having a program one step further dynamically.
+
+[[denote:20230707T090418][No Iterations]].
+
+* Simplicity
+
+/Organizing thought is what programming is about./
+
+Philosophy, like programming, is about organizing thought.
+To keep things simple, to find the essence of the problem, and to express ideas in terms of common sense reasoning.
+
+These are hallmarks of well-organized thought.
+
+#+begin_quote
+Controlling complexity is the essence of computer programming.
+#+end_quote
+Brian Kernighan
+
+#+begin_quote
+To say of what is that it is not, or of what is not that it is, is false, while to say of what is that it is, and of what is not that it is not, is true.
+#+end_quote
+Aristotle
+
+I like how simple this definition of truth is.
+
+** Ethics
+
+Eliezer Yudkowsky said somewhere on *Less Wrong*:
+
+/Live is good, death is bad./
+
+To do what yields more life is good;[fn:3]
+While to fail to do what yields more life, or to do what yields death, is bad.
+
+Good ethics, like good philosophy and good programming, is simple.
+
+Should we cure a 35 old of cancer - /Yes/
+
+Should we cure a 95 old of cancer - /Yes/
+
+Should we cure cancer for good? - /Yes/
+
+At no point in my ethical reasoning must I be confused.
+
+It is the habit of a great programmer to smell out confusion early and from afar.
+It is the primary hustle of the computer programmer, as Kernighan said, to manage complexity.
+
+The best scientists and philosophers are keeping their thoughts plain and simple.
+
+* Audio Diary
+
+I have kept a diary for ca. 10 years.
+
+I have like 7 or 8 years of audio diary that I treasure. It follows the journey of my thinking.
+
+Maybe at some point, I try to publish it in some form.
+Of course, this website is already an expression of my thinking so it's already happening.
+
+If for some random reason you decide to get close and personal with my raw thinking:
+
+- [[https://drive.google.com/file/d/1t53mdm-2nUiV0rfpTWBfemxzfki8DlWh/view?usp=sharing][Some code + science musings]]
+- [[https://drive.google.com/file/d/1AwdAW-3SuggNGsuGhwa22i3XRI20zBV3/view?usp=share_link][Some musings on dreams]]
+
+-----------------------------
+
+=Joy=, =curiosity= and =spirit=. Not supernatural, but /subtrate independent, biological, principles of organisation/.
+
+-----------------------------
+
+#+begin_export html
+<img id="head-img" src="ben-head.png" style="max-width: 100%; height: auto;" loading="lazy">
+#+end_export
+
+#+begin_quote
+Elegance?
+
+Pardon me, Your Honor, the concept is not easy to explain -- there is an ineffable quality to some technology, described by its creators as a concinnitous, or technically sweet, or a nice hack -- signs that it was made with great care by one who was not merely motivated but inspired. It is the difference between an engineer and a hacker.
+#+end_quote
+Judge Fang and Miss Pao in =Neal Stephenson='s The Diamond Age, or, A Young Lady's Illustrated Primer
+
+* Footnotes
+[fn:4]
+
+See /Being You/, by Anil Seth
+
+Also, Antonio Damasio is all about how the nervous system is built out of living tissue,
+which is this self-regulating, sort of steermansship-like intelligent substrate with a relationship to its environment,
+with little kinds of memory, control, goals and purpose by itself.
+
+
+[fn:3]
+
+Maybe I should call this /human flourishing/.
+
+1. /More live/ might be mistaken for a claim about population ethics, but not so.
+2. Interpreting what it is about life that matters, what it is that should be maximized, is not simplistic.
+
+See also
+
+- /The Moral Landscape/, by Sam Harris
+- /Rationality From AI To Zombies/, by Eliezer Yudkowsky
+- [[denote:20221117T201102][My goals for the world]]
+- How I think that life is about [[denote:20230518T185739][ideas]]
+
+
+[fn:2]
+
+I am thinking of David Deutsch's definition of knowledge and good explanation.
+
+A program is a piece of knowledge that is an attempt at satisfying a problem.
+Genetic information is a piece of knowledge that satisfies the problem of replication.
+
+
+[fn:1]
+
+That is from Issac Assimovs /Foundation/ (the last 2 books I think).
+The spaceship is called the /Farstar/ and has a cognitive interface via the hands.
+
+/Why not the hands?/.

@@ -1,0 +1,421 @@
+#+title:      Bashing is better than extending
+#+date:       [2022-09-22 Thu 12:32]
+#+filetags:   :emacs:feed:
+#+identifier: 20220922T123209
+#+EXPORT_FILE_NAME: bashing-is-better-than-extending
+
+*Not* how to run babashka tasks.
+
+How ~bash-completion~  makes everything better.
+
+How to run *any* shell commands.
+
+Technology around ~shell-command~.
+
+Simplicity and joy.
+
+* Introduction
+
+Ok, let's just do it. You might want to hold tight to your chair because
+the juiciness and elegance of what follow might just blow you over.
+Here is how I build my [[https://benjamin-asdf.github.io/faster-than-light-memes/][blog]] with babashka tasks:
+
+#+CAPTION: Using ~compile~ to leverage ~read-shell-command~ and thereby ~bash-completions~. Recompiling via ~revert-buffer~. Dismissing the ~*compilation*~ buffer.
+https://github.com/benjamin-asdf/faster-than-light-memes/blob/main/assets/bb-task-demo.gif?raw=true
+
+You might think "Ok sure, looks useful." Let me entice you with the
+the really impressive thing about this:
+
+There is nothing concrete about babashka tasks nor about that specific
+project in my emacs config.
+It just works by having a ~bb.edn~ with tasks.
+
+Made possible via the harmony between some 3 or 4 general tools.
+Like layers of ice. You deserve some skates to ride on
+it. Smoothly, gracefully and *fast*.
+Here is the story of a happy little package called ~bash-completion~.
+
+* read-shell-command
+
+This is like ~read-from-minibuffer~ but sets some keymap and history.
+Hit =<tab>=, you get completions from ~shell-dynamic-complete-functions~.
+Those completions are sort of okay, but they do not give you command-specific completions.
+Invoke ~shell-command~, then type =git checkout=, hit tab. Nothing happens. **Yet**.
+
+* bash-completion
+
+Ok your emacs life is about to level up +1 [[https://github.com/szermatt/emacs-bash-completion][bash-completion]].
+Config:
+
+#+begin_src elisp
+(use-package bash-completion
+  :init (autoload
+	  'bash-completion-dynamic-complete
+	  "bash-completion"
+	  "BASH completion hook")
+  (add-hook
+   'shell-dynamic-complete-functions
+   #'bash-completion-dynamic-complete))
+#+end_src
+
+Here are the completions of your shell at the tips of those sweet
+coconut oily fingers.
+
+Now you can do ~shell-command~
+-> Hit that tab while typing =git checkout ..= a door just
+opened.
+
+* bash completions are now your lever
+
+We have entered the realm of harnessing already existing shell completions directly.
+
+** Babashka tasks
+
+Babashka tasks are one of the great discoveries of our time,
+allowing us to write build tasks in Clojure, with the
+development ergonomics of a lisp.
+
+The babashka book has [[https://book.babashka.org/#_terminal_tab_completion][a section]] on adding shell completions.
+Boom. This is all you need.
+Now you can enjoy those babashka tasks completions.
+
+* Commands that leverage ~read-shell-command~
+
+They use ~read-shell-command~.
+Making ~read-shell-command~ *good* will pay off for all these.
+
+** shell-command
+
+Bound to =M-!=
+
+This is the =interactive= doorway into emacs lisp ~start-process~ functionality.
+
+*** Here is a nugget:
+
+#+begin_quote
+With prefix argument, insert the COMMAND's output at point.
+#+end_quote
+
+=C-u M-!= =date= and you have a date inserted in the buffer.
+
+Like this:
+=Thu Sep 29 10:55:44 AM CEST 2022=
+
+*** Good to know:
+
+#+begin_quote
+If COMMAND ends in &, execute it asynchronously.
+#+end_quote
+
+*** Output buffer
+
+Your command output is located by default in a buffer named by ~shell-command-buffer-name~.
+Or ~shell-command-buffer-name-async~ when async.
+
+** shell-command-async
+
+Bound to =M-&= and has the same effect as adding a =&= in ~shell-command~.
+To kill the process I can hit =C-c C-c=.
+
+** compile
+
+Very useful, very similar to ~shell-command-async~.
+Always uses the same buffer called =*compilation*=.
+You can set ~compile-command~ for instance via ~.dir-locals.el~, then
+it auto makes a compile command in that project.
+
+** dired
+
+~dired-do-shell-command~ and ~dired-do-async-shell-command~
+are symetrical with ~shell-command~ and ~async-shell-command~.
+Those functions call ~shell-command~.
+
+Bound to =!= and =&= in dired Docstring is worth reading.
+Important to know is that =*= expands to ~dired-file-name-at-point~,
+or the marked files, but is implicit as the last arg.
+
+** shell-command-on-file
+
+Sometimes you are currently visiting a script file and you just want
+to run it.
+
+#+begin_src elisp
+(defun mm/shell-command-on-file (command)
+  "Execute COMMAND asynchronously on the current file."
+  (interactive (list (read-shell-command
+                      (concat "Async shell command on " (buffer-name) ": "))))
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (async-shell-command (concat command " " filename))))
+#+end_src
+
+Thanks to [[https://github.com/Gavinok/emacs.d][Gavin Freeborn]] for the initial version of this code.
+
+* It gets even better
+
+Let me introduce you to the wonders of ~revert-buffer-function~.
+Now, ~revert-buffer~ is a powerful command by itself.
+
+I did not know this for a while, but you can set the local variable ~revert-buffer-function~.
+This pearl is in emacs 28:
+
+#+begin_src elisp
+(setq-local
+ revert-buffer-function
+ (lambda (&rest _)
+   (async-shell-command command buffer)))
+#+end_src
+
+You say ~revert-buffer~ in a shell command buffer, to boom run the
+command again in the same buffer. Exactly what I want sometimes.
+A single key to rerun a command. And I think the concepts just fit
+nicely. There is no mental burden with this.
+
+** revert-buffer in compilation buffers
+
+#+begin_src elisp
+(advice-add
+   #'compilation-revert-buffer
+   :filter-args
+   (defun mm/always-noconfirm-compilation-revert-buffer (args)
+     (pcase args
+       (`(,ignore-auto nil) `(,ignore-auto t))
+       (_ args))))
+#+end_src
+
+I use ~revert-buffer~ as a consenting adult - kill and restart the
+compile command, without asking.
+
+
+* Scripts at the speed of thought
+
+#+CAPTION: Make a script, and run the script. Leveraging ~bash-completion~ in ~shell-script-mode~.
+https://github.com/benjamin-asdf/faster-than-light-memes/blob/main/assets/insta-script.gif?raw=true
+
+** mememacs/create-script
+
+#+begin_src elisp
+(defun mememacs/create-script* (file bang setup)
+  (find-file file)
+  (insert bang)
+  (save-buffer)
+  (evil-insert-state)
+  (set-file-modes file #o751)
+  (funcall setup))
+
+(defun mememacs/create-script (file)
+  (interactive "Fnew script: ")
+  (mememacs/create-script*
+   file
+   "#!/bin/sh\n"
+   #'shell-script-mode))
+
+(defun mememacs/create-bb-script (file)
+  (interactive "Fnew bb: ")
+  (mememacs/create-script*
+   file
+   "#!/usr/bin/env bb\n"
+   #'clojure-mode))
+#+end_src
+
+I have bound these in ~dired-mode~.
+Then, I use ~mm/shell-command-on-file~ to dev interactively sort of.
+
+Btw ~shell-script-mode~ becomes a power house when you integrate [[https://github.com/koalaman/shellcheck][shellcheck]].
+~flycheck~ has something for that. (pretty sure ~flymake~ should as well.)
+Shellcheck makes superb warnings. Firmly in my "adopt" circle.
+
+*** bash-completion in ~sh-mode~
+
+Here is my full ~bash-completion~ config that adds to =capf=.
+
+#+begin_src elisp
+(use-package bash-completion
+  :config
+  (bash-completion-setup)
+  (setf bash-completion-use-separate-processes t)
+  (defun bash-completion-capf-1 (bol)
+    (bash-completion-dynamic-complete-nocomint (funcall bol) (point) t))
+  (defun bash-completion-eshell-capf ()
+    (bash-completion-capf-1 (lambda () (save-excursion (eshell-bol) (point)))))
+  (defun bash-completion-capf ()
+    (bash-completion-capf-1 #'point-at-bol))
+  (add-hook
+   'sh-mode-hook
+   (defun mm/add-bash-completion ()
+     (add-hook 'completion-at-point-functions #'bash-completion-capf nil t))))
+#+end_src
+
+* Oh async-shell-command, my trusted friend
+
+Of these commands, it is the one I use the most.
+The other commands could be performed in terms of it.
+Here is some of my journey smoothing out some edges.
+
+** Put the command into the buffer name
+
+When you run a second command, by default, it tries to reuse the old buffer and asks you
+
+#+begin_src elisp
+(yes-or-no-p
+ (format
+  "A command is running in the default buffer.  %s? "
+  action))
+#+end_src
+
+I put the ~command~ into the buffer name so I usually get a unique
+buffer name.
+
+#+begin_src elisp
+(setq async-shell-command-buffer 'new-buffer)
+
+  (defun path-slug (dir)
+    "Returns the initials of `dir`s path,
+with the last part appended fully
+
+Example:
+
+(path-slug \"/foo/bar/hello\")
+=> \"f/b/hello\" "
+    (let* ((path (replace-regexp-in-string "\\." "" dir))
+	   (path (split-string path "/" t))
+	   (path-s (mapconcat
+		    (lambda (it)
+		      (cl-subseq it 0 1))
+		    (nbutlast (copy-sequence path) 1)
+		    "/"))
+	   (path-s (concat
+		    path-s
+		    "/"
+		    (car (last path)))))
+      path-s))
+
+  (defun mm/put-command-in-async-buff-name (f &rest args)
+    (let* ((path-s (if default-directory (path-slug default-directory) ""))
+	   (command (car args))
+	   (buffname (concat path-s " " command))
+	   (shell-command-buffer-name-async
+	    (format
+	     "*async-shell-command %s*"
+	     (string-trim
+	      (substring buffname 0 (min (length buffname) 50))))))
+      (apply f args)))
+
+  (advice-add 'shell-command :around #'mm/put-command-in-async-buff-name)
+#+end_src
+
+Now I can complete buffers and start typing the commands.
+And the buffers don't have an anonymous name like =*async-shell-command<2>*=.
+
+** shell-command--same-buffer-confirm
+
+Sort of a power setting when you do ~async-shell-command~ a lot.
+Nowadays I do:
+
+#+begin_src elisp
+   (setf async-shell-command-buffer 'new-buffer)
+#+end_src
+
+If I want to kill I can do =C-c C-c= on the old buffer.
+
+** shell-mode as a terminal emulator
+
+#+begin_src elisp
+(defun mm/shell-via-async-shell-command ()
+    (let ((display-buffer-alist
+           '((".*" display-buffer-same-window))))
+      (async-shell-command shell-file-name)))
+#+end_src
+
+You get a shell buffer running your shell.
+Does everything I need from a terminal.
+It pays of having a minimal ~.rc~ file. This is also why I have
+~shell-file-name~ set to "/bin/bash".
+Even though I have a cool zsh config with vi mode. I get all emacs editing power in that shell buffer.
+
+* The next layer on the cake
+
+More context for ~shell-command~.
+
+** project
+
+I use ~project.el~. ~project-compile~  runs ~compile~ in the project root. Analogously, there is ~project-async-shell-command~.
+~projectile~, a big and widely used package, provides similar commands.
+
+** recompile
+
+Similar to going to the =*compilation*= buffer and ~revert-buffer~.
+But a single command.
+
+** Ansi colors for comint
+
+If you use [[https://github.com/lambdaisland/kaocha][Koacha]] together with ~compile~,
+you will get output sprinkled with ANSI (color) escape codes.
+
+Bit cluttering on the eyes.
+
+I knew from earlier dabblings that there is a package called ~ansi-color~.
+So I checked around on how to make my buffer colored nicely.
+
+Turns out that ~comint~ already has ~ansi-color-compilation-filter~ setup by default.
+Checking the code for ~compile~ I see that with prefix arg, the buffer
+becomes a comint buffer.
+So I decided I always make my compile buffers comint buffers.
+
+#+begin_src elisp
+(advice-add
+   'compile
+   :filter-args
+   (defun mm/always-use-comint-for-compile (args)
+     `(,(car args) t)))
+#+end_src
+
+Koacha output looks like this:
+
+#+CAPTION: A ~compile~ buffer running =Koacha= with pleasing green colored output text.
+https://i.imgur.com/5vpmnsu.png
+
+* Levers are great
+
+** Ssh
+
+Nice tip in case you did not know:
+You can define preset configs in =~/.ssh/config= and they will show up
+as bash completions when you type =ssh=  and hit tap.
+
+#+begin_src shell
+Host dotomic-system-ec2
+     HostName ...
+     ...
+#+end_src
+
+So now I just type =M-&= for ~async-shell-command~, then =ssh=, then
+I hit tap and I get =dotomic-system-ec2= as completion. Yes!
+
+** Embarking
+
+Through [[https://github.com/oantolin/embark][embark]] the power of completions is further amplified.
+For instance, I can complete git branches via ~git checkout~ completions.
+
+#+CAPTION: Abusing ~read-shell-command~ to dispatch with ~embark~ on git checkout completions. Invoking ~embark-insert~ as an example.
+https://github.com/benjamin-asdf/faster-than-light-memes/blob/main/assets/embarking-git-branches.gif?raw=true
+
+** Pass
+
+Another example. I used to use [[https://github.com/emacs-helm/helm-pass/blob/master/helm-pass.el][helm-pass]] for =pass=.
+Guess what, =pass= has great shell completions.
+I get a free interface to =pass= just with ~async-shell-command~.
+
+* Particulars
+
+** shell-file-name
+
+It matters.
+For instance, if you use "/bin/bash" and you set up your path in a =zshrc= that might be a pitfall.
+Another thing that happened to me was that [[https://www.funtoo.org/Funtoo:Keychain][keychain]] was prompting for my ssh password inside the ~bash-completion~ process, making it hang.
+
+** Troubleshoot
+
+1) can you start `bash` and have completions? (on arch, maybe you want
+   to install =bash-completion=).

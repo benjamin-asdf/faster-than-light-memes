@@ -1,0 +1,774 @@
+#+title:      thought-dump
+#+date:       [2023-08-20 Sun 12:53]
+#+filetags:   :random:thoughts:ftlm
+#+identifier: 20230820T125336
+#+EXPORT_FILE_NAME: thought-dump
+
+An ongoing thought feed dump fest.
+
+
+
+# * Fire
+
+# Here is a question, if /homo sapiens/ is /the cook/, (not /the hunter/).
+# [Lit: /Catching Fire: How Cooking Made Us Human/, Richard Wrangham (2009).]
+
+# Maybe the capacity to /understand/ fire is also the aspect of the mind that
+# represents something like spirits.
+
+
+* AGI
+
+I will take you AI serious when it starts to rewrite itself in Lisp.
+
+
+* The Next Computational, Self-Organisation, Coarse-graining wave of natural philosophy
+
+Spirits are /principles of organisation/ that are /implemented/ in reality.
+The notion of /implementation/ is a flip side of /the substrate independence of information/ [Chiara Merletto + David Deutsch, constructur theory of information].
+
+It is a /law of nature/ that organisms can be /implemented/ in terms of the /abstract notion/ of say carbon atoms,
+this fact allows the carbon atoms in our body to recycle every x weeks.
+
+Yet, we stay the 'same', because we are the /organisation principle/, not the atoms.
+
+What stays the same is what V. Braitenberg called a Geist (spirit). A /Gestalt/ (form, arrangement).
+
+There should be a natural philosophy of spirits.
+
+That information processing systems, what I like to call /software/,
+is the basis for this theory, is an idea with roots in cybernetics and information theory (and probably as far back as Socrates).
+
+The computational view is emergent bio-philosophy.
+
+It is required for things like regenerative medicine, because morphological "programs" /are/ /interpreters/ of biological /languages/ (Levin).
+
+- [[https://youtu.be/34VOI_oo-qM?si=5RyRIy25xWIXnZh3]["We Are All Software" - Joscha Bach]]
+- Micheal Levin on self-organisation and engineering-perspective biology.
+  Biology makes 'high level subroutines' (a way to say it makes interfaces and interpreters).
+  Biology (morphology) is a /software system/.
+  Levin is recently saying that cognition, software, and biological organisation are the same thing.
+- Cool talk with [[https://youtu.be/6QaMnUBkmz4?si=W4X2bU0N9rMZT9k3][Kevin Mitchel]]
+- Anil Seth uses the term /soul/ to mean something like the primordial inner survival instinct, the /breath/, that
+  relates us to all liveforms.
+
+
+
+
+* Time Doesn't Exist?
+
+I have encountered persons that say 'time is an illusion' or "time doesn't actually exist".
+This comes from the notion of a block universe, where all time slices of a universe are listed next to each other
+in the fourth dimension, creating a block universe.
+
+To say from this that time doesn't exist is to me like saying temperature doesn't exist because atoms are moving.
+
+My feel is that such things are as real as anything else in the world.
+
+Here is perhaps the ultimate reductionistic hypothesis:
+'There always must be an implementation of a thing in terms of something simpler.' *1
+
+If time is implemented in terms of universe-snapshots, then it is a strange /chauvinism of simple things/ that makes one say "time doesn't exist".
+
+Does the story in a book not exists because it made from letters of ink?
+
+Funny, this /ultimate reductionistic hypothesis/. How it helps to think about such spiritual entities of reality. The ones come from the arrangement of things somehow.
+I guess it's this notion of /implementation/ that does the work.
+
+*1) Dan Dennett called this idea 'Darwinism'. He had a very broad conceptualisation of 'Darwinism' in this sense.
+
+
+* Compatibilism
+
+The moment you wonder how to create free will as engineer, it seems obvious that it must be implemented in terms of things that don't have free will themselves.
+It would be a really strange world to me if Dennett-style compatibilism is not true.
+
+David Deutsch's definition of a 'free choice' is that in some universes you did something else. I.e. something else was possible.
+
+Perhaps paradoxially, this makes it so that it might be the choices we think most about are the least free, or not free at all.
+This depends on the details of how cognition and creativity work.
+
+Well, it's called 'random thought dump'.
+I thought the notion of 'implementation' truly gives clearity.
+Compatibilism is the stance that says free will exists, and is /implemented/ in reality.
+This is the line of thinking that leads to a world view that works as far as I can see.
+
+
+* Perfection
+
+When I look at your code and it is perfect I think you made a mistake.
+
+It is the code that is thrown away together in a 'just get the shit done' way that is the hallmark of advanced programming.
+Because allocating your resources and knowing where to spend effort is part of the intelligence of a programmer.
+
+This dance of knowing where to spend the effort is an aspect of true elegance.
+
+To have in many places a 'simply get it done' style and to have an elegant 'simply get it done style'.
+This is the true swag.
+
+* 🩷 λ - building a sort framework
+
+In the course of application development, now and then you want to have a more advanced sorting.
+
+Consequently, this is a problem one encounters throughout their coding career,
+how to deal with the problem then, can highlight a little bit to oneself the progress one has made as a programmer.
+
+I am currently proud to have reduced the problem this far, using nothing but lambda calculus.
+(getting shit done with swag on a technical level).
+
+
+#+begin_src clojure
+  (do
+    (def ascending compare)
+      (def descending (fn [a b] (compare b a)))
+
+      (defn by
+        ([k] (by k ascending))
+        ([k c]
+         (fn [a b]
+           (c (k a) (k b)))))
+
+      (defn then
+        [comparator1 comparator2]
+        (fn [a b]
+          (let [r (comparator1 a b)]
+            (if (zero? r)
+              (comparator2 a b)
+              r))))
+
+      (sort
+       (-> (by :a)
+           (then (by :b))
+           (then (by :c descending)))
+       [{:a 0 :b 1}
+        {:a 1 :b 1}
+        {:a 1 :b 0}
+        {:a 1 :b 0 :c 0}
+        {:a 1 :b 0 :c 1}
+        {:a 1 :b 1 :c 1}
+        {:a 1 :b 1 :c 0}]))
+#+end_src
+
+#+begin_src clojure
+ '({:a 0 :b 1}
+   {:a 1 :b 0 :c 1}
+   {:a 1 :b 0 :c 0}
+   {:a 1 :b 0}
+   {:a 1 :b 1 :c 1}
+   {:a 1 :b 1 :c 0}
+   {:a 1 :b 1})
+#+end_src
+
+
+One of the great things about Lisp that makes it different somehow, is to carry around little growing lib of one's own.
+Both in source code files and in the mind.
+Clojure and its core lib is in a way this personal lib crafted and honed by Rich Hickey. It is in more tangible ways than otherwise
+a piece of Rich Hickey's mind.
+
+** Elegance
+
+Simplicity and elegance, and ultimately robustness and power are not separate things, but clues and hints, phenotypes, for an underlying quality that is one and the same.
+
+This quality is technical sweetness, or artistic swag. Poorly understood, and part of a missing theory of software and creativity.
+
+#+begin_quote
+there is an ineffable quality to some technology, described by its creators as a concinnitous, or technically sweet, or a nice hack -- signs that it was made with great care by one who was not merely motivated but inspired. It is the difference between an engineer and a hacker.
+#+end_quote
+(Miss Pao in Neal Stephenson's The Diamond Age, or, A Young Lady's Illustrated Primer)
+
+
+* Childhood
+
+Childhood should be seen as a biological adaptation in its own right.
+
+1. Maybe childhood is not /only/ a maximized march towards growing every increasing capability.
+2. There must be a lot of adaption in the Child <-> adult relationship, too.
+
+Consider building an AI agent that in J. Schmidhubers terms 'creatively' explores all it's capabilities.
+There is an obvious use for a phase of relatively weak power of building a very powerful system.
+This way the system can try out random aspects of its capabilities without hurting anyone.
+
+It is not that a child is lacking some ability because its system is inadequate.
+The inadequacy might be useful to the system, too.
+
+Consider how children don't have big goals but do what their adults say.
+It's useful for both adults and children if the frontal cortex of the adult is allowed to carry both.
+
+Perhaps it is even the case that some aspects of development are being held back, while somehting else is developing.
+The story of development might not /only/ be a grandiose forward march of
+increasing capability, where each aspect is growing as fast as it can.
+
+---
+
+It is scary indeed to ponder: What if the most interesting kinds of intelligence need
+a childhood to grow? What if we make machine intelligence and categorically exclude
+some important aspects of real-world embedded intelligence with souls?
+
+This is the reason Ben Goertzel is talking about making a baby AI playground or something,
+with the idea that some AIs might need time to grow their minds.
+
+
+* Substances, building materials, mass nouns
+
+For a microbiologist, bacteria are entities with workings and mechanisms.
+
+Consider [[https://en.wikipedia.org/wiki/Sourdough#Starter][soudough]]. For the baker, bacteria are a kind of substance, a building material.
+She knows how to grow it, how to shape it. It's a multidimensional dough, manipulated and
+coaxed into doing what the baker desires.
+
+For the microbiologist, bacteria is a count noun. For the baker, bacteria is a mass noun.
+
+So it is with neuronal nets and other substances that make mind and intelligence.
+To the AI engineer, the nets are a substance to be shaped. And I think so too for the
+mind, somewhere somehow sometimes I see a knowledge substance, or compute substance,
+or capability substance, being shaped, manipulated and coaxed into something.
+
+It is only natural to consider this neuronal substance a mass noun entity, it is /stuff/.
+
+# * The shapes of thought
+
+# The only shape of thought available to LLMs right now is left to right.
+
+# It strikes me much more natural to think thoughts inside out, not left to right.
+# I wonder if some thought is represented well as trees, some thoughts as sequential steps, some thoughts as heterogeneous association web, and so forth.
+
+# #+begin_src lisp
+
+#   (step-2  <--------------- pretend I can think of step-2, as if step-1 is already figured out
+
+#    (step-1 ...))
+#             ^
+#             |
+#             |
+#             |
+#             |
+#             +------- here I am thinking about step-1 in a more local manner
+
+
+# #+end_src
+
+# That is thinking inside another thought.
+
+# Same thing, as a tree:
+
+# #+begin_src
+
+
+
+#                      +--------------------+
+#                      |                    |
+#                      |                    |
+#                      |     thought        |
+#                      +--+--------------+--+
+#                         |              |
+#                         |              | child (association)
+#                         |              |
+#                 +-------+              |-----+
+#                 |                            |
+#     +-----------+---+                 +------+-------+
+#     |               |                 |              |
+#     |sub thought 1  |                 | sub thought 2|
+#     +---------------+                 +-+--------+---+
+#                                         |        |
+#                                         |        +------+
+#                                         |               |
+#                                                 +-------+--+
+#                                                 |          | <------------------ Here I am thinking of a more local leaf
+#                                                 |   ....   |
+#                                                 +----------+
+# #+end_src
+
+# This is good for structured reasoning, ...
+
+# Association web:
+
+# #+begin_src
+
+
+#                        concept
+#    +-----------+          |               +---------------+
+#    |           |----------+-----+- - - -- |               |
+#    +-----------+                |         |               |
+#     concept                     |         +---------------+
+#                                 |           concept (more loosely associated)
+#                                 | association
+#                                 +
+#                        +--------------+
+#                        |              |concept
+#                        +--------------+
+
+# #+end_src
+
+# This is good for representing analogies/concepts, creativity, and finding essences between seemingly distant things.
+
+# Sequential:
+
+# #+begin_src
+
+# +-----------+  t1  +-----------+  t2 +-------------+
+# | s1        |----->| s2        |---->| s3          |
+# +-----------+      +-----------+     +-------------+
+
+
+#   source                            destination
+# +----------+  transformation     +-----------+
+# |          |-------------------->|           |               (this is a Minsky transframe)
+# +----------+                     +-----------+
+
+# #+end_src
+
+# This is good for storylines, representing causality, transformations, and state transitions.
+
+# Interfaces:
+
+# /I don't know and I don't want to know/ - Rich Hickey
+
+
+
+# #+begin_src
+
+#   mind                 motor competencies    muscles
+#                           +
+#   move commands           |---------- movement
+#        --------------->   |
+#                           |
+#                           |
+#                           |
+#                           |
+#                        interface
+# #+end_src
+
+# The particulars of `movement` are abstracted away in the motor competencies interface between mind muscles.
+# Thankfully, I don't need to know about which neurons to fire to move.
+# I only need to issue move commands on my user interface to the motor competencies interface of the mind.
+
+# Another name for a related concept is `abstraction barrier`. This is a useful thing, to have a part of the system not be concerned
+# with the details of another part. It lends itself to elegant design if the abstraction barriers are chosen well.
+
+# This is why I draw an interface as a line. It divides the system into the user of the interface and the provider of the interface.
+# An interface is defined by the operation it supports.
+
+# The same concept, with different emphasis, is called a `map`. This we find in the perception maps of neurophysiology, like the "body schema".
+
+# In computing, we have memory-mapped files, which are virtual memory, correlated byte-for-byte with some portion of a file or file-like resource.[fn:1]
+
+# Now you can pretend you have a program memory, not a file. This is a lever over having effects and observing files because manipulating memory is easier than file streams.
+
+# Other shapes / other perspectives on the same underlying shapes:
+
+# - Recursion
+# - Iteration
+
+
+* Measure problem
+
+https://en.wikipedia.org/wiki/Measure_problem_(cosmology)
+
+Indeed, sounds like one of the things you run into when thinking about the multiverse.
+How it is more likely to be a Boltzman brain in every given "instant".
+Maybe there is nothing wrong with this, I mean how else is it supposed to work?
+
+# * What is the opposite of /opposite/?
+
+# Is it just me or is this a question that comes up "a lot" as you are a child?
+
+# I feel like it's the kind of thing we would have asked, and for some reason, I feel a mental slap from the mental ghosts of
+# some adult saying "Just do your homework". Painful. See [[denote:20230430T122647][What I was not told]].
+
+# Stimulated by Hofstadters /Essences and Surfaces/ ([[denote:20230715T105044][books]]). I am thinking of concept space and moves
+# in concept space - analogies.
+
+# Words:
+
+# #+begin_src
+
+#    +-----+ analogy +--+
+#    |     |-------->|  +
+#    |     |         |  |
+#    +-----+         +--+
+#     source        destination
+
+# #+end_src
+
+# I am pretending that =analagy= is a category that contains the concept of =opposite=.
+
+# So I go and ask my friends and my AIs:
+
+# - The *same*, *Synomym*, but not everything has a good opposite, Benni.
+
+# - The opposite of opposite is to not divide, but *unity*.
+
+# - The opposite of opposite puts you back to where you started. It is *identity*.
+
+# We realized that /opposite/ is only a valid move in analogy space when you actually have something more like a pair.
+# Black and white, round and pointy, heat and cold...
+
+# My first answer was /even more the same/. Like a deeper move into the essence of the source.
+
+# But now I have this in elegance with the answer (same with /identity/):
+
+
+# #+begin_src
+#                  target (deeper essence)
+#                 +------+
+#                 |      |
+#          -->    +------+       +---+
+#       +--+                  <--+   |
+#       |  |     ^               +---+
+#       +--+     +---+
+#                |   |
+#                +---+
+#         cluster of ideas
+#         <source>
+
+# #+end_src
+
+# This supposed inward move in idea-space doesn't have a direction but the direction between source and destination of =opposite= is clear,
+# even the defining aspect.
+
+# This is why I think now of *exacerbation*, find the direction in which your source is salient, and move /further/ in that direction.
+
+
+# #+begin_src
+#              opposite of opposite      opposite
+#      +-----------+      +--------+         +-----+
+#      |           |<-----+        |-------> |     |
+#      +-----------+      +--------+         +-----+
+#        target1           source             target
+
+# #+end_src
+
+# =Exacerbation= as the opposite of opposite in idea space.
+
+# I mean you cannot deny there is now a certain symmetry to this.
+
+# The opposite of running is walking slowly, the opposite of the opposite of running is sprinting.
+
+
+# ---
+
+# =Unity=
+
+# The opposite of heat is cold. The opposite of the opposite of heat is Boltzman thermodynamics or something.
+# The kinetic energy of particles doesn't have an opposite, but it unifies the concept of heat and cold.
+
+# The same thing happens with black and white and the amount of light. Where black maps 1:1 on absolute zero.
+
+# Well, sounds deep at least.
+
+
+* Percy Bysshe Shelley
+
+#+begin_quote
+It has been the persuasion of an immense majority of human beings that sensibility and thought [as distinguished from matter] are, in their own nature, less susceptible of division and decay, and that, when the body is resolved into its elements, the principle which animated it will remain perpetual and unchanged. However, it is probable that what we call thought is not an actual being, but no more than the relation between certain parts of that infinitely varied mass, of which the rest of the universe is composed, and which ceases to exist as soon as those parts change their position with respect to each other.
+#+end_quote
+
+Damn, this Shelley dude had Dennet's materialist perspective in the 18th century.
+
+[[https://en.wikipedia.org/wiki/Percy_Bysshe_Shelley][Wikipedia]]
+
+----
+
+He was vegetarian and atheist, too?
+
+This made me reflect on the phrase /to be ahead of ones time/. And I decided this is getting the concepts upside down.
+
+It is not that some people are ahead of their time, it is that common sense people were always there and the problem is a memetic one, the bad drowns out the good.
+
+This is why Socrates is still relevant because he simply made common sense about the world and humans. And the underlying world stays the same across time.
+
+It is really strange when people get this wrong. And you talk to somebody from the general population about AI and computers and they think that
+only the last 2 months of development and thinking are relevant to building minds.
+
+It is a strange kind of hybris, to think that nobody from earlier times in history could have gleaned the true shape of the world.
+
+----
+
+Seriously, I cried a little learning about this person being sensible about the nature of thought and then being vegetarian.
+To be connected to somebody through time and space, to know the same spirit lives inside us.
+
+Maybe Shelley once looked up at the stars and wondered, who else in all of human history is looking up and will look up at the stars with this conviction in their hearts?
+That common sense, love, harmony and ethical truths make us converge on the same ideas, binding us at the deepest level. The level of the soul of the universe.
+
+See [[denote:20230627T085728][The Civ We Want To Be]].
+
+
+* Multiverse Theory
+
+There is a profound symmetry in nature and our explanations of it.
+
+/Give me everything possible/.
+
+I cannot think of a simpler algorithm than this.
+And from this, the whole of reality, all its content, comes (emerges you might say).
+
+The fact that the simplest algorithm is making the most amount of stuff.
+It is like a perfect symmetry with simplicity and explanatory power and the amount of stuff explained.
+
+The dial of complexity is turned all the way down and the dial of /amount of content/ is turned all the way up.
+
+The algorithm of the multiverse theory doesn't speak of time and laws of physics, the way the algorithm of natural selection doesn't speak of organisms.
+
+I call algorithm and what it produces =form and content= elsewhere. This to me points to the same essence of what
+/emergence/ is about a useful meaning of the word.
+
+So too the form can be the computer program and the content it's dynamic - well content.
+When we build minds, the minds will be the content of our program.
+
+See
+- [[denote:20230716T201616][AI]]
+- [[denote:20230915T190843][Vehicles]]
+
+* Data-oriented design
+
+Consider this:
+
+
+#+begin_src
+                   environment
+                    |      ^
+                    |      |
+                    |      |
+    +------------+  v      |
+    |            |---------+-
+    | machine    |
+    +------------+
+#+end_src
+
+
+The imperative way is to make a machine, which modifies and reads from its environment.
+
+A data-oriented trick is to reify, to make explicit, the *what to do* in data. A recipe for the machine.
+Now my machine can be superbly simpler, for it only needs to be a small layer of carrying out instructions.
+
+
+
+#+begin_src
+
+ +-------------+            +-------------+                 +-------------+
+ |             | analyse    |             |  parameter      | (simpler)   |
+ | environment |----------->| transformation <--------------| machine     |--> environement
+ +-------------+            +-----+-------+                 +-------------+
+                                  |
+                                  v
+                               freedom
+#+end_src
+
+
+=Transformation= is a recipe, a plan, or an intermediate result, expressed as data.
+
+Data-oriented design makes it /first class/ to speak of my plans, revise them, log them out or share them with others.
+Or to modify them, mirroring the dynamic power of Lisp. (Or IPL, really see [[denote:20230707T090418][History of Lisp]]).
+
+=Analyse= is a pure function, a calculation. I can develop with some example data and know I am getting it right.
+I can write property-based tests, I can fabricate input and output etc.
+
+This indirection can make code with a step function simpler to understand, there is the magic of abstraction itself in this I think.
+Because the one crazy magical superpower thing in computer science is how abstraction is power.
+So when I see something powerful, I wonder if it is abstraction again, seen from a different angle.
+
+This is a big deal. Code, which would be utterly byzantine in imperative style, can be made to look self-evident with this.
+
+/The key to understanding Lisp is realizing that it's simply layers upon layers of abstraction./ - Hal Abelson
+
+See:
+
+- [[https://youtu.be/-6BsiVyC1kM?si=DVkXpDrvIsLv9JNJ][Rich Hickey, The Values of Values]]
+- Eric Normand, "refactor to command"
+
+
+* When data-orientedness is in your blood
+
+I just realized this looking at the benchmark output in a Python project context of a teammate.
+He prints json which is my intuition, too. Because now I copy the output and read it.
+
+But what is this?
+
+```
+"foo": "1.32(20x)"
+```
+
+Why the hell would you glom the seconds together with the call amount in a single string value?
+
+This is when I noticed how it feels to live and breathe data-oriented programming.
+I simply cannot put my mind into a state where it is a good idea to glom together 2 pieces of data instead of keeping them readable as the numbers they are.
+
+At Clojure's heart, there is a deep underlying assumption that data will be at your side forever to conquer all problems.
+
+* All the edges in need for layers of cakes
+
+I had the idea, that you take user input and plugin an interpretation layer, using an LLM or similar, between the user and the application.
+
+Now the program sort of guesses from the kinds of user effects the user wants to have.
+
+Not only conversation but inputs like button presses, mouse movements, touches etc.
+
+I feel like this is a doorway into a world of tremendously more intuitive interfaces...
+
+* Welcome to the age of generative AI programs
+
+Once we start putting the generative AI as part of the functioning, not merely the content, of our programs;
+
+Welcome to a strange new world, where the docstrings are more important than the code.
+Where code is written to be read by computers, and only incidentally by humans.
+
+* To know the power of computers, think of the internet
+
+/from my audio diaries/
+
+The general population is aghast at the idea that brains are universal computers.
+They say things like /this is too reductionistic/...
+For some reason they have Hollywood ideas of this, the cold scientist and computer numbers persons, thinking things like /humans are predictable/...
+
+Why does the general population not have the colorful beautiful infinitely malleable, sci-fy ethos perfused, open-minded, world-embracing mind expansion in mind when they think about computers?
+
+The way that I do?
+
+Consider the internet.
+The internet is so good it is a force of nature. Not the content, which is commercial bullshit. The architecture. The ideas, the implementation.
+
+I think they just forget it.
+
+* Fistness has appeared
+
+/Simplicity is the ultimate sophistication/ - Leonardo da Vinci
+
+let =x= = /Consciosness/, /Awareness/, /Qualia/, whatever
+
+/How does =x= arise from the neurons?./
+
+Urm...,
+
+/How does =acceleration= arise from the car engine?/
+
+Bit of a strange way to put the question, isn't it? You are putting in mystery from the outset. What a strange limitation.
+
+/How does the car engine work?/ seems to me like the more straightforward question to ask. With good answers.
+
+So we simply ask: /How does the brain work?/ and are right to expect much fruit from this inquiry.
+
+Programming is about how to think. One insight from programming is to keep things simple. The world is complicated enough,
+You will not succeed if your ideas are /accidentally/ complex on top of it.
+
+It is the thinker who can keep things on the grounds of common sense that is impressive.
+
+See [[https://www.youtube.com/watch?v=DbVClq1pT9M&list=PLiI6j3jrFEppvf08P14LdU57UACmvN6z3&index=3][Marvin Minsky - What is the Mind-Body Problem?]]
+
+* Immutability, Calculations and multiverse theory
+
+I am only a humble biologist and programmer, so take it with the context.
+
+Is it only me or is there something profound about the physics of how time does not exist?
+
+The notion of the block universe is to say /look at reality as a 4-dimensional block/. Time does not exist.
+It comes from the arrangement of the universe's snapshots.
+
+Multiverse theory goes further - Reality is not one universe made from a 4-dimensional block. It is all possible universe snapshots, like a mirror made from ice exploding into so many snowflakes.
+
+Why do I feel time going forward? Ask why I think* I feel time goes forward. There is a logical succession of
+universe snapshots. Like a red trail going through the multiverse.
+
+To go a trail that is not random noise, but organized enough to have a machine that thinks, I need to take a trail
+that sort of stays true to certain regularities. So the trials on which you will have life forms, brains and computers
+will adhere to what we call physical laws.
+
+From our perspective, it does not matter if things get slightly weird on the microscopic level.
+If some quantum goes back and forth in time, or tunnels around etc. It does not affect us too much. For our functioning as organisms, we only need determinism and stuff like
+time going in 1 direction on a relatively macroscopic level. Our physics, our red band, is allowed to be slightly thicker than a narrow line.
+
+I am not 100% sure if I interpret this right at this moment in time but I think this means that time and physical law exist on the same plane. - They sort of do not exist at all the first time you look.
+
+Darwin's dangerous idea is that /there is design without a designer/. Design comes from the logic of what replicators are. There are more good replicators around than bad ones.
+
+Everetts's dangerous idea is to have physical laws without a physics engine. It would simply come from the logic of all possible universes existing. Some universes are a logical continuation of each other.
+
+Time and physics go the same way as the designer. They are replaced by a more fundamental logic. Is this not satisfying? Anything can only be made out of simpler things.
+Whatever /is/ can only be explained in terms of something simpler. This is another reason why multiverse theory has the rhythm of being true to me.
+
+Another thing coming of this is that there would potentially exist alternative timelines with alternative physics.
+
+After all, you can draw arbitrary red lines through the multiverse. The vast amount of them will be random, static noise - brushing more substantial realities like ours in places - but still static noise.
+
+I am not sure if that works in our multiverse but if I think about making a game of life multiverse, the interesting part would be to explore possible physics. The rules of a game of life board do not come
+from the board. They come from how you decide to draw a red band of time through the multiverse.
+
+I don't feel the earth move but it does. And I don't feel the universe split into eternal, timeless snapshots.
+
+Either way, I think maybe there is something profound about immutability in Clojure and functional programming. It allows us to model reality more simply.
+
+We are using the same model as the multiverse: eternal, timeless snapshots of something that cannot change. Time is ours to create and destroy. By arranging the snapshots as we please.
+
+* Sun Aug 20 12:56:02 PM CEST 2023
+
+#+begin_quote
+I could eat a bucket of amino acids and puke a better brain architecture than that.
+#+end_quote
+from [[https://www.lesswrong.com/posts/QrhAeKBkm2WsdRYao/searching-for-bayes-structure][Less Wrong]].
+
+* Believing falsely is knowing nothing
+
+Wittgenstein said that "believing falsely" is incoherent.
+He believed that one has to accept a concept as true in order to believe it.
+
+What a strange limitation.
+
+For the scientist, /I believe/ just means /I believe falsely/.
+
+For we will always go closer to the truth but never know it. This is the meaning of Socrates /I know nothing./
+
+* Programming and clouds of thought
+
+To think the same thoughts as somebody else (or you from the past or future) is part of the art of programming.
+To make somebody else think the same kinds of thoughts as you do. Programming is the ultimate high art of communication.
+It includes having a literal and cultural feel for what somebody else might expect.
+
+We chose at times the obvious, rather than the clever.
+
+** The effectiveness of languages
+
+One crazy thing about this. I don't think it would have to be that way. Is that shared, public, interpersonal languages are better than private ones?
+Nobody comes up with their private programming language and programs /better/ in it.
+My claim is that even if you make a private language, if it is a good programming language it will be good in ways that other minds will appreciate, too.
+You will need to read it later, as a different person. Making organization and regularity key aspects of success.
+
+This is a kind of regularity that exists on the plane of what computer science is about. It is about how to structure and communicate ideas.
+
+This is something that exists, maybe in a whole subfield that is yet to be discovered.
+Why is it useful to make a language to talk about a problem and then talk about the problem in that language?[fn:2]
+Maybe information theory, cybernetics, process analysis whatever, psychology and computer science are somewhere on the edges of this.
+
+You might call it the surprising effectiveness of languages or something. And a twist to this is that private ones are not better than shared ones.
+
+** Parallel thought paths:
+
+If multiple persons observe the same cloud, they might see similar patterns, they might say similar things about the cloud. Without ever knowing what the others have said or thought.
+
+To see a cloud and to have a feel for what others might think, without knowing what they say - this is an advanced communication problem.
+A parallel thought paths communication problem.
+
+One way of sharing the same thoughts is to simply be sufficiently similar.
+
+This is one of the reasons why self-evident code is the most powerful code.
+
+** When a superintelligence writes code
+
+It will solve communication problems we did not even know could be solved.
+
+Superintelligence might come up with programming paradigms and ways of expressing themselves to the computer and other programmers that will make a grown person cry and explain the beauty of nature.
+It might produce code that looks like it was carved from nature. And I mean it would look like the problems are trivial and self-evident to solve.
+So it will make nature look self-evident or something.
+
+One funny thing is one of the first things it programs are the engines of intelligence. So after we achieve machine AGI, we will get an AGI program from it,
+and it will be so simple, so self-evident, so obvious, that we will wonder why it took so long.
+
+When it re-writes itself in Lisp, this is where I draw the line and say, /Now we are starting to get serious/.
+
+* Footnotes
+
+[fn:1]
+
+[[https://en.wikipedia.org/wiki/Memory-mapped_file]]
+
+[fn:2]
+
+Eric Normand has a podcast episode on this.

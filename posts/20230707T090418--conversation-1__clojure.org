@@ -1,0 +1,571 @@
+#+title:      No Iterations
+#+date:       [2023-07-07 Fri 09:04]
+#+filetags:   :clojure:lisp:public:feed:mind:
+#+identifier: 20230707T090418
+#+EXPORT_FILE_NAME: conversation-1
+#+OPTIONS: toc:nil
+
+Lisp and Clojure enhance interactive, idea-driven programming.
+
+One day we will boot up our computer and it asks /What is my purpose?/.
+
+One magic piece of Lisp is the concept and idea of interactively building the program while it is running.
+The interaction layer between the program and programmer is implemented by a read, eval, print-loop, REPL.
+It doesn't matter so much what the REPL exactly is, what matters is the idea of an interactive interface
+as programmers to the running program. In the same way, we have an interactive interface to files on the computer;
+In Lisp, we have an interactive interface to the symbols, the methods, the fields - the stuff that your program is made out of.
+
+Repl-driven development gives us a level of intimacy with the computer that has been described as a conversation with the program.
+
+I cannot convey what music is in a way that you will know music. So too, I cannot convey what Lisp is about in a way
+that you will know Lisp. But I can try to give some clues and little hints.
+
+There is something like music between a mind and a machine. REPL-driven development unlocks this world between programmer and program like nothing else does.
+
+#+CAPTION: A brain! banana, tomato, children block cubes ideas inside the brain. A computer with electricity at the speed of light in the universe on the other side
+file:./b-brain-2.png
+
+* What is the purpose of programming languages?
+
+If you think about programming languages you really need to think about /what are they for?/.[fn:1]
+
+file:./language.jpg
+
+A programming language is what is between you and the computer.
+
+It is the interface between the ideas on one side and the stuff inside the computer on the other side.
+
+Maybe programming languages are for many things but here is a list of some really important things:
+
+1. Expressing ideas
+2. Expressing ideas to the computer
+3. Make the computer think what I think
+4. Make the computer tell me what it thinks
+5. Change some entity in the computer (file, process, ... )
+
+#+begin_quote
+The first idea is that making a big computer program is building a larger process out of smaller ones. I suppose you could truthfully say that sculptors make large shapes from stuck-together grains of clay. But that shows what's wrong with the bits-and-bytes approach. No sculptor ever thinks that way, nor scientist, or programmer. An architect first thinks of shapes and forms, then walls and floors, and only last about how those will be made.
+#+end_quote
+Minsky (1984)
+
+Data structures, language constructs, and at the very lowly bottom, syntax are the small things
+that /are not/ what programming is about. The way that architecting is not about clay.
+
+A language is there to allow us to modify, make experiments, and observe. Nothing more, nothing less.
+
+Using this mental framework there is no fundamental difference between operating systems,
+programming languages, libraries, frameworks, user interfaces, and even text editors.[fn:2]
+
+These are all societies of process [fn:3], some have collections of members with different emphases.
+
+The hypothetical ideal language is /completely out of the way/. It would have infinitely small friction, infinitely
+small short steps and effort and wait time to make my ideas have effects on the computer.
+It would get rid of the clay entirely and we would raise and rise higher and beyond as architects riding the ideas.
+
+We would be able to instantly and losslessly transfer thoughts to the computer and make the computer program change to our desire.
+We would use the competence of the computer seamlessly intermingled with the rest of our thoughts.
+Experiments would be thinking, with perfect reach, perfect control, and perfect access to the vast competencies, memories and remote
+connections of the computer realm.
+Racing at an unknown pace, building new kinds of towers of abstraction, thought, reason and creative spirit.
+Eventually hooked up to some constructors[fn:4], our thoughts would shape the stuff of the universe.
+
+From this view, building ever more powerful languages is a path to a technological singularity.
+
+* Power is joy is getting shit done is having effects on the computer
+
+#+begin_quote
+The most powerful programming language is Lisp. If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant. Once you learn Lisp, you will see what is lacking in most other languages.
+#+end_quote
+[[https://stallman.org/stallman-computing.html][Stallman]]
+
+Magic is what makes a great book great. It is something that happens in the mind of the reader, not elsewhere.
+
+It has to do with masterful craftsmanship, with love, with the spark between people.
+It has to do with the right time and the right place, how could it be otherwise?
+A piece of magic comes together with the most masterful output of a masterful craftsperson.
+It needs to be the right time and place, else it would not be peak output.
+
+We live in a world where we cannot measure magic yet. Otherwise, we could be churning out
+great movies, books and games.
+
+You might not know it yet, but great software and great tools, too are subject to taste and aesthetics.[fn:5]
+
+Would it not make sense that the people talking about the most powerful language in sort of a mysterious way would allude to /taste/, too?
+If it is the most powerful language, it would be powerful because of reasons in the realm of mastery and craftsmanship.
+It would be because of magic, which is hard to explain and only accessible via aesthetics and taste.
+
+What makes Emacs a superbly sick piece of software? What makes /The Man From Earth/ a superbly sick movie?
+
+The answer is you will know when you know. But you will not know before you know.
+And you will know for reasons that you have to discover yourself. But it won't be reasons that make no sense.
+It will be reasons that make perfect sense. Just that they are somewhere where you don't yet know how to look.
+
+The only way to know magic for the moment is to hone our tastes and broaden our horizons.
+
+What does it mean to develop a taste in programming? Stallman is giving a hint that trying Lisp will develop your taste.[fn:6]
+
+Let me throw in another clue; In order to know what different kinds of languages do, you should go and try
+the ones that are most different from what you already know.
+
+Lisp is mentioned in this way again and again [fn:7]. It will broaden your horizon, it will stretch what
+you think about languages.
+
+Can it be true? Does it not sound too good to be true? Why not? What in reality doesn't look like it is true?
+Is it not a fact that Emacs, a Lisp program, is a freaking psychedelic spaceship? Is it not a fact that society and mainstream are wrong about things all the time?
+
+If Lisp is profoundly more powerful than other languages, then it will be powerful in a way that
+
+- Resonates with your programmer's heart.
+- You cannot know before you feel it.
+- Would be hard to explain, because it would be magic.
+
+What is your most profound desire as a programmer? I think it is /having effects on the computer/.
+
+What I am about to tell you is that there is an activity during programming that you sort of know but don't know.
+Current programming is stuck with a limitation that simply does not make sense.
+
+* Quick iterations are better
+
+You want to make a quick experiment in the code. You make a little side project, and you set up some example data.
+
+You tell your young programmers that they should value /quick iterations/.
+You go through hoops to not have to re-compile /right now/. And /not again/. And you juggle in the right amount
+of changes in your batch so that afterward you see point 2/5 not working, instead of point 22/100.
+
+You suffer when you have long deployment cycles in your feedback loop.
+
+Sometimes you wish you had put a log or breakpoint somewhere because /it just happened/.
+
+What if you have a complicated thing happing somewhere on the server? What if the program is right now in a state
+that only if you /could/ look at it, you would know what to fix?
+
+Sometimes it would be great to quickly see the /counterfactual/ quickly.
+What if this =if= goes into the other branch, does it still work?
+No, fuck it commit, push and tomorrow there is a bug report that =x= broke.
+
+If you are faster with seeing what the program is doing, that is better.
+
+This you know. And maybe you know from notebooks or some advanced hot reload tech what it would
+mean to be able to change the program while it is running.
+
+Restart the program and the state is dropped on the floor.
+But if you see what it does, while it does it, that is a difference between *night and day*. [fn:8]
+
+Because it matters what is between you and the program.
+
+In the 70s, there were the MIT AI people, John McCarthy, Marvin Minsky, and the young bright-eyed hackers who later build
+the internet and influenced what computing is nowadays.
+Supported by J.S.R Licklider, who was the first person having fun in front of a computer terminal at night.[fn:9]
+
+These people had a vision of what computing can be and they knew it will be =interactive=.
+
+** Batch processing
+
+In batch processing, you give a *batch* of punchcards to a dude, who puts them into a computer, and you get your result the *next day* or whatever.
+
+If you accidentally miss a hole or shuffle some cards, too bad.
+Dealing with the complexities of punchcards is *not* what programming is about! Not at all, not even close.
+
+It is just extra steps and extra complexity in your interface to the computer.[fn:10]
+It is a bigger chasm, a bigger wall, a bigger world of pain.
+You want your ideas to affect the computer and then there is extra stuff.
+This stuff should not be there.
+
+Getting rid of the punchcards and finding a better way was a tremendous step forward in computer programming.
+
+Extra work between ideas and computers are *not good*.
+
+It is easy to accidentally *enjoy the puzzle*[fn:11] that extra steps might provide. Don't do it. Don't enjoy it. It's darkness.
+Don't enjoy the extra steps between you and the computer, it is not programming.
+
+You should be annoyed at all the things you do that are not programming. How else could we have moved away from punchcards?
+
+Another similar mistake is to think that pain means /hard work/ and that it makes you a /serious worker/.
+Don't do it. Don't enjoy the wrong pain for the right reasons. Don't think that being playful is opposed to getting shit done.
+Otherwise, you remind me of what school is doing to the never-ending curiosity of young children.
+
+We call brilliant programmers lazy because they are honing their tastes, to feel what is unnecessary pain.
+Pain is part of your programmer's intuition, your taste, your laziness.
+
+Hence, the hackers and forward-looking people of their age *fixed* batch processing.
+
+** Interactive computing
+
+Imagine you are programming, you stamp out a batch, give it to a dude and on the next day you get the error message /forgot a comma/.
+
+It took brilliant people to see that this is not right. That there is a better way. That fast feedback even has any value at all.
+
+[[https://en.wikipedia.org/wiki/Time-sharing][Time-sharing]] was an idea for /getting rid of/ [[https://en.wikipedia.org/wiki/Batch_processing][Batch processing]].
+
+=Interactive computing= is in general the idea that you get instant feedback from the computer about what you do.
+For instance, you sit at a terminal and you type things. And the computer then answers - prints - some output.
+Personal computers inherited interactive programming from the visionaries of early computing.[fn:12]
+
+Minsky mentions in one of his lectures:
+
+#+begin_quote
+We tried to tell the people at IBM about time sharing and they said /why don't the programmers just think?/.
+#+end_quote
+
+Meaning why don't they spend the /extra effort/ to just code bug-free the first time?
+
+They were so wrong. So utterly, completely, badly, painfully, laughably wrong.
+Make songs about it, and edge it on the doors of buildings. Remember it forever and don't make the same
+mistakes again. Burn it in your souls for it is a wound. It held humanity back. It was a mistake.
+
+If we would be a bit more forward-looking and open-minded - how many times over would we be exploring the stars by now?
+
+They thought interactive programming won't do anything. They thought the people that advocated it where
+just lazy and wanted to play, instead of doing /serious/ things with the computer.
+And they argued in silly ways like /how can the computer think if it is interrupted all the time?/ - A matter of implementation that was figured out.
+
+#+CAPTION: bright-eyed hacker scientists Minsky, McCarthy, Licklider. joyful playful magic computers defeating the evil establishment.   epic heist movie poster.
+file:./hackers-movie-poster.png
+
+
+What does =interactive computing= have that batch processing does not have?
+
+It is having a connection and an interface to the stuff inside the computer in a way that leverages
+how we evolved to manipulate and walk around in the world.
+It /fits/ the human psyche. Its history stems from the urge to reach and explore inside the computer.
+And its effect is being able to reach into a new world.
+It was obvious to the brilliant visionaries of the time and it is obvious to us now, when we navigate
+and modify the stuff inside the computer.
+
+To be clear, this is about what you feel when interacting with your operating system to create, move and modify files on the system for instance.
+When you open a browser and click things, this is interactive computing.
+
+This is not a small thing - This is a different world we have. Interactive computing is arguably one of the most important technologies /ever/.
+And the big companies would never come up with this. Would they even have the incentive?
+
+It is like having a spaceship where before you had hot air balloons.
+It is like the sun where before you had candles.
+It is something in the space between mind and machine, the ability to reach.
+
+Next: Why does Lisp make *the same jump* for programming a program?
+
+* One of the best ideas in computer science
+
+And maybe one of the best ideas ever, [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][Von Neumann architecture]].
+
+Put the *program /into/ the computer memory*.
+
+A stroke of genius.
+Now we have a magic stone that can be loaded up with ideas and then it can be anything.
+
+Before we had 1 machine with 1 program. What a program is and what a machine is was glommed together.
+Good design is about splitting things apart, and this was a beautiful and elegant design.
+
+This in a way resonates with what Dennet calls Popperian and Darwinian creatures.[fn:13]
+
+First, you have a machine built to behave (*Darwinian*); A machine with a fixed program.
+
+Then you have a machine that is built to learn (Skinnerian).
+
+And finally (a Von Neuman machine), a machine that is built to deal with ideas (Popperian).
+
+Because ideas, the memes, can be anything, including ideas about ideas, the Popperian machine has an open-ended future.[fn:14]
+
+/Putting more ideas into memory was a very good idea./
+
+The story of dynamic memory data continues with [[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]],
+which was used for one of the most important early AI works =General Problem Solver= (1957).
+
+In IPL, Information Processing Language, you had data dynamic in the program, in =lists= (made from cells).
+You can create lists and make it point to something else during the program etc.
+different from having to declare variables for everything.
+
+You know of course what this means because you create lists and arrays all the time in your program.
+
+Javascript is sort of a Scheme, so it has a function called =print= and a function called =read= (ok I guess they have glommed it together with =eval=).
+
+Douglas Crockford discovered JSON by printing and reading javascript objects.[fn:4]
+
+If you know the power of JSON, you know the power of having dynamic data in your program.
+Your program is not about customers and payments, it is allowed to be a level higher. Your program is allowed to be
+about data structures. Data abstraction is something like SQL or dotnet LINQ, or a JSON parser.
+It is a language for talking about data and data transformations. =map=, =filter=, =reduce= don't know about customer names,
+they know about lists/sequences/streams, or so and so.
+
+This is the heritage of Von Neumanns memory idea propagated forward through time and one level up.
+Your program is loaded dynamically into the computer, but your program is also dynamically loading data into *its* memory.
+Your program is, in some way, simulating a van Neuman machine itself.
+
+McCarthy liked IPL but did not like how it was complected with implementation details of the computer it ran on.[fn:15]
+He had the idea of taking those lists and describing the computer process entirely in terms of it.
+
+/Let's take those lists, make the first thing the verb and implement a lambda calculus./
+
+To understand Lisp, imagine you read JSON and treat the data as a command language for what your program does next.
+
+#+begin_src javascript
+  function read(expression) ; returns jsonData
+#+end_src
+
+#+begin_src javascript
+  function eval(jsonData) ; returns an evaluated object
+#+end_src
+
+Eval is the big meaty function of your program. It needs to take that JSON, go through it and interpret
+the data as commands.
+
+#+begin_src javascript
+  function print(object) ; print to the user
+#+end_src
+
+#+begin_src javascript
+
+  function repl() {
+        while (true) {
+           var whatTheUserSaid = readFromTerminal();
+           var jsonData = read(whatTheUserSaid);
+           var object = eval(jsonData);
+           print(object);
+        }
+    }
+
+#+end_src
+
+This =repl= function can be the entry point and the game loop of our program.
+Now the user can sit at the console and interact with our language.
+
+We define a few =special operators=. During =eval=, some stuff we have to implement in the static part of the program.
+
+- =set= - set a variable.
+- =pair= - make a pair, a pair of pairs then is a =list=.
+- =first= - first value in a pair
+- =rest= - the second value of a pair. (this can to a simple value or another pair).
+- =lambda= - make a function.
+- =if= - conditional evaluation.
+- =quote= - return the jsonData instead of evaling
+
+
+This is a program that is simulating interactive computing. Where an operating system gives you
+access to files and processes. A Lisp gives you access to a society of symbols, functions, values, and data structures.
+
+#+begin_src javascript
+  var globalEnv = {}; ; a dict, hash map, lookup table
+#+end_src
+
+#+begin_src javascript
+  function define(symbol,value) ; augment the global env
+#+end_src
+
+Make our Lisp interpreter know about the command =define=.
+
+#+begin_src javascript
+  function eval(expression) {
+      if (expression.first == "define") {
+          var symbol = expression.second;
+          var value = expression.third;
+          define(symbol,value);
+      }
+      // ...
+  }
+#+end_src
+
+Lisp:
+
+#+begin_src javascript
+  ["define", "foo", 10]
+#+end_src
+
+(This is valid [[denote:20230705T083842][Bobscheme]])
+
+This is the cleaning up that McCarthy did to computer programming.
+Lists where the verb is that the front, no extra stuff. Put it into memory so you can modify it while it
+grows, Make a symbol type so you can give names to things, from inside the language. Make a function type
+so that functions are the same stuff as the rest of the program.
+
+The fact that JSON is so useful comes directly passed down from =IPL=. All the objects nest, there are only a few kinds of objects and bottoms out at atoms.
+A printer and a reader come shipped by default. I know without knowing that Javascript gurus know the power of =print=,
+compared to the little machines you get from the C++ line of heritage.
+
+McCarthy wanted to sit on a terminal and make the program do different things while he is programming it.
+He did not want to say up front all the variables in the system because he wanted to have something more
+dynamic for programming AIs.
+
+The interactivity is at the bottom. - Hence it is called /a building material/.
+
+You make a program that asks you /what should be next in the program?/.
+It is as simple as this. From this, all the goodness that makes Lisp elegant and beautiful comes.
+The simplicity of this enables easy-to-reason-about programs that write programs.[fn:16].
+
+With this, we can have a conversation with the program. We can directly interact, while the program is running.
+
+* Conclusion
+
+The power of Lisp is not quick iterations, but no iterations.
+Instead of iterating, in Lisp and Smalltalk we do =conversation=. This concept is reified in the =read eval print loop=.
+
+It is enabled by the idea of putting the /program into the dynamic memory/ of your program.
+This resonates with the Von Neuman architecture idea of putting the program into the memory of the computer.
+
+[[https://www.youtube.com/watch?v=8Ab3ArE8W3s][Jack Rusher]]'s bottom line is /don't settle for anything with less interactivity than Lisp and Smalltalk!/
+
+Once you have in your fingers how to leverage the =repl=, it will be as obvious as the sky, vast and inescapable.
+This is better, this is simpler, and this gets stuff out of the way. This lets me use my brain the way a monkey reaches
+for a banana. Directly, the way I can delete and create files on my PC. I can define and undefine symbols in the program.
+I can make quick experiments while the program is running, without the mental distress of setting up the state.
+
+It is the same difference that =interactive computing= does compared to =batch processing=.
+It is not a small step, it is not a big step, it is not a step at all. It is a different world.
+
+Whatever that is. At this date and time, I will call it =Magic=.
+
+* See also
+
+- [[denote:20230708T095438][Lisp]]
+- [[denote:20230705T083842][Bobscheme]], I make a toy Lisp implementation using JSON
+
+* GPT-4 can produce some poetic stuff with this post as base
+
+Imagine a painter, fervently engaged in a dialogue with her canvas. Each stroke isn't a hurried message jotted down and sent off, anxiously awaiting feedback. No, the painter watches each trail of color blend and mix under her brush, immediately seeing the effects of her choices. She tries different pressure, strokes, colors, and brushes, in a cycle of continuous creation and observation, a dance between her mind's eye and the canvas. This is her conversation with her art - immediate, beautiful, and ever-changing.
+
+Now, consider a programmer, in front of his screen. The code portrayed is not a fixed monolith of logic. Instead, it morphs, breathes, and reacts under his fingertips, mirroring that painter's canvas. The programmer writes a line of code, and the effects echo through the system immediately, no abstraction barrier held in between. The immediate feedback enables him to stir into different directions, tease out underrepresented nuances, debug on the fly and explore new vistas of his creation.
+
+The code is fluid under the hands of the programmer in a perpetual dance of creation, modification, and observation. It is an intimate conversation with the ideational fabric that weaves itself into existence as the program - the programmers' thought reflections observed immediately, altered rapidly, and understood fully.
+
+This, my friend, is the spirit of interactive programming. A live, pulsating creation constantly in flux rather than fixed scrolls etched into digital stone, navigating creativity at the speed of thought inspired by immediate feedback, riding the great prairies of abstraction and thought, reaching a level of intimacy and understanding with your program that feels like a piece of music resonating with your heartstrings.
+
+* Footnotes
+
+[fn:1]
+
+[[https://www.youtube.com/watch?v=2V1FtfBDsLU][Effective Programs - 10 Years of Clojure - Rich Hickey]]
+
+[fn:2]
+
+One benefit of this view is now I am holding all pieces of language, and interfaces, to the same high standard.
+
+React is not a framework, react is a language. Can I express myself using it?
+
+[fn:3]
+
+[[https://web.media.mit.edu/~minsky/papers/Logoworks.html][Introduction to LogoWorks]], Marvin Minsky
+
+[fn:4]
+
+https://en.wikipedia.org/wiki/Constructor_theory
+
+[fn:5]
+
+This is one of these things that I think are instantly obvious to 99% of women.
+And the man-dominated software industry is mentioning it very little, to the point where you have
+to sort of convince the people that it is the case.
+
+[fn:6]
+
+Paul Graham /The Taste Test/. Exactly this concept: [[http://www.paulgraham.com/power.html#:~:text=%22The%20quantity%20of%20meaning%20compressed,carry%20on%20by%20their%20aid.%22][Succinctness Is Power]]
+
+[fn:7]
+
+Paul Graham, [[http://www.paulgraham.com/power.html#:~:text=%22The%20quantity%20of%20meaning%20compressed,carry%20on%20by%20their%20aid.%22][Succinctness Is Power]], [[http://www.paulgraham.com/avg.html][Beating The Averages]].
+
+#+begin_quote
+LISP is worth learning for a different reason — the profound enlightenment experience you will have when you finally get it. That experience will make you a better programmer for the rest of your days [...]
+#+end_quote
+[[http://www.catb.org/~esr/faqs/hacker-howto.html][Eric Raymond]]
+
+[fn:8]
+
+It is indispensable for an artist to see what they are doing, while they are doing it.
+
+https://www.youtube.com/watch?v=PUv66718DII
+
+[fn:9]
+
+/The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/.
+
+I cannot recommend this book enough. It is such an amazing ride through the history of computers.
+
+[fn:10]
+
+See [[https://www.youtube.com/watch?v=8Ab3ArE8W3s]["Stop Writing Dead Programs" by Jack Rusher (Strange Loop 2022)]] this talk is such a beautiful rollercoaster ride through ideas of interactive programming.
+Very joyful, very quick-witted.
+
+[fn:11]
+
+I hypothesize - another facet of why fewer women get into programming.
+
+Because dudes enjoy the needles pain of random puzzles and small IQ tests.
+They litter programming and source code with it.
+They even accidentally think that this is what programming is about.
+
+But it is not. It is about ideas.
+The way architecture is about buildings; Not the bricks.
+
+Maybe women intuitively get when they are thinking about bricks when they wanted to think about a building.
+But when you just start with programming, how could you hope to have a mental framework to discern this?
+So you might think programming is a weird math-like, low-level activity that causes you pain.
+
+Or you have the luck to start with Clojure. Then you will forever think /what is all this extra guck I need to do?/ in other languages.
+
+This is just one of the many things that are /off/ about mainstream programming and the software industry currently.
+
+[fn:12]
+
+- https://en.wikipedia.org/wiki/History_of_Unix
+- Interactive programming and how Lick was central to pushing forward the right technology is a major topic in /The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/.
+
+[fn:13]
+https://billkerr2.blogspot.com/2006/07/dennetts-creatures.html
+
+[fn:14]
+
+See for instance Dennett 2017.
+
+Or accessible, some talks:
+
+- https://www.youtube.com/watch?v=32u12zjgJww 2023
+- https://www.youtube.com/watch?v=IZefk4gzQt4
+
+[fn:15]
+
+See [[https://www.youtube.com/watch?v=YaWVHyIBVeI][Marvin Minsky - The beauty of the Lisp language]]
+
+The deeper trails are
+
+- Lisp and McCarthy Wikipedia articles
+- http://www.paulgraham.com/diff.html
+- Marvin Minsky (1967), Computation: Finite and Infinite Machines
+- [[http://www-formal.stanford.edu/jmc/][McCarthies Website]]
+
+[fn:16]
+
+See Paul Graham /Beating The Averages/.
+
+*CORRECTION* In an earlier version of the post I simplified too much and just said
+
+/macros, which you don't have in other languages/. This was not correct.
+But I do have the opinion that Common Lisp-style macros are uniquely expressive and natural to reason about.
+
+Other languages have macros
+
+- https://wiki.haskell.org/Template_Haskell
+- https://doc.rust-lang.org/book/ch19-06-macros.html
+
+[fn:17]
+
+There was a delightful tech talk about this but I failed to find it.
+The speaker was mentioning how /advent of code/ is completely not the kind of activity
+we do day to day to solve problems.
+
+[fn:18]
+Clojure data structures are immutable by default. This makes code immensely more straightforward.
+
+[fn:19]
+=*= people in between and beyond.
+
+[fn:20]
+
+https://www.youtube.com/watch?v=YaWVHyIBVeI
+
+#+begin_quote
+In a Lisp program, you can write programs that write Lisp programs. So it has an open future.
+... to me, programing has not changed much in 50 years, because they got locked into this strange set of limitations.
+#+end_quote
+
+[fn:21]
+
+What is beyond, I cannot tell.

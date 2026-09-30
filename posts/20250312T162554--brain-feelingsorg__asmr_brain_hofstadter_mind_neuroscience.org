@@ -1,0 +1,431 @@
+#+title:      Brain Feelings
+#+date:       [2025-03-12 Wed 16:25]
+#+filetags:   :asmr:brain:hofstadter:mind:neuroscience:public:feed
+#+identifier: 20250312T162554
+#+EXPORT_FILE_NAME: brain-feelingsorg
+
+This is a collection of experience reports on some feelings that seem to originate from inside the head,
+and seem to be associated with mental effort/content.
+
+I thought maybe there are more of these /brain feelings/; That ASMR is only one of multiple. So I started looking for them.
+
+* The Metaphenomon of [[https://en.wikipedia.org/wiki/ASMR][ASMR]]
+
+#+begin_quote
+An autonomous sensory meridian response (ASMR)[2][3][4] is a tingling sensation that usually begins on the scalp and moves down the back of the neck and upper spine. A pleasant form of paresthesia,[5] it has been compared with auditory-tactile synesthesia[6][7] and may overlap with frisson.[8] ASMR is a subjective experience of "low-grade euphoria" characterized by "a combination of positive feelings and a distinct static-like tingling sensation on the skin". It is most commonly triggered by specific auditory stimuli, and less commonly by intentional attention control.[1][9]
+
+The term ASMR can also refer to media (usually audiovisual) meant to evoke this phenomenon, with the sensation itself being informally referred to as "tingles".
+#+end_quote
+
+The original blog post was "WEIRD SENSATION FEELS GOOD" in internet forums somewhere around 2010. [fn:2]
+
+The phenomenon ASMR obviously was part of the human condition before 2010.
+It just historically contingent fact that in this culture nobody gave it a name, nobody talked about it and /it was not a thing/;
+The moment something has a name, we can refer to it, we can /manipulate/ it, we have a /handle/ on it.
+
+In fantasy books, some magic systems are based on *naming*. And /naming a spirit/ is an important concept of programming philosophy [fn:3].
+
+[[https://youtu.be/o268qbb_0BM?si=0lpLTU8C61VL-Hkw][Vsauce]]:
+
+#+begin_quote
+Words put handles on things so we can manipulate them, hold them down offer them to others, ...
+#+end_quote
+
+*concept*: A mental datastructure, a full fledged citizen of mentality, capable of being referred to,
+capable of having a pronounciation (having a name, a word), capable of being a meme.
+
+In some ways science and using imagination is giving names to things, thereby /making them a thing/.
+
+The *Metaphenomon of ASMR*: ASMR was not a thing until it was a thing.
+
+A psycho-physiological phenomenon similar to goosebumps, presumably part of the human psyche before even /sapiens/,
+yet it was not /a thing/ until we gave it a name.
+
+ASMR is an example of a whole art form and an emerging cognitive psychology. Just by talking about a thing.
+
+------------------
+
+*"This only happens to me"*.?
+
+Maybe it is a mix of shame, the need to keep some things private, and the challenge of verbalizing mental phenomena.
+The person of 'WEIRD SENSATION FEELS GOOD' needed to confess somehow, didn't he?
+
+Talking about mental phenomena out in the open is rare. One thinker that has made it his avocation is Douglas Hofstadter.
+
+"This only happens to me" is a form of *solipsism*. How different could stuff be? Humans share a genetics and a brain hardware.
+By the same logic of [[https://en.wikipedia.org/wiki/Convergent_evolution][Convergent Evolution]], what the genes can adapt, should be similar.
+
+--------------------------------
+
+Douglas Hofstadter described the [[** Hofstadters Abstraction Ceiling][abstraction ceiling]], a specific, visceral sensation associated with cognitive effort.
+When I experienced this 'abstraction ceiling feeling' myself, I thought 1) this is a real component of human experience. 2) Basically nobody talks about it.
+3) What if there is a whole array of things that are sort of like ASMR, that are not talked about but are interesting, if only for artistic enjoyment?
+
+So here I am on the quest for private psychological phenomenons which have no name, and no community.
+I just say /brain feeling/ (german: Hirngefühl).
+
+* Brain Feelings
+
+** Hofstadters Abstraction Ceiling
+
+#+begin_quote
+When I hit math graduate school I hit what I call, I describe it in [Strange Loop Book].
+An abstraction ceiling and it was a very unpleasant experience.
+It was about as unpleasant as hitting myself you know when you stand up
+and there's a open cupboard and you stand up quickly and it hurts like hell, well that's how it felt.
+#+end_quote
+
+[[https://youtu.be/UT5CxsyKwxg?si=dqEe97HDN0bCvCiH][D. Hofstadter at Stange Loop 2021]]
+
+I have captured an abstraction ceiling moment in an audio diary, here complete stream of consciousness style text:
+
+#+begin_export html
+<details>
+<summary>Analogies about analogies...?</summary>
+
+It is like - say you categorize the move of an analogy in design space.
+Like 'this is knight shape, it goes one up and 2 left or something'.
+
+... and then you can say things 'this shape relates to this other shape in the space of moves of analogies'.
+
+let's say 'the atom is to the solor system as the what is to the what?'.
+
+Calling a program multiple times with different arguments is like making a function call within an application.
+
+The atom is to the solarsystem like a subroutine to a program.
+
+I remember somebody saying functions/ subroutines are programs within programs.
+It took me some time to actually connect this.
+
+So here I have 2 analogies that have the same shape I think I'm allowed to say this.
+
+Either way.
+
+Let's say something harder like taking an analogy pair but fill out a missing part.
+But something in the space of analogies...
+
+Let's say "The atom is to the solarsystem like the Baldwin Effect is to /what/" ?
+</details>
+#+end_export
+
+[a few moments of thinking]
+
+Direct quote from my audio diary:
+
+#+begin_quote
+
+... woar! I wonder if somebody super, super smart would have an idea what to say now.
+
+Holy shit.
+
+Hofstadter was saying it is like a cupboard and you stand up and hit your head and I have almost the same feeling right now.
+
+Holy shit, what the hell I have the abstraction ceiling what the fuck?
+
+Woar, it's exactly how this feels.
+
+For some reason something in this feeling tells me. Like part of why this is so painful in a way...
+
+It is not painful actually, but the concept of it.
+
+Part of it is feels like, ...  it's completely impossible for me to grow out of this.
+
+Like this is the first barrier I ever encounter where I don't have the deep feeling ... -  That I would in principle be capable of growing on it ...
+
+It is deeply unsettling.
+#+end_quote
+
+The abstraction ceiling brain feeling feels like there is a plank of wood going through your head.
+Like you banged your head on some wood right above you, but actually the wood is inside your head now.
+
+If you have this sensation, there is no mistake about it.
+There is a viscerality to it, as substantial as pain is a feeling. It is located across the head.
+
+The shape is such that if you would have put on a small hat, everything above the hat-line feels 'turned off', tortiously so.
+
+In it's weaker form, it feels like one put's on a cap, a cap that makes thinking harder, 'in the upper parts of ones brain'.
+
+#+CAPTION: AI generated image attempting to depict the feeling of a Hofstadter abstraction ceiling. A piece of solid wood goes through the brain in the horizontal plane. Roughly parietal, dorsolateral prefrontal and premotor cortex are above the line. (the picture is not correct).
+file:./abstraction_ceiling_1.png
+
+Audio diary:
+
+/I never had this feeling, that there is something I would not be able to conquer mentally./[fn:1]
+
+This is visceral feeeling. This is not on the level of thought-content, not on the level of ideas or insight.
+
+This came relatively suddenly, or I noticed it suddenly. It stayed for certainly more than 20 seconds but certainly not more than 5-10 minutes.
+
+My personal pet hypothesis is that is a hardware level feedback from the machinery of the brain. [[* Appendix A: Hardware Level Sensors?]].
+
+** The Jolt of Fun / The Humor Ball / The Muses
+
+I could put every single word in quotations or say it like this:
+
+A few times I felt a joke jumping like some kind of lump of electricity from somewhere, usually the head, into my mouth,
+where it could be spoken effortlessly.
+
+Could it be the same circuits involved in tip of the tongue -  Destination speech muscles?
+
+- I once had the experience of a 'lump / ball' coming from inside the head, a bit above the left ear and 'falling' into my mouth.
+- This was fast, like half of a second.
+- Somehow I could speak the joke, then.
+
+- This is almost diametrical opposite of mental effort, it feels like something is simply 'coming into the mind',
+  but with forewarning in the form of a sensation.
+
+----------------------------
+
+Other times it would 'jolt' out from the belly or heart and the be sort of ready to be spoken;
+As if possessed, ignited by the idea. This happens faster than a second.
+
+During those times, it is as if jokes are spirit animals that make their way to the mouth.
+
+-----------------------------------
+
+The [[https://en.wikipedia.org/wiki/Muses][muses]] were the idea that creativity comes from some spirit gods, that one recieves the spirits and merely expresses them when doing art.
+
+Given the extreme dynamical nature of the software system of the brain; The infinite openness and intricacy of it's search spaces;
+It is not too crazy of a perspective to take; To see the brain as a kind of reciever of ideas or even /software animals/,
+which are out there in the space of possible software - waiting for the right kind of brain to come along, which they inhabit.
+
+Also: [[denote:20251026T183929][Recovering some spiritual concepts]].
+
+
+** The Chat Dim Offload
+
+"The chat Dim Offload": The feeling of ones problem solving mentality to be turned off, the moment you chose to open a chat window to ask about your problem.
+
+I feel a subtly visceral 'slumping' / 'drooping', 'loss of forward action', 'loss of poise'.
+It feels like something is turned off in my forehead. That my forehead is soft and 'turned off'.
+
+It is a momentary feeling that stays on the order of 1-5 seconds.
+
+#+begin_export html
+<iframe src="./lightbulb.html" style="width: 100%; height: 600px; border: none;"></iframe>
+#+end_export
+
+Situation:
+
+- I have a problem.
+- I usually would use my mental resources to make progress on solving the problem.
+- E.g. start debugging, start reading code, start making notes, start thinking about what I need to google, etc.
+- After using LLM chats for a while, I notice instead of using my mental resources, I open a chat window.
+- I have a subtle brain feeling, the 'chat dim offload'.
+- It's relative disconcerting.
+- You might know about [[https://www.media.mit.edu/projects/your-brain-on-chatgpt/overview/][MIT EEG Study]] with the bottom line, solving a problem with a chat window means less brain activity.
+- It could have been otherwise, but apparantly using ones brain also means there is activity.
+- I recommend Cal Newport as antidote.
+
+** The Swiper
+
+#+begin_export html
+<iframe src="./idea-swipe.html" style="width: 100%; height: 600px; border: none;"></iframe>
+#+end_export
+
+I have seen, in a group of young programmers, a spread of a peculiar head motion (cultural meme).
+
+This was using ones neck muscles to cock the head to the side (either sides), with an occasional flip,
+as if to fling out, or swipe away objects in the head (one side).
+
+It was accompanying coding behavior, and seemed to signal a situation of mental effort, technical thinking and focus.
+
+-----------------------------------------
+
+I have seen a version of this by the 'mental calculator' Rüdiger Gamm.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7e_wm0reJGc?si=k2X59dLIGoEtst3i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+I would tentatively say he seems to move his head as if on tracks.
+
+He probably can speak the number without the movement, but why should he?
+
+----------------------------
+
+While using a mind palace, I have developed a similar habbit.
+
+I would either mentally or actually move my head and also flick of the hand, as if to swipe away thoughts/ideas, which were distracting from the task at hand.
+
+At other times, using the hands like a conductor, pointing to and 'arranging' objects in the imaginary scene. This helps.
+
+A version of this is depicted in the form of the loathsome Charles Augustus Magnussen villian [[[https://en.wikipedia.org/wiki/Sherlock_(TV_series)][Sherlock TV Series]]], who keeps incriminating data in his mind.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gz8QbDoHFUQ?si=kG6GbdRmhpLA1KTC&amp;start=106" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+** Mental Effort | Imagine!
+
+- Imagine a cube with all sides simultanously, put the effort.
+- Imagine multiple melodies at the same time. Beginner is 2. 3 and 4 is advanced.
+- Imagine a gear turning one way, imagine a second gear moving with it, add as many gears as possible,
+  keep track of the movement using imagination.
+- Learn memory techniques
+
+Mental effort feels similar to working out - the feeling of going into the effort.
+
+What exactly is the nervous system doing when this happens? Meassuring sugar consumption?
+
+[[https://www.youtube.com/watch?v=PXTQsHOSpv4&t=4247s][Minsky 2007]] came up with an idea of an *Imagine!* book full of imagine exercises of gradually increasing difficulty.
+What if things like this are missing dimensions of education?
+If the field of education would be more advanced, perhaps you could teach all of school math in 2 years.
+
+----------------------------
+
+Minsky [The Emotion Machine 2006] has another idea on mental effort.
+What if a 'high intelligence person' is simply somebody that learned to enjoy the pain of mental effort early on?
+
+** The Mind Twist
+
+#+CAPTION: AI generated drawing trying to depict a mind twist brain feeling. A human head with a contortionist figure in the middle.
+file:./twist.png
+
+Situation:
+
+- Sort of have the idea that a concept would apply analogously to another domain.
+- I try to keep in mind both domains and the concept at the same time,
+- I have a 'glimpse' of it 'fitting together', a 'glimpse' of the unified perspective.
+- It causes me significant mental effort to attempt to 'recreate' the insight from the 'glimpse'.
+- It /feels/ like I have to 'twist' my mind, it feels like I sort of know the shape I want my mind to be,
+  but it is demanding to 'contort' it.
+- Then it 'clicks' and the perspective is available, and the analogy makes sense.
+
+
+Concretely, this happened to me:
+
+- I read /The Rational Optimist/ Matt Ridley (2011), a while back.
+- Similar to /Harari's Sapiens/ it describes the effects of commerce / trading on human society and stuff like that.
+- For instance commerce drivers specialization etc.
+- I am inspired by Minsky /The Society of Mind/, where a core idea being collaboration mechanisms of multiple agents.
+- In the book, he describes how flooding the labor market with cheap labor makes a society lose specialization.
+- I think "shouldn't this kind of concept have something to say in a cognitive system of agents?".
+- I think of both Chinese farmers having children and my then view of a Society of Mind software system.
+- I have the 'mind twist' described above, I 'glimpse' the perspective unifying them... then put mental effort, as if I need to twist my mind.
+- I need to take on a certain perspective which I did not before.
+- After I can think "If a cognitive system would be flooded with general purpose agents, they would specialize less".
+- And the general, unifying perspective is on the level of abstract agents and their degree of specialization etc.
+
+
+** The Water/Glass Wall of No Return
+
+#+CAPTION: AI generated drawing trying to depict a Water/Glass Wall of No Return mind feeling. A head with a water fall in the front.
+file:./water.png
+
+- I have this to varying degree of intensity. It happens when I engage in a confrontational situation.
+- When I decide to say/ behave in a way that can be hard for the other person / the relationship.
+- for instance when I set a hard boundary, or make a foundational criticism to a team member.
+
+- If feel like there is a soft wall, through which I go through with my head.
+- Kinda like it is made from water
+- In the most intense version I know, even my vision would blur for a moment.
+- This takes on the order of 1-2 seconds and is quite salient.
+- The 'shape' of this 'wall' can be different;
+- I remember at least once where it was to the right side only, like a blob.
+
+** The Snake
+
+I told a friend about my blog post and he told me about this:
+
+- He had the feelng of a snake coming up his spine and curling in his head.
+- He was tired or something at the time
+- Since then he has a headache in front of his head.
+
+--------------------------
+
+Please [[denote:20230301T123854][contact me]] if you know a potential brain feeling.
+
+* Appendix A: Hardware Level Sensors?
+
+1. The =brain= is a computer (software running on hardware) with =inputs= from =sensory surfaces=,
+   like retina, cochlea, skin receptors, *sensory aparati*.
+
+[[edraw:data=H4sIAHxQYWgAA71Vy67TMBD9FcvdgNQ0j5a+1ESCFRs2LIDLzjeZJFZTOxo7TcvXM87jlluoQEitElv22JlzzvhY2ZljwU6HSpmYl9bWW99v23bWzmcaCz8KgsCnHbzfsj1VUu3/tDHcbDZ+t8pZKzNbxvzdMuCsBFmUNuaLiCZHQCO1ink4C3myyyA3TGYxhwxF67kpRQ8C94Cv417gCUTdctavfu0RluP844BCgRrBAB7hvakhtZ+FlTrmSisgeAntB32KuRcGzLXIvZwh5N9i3g+euoFGCYryicZqzoxFvYcxSz/zBpEhZ7msqphPwsA9JKAWtmTE/hNBTL2VQ5qu2GIafOfMT3Z+T5kGTnCyQ6LJTh3suetvlu9SkmeR7gvUjcqu2Q1k8jzvwIpfP9LZmehBVcnawJWO6JJoVPKSa+0eqg7RW7kqEdnQ8UkpEM7dgCKRi/iDnH/NnZ6FuohcXsSv+2pELuTggv9IPgmCvKvD3/NHd84/H/JbOFnmOk+otNQY84PMssqdm1bWy8VBVvSZEcp45GKZDwtG/iD8cH1tNncrt6YWKa2Oxu+Aw0UPvCDg5BmFVDvf4Q7u7C3ogSJzNFi9mfx2095eG/12HXrjOcMTKiPJX6IFtYjaIPuemNFrzLvjzW9ofNjRdl5yR0seSwwoo/HMTIM5bTXjKT+OzXiDyHAJnMFMGQik3uylmhKFQw0obINACzadsYcz7EwxXgWp6sa+VMkvqNHfLfkJcL7F3QUHAAA=]]
+
+
+2. Idea: There should / could be hardware level feedback /sensory aparati/.
+   Just as simple as additional sensory surfaces, but they readout states
+   of the central nervous system. For instance the amount of activity.
+
+[[edraw:data=H4sIAJj/9WgAA9VW32+bMBD+VyzvoZtWiiGU0ipQbU+87GUP3Y83B0ywQmxkOyHZX78zhiTNGimd1EwTENnG3H13933nTPV6jjbLRugU18a0D77fdd1NN7mRau6HhBAfdmC35WHTcLF4aWNwf3/v928x6nhp6hQnMcGoZnxemxRHIUzWTGkuRYqDmwBn05JVGvEyxaxUtPPsFFaXVC2Yer7uEY8qJTuM3NtvzkM8zvPBCyy0immm1uyTbllhvlLDZYqFFAzcc9Z9lpsUewFB9gntjZFi1fcUu8GPfiAVZwLs0ZWRGGmj5IKNVtzMG4IMMKp406T4XUDsBQG01NQI0H8BF9fenfV0fYeia/ITIz+b+g4yDGzA2VQBTLTp3W7735Pp26dkRovFXMmVKI/RDWCqquqdzQ8/kuUW4LGm4a1mR3GEe0NjJDtbib0gOwAvsVkCsMEEBgUsBMQOYCW0X4BHwzYGVVIYT/NfYC2MMLJrHhVFLVWKl7wsG4vU7qnokjdgRlOhPagbr47zaYn3oFtagK2xtn2mbHosEoCUzRTlYupbP0NCz46OkKpP1i7T+wpEriQT4jxFLsD/1HxfqLe0Hzv7PfsdxT0mgHwr1bx/94eSPxwL6TQIR2wrqMAKNiFPYUxQ8Ff5qip6S8g58UzIAZ9fSeA9+4PkbD5PkiGRoW0iBrYIVDRU61G/PQjosGy/rec9gnWmBG2QZkJLpUEI9uszjaDSypgtcYZ2Hw5Kulzs0aABG9Tj4zP/55g4jdFBsd3qJOQD/0AsnH38Z+4tBY7cX5J5k3hHqSsuHKeuDkjVo3pLfU9A36C7J9A46jU+9JTXH1l3s2gWuSMrHI6s3YkVjifW7dt3rDDqO9U6fPmux/uyrSaMD/jGRbsyFylvDOWF7OcxIfltQvIohgfmwLscJJBD2fMwvnAugqHfx7b11NtWmpoZXkA3dUqgheFrbraDDpBYFQ1b7fLlz+GBP8jZb/2vcDlICwAA]]
+
+Sounds reminiscent to Attention Schema Theory (AST) but is a more general idea.
+
+*content level*: The software content. For example my datastructure is about a shopping cart.
+
+*harware level*: 'superficially' measurable aspects of the machinery of a computer. For instance the temperature of the wires.
+
+--------------------
+
+In other words, if we have sensors for the state of the nervous system itself;
+It would make sense to feel them as another kind of interecoption - as brain feelings.
+
+* Appendix B: Thoughts on Movement and Cognition
+
+The German speaking world discovered a core concept of neurophilosophy early, the [[https://en.wikipedia.org/wiki/Efference_copy][Efference Copy]].
+The same concept was discovered in neurophysiology and called Coroallary Discharge [[[https://en.wikipedia.org/wiki/Corollary_discharge_theory#cite_note-pmid14794830-8][Sperry 1950]]].
+
+Broadly speaking, it is usefull to copy the signals going from the brain to muscles, back into the brain as inputs.
+
+---------------------------
+
+One reason for this is to factor out ones own movement from movement in the world. The best example are the eye movements.
+
+You can observe the logic of this effect:
+
+1. The world stays still even though you move your eyes.
+2. You are blind for a moment during eye movement - see [[https://en.wikipedia.org/wiki/Saccadic_masking][Saccadic masking]].
+   This can be observed powerfully by looking at your face in the mirror for a short while.
+   You never see your eyes move.
+3. Press sideways on your eyeball gently. Here, the world / the vision moves peculiarly.
+   Only the eye movement motor systems are hooked up to allow for this movement factoring, not external eyeball press movement.
+
+---------------------------
+
+Clearly, through movement (mental or motor), the brain can stimulate itself and create it's own "micro" situations.
+
+If there are neuronal subnetworks representing certain mental resources, and the subnetworks find a way to stimulate themselve by using motor resources,
+then why shouldn't they do so?
+
+[[edraw:data=H4sIAB039mgAA80Xy46bMPBXLFeqWikszyVkG5DaUy+99EAfNxdMYgVsapuQ7dd3zGOTpbvtbrRBFQy2x868ZzxZq/0GHaqSqxhvta5vbLtt26vWvxJyY3uO49hwAvdHbg4l47uHDrqr1crudjFqWa63MQ6XHkZbyjZbHeMocDDaU6mY4DF2r1ycrHNaKMTyGNNcktYyS8BWRO6ovI+3HItIKVqM+t0vA4dx/XHgAohaUkXlnr5XNc30Z6KZiDEXnAJ7RtsP4hBjy3WQAc+8GElafI1xP/nWTYRklAM90miBkdJS7OhIpV9Zg5IuRgUryxi/ch3zgAI10VsE0n8CFgtraTgtlihYON8xspO13YsME6NwspYgJjp0bG+776PmO5rkB8l2Gykank+lG4QpiqJjtjn9kchvQTxalqxWdKKHdyQ0anJHKzIPWAfE68x16McM1pEZzdrIZ78w8XAg7kYXIO56E+qd23rfWJSD1RpZvnn1Rwi+nUbA4/x7j5hIAGYIIHUDGEOAwEQegIlAMw97GTQ9aGQ+FuHZVsgYVyzPS+NXwbVVkIqVILsiXFkQ5awYNhT7RY0m02A0WXujapLB7pgYXZi5jtmMcQCMkwpinZQQ/Uo0MqNqbRsRzrF3Qa4N4Yfs7U1DZTZdO86jrq9/NkK/Y7xuNOJNVlLWY87XOYxWJtn+qrPvXCCCj9TDeSIYonTvOdv77zycI8P5Ke+ZZj5xYjCtQsFYKGZS9jo81WW2NAnDPk1MPUyqRkFujElxSY1N+QMT38VTGhpwnPQ6AggBAgDAQWVJA8BBGqcB4ALABYDzAQcZkPqA8wE35tqlhYZsSGFMoYanUMtTsFsKtd3U+Hkd5we940AInNCioJLyjKJM1LdzONB3/iNbhN7pvdYFMVKUK2joMmRDcyhqyURGa2gL+Wid+W6i4db1TYopWhaW0qxqSnIqzYveut09f1q8XpT6cryB5m5flsOVbnI9IZlme4omXcwCZaRRjG9QJbSQ8N1Tc2Q0c9d2P9sKYz8eHPv0oG/cvaF8eoOhn0l/uICeQD86i/7QR/ybvj+krL0BgH9+yW+0JddUIQ4AAA==]]
+
+
+Through plasticity, the resources associate with the movement.
+A movement can then conviniently become a kind of button to press for the person, activating certain mental states.
+
+This effect is operationalized in a technique called 'Anchoring' of self-hypnosis (also [[https://en.wikipedia.org/wiki/Autogenic_training][Autogenic Training]]).
+
+It is the definition of 'utilizing all of ones available resources'. And a real version of the idea of 'using 100% of the brain'.
+
+* Footnotes
+
+[fn:1]
+
+
+#+begin_quote
+... But I cannot accept this. Everything you conquer, you conquer from spending tremendous effort.
+If I cannot do a thing now, I have to find aspects that I can train and hone in on the thing some other way.
+#+end_quote
+
+
+[fn:3]
+
+G. Sussman, H. Abelson, /The Structure And Interpretation of Computer Programs/ (1985)
+
+[fn:2]
+
+As an aside, where did internet forums go? I grew up somewhere in between it and social media.
+There were like 10 minutes I was posting on a lucid dreaming forum around 2014.
+Either way.
+
+----------------
+
+
+Fiction:
+
+"The Name of the Wind", 2007 by Patrick Rothfuss features 2 magic systems,
+the first feels like some thermodynamical aspect of the physical world, complete with
+19th century flavored explanations, featured in the book.
+
+The second is much more mysterious and a [[https://en.wikipedia.org/wiki/True_name#:~:text=According%20to%20practices%20in%20folklore,true%20name)%20power%20over%20them.][True Name]] magic system.

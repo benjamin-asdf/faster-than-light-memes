@@ -1,0 +1,408 @@
+#+title:      screencasts
+#+date:       [2023-06-17 Sat 13:07]
+#+filetags:   :public:feed:video:clojure:emacs:flow:system:
+#+identifier: 20230617T130706
+#+EXPORT_FILE_NAME: screencasts
+#+OPTIONS: toc:nil
+
+* Advent of Code Day 14
+
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nIaC45Uzhm4?si=eCu9oFgoWp7bEz2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Lost the audio for the last part, generated some binaural beats instead.
+
+
+Sound effect:
+https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14834
+
+
+
+#+begin_export html
+Sound Effect by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14834">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=14834">Pixabay</a>
+#+end_export
+
+
+
+* Advent of Code Day 7 | MeTTa Type Talk | Clojure | Emacs | Asmr - like
+
+Made a solution for advent of code day 7 using MeTTa from Clojure,
+then made one in clojure core.logic to actually get my stars.
+
+btw my website: https://benjamin-schwerdtner.de/
+
+background is : https://soundcloud.com/katmatrac/the-mermaid-sirens-pool-fantasy-music-asmr-bubbles-for-sleep-study-or-relaxation-10-hours
+
+Thanks
+
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+
+Keywords: Asmr livecode, Clojure, Emacs, MeTTa type talk, clojure core.logic,
+relaxing programming, just coding, programming, personal, keyboard, kinesis
+
+
+
+
+* MeTTa Type Talk From Python From Clojure | Tutorial Walkthrough Part 2
+
+Part 2 of going through the MeTTa python integration.
+Using libpython-clj clojure and my minimal metta-mode.
+
+
+- https://github.com/clj-python/libpython-clj
+- https://github.com/benjamin-asdf/metta-mode-alpha
+
+btw my website: https://benjamin-schwerdtner.de/
+
+
+Music is:
+https://soundcloud.com/courtesy707/courtesy-my-dazed-friend-feat-klo-against-interpretation
+
+Shoutout to Courtesy
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+Keywords:
+
+Metta Type Talk, Clojure, Python, Tutorial, Walkthrough, Linux, programming, emacs,
+screencast, livecde, libpythonclj, relational programming, functional programming,
+jvm, metta
+
+
+* MeTTa Type Talk From Python From Clojure | Tutorial Walkthrough Part 1
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YCg0fSJtXIc?si=MN1soKVfWVq64O_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Part 1 of going through the MeTTa python integration.
+Using libpythong clojure and my minimal metta-mode.
+
+
+- https://github.com/clj-python/libpython-clj
+- https://github.com/benjamin-asdf/metta-mode-alpha
+
+btw my website: https://benjamin-schwerdtner.de/
+
+
+Music is:
+https://soundcloud.com/avocadoofficial/avocado-suedpol-expedition-2024
+
+Shoutout to Avocado
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+Keywords:
+
+Metta Type Talk, Clojure, Python, Tutorial, Walkthrough, Linux, programming, emacs,
+screencast, livecde, libpythonclj, relational programming, functional programming,
+jvm, metta
+
+
+
+* Libpython clj at the REPL
+
+
+Link: https://youtu.be/tylHB6iWAdI
+
+Production quality rising in tiny, tiny amounts.
+I got a better mic now.
+
+This is how it looks when I develop / explore python at the clojure repl.
+
+Check [[https://github.com/clj-python/libpython-clj][libpython-clj]], it has great documenation.
+Shout out to Chris Nuremberger for an amazing tool.
+
+There are also amazing talks about this:
+https://youtu.be/vQPW16_jixs?si=dy382E670YtSRvdM
+
+Repl live, emacs live, clojure fun.
+
+
+* shadow-css and repl-driven development in practice
+
+[[denote:20241101T180747][blog post]].
+
+* Vehicles in space, current state of my programmatic art
+
+[[denote:20240913T201351][Art Diary]]
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wE3B96zXW8c?si=WRWRbw0TDfDce4wE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+
+* Braitenberg vehicle 2 and 3 - fear, agression, love
+
+See: [[denote:20230915T190843][Vehicles Overview]], [[denote:20231016T095054][Fear, Aggression, Love]]
+
+
+Making some cybernetic, organismic machine animal simulations using Quil and Clojurescript.
+
+The most canonical Braitenberg vehicles. 2 sensors, 2 motors, ray sources in the environment and different wiring make different behaviour.
+
+I will deploy this soon.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LIhU1WOPnDI?si=RoocTkosXfA1GLrb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+Life coding Emacs, Clojure, Meow, screencast, programming, cybernetics, code, animals, bio computing, braitenberg, vehicles, love, fear, aggression, explore, system theory, control theory, simulation, toy, fun, little animals
+
+* Quil first experiments
+
+Probably way too lengthy. You can watch how I spent last Saturday :)
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G1PN8Vnwuds?si=cyQsMCXuQXT1uzhL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Clojure REPL driven development showcase
+
+*The fruits of Clojure I*
+
+Making a knowledge base database keyword extractor with open ai chat api.
+
+https://www.youtube.com/watch?v=GcJgGy-dfvE
+
+Primagen was recently checking out Uncle Bobs Clojure post, which did not mention the most important thing about
+Clojure. Interactive Programming is the big magic word my friends.
+
+Related: [[denote:20230707T090418][Interactive Programming]] and [[denote:20230708T095438][Lisp overview]].
+
+#+begin_src clojure
+#_(add-libs '{net.clojars.wkok/openai-clojure {:mvn/version "0.9.0"}})
+(ns scratch
+  (:require
+   [clojure.java.io :as io]
+   [clojure.set :as set]
+   [clojure.string :as str]
+   [clojure.java.shell :as shell]
+   [wkok.openai-clojure.api :as api]))
+
+(def api-key (memoize (fn []
+                        (str/trim (:out (shell/sh "pass" "private"))))))
+
+(defn make-chat-completion [messages]
+  (api/create-chat-completion {:model "gpt-3.5-turbo-16k"  :messages messages}
+                              {:api-key (api-key)}))
+
+(defn resp->message [resp] (-> resp :choices peek :message :content))
+
+(def extract-keywords!
+  (memoize
+   (fn [file]
+     (-> (make-chat-completion
+          [{:role "system"
+            :content
+            "Extract the most interesting, essential keywords from the text.\n\nYou output edn vector format.\n\nExample: [\"AGI\" \"Timeline\"]"}
+           {:role "user" :content "Doc:"}
+           {:role "user" :content (slurp file)}])
+         resp->message
+         read-string))))
+
+(defn query [db key]
+  (get db key))
+
+(defn assert-keywords [db file extracted-words]
+  (reduce (fn [res e] (update res e (fnil conj #{}) file)) db extracted-words))
+
+(def the-db (let [db {}
+                  kws (for
+                          [file ["/home/benj/notes/20230126T094804--the-joy-of-clojure__clojure_code.org"
+                                 "/home/benj/notes/20230707T090418--conversation-1__clojure.org"]]
+                          {:file file :keywords (extract-keywords! file)})]
+              (reduce (fn [db {:keys [file keywords]}] (assert-keywords db file keywords)) db kws)))
+
+(comment
+  (spit "the-knowledge-db.edn" (prn-str the-db))
+  (read-string (slurp "the-knowledge-db.edn"))
+
+  (->
+   (assert-keywords {} "foo" #{:a :b})
+   (assert-keywords "foo2" #{:a :c})
+   (query :c)))
+#+end_src
+
+Keywords: Emacs, Lispy, emacs lisp, livecode, screencast, how to emacs, Clojure, REPL, showcase, openai api, chat gpt, programming, code editor
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3AqEDzAT4n8?si=RH5hryyLqrlIcHJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Advanced cider jack-ins
+
+As answwer to [[https://github.com/clojure-emacs/cider/issues/2473][this]] cider issue on github.
+
+#+begin_src emacs-lisp
+;; jack-in-cmd allows you full control over the command that starts the nrepl server process
+
+(defun my-cider-jack-in-prompt-cmd (jack-in-cmd)
+  (interactive "sJack in cmd: ")
+  (cider-jack-in-clj
+   (list :jack-in-cmd jack-in-cmd)))
+
+
+;; I personally like to def a jack in function in elisp which I have somewhere,
+;; for instance the readme of my project or dev.el
+
+(defun ftlm-vehicles-make-nbb-nrepl-jack-in ()
+  (interactive)
+  (cider-jack-in-clj
+   '(:jack-in-cmd "npx nbb nrepl-server"
+                  :project-dir "/home/benj/repos/clojure/vehicles/")))
+#+end_src
+
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IJuQm0aDVIo?si=k50fBWEwcx1kPCKl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+Keywords: Emacs, Lispy, emacs lisp, livecode, screencast, linux, rice, productivity, scripting, programming, Clojure, Cider, Clojurescript, Nbb, Babashka
+
+
+* Lispy how to to insert single brackets
+
+A frequently asked question when using [[https://github.com/abo-abo/lispy][Lispy]] is how do I insert single brackets, quotes, parens?
+
+The answer is =quoted-insert=, wich is bound to =C-q= by default.
+
+It reads the next character and inserts it, bypassing your current keymap and such.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kPWUYT6kYLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+Keywords: Emacs, Lispy, emacs lisp, livecode, screencast, how to emacs, how to lispy, lispy tips, emacs tips
+
+* Repl into production example
+
+Real world show case repl into production. This is the kind of thing where Lisp delivers.
+
+Keywords: Emacs, stumpw, arch, Clojure, Datomic Cloud, AWS, EC2, discord bot, REPL, production, fun with computers
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KC108585R6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+- Start nrepl on your prod server in some way.
+  s. https://nrepl.org/nrepl/usage/server.html
+
+#+begin_src clojure
+  (let [server (nrepl/start-server
+                  :port 7000
+                  :bind "0.0.0.0"
+                  :middleware cider.nrepl/cider-middleware
+                  :handler cider.nrepl/cider-nrepl-handler)]
+      (reset! nrepl-server server))
+#+end_src
+
+
+Now we want to make an ssh tunnel to this machine to port 7000 on the server machine
+
+=~/.ssh/config=
+
+#+begin_src
+Host support-bot-ec2
+     HostName ec2-18-212-83-183.compute-1.amazonaws.com
+     User ec2-user
+     IdentityFile /home/benj/.ssh/ben-ec2-key-pair.pem
+     LocalForward 7000 ec2-18-212-83-183.compute-1.amazonaws.com:7000
+
+#+end_src
+
+** from my notes
+guide
+
+https://github.com/markbastian/replion
+
+** ssh
+Opening the tunnel is as easy as:
+
+ssh -i/path-to-key.pem -L 7000:ec2-X-X-X-X.compute-1.amazonaws.com:7000 ec2-user@ec2-X-X-X-X.compute-1.amazonaws.com
+where the X vals are your compute instances public DNS.
+
+** ec2
+https://console.aws.amazon.com/ec2/v2/home?region=us-east-1
+
+find instance
+find rules
+add inbound rule
+
+** failure modes
+
+*** Network SSH p22: If your addresses are wrong, some error; if your path
+to the pem key is wrong, quick auth error
+
+*** Network TCP p7000: If you open up the ports on the wrong SG or source CIDER, etc., IIRW connection will fail quickly with some error, or silently after a long timeout
+
+*** nRepl service: If you forget to start your nRepl server on the appropriate port, long timeout IIRW
+
+
+* Fast cider overlays
+
+blazingly fast cider overlays and how I got them.
+
+keywords: Emacs, performance, programming, fun, cider, clojure, eval, ovelays, fast, quick, zappy, blazingly fast
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XNNEkqlXsz0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Bobscheme
+
+[[denote:20230705T083842][Bobscheme page]].
+
+Now I made a thumpnail, woar!
+
+I also figured out that I can share -> embed on youtube. Then the iframe works (see above link).
+
+* Real world web app screencast
+
+Adding a google drive list feature to my Clojure, Scittle, Reagent, Reitit app.
+
+Real life Clojure programming. REPL-driven development. Emacs, meow, lispy, Clojure, Clojurescript.
+
+# #+begin_export html
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/ulwg74gtF30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+# #+end_export
+
+* The journey so far:
+
+- [[https://www.youtube.com/watch?v=W5_mEolJ_Bs][Complete Flip Coin Website 1.5 hours]]
+- [[https://www.youtube.com/watch?v=708EYQj8n1w][More Scittle livecode]]
+- [[denote:20230620T202742][Emacs bash-completion]]
+- [[https://youtu.be/7vXsXzuc01c][dired-guess-shell-command]]
+- [[https://www.youtube.com/watch?v=BYFeM5lQoFM][Lispy Eval Other Window in the context of some cider command]]
+- https://www.youtube.com/@faster-than-light-memes/videos
+
+* Goals
+
+- Show practical Lisp and Clojure programming, with Emacs
+- Show Emacs
+
+I want to get good at explaining and showcasing what it means to program Clojure.
+What is repl-driven development, how to do it and how it presents itself to the mind?
+(its look and feel).
+
+For instance,
+- evaluating little forms every 10 seconds.
+- Tricks like inline defs
+- Impressive stuff like live coding a whole app.
+
+Currently, I still try out stuff and need to get over the initial awkwardness of making videos.
+
+* Frames of mind
+
+I realized I have a completely different communication style when I present vs. when I try to develop.
+One of the next things to try is to actually present in a video.
+And then slowly bringing in more live coding maybe.
+
+* Role models:
+
+- The Primagen
+- System Crafters

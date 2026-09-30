@@ -1,0 +1,195 @@
+#+title:      design-philosophy
+#+date:       [2025-06-19 Thu 18:20]
+#+filetags:   :mind:personhood:design:philosophy
+#+identifier: 20250619T182010
+#+EXPORT_FILE_NAME: design-philosophy
+
+Notes, work in progress...
+
+* Quotes
+
+#+begin_quote
+Design is simplifying, not complicating.
+#+end_quote
+
+(I forget who said it but it would fit with Rich Hickey).
+
+#+begin_quote
+Simplicity is the ultimate sophistication.
+#+end_quote
+
+Leanordo Da Vinci
+
+* Elegance
+
+The property of good design.
+
+#+begin_quote
+Elegance?
+
+Pardon me, Your Honor, the concept is not easy to explain -- there is an ineffable quality to some technology, described by its creators as a concinnitous, or technically sweet, or a nice hack -- signs that it was made with great care by one who was not merely motivated but inspired. It is the difference between an engineer and a hacker.
+#+end_quote
+Judge Fang and Miss Pao in =Neal Stephenson='s The Diamond Age, or, A Young Lady's Illustrated Primer
+
+
+
+
+* A rich simplicity?
+
+- Isn't good design not /only/ simply, but also sort of rich in it's simplicity?
+- Lego has like 12 or 20 important stones, not 2.
+
+- If I understand correctly, particle physics is elegant. And in particle physics there are not 2 kinds of things but like 10.
+
+- I don't buy the idea that elegance is mere compression. More is happening - *expressivity*.
+
+
+- paraphrasing:
+- Leibniz: The world is intelligible because nature ('God') made the world from maximally simple rules,
+  creating maximal content-level richness.
+
+- *Rule level* / Algorithms: Example *natural selection*.
+- *Content level* / dynamic layer: Example concrete *tree of life* / genetics.
+
+- Von Neuman architecture; Rule level: The hardware, Content level: The software.
+- Lisp: Rule level: The interpreter, the REPL. Dynamic level: The program.
+
+- Leibniz: /Vernunftgruende/ - simple reasons that cannot be otherwise (rule level).
+- /Tatsachengruende/ - complicated reasons (historical, contingend) that /could have been otherwise/. (like the specifics of organims, why elephant trunks? because history).
+
+- We resemble fish during embryology, not because of a law of nature, but a factual reason / historical continency.
+  /Tatsachengrund/. Alternatives of this could be true, we could /not/ resemble fish during embryology.
+
+- In fact, it *is* a law of nature (epistemology, evolution by natural selection) that the /alternatives are possible/.
+
+- The reasons for why a =nand= abstract circuit is performing a nand and why it can be build into a universal computer,
+  are of a different kind. They don't depend on actual contingent facts.
+  A /rational reason/, /Vernunftgrund/.
+  The negation of this is perhaps non-sensical - A nand circuit not performing the logical operation nand - if this would be up
+  for grabs, then anything would.
+
+
+- Leibniz: The world is the best possible world in the sense that from the smallest set of rules, the largest set of beauty was created.
+
+- The world grows from a set of simple rules - sometimes called koleidoscope hypothesis [who? F. Cholet in cognitive science context].
+
+- Leibniz: Why does science work in the first place? Despite it's complexity, the world can be described by simpler rules (algorithms).
+
+- Leibniz also already understood that any sequence of data (/content level/) can be described by a function.
+
+- For a computer programmer, there exists always a program that will output a string of =N= bit length:
+  Example in Clojure
+
+#+begin_src clojure
+  "001010110011"
+#+end_src
+
+- There is always a program that uses the same amount of memory as the string itself.
+  Saying that the program (nature) is taking on the shape of the data.
+  It is like the maximally useless scientific theory to say that the data exists.
+
+- Hermann Weyl (paraphrazed): If you would allow any function to count as 'law of nature', the notion of law of nature would be vacuous.
+
+- In other words, science can find rules that compress the description of the world and make it predictable.
+
+- This interplay of simplicity and comlexity comes out everywhere (in science and explanation making) once you look.
+
+- We can describe the software of a program with a few simple statements, yet an epic story of bits, electricity in circuits,
+  memory lookups - themselves on a considerable level of abstraction on top of the circuits etc.  happen.
+
+- You cannot look at the bits to say what the software is doing, it is a /level violation/.
+  This is a real affliction we have in computational neuroscience.
+
+- In complexity science, the term 'emergence' means that there is a higher level of description possible, that is there is
+  a way to talk in simple terms about a thing - even though in reality it is made from many different interwoven parts.
+
+- Software is the quintessential example.
+
+- Physiology was one of my favorite subjects of biology. It's a language of design and function:
+
+- We talk of the heart as a blood pump. Using this abstraction gives leverage over describing what the heart does.
+
+- You can make predictions: For example when it goes too slow the blood will not be pumped as well, ergo whatever the point of blood flow is
+  will be a problem - causal reasoning.
+
+- It might seem obvious, but this is because biology is an awesome science.
+
+- consider how clueless we are when we look at the neuronal activity of the brain.
+- How clueless we would be when looking at the electricity of a computer without knowing the concept of an operating system.
+
+# - David Deutsch's example is describing a copper atom on the nose of Churchill's statue
+
+
+
+
+* Notes
+
+The best design is not merely /simple/, it is even "self evident" ([[https://youtu.be/cidchWg74Y4?si=vyOIgzTIdKZW4l0u][Stuart Halloway 2012]]).
+
+
+- Elegance is the property of good design (in Software design).
+- The Vitruvian Triad is "durability, convenience, and beauty".
+- Elegance is pragmatic, useful and *delightful*.
+- Elegance is mysterious, hangs together with truth, scientific discovery and art.
+- In pure math, an 'elegant' program is sometimes the shortest computer program with a certain input-output, given an axiomatic system A.
+
+
+** Kolmogorov hypothesis of elegance?
+
+- The best source code is usually not the shortest. But has to do with utilizing the material at hand, and doing so with a 'sensibleness', and 'straight forwardness';
+- The best source code displays 'artistic swag', 'conscinitious' or 'technical sweetness'.
+- The best source code makes clear that in the infinite space of possible things to do the programmer chose one way of doing it. Without coercing anybody else
+  to think or behave in any pre-determinend way.
+- That is, the best source code leaves an open futre in regards to the creative problem solving skill of future programmers.
+
+- Like in lego, you would not make a lego piece with a bespoke concrete joint into which only bespoke pieces fit. You make a lego piece that fits together
+  with the rest of the lego pieces, leaving it open to be composed in the symbolic system of lego design.
+
+
+- One idea would be that by modeling real-world resources, combining 'short' and 'frugal' would yield a notion of elegance closer to the one
+  in computer programing.
+
+- Beyond simplicity, the best design is self evident. Self-evidence is the true swag, beyond even beauty.
+
+- Elegance in biology in my feel has something to do with the range of possible uses of a thing. An elegant design is one that let's one
+  *win* in the future.
+
+- Like planning for the unplanned to occur. Because problem solving in the real world is open ended.
+- G. Chaitin points out that adaptationism is wrong. It get's the open endedness 'keeps on going' part of evolution wrong!
+- Therefore, the problems of creativity and open endedness truly are at the cutting edge of theoretical evolutionary biology also (A theory of elegance will update on the framework of adaptationism).
+
+- Elegance is a creative problem and therefore open ended. I.e. there is no 'most elegant' solution to anything.
+- The same way as we can always find out better theories of the world (Popper), we can find new creative ways of solving problems.
+
+- Good desing is about winning (in the future), resourcefulness, usefulness and fun.
+
+** Cognitve Psychology of Design Work
+
+- It is easier to make cognitive neuroscience on ordinary reasoning, but humans are *experts* in things.
+- I say the most interesting ideas and cognition happens when humans are reasoning about their field of expertise.
+
+
+----------------------------------
+
+
+- It is possible to have a feel for the future uses and /fun/ of a thing, in the context of future elements (forming a harmonic whole).
+- This is on hand an element or module that simply 'fits many things well', therefore is safe to pick.
+- But there is also a 'I predict future fun, given this element'. This is more a kin to a vague hunch that
+  some unkown future element could possibly exist.
+- A 'wild' move as it might be called in chess, changing the course of the game into fresh, unexplored configurations maybe.
+- In terms of the /Gestalt/, percieving some parts of a whole (the assembled system in the future) might already give us a feel
+  for the Gestalt of the whole.
+
+
+
+
+** Butterflies
+
+Braitenberg: "Butterflies are the flowers of the animal kingdom".
+
+* Lit
+
+- [[https://en.wikipedia.org/wiki/Firmness,_commodity,_and_delight][Vitruv]]
+- David Deutsch
+- [[https://youtu.be/gT7DFCF1Fn8?si=uns6YxGLYzFIGK_f][Why Are Flowers Beautiful?]]
+- [[https://youtu.be/tTN_9mJIWNw?si=UYkPm_9zbq-1Gs1P][Ranulph Glanville]]

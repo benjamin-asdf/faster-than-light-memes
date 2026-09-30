@@ -1,0 +1,4 @@
+#+title:      to-lisp
+#+date:       [2023-07-08 Sat 13:44]
+#+filetags:   :public:
+#+identifier: 20230708T134436

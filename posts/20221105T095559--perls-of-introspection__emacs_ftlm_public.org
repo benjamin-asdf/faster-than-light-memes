@@ -1,0 +1,109 @@
+#+title:      perls-of-introspection
+#+date:       [2022-11-05 Sat 09:55]
+#+filetags:   :emacs:ftlm:public:
+#+identifier: 20221105T095559
+
+Recently, I watched [[https://www.youtube.com/watch?v=6M1JesjbtDM][BugsWriter falling in love with elisp]] - he said about =describe-mmode=
+
+#+begin_quote
+Why did nobody ever tell me about this?
+#+end_quote
+
+Here are a few pearls of introspection I have gathered in my journeys.
+
+* The describes
+
+** describe-mode
+
+Lists all current keybinds in a buffer. Huge output, sometimes what
+you want.
+
+** describe-char
+
+Do you want to know why something looks the way it looks?
+Usually, describe-char gives you a hint which code is doing something
+to the text.
+
+Story:
+Once I deleted some packages on my system, then I go into emacs =info=
+and some of the text is not rendered right.
+
+=describe-char= gave me the hint, the =fixed-pitch= face wanted
+"Monospace Serif" or some such but I only had Monospace.
+
+So I did this and was happy ever after:
+
+#+begin_src elisp
+(set-face-attribute 'fixed-pitch nil  :family "Monospace")
+(set-face-attribute 'fixed-pitch-serif nil  :family "Monospace")
+#+end_src
+
+I also use =describe-char= to know which face I am looking at. Or to
+check what a button is doing.
+
+** describe-key
+
+If you use emacs and you don't know this one, well prepare for a "I
+cannot believe I didn't know" kinda moment.
+
+"What does this key do?" - the answer is =describe-key= and hit the
+key.
+
+** describe-function
+
+#+CAPTION: Poor mans emacs function autocomplete with embark
+https://github.com/benjamin-asdf/faster-than-light-memes/blob/master/assets/desc-fun.gif.gif?raw=true
+
+Emacs functions have amazing docstrings.
+
+** describe-keymap
+
+Probably faster than describe-mode, renders a keymap in a help buffer.
+
+** prefix-help-command
+
+You type =?= after starting to type a prefix, then you get the binds.
+I =embark-bindings= for this which gives me lots of pleasure, because
+I can complete with =vertico= again on the commands!
+
+** M-x describe- ...
+
+There are more, some of them I never used. Emacs is wast like the ocean.
+
+* view-lossage
+
+You accidentally hit some key, and something unexpected happens.
+
+You might think now:
+
+"Emacs is messing up the whole buffer!"
+
+or
+
+"Holy shit whatever I just accidentally did is powerful and I need to
+know how to do it".
+
+Worth trying =view-lossage=. It shows the last keys + commands. Bit
+like =describe-key= but after the fact.
+
+story:
+For years I sometimes accidentally hit =y= before typing the text for
+an =avy= command.
+
+Everytime I was like "Holy cow whatever I hit there is powerful". It
+makes the cursor stay and yank the target word.
+
+I didn't know about =view-lossage=. The thing is, it would not have
+helped, because =avy= is reading the key, then dispatching on the key.
+I guess it needs to go through the keymap system or something to show
+up in =view-lossage=.
+
+
+
+Hit `?` before typing the keys for avy.
+The way it works is that avy can dispatch with different actions, the
+default is to jump to the location, but =y= for example yanks a word
+and makes your cursor stay where you are. It is really powerful.
+Ace-window has the same paradigm.
+
+* Footnotes

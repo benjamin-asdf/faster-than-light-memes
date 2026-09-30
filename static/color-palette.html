@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin J Schwerdtner Color Palette</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .color-box-wrapper {
+            width: 80px;
+            text-align: center;
+            cursor: pointer; 
+            padding: 5px; 
+            box-sizing: content-box; /* Crucial for consistent sizing when border is added */
+        }
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+        }
+        .color-label {
+            font-size: 10px;
+            word-wrap: break-word;
+            line-height: 1.2;
+            height: 30px; /* Give room for name and hex */
+            overflow: hidden;
+        }
+        
+        /* Favorite Style */
+        .favorite .color-box {
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Benjamin J Schwerdtner Color Palette</h1>
+    
+    <h2>✨</h2>
+    <hr>
+    <div class="container favorite-section">
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: black;"></div>
+            <div class="color-label">bg<br>black</div>
+        </div>
+
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #96fe8f;"></div>
+            <div class="color-label">mint-green<br>#96fe8f</div>
+        </div>
+
+                
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #a1fe9a;"></div>
+            <div class="color-label">mint-bright<br>#a1fe9a</div>
+        </div>
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #abfea5;"></div>
+            <div class="color-label">mint-bright-1<br>#abfea5</div>
+        </div>
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #b6feb1;"></div>
+            <div class="color-label">mint-bright-2<br>#b6feb1</div>
+        </div>
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #c0febc;"></div>
+            <div class="color-label">mint-bright-3<br>#c0febc</div>
+        </div>
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #d5ffd2;"></div>
+            <div class="color-label">mint-bright-4<br>#d5ffd2</div>
+        </div>
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #F689FF;"></div>
+            <div class="color-label">heliotrope<br>#F689FF</div>
+        </div>
+
+                <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #311b33;"></div>
+            <div class="color-label">heliotrope-shade<br>#311b33</div>
+        </div>
+
+                <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #Fe9aa1;"></div>
+            <div class="color-label">sweet-pink<br>#Fe9aa1</div>
+        </div>
+
+        
+
+                      
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #ffa500;"></div>
+            <div class="color-label">orange<br>#ffa500</div>
+        </div>
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #feb48f;"></div>
+            <div class="color-label">hit-pink<br>#feb48f</div>
+        </div>
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #febf8f;"></div>
+            <div class="color-label">Chardonnay<br>#febf8f</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: NavajoWhite;"></div>
+            <div class="color-label">cursor-default<br>NavajoWhite</div>
+        </div>
+
+  
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #5F89A9;"></div>
+            <div class="color-label">horison<br>#5F89A9</div>
+        </div>
+
+
+
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #00ffff;"></div>
+            <div class="color-label">cyan<br>#00ffff</div>
+        </div>
+
+
+
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #f0fff0;"></div>
+            <div class="color-label">honeydew<br>#f0fff0</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #8e41e0;"></div>
+            <div class="color-label">purple<br>#8e41e0</div>
+        </div>
+
+
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #3c2488;"></div>
+            <div class="color-label">metiorite<br>#3c2488</div>
+        </div>
+
+
+
+        
+        <div class="color-box-wrapper favorite" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #Ac98bf;"></div>
+            <div class="color-label">amethyst-smoke<br>#Ac98bf</div>
+        </div>
+
+      
+                
+        
+    </div>
+
+    <h2>🎨</h2>
+    <hr>
+    <div class="container remaining-section">
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #121218;"></div>
+            <div class="color-label">woodsmoke-shade<br>#121218</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #2e2d35;"></div>
+            <div class="color-label">woodsmoke-tint-1<br>#2e2d35</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #5d5c62;"></div>
+            <div class="color-label">scarpa-flow<br>#5d5c62</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #625d5c;"></div>
+            <div class="color-label">scorpion<br>#625d5c</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #4e4a4a;"></div>
+            <div class="color-label">tundora<br>#4e4a4a</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #3b3837;"></div>
+            <div class="color-label">dune<br>#3b3837</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #faf7f7;"></div>
+            <div class="color-label">hint-of-red<br>#faf7f7</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #543f2f;"></div>
+            <div class="color-label">brown<br>#543f2f</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #95a178;"></div>
+            <div class="color-label">sage<br>#95a178</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #fde7ff;"></div>
+            <div class="color-label">white-pointer<br>#fde7ff</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #F8A0FF;"></div>
+            <div class="color-label">mauve<br>#F8A0FF</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #708824;"></div>
+            <div class="color-label">wasabi<br>#708824</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #479b59;"></div>
+            <div class="color-label">fruit-salad<br>#479b59</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #Feaeb4;"></div>
+            <div class="color-label">sundown<br>#Feaeb4</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #Fcd2ff;"></div>
+            <div class="color-label">blue-chalk<br>#Fcd2ff</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #404c3f;"></div>
+            <div class="color-label">lunar-green<br>#404c3f</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #131713;"></div>
+            <div class="color-label">log-cabin<br>#131713</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #1e331d;"></div>
+            <div class="color-label">green-kelp<br>#1e331d</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #8fcefe;"></div>
+            <div class="color-label">anakiwa<br>#8fcefe</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #C7E7FF;"></div>
+            <div class="color-label">water<br>#C7E7FF</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #ffd2a0;"></div>
+            <div class="color-label">peach-orange<br>#ffd2a0</div>
+        </div>
+
+
+        
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #a0ffd2;"></div>
+            <div class="color-label">aquamarine<br>#a0ffd2</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #6da2bc;"></div>
+            <div class="color-label">glacier<br>#6da2bc</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #bcb66d;"></div>
+            <div class="color-label">gimbled<br>#bcb66d</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #B8a0af;"></div>
+            <div class="color-label">lilly<br>#B8a0af</div>
+        </div>
+        <div class="color-box-wrapper" onclick="toggleFavorite(this)">
+            <div class="color-box" style="background-color: #a0b8a9;"></div>
+            <div class="color-label">summer-green<br>#a0b8a9</div>
+        </div>
+
+    </div>
+
+    <script>
+        /**
+         * Toggles the 'favorite' class on a color box wrapper element.
+         * @param {HTMLElement} element - The color-box-wrapper div that was clicked.
+         */
+        function toggleFavorite(element) {
+            element.classList.toggle('favorite');
+            // Logic to move element could be added here if desired, but for now, we only toggle the style.
+        }
+    </script>
+
+</body>
+</html>

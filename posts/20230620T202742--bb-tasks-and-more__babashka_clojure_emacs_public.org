@@ -1,0 +1,191 @@
+#+title:      bb-tasks-and-more
+#+date:       [2023-06-20 Tue 20:27]
+#+filetags:   :babashka:clojure:emacs:public:feed:system:video
+#+identifier: 20230620T202742
+#+EXPORT_FILE_NAME: bb-tasks-and-more
+
+#+begin_quote
+Design is about pulling things apart.
+#+end_quote
+Rich Hickey
+
+With =bash-completion= we get a really nice boost for making shell commands from Emacs.
+=Babashka tasks= completions are for free, together with =make=, same as dynamic =git=, =ssh= and whatever.
+
+[[https://youtu.be/CQtnHtiel4A][Here is the screencast on youtube]].
+
+#+begin_export html
+<iframe width="650" height="360" src="https://www.youtube.com/embed/CQtnHtiel4A" frameborder="0" allowfullscreen></iframe>
+#+end_export
+
+Below are sort of show notes.
+
+* 1. Make sure you have completions in your shell (bash for me)
+
+#+begin_src elisp
+  shell-file-name
+;  (setf shell-file-name "/bin/bash")
+#+end_src
+
+#+RESULTS:
+: /bin/bash
+
+** 1.a for bb:
+
+https://book.babashka.org/#_terminal_tab_completion
+
+=.bashrc=
+
+#+begin_src shell
+  _bb_complete() {
+    BB_TASKS=$(bb tasks|bb -io '(->> *input* (drop 2) (map #(-> % (str/split #" ") first)))')
+    BB_HELP=$(bb help|bb -io '(->> *input* (map #(->> % (re-find #"^  ([-a-z]+)") second)) (filter some?))')
+    COMPREPLY=($(compgen -W "$BB_TASKS $BB_HELP" -- "${COMP_WORDS[$COMP_CWORD]}"))
+}
+
+complete -f -F _bb_complete bb
+
+#+end_src
+
+* 2. Setup =bash-completion=
+
+https://github.com/szermatt/emacs-bash-completion
+
+#+begin_src elisp
+(use-package bash-completion
+  :config
+  (bash-completion-setup)
+  (setf bash-completion-use-separate-processes t)
+  (defun bash-completion-capf-1 (bol)
+    (bash-completion-dynamic-complete-nocomint (funcall bol) (point) t))
+  (defun bash-completion-capf ()
+    (bash-completion-capf-1 #'point-at-bol))
+  (add-hook
+   'sh-mode-hook
+   (defun mm/add-bash-completion ()
+     (add-hook 'completion-at-point-functions #'bash-completion-capf nil t))))
+#+end_src
+
+* read-shell-command
+
+Afterwards, this should work for you:
+(I always try with =git check...=).
+
+#+begin_src elisp
+(read-shell-command "your command: ")
+#+end_src
+
+=read-shell-command= sets up a special keymap where =tab= now means =completion-at-point=.
+
+read-from-minibuffer, 3thr arg
+
+#+begin_src elisp
+ (read-from-minibuffer
+ "foo: "
+ nil
+ (let ((m (make-sparse-keymap)))
+   (define-key m "f"
+               (defun my-hi ()
+                 (interactive)
+                 (insert "lol")))
+   m))
+#+end_src
+
+* Commands that use read-shell-command
+
+- async-shell-command, shell-command
+- dired-do-async-shell-command, dired-do-shell-command
+- compile
+
+I use =project.el= to run async shell commands and =compile= in the project root.
+
+* Run in any dir?
+
+/Design is about splitting things apart/.
+
+1. Select a current dir, up to you. My main paths would be
+   - =consult-dir=,
+   - =project-switch-project=,
+   - consult-buffer + bookmarks
+2. Run =async-shell-command= or a friend of it.
+
+* More config
+
+#+begin_src elisp
+    (setq async-shell-command-buffer 'new-buffer)
+
+    (defun path-slug (dir)
+      "Returns the initials of `dir`s path,
+  with the last part appended fully
+
+  Example:
+
+  (path-slug \"/foo/bar/hello\")
+  => \"f/b/hello\" "
+      (let* ((path (replace-regexp-in-string "\\." "" dir))
+             (path (split-string path "/" t))
+             (path-s (mapconcat
+                      (lambda (it)
+                        (cl-subseq it 0 1))
+                      (nbutlast (copy-sequence path) 1)
+                      "/"))
+             (path-s (concat
+                      path-s
+                      "/"
+                      (car (last path)))))
+        path-s))
+
+    (defun mm/put-command-in-async-buff-name (f &rest args)
+      (let* ((path-s (if default-directory (path-slug default-directory) ""))
+             (command (car args))
+             (buffname (concat path-s " " command))
+             (shell-command-buffer-name-async
+              (format
+               "*async-shell-command %s*"
+               (string-trim
+                (substring buffname 0 (min (length buffname) 50))))))
+        (apply f args)))
+
+    (advice-add 'shell-command :around #'mm/put-command-in-async-buff-name)
+
+    (add-hook 'comint-mode-hook
+              (defun mm/do-hack-dir-locals (&rest _)
+                (hack-dir-local-variables-non-file-buffer)))
+
+    ;; it logs a warning when you hack a local
+    ;; Making process-environment buffer-local while locally let-bound!
+    ;; It is sort of want I want though
+    (advice-add #'start-process-shell-command :before #'mm/do-hack-dir-locals)
+
+    (advice-add 'compile :filter-args
+                (defun mm/always-use-comint-for-compile (args) `(,(car args) t)))
+
+#+end_src
+
+=shell=
+
+#+begin_src elisp
+  (defun mm/with-current-window-buffer (f &rest args)
+    (with-current-buffer
+	(window-buffer (car (window-list)))
+      (apply f args)))
+
+  (defun mm/shell-via-async-shell-command ()
+    (let ((display-buffer-alist
+           '((".*" display-buffer-same-window))))
+      (async-shell-command shell-file-name)))
+
+  (advice-add #'mm/shell-via-async-shell-command :around #'mm/with-current-window-buffer)
+
+  (setf shell-kill-buffer-on-exit t)
+
+  (add-hook
+   'shell-mode-hook
+   (defun mm/shell-dont-mess-with-scroll-conservatively ()
+     (setq-local scroll-conservatively 0)))
+#+end_src
+
+I invoke =mm/shell-via-async-shell-command= with a stumpwm keybinding. This is the only reason I need =mm/with-current-window-buffer= irrc.
+
+* See also
+- [[denote:20220922T123209][Bashing Is Better Than Extending]], more in-depth on the same topic. But one of my earlier blog posts and too long.

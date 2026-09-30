@@ -1,0 +1,343 @@
+#+title:      minds-and-machines
+#+date:       [2023-06-25 Sun 20:12]
+#+filetags:   :clojure:lisp:feed:
+#+identifier: 20230625T201242
+#+EXPORT_FILE_NAME: minds-and-machines
+
+*This blog post is a draft version of what then became [[denote:20230707T090418][No Iterations]]*
+
+Continue at your own peril.
+
+https://imgs.xkcd.com/comics/lisp_cycles.png
+
+This blog post is for me.
+
+For the version of me that didn't look into Lisp and just /did not know/.
+
+Lisp and its most modern and practical dialect, Clojure are widely regarded as /the only language that is beautiful/.[fn:1]
+
+They are often described as /powerful/, /elegant/, /minimal/.[fn:3] and /joyful/ [fn:9]
+
+What moves these people to make such claims?
+
+#+begin_quote
+Reality does not by itself reveal its inner workings to you. You only see little glimpses and pieces of it.
+Your job as a scientist, coder or wizard is to use your imagination of how these pieces can fit together.
+#+end_quote
+
+This post is not here to convince you.
+
+This post is here to give you some clues, a few glimpses of sparkling stars on the firmament
+that is your interface to the underlying reality.
+
+Here, from the cluster of concepts that make Lisp an amazing, joyful superpower:
+
+* Joy is power is getting shit done
+
+
+* Stretching
+
+Why do I do 90 seconds burpees in the morning on most days?
+
+I do this to touch my heart rate max and this has a reason.
+
+By stretching the system to edges,
+
+it becomes more flexible,
+
+just quote( huberman)
+
+
+* Taste
+
+/How to use 100% of your brain/.
+
+I think this was like 10 years ago that people walked around claiming that
+we only use 5% of our brains or some garbage like this.
+
+I guess all kinds of people have fun making claims about how the brain works.
+And because the brain is super intriguing by itself anything that has a brain in
+its explanation sounds like some intriguing insightful thing.
+
+Either way, here are some ideas about taste and sensibilities:
+
+Some ways of knowing are intuitive.
+How do we know what is good and what is bad? What is good design, and what is bad design?
+
+Some of this is processed in the realm of feeling.
+Also called sensibilities, also called system 1, also called intuitions.
+
+When a master is crafting a piece, they are using their sense of aesthetics and their taste,
+to judge and make decisions.
+
+How could it be otherwise? For if they would not use the feeling part of their mind,
+they would not use their whole mind. And how could you achieve mastery without using
+the whole mind?[fn:12]
+
+=Taste= is an interface into the rest of our mind.
+
+If you only used mainstream programming languages so far,
+you do not know yet what it means for a language to be beautiful.
+
+/If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant./
+
+So you do not know yet that taste matters in knowing the power difference in programming languages.
+
+This is why now I talk about taste in another realm that you already know about. Art, stories and explanations.
+
+* What makes people say /this is the most powerful language/?
+
+What makes one story better than another story?
+What makes one thinker's explanations better than another thinker's?
+
+The answer is it fits your tastes.
+The answer is you think /this is interesting/ and then there is more of that interesting stuff.
+The answer is it harmonizes with your mind in some way.
+
+When I read a great story I sometimes think /now there could be more of this stuff/ and then
+there is more of this stuff.[fn:7]
+
+With the greatest art, it can feel like that the artist was exploring the same space of ideas that I would explore.
+To the point where it is as if as a consumer of the art I am exploring parts of /my/ psyche.
+Like landscapes that were already there, only to be wandered systematically.
+In reality, the artist was expressing something they find intriguing themselves.
+And either by overlap, by alikeness of mind or by them intuiting what I would like to experience,
+they created these substances to explore for me.
+
+The best books do this with the story: /I wish more of this would happen/.
+/I wish we would read a bit more of Harry's wizard classes/.
+
+The best video games do this with world, concepts and game mechanics.
+
+/I want to be as powerful as those mages/. And then it delivers on making you powerful, as if by growing as a character.[fn:10]
+
+/I want to see more of the magic system, different kinds of magic, powerful magic/.[fn:11]
+
+Taste can express itself as a joyful, harmonious intrigue.
+Or as the feeling of gaining a deeper understanding of the world, or gaining more powerful ways to think and do things.
+
+There is something deeply intimate in sharing what this innermost mischievous, childish aspect of our minds is up to.
+Maybe this is me being German but it feels like something to be ashamed of.
+
+To explore one's taste is to acknowledge the kinds of things that one inner mischievous, childish, curious mind is intrigued by.
+
+It is not easy to explain what makes the best stories and books. Usually, we say /this is a great book/. And we mean
+that a person's taste is extraordinarily powerfully intriguing.
+The qualities that make this intrigue are extremely hard to explain. A masterful piece of art is by definition the
+
+What makes one programming language better than another programming language?
+
+Well, what makes /Harry Potter And The Methods Of Rationality/ a superbly sick book?
+What makes /The Witcher 3/ a superbly sick game?
+What makes /The Pirates Of The Caribbean/ and /The Man From The Earth/ superbly sick movies?
+What makes Emacs a superbly sick text editor?
+
+The answer is that if you have good taste, you will know.
+
+And this might not be easy to explain, the shortest possible explanation would be
+for the other person to experience what you have experienced.
+
+Sometimes there is a hint of power or more ideas of the same stuff or
+of landscapes to explore and the art/book/story is delivering.
+
+In the next sections, I explain what I think programming languages are for.
+In other words, what are the activities where it matters if you have one language or another?
+
+The reason why Lisp is powerful, elegant and /intriguing/ is not as profane as syntax.
+It is not the syntax, not the names of things, not the data structures, and not anything about the form at all.
+Lisp is together out there with you, thinking and building your program.
+
+* The non explainable
+
+
+But you will only know by experiencing it.
+
+
+The answer is it fits your tastes. The answer is sometimes it does what you expect.
+
+Taste is private in a way
+
+
+A programming language is a way to express yourself to the computer.
+
+
+This is the flavor of intrigue and joy that Lisp provides me.
+
+ -
+Lisp provides a honed experience of interacting with the computer.
+It is
+
+
+It was created by hackers and is traditionally endorsed by hackers.[fn:8]
+
+
+
+
+Here is one attempt at conveying one reason at the hard of the cluster of reasons.
+
+
+This is not here to convince you but to
+
+* What are programming languages for?
+
+- being lazy
+- if you have to do less, you have the better language
+
+
+
+- a programming language will have to be jugdet by
+  what it does to your mind
+- because the its purpose is to give your mind the capacity to
+  express yourself to the computer
+-
+
+
+
+* The mainstream is wrong about things all the time
+
+
+
+
+
+* What is programming about?
+
+Programming is about =ideas=. It is about =organizing, understanding, communicating= imaginary entities of knowledge
+that explains both problems and solutions.
+
+A programming language is a tool to express these ideas to the =computer=[fn:6], so that the ideas have an desired effect
+on computer =process=.
+
+How hard is it to express myself to the computer? How close are my ideas and the resulting computer process?
+What is the process (me using the =language=), that makes the computer understand my ideas?
+
+Language is merely a tool to make 1 affect the other. The hypothetical best language is one where there is
+an infinitely small barrier between my ideas and the computer process.
+
+The hustle of the programmer is in the realm of ideas. They manipulate, create and transform the web of ideas.
+
+Only as an annoying, grindy sub task do they need to write code in order to express these transformations of ideas to the computer.
+Hopefully, with a minimal loss of accuracy.
+
+This includes thinking of counterfactuals, and thinking to make experiments. To see, /if the system was this way, would the bug be there?/.
+
+
+* Hints of good design in Clojure
+
+
+
+
+* The magic
+
+
+
+* Experiments
+
+Every programmer knows
+
+Since you cannot know what you don't know
+
+
+* Being Alien
+
+/Not every change is an improvement, but every improvement is a change./
+
+If there really is a language this much better
+
+Clojure is generally said to /bring back the fun in programming/. [fn:4]
+
+
+It is commonly suggested to young programmers to learn Lisp in order to expand their mind.[fn:2].
+Consider the Perlis quote
+
+#+begin_quote
+A language that doesn't affect the way you think about programming, is not worth knowing.
+#+end_quote
+
+
+There are a few reasons why
+
+* Footnotes
+
+[fn:12]
+
+At least this is on the whole how I think it works for human masters of a craft.
+
+I don't think the strong form of the claim is a logical necessity.
+I.e. I do not believe that it is logically necessary for an intelligent system
+to use most of its mind
+
+
+[fn:11]
+That is /Avatar: The Last Airbender/ and the magic is called /bending/.
+
+[fn:10]
+
+That is /Gothic 2/.
+
+[fn:9]
+
+- s. Youtube talks on Clojure
+- [[denote:20230126T094804][The Joy Of Clojure blog post]]
+- [[https://www.manning.com/books/the-joy-of-clojure-second-edition][The Joy Of Clojure Book]]
+
+
+[fn:8]
+
+See Paul Graham for this trail of inquiry.
+- [[http://www.paulgraham.com/hp.html][Hackers And Painters]]
+- http://www.paulgraham.com/avg.html
+
+[[https://stallman.org/stallman-computing.html][Stallman]]
+#+begin_quote
+The most powerful programming language is Lisp. If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant. Once you learn Lisp, you will see what is lacking in most other languages.
+#+end_quote
+
+
+
+
+[fn:7]
+
+The last few books I had this with where Neal Stephenson.
+All those are now some of my favority books:
+
+- Anathem
+- Snowcrash
+- The Diamond Age
+- Seveneves
+
+
+[fn:6]
+And to programmers.
+
+[fn:5]
+
+Dare I say a graph.
+
+
+[fn:4]
+
+I think Stuart Halloway has that in a youtube talk.
+
+
+
+[fn:3]
+For instance [[https://stallman.org/stallman-computing.html][Stallman]]:
+
+#+begin_quote
+The most powerful programming language is Lisp. If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant. Once you learn Lisp, you will see what is lacking in most other languages.
+#+end_quote
+
+[fn:2]
+
+- [[http://www.norvig.com/21-days.html][Peter Norvig Teach Yourself Programming in Ten Years]],
+- [[http://www.catb.org/~esr/faqs/hacker-howto.html][Eric Raymond]]
+
+#+begin_quote
+LISP is worth learning for a different reason — the profound enlightenment experience you will have when you finally get it. That experience will make you a better programmer for the rest of your days, even if you never actually use LISP itself a lot. (You can get some beginning experience with LISP fairly easily by writing and modifying editing modes for the Emacs text editor, or Script-Fu plugins for the GIMP.)
+#+end_quote
+
+
+[fn:1]
+
+- [[https://web.stanford.edu/class/cs81n/command.txt][Neal Stephenson, In the Beginning was the Command Line]]
+- [[https://www.youtube.com/watch?v=cMMiaCtOzV0][Lex Fridman + Douglas Lenat]]

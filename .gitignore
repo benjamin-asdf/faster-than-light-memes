@@ -15,3 +15,4 @@ public
 /.clj-kondo/.cache/v1/cljc/
 /.clj-kondo/.cache/v1/java/
 /.lsp/
+/static-private/

@@ -1,0 +1,154 @@
+#+title:      recovering-some-spiritual-concepts
+#+date:       [2025-10-26 Sun 18:39]
+#+filetags:   :brain:cybernetics:design:neuroscience:philosophy:software:public
+#+identifier: 20251026T183929
+#+EXPORT_FILE_NAME: recovering-some-spiritual-concepts
+
+=*= WORK IN PROGRESS =*=
+
+Dragons did not turn out to be real.
+
+Dragons are not real, but dinosaurs were. And whoever looked at a fossil and said 'giant lizard-like thing'
+was actually talking about a real thing in nature and deserves credit.
+
+...
+
+I want to say we have the same situation with concepts like 'spirits', 'the soul'.
+
+- Memetics and information are the red-strand of this 'real view' on spiritual concepts.
+- Information is the doorway to emergent phenomena.
+- /Form/: Arrangement -- Information is about the interplay of things.
+- Information is =substrate independent= | *copyable* [Marletto, Deutsch]
+
+- Braitenberg:
+- A book is not the letters, a book is the story.
+- An organism is not the atoms but the /principle of organisation/.
+- *Lebensprinzip* is the knowledge stored in the genes, the spirit of a species [Braitenberg].
+- Knowledge: Information with causal power. /software entities/.
+- genes [biology], memes [Dawkins], tremes [Blackmore] are software entities,
+  capabable of /recruiting matter/ (top down causation) to further their interests.
+
+* Recovering Spirits
+
+- Joscha Bach: Cyberanimism
+
+[[https://youtu.be/3MkJEGE9GRY?si=hwZxN5JBA7lH8IWp][Joscha Bach says]] says the brain is being /populated by spirits/. He re-claims the term *spirit*.
+It is an /animating principle/, a piece of /software/ capable of /recruiting matter/ to establish it's existence in reality.
+
+A replicator is a piece of /information/ with the power to replicate itself, /information with causal power/ [Marletto, Deutsch].
+
+
+* Recovering The Soul
+
+- Anil Seth [Being You]:
+  The soul is the 'breath',
+  the fundamental aliveness we share with the rest of the tree of life
+
+- D. Hofstadter [Strange Loop]: soul, personhood, memetics
+
+* Recovering Reincarnation
+
+Ideas:
+
+
+** #1:
+
+- brain circuits are either designed *labeled lines*, or high dimensional and learned - *Baldwin effect*.
+
+- to the extend that a brian circuit is genetically designed, it actually is a kind of software module coming directly from our ancestors.
+
+** #2:
+
+Why are 2 clocks in sync? Reasons:
+
+1. Purely random.
+2. They are build the same, and react to the environment in the same way.
+3. Somebody consciously put them in sync.
+
+Why do 2 brains across time and space think similar thoughts or have similar personality?
+The nature of the explanation is of the kinds 1 and 2.
+
+** Telephathy
+
+Less restricted version of reincarnation. How hard is it to think the same thoughts?
+
+Soft problem: With some kind of signal structure intact (body language, eye contact etc.).
+
+Hard problem: With zero signal structure intact. Is the same as reincarnation -- E.g. think the thoughts of Julius Cesar.
+
+The degree to which /my/ *situation* is /your/ situation matters.
+
+Alice looks up at the sky and observes a cloud. "/It looks like an X/..."
+In another place, or another time, Bob looks up at the sky and observes the same cloud.
+
+Level 1 Bob: "/It looks like an X.../".
+
+Level 2 Bob: "/It could look like X,Y or Z/. I assume most people see an X.".
+
+Bob can decide to say *X*, for example because the culture in which he lives prefers *X*.
+/Culture/ is an example of a large scaled /shared situation/.
+
+
+On a larger scale, Bob can decide to say *X*, because it is more aesthetically pleasing.
+Bob might be using an internal sense of aesthetics coming from the genes -- and the /shared situation/ is on the scale of being /homo sapiens/.
+
+** Telephathy 2
+
+"I just thought about you and now you call me".
+
+"I just thought about X and now you mention X."
+
+Ideas:
+
+- 1. We have genetically designed circuits, including ones about having models of the psyche/ behaviour of other persons.
+- 2. Life moves on in rhythms: 90 minute hormone cycles, daily, monthly.
+- 3. Spending time with another person: You are exposed to similiar concepts, situations, impressions etc.
+- Putting those 3 things together
+
+
+* Recovering Ghosts (spirits of the dead)
+
+- Dan Dennett
+
+- 'Cached predictions': The brain's model of a person continues generating predictions after death.
+- You have a mental submodule that says: "Bob would say X", "Bob would do Y".
+
+- Hofstadter: A person is smeared out on multiple brains. After death, only the core of the person dies.
+  The 'halo', that is present in the brains surrounding the dead person lives on.
+
+
+* Recovering God
+
+- Joscha Bach: 'Gods are memes'.
+- I am not 100% about what the actual claim is
+
+
+*  Recovering Manifestion
+
+- Manifestion is not how physics works.
+- But 'manifestion' is maybe how mentality works.
+
+- The prediction people: Lisa Feldman Barrett, Andy Clark
+- free energy principle people.
+
+
+* Recovering The Law of Attraction
+
+- top-down processes
+
+
+* Recovering The Wisdom of Nature
+
+* Recovering Karma
+
+
+- Leibniz: "Everything already carries it's punishement / reward with itself."
+
+
+* Recovering The Holy?
+
+* Recovering Heaven?
+
+* Recovering Magic?
+
+* Recovering Transcendence?

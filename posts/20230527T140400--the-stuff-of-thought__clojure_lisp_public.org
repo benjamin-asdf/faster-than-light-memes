@@ -1,0 +1,399 @@
+#+title:      the-stuff-of-thought
+#+date:       [2023-05-27 Sat 14:04]
+#+filetags:   :clojure:lisp:public:
+#+identifier: 20230527T140400
+
+The power of Lisp is not quick iterations, but no iterations.
+
+A Lisp program is started once and from then on it is your companion. It will grow together with you,
+with the ideas that you put into it.
+
+This is not a hacky afterthought that tries to reduce the amount of time between you typing and you looking at an updated
+program, this is the fundamental reasoning behind the language.
+
+Lisp is perfused with interactivity, the joy of playful thinking and the elegance and simplicity of a well designed system.
+
+
+Lisp was developed as a language to interactively and dynamically build AI programs.
+
+Lisp takes the abstraction of software one step further. By making the machine a machine /about/ programs,
+instead of making the machine what your buisiness is about.
+
+By doing so, lisp code is one step closer to our thoughts. We can express programs that write programs with ease,
+because the primitives to express a Lisp program is there with us from the start, not hidden in the workings of
+a compiler.
+
+Data and code are dynamic content of the Lisp program.
+The lisp machine is about lists and functions and symbols.
+The lisp program, your program, is about your business, your internet requests, your user data, in terms of
+lists, functions and symbols.
+
+This is incidentally where json comes from, json is printed javascript objects, which is derived from Scheme
+(a minimal Lisp dialect).
+
+The fact that lisp provides a printer and reader is the foundation of why json works.
+
+The idea of keeping the data around dynamically in the program is shining
+
+
+By making a program that is about programs.
+
+
+
+
+The Lisp hacker has the ability to directly, straightforwardly and obviously go to the place of where to think.
+
+When interacting with a Lisp program, the rest of the program is there, no matter where you go. You do not need
+to setup test cases if you can move the program to the place you want to think and then poke around at your hearts content.
+
+Lisp is made, without comprosmises, for this interactive experience. Its development experience is crafted over decades
+to make this pleasent.
+
+Lisp is elegant and simple because it was made from ideas, not from implementation.
+
+Lisp was discovered by a single person, not a committee.
+It had to be simple
+
+
+Lisp was discovered by thinking about /what can be the minimal representation of a machine that allows me express process?/.
+
+Because of this, it is the most minimal language, and it has a mathematical elegance to it.
+
+Because of this, Lisp is sometimes called /The Maxwell equations of computer science/.
+
+This is why Lisp is called the only language that is beautiful.[fn:1]
+
+And this is why Rich Hickey can say /I wish I had discovered it earlier/.[fn:2]
+
+/You can build the same things, better things, out of dramatically simpler stuff/.
+
+/Because this is not better/.
+
+And this is why there are still people discovering it
+
+Lisp is a doorway into the realm of ideas.
+
+Lisp (specifically Clojure) allows the programmer like no other language, to get the language /out of the way/.
+The programing language is just some syntax.
+
+Programing really is about organizing thought and ideas.
+A software engineer holds a representation, a tree of imagined stuff,  in their mind, manipulates this tree of
+imagined stuff in their mind and must then modify the program to reflect this change.
+
+It is the hypothetically most powerful language where the recalcitrance between manipulating the ideas and
+having an updated computer program is infinitely small.
+
+(Paul Graham has called this /Succinctnes is power/).
+
+For now we can use the taste test, how does it feel like I can express my thoughts to the computer using this language?
+The more powerful language is allowing you to express yourself more directly.
+
+See
+
+- Batch orientedness vs interactive computing
+-
+
+
+* The special power of interactivity
+
+At babashka-conf I was asking some attendees something like /what is the most powerful thing about Clojure and why is it the interactivity?/.
+
+5 out of 6 Clojurians will agree, the big deal is having the program there.
+The repl is the big deal.
+
+Being able to expess one idea at a time and one idea only, in the context of the running program.
+
+The closest abstract feeling of this is having a friend that grows together with you and that has your back.
+
+A lisp program is a landscape, a society of processes and ideas.
+And the most important thing about it, is that it is alive.
+
+A program wirtting in mainstream languages, batch oriented languages, the source code  is about a machine that is about
+your business and your users.
+
+In an interactive language, the machine is about an open ended set of possible programs.
+The business of the lisp machine is your program.
+This allows us to have the lisp machine as our companion while we are writing the source code.
+
+So all the static code analysis that is put into tools like intellij is from this perspective 50 years out of date.
+
+The way to make source code come alive is to run the program that is running the source code.
+
+With this setup then, you are able to have a conversation about
+
+
+* Repl driven development in practice
+
+If you are used to batch orientednes, you have acquired certain habbits of thought that you will first have to unlearn,
+to be able to feel the power of the repl.
+
+With Clojure, you do not wait you do not hesitate you just do.
+
+/Do or do not, there is no try./
+
+I am sure somebody deep in batch oriented programming will deal with this pain and contort their mind
+
+Here is a stream of thought for happens in batch oriented programming:
+
+- I change the little thing =x= in the program.
+- I have to compile the program to check if I did =x= correctly
+- I will do =y= as well in this *batch* of modifications, because I want to reduce the amount of time I spend compiling
+
+The programmer will now acrue a larger batch of modifications, until they are satisfied by intuition that the current
+chunk (batch) is large enough to be worth testing out.
+
+the issue here is is that =x= and =y= and =z= are all still things that can possibly be wrong.
+The program is now in a sort of shroedingers good batch with rgard to all of those.
+
+The programmer mind is in one way or the other burdened with the need to keep track of these possible points of failure.
+
+It is distressing to have to keep track of these possible points of failure.
+It is distressing to have to wait for an answer of your experiments.
+
+And we all know that usually we are not right the first time.
+
+Back when McCarthy and his friends of interactive programing where fighting for building interactive computing machines,
+time sharing systems.
+
+The poeple at MIT would say /Why don't the programmers just think harder about their program before they give it to the computer?/.
+(Minsky quote).
+
+They where so wrong, so so wrong.
+
+And the software industry is still wrong, it accidentally went with batch orientedness in our porograms
+even though we can have an interactive paradigm.
+
+
+This is why the language that is made to be interactive, rather than batch oriented, is more joyful and more
+powerful.
+
+Repl driven development, if done right, allows the programmer to move with ease through the space of possible program,
+and of possible errors.
+
+With an interactive paradigm, the programmer can build the smallest pieces of the program, know that they work and
+build in a solid way.
+
+This is one of the reasons why it is said that Lisp programming is 100 - 50.000 times faster than conventional programming.
+
+
+Once you let go of the mental distress that comes from having to keep all the pieces
+
+* Software
+
+What strange power it is, the power of ideas and imagination.
+
+You are strong as a stone, you are more fluid as water, you can make me fly and you can burn hotter than fire.
+The right ideas are between us and supplying the world with endless energy and curing all diseases.
+
+Deutsch:
+Consider the peasants who in this and that medieval age where dying of this and that disease right next to the
+fire places they could have used to boil their water and fix the issue.
+
+software is made out of ideas. The stuff of thought.
+
+The question is what kind of systems of thinking can we have to build
+
+A programing language is a set of ideas
+
+A programing language is supposed to give you a bottom layer of thought, which you can use to express and build
+higher levels of organized thinking.
+
+
+* the power of language / ideas
+
+Dennett asks us to consider the /Library Of Babel/.
+Consider the
+Language can say anything.
+
+This philosophical position is called..
+
+The space of what is expressable via language is the space that is thinkable as ideas, is the space of
+possible computer software.
+
+* One of the best ideas in computing and possibly ever
+
+... Is putting the computer program /into the memory of the computer/.
+
+The power of having a general machine that can become anything, depending on the instructions we feed it.
+
+We have made magic stones that can be infused with ideas, sharing in the open ended space of possibilities
+that our imagination can access.
+
+Good design is about splitting things apart so you can put them together the way you want.
+
+If you make a red stone brick today then tomorrow you realize you wanted redness and brickness to be two things
+because you want something that is made of brick but not red, or something that is red but not made of brick.
+
+Discerning and expressing which things to pull apart, is the part art of computer programing.
+
+To pull apart program and computer was not an obvious thing to do.
+In analog computing the programing was part of the computer
+
+
+Since Van Neuman had the idea of the program being separate from the computer, he was able to think the thoughts
+about where to put the program. These where two distinct juggle balls for him to consider, not 2 aspects of the same glommed together machine.
+
+Hence he was able to consider the design of putting the program into the computer memory, a stroke of genuis.
+
+
+One of the most interesting /enableling/ ideas ever is
+Von Neumans abstract description of a possible computer architecture.
+
+Back then you had multiple thinkers and engineers thinking about how to build computers.
+it was describibing in the abstract how to put it all together that then enabled
+building the damn things.
+(quote the dream machine)
+
+Truing already had the idea that the computers instructions, the program,
+could be stored in the memory
+(turing paper quote)
+
+Before this idea you had to program each computer once..
+
+There was a computer, then you added a program and that was the ready productoin system.
+
+Neumans idea, to put the program instructions intooooo the computer memeory was a huge conceptual steppp.
+
+Now you made a general computer than cannn be all kinds of things, depending on the software that you put inot the computer.
+
+This then, allows for a higher level reasoning.
+
+Instead of thinking about how to build a machine that is doing things,
+we have a general idea on a lower level of abstractoin.
+
+and computer progreammers can think on a higher level of abstraction.
+One of ideas, the software.
+
+Van Neumans architecture allowed us to disregard the workings of the computer and to think about
+the workings of the software.
+
+* The absurd effectivity of languages
+
+S. Eic Normand
+
+What is it about making a language that describes the domain of you problem and thenne expressing your problem in terms of this language?
+
+It is a secret and maybe even mystery of computer programming *why* does this work so well?
+
+Why are abstractions so powerful?
+
+The software designer with sensiblities might have intuitive knowledge about this.
+But what would be a strong science of process and organized thought, and the psychology of expressing process and organized thought
+that would allow us to give a mechanistic account of why the right abstraction so powerful.
+
+This science of orgranizing thought /is/ computer science, I believe. It is just currently very early.
+
+Abelson quote
+/layers and layers of abstraction/.
+
+* Where to look for the next layer of abstraction?
+
+If software is such a great idea,
+and software is one case of making an abstraction layer,
+
+then surely we have build higher layers of abstraction in the past 60 years, right?
+
+So what then is the next layer of abstraction that allows us to get the software closer to our minds?
+
+The answer is in some ways embarring for the software industry.
+
+It was figured out 60 years ago by John McCarthy.
+
+The bad drowns out the good and so for some reason unix and =C= have taken over the world where it could have been
+Smalltalk and Lisp.
+
+To me it is as obvious as the moon that the most powerful, the most close to the truth ideas, are not the mainstream ideas.
+
+There are lots and lots of things that are mainstream which I consider to be off in places and completely bonkers
+in other places.
+
+Windows is used widely as end user operating system, despite it being obviously inferior to a less cluttered OS.
+
+Why shouldn't there be a few mathy forward thinking people cleaning up computer science and coming up
+with a beatiful, simple and elegant way to express yourself?
+
+It would not be surprising to me if the mainstream would not immediatly pick up on that.
+
+* What is a lisp program about
+
+
+In batch oriented programing, you make the computer about what you say in your program source code.
+
+The infinite space of ideas in your mind
+
+
+A Lisp program
+
+Program -> program contents.
+
+A lisp machine is a program whose contents are lisp code.
+
+Program -> program contents.
+
+Lisp machine -> lisp program.
+
+This then allows the next truly useful layer on the cake of abstractions.
+
+With this single stroke of genius, McCarthy has enabled interactive programing.
+
+The lisp hacker starts a program once, and tells the Lisp machine, while it is running, what it should be about.
+
+The lisp machine is an idea machine, a program about ideas.
+The content of the lisp machine is the lisp code (lists).
+
+This allows the use of macros
+
+
+* Lisp
+
+The core idea of Lisp is to, again, put the program into a more dynamic place in the computer.
+
+If a program is simulating a machine,
+
+a lisp program is simulating a general machine
+
+
+
+* The generality of a Lisp program
+
+A Lisp program is simulating a Lisp machine
+
+A computer is about
+
+
+Lets imagine we are a computer that can take
+
+
+* the largely unclaimed heritage of interactive programming
+
+/Strange set of limitations/
+
+
+* Batch oriented programming
+
+
+* layers
+
+
+* what the program is about
+
+
+Lisp is like a layer of ice on top of the computer that allows you to skate.
+
+
+* json
+
+it is like you take the nouns of a language
+
+when you experience 20% of Lisp it is so freeing and powerful that the whole industry just locks in on it.
+
+
+* Footnotes
+
+[fn:2]
+
+Clojure talk
+
+[fn:1]
+
+Neal Stephenson

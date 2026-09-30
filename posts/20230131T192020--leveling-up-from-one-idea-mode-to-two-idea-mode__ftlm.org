@@ -1,0 +1,104 @@
+#+title:      leveling-up-from-one-idea-mode-to-two-idea-mode
+#+date:       [2023-01-31 Tue 19:20]
+#+filetags:   :ftlm:clojure:
+#+identifier: 20230131T192020
+
+* Introduction
+
+When I first got into programming I was told that
+
+#+begin_quote
+Programming is about thinking
+#+end_quote
+
+Usually in some wise and intelligent tone of voice that 
+
+you had to agree with
+
+
+To the point where it seemed common sense.
+
+But what is this ominous =thinking=?
+
+The funny thing is, there is not much practical guidance for junior
+programmers to understand what this is about.
+
+It is like giving the novice a hammer and nails and hope they figure
+something out by them self.
+
+It is easy to start cargo culting something that /seems/ like thinking but is
+not programming.
+
+What you then end up with is a developer doing something
+I call =one idea mode=.
+You could also call this /fake thinking/.
+
+This is straight from one of Stuart Halloways talks[fn:1]
+
+* The 1 idea mode
+
+Can you say what the /second best idea/ to your solution is, and why is
+the one you chose better?
+
+Else you are in what I call the =one idea mode=, because it is the alternative
+to chosing between different ideas.
+
+Design is about tradeoffs.[fn:2]
+
+#+begin_quote
+If you do not make decisions, you are not designing.
+#+end_quote
+
+The one idea mode is characterized by mistaking /any/ solution for /the/
+solution.
+
+A novice might additionally go into a five minute steps
+mode, where you tackle something that looks like a subproblem of the
+whole for 5 minutes, then the next etc.
+Interleaved with stackoverflow researches of how to keep going for
+the next 5 minutes.
+
+When I think of this it is sort of like a worm going though swiss
+cheese and then you are surprised that the path is not straight and
+clear cut.
+
+
+I did this for years. Only by being exposed to the ideas
+of eminent Clojurist thinkers like Rich and Stuart.
+
+An emphasis on design is not necessarily a Clojure thing. But there is
+generally more focus on thinking in the Clojure culture.
+
+Plus to be honest, Rich Hickey is the most refined, cutting edge, thinkers on
+production software that I had the pleassure to listen to.
+
+* Write it down
+
+You really need to write it down.
+
+Thought is precious human stuff. With chat-gpt text generation 
+There is an even steeper difference between human text and
+all possible text
+
+
+* Do the hardest thing first
+
+Eric Normand has explained why to do this recently.
+
+If you do the analysis right you end up knowing what the hardest part
+of the system will be.
+
+It forces you to actually think the whole thing through
+
+
+
+* Footnotes
+
+[fn:2] [[https://www.youtube.com/watch?v=MCZ3YgeEUPg][Rich Hickey]] makes this point a lot
+
+[fn:1]
+I did not find which talk this came from unfortunatly.
+Here is a great talk that is good as any to get to know Stuarts thinking:
+[[https://www.youtube.com/watch?v=FihU5JxmnBg][Debugging with the Scientific Method]]
+
+

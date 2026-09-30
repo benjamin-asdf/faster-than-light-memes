@@ -1,0 +1,69 @@
+#+title:      dir-env-process-environment
+#+date:       [2022-10-17 Mon 09:56]
+#+filetags:   :clojure:emacs:feed:
+#+identifier: 20221017T095640
+#+EXPORT_FILE_NAME: dir-env-process-environment
+
+* Introduction
+
+Making [[denote:20220922T123209][shell commands]] is one of the great joys of emacs.
+
+An advanced use case is that you want to set up a process environment for
+everything you do inside some project.
+
+What I show here works for ~compile~, ~shell-command~, and even cider connections.
+
+* The setup
+
+~.dir-locals.el~:
+
+#+begin_src elisp
+((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (setq process-environment
+	       (copy-sequence process-environment))
+	 (setenv "FOO" "hurr")))))
+#+end_src
+
+Yes, it is a bit convoluted but for a [[https://emacs.stackexchange.com/questions/35964/how-can-i-get-buffer-local-environment-variables-via-dir-locals][reason.]]
+We need to copy the list, else if somebody modifies the cdr locally,
+that would modify the global value.
+(In the case that =FOO= is an element in the list somewhere already).
+
+The answer mentions ~setq-local~. I tried that without success.
+
+~Shell-command~ and friends will inherit the process environmen. It pretty much just works.
+
+** From the project I currently work on:
+
+#+begin_src elisp
+((nil
+  .
+  ((eval progn
+         (make-local-variable 'process-environment)
+         (setq process-environment
+	       (copy-sequence process-environment))
+	 (setenv "AWS_PROFILE" "datalake-deployer")
+	 (setq-local cider-clojure-cli-aliases (concat cider-clojure-cli-aliases ":dev"))))))
+#+end_src
+
+Now I start cider connections with =AWS_PROFILE= set correctly.
+Also I have a [[https://github.com/babashka/babashka][babashka]] task for deploying that needs this env and it all just works.
+
+* Non-file-buffer
+
+By default, ~.dir-locals.el~ does not apply to buffers without file names.
+(When the local variable ~buffer-file-name~ is not set).
+
+There is a function ~hack-dir-local-variables-non-file-buffer~ for this purpose.
+This is called by ~dired~, also ~magit~.
+
+I usually start processes from either a (source) file buffer or dired.
+
+* revert with grace
+
+When you make a change to your =.dir-locals=, call ~revert-buffer~ in
+whatever buffer you want to have the effect.
+It hacks the local variables again for the buffer.

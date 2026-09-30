@@ -1,0 +1,104 @@
+#+title:      clojure
+#+date:       [2025-10-03 금 19:53]
+#+filetags:   :clojure:programming:
+#+identifier: 20251003T195352
+#+EXPORT_FILE_NAME: clojure
+
+
+- [[denote:20230126T094804][The Joy Of Clojure]]
+- [[https://cljdoc.org/d/clj-python/libpython-clj/1.45/doc/so-many-parenthesis-][So Many Parenthesis!]] (Chris Nuremberger's quick intro to Clojure)
+- [[denote:20230707T090418][No Iterations]]
+- [[denote:20230708T095438][Lisp]]
+
+* Clojure
+
+A Lisp, which is the only language that is also beautiful. Hosted on the JVM for reach.
+Functional, expressive, opinionated. It's paradigm is now called 'data oriented' [Sharvit 2022].
+
+* Data orientedness
+
+Not to be confused with the approach of the same name in game development, that one is about data layout.
+
+Data orientedness uses general data constructs and functions, i.e. something line json data and pure functions,
+to represent an information processing domain.
+
+For instance, to model a library, we do not model books and librarians, we model the inventory book a librarian would use.
+
+We do not model a students and courses, but a student-course book.
+
+Good data orientedness should the traditions of accounting etc. seriously.
+Putting computerized information processing in the tradition of accounting and bookeeping.
+
+For instance, recorded facts are facts, and cannot be updated afterwards (Only a new fact, a correction, ca be recorded).
+
+Modeling the students and courses is good for a simulation, if the program actually should represent something like student behaviour.
+This is perhaps good in something like a game, but not in something like a library information system.
+
+/[[https://en.wikipedia.org/wiki/Simula][Simula]]/ was made for simulation, and is the mother of all OOP (Object Oriented Programming).
+
+* Clojure is weird:
+
+
+1. It is a Lisp, which is a /cleaning up of computer science/ and called /the Maxwell equations of programming/ for a reason.
+   It is a programming paradigm that exists because it is /closer to the truth/ of what programming is about.
+   I.e. to improve on Lisps paradigm, you have to make actual discoveries in the fundamentals of programming.
+   And doing so would not tell us that there is something better than Lisp, but it would tell us more about the true nature of Lisp.
+
+2. It has pragmatism as part of it's design philosophy
+
+3. And it has a tradition of craftsmanship that incorporates doing design, i.e. not doing design work is bad Clojure programming.
+
+** Clojure 2 is an incoherent concept
+
+Coherent concepts: Rust 2, or Go 2, or python 4.
+
+You take feedback, you design and implement, you 'make it better', you call it Lang V n+1 and ship it.
+
+For Clojure, this would be weird. Because /pragmatism/ is a core value of the language.
+
+1. Clojure is built to last, making breaking changes is a no-go, the tradeoffs would have to be huge.
+2. Making a new language would take time and resources, which are weighed against the tradeoffs.
+3. Pragmatism means that /doing nothing/ is on the table, similar to the null-hypothesis in science.
+   You have to ask 'is doing the thing better than not doing anything?'.
+
+
+So it is not literally the case that there is a law of nature that prevents Clojure 2 from existing,
+there is something like the next best thing.
+
+There is something like a (rational) memetic-behaverioural decision structure.
+
+Given the right kind of knowledge =d=, namely Clojure design philosophy, a (rational) person will not
+engage in behaviour =X=, in the range of foreseable situations =E= (where E is a set of situations, an *enviroment*).
+
+A possible situation outside of E is that the person simply has fun making Clojure 2.
+
+But for normative pragmatic Clojure programmers, a lot of fun is being had by using Clojure creatively to solve other problems.
+
+It is like the pragmatic design philosophy (meme) brings the behaviour of Clojure programmers closer to reality through design work,
+a form of *error correction*.
+
+Resources and tradeoffs are /real/, if error correction is bringing is closer to reality we converge to the same reality.
+Otherwise it is bad error correction or bad design work.
+
+/Great thinkers think alike/, because they error correct. And good Clojure programmers behave alike.
+Clojure's pragmatism, is analogous to /rationality/, they are /cultures of error correction/, cultures of /conjecture and criticism/.
+
+** Using Clojure for the sake of using Clojure would be bad Clojure programming.
+
+The tradeoffs might lie with using another language for getting a job done.
+
+* Coercive Programming Constructs
+
+** Static types
+
+Does an author of an novel say "All sentences should be between 5 and 15 words long."?
+
+Programming is to a novel what the story is to a novel. Source code is to programming what the text is to a novel.
+
+/Puzzle oriented programming/ has its place perhaps in education. But has to play in a minor role in actually solving real world problems.
+
+** Concretions
+
+- Using code constructs where plain data would do the job. This is a /concretion/, not an /abstraction/ [Hickey].
+
+- Using the powerful tool of creating mini languages to express business logic.

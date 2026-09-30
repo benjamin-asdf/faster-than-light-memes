@@ -1,0 +1,10 @@
+#+title:      second
+#+date:       [2022-09-23 Fri 11:51]
+#+filetags:   :public:
+#+identifier: 20220923T115143
+d
+#+EXPORT_FILE_NAME: second
+
+[[denote:20220923T112406][foo2]]
+
+

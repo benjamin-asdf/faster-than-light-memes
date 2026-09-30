@@ -1,0 +1,33 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/benj/notes/20220923T161021--index__public.org
+
+
+
+
+* Data orientedness
+:PROPERTIES:
+:ARCHIVE_TIME: 2025-09-27 토 10:42
+:ARCHIVE_FILE: ~/notes/20220923T161021--index__public.org
+:ARCHIVE_OLPATH: Glossary (work in progress)/Clojure
+:ARCHIVE_CATEGORY: 20220923T161021--index__public
+:ARCHIVE_ITAGS: public
+:END:
+
+Not to be confused with the approach of the same name in game development, that is about data layout.
+
+Data orientedness uses general data constructs and functions, i.e. something line json data and pure functions,
+to represent an information processing domain.
+
+For instance, to model a library, we do not model books and librarians, we model the inventory book a librarian would use.
+
+We do not model a students and courses, but a student-course book.
+
+Good data orientedness should the traditions of accounting etc. seriously. For instance, recorded facts are facts,
+and cannot be updated afterwards (A new fact, a correction, ca be recorded).a
+
+Modeling the students and courses is good for a simulation, if the program actually should represent something like student behaviour.
+This is perhaps good in something like a game, but not in something like a library information system.
+
+/[[https://en.wikipedia.org/wiki/Simula][Simula]]/ was made for simulation, and is the mother of all OOP (Object Oriented Programming).

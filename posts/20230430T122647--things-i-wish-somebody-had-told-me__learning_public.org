@@ -1,0 +1,416 @@
+#+title:      What I was not told
+#+date:       [2023-04-30 Sun 12:26]
+#+filetags:   :learning:public:feed:
+#+identifier: 20230430T122647
+#+EXPORT_FILE_NAME: things-i-wish-somebody-had-told-me
+
+What I was told and what I was not told.
+
+Maybe there is a bug where adults think early /the child does not understand that yet/
+and later they think /they know about this by now/.
+And then you do not end up telling them the continents of the world... or any number of things.
+
+Also, just what =I= would have liked to know earlier.
+Any young person whose mind is sufficiently similar to mine will benefit greatly from being exposed to these.
+
+* Attempt at The 10
+
+I tried to come up with 10 things to show a child before they are 8.
+
+**** World Globe
+**** Basic astronomy,
+
+Earth is a planet, what the moon is, solar system, galaxy, stars are other suns.
+
+**** The periodic table
+
+It had empty spots when it was discovered, because of the power of abstraction.
+Nature can be harmonious and regular like music does.
+
+**** The concept of photosynthesis
+Half of
+
+/Why are plants green?/.
+
+**** What are electricity and magnetism
+**** Use a looking glass
+**** The concept of biological species
+**** The Tree of Life and the concept of LUCA
+
+A profound insight and a simple concept.
+
+**** How to perform a few magic tricks
+
+[[https://web.media.mit.edu/~minsky/OLPC-5.html#_edn11][Minsky, Education and Psychology]]:
+
+#+begin_quote
+Learning “Critical Thinking”.  This may seem somewhat out of place, but I want to recommend encouraging every child to learn a number of magic tricks—because (1) this is a good introduction to “the psychology of perception” and (2) it also leads to important insights about how what we perceive is affected by context, expectation and deception
+#+end_quote
+
+**** Juggle 3 balls
+
+Learning to juggle teaches about learning anything.
+
+- With perseverance, you can learn anything.
+- What somebody else can do, you can do.
+- You start with 1 ball, the process of juggling is made up of smaller pieces.
+- There is a landscape of skill and you can make improvements in small places of the landscape.
+  For instance, you can throw a ball with 1 hand and merely /think/ about moving the other hand.
+
+This then, teaches the realization that a skill can be explored like the workings of a machine.
+With detailed leaves at the tree of the skill.
+
+Progress can be made on some detailed aspects of the skill. Even imagining performing the skill, you might find
+pieces of mentation that prevent you from doing the right movement.[fn:2]
+
+* A spark and a machine
+
+One thing I find strange is when children are stuck remembering all dinosaurs or something.
+
+Why is this curiosity not guided into giving the child the chance to be curious about topics of
+biology, paleontology, big history, the origin of life, the future of life, or the history of science.
+
+What if you only need 1 spark to make a child seriously curious about a real, useful human inquiry?
+And then you need to provide them with the machinery to satisfy their curiosity.
+
+One might do a bait and switch. Highlight an aspect of nature,
+like /Why do you think the ball is falling?/,
+/Did you know that your pee is actually filtered blood?/ [fn:1].
+
+Then, when the child is making curious inquiries, you bring in some larger topics like:
+
+This is what the kidney does → the study of what things in the body do is called physiology.
+
+If I was that child, I would want to know about physiology now.
+
+* /How to/, not just hope the students figure something out
+
+** Holding a pen
+
+For some reason, there is way too much focus on outcomes and almost nothing on methods and techniques.
+
+For instance, I was given a pen and told to produce letters on a piece of paper.
+Nothing about how to hold a pen, nothing about how writing has a technique that involves your arm,
+rhythm, etc.
+
+[[https://www.wikihow.com/Hold-a-Pen][Wiki how]] lists 3 ways of holding a pen with some guidance on how to loosen up and use the arm.
+This is a 10-minute read that is more useful than what any adult told me about my writing for 12 years of school.
+
+Usually, a student is told to /spend more effort/ in some way or another, or straight up /your writing is just ugly/.
+Useless, because no recipe is given for how to fix it.
+
+The bug is most likely not the lack of effort but the lack insight into of what to do with the effort.
+The student did not yet discover how to turn effort into being better at writing, else they would have succeeded already.
+
+Just give them this wiki how article instead.
+
+** Techniques
+
+Similarly, there are techniques for how to do mental calculations etc[fn:3]. There are memory techniques (see below).
+
+* Memory techniques exist
+
+At school, I was given some pieces of paper with text on them and /hey let's just hope you remember that for the exam!/
+
+Some children probably come up with a bit of ad-hoc memory techniques and then do better at this. Ala:
+
+/It was written down on my learn cheat page on the bottom left.../
+
+I found out about the  Mind Palace ([[https://www.wikihow.com/Build-a-Memory-Palace][How To]]) a few years after school.
+
+When I studied biology I was going through textbooks and put in all that biochemistry,
+taxonomy, genetics, neuroscience etc. into imaginary places, buildings, landscapes... towering elven cities
+under blue skies with flying libraries, lush open spaces, and little cozy hidden balconies, brimming with the wonders and the magic of science.
+
+It was an amazing mind-expanding experience. A new private world, new interaction with knowledge, and an actual art form and a practice of how to use the mind.
+
+The fundamental good idea is to use what the mind is good at (visuals, faces, places, stories) to encode what you want to remember.
+
+Repetition is key; And some rigor when coming up with and sticking to encoding schemes.
+
+The beauty of the mind palace and memory techniques goes further, you develop a personal style and understand what makes things memorable.
+
+The Mind Palace is single-person audience performance art. With the audience being you at a later moment in time.
+
+This happened to me more than once:
+
+/What the fuck was I thinking there? Why did I think this would be a good way to remember this?/.
+
+* The concept of whole worlds
+
+Somebody forgot to tell me that science, technology and thinking are made of entire worlds.
+There are landscapes of thinking.
+
+It is like getting an elaborate tour of a harbor, every few weeks you visit another ship
+and you get a presentation of the treasures and wonders of some foreign land.
+
+And then later, when you finally stumble upon reading /The Selfish Gene/, you realize that
+all those ships worked by /sailing somewhere/.
+
+Nobody ever told you about the ocean and about how ships work.
+
+** Why The Selfish Gene
+
+#+begin_quote
+In July 2017, the book was listed as the most influential science book of all time in a poll to celebrate the 30th anniversary of the Royal Society science book prize, ahead of Charles Darwin's On the Origin of Species and Isaac Newton’s Principia Mathematica. [fn:4]
+#+end_quote
+
+The reason is not only because it explained and fleshed out important concepts in the philosophy of biology and evolutionary theory.
+
+It is that it showcases, in an accessible format, the power of simply /thinking ideas/.
+
+Dawkins describes not how something works, but a way of looking. (Also called /The Genes Eye View/).
+
+He abstracts genes to replicators, then thinks on the abstract level about how replicators behave.
+This allowed him to plausibly /predict/ computer viruses in 1976.
+Complete with musings about what we now call anti-virus software, firewalls etc.
+Predictive power is a hallmark of the most powerful theories and models of science.[fn:10]
+
+In chapter 12 he discovers the concept of /memes/, such a joyful and intriguing idea. The replicator point
+of view applied to mental contents[fn:5]
+
+It explains how altruism evolves and maybe the world would be better of if the title was /The Altruistic Gene/.[fn:6]
+
+It is the clear thinking, the power of the ideas, the masterful style and simple explanations.
+
+It makes the reader be able to use common sense. I can use my eyes and immediately parse objects in my visual scene,
+And so I can use common sense to immediately understand concepts.
+This is how good philosophy, good explaining of ideas and good computer programming are done.
+
+This is what this book is doing to you.
+
+And so this book is a doorway into the world of worlds of thinking.
+
+* Strategies for exploring knowledge
+
+A child is curious by nature:
+
+/Why is the sky blue?/, /Why is the sky red sometimes?/, /Why do things float in water?/
+
+The only thing a child has for acquiring knowledge about such things at the beginning is to ask adults.
+If the child is unlucky and asks somebody that does not have a useful answer to this, this is bad.
+
+A good answer might be /read this book/[fn:7], /read this Wikipedia article/. This is fine.
+Somehow we need to teach strategies for exploring knowledge.
+
+** /that is what you learn at university/
+
+Horrible idea. This should be a red flag to any educator, it means you do not understand a concept well enough to explain it to a child.
+
+And a red flag for society - we do not have the infrastructure to point curious young people to the knowledge they desire.
+
+It is as if we do our best to produce mediocre thinkers. Pure insanity.
+
+* Programming
+Software is magic.
+
+In principle, it is the most expressive art medium.[fn:8]
+
+I wish I would have realized earlier what a beautiful world it is.
+
+Maybe if I was introduced to Lisp and Clojure somehow.
+
+** Resources
+
+- https://www.maria.cloud/intro
+- [[http://www.catb.org/~esr/faqs/hacker-howto.html][How To Become A Hacker]], Steven Raymond.
+- [[http://norvig.com/21-days.html][Teach Yourself Programming in Ten Years]], Peter Norvig
+- Listen to [[https://www.youtube.com/watch?v=QIyc6NKS5J0][ThePrimagen]], embrace hard things.
+- https://www.braveclojure.com/
+- [[denote:20230101T200330][Extending Your Reach]], how to expand your mind *into the computer*.
+- /Living Clojure: An Introduction and Training Plan for Developers/, Carin Meier.
+
+* Textbooks
+A good textbook is a masterful journey into a world.
+
+Maybe there is a bug where teachers think they only point
+the most curious students to deeper literature,
+but the students do not know yet what to be /curious about/ in the first place.
+
+If you do not know the concept of deeper literature in the first place, how can you ask?
+
+The other bug is thinking that there is /hard/ literature /for university/ and /easy/ school books or something.
+I believe this is a mistake because the best textbooks are beautifully accessible.
+
+There is no reason why a 15-year-old can not go through some.
+
+When Rick in /Rick and Morty/ says /"school is not a place for smart people"/, he means that school
+is for sitting still and deliver on mediocre feats of thinking.
+
+If you want to think the extraordinary, you have to read what extraordinary people have put out there.
+
+* The missing practical psychology
+What if there is a way to use what the mind is good at, the way the mind palace works, and apply it to
+math, scientific concepts, writing, etc. etc.
+
+Sometimes I came across a single sentence or such that elucidated a concept.
+
+I will never forget:
+
+/First, you walk to the tree, then you can go up the tree./
+
+This forever is my mnemonic of knowing that the first part of a 2D vector is the /x/ coord or the horizontal axis.
+
+What if there is an art and a technique to come up with these, and let children understand them at the right pace?
+I imagine some of those being larger stories, for instance with characters that symbolize concepts.
+
+For instance, children remember Harry, Ron, Hermione, Dumbledore and Snape.
+
+Why, then should it be hard to remember Nominative, Accusative, Genetive, Dative?
+
+The answer is /you don't use the brain of the child right/, ...yet.
+
+There is a science and practice of /practical psychology/ ([[https://www.youtube.com/watch?v=PXTQsHOSpv4&t=4247s][Minsky 2007]]) missing.
+
+What if 12th grade would take about 20 minutes if you just build up the right infrastructure of mnemonics, HaHa!
+
+Minksy ([[https://www.youtube.com/watch?v=PXTQsHOSpv4&t=4247s][Minsky 2007]]) randomly came up with an idea of an =Imagine!= book full of
+imagine exercises of gradually increasing difficulty.
+A similar idea to the mind palace, which works by imagination.
+
+* How to actually fix this?
+
+/… Biographical information on a sample of twenty men of genius suggests that the typical developmental pattern includes as important aspects: (1) a high degree of attention focused upon the child by parents and other adults, expressed in intensive educational measures and, usually, abundant love; (2) isolation from other children, especially outside the family; and (3) a rich efflorescence of fantasy as a reaction to the preceding conditions." … [If so, then] the mass education of our public school system is, in its way, a vast experiment on the effect of reducing all three factors to a minimum: accordingly, it should tend to suppress the occurrence of genius./ —Harold McCurdy, 1960 [fn:9]
+
+- Maybe https://en.wikipedia.org/wiki/One_Laptop_per_Child
+- Maybe interactive, tailored learning experiences like below.
+- Maybe science and practice of Practical Psychology.
+- At least start thinking about how to bring in techniques.
+
+* The ultimate learning experience
+In the [[https://en.wikipedia.org/wiki/The_Diamond_Age][The Diamond Age]], we follow the path of a 4-year-old girl that gets to read /The Primer/,
+an advanced technological gadget and computer system in the form of a book.
+It first tells the child stories. Engaging and tailored to the psychology of the child.
+Then gradually teaches them science.
+It is also a companion, teaching about all things you might encounter in life.
+
+The book is interactive. For instance, in later chapters, the user would program tutorial programs on it etc.
+
+There is no reason this would be for children only.
+The gadget could figure out the /perfect next thing/ for *you* to learn about.
+
+We are almost close to being able to pull this off. Could be large language models with a big context
+about the learning state of the user. Plus some nice interactive, evolving computer environment.
+
+* Content
+
+- https://web.media.mit.edu/~minsky/OLPC-5.html#_edn5
+
+** [[https://en.wikipedia.org/wiki/A_Short_History_of_Nearly_Everything][A Short History of Nearly Everything]]
+
+Nice big history book with lots of history of science. Talks about the epic journey of how we understand what the universe is about.
+
+And it has a children's version. But I don't know how good it is.
+
+** /Unstoppable Us/, Yuval Noah Harari
+
+** /Astrophysics for Young People in a Hurry/, Neil deGrasse Tyson
+
+** /Outgrowing God/, Richard Dawkins
+This is for young people that realize religion does not make sense.
+** /The Selfish Gene/, Richard Dawkins
+This book is so easy to read, you can read it early. For example at 12 - 14.
+
+** /[[https://hubermanlab.com/science-based-mental-training-and-visualization-for-improved-learning/][Science-Based Mental Training & Visualization for Improved Learning]]/, Andrew Hubmerman
+
+** 15+ and curious about how the brain works?
+
+Start with [[https://en.wikipedia.org/wiki/How_the_Mind_Works#:~:text=How%20the%20Mind%20Works%20is,and%20quirks%20in%20evolutionary%20terms.][How the Mind Works]] by Steven Pinker.
+
+Follow the literary references trail to where you are interested.
+
+- Read [[https://en.wikipedia.org/wiki/Braitenberg_vehicle][Vehicles]], experience what a great thinker can do to your mind. Building landscapes.
+
+- /Other Minds: The Octopus, the Sea, and the Deep Origins of Consciousness/, Peter Godfrey-Smith
+
+  This is another very accessible book covering the history of thinking about the mind and thinking
+  about how octopuses work.
+
+- /The Man Who Mistook His Wife For A Hat: And Other Clinical Tales/, Oliver Sacks
+
+  To see what it means to observe people.
+
+- /Neuroscience/, Dale Purves
+
+  Spend half a year with a textbook.
+
+  Realize that textbooks are the best attempt of really smart people deep in the field to provide you
+  with a journey into the field.
+  All that is asked of you is to read and pay attention.
+
+  Of course, it is very powerful to put each chapter into a region of your mind palace.
+  Re-herse the day after. Then after 2 days, after 4 days, after a week, afterward keep the memory alive ad-lib.
+
+- [[http://aurellem.org/society-of-mind/index.html][/The Society Of Mind/]], such a joyful ride into actually thinking about how the mind might work.
+
+  Pure ideas, like philosophy and programming. And like good philosophy or programming, this builds
+  layers of common sense ideas that are easy to follow.
+
+* Footnotes
+
+[fn:10]
+
+/The Logic of Scientific Discovery/, Karl Popper (1959)
+
+/The Structure of Scientific Revolutions/, Thomas Kuhn (1962)
+
+I liked
+
+/Theory and Reality: An Introduction to the Philosophy of Science/, Peter Godfrey-Smith (2003)
+
+[fn:1]
+
+Thanks to [[https://en.wikipedia.org/wiki/Andrew_D._Huberman][Andrew Huberman]].
+
+[fn:2]
+
+I was listening to a Minsky talk at TCNJ and [[https://en.wikipedia.org/wiki/Manfred_Clynes][Manfred Clynes]] was in the audience describing
+the same concept, for music performance:
+
+https://youtu.be/gmeiJlbcVDo?t=3127
+
+What he calls /the feeling of it, the movement/ I call /the mentations for performing a skill/.
+
+Emphasis on the fact that you need to unlearn and let go of mentations that are
+not useful or preventing a good performance.
+
+Clynes and I agree, there is not much description and technique out there about such matters yet.
+
+Surely, this is a concept that master jugglers, dart players and musicians all picked up at some point.
+
+[fn:3]
+
+In /Surely You're Joking, Mr. Feynman!/ Feynman has a chapter on how he was using calculation tricks.
+
+See [[https://en.wikipedia.org/wiki/Martin_Gardner][Martin Gardner]] for inquiry on this trail.
+
+[fn:4]
+
+https://en.wikipedia.org/wiki/The_Selfish_Gene
+
+[fn:5]
+
+See [[denote:20230518T185739][memetics]]
+
+[fn:6]
+
+Dawkins explains somewhere that he should have called it /The Immortal Gene/.
+He jokes that some critics are reading the book /by title alone/.
+
+[fn:7]
+
+[[https://en.wikipedia.org/wiki/A_Short_History_of_Nearly_Everything][A Short History of Nearly Everything]] is an amazing ride through big history and the history of science
+and it has a kid's version.
+
+[fn:8]
+
+See Alan Kay and Bret Victor to follow this trail.
+
+And for an amazing rollercoaster of how computers were invented. How J.C.R. Licklider, Douglas Engelbart and others
+have inspired Kays's generation of computer hackers, see:
+
+/The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/.
+
+[fn:9]
+
+Harold G. McCurdy, The Childhood Pattern of Genius. Horizon Magazine, May 1960, pp. 32-38

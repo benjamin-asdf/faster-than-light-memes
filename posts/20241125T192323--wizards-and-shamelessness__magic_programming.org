@@ -1,0 +1,72 @@
+#+title:      wizards-and-shamelessness
+#+date:       [2024-11-25 Mon 19:23]
+#+filetags:   :magic:programming:
+#+identifier: 20241125T192323
+#+EXPORT_FILE_NAME: wizards-and-shamelessness
+
+*version 0.001:*
+
+* Wizards, scientists, hackers and detectives
+
+(work-in-progress ideas)
+
+Is it just me or is Sherlock Holmes about science and programming?
+
+#+begin_quote
+Imagination is a valuable asset when it comes to detective work, Watson. It is the bridge that allows us to perceive connections between different facts and events. Without imagination, we might never be able to see beyond the surface of things and pierce the veil of reality.
+#+end_quote
+
+From my notes:
+
+#+begin_quote
+Reality does not by itself reveal its inner workings to you. You only see little glimpses and pieces of it.
+Your job as a scientist, coder or wizard is to use your imagination of how these pieces can fit together.
+#+end_quote
+
+Consider the theory of evolution by natural selection. On the surface, there are animals, fossils, etc.
+It takes a creative genius to discover the underlying workings of reality.
+
+It is imagination that allows us to explore this realm of possible worlds.
+
+In programming, as in science, we are looking for good explanations:
+
+/I hypothesize that this is the problem because the user wants to do XYZ.../
+
+/I hypothesize that this bug is an issue in this part of the code, because else =x= would happen/.
+
+/My current understanding is that this is a good design because it is better in those regards to the alternatives/.
+
+Science, engineering, programming, detective work and wizardry are all in the business of creating good explanations.
+
+Sherlock Holmes, like a good scientist, keeps a tree of possible worlds in his mind.
+For Holmes, clues are extremely meaningful, they are infused with the meaning of possible alternatives
+in the budding tree of explanation that he is holding in his mind.
+
+A great scientist is excited about any kind of outcome for their experiments. /Ah, reality is on *this* branch of possible worlds.../.
+
+This intellectually humble and imaginative mindset is indispensable for being a good programmer, also.
+
+A powerful wizard must craft a spell using (possibly intuitive) knowledge of the underlying reality and magic system.
+
+From the Harry Potter And The Methods Of Rationality:
+
+#+begin_quote
+One of the requisites for becoming a powerful wizard is an excellent memory, Professor Quirrell had said.
+The key to a puzzle is often something you read twenty years ago in an old scroll or a peculiar ring you saw on the finger of a man you met only once…
+#+end_quote
+
+A good wizard, like a hacker or a detective, feels no shame in their source of information.
+A distant memory, a note about a bug previously fixed, an intuitive feeling...
+
+To become obsessed with the field of inquiry and to make it what the whole brain is about, is the Sherlockholmsian genius.
+
+To develop solid reasoning and imagination, to build a model of the underlying reality, in a feedback loop with the givens,
+and to have the taste and aesthetics to make this model beautiful, simple and elegant is the Sherlockholmsian genius.
+
+I recently realized Albert Einstein was all about this imagination, too.
+So too with multiverse theory, it is simply taking the givens at face value and deriving the underlying reality, using
+imagination and the power of simple explanations - making an elegant and useful model for how the world works.
+
+If biologists had the attitude of contemporary physicists, we might not even have the theory of evolution. Seriously, the fact
+that the outward perception of quantum physics is still this /narrative of confusion/ is embarrassing. It's like a whole field not
+growing up for 60 years to the power of simple explanations.

@@ -1,0 +1,486 @@
+#+title:      Illusions!
+#+date:       [2024-02-12 Mon 18:38]
+#+filetags:   :brain:cybernetics:mind:programming:public
+#+identifier: 20240212T183802
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: illusions-and-gen-art
+
+Some visual illusions and generative art. Using Clojurescript and quill.
+
+Perception is dreamed up, but it is a dream about the world. Isn't it beautiful?
+
+Inspired by Dr. Christof Koch's 'The Green Chaser': [fn:1]
+
+[[https://youtu.be/ELj26VUBOPQ?si=EV6pJichTuXxQbo6][Lecture 9: Seeing the World in Color]]
+
+It's a cool visual illusion. I thought I go and play with that myself.
+
+Warning: Some links in this blog post lead to fullscreen - intensely flashing lights.
+
+[[https://github.com/benjamin-asdf/ftlm-vehicles/blob/main/src/ftlm/vehicles/art/vehicles/illusions.cljs][Code]]. This is what you end up with when you just go bottom up and you stop when it works.
+Interesting, to grow my Lisp library to make these toy game worlds. Simply putting a new
+a piece in when I need it, and letting the code grow by itself.
+
+> Note: Some scenes don't work so well on mobile
+
+* Versions:
+
+** #0 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/0][The Green Chaser]]
+
+You hold your gaze in the center black dot. After a little while, you will find a striking transformation
+of the scenery presented to you.
+
+---
+(I recommend trying it out, spoilers below)
+
+
+** #1 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/1][Chaser Variation]]
+
+When I look at this, I see multiple green dots, and lines of green dots that make triangles and later a square.
+After flickering incomprehensible for a few moments, new green forms 'pop out' again.
+There is a moment when 3 green balls are rotating clockwise, and then I perceive counterclockwise motion, with an offset.
+
+Then lines on an octagon, hexagon, then square, then triangle, made up of segments of green balls.
+These chains of segments feel like they are in a straight line.
+
+At times, I would perceive pink balls going counterclockwise. If I look long enough, the scene can transform into 3
+curved segments of green stripes, going counterclockwise then clockwise. Without any pink left in my awareness.
+
+The 'slower' chaser movement produces a green square, which wipes away the pink balls, leaving behind space for the green
+segments to fill.
+
+An alternative name for this is 'The Green Wiper' because the way the green is wiping away the pink is a bit like the second level of the illusion for me.
+
+** #2 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/2][Chaser more]]
+
+More green segments go around the circlers, then morph into a dance of concentric, segmented green-pink disco lights.
+Their form is reminiscent of a nuclear hazard icon, concentric circles with trapezoid segments at times.
+
+Then, I might perceive the whole thing turning clockwise slowly, adding a whole layered perception to this.
+
+** #3 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/3][I Don't Need Drugs]]
+
+I'm the artist now. It's up to me to decide what is over the top and what is not.
+
+This is the same as #2 but scaled with more circles.
+
+There is a lot of stuff going on when you look at this and give it a chance to produce its magic in your perception.
+
+There is so much blinking green stuff going in circles...
+Also, I start perceiving motion clockwise and counterclockwise again at times.
+
+To me, it seems like the green is filling in the spaces between pink at some point. And there is roughly as much green as there is pink.
+
+Sometimes it looks like green segments are traveling inward concentrically while moving clockwise or counterclockwise subtly.
+
+I get somewhat nauseated when looking at this, not kidding.
+
+I'm loose with the concept of 'too much'.
+
+** #4 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/4][Chaser Spider]]
+
+My idea was to add more 'hints' that point to these imaginary balls.
+
+** #5 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/5][Simple Circuit]]
+
+I moved on to another aspect of these illusions: Can I make one that persists, even when you move your eyes?
+
+The obvious first thing to try is a repeating pattern over the whole visual field.
+
+Something else happens to me when I watch this, I feel like I start moving my eyes in the rhythm of the scene.
+
+Not sure, does it work? I think I can dismiss the green balls wherever I look,
+but it is progress that I always perceive green in the periphery.
+
+
+** #6 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/6][Not Alive Yet]]
+
+What is happening... me and the scene starts having a relationship that evolves.
+My mind starts putting little stories into the movement of the elements in the scene.
+It makes me wonder about gen art that would be something like 'visual music'.
+
+First I feel the cyan balls prevent the green balls from appearing, later the cyan balls and the periphery all mesh in a dance.
+
+I might follow a cyan ball and get the feeling it has a relationship to the surrounding circuit.
+I might feel that a cyan one is dancing on and off with a pink one or a group of pink ones.
+Or I feel that a cyan ball is my little friend, finding its way into this pink computer circuit.
+
+Then I look at the whole thing at once again and I feel it going in rhythm, I feel the rhythm in my mind, too.
+The cyan balls might feel like they come from my vision and not the scene, just for a moment.
+Like the little fireflies, you see when you look at a bright window.
+I see ghostly green balls moving in clockwork-like motions around the background.
+
+The pink circles are like a computer circuit, precise and vaguely nonliving.
+The cyan balls look slightly more like something from nature.
+Maybe it's the interplay between those 2 concepts that make this my favorite piece of this series.
+
+Those cyan balls have a soul of a kind. A small and digital soul. Not alive yet.
+
+** #7 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/7][Patterns Are Your Fault]]
+
+They all go white every few seconds.
+
+** #8 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/8][Nr 8]]
+
+I watched #7 and I felt like it would be satisfying to see the cyan ones by themselves.
+For some reason, I had the idea this would be like a reward to me.
+
+It's a little bit like some of the magic of #7 is revealed.
+Depends on how much you interpreted into the balls I suppose.
+
+I wonder a little bit about these visual artifacts you get from simply looking at a window, the sky or maybe a white wall.
+
+The movement of these cyan balls is a bit like these artifacts.
+It's government by (gaussian) normal distributions.
+Makes sense that whatever happens in the brain that is making the fireflies has normal distributions somewhere, too.
+
+My pet hypothesis about these is that the movement detectors go slightly above a threshold from all the bright inputs.
+And it's normally distributed how far and in what directions you then start predicting some little lights.
+
+** #9 [[https://vehicles.faster-than-light-memes.xyz/art/p/illusions/9][Messing With You]]
+
+Another variation of #7.
+
+The experience is quite enhanced by listening to some [[https://soundcloud.com/dnsallen/dennis-allen-live-recording-absurd-dusseldorf-january-24th][music]] at the same time.
+
+* Blink and surprise?
+
+The other striking aspect of this (chaser #0,1,..) illusion is that, while the impression of seeing green balls is strong,
+it is equally striking how easy it is to re-orient away from the illusion.
+
+Moving the eyes a little or doing some blinks will wipe it away instantly.
+
+I have decided that I consider this aspect of such an illusion just as interesting as the ghostly visual stuff.[fn:2]
+
+It seems like there are 2 aspects of how perception works.
+
+There is an evolving situation, an evolving cognition, some ever more dreamed-up cognition and interpretation of the "raw input".
+And then there is a re-orienting, a re-calibrating back towards the real world again.
+
+These 2 aspects of perception are seemingly in conflict.
+One is that perception is fabricated, confabulated, and dreamed up by the mind. Perception is a meaning-level construct.
+The blind spot is filled in, magic tricks work, and we see green balls where there are none.
+The other aspect is that perception is totally about the world, otherwise it would be useless.
+
+It looks a little like there are 2 kinds of sources of interpretation in the system, in general.
+One is from the sensors, 'realistic' and one is from the imagination 'derived'.
+
+
+#+begin_src
+
+  [ A, B, C, ... ]  input stream (sensors)
+
+                     ^
+                     |
+                     |
+                     |
+                     |             R
+             +--------------------+
+             |                    |
+     +-------+ [ A, B, C, ...]    | realistic brain (1:1 input stream encoding or something)
+     |       +--------------------+ less derived states
+     |           +    +                                                    ^   |
+     |           |    |                                                    |   | alternative view:
+     |           +    |                                                        | I, the realistic brain,
+     |                +  .. and then some stuff                            |   | use those higher predictions as
+     |           +                                                         |   | resource to make my computations
+     |           +    +                                                    |   |
+     |                |                                                        |
+     |                +                                                    |   |
+     v           ^                                                         |   v
+                 |                  P                                      |
+surprise?   +----+-----------------+                                       |
+signal      | [ A, B, C, D, E  ]   | prediction brain?  -------------------+ (mabye)
+ |          |                      | derived states            I bully some lower parts into perceiving D and E.
+ |          +----------------------+ cognitive states          Hence, green balls.
+ |                                   imagination states
+ |
+ |
+ +-- I tell the prediction guy:
+     "Reset your stuff, begin again".
+
+
+#+end_src
+(This is half of Braitenberg Vehicle 13 - minus the comparator and the short-term memory).
+
+Putting a prediction unit into your perception model is a common move. I think it is the first obvious answer to multiple kinds of questions.
+One of them is this: If you have some neuronal tissue, how can it start doing useful stuff by itself? /Predicting my inputs/ comes
+immediately to mind; This is a useful mechanism, no matter the context, or lack thereof.
+
+I will talk in other places about the idea that if the predictor is allowed to modify its inputs, too. Then we get into the world of confabulation,
+which is one of the key concepts, I think, of cognition.[fn:3]
+
+What happens when I blink or move my eyes? Something happens there that comes across like a mechanism that puts more emphasis on the real world again.
+Kinda fits with the 'wake up' hypothesis of thalamus circuits.[fn:4]
+
+My current thinking is that the perception cortex is loading itself up with a situation[fn:5]  and the cognition states evolve for a little bit.
+
+Then, the system is reset by a wake-up signal or surprise signal, maybe every time the inputs change dramatically (for instance).
+Maybe this has evolved to work well together with eye movements so that you get a low-level surprise signal now and then
+into the perception cortex, resetting the activity back to realistic states.
+
+I am bound to be wrong about some stuff, but what if...
+the perception cortex evolves an interpretation of the world, as it sits with the inputs (in contemplative loops?),
+this top-down interpretation then bullies (or biases, or constrains) the lower perception cortical regions
+into perceiving based on those predictions, too (green balls).
+
+Then some signal(s), maybe a surprise 'wake up' signal, tells the perception cortex to reset again, throw away some
+derived cognitive states and make the system more about the input signals again.
+
+Perhaps there is a low-level surprise in this sense every time we move our eyes or blink.
+
+Of course, there is no 'world'. There is 'only' the sensor inputs. The 'world' is a useful abstract label that the system
+uses to mark what is coming from the sensors. The system perceives these as 'real' - very useful.
+
+The world in this model is something I call a /point source of meaning/. It is a label the system uses, it is saying 'This input comes from the world'.
+The fundamental issue of hallucination is that something is labeled 'world' when it should not have been.
+
+This, I believe, is why a meditator can look for the world and see, that there are only perceptions and thoughts about the world, but never a world!
+
+The wrong move to make is to proclaim that the world is 'merely an illusion' and does not exist after all.
+
+When Darwin explained what life is, he did not say "And this is why life is an illusion and doesn't exist."
+
+/oh, it is merely a complicated process!/. And then you suddenly get those first-year university students arguing about whether life exists.
+
+No. He was a naturalist. And you are only a naturalist when you see the beauty in nature just as it is. You let it be, too.
+
+He said, "There is grandeur in this view of life...".
+
+And so too it with the mind. It is not that we explain the mind and then there is less there.
+It is that we make the world bigger by adding an explanation of the mind to it.
+How grand is this world, where the mind is part of it?
+
+There is grandeur in this view of mind, where what we perceive is [ something, something ] generated by our cognitive machine...
+
+The world of our mind is very much real, just as temperature is real even though it is kinetic motion energy of particles.
+
+I had the perception input states initially as blue on the whiteboard, so the world is blue. I had the actuators drawn in red,
+so now I think of actuator cognition as red cognition. There is a use for a red point meaning, too: 'The Self'. (Vehicle 17, future).
+
+---
+
+Another thing that is striking about these kinds of illusions:
+
+The perception of the green balls is sort of ghostly as if the system is signaling to itself
+'and here is some tentative idea of green balls'. As if the system is used to have false dreams about its visual perception or something.
+
+It fits with those visual artifacts I get now and then and doesn't bother me too much. Sometimes there is some flicker
+going across a small span of the visual field or something. Or I look directly at a light and get an afterimage, forming this or that
+blob or bar or whatever. And they are very ghostly, too.
+As if the system is attuned to the concept of artifacts coming from the machinery itself, and it already has a label for that, too.
+"Ghostly visual stuff".
+
+So maybe the system knows that the green balls come from the derived cognition cortex, and not from the input cortex.
+(For instance).
+
+Now one might wonder, this marking, or this knowledge of where things come from - whatever mechanism is responsible for this?
+
+---
+
+Another striking thing in this space of perception/cognition:
+
+Consider imagining something in the visual scene. It feels like some kind of transparent overlay on top of the visual scene, it somehow is there
+and yet, it is very much not there, too.
+
+It seems like the system is very careful to keep the concept clear: 'This is not real perception'.
+
+You cannot trick it into just starting to perceive something. In order to trick it you need to make illusions like the Green Chaser, or
+be a trained magician who can fool the system of a user into perceiving this or that.
+
+This again gives me the idea that however this thing works it has a strong notion of 'world' and 'stuff that comes from the world' (or sensors).
+And conversely, maybe it has a strong notion of 'this is stuff from the inner world', too.
+It is almost like there is a signal that specifically says 'This is not the world'.
+
+I'll throw out a little conjecturing: maybe in the brain this is implemented by the identity of the thalamic nuclei that a signal comes from.
+
+So in general this is my view:
+
+
+#+begin_src
+
+                                                  cortex
+       +--------+--------------------------------------------------------------+--------+
+       |        |                                                              |        |
+       |        |                                                              |        |
+       |        |                                    ^                         |        |
+       |        +------------------------------------+-------------------------+        |
+       |        |                                    |                         |        |
+       |        |                                    | 'internal inputs'       |        |
+       |        |   cortex->lgn                      |                         |        |
+       |       -+----------------+                   |                         |        |
+       |        |  attention etc.|                   |                         |        |
+       |        |                |       thalamus    |                         |        |
+       |        |                |                   |                         |        |
+       |        |             +--v-----------+-------+------+                  |        |
+       |        |             |              |       |      |                  |        |
+       |     ---+-----+-------+-->           |       |   <--+-------+----------+----    |
+       +--------+     |       |              |              |       |          +--------+
+                      |       |              |              |       |
+                      |       |              |              |       |
+                      |       |              |              |       +------------ 'not world', 'my inner world'
+           -----------+       +-----+--------+---------+----+
+label: 'world'                      |                  |
+                                    |                  |
+                                                       |
+                       'lower thalamic nuclei'         'higher thalamic nuclei'
+                       'lgn, mgn, ...'                 'pulvinar?, ...'
+                       sensor inputs                   'cognition inputs'
+                       realistic states                derived states, prediction states
+                       surprise signals(?)             evolved signals
+
+
+
+#+end_src
+
+I am just conjecturing around a little, I am bound to be wrong.
+
+Now everybody in the cortex can look at the Thalamus and see 2 kinds of things. World things and internal things.
+
+If you mix up the thalamic nuclei you get something like hallucinations - or if you have too much meaning going back from the cortex into
+the input side of the thalamus.
+
+The green balls of the Green Chaser then would be something that happens in the realistic / input part of the system.
+That is what the illusion is, a low-level kind of hallucination. Where the system says 'out there in the world are green balls'.
+
+Maybe the reason you don't see the green balls immediately is that the system has to sit with the inputs for a while,
+the more derived cortex makes some hypotheses about green balls and bullies the realistic brain into perceiving them.
+
+Maybe you can measure how long it takes to see the green balls and it tells you something about the nature of such a circuit.
+Maybe usually you would have moved your eyes by that time at the latest, and the system is biased towards 'after that much time of
+analyzing a scene I would usually parse the actual objects of the scene'.
+But we sort of hacked the system by not moving our eyes, so there was no reset-to-realistic event in the system and the situation
+kept evolving - sitting with our cognition states.
+
+You could break the surprise signal in some way, and your perceptions continue to evolve, instead of resetting back to realistic states.
+We can make a hyperparameter in the system, too. That says how much the cognition states are allowed to influence the realistic states.
+
+Maybe surprise and noradrenaline can quickly bias this back to the realistic states?
+
+Maybe serotonin modulates how long you spend with your cognition until you reset?
+
+Perhaps LSD breaks the biochemistry of the surprise signal?
+
+Maybe on LSD, a person cannot wipe the green balls away (so well) by blinking or moving the eyes?
+
+Maybe on LSD, perception keeps evolving, instead of resetting?
+Thereby making the brain more about its imagination, and less about the real world.
+
+The other place where this system can break is when there is too much meaning flowing down in the cortex->lgn arrow of this thing.
+
+Internal inputs are inputs of a kind, so there is a second world of a kind, too: Stuff from my dreams / my cognition / my imagination.
+
+In my current evolving view of cognition, this is one of the key aspects: The system is allowed to communicate with itself
+via perception (input...) states. This is an elegant design because now I can use some of the same machinery
+to represent different 'cognitive contents'. For instance episodic memories or imagination states.
+Or a face is allowed to serve as a label for a person, a small situation as a label for a relationship and so forth.
+
+* Confabulation / Filling in the blanks / Vague ideas
+
+This kind of illusion is augmented three-fold by listening to some music at the same time.
+
+This reminds me of another aspect: When I look at such visuals (without music), I sort of perceive ('hear' but don't hear) a little bit of
+ghostly auditory, rhythmic 'imaginary hearing' perceptions.
+
+It comes again across like some kind of tentative interpretation 'and here you might expect these kinds of sounds'.
+Btw /I am not alive/ gives tiny sounds, like little digital blibs, for the cyan balls and sort of more global swooosh, swoosh sounds for the background.
+The swooshes come in overlapping waves sort of, as if they build up for a moment. Like 'dalubdub-dalubdub-dalu [small pause]'.
+Kinda feels like a raw, overlapping rhythm or something.
+
+My view of perception and cognition is that these are top-down prediction states, using the auditory system to perceive XYZ.
+Maybe the system wants to go in harmony with itself[fn:6], so if I see something going in rhythm, I expect to also hear something going in rhythm.
+
+This makes a great cognition-building material. Now we can think in terms of vague states, which the rest of the system is allowed to fill in.
+Consider episodic memory, if I can have a vague idea of a few perception states of a memory, the rest of the system can go in harmony
+with those states, filling in coherent 'perception' states.
+
+So I see confabulation and vague ideas as 2 sides of the same coin, and a key aspect of what cognition is.
+Vehicle 15, when I program it, is a confabulation mechanism. [fn:7]
+
+I am a huge fan of vague ideas for many reasons. I believe it is the power of abstraction and programming there, to disregard the details.
+
+* Current audio diary musings on models of cognition
+
+That's basically if you are some kind of real fan of my work. Get real intimate with my raw thoughts, this is from my audio diary:
+
+[[https://recorder.google.com/b53ae19f-2793-486e-b227-f78cf2c267e3]]
+
+
+
+* Footnotes
+
+[fn:1]
+
+I went through this Coding & Vision 101 Series from Allen Institute with Dr. Christof Koch.
+Quite a cool lecture, with a lot of references to Hubel / Wiesel kind of stuff. Focus on vision but addresses wide neuroscience thinking, too.
+
+More thoughts [[denote:20230715T105044][here]].
+
+[fn:2]
+
+Similarly, it is just as interesting that perception is about the real world, as it is interesting that imagination exists.
+I think there might be a bias sometimes in this area towards imagination being so much more interesting.
+
+[fn:3]
+
+I think Daniel Dennett would agree - see the multiple drafts model.
+
+[fn:4]
+
+[[https://youtu.be/fki7AmLma_I?si=v2u56O0f5AP5pHAr][The Thalamus]]: typical biology-guy move to mix up different levels of analysis like it is nothing.
+
+"Yeah and here is this molecular biology finding and then we make a hypothesis on the circuit again based on that...".
+It does draw a bigger picture though.
+
+[fn:5]
+
+How does a cortex load itself up with a situation one might wonder.
+
+Everything looks like the answer is neuronal activity.
+
+Consider spiking neurons going back and forth, this already is a memory unit. You activate one of them and now
+you have a loaded-up neuronal unit. With activity happening.
+
+#+begin_src
+
+         start signal
+           |
+           v
+
+         [ A ] ----------> [ A' ]
+           ^                 |
+           +-----------------+
+
+#+end_src
+
+Neurons A and A prime will forever activate each other!
+This is already not utterly useless. It's a memory unit that says whether the 'start signal' ever happened.
+
+Now consider that you can use 100 x 1000 neurons to encode a substantial bit of information.
+That is something like a cubic millimeter of cortex. That roughly fits 20-50 times into a drop of water.
+
+This cortex can go back and forth with its activation a little (short-term memory).
+
+I am imagining a substance that can be loaded up with meaning.
+Imagine you have a magic stone that you can put in the sun and now it is a little bit about the sun.
+
+(More in future computer program explorations of such cell assembly level considerations).
+
+---
+
+If you make a bit of a baseline activity + some inhibitory neurons, you now have signal detectors for the absence of something.
+
+More on this elsewhere. But a great little intro to such circuit thinking is Braitenberg Vehicles book.
+
+[fn:6]
+Meaning that the prediction states align.
+
+If everything is allowed to go the other way, too. Then you get this confabulation nature.
+
+If a predictor is allowed to modify and re-arrange its short-term memory inputs, then it can
+decide to modify its inputs to get a harmonious prediction story snippet.
+(More to come: Vehicle 15, 16)
+
+[fn:7]
+
+The main idea is that with vehicle 15, the predictor is allowed to modify the short-term memories, too (see Braitenberg vehicle 13).

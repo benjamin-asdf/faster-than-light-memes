@@ -1,0 +1,24 @@
+#+title:      ai
+#+date:       [2023-07-14 Fri 11:08]
+#+filetags:   :ftlm:lisp:minsky:public:
+#+identifier: 20230714T110828
+
+There hasn't been much AI research lately.
+
+
+Once we have programs that are resourceful in this way we will be surprised
+/what was the big deal?/
+
+
+When I read Minsky
+
+* Recent history
+
+
+* Bad incentives, inadequate equilibria
+
+All this is a coherent story to me.
+
+Bad incentives in academia lead to short-sighted research.
+
+It simply is an issue of the current scientific system.

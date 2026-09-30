@@ -5,7 +5,12 @@ https://faster-than-light-memes.xyz/
 
 Make a blog using org and use babashka as build tool.
 
-I take the website content straight from my [[https://github.com/protesilaos/denote][denote]] notes dir.
+Posts are [[https://github.com/protesilaos/denote][denote]] org files in =posts/=, kept apart from my private notes.
+The navbar note (=posts/*--ftlm-navbar__*.org=) decides what gets published.
+Links to notes outside =posts/= export as plain text.
+
+- =static/= :: hand-made pages and images, copied into =public/= as is
+- =static-private/= :: gitignored, copied and deployed but not in this repo
 Deploying is currently =scp= into a linode server.
 
 * build
@@ -16,7 +21,7 @@ bb tasks
 
 for a list of available commands.
 
-You need to set ~ftlm/index-file~ and ~denote-directory~ in =build-site.el=.
+
 
 ** deps:
 

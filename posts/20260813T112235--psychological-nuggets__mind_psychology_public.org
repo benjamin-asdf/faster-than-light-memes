@@ -1,0 +1,119 @@
+#+title:      Psychological Nuggets
+#+date:       [2026-08-13 Thu 11:22]
+#+filetags:   :mind:psychology:public:
+#+identifier: 20260813T112235
+#+EXPORT_FILE_NAME: psychological-nuggets
+
+An ongoing collection of small psychological phenomena and mechanisms I stumbled on, mostly while introspecting out loud in my audio diaries, later turning out to have proper names in the literature.
+
+* Retroactive listening — the "What did you say?" effect
+
+From an audio diary entry, 2022-12-29:
+
+#+begin_quote
+Do people that [use] sign language misunderstand each other and need to ask "what did you say"? [...] There's this funny phenomenon [...] you will ask a person "what did you say" and then the moment you're asking, why are you asking? You realize what they said. That's so funny. It's like just retroactive, understand, listening thing. [...] I wonder if there's a name for this effect.
+#+end_quote
+
+The phenomenon: you ask someone to repeat themselves, and in the very act of asking, before they answer, you already know what they said.
+
+It has a name: [[https://en.wikipedia.org/wiki/Echoic_memory][echoic memory]] (also /precategorical acoustic storage/, Crowder & Morton 1969). It's the auditory sensory buffer that holds raw, unprocessed sound for roughly 2-4 seconds. Asking "what?" retroactively directs attention into that still-live buffer, so comprehension often lands before the other person even repeats themselves.
+
+This is, almost verbatim, the textbook illustration of echoic memory in cognitive psychology (being absorbed in a book, someone asks a question, you say "what?" and realize mid-sentence that you did hear it) — independently rediscovered in the diary.
+
+See also: [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4149571/][Echoic Memory: Investigation of Its Temporal Resolution by Auditory Offset Cortical Responses]] (PMC).
+
+** What about sign language?
+
+The diary quote opens with sign language, not by accident — asking whether the effect is auditory-specific already points at the layer underneath it. It is: sensory memory is /modality-specific/. [[https://en.wikipedia.org/wiki/Iconic_memory][Iconic memory]] (Sperling 1960) is the visual analog of echoic memory, but it decays in ~250-500ms — far too fast to bridge a sign that unfolds over roughly a second. Plain visual persistence can't be doing the job here.
+
+Instead there's a dedicated mechanism: a [[https://link.springer.com/article/10.3758/BF03211287][visuospatial phonological loop]] (Wilson & Emmorey 1997) — a sign-specific rehearsal buffer in working memory, functionally parallel to the auditory phonological loop that echoic memory feeds into for speech. So the honest answer isn't "echoic memory, but visual" — it's a motor-visual, sign-language-specific echo, a distinct buffer built for a distinct modality of language.
+
+* Motor chunking
+
+From 2017-06-08:
+
+#+begin_quote
+You basically learn something and have to use chunks to do it properly [...] Once they are trained, you don't need so many chunks anymore. Chunks, what is this? Slots? No, what is this? Is there a name for it or is it chunks? What's the name for mental capacity? Or basically you chunk whole actions, whole sequences of motor actions can be chunked, so they are only one chunk.
+#+end_quote
+
+[[https://en.wikipedia.org/wiki/Chunking_(psychology)][Chunking]] (Miller 1956) started as a working-memory finding — the mind groups items to beat its capacity limit. It generalizes to motor learning: as a skill gets practiced, striatal/cerebellar circuits concatenate a sequence of sub-movements into a single automatized unit that executes as one chunk, freeing up cognitive resources. See [[https://pubmed.ncbi.nlm.nih.gov/9753592/][Graybiel, "The basal ganglia and chunking of action repertoires"]].
+
+* Déjà vu, derived from first principles
+
+From 2017-09-30:
+
+#+begin_quote
+It may be a mechanic for deja vu also, where it is somehow, where you think this is the present, but it's already [...] a memory, so you think what the fuck, there's a memory of exactly what I'm experiencing right now [...] And then it's a deja vu, holy shit, that actually makes sense.
+#+end_quote
+
+One leading account of [[https://en.wikipedia.org/wiki/D%C3%A9j%C3%A0_vu][déjà vu]] is a dual-pathway delay: two normally synchronized processing streams (a fast perceptual pass and a slower familiarity/retrieval pass) fall out of sync by milliseconds, so the second pass at the very same input gets misregistered as a memory of an event that is, in fact, still happening. That's exactly the mechanism reconstructed here in real time, from nothing but the felt structure of the experience.
+
+* Clinical vs. actuarial judgment
+
+From 2017-12-10:
+
+#+begin_quote
+This is always, I forgot how this effect is called or something, but this was Kahneman's book. People make easier, they know more accurate assessments about numbers, or when they [...] if you use algorithms and numbers, your predictions are getting this effect. Yeah, just the vine calculated from the weather is better than these experts. Why do these experts even exist still?
+#+end_quote
+
+Paul Meehl's finding (1954), the backbone of a chapter in Kahneman's /Thinking, Fast and Slow/: simple statistical formulas consistently out-predict expert human ("clinical") judgment, across dozens of domains — from parole decisions to, yes, wine quality. See [[https://meehl.umn.edu/sites/meehl.umn.edu/files/files/138cstixdawesfaustmeehl.pdf][Dawes, Faust & Meehl, "Clinical versus actuarial judgment"]] (Science, 1989).
+
+* Semantic satiation
+
+From 2017-12-30:
+
+#+begin_quote
+I have kind of exhausted this, I feel like I have lost something, there was, yeah, some effect, what's this effect, satisfying effect or satiation effect, I think [...] my pet hypothesis is that [...] it's not exclusively for words [...] maybe if you activate a concept over and over, we have satiation, it sounds feeling foreign or strange.
+#+end_quote
+
+He gets close enough to name it himself: [[https://en.wikipedia.org/wiki/Semantic_satiation][semantic satiation]] (Leon Jakobovits James, 1962) is the effect where repeating a word causes reactive inhibition in the pathway that processes it, so the word briefly stops feeling meaningful and starts feeling like a foreign noise. His own extension — that this generalizes past words to concepts in general — mirrors how the research actually developed.
+
+* Awe
+
+From 2021-09-10:
+
+#+begin_quote
+Say I'm thankful for this and the beautifulness and the beautiful nature and [...] Can you see the same rhyme? The same melody? The same song of [...] The same glory. What's it called? Like this hallelujah effect. The song that has been sung in the glory of nature.
+#+end_quote
+
+Dacher Keltner and Jonathan Haidt formalized [[https://www.templeton.org/discoveries/the-science-of-awe][awe]] (2003) as the emotion produced by perceived vastness plus a "need for accommodation" — an experience too large to fit existing mental models — most reliably triggered by nature, and shading, exactly as here, into reverence and gratitude.
+
+* Umwelt
+
+From 2022-01-20:
+
+#+begin_quote
+Maybe there is a word, there should be a word about how an animal goes about its business from like moment to moment, during a day [...] it also takes like development, your behavior, of course, and the environment [...] I would like to have a word on this.
+#+end_quote
+
+That word already exists, and is a hundred years old: [[https://scienceinsights.org/what-is-an-umwelt-the-subjective-world-of-an-organism/][Umwelt]] (Jakob von Uexküll, 1909) — an organism's own subjectively constructed experiential world, shaped jointly by its physiology, behavior, and environment, as distinct from the objective surroundings (/Umgebung/) any outside observer would describe. Foundational term in biosemiotics and ethology.
+
+* Victory disease
+
+From 2022-09-01:
+
+#+begin_quote
+There's like a bias to accidentally think I had not solved it will never break again, right? Maybe there should be a name for this kind of bias [...] like the moment of triumph [...] didn't somebody in history ever make this mistake, like they won a war and triumphed over somebody [...] and then later they got wrecked again?
+#+end_quote
+
+There is a name, and he reaches for the exact right analogy unprompted: [[https://en.wikipedia.org/wiki/Victory_disease][victory disease]], the military-psychology term for the overconfidence and complacency that a win breeds, setting up the next defeat. Textbook cases: Napoleon after Austerlitz, Japan after its early Pacific victories running into Midway.
+
+* Transgenerational epigenetic inheritance
+
+From 2023-09-11:
+
+#+begin_quote
+This is actually a impoverishment of genetic of this kind of genetics that they talk about epigenetics [...] they should have a name for this [...] this is like Lamarck here and suddenly make sense again [...] epigenetics is kind of adaptation that just goes across multiple generations.
+#+end_quote
+
+[[https://en.wikipedia.org/wiki/Transgenerational_epigenetic_inheritance][Transgenerational epigenetic inheritance]]: heritable phenotypic changes (via DNA methylation, histone modification, small RNAs) passed across multiple generations without any change to the DNA sequence — adaptation-like, but not the DNA-sequence-level inheritance Lamarck originally got wrong, a distinction correctly drawn here in the same breath.
+
+* Mutual exclusivity / fast mapping
+
+From 2024-05-23:
+
+#+begin_quote
+Children understand language [...] without data points [...] they even infer [...] if there's an apple and a banana and you use the word apple and the child already knows what a banana is, it will now split this up and say, yeah, you meant this apple. And it will even do so retroactively.
+#+end_quote
+
+[[https://en.wikipedia.org/wiki/Fast_mapping][Fast mapping]], via the [[https://en.wikipedia.org/wiki/Mutual_exclusivity_(language_acquisition)][mutual exclusivity]] constraint (Ellen Markman): children assume each object gets one label, so hearing an unfamiliar word next to a familiar and an unfamiliar object, they infer the new word must name the unfamiliar one — often from a single exposure, and sometimes, as noted here, the mapping is only consolidated retroactively during later processing (including sleep).

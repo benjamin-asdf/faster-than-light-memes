@@ -1,0 +1,215 @@
+#    -*- mode: org -*-
+#+EXPORT_FILE_NAME: bashing-is-better-than-extending
+
+
+Archived entries from file /home/benj/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+
+
+* project.el
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-26 Mon 11:15
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+
+I decided this does enough
+
+kudos to projectile.el
+I was not using emacs at that time for a while yet.
+But some digging reveals to me tha projectile.el is the
+senior package
+older
+venerable
+
+project.el  is the new kid on the block
+only 7 years old
+
+
+
+first commit
+
+[benj@benj-pc projectile]$ git log --reverse | head
+commit 4cf61b8cd0099b50c13502c862b4c2e73b59dc01
+Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
+Date:   Sun Jul 31 22:12:59 2011 +0300
+
+    initial commit
+
+
+emacs project.el lisp:
+
+git log --reverse -- ./project.el | head
+
+commit f8c720b55b9419c849ea9febe6f888761a61949b
+Author: Dmitry Gutov <dgutov@yandex.ru>
+Date:   Fri Jul 10 04:34:41 2015 +0300
+
+    Introduce a Project API
+
+    * lisp/progmodes/project.el: New file.
+
+    * lisp/cedet/ede.el: (project-try-ede): New function.
+    (project-root): New implementation.
+
+
+
+
+* project.el
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-26 Mon 11:16
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+
+I decided this does enough
+
+kudos to projectile.el
+I was not using emacs at that time for a while yet.
+But some digging reveals to me tha projectile.el is the
+senior package
+older
+venerable
+
+project.el  is the new kid on the block
+only 7 years old
+
+
+
+first commit
+
+[benj@benj-pc projectile]$ git log --reverse | head
+commit 4cf61b8cd0099b50c13502c862b4c2e73b59dc01
+Author: Bozhidar Batsov <bozhidar.batsov@gmail.com>
+Date:   Sun Jul 31 22:12:59 2011 +0300
+
+    initial commit
+
+
+emacs project.el lisp:
+
+git log --reverse -- ./project.el | head
+
+commit f8c720b55b9419c849ea9febe6f888761a61949b
+Author: Dmitry Gutov <dgutov@yandex.ru>
+Date:   Fri Jul 10 04:34:41 2015 +0300
+
+    Introduce a Project API
+
+    * lisp/progmodes/project.el: New file.
+
+    * lisp/cedet/ede.el: (project-try-ede): New function.
+    (project-root): New implementation.
+
+
+
+
+* compilation
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-26 Mon 11:53
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+
+Using emacs ~project.el~ I get a beautiful flow of invoking bb tasks:
+I just need a project with a =.git= dir.
+And I invoke ~project-compile~, type in ~bb
+
+(defun project-compile ()
+  "Run `compile' in the project root."
+  (declare (interactive-only compile))
+  (interactive)
+  (let ((default-directory (project-root (project-current t)))
+        (compilation-buffer-name-function
+         (or project-compilation-buffer-name-function
+             compilation-buffer-name-function)))
+    (call-interactively #'compile)))
+
+
+
+and ~recompile~
+
+
+(defun compilation-read-command (command)
+  (read-shell-command "Compile command: " command
+                      (if (equal (car compile-history) command)
+                          '(compile-history . 1)
+                        'compile-history)))
+
+
+
+* story
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-27 Tue 12:05
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+
+
+
+They could make magc machienes on other trees in the fores burst
+into life or freeze forever.
+
+Whenever they crafted a spell, they wrote it down in magic books, that
+happened to be the magic system of the forest
+
+
+instructions where converted into the
+
+when you built a spell that reached into another part of the forest,
+
+you crafted a beautiful book that told a story about that part of the forest.
+About how to reach that place of magic, and about the animals that lived there.
+
+The language was so beautiful and easy to use that the elves did not
+notice
+
+One day a crafty hacker
+
+magic mirror of ice
+it has become a sport to ride on the ice
+such was the magic of the mirror that you could make spells inside the castle
+just crazing on the ice. And this was blazingly fast.
+
+The book of the mirror then, was a sort of book of books that allowed
+the casting of spells without the need for more books.
+
+Among the high scholars of the elves
+
+there emerged a growing consensus that the writing of more and more books
+
+that there must be some escence
+that is captured by an even cleverer book.
+
+The queen decreed that whomever finds a clever book of books
+wins a price and the highest honors.
+
+* slack convo
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-27 Tue 12:06
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+I was thinking about this blog post for a while [[https://clojurians.slack.com/archives/C099W16KZ/p1663862976109399][this slack conversation]]
+really pushed me into finishing it.
+
+
+* Lever
+:PROPERTIES:
+:ARCHIVE_TIME: 2022-09-27 Tue 12:07
+:ARCHIVE_FILE: ~/notes/20220922T123209--bashing-is-better-than-extending__emacs.org
+:ARCHIVE_CATEGORY: 20220922T123209--bashing-is-better-than-extending__emacs
+:ARCHIVE_ITAGS: emacs
+:END:
+
+Levers are great.
+They make it possible to have a large effect with little
+
+effort
+output with input
+
+

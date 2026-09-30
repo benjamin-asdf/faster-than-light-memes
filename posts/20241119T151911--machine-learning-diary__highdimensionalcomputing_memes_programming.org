@@ -1,0 +1,131 @@
+#+title:      machine-learning-diary
+#+date:       [2024-11-19 Tue 15:19]
+#+filetags:   :highdimensionalcomputing:memes:programming:
+#+identifier: 20241119T151911
+#+EXPORT_FILE_NAME: machine-learning-diary
+
+* Iris with SDM
+
+Sparse Distributed Memory:
+
+- [[denote:20240606T185815][HDC/SDM blog post]]
+- Book: /Sparse Distributed Memory/ 1988, Kanerva
+
+Code at the end:
+
+https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/iris_sdm.clj
+
+------------------
+
+Since I just need to explore, I made ad-hoc clojure vars that I re-difine.
+
+Different rules apply for such a thing than for, /aham/, real software engineering.
+
+Design:
+
+#+begin_src clojure
+;; ----------------------------------
+;;
+;; Explore phase:
+;;
+;; 1. 'encounter' in the 'world':
+;;
+;; percept -> species (from species-seeds)
+;;
+;; 2. Put into sdm:
+;;
+;; percept ->  species
+;; key         value
+
+
+;;
+;; percept:
+;;
+;; map from input data to H (hyperdim space).
+;;
+;; F(dat) -> x; x is element of H
+;;
+;;
+;; Lit:
+;; Robust Clustering using Hyperdimensional Computing
+;; 2312.02407v1
+;; https://arxiv.org/abs/2312.02407v1
+
+;; -----------------------------------------
+
+;; Usage:
+;;
+;; 1. Given dat,
+;; 2. build percept
+;; 3. query SDM,
+;; 4. cleanup with species-seeds
+;;
+
+#+end_src
+
+- There would probably be something way simpler where you simply accumulate a hypervector for each class.
+- but hey, the SDM is simple, too. It splits out the 'keys', amplifying their differences.
+
+-----------------
+
+- I played around with an attention mechanism and I came up with 3 versions in this design:
+
+- 1. Build an attention mask of dimensionality H by finding the indices with most overlap in all percepts.
+  Then for instance drop the highest 50 indices (like I ended up doing).
+
+- 2. Use the address decoder of the SDM and find the addresses that are activated most,
+  then make some attention that diminishes their effect (mask is agains the simplest).
+
+- 3. First train the SDM, then drop the /highest/ indices in the content matrix.
+
+
+- All 3 have in common that they try to drop the overlap, leaving the differences between the learned data.
+- I have the suspicion that they all would work the same, and probably one could do the math and find
+  the relationship between them.
+
+
+- This is vaguely inspired by neuronal *attenuation*. The neurons that fire a lot would have less impact,
+  and this would generally make sense, if the /differences/ are more important than the /samenesses/
+  between things
+
+- The topics contrast (to inhibit once alternatives), attenuation, 'change detection', 'gain', 'attention' also come up in the
+  systems neuroscience of the Thalamus. (e.g. [[https://pubmed.ncbi.nlm.nih.gov/17707635/][M. Sherman]]).
+
+-----------------
+
+- I implemented a `levels` for block sparse HDC-vsa
+- This allocates 2 seeds, a high and a low seed, then returns a range of hypervectors
+  that are the superposition of the 2, with the first being identical to the low seed,
+  then more and more a mix between the 2.
+- It stops working when num-levels > segment-count
+
+------------------------
+
+- Made me wonder about HDC and arithmetic. Von Neuman (/The Computer and the Brain/) already said it:
+  The brain trades powerful logic for impoverished arithmetic.
+  (In HDC you don't use bits to represent numbers).
+- This and the fact that some languages [[https://psycnet.apa.org/record/2005-11632-001][don't have numbers]].
+- It fits with a view where our numbers are made the hard way, using the symbolic system of the mind,
+  *not* with a subsymbolic representation as we can do in computers.
+
+------------------------
+
+- While playing around with this, a sneaking suspicion krept up on me,
+  that you can do all kinds of linear algebra mushing and you get something out of it.
+- That perhaps all that deep learning is doing is explore a space of random linear algebra,
+  with a powerful algorithm that does the exploring (stochastic gradient descent).
+- that would fit with [[http://www.incompleteideas.net/IncIdeas/BitterLesson.html][the bitter lesson]].
+
+------------------------
+
+- I felt like there must be something way more powerful for encoding the
+  'distances' in the input data numbers.
+
+- When I build a [[denote:20230915T190843][Braitenberg vehicle]] nr. 3, it just works because the sensors
+  and motors use reality to calibrate or something.
+  No distances or angles etc. must be computed, it levarages the logic of
+  having 2 sensors somehow.
+
+- I feel like there must be mechanisms that levarage such basic competencies of
+  the natural world.
+  That is a topic of Micheal Levin, too. But I want to put it into software so I can program it.

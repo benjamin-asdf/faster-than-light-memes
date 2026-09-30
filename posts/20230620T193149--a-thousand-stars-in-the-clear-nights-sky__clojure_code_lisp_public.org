@@ -1,0 +1,35 @@
+#+title:      a-thousand-stars-in-the-clear-nights-sky
+#+date:       [2023-06-20 Tue 19:31]
+#+filetags:   :clojure:code:lisp:public:
+#+identifier: 20230620T193149
+
+Technologies
+
+
+#+begin_quote
+Imagination is a valuable asset when it comes to detective work, Watson. It is the bridge that allows us to perceive connections between different facts and events. Without imagination, we might never be able to see beyond the surface of things and pierce the veil of reality.
+#+end_quote
+Sherlock Holmes
+
+#+begin_quote
+Reality does not by itself reveal its inner workings to you. You only see little glimpses and pieces of it.
+Your job as a scientist, coder or wizard is to use your imagination of how these pieces can fit together.
+#+end_quote
+From my notes
+
+School is about delivering on mediocre feats of thinking.
+This is why Rich Sanchez can say /School is not a place for smart people/.
+
+/What are your tastes, what is good?/
+
+Nobody can tell you what is good.
+
+23* Majorities of the Equilibrium
+
+*
+
+* Clues
+
+Here is a fact would shine as bright and unvarying in mind as the north star.
+
+*

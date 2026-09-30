@@ -1,0 +1,144 @@
+#+title:      not-even-the-sky-is-the-limit
+#+date:       [2022-11-15 Tue 19:20]
+#+filetags:   :flow:feed:physiology:
+#+identifier: 20221115T192004
+#+EXPORT_FILE_NAME: not-even-the-sky-is-the-limit
+#+OPTIONS: toc:nil
+
+Cold showers are a hello world for being determined.
+
+* Introduction
+
+I have been practicing [[https://en.wikipedia.org/wiki/Wim_Hof][Wim Hof]] Method for years.
+
+It is a spiritual path of sorts.
+
+
+Embrace being an animal...a nd animals are really hardcore man.
+
+Humans plan, and think and discover how to world works.
+
+The brain is the control hub of our inner physiology, too.
+
+Getting in touch with ones physiology is not mystical, and not reserved for people that subscribe to woo-woo.
+
+It is using the pathways in ones brain that evolved to do just that, controling the body. [fn:1]
+
+And the twist: The inner physiology is another part of the world.
+
+With its mechanics, stories and places that can be discovered.
+The interface of body and brain is just another interface, a kin to the motoric / muscle interface.
+
+Where can you start exploring that interface?
+
+With the things you already have control over.
+Hence breathing techniques, stretching and cold exposure.
+
+Emphasize the in-breath over the out-breath and you are pumping adrenaline.
+
+The other way around and you get more relaxed.
+Cold exposure pumps dopamine, with a long arc. [fn:2]  It makes the whole day awesome.
+A cold shower is already an achievement that sets you up for performance.
+
+Wim has mentioned somewhere on the free part of his app something
+about self-determination and having "the cold as a teacher".
+
+* One way to learn is to learn on a playground
+
+There is a reason we make hello world programs. We learn in the small what will work in the large.
+
+Say Wim Hof is right and self-determination is a mental thing I can 'grab', just like grabbing for my phone.
+
+How do I learn to do so?
+
+Also importantly, how do you even know you are doing it?
+
+Enter cold showers ("The cold is our teacher").
+
+It is hard to kill yourself with a cold shower, yet it takes mental energy to go into one and to stay.
+
+It gives you a chance to be determined in a small, controlled, safe environment.
+
+You manage to endure a wall of physical discomfort, you are doing it.
+This is what determination is.
+
+/just do it/
+
+In the lore of Wim-hoffing, you keep a calm mind and observe yourself being able to /do it/.
+
+You are deploying the mental capacities that you might call =determination=.
+
+The cold shower is the playground that allows you to see how it is to be determined.
+
+You observe the mentality, the mechanics, the feel, the drive, the
+/just doing/ it. What you /are/ when you are being determined.
+
+This then, shows you how to be determined elsewhere.
+
+The cold is not an end goal, it is a simple, easy playground where we can test how it is to be determined.
+
+This also means we have a benchmark for whether we are deploying determination, or not.
+
+To learn something you need some way of telling whether you are doing it right.
+
+When learning how to juggle or playing music, it is possible to find little places where
+training will pay off. These can be mental bumps, even in the way one /thinks about throwing/
+a ball and so forth.
+
+#+begin_quote
+The only place where you can grow is at the edge.
+#+end_quote
+
+Finding such mental bumps, the edges of ones growth, and being interested in them is part of unlocking true skill.
+
+So every musician and expert sort of knows what it means.
+
+The same thing is allowed to happen with mentality, attitute, or determinism.
+
+One needs to allow the edges to be in lowly places. When learning to juggle, throwing a single ball well is hard.
+
+This is how it must be and that is good and well.
+
+
+* Huberman
+
+[[https://hubermanlab.com/][Professor Huberman]] is since recently one of the great science
+communicators of our time.
+About physiology, neuroscience and (my words) frankly, the human soul.
+
+Transcript from a recent Q&A event (you can find it on the Huberman lab
+podcast feed):
+
+#+begin_quote
+If you want to get the most out of the cold exposure then you want to get
+to that point of "I want to get out of here, but I know I can
+stay in safely, but I really want to get out of here".
+
+It's a little hard to explain, but there is just
+so much learning in those short moments about where your mind goes.
+And this sounds subjective and maybe a little whishy-washy.
+You can realize great things about yourself in those moments.
+You can find insight in those moments.
+#+end_quote
+
+I agree. I call this learning how to be determined.
+
+* The practice
+
+I can recommend the Wim hof app to get started. There is a diary thing
+where you start with 10-second cold showers after a warm shower etc.
+
+Tip: if you have a dispatchable shower head, put it in your hand and
+move it around. Cold exposure is all about control. If you have the
+shower head in your hand, you gain control.
+
+* Footnotes
+
+[fn:1]
+One way to describe this is by having a set of inside jokes
+with the physiology driving parts of your brain. Using your own style.
+
+[fn:2]
+[[https://hubermanlab.com/using-deliberate-cold-exposure-for-health-and-performance/][Andrew Huberman]] has in recent times communicated beautifully about the
+the current science of cold exposure, breathing technique and
+stretching.

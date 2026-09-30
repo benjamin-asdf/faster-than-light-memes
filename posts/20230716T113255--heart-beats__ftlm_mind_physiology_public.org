@@ -1,0 +1,100 @@
+#+title:      heart-beats
+#+date:       [2023-07-16 Sun 11:32]
+#+filetags:   :ftlm:mind:physiology:public:
+#+identifier: 20230716T113255
+#+EXPORT_FILE_NAME: heart-beats
+
+* heart sounds
+
+my goal is not to provide physiologically correct haptics of a heart beat but the aesthetics of
+being connected to another human by sensing their heart.
+
+
+You will have to reload the page to try a new vibration pattern.
+Phone only unless you know what you do and hack into the browser vibrate api.
+
+this helped me quite a bit
+https://www.youtube.com/watch?v=zNHI-l_c-ls
+
+
+- I decide to not care about s3 and s4 for the moment.
+
+- S1 is the dub, closing of the valves between atria and ventricles
+  at the end of the diastole
+  tricuspid valves
+
+
+- Systole: contraction 300ms
+
+with 75 bpm 800ms for 1 cycle
+
+- S2, the lub
+
+
+- closing the semilunar valves is S2
+  the valves between the ventricels and downstream of the heart
+  pulmanory trunk and aorta
+
+- Diastole: heart relaxes, the long part between sounds
+500ms
+
+=phonocardiogram=
+
+- lets say the ratio between systole and diastole is 3/5.
+
+- I pretend and make a vibration that sort of follows the sounds
+
+** idea 1:
+- make the systole sound, the dub have a longer vibration because
+  it simulates forcefully ejecting the blood into the body
+- make another, short
+
+- Lub, a short vibration, then dub a longer vibration
+
+
+- making the systole 300ms
+- with 200ms "pump" vibrate
+
+#+begin_export html
+  <button onclick="let heartbeat = setInterval(() => window.navigator.vibrate([200, 100, 100]), 500)">DUB-lub</button>
+#+end_export
+
+*** variant
+
+#+begin_export html
+  <button onclick="let heartbeat = setInterval(() => window.navigator.vibrate([250, 50, 100]), 500)">DUB-lub</button>
+#+end_export
+
+
+*** slower diastole
+
+#+begin_export html
+  <button onclick="let heartbeat = setInterval(() => window.navigator.vibrate([250, 50, 100]), 1000)">DUB-lub</button>
+#+end_export
+
+
+#+begin_export html
+  <button onclick="let heartbeat = setInterval(() => window.navigator.vibrate([250, 50, 100, 600 ]), 1000)">DUB-lub</button>
+#+end_export
+
+
+
+*** faster diastole
+
+#+begin_export html
+  <button onclick="let heartbeat = setInterval(() => window.navigator.vibrate([250, 50, 100]), 300)">DUB-lub</button>
+#+end_export
+
+
+From those I decide that "slower diastole" felt the most sensual so I start going further with this.
+
+
+* heart rate variability
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5624990/#:~:text=Heart%20rate%20is%20the%20number,nervous%20system%20(ANS)%20processes.
+
+#+begin_quote
+A healthy heart is not a metronome. The oscillations of a healthy heart are complex and constantly changing, which allow the cardiovascular system to rapidly adjust to sudden physical and psychological challenges to homeostasis.
+#+end_quote
+
+ok stuff gets quite chaotic there.

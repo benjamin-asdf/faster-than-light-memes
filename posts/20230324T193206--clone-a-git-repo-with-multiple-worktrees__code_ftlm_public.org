@@ -1,0 +1,25 @@
+#+title:      clone-a-git-repo-with-multiple-worktrees
+#+date:       [2023-03-24 Fri 19:32]
+#+filetags:   :code:ftlm:public:
+#+identifier: 20230324T193206
+
+#+begin_src shell
+#!/bin/sh
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <git-repo> <ref>"
+    exit 1
+fi
+
+repo=$(echo $1 | sed -e 's/.*\///' -e 's/\.git$//')
+
+mkdir -p /tmp/.gitlibs/
+if [ ! -d /tmp/.gitlibs/$repo ]; then
+    git clone --quiet --mirror $1 /tmp/.gitlibs/$repo
+fi
+
+if [ ! -d .gitlibs/$repo/$2 ]; then
+    git --git-dir /tmp/.gitlibs/$repo worktree add --force --detach .gitlibs/$repo/$2 $2
+fi
+echo .gitlibs/$repo/$2
+#+end_src

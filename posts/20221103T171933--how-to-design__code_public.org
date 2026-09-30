@@ -1,0 +1,239 @@
+#+title:      how-to-design
+#+date:       [2022-11-03 Thu 17:19]
+#+filetags:   :code:public:
+#+identifier: 20221103T171933
+
+* reading
+
+http://clojurescriptmadeeasy.com/blog/wash-your-hands.html
+
+
+Programming is engineering with ideas.
+Ideas are great, because they are infinitiely malleable.
+And with great power comes great responsibility.
+For every good way to write a program there are literally infinitely many
+gargabe solutions.
+
+* A good program
+
+What is a nice hack?
+
+I cannot truly say what it means
+
+These points are just to give an idea of the shape
+
+Some of the shape, but not an exhaustive nor sufficient list:
+
+It is adaptable.
+It works.
+It solves the problem we had.
+It is well designed.
+It is elegant.
+
+This also means it is easy to fix bugs.
+You can load up the part of the program you need in order to fix a bug
+in your head.
+
+
+It is not
+
+Like music, it is not describable by words what a good program is.
+It is the programmers sense of aesthetics to say thhhhhh
+
+
+
+
+Since ideas are maybe the most malleable substance in the universe,
+it is easy to make a mess.
+
+
+"Build a tall building".
+
+
+There is more to building a skyscraper than trying to build something
+tall.
+If you try to build something tall using mud,
+
+you are missing something compared to
+the all the
+skyscrapers
+architecture
+technology
+
+
+* What is coding about
+
+Firstly, providing value.
+
+Your job as a programmer starts at the problem.
+
+* elegance
+
+Elegance is not a dispensable luxury but a quality that decides between success and failure. -Edsger W. Dijkstra
+
+Not: taste
+
+The product of making the right decisions that lead to a somehow
+minimal and sufficient solution.
+
+This is not about code golfing to make it small.
+It is also not about showing of using "patterns".
+
+The program will look as if the language had been designed for it.
+
+
+
+* The problem statement
+
+decompose the wants and needs of the stakeholder.
+
+what is the problem we actually want to solve?
+
+A feature list might not be the actual thing that solves the
+stakeholders problem, even if they put effort into comming up with the list.
+
+** decompose the problems
+
+there are implentation problems and domain problems
+
+** root causes vs symptoms
+
+
+* Design, compossion and performance
+composition
+
+if you want to get good, you have to train
+a programming langua is like an instrument, expect that you need to
+hone your skill
+the best languages are made for professionals.
+
+
+* Make notes
+
+#+begin_quote
+If you do not take notes you are in effect
+making the scientific claim
+that you can remember all those things
+#+end_quote
+
+Coding is about organizing ideas.
+
+Organizing ideas without making notes is like doing cell biology
+without a microscope.
+
+You can do it
+
+Do not let sources of power lie around
+
+
+* The trap
+
+The 1 idea mode.
+
+If you are doing this, you are making a mistake.
+
+You have 1 idea and you mistake that for thinking.
+
+This is because we tell newcommers it is about thinking, but then
+do not say what to think about.
+
+
+
+* Aesthetics
+
+Design also means using your sense of aesthetics.
+
+Which pieces can you separate further?
+
+You can only develop this if you read code.
+
+
+* Read code
+
+You would not expect to become a good writer.
+
+You read code, then you go to your programs and try to use what you
+learned, you go to reading code again, in cycles.
+
+Eventually your programs will look like the ones written by pros.
+
+
+* personal style
+
+Do not worry about having a personal style. It will come by itself, if
+you try to achieve mastery.
+Mastery is attained by using your hole brain,
+using your hole brain means using parts that are
+informed
+formed
+influenced
+create
+
+by your personality
+
+the memes that make up the more
+stable
+
+the stable memes
+across time
+
+* what coding is about
+
+coding is engineering and the substance is ideas
+
+techniques for
+managing complexity
+** how to think
+write things down
+Richard Feynman on notes
+
+designing is about making decisions
+
+** talks
+stew halloway
+if you only have 1 idea you did not think
+
+
+* more ideas
+
+Here is some of the stuff I am currently pretty sure makes sense.
+
+* The goal
+
+As a programmer the goal is to produce value,
+everything else is secondary.
+
+* The problem
+
+We usually provide value by solving problems.
+Write down the problem, think through the problem.
+Split the problem into subparts, essentials etc.
+For instance, a sympton is not a problem.
+
+Importantly, not all problems require code to be solved.
+Some problems are not really problems but misunderstandings.
+
+* A good program
+
+It is adaptable.
+It works.
+It solves the problem we had.
+It is well designed.
+It is elegant.
+Makes it look like the chosen tech was made for this problem.
+
+** sufficient
+
+That grep script that provides what we want is a much more elegant
+
+* Elegance
+The solution uses as much stuff as it needed to get job done.
+
+The reason [[https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition][enterprise fizzbuzz]] is a practical joke is because it is cluttered with unessary entities.
+
+* Make plans
+
+You write down different ideas and wrinkles how to solve the problem,
+or a class of problems.
+
+* Design

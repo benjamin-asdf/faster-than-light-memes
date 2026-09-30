@@ -1,0 +1,18 @@
+#+title:      completing-the-human-computer-symbiosis
+#+date:       [2023-05-19 Fri 10:05]
+#+filetags:   :clojure:lic:public:
+#+identifier: 20230519T100555
+
+[[https://en.wikipedia.org/wiki/J._C._R._Licklider][J. C. R. Licklider]] is a super interesting person in the history of computers and cybernetics.
+
+/Getting into the position to think/
+
+he talks about how he needs to plot and manually calculate things before he can think.
+
+
+
+My job as a tool developer is to provide you with the power to get into the position to think.
+
+Reduce the friction of what is between your thinking and the model of the computer.
+
+In other words, produce a layer of communication between the computer and the human.

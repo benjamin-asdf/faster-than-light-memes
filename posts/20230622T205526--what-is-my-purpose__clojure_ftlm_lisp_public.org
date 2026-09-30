@@ -1,0 +1,578 @@
+#+title:      what-is-my-purpose?
+#+date:       [2023-06-22 Thu 20:55]
+#+filetags:   :clojure:ftlm:lisp:public:
+#+identifier: 20230622T205526
+#+EXPORT_FILE_NAME: what-is-my-purpose
+
+
+Here is something you already know is powerful, no matter what languages you program with,
+but you did not know that Lisp was all about that.
+
+It is called =Interactive programming= and I will try to convey the concept here.
+
+
+- john mccarthy paper
+- paul graham what make lisp different
+
+
+Imagine you boot up your program and it asks /What is my purpose?/.
+
+I think we will have that once we build some programs that are versatile and robust, acquire new knowledge, do common sense reasoning and such things.
+
+I want to eventually talk to my computer. In the meantime, I can tell you,
+there is already something that makes you intimate with the computer as a programmer
+and it is called =interactive programming=.
+
+/What would it be like if my program asks me for the next thing?/
+
+If I program the most basic representation of a converstation, I make the program
+aks the user for the next thing, the user makes input, the program processes, then
+the program asks the user again.
+
+
+
+
+
+/Lisp is the only language that is beautiful/.
+
+Why is this language reviered by the people that use it?
+Why
+
+All I can do is try to give little glimples, glittering stars in the night sky of reality
+
+
+
+* Quick iterations are better
+
+You want to make a quick experiment in the code. You make a little side project, and you set up some example data.
+You go through hoops to not have to re-compile and still see what the program will do next.
+You batch changes in your mind, juggling those things that might go wrong. Then you compile to see that
+nr 2 of the 5 things you did do not work.
+
+You know it in your bones, you feel it every day. If you are faster with what you want the program to do, that is better.
+
+This is why data analysts want the notebook workflow because going through the same calculations every time to see what the program is doing is insanity.
+
+* What is the purpose of programming languages?
+
+If you think about programming languages you really need to think about /what are they for?/.[fn:2]
+
+file:./language.jpg
+
+
+1. Expressing ideas
+2. Expressing ideas to the computer
+3. Expressing ideas to the next poor soul that has to look at the code
+
+The language is what is between me and the computer.
+
+The ideal language is /completely out of the way/.[fn:3]
+The amount of friction that is between *ideas* on one side and the computer process on the other side
+is a measure of the power of the programing language. The hypothetical best programing language would have infinitely small friction.
+I would be able to instantly and losslessly transfer my thoughts to the computer and make the computer program change to my desire.
+
+You know how it feels to want to modify the program and then go ahead and do the things required to see the change.
+
+These steps that you are doing are where your language can be more or less powerful, yes.
+
+You have an idea, you want to modify the program according to your idea.
+Or you want to make an experiment with the program to know what you need to think.
+
+What is between you and expressing your ideas to the computer? If you have not tried different kinds of languages,
+you might not have realized the differences.
+
+If there is a profoundly more powerful language, it would be powerful for this reason, it would reduce the friction between mind and computer in
+a more profound way than other languages.
+
+* Stuff of thought, stuff of doing
+
+#+begin_quote
+A language that doesn't affect the way you think about programming, is not worth knowing.
+#+end_quote
+Alan Perlis
+
+Language is made from the stuff of thought. What it does is what it does to your mind.
+
+Structured programming languages (if-then-else constructs etc.) are better than Assembly not because
+one is Turing complete and the other is not, but because of the difference in what it does to our mind.
+
+This is a mental activity.
+
+Programming languages are doubly elusive because the way the works is by them being a tool of a kind.
+You need to use a tool in order to know its characteristics.
+
+I cannot tell you how it is to ride a bike, you need to ride a bike to know how it is to ride a bike.
+I cannot tell you what music is by saying what music is. I can describe what it does to my mind,
+but I cannot make you experience the music.
+
+To know which language does different from another one, you need /taste/.
+
+* Taste and sensibilities
+
+To know what is good requires intuition and sensibilities.
+Because what is good is good in ways that are between a human and the thing, not somewhere else.
+It is what the thing is doing to your mind while you experience the thing that matters.
+
+To know what is good, using sensibilities and aesthetics is also called /having taste/.
+
+I am going to go ahead and call a masterfully crafted thing /magic/.
+It is something that comes together with great creativity, with the right kind of circumstances etc.
+
+A master has good taste, how can it be otherwise? It is simply part of the machinery of human brains, sensibilities are our
+access to the rest of the brain a.k.a feeling, a.k.a intuition, a.k.a system 2.
+
+How to know what is good?
+
+What makes /Harry Potter And The Methods Of Rationality/ a superbly sick book?
+
+What makes /The Pirates Of The Caribbean/ and /The Man From The Earth/ superbly sick movies?
+
+What makes Emacs a superbly sick piece of software?
+
+The answer is you will know if you have good taste.
+
+But you will never know the reason from the outside. Because the reason is something that happens in your exploration of the thing.
+
+You can observe magic by seeing the ones that walked the path to be enchanted.
+But I could never explain the magic, because if I could, I would pull off a masterful and magical explanation of /how/ it is good.
+But then you would only know my explanation was masterful. You would not yet know the magic of the thing.
+
+One day we will have the explanatory power to be able to predict /yea this movie or this tool will be great, because it does this and that to the psyche of the user./
+
+If we could do that right, we would be churning out 1 in a decade kind of great books and movies right now, but we don't.
+Because we live in a world where we cannot measure magic yet. The only access to magic we have right now is to
+hone our tastes and try out things.
+
+Lisp has a cult following similar to great pieces of art.
+
+Either the people are deluded, or it is magic. If it is magic, you won't know from the outside, you must walk the path.
+Unfortunately for programming languages, actually walking the path is a commitment of [...] time. This is a feature of reality that we have to deal with.
+
+If this language is this good it will be for reasons that resonate with your programmer's heart, how could it be otherwise?
+
+The deepest purpose of a programming language is its nature of the interface between mind and machine.
+My most profound desire as a programmer is to transform the stuff inside the computer, in the most direct, most expressive way.
+
+If a language is this much more powerful than another language, it will allow the programmer to interact with the computer with an intimacy that you
+do not know other languages.
+
+Now Lisp.
+
+* One of the best ideas in computer science
+
+And maybe one of the best ideas ever, [[https://en.wikipedia.org/wiki/Von_Neumann_architecture][Van Neumann architecture]].
+
+One of the important ideas is to put the *program /into/ the computer memory*.
+
+A stroke of genius.
+Now we have a magic stone that can be loaded up with ideas and then it can be anything.
+
+Before we had 1 machine with 1 program. What a program is and what a machine is was glommed together.
+Good design is about splitting things apart and the van Neumann architecture is a beautifully elegant design.
+
+Here for the next level of dynamic memory data.
+
+[[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]], which was used for one of the most important early AI works =General Problem Solver= (1957).
+
+In IPL, Information Processing Language, you had data dynamic in the program, in =lists= (made from cells).
+You can create lists and make it point to something else on the fly etc. differently from having to declare variables for everything.
+
+You know of course what this means because you create lists and arrays all the time in your program.
+
+Javascript was/is a Scheme, so it has a function called =print= and a function called =read= (ok I guess they have glommed it together with =eval=).
+
+Douglas Crockford discovered JSON printing and reading readable javascript objects.[fn:9]
+
+If you know the power of JSON, you know the power of having dynamic data in your program.
+This is the heritage of Van Neumanns memory idea propagated forward and one level up.
+
+To understand Lisp, imagine you read JSON and treat the data as a command language for what your program does next.
+
+This was the 1 thing that McCarthy did. He took the lists from IPL and said:
+/Dynamic nice, can I express with those lists the most minimal representation of what programming is./[fn:10]
+
+- Lisp was discovered, it was described in a math paper before it was implemented.
+- By a single person, not by a committee.
+
+McCarthy was yearning for a more interactive programming experience. If you could sit at a console and type
+in the next thing that the program is doing, you could interactively program.
+
+Note a few curious facts about this:
+
+1. Lisp was dis
+
+There is an aspect of programming that is not harnessed. That is once you have this dynamic memory step,
+you can have programs that modify themselves.
+
+In Lisp, we represent the program in the dynamic part of the program.
+
+The whole idea of having dynamic data originally came from IPL
+
+[[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]],
+Lisp ideas come from [[https://en.wikipedia.org/wiki/Information_Processing_Language][IPL]], which was used for one of the most important early AI works =General Problem Solver= (1957).
+
+
+This originally came from
+
+
+** form and content
+
+The one comes up to you and says /look at this language, it is so much better/.
+You look at the language and it looks exactly like the other 5 from the last 5 years.
+
+Not every change is an improvement, but every improvement is a change.
+If there is a language that is actually profoundly more powerful. Then don't be surprised if it looks different.
+
+But seriously, in many ways Lisp is not so different at all.
+
+From Lisp come[fn:5]
+
+- if-then-else constructs
+- a function type
+- recursion
+- garbage collection
+
+All very familiar concepts in mainstream programing languages currently.
+
+Stuff that is /really/ different are alternative programming paradigms: Logic programing, chemical computing, Sussman propagators[fn:6]
+
+If you did not stretch your inner landscape of programing languages to include something with completely different syntax, how will
+you truly internalize that syntax doesn't matter? That form and content are 2 things?
+
+
+[[http://www.paulgraham.com/power.html#:~:text=%22The%20quantity%20of%20meaning%20compressed,carry%20on%20by%20their%20aid.%22][Paul Graham]] has a practical meditation
+/The Taste Test/.
+
+Feel yourself into the process of how it is to express yourself in the language. Every language has a feel to it.
+It is your taste as a programer that will help you discern the better ones.
+
+Now consider Stallman:
+
+#+begin_quote
+The most powerful programming language is Lisp. If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant. Once you learn Lisp, you will see what is lacking in most other languages.
+#+end_quote
+[[https://stallman.org/stallman-computing.html][Stallman]]
+
+
+Either you are lucky for some reason, you are young enough to just be impressionably, or you a woman and it is just obvious to you that
+sensibilities and the feel for a tool would matter, expecially if you use that tool for hours on end.
+
+If you want to look for a great language, then get rid of whatever is between you and the computer.
+
+Another key aspect of what languages are, they are tools of thinking.
+Using a language is using your mind.
+
+
+
+
+* Lisp
+
+#+CAPTION: The cover of Byte Magazine, August, 1979.
+https://twobithistory.org/images/byte_lisp.jpg
+
+#+begin_quote
+LISP is worth learning for a different reason — the profound enlightenment experience you will have when you finally get it. That experience will make you a better programmer for the rest of your days, even if you never actually use LISP itself a lot. (You can get some beginning experience with LISP fairly easily by writing and modifying editing modes for the Emacs text editor, or Script-Fu plugins for the GIMP.)
+#+end_quote
+[[http://www.catb.org/~esr/faqs/hacker-howto.html][Eric Raymond]]
+
+#+begin_quote
+The most powerful programming language is Lisp. If you don't know Lisp (or its variant, Scheme), you don't know what it means for a programming language to be powerful and elegant. Once you learn Lisp, you will see what is lacking in most other languages.
+#+end_quote
+[[https://stallman.org/stallman-computing.html][Stallman]]
+
+Lisp is together with Fortran the only language from the 50s that is still in use.
+
+
+* The bad drowns out the good
+
+#+begin_quote
+We had two major languages which were good at modifying themselves. Unfortunatly,
+these languages were a little bit unfamiliar to people who didn't see
+the great power programs that could change themselves and the world was overtaken
+by other languages like the famous C..
+#+end_quote
+[[https://www.youtube.com/watch?v=CIoddZ1NOVM&t=1610s][Minsky]]
+
+In [[https://www.lesswrong.com/s/oLGCcbnvabyibnG9d][Inadequate Equilibria]], Eliezer Yudkowsky explains in a very eye opening way why societies
+end up in /inadequate equilibria/, Nash equilibria that are worse than other potential, better Nash equilibria.
+
+For instance, if you talk about basic income as a politician, that is outside of what is considered normal
+things to talk about, you will not get coverage from serious news outlets, because they only cover serious
+candidates. The stable equilibrium we fall into is resistant to basic income.
+
+Using Lisp is an odd thing, so it doesn't fit with the idea of /best industry practices/.
+See Paul Graham's [[http://paulgraham.com/icad.html][Revent Of The Ners]] talking about exactly this dynamic.
+
+The market of people looking for the next programing language to try is completely saturated
+with all kinds of people being excited about this or that (usually new) language or framework.
+
+You hear left and right people making plausible claims about why =x= or =y= technology is great.
+It is not clear that the most powerful programing language would also be the most powerful at winning in that market.
+
+=Unix= is a great operating system, written =C= and it was used in the microcomputer revolution in the 80s.
+
+From there came an industry influenced by =C= and this is where we are.
+
+See [[https://www.youtube.com/watch?v=QyJZzq0v7Z4&t=107s][Why Isn't Functional Programming the Norm? – Richard Feldman]] for a great talk on the history of programming.
+
+Of the mainstream languages, Javascript is an odd one out. It is Scheme and they put curlies in the syntax to to
+ride the marketing wave that Java had at the time.
+
+/Everything is the way it is because it got that way./
+
+** Alien syntax?
+
+This was never an issue for me.
+
+The first time I saw Lisp was after booting up spacemacs for the first time.
+I cloned the repo within 1 second, and read some of the documentation, which was clear and well-structured.
+And hinted at great powers.
+
+Here was a program that hummed with the silent competence of a mirror edged in ice.
+At  every turn the feel of /well-designed software/.
+This is when I understood that good software has a /feel/ to it.
+
+So here is this magical, well-crafted, well-structured software and I look at some of the code
+in the =init.el= file and I just think /ok this is how the code looks/.
+
+Maybe it helped that spacemacs comes with a nice theme and a rainbow paren mode.
+
+The parens become enabling. There are there for a reason.
+
+How could it be otherwise, if Lisp is called /elegant/ and /the only language that is beautiful/.
+
+I see either of 2 possibilities:
+
+1. The people that make the claim just wank on the difference in the language.
+2. The parens are there for a reason.
+
+** Popularity?
+
+To me, it is as obvious as the moon that society and the mainstream are routinely completely wrong about things.
+Unix is the best operating system and not mainstream. Not using Vim key bindings is mainstream.
+Why should the mainstream choice of programming languages be good taste, then?
+Nothing in reality is the way that would suggest this to me.
+
+** All languages are the same
+
+This is then often justified with Turing completeness.
+
+This is a deepity[fn:7], coming around with an air of wisdom and insight.
+
+Wrong. We are not programming Assembly because we live in a world where languages have varying degrees of power.
+
+The power does not come from being Turing complete or not, it comes from somewhere else.
+It comes from the ability to express ideas to the computer, which is a psychological thing.
+Which is harder to measure because we cannot yet measure magic.
+
+This is an inconvenient truth for manager types because they would like to get their job done
+and not need to understand what makes a great language.
+
+** It is only about fun for you
+
+If you spend your life programming, that is the place
+
+** practicalites, libraries, etc.x
+
+Clojure is a modern Lisp dialect that is centered around being practical.
+
+
+* The many facets of languages
+
+In *sicp*, a language is just sort of defined as a collection of functions that work well together.
+We are still figuring out what computer science is even about.
+
+I say a language is sort of a way to express one self to the computer.
+
+That can be an operating system, a framework, a library, a language.
+Smalltalk was a system that was the OS and it was also a language.
+Lisp is a language but sort of an OS.
+React is called a framework but in sicp's definition I am allowed to call it a language.
+
+Minsky called unix here a language.
+
+Since them I go towards just calling everything a language.
+If all those things are the same thing anyway, then why not use the word that carries the highest
+amount of expectations?
+
+A language for me has to elegant, allow myself to think new thoughts and allow myself to express my ideas
+to the computer in a powerful way.
+
+
+
+* Language, OS,
+When a programming language is in the way of expressing
+
+
+Porgramming languages do
+
+
+
+We don't yet have human style conversations with programs, but an important advance has been made a while ago
+with the invention of Lisp.
+
+A Lisp program will ask the user, what is next?
+
+What if the REPL, the =read eval print loop=, is already
+
+The
+
+
+If you want to have a conversation with your program, then start by simulating conversation.
+
+
+
+
+A program is a society
+
+
+We currently don't exactly have
+
+
+
+At babashka-conf I was asking some attendees something like
+
+When I ask Clojurians, /what is the most powerful thing about Clojure and why is it the interactivity?/ 5 out of 6 Clojurians
+will agree, the big deal is having the program there.
+
+
+
+The repl is the big deal.
+
+
+* Form and Content
+
+Software is to hardware
+
+* Make a program
+
+* The twist
+
+Software can make a computer do anything.
+
+I have the open ended power of ideas I can express in my programming language to make the computer /become/
+a game engine, a web browser, or an expensive type writer.
+
+* Meta The Meta
+
+Lisp makes the computer become a machine that wants to have a conversation with you.
+
+
+* Conclusion
+
+The purpose of programming languages is to give the programmer the power to express their thoughts to the computer.
+
+You already know this, every time you desire to make small experiments with a piece of code, every time you
+put effort into reducing your feedback cycle time. You are engaging in reducing the friction between yourself and the code.
+
+The most profound desire of a programmer is to modify and observe the stuff in the computer without any friction at all.
+
+If there is a most powerful language, it would be powerful for this reason, it would reduce the friction between mind and computer in
+a more profound way than other languages. It would be different and unfamiliar, how could it be otherwise when I postulate it would
+be profoundly different?
+
+Not every change is an improvement, but every improvement is a change.
+
+Because programming languages are different because they do different things to your mind.
+It is in the contents of your psyche that you would know the difference, and you would only know after trying it out.
+
+There are 2 fundamentally different paradigms in computing, batch-oriented computing and interactive computing.
+The people that thought batch-oriented computing was the way to go were wrong.
+
+Because of the history of mainstream programming, it is stuck in a fundamentally batch-oriented way.
+
+The term =iteration= is a hint that what you are doing with your program is batch oriented.
+
+In interactive programming, the program is always running. It is started once and thenceforth the programmer is in a conversation with
+the running program. Not resetting the state, not restarting the program. Molding directly like clay or /a building material/.
+Hence the title of Paul Graham's book /Hackers And Painters/. A painter sees what they a doing while they are doing it.
+
+Interactive programming allows us to build the smallest pieces of the program, in the context of the program.
+It reduced the mental burden of batching our changes and then observing a new version of the program.
+
+
+
+The conversation layer between programmer and program is reified as the =REPL=, read eval print loop.
+
+The power of Lisp is not quick iterations, but no iterations.
+Instead of iterating, in Lisp and Smalltalk we do =conversation=. This concept is reified in the =read eval print loop=.
+
+
+This is supported by the standard library of the language.
+This is why Lisp is a symbolic language and the code is represented dynamically in the program. This is why it
+is easy in Lisp to have macros, why Alan Kay called it a /building material/, why the language itself is small and
+
+
+
+We do not compile, we do not kill the program, we grow and mold it like a friend or gardener.
+
+A Lisp program starts humble and asks /what to do next?/.
+
+
+
+* Reading
+
+- [[http://www.paulgraham.com/power.html#:~:text=%22The%20quantity%20of%20meaning%20compressed,carry%20on%20by%20their%20aid.%22][Succinctness Is Power]]
+- https://twobithistory.org/2018/10/14/lisp.html
+
+* Footnotes
+[fn:10]
+
+- McCarthy, John (1960). "Recursive Functions of Symbolic Expressions and Their Computation by Machine".
+- for somethiing more accessible [[http://www.paulgraham.com/diff.html][Paul Graham: What Made Lisp Different]]
+
+[fn:9]
+
+https://en.wikipedia.org/wiki/JSON
+
+[fn:8]
+
+https://en.wikipedia.org/wiki/History_of_Unix
+
+
+[fn:7]
+
+https://rationalwiki.org/wiki/Deepity
+
+
+[fn:6]
+
+Check out the amazing talk: [[https://www.youtube.com/watch?v=O3tVctB_VSU][We Really Don't Know How to Compute!]]
+
+We really don't know much about computer science yet.
+There are still big ideas left and right that might change completely how we program.
+
+[fn:5]
+
+[[http://www.paulgraham.com/diff.html][Paul Graham: What Made Lisp Different]]
+
+
+[fn:4]
+
+Admittedly, the way I would go about interfacing to a minds thoughts would be via visuals, possibly including text for quite a while.
+The preciseness of text just has huge advantages.
+
+I would of course just have lisp at the bottom and build up higher layers of abstraction on top of that.
+You could then have at some point a cognitive interface layer that puts first visuals and later concept clouds on top of Lisp symbols.
+
+[fn:3]
+
+Yes sure we currently also use it as a technical document to communicate to ourselves and other
+people what the program is doing.
+
+So there are 2 main domains of what a language does,
+
+- documenting ideas,
+- telling the computer about the ideas
+
+[fn:2]
+That is from [[https://www.youtube.com/watch?v=2V1FtfBDsLU][Effective Programs - 10 Years of Clojure - Rich Hickey]]
+
+[fn:1]
+
+See:
+
+The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal, a 2001 biography of Internet pioneer J. C. R. Licklider
+
+For a really nice historical account of how that Neuman architecture came about and its impact.
+The real history is quite nuanced.

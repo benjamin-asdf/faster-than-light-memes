@@ -1,0 +1,46 @@
+#+title:      multiverse
+#+date:       [2023-07-17 Mon 18:30]
+#+filetags:   :code:public:
+#+identifier: 20230717T183043
+
+[[/home/benj/scratch/scratch-PDUWfZ.clj]]
+
+ChatGPT> are gliders resilient to 1 cell blinking in and out of existence? Say what quantum fluctuation would be
+<gpt-end-of-prompt>
+From a purely theoretical perspective, a glider in Conway's Game of Life can be resilient to a single cell blinking in and out of existence, but much would depend on the timing and position of the change.
+
+A glider is a small pattern in Conway's Game of Life that moves diagonally across the grid. It can survive and propagate because it fulfills the specific conditions required by the Game of Life's rules: any live cell with two or three live neighbors survives, while any dead cell with exactly three live neighbors becomes a live cell.
+
+Here's the way I see it: if a cell blinks on and off in a part of the grid where the glider is not, or in such a way that it doesn't interfere with these rules for glider propagation, then the glider would not be affected in any way.
+
+However, should the cell blink on and turn to a live state within the 3x3 grid area the glider occupies as it moves, it could obstruct the movement of the glider. If such a change occurs and it upsets the balance of the Game of Life's rules for a glider, the glider might be disrupted in its path, or stop entirely. But if it blinks off, returning to a dead state in time for the glider to pass through its position unchanged, the glider might survive.
+
+The 'Quantum fluctuation' in this case would be the cell that is blinking in and out of existence. In quantum mechanics, quantum fluctuation is a temporary and random change in energy in a point in space, as predicted by Heisenberg's uncertainty principle.
+
+Nevertheless, it's worth noting that Game of Life is strictly deterministic and classical. The physics happens at the level of the cell, representing an entirely deterministic, discrete, reversible universe, a universe of bits. I also want to clarify that the ideas of "Game of Life" physics and quantum physics are metaphorically connected in this discussion, rather than there being a direct equivalence or scientific basis for such a concept.
+
+ChatGPT> I simulate a multiverse of game of life universes. Hence quantums come into play. Because now I can try to find the timelines in the multiverse that obey "the laws of physics" and maybe, the laws would permit gliders to keep on going even with q fluctuation. so you see the connection?
+<gpt-end-of-prompt>
+Indeed, I see the connection. By introducing a concept of a multiverse, it seems you're expanding Conway's Game of Life into a new scope where multiple universes, each with their variation of the Game of Life, coexist simultaneously. This metaphorically abstract and novel application of quantum parallelism provides a new complexity to the model.
+
+In this multiverse, it's possible that a glider could exist in some universes while not in others, based on randomly-generated initial conditions or 'quantum fluctuations'. Further, it's possible that what constitutes as 'obstructions' in one universe might not count as such in another universe due to differences in their individual 'laws of physics', or rules.
+
+Viewed through the lens of quantum mechanics, each universe could be seen as a 'timeline' or 'world' in the Everett's many-worlds interpretation. There's a world for every possibility.
+
+This not only requires a deeper understanding of quantum physics but also significantly more computational power to simulate these multiple timelines, especially as you'd need to check for different rulesets and initial conditions for each universe.
+
+I hope it’s useful, or at least thought-provoking. Is there anything else specific you'd like to discuss or learn about your multiverse model based on the Game of Life?
+
+ChatGPT> given a multiverse (game of life board list of matrixes), isn't there many "laws of physics" to find, each with their own timelines throught the multiverse?
+<gpt-end-of-prompt>
+Yes, you've hit on a fundamental point in multiverse theory. In a collection of universes or multiverse, the different "universes" or instances of the Game of Life in this case, could each potentially have their own unique set of "physical laws". These laws might be analogous to the rules of the Game of Life - with different rules leading to distinctly different behaviors, structures, and evolutionary paths.
+
+Each universe within your multiverse, having its own set of physical laws, would thus have its own unique timeline of evolution. These diverse timelines could coexist in the multiverse, and their analysis could facilitate a broader understanding of the possible ways in which life (or a pattern analogous to life) can emerge, evolve, and interact in varying conditions.
+
+Given enough computational resources and a mechanism for exploring rule-space, you could simulate and compare these various universes to observe the phenomena that emerge. Comparing these "lower-case" universes could, in theory, provide insight into the nature of our own uppercase Universe.
+
+This venture is metaphoric to a greater philosophical question; in an 'actual' multiverse (as speculated by several interpretations of quantum mechanics and string theory) - each with its own set of physical laws - would there be a pattern or commonality between these laws, or a 'meta-law' guiding their formation?
+
+However, to avoid unnecessary complications, you might want to establish certain bounds or constraints within your exploration to ensure the investigation remains solvable and productive. As Douglas Hofstadter outlined in Gödel, Escher, Bach, it's possible to get lost in the "Tangled Hierarchies" of such infinite recursions. Assuring a good scientific question with a defined scope would keep the exploration meaningful and significant.
+
+Do keep in mind that my assertions are based on hypothetical and theoretical grounds and may or may not align accurately with the principles of quantum mechanics.

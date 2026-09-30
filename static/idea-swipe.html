@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Dimmer</title>
+    <!-- Lade Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Konfigurieren Sie die Hauptschriftart */
+        :root {
+            --head-color: #60A5FA; /* Tailwind blue-400 */
+            --head-border: #1E40AF; /* Tailwind blue-800 */
+            
+            /* Einheitliches Orange für Ideen */
+            --idea-color-orange: #F97316; /* Orange */
+        }
+        
+        /* Wrapper für die Animation (gibt Platz für schwebende Ideen) */
+        .animation-wrapper {
+            position: relative;
+            width: 600px; 
+            height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hintergrundstil für den Kopf */
+        .head-shape {
+            /* Simuliert die Silhouette des Kopfes */
+            width: 300px;
+            height: 400px;
+            background-color: var(--head-color);
+            border: 4px solid var(--head-border);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            overflow: hidden; 
+            z-index: 10; 
+        }
+
+        /* --- IDEEN-FORMEN UND ANIMATIONEN --- */
+
+        
+        .idea-shape {
+            position: absolute;
+            z-index: 20; 
+            width: 45px; 
+            height: 45px; 
+            will-change: transform, opacity;
+        }
+
+        .idea-square {
+            border-radius: 12px;
+            background-color: var(--idea-color-orange);
+            color: var(--idea-color-orange);
+        }
+
+        .idea-triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent; 
+            border-right: 25px solid transparent; 
+            border-bottom-width: 45px;
+        }
+
+
+        /* Animations-Timing für das Wegwischen (Hand kommt und schiebt weg) */
+        @keyframes idea-swipe-away {
+            /* 0% - 49.9%: Visible. Ambient float handles transform. */
+            0% {
+                transform: rotate(5deg);
+            }
+
+            10% {
+                transform: rotate(-15deg);
+            }
+
+
+            /* 50%: Swipe Start - Freeze ambient movement, start swipe/scale. */
+            50% { 
+                opacity: 1;
+                transform: translateX(0px) scale(0.8) rotate(-5deg); 
+            }
+
+            /* 59.9%: Ideen bewegen sich mit der Hand, bleiben voll sichtbar */
+            59.9% { 
+                opacity: 1; 
+                /* Endposition des Swipes kurz bevor der Scale beginnt */
+                transform: translateX(220px) scale(0.5) rotate(180deg);
+            }
+            
+            /* 61.0%: START SCALE DOWN (Animiert von 59.9% zu 61.0%) */
+            61.0% { 
+                opacity: 1; 
+                transform: translateX(220px) scale(0.1); /* Skaliert schnell herunter */
+            }
+
+            /* 62.5%: Bounce back up slightly (Animiert) */
+            62.5% {
+                opacity: 1;
+                transform: translateX(220px) scale(0.35); /* Bounce-Effekt - größer für sichtbareren Bounce */
+            }
+            
+            /* 64.0%: Final disappearance (scale down) (Animiert) */
+            64.0% { 
+                opacity: 1; 
+                transform: translateX(220px) scale(0); /* Finales verschwinden - komplett auf 0 */
+            }
+            
+            /* 64.1% - 100%: Stay invisible with scale 0 */
+            64.1%, 100% {
+                opacity: 1; /* Opacity bleibt 1, nur Scale ist 0 */
+                transform: translateX(220px) scale(0);
+            }
+        }
+        
+        /* Langsame Schwebende Animationen (Startpositionen näher zur Mitte angepasst) */
+        @keyframes idea-float-1 {
+            0% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+        /* @keyframes idea-float-2 { */
+        /*     0% { transform: translate(180px, 50px) rotate(-8deg); } */
+        /*     100% { transform: translate(150px, -10px) rotate(12deg); } */
+        /* } */
+        /* @keyframes idea-float-3 { */
+        /*     0% { transform: translate(130px, 5px) rotate(10deg); } */
+        /*     100% { transform: translate(180px, 50px) rotate(-15deg); } */
+        /* } */
+        
+        /* Positionierung und individuelle Animationen: Nur 5 Ideen, näher an der Mitte (ca. 300px Center) */
+        .idea-1 { 
+            top: 100px; 
+            left: 320px; 
+            animation:  idea-float-1 6s alternate ease-in-out infinite, idea-swipe-away 4s linear infinite;
+        } 
+        .idea-2 { 
+            top: 150px; 
+            left: 360px; 
+            animation: idea-float-2 6.2s alternate ease-in-out infinite 0.9s,  idea-swipe-away 4s linear infinite;
+        } 
+        .idea-3 { 
+            top: 200px; 
+            left: 300px; 
+            animation: idea-swipe-away 4s linear infinite, idea-float-3 5.5s alternate ease-in-out infinite 0.1s; 
+        } 
+        .idea-4 { 
+            top: 250px; 
+            left: 350px; 
+            animation: idea-float-1 6s alternate ease-in-out infinite 0.3s, idea-swipe-away 4s linear infinite;
+        } 
+        .idea-5 { 
+            top: 300px; 
+            left: 330px; 
+            animation: idea-swipe-away 4s linear infinite, idea-float-2 7s alternate ease-in-out infinite 0.7s; 
+        } 
+
+        /* --- STILISIERTE UHR --- */
+        .clock-housing {
+            position: absolute;
+            top: 50px; 
+            left: 500px; 
+            width: 40px;
+            height: 40px;
+            border: 3px solid #374151;
+            border-radius: 50%;
+            z-index: 15; 
+            background-color: white;
+        }
+        .clock-hand {
+            position: absolute;
+            width: 3px;
+            height: 16px;
+            background-color: #374151;
+            top: 4px;
+            left: 50%;
+            transform-origin: bottom center; 
+            transform: translateX(-50%) rotate(0deg);
+            animation: clock-tick 4s infinite linear;
+        }
+        
+        /* Uhr-Animation: Läuft den gesamten 4s-Zyklus durch (0 bis 360 Grad) */
+        @keyframes clock-tick {
+            0% { transform: translateX(-50%) rotate(0deg); } 
+            100% { transform: translateX(-50%) rotate(360deg); } 
+        }
+        
+        /* --- HAND-EMOJI ZUM WEGWISCHEN --- */
+        .hand-swipe-emoji {
+            position: absolute;
+            top: 200px; 
+            left: 0px; 
+            font-size: 80px; 
+            z-index: 40; 
+            opacity: 0;
+            /* Startposition: Mitte des Gehirns (ca. 300px - Hälfte der Handbreite) */
+            transform: translateX(200px); 
+            animation: hand-swipe 4s infinite linear;
+        }
+
+        @keyframes hand-swipe {
+            /* 0% - 49.9%: Unsichtbar und Startposition (leicht links von der Mitte) */
+            0%, 49.9% {
+                opacity: 0;
+                transform: translateX(200px); 
+            }
+            /* 50%: Hand erscheint */
+            50% {
+                opacity: 1;
+                transform: translateX(220px); /* Startet etwas weiter rechts */
+            }
+            /* 60%: Hand am Ende des Swipes (schnelle Bewegung) */
+            60% { 
+                opacity: 1;
+                transform: translateX(420px); /* Wischt über die Ideen hinaus nach rechts */
+            }
+            /* 60.1% - 100%: Hand verschwindet schnell */
+            60.1%, 100% {
+                opacity: 0;
+                transform: translateX(420px);
+            }
+        }
+        
+    </style>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center p-4 font-sans">
+
+    <div class="text-center p-4">
+        
+        <!-- Simulationsbereich --><div class="flex justify-center items-center">
+            <div class="animation-wrapper">
+                
+              <!-- Idea Shapes (Ideen) -->
+              
+                <div class="idea-shape idea-square idea-1"></div>
+                <div class="idea-shape idea-triangle idea-2"></div>
+                <div class="idea-shape idea-square idea-3"></div>
+                <div class="idea-shape idea-triangle idea-4"></div>
+                <div class="idea-shape idea-square idea-5"></div>
+                <!-- Die restlichen Ideen wurden entfernt --><!-- Stylisierte Uhr --><div class="clock-housing">
+                    <div class="clock-hand"></div>
+                </div>
+                
+                <!-- Hand-Emoji zum Wegwischen --><div class="hand-swipe-emoji">🖐️</div>
+
+                <div class="head-shape shadow-xl">
+                    <!-- Inhalt des Gehirns kann hier sein, falls nötig --></div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        window.onload = function() {
+            // Die gesamte Logik läuft über reine CSS-Animationen.
+        };
+    </script>
+</body>
+</html>
+

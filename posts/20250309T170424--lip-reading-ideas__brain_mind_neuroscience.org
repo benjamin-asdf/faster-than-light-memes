@@ -1,0 +1,157 @@
+#+title:      lip-reading-ideas
+#+date:       [2025-03-09 Sun 17:04]
+#+filetags:   :brain:mind:neuroscience:feed:public
+#+EXPORT_FILE_NAME: lip-reading-ideas
+#+identifier: 20250309T170424
+
+
+=Lip reading= comes up in [[denote:20230715T105044][Podkayne of Mars, Robert A. Heinlein 1963]].
+Heinlein's character mentions how we already use visuals for speech perception more than we think.
+
+* Experiment 1
+
+- Listen to speech, e.g., an audio book.
+- Visualize the mouth (speech-) movements a speaker would make.
+
+** Experiential report
+
+I find it quite striking how seemingly 'well' it works.
+I did not realize how closely my motor - visual and speech - auditory perception was associated, but it is.
+
+I see snippets of mouth shapes in my mind's eye.
+It seems to go from phoneme to phoneme or something, in a sequence.
+
+While I'm writing this text and think of the fact, I do the same for words of this text.
+
+For instance, the =e= in the word /text/ above, would produce a thin, oval mouth shape,
+coming from the =t= which might flash the tongue inside the mouth and so forth.
+
+=ba= - closed lips, then open relaxed
+=fa= - teeth on lower lip, then open relaxed
+
+(The study of this is [[https://en.wikipedia.org/wiki/Articulatory_phonetics][articulatory phonetics]] I guess).
+
+In my visualization there are characteristic, discrete snapshots ('snippets') for a sequence of speech sounds.
+These are the dominating characteristic of the visualization; the movements in between those are secondary or skipped.
+
+I can easily imagine the analogue to this for sign language; they would be characteristic signs.
+
+* McGurk effect
+
+You should know about the [[https://youtu.be/2k8fHR9jKVM?si=6Df00sbcp7YF4pVu][McGurk effect]].
+
+This effect showcases some of the aspects of =multisensory processing=.
+
+The striking thing about McGurk is that I '/hear/' 2 different sounds.
+
+* Additional Observations
+
+When I listen to a person speaking, looking at their mouth increases my ability to understand.
+
+* Multisensory processing
+
+Is one of the cool topics of neuroscience that the current mainstream doesn't have a good way to talk about.
+
+/*Peeks under the rug*/, aha
+
+- Feedback connections
+- And what is this? [[https://youtu.be/AJa7JRTnZFI?si=KeESHzXotQO6HaAi][The Thalamus primary relays project to everywhere in Cortex]],
+- That looks more like all Cortex is general purpose, and all Cortex can make use of primary inputs.
+  Sensory processing has both parallel and feedforward aspects.
+
+This is perhaps an obvious first idea, but I myself don't encounter much content spelling such things out:
+
+** Multisensory ensemble just idea #1
+
+[[edraw:data=H4sIAAPCzmcAA8VWS4+bMBD+K5b30kohGCeblwLS9pTLXlopfdwcMGCF2Mh2Qra/vmMDyZZ2L22TCpv4le/7ZpgZWJtTgc6HSpoYl9bWqzBsmmbcTMZKFyElhIRwArdHVudKyP3vDkbL5TL0uxg1IrNljB9nBKOSi6K0MZ5SmJy4NkLJGEfjCCfrjOcGiSzGPNOsCdwUVg9M77n+eT0gAdNaNRi1u59bhlk/33QssFBrbrg+8SdT89R+ZFaoGEslOdAL3nxQ5xgHEUGuU9cw0jz/EuN28NUPlBZcAh47WoWRsVrteY/SzoLOyAijXFRVjB8i4i4woGa2RKD+GShGwdwxjeZoOiLfMAqTddhKhoEzOFlrkInOnvbF399039UlO5buC62OMhuq68Tkee7Jitd/UtkLyONVJWrDB3bQK1BvyQVr4S7wDshzmjSIXcJvCvPILaSwQOfEE/4V+uMA3YM69Mm/RF8M0b0Rf4T+OI/mUYtOO3Tao188Q26AHi16z9wC/aJ9Mm3RfUi3cRtwCRF11NW7h1/S8/0wO97mb6PVZQlwIDolW0qhE7IF0zYTente4BrylvTaPL/lZ4vcLWAyLZWO8UFkWeXyTEkb5OwgKvCXYdIEUHVE3m0Y8Z27hzQsDq6KrkzNUtjtC5VPe+qepwtFIE6e16Hj/A/0U4im5NPd6aNpS+/iLnm6O/2ks54653Np+GFXQSbVTEohC8Q0Z+b+PnkdETtlrToEx/r+kUG6yHAyrKqDTDWyV3HTsjAjCHyw9WlKfareviQs3AcB2UAcboBvA7wn39oXdwEdvoWSH9Oo44QzCQAA]]
+
+- A: 'association' area
+- M: 'motor' area
+- S: 'sensor' area
+
+(I collapsed visual-motor to =M=).
+
+A Hebbian Cell Assembly (Hebb 1949), is an auto-associative data structure,
+
+*Auto-associative*: A memory regime where a value can be looked up with a version of itself,
+implementing a /pattern complete/.
+
+It can be implemented in a spiking, recurrent neuronal net with global inhibition
+where subnetworks of neurons have more connectivity to itself, thereby producing 'hubs' of activity that stabilize itself (they form attractors in a dynamical system view).
+
+You 'ignite' part of the assembly and it retrieves the rest.
+
+(Here is an approachable model and great talk: [[https://youtu.be/mSX9CCKdBDA?si=CEzGSSdIVzaZP6qX][The Assembly Hypothesis:Emergent Computation and Learning in a rigorous model of the Brain]]).
+
+*Plasticity*: A mechanism that modifies the excitability properties of neurons in a neuronal net.
+This could be done by changing the excitability of neurons (non-Hebbian), changing weights or counts of synapses.
+
+*Plasticity rule*: An algorithmic rule, usually part of the /update rule/ for a neuronal net that specifies a plasticity.
+The best known plasticity rule is called /Hebbian learning/, that reads 'for all synapses where the source neuron was active in the last step and the target neuron is active in the current step, update the synaptic weight by a plasticity factor β'.
+It is summarized as 'neurons that fire together wire together'.
+
+Given random connections between the areas, and some form of plasticity that makes sure that 'what is active together associates',
+we can grow a subnetwork 'spanning' multiple areas and 'standing for' a sensor input.
+
+This is a relational view of cognitive representations.
+The representations between brains are all different, because /random/. But the relationships between the patterns are not.
+
+In the case of speech, a child might acquire an ensemble spanning association and sensor area, after hearing a phoneme (=S-A=).
+
+The child could then, via some sort of learning behavior, try to make random motor outputs (babble), until a motor =M= ensemble is found
+that /causes/ the auditory ensemble to be active in turn, forming a glorious brain-muscle-world-sensor-brain loop.
+
+We would be able to grow a =M-A-S= ensemble that /stands for/ the phoneme.
+
+It sort of looks as if the association area in this arrangement is representing a 'concept', into which other areas could hook into.
+(This talk follows the same reasoning, not for phonemes but for words: [[https://youtu.be/X9roMB8nCbo?si=4lq3DeUAqk8fixvd][Pulvermueller: Semantic grounding of concepts and meaning in brain-constrained neural networks]]).
+
+Given this implementation,
+
+
+In short:
+
+1. Lip reading is using =M= to ignite =A= without =S=.
+
+2. McGurk effect is =M= stabilizing one version of =M-A-S=, and we are surprised that 2 different =A-S= are possible given the same sound input.
+
+3. Listening with looking at a person's mouth is =M'-A-S'= where =M'= and =S'= are noisy M and S, but together stabilize a correct =A=.
+
+----------------
+
+1. Lip reading is using the (visual-) motor inputs (incidentally, 'mirror neurons') to retrieve at least the =A= - part of phonemes,
+   since the association area =A= part of phonemes already is the 'concept' of that phoneme, the rest of the brain can continue with information processing
+   as if we were listening to speech.
+   - This model explains why lip reading is not so much a special skill, but a tuning in to the motor aspect of how we perceive speech in the first place.
+     No further reconstruction needs to be done; it should be a kind of silent perception of speech.
+
+2. McGurk effect would be explained by the sensory area ensemble =S= being ambiguous enough so that actually the motor area part =M= has the greater influence on =A=.
+   "Flipping" the attractor states of the ensemble in =A=, igniting the =A= part associated with either 'fa' or 'ba'.
+   - Once the ball rolls into the valley of either 'fa' or 'ba', it stabilizes itself at =S=, too. I say the ensemble 'spans' the areas.
+     Presumably, the activation at =S= is involved in the perception of 'hearing' the phoneme.
+
+3. Looking at a person's mouth while they speak helps /hearing/, because the signal from both =M= and =S= ignites the correct =A= reliably.
+
+
+I would then say that:
+
+Such a circuit is an implementation of an abstract (generalized) speech data structure, whether it's sensor-level 'support' (as ensemble)
+comes from motor or auditory inputs is secondary.
+Once the speech data structures are formed, the rest of the information processing system can treat it as speech.
+
+----------------
+
+
+- Kandel won the Nobel Prize for finding Hebbian learning in /aplysia californica/.
+- [[https://pmc.ncbi.nlm.nih.gov/articles/PMC11322048/][Neocortex uses non-Hebbian plasticity]].
+- The Assembly Hypothesis, "Assembly Calculus" uses an /outside in/ model of learning, with sensor data coming in and driving the dynamics of the brain.
+  But the brain stabilizes its internal dynamics; it is /inside out/ ([[Buzsáki, G. (2019). /The Brain From Inside Out./]]).
+- Competitive dynamics are left out, but they explain the /discrete/ nature of 'falling into' one of the possible ensemble attractors.
+- The discrete nature of sensory processing is obvious with the McGurk effect.
+  For all its ambiguity, sensory processing has aspects of discrete symbols.
+
+
+* More thoughts
+
+- The fact that the McGurk effect is /surprising/ is interesting in its own right.
+- It showcases generally how we have little insight into how our own perception actually works.

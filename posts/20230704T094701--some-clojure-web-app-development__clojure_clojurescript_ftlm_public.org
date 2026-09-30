@@ -1,0 +1,19 @@
+#+title:      some-clojure-web-app-development
+#+date:       [2023-07-04 Tue 09:47]
+#+filetags:   :clojure:clojurescript:ftlm:public:
+#+identifier: 20230704T094701
+
+* Scittle nrepl server
+
+=bb.edn=
+
+#+begin_src clojure
+{:deps {sci.nrepl/sci.nrepl {:git/sha "2f8a9ed2d39a1b09d2b4d34d95494b56468f4a23"
+                             :git/url "github.com:babashka/sci.nrepl.git"}}
+ :tasks {nrepl-web-server {:requires [[sci.nrepl.browser-server :as nrepl]]
+                           :task (do
+                                   (nrepl/start!
+                                    {:nrepl-port 1339
+                                     :websocket-port 1340})
+                                   (deref (promise)))}}}
+#+end_src

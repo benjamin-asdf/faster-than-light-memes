@@ -1,0 +1,232 @@
+#+title:      Small and Friendly Errors with Cider
+#+date:       [2023-02-05 Sun 10:50]
+#+filetags:   :clojure:programming:public:feed:
+#+identifier: 20230205T105009
+#+EXPORT_FILE_NAME: small-and-friendly-errors-with-cider
+
+#+begin_quote
+Growing by removing is growing stronger.
+#+end_quote
+
+Less obtrusive Cider errors for a quicker repl-driven experience and
+practice.
+How I came to like error overlays.
+
+#+CAPTION: A rose plant growing, the sun and speed of light. The idea of a computer.
+https://i.imgur.com/1gxO1dN.jpg
+
+* The Quick-Eval
+
+Repl-driven development is a philosophy and practice that focuses on
+using a REPL (Read-Eval-Print Loop) to interactively evaluate code
+snippets and see their results immediately.
+
+The key is /the whole language is always there/ and being able to
+make /small experiments to the point where it meshes with your
+thinking/.[fn:1]
+
+A big part of the practice of Repl-driven development is something I
+am calling the =Quick-Eval= flow for this blog post.
+
+1. Modify source code sexp
+2. eval
+3. Repeat
+
+I want to optimize this practice. The speed of 1-2-3 can easily go
+below 5 seconds and everything is possible here.
+
+1. By honing =lispy=[fn:2] skills and juggling those sexps.
+2. By smoothing out the edges of =cider-eval=.
+
+This aspect of Repl-driven development, the Quick-Eval involves using the mind,
+the fingers, and the editor. It's like playing an instrument or
+learning a motor skill like juggling - it requires dedication and
+repetition to master the movements. But the beauty of this practice lies in the ability to customize the tool to
+fit your thought process, unlocking the limitless potential for
+effectiveness. Knowledge of the editor becomes a key to a world
+of endless detail, where you can continuously optimize speed,
+the expressivity of intent and precision. The goal then becomes /programming at the speed of thought/, making
+structural editing a superpower of the Clojure programming language.
+And with the power to shape Emacs into what you desire, the possibilities are truly endless.
+
+Speed cubers deconstruct the minutia for their [[https://www.youtube.com/watch?v=wLuVF9Dk3AQ][/finger tricks/]]. This
+means being explicit and thoughtful about what movements to do during the performance.
+
+This blog post is about an aspect of =2=, smoothing out =cider-eval=, by eliminating
+error popups.
+
+* Let it flow
+
+#+begin_quote
+The first time I saw a Clojure stack trace, I thought my computer is broken.[fn:3]
+#+end_quote
+(Ariel Alexa)
+
+Alex Miller mentioned[fn:4] recently that Clojure error messages are
+designed to /not include the stack trace by default/.
+
+#+begin_quote
+A lot of these tools will automatically print the stack trace and the
+Clojure REPL never automatically prints stack traces [...]
+It prints you like a 2 line error message.
+And you can ask for the stack trace if you want additional
+information. We intentionally don't show you that because usually most
+of that information is not useful to you.
+#+end_quote
+
+Nice, sounds like less heavy error messages are something to try out!
+
+=Cider= already has a *minimalistic error feedback* available:
+
+#+begin_src elisp
+(setq-default cider-show-error-buffer nil)
+#+end_src
+
+With this setting, we get a little overlay right next to our cursor
+when evaluating with error.
+
+#+CAPTION: Emacs cider eval error overlay displaying a runtime error message
+https://i.imgur.com/Xk7Lbc1.png
+
+We achieve a more smoothed-out =Quick-Eval= flow.
+
+The consistent presentation, regardless of the presence of errors,
+creates a smoother and more streamlined workflow.
+This helps keep the focus on the code and eliminates interruptions in the thought process.
+
+My mind can stay in one place, focused on the code, without a /wall of
+something was wrong/ disrupting my flow.
+
+* Sometimes you want to look at a stack trace
+
+Ok =*cider-error*=, we can always stay friends.
+
+I do not advocate throwing away the stack traces, at all.
+With REPL-driven development and Emacs we have the power to move fast,
+and decide to inspect the stack trace should we decide the info would
+be useful.
+
+=*e= exists for inspecting stack traces. Also =*cider-error*= is still
+at our side, we still faithfully render our stack trace there.
+
+A quick and precise /pop/ lets us go to the error buffer when we
+decide to do so:
+
+#+begin_src elisp
+  (defun mm/pop-cider-error ()
+    (interactive)
+    (if-let
+        ((cider-error
+          (get-buffer "*cider-error*")))
+        (pop-to-buffer cider-error)
+      (message
+       "no cider error buffer")))
+
+  (define-key cider-mode-map (kbd "C-c E") #'mm/pop-cider-error)
+#+end_src
+
+There is also a cider buffer selection dispatch command:
+
+#+begin_src elisp
+(define-key cider-mode-map (kbd "C-c X") #'cider-selector)
+#+end_src
+
+=cider-selector= into =x= to bring up the error buffer.
+
+* Let's not jump to conclusions
+
+With less auto-jumping, we move slowly and deliberately and call upon our tools
+when we decide to do so. In practice, this can mean we jump around at
+insane speed, but we do so controlled.
+
+#+begin_src elisp
+(setq-default cider-auto-jump-to-error nil)
+#+end_src
+
+Currently, if you interactively eval[fn:5] and you have a compile error, Cider jumps to
+the top of the file.
+This is because we do not track a file position during the eval and
+Clojure only sees a piece of string, not the file.
+
+So the most important command, =cider-eval=, that I want to optimize
+for =Quick-Eval=, had a rough edge and now I smoothed it out.
+
+* Errors should be friendly
+
+Who invented that errors are red and angry?
+
+#+begin_src elisp
+(set-face-attribute
+ 'cider-error-overlay-face
+ nil
+ :background "DarkGreen"
+ :foreground "white")
+#+end_src
+
+Now I have these green and peaceful boxes that don't make my heart
+rate go up.
+
+Errors are the normal, correct behavior of my program, certainly in
+the context of developing.
+_Sometimes I even =eval= just to check that there *is* an error_.
+This is what repl-driven development gives us. And it should not feel
+like doing something wrong.
+
+* Spartan feedback for =load-file=
+
+Currently, if you load a file and there is an error, there will be
+little feedback. The lack of an eval result in the echo area is signaling an error.
+
+* The extreme: Just say /Did not work/
+
+In [[https://www.youtube.com/watch?v=FihU5JxmnBg][Debugging with the Scientific Method]], Stuart Halloway mentioned
+what I would be calling /Red light, Green light/ error feedback.
+The system only indicates if something worked or not, but not what specifically went wrong.
+
+A trick in emacs if you want text invisible is you set the foreground
+to the same color as the background:
+
+#+begin_src elisp
+(set-face-attribute
+ 'cider-error-overlay-face
+ nil
+ :background "DarkGreen"
+ :foreground "DarkGreen")
+#+end_src
+
+#+CAPTION: Emacs cider eval error overlay displayed as a full green block.
+https://i.imgur.com/P7cn70e.png
+
+I was still seeing the error in the echo area. So I did a quick
+=(setf debug-on-message "nothing")= and found =cider--display-interactive-eval-result= calls =message=.
+
+The visibility of the message is controlled by =cider-use-overlays=.
+
+#+begin_src elisp
+  (setq-default cider-use-overlays t)
+#+end_src
+
+Lol, now errors are just green blocks and I do not see the error
+message anywhere. If that is better than getting the error message I
+cannot say yet.
+
+* Footnotes
+
+[fn:1]
+
+Further reading
+- [[https://www.youtube.com/watch?v=Qx0-pViyIDU][Running With Scissors: Live Coding With Data" by Stuart Halloway]]
+- Paul Graham [[http://www.paulgraham.com/onlisp.html][On Lisp]]
+
+Blog posts on this topic by me:
+- [[denote:20230126T094804][The Joy of Clojure]]
+- [[denote:20230101T200330][Extending Your Reach]]
+
+[fn:2] Or the pareidit-like editor capability of your choice
+
+[fn:3] [[https://www.youtube.com/watch?v=J5cvCv2hlh4][:clojureU 2022: "Let it be" by Ariel Alexa]]
+
+[fn:4] [[https://podcasts.apple.com/us/podcast/e86-2022-in-review-datomic-and-clojure-with-jaret/id1461500416?i=1000590958632][Clojurestream Podcast]]
+
+[fn:5] What I call /interactive eval/ is =cider-eval-last-sexp= etc.
+As opposed to =cider-load-file=.

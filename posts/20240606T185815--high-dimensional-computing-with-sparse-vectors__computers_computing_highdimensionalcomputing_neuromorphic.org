@@ -1,0 +1,2741 @@
+#+title:      High-Dimensional Computing With Sparse Vectors Using Clojure
+#+date:       [2024-06-06 Thu 18:58]
+#+filetags:   :computers:computing:highdimensionalcomputing:neuromorphic:hyper:hyperdimensional:public:clojure:feed:
+#+identifier: 20240606T185815
+#+EXPORT_FILE_NAME: high-dimensional-computing-with-sparse-vectors
+
+My current explorations in hyperdimensional computing. Kinda piled on and on so I just put it out there now.
+
+* Overview
+
+*** Core implementation
+
+- implemented binary sparse segmented VSA (*BSEG-VSA*), also called *Binary Sparse Block Code* (*B-SBC*) in *Clojure*,
+- using [[https://github.com/cnuernber/dtype-next][dtype-next]] ([[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/src/bennischwerdtner/hd/impl/block_sparse_jvm.clj][jvm]])
+- libpython-clj, pytorch and torch.cuda (code: [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/src/bennischwerdtner/hd/impl/block_sparse_torch.clj][torch]]).
+- this was done in python in a more complete framework here: [[https://github.com/hyperdimensional-computing/torchhd][torchhd]]
+
+*** Sparse Distributed Memory (SDM)
+
+- Implemented a [[*3][Sparse Distributed Memory]] *SDM* compatible with B-SBC. [[* Sparse Distributed Memory][Introduction]], exploratory [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/src/bennischwerdtner/sdm/sdm.clj][code]].
+- Future: Add a version of this to [[https://github.com/hyperdimensional-computing/torchhd][torchhd]]
+
+*** Multi-Value Mode SDM
+
+- Discovered a [[* What Is The Meaning of read-top-k > 1?][*multi-value mode*]] of SDM, utilizing the B-SBC design [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/28369666d413aded914ef314e13e84d451990faf/src/bennischwerdtner/sdm/sdm.clj#L1914][code comment]].
+  This is a potential *post-transformer design*, in light of  [[* Attention Approximates Sparse Distributed Memory]] [[[https://arxiv.org/abs/2111.05498][Bricken 2021]]].
+
+*** K-Fold Memory Implementation
+
+- Implemented a *k-fold memory* (P. Kanerva 1988), using a *delayed address decoder* design ([[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/28369666d413aded914ef314e13e84d451990faf/src/bennischwerdtner/sdm/sdm.clj#L1058][code]]).
+  This might be somewhat clumsy compared to other HDC sequence structures, but is interesting in light of the SDM-Cerebellum mapping.
+
+*** Biological Implications
+
+- I argue that the *delayed address decoder* might be implemented by /parallel fibers/ *pf* as /delay lines/ in the Cerebellum,
+  making the *k-fold memory* a desgin that unifies clock-based [[[https://pubmed.ncbi.nlm.nih.gov/6081778/][Braitenberg 1967]]] (assumes /delay lines/) and learning-based [[[https://en.wikipedia.org/wiki/James_S._Albus#Brain_theory][Albus-Marr Theory]]]
+  (does not account for the thinnnes of parallel fibers) theories of Cerebellum.
+  This promises to increase the /biological plausibility/ of the SDM-Cerebellum correspondance.
+  And potentially contributes to a /deeply engineering design-based framework/ of understanding *Cerebellum-like* structures [[[https://www.trentonbricken.com/Cerebellum-Beyond-Motor-Control/][review]]].
+
+- I [[* The Address Decoder Neuron][argue]] that the /address decoder neuron/ (P. Kanerva 1988) is isomorphic to a special case of a /reader centric cell assembly/ [[[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/][G. Buzsáki 2010]], [[*2]]].
+  This might help bridge between the neuroscientific concept of /neuronal ensemble/ (same as /cell assembly/) and /hyperdimensional computing/.
+
+- Using this framework to map HDC and biology, [[* What Is The Meaning of read-top-k > 1?][*multi-value mode*]] SDM could implemented by /variable excitability/, via /sheet-inhibition/ of Purkinje Cells.
+- This might correspond to Braitenbergs /cores and halos/ [Braitenberg 1977], and Hebbs /fringes/ [D. Hebb 1949].
+
+*** Practical Applications, exploring advanced computing paradigms
+
+- Made some small examples using *concept blending*, *programing in superposition* [[* 8]], and *analogical reasoning*,
+  [[* Programming In Superposition][Section: Programming In Superposition]], [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/fun_with_trees.clj][example exploring structure preserving properties of HDC/VSA]].
+- Wrote down ideas for a language of [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/ambiguity.clj][*ambiguity*]].
+
+
+* Introduction
+
+#+begin_quote
+Now we have a system where we can actually represent structure.
+We could implement Lisp. And if you think of computational linguistics, 30 years ago, 40 years ago, 50 years ago.
+It was all Lisp programs. So then came neural nets and this tradition was sort of lost.
+We can bring this together. With this system, we can bring them together.
+#+end_quote
+
+[[https://youtu.be/zUCoxhExe0o?si=GHRc1t25DRDfDJyB][P. Kanerva]]
+
+Hyper or High Dimensional Computing (HDC) is a neuromorphic computing approach, that handles both ambiguity and structure in powerful ways ([[* 1,]] [[* 3]], [[* 4]]),
+and is useful for biologically plausible cognitive modeling[fn:1].
+
+I prefer /hyper-dimensional/ because it sounds more like alien tech.
+
+It provides a joyful approach to yet-to-crystalize neuro-symbolic programming techniques.
+
+Its hallmarks are mathematical rigor (butchered here), its /cognitive connotations/ ([[* What Is The Dollar In Mexico?]]) as well as its biological plausibility.
+Following a tradition of John Von Neumann's /The Computer and the Brain/, it explores the question /what are the properties of (neuro-) biological computing/?
+This a somewhat different branch of thinking, most exemplified in the seminal and inspiring /Sparse Distributed Memory/ (Kanerva 1988) [[* 3]].
+
+In HDC information is represented as high-dimensional distributed "holographic" data structures, the hypervector.
+It is typically a very wide vector (vector length is, N >= 1000, or even N = 10.000)[fn:2] and is closed under the VSA (Vector Symbolic Arithmetic) operations[fn:3].
+
+Advances in the philosophy of programming, biophilosophy and epistemology are required for solving long-lasting engineering problems for creating truly dynamic, creative, robust computer systems [fn:4],[fn:5],[fn:6].
+
+Current connectionist machine learning paradigms lack explainability and reliability, (they frequently /"hallucinate"/), and show a lack of reasoning capability that would covered by basic world models, such as /object permanence/[fn:7].
+Challenges for connectionist approaches remain largely untouched [G. Marcus 2003, Minsky and Papert 1969, see [fn:8], F. Chollet[fn:9]].
+
+Surely, new and old ideas in neuro-symbolic or perhaps alternative approaches like /a-life/, or genetic programming are required for true progress in machine intelligence.
+It is often said that /nobody figured out yet how to do neurosymbolic (ai)/ (Melanie Mitchel, and Gary Marcus on YouTube podcasts are eloquent).
+# (Google Deep mind is recently [[https://www.technologyreview.com/2024/07/25/1095315/google-deepminds-ai-systems-can-now-solve-complex-math-problems/][trying to find such ways]])
+HDC/VSA has the potential to fill such gaps.
+
+Clojure is a powerful tool for modern software engineering, prototyping and bottom-up programming.
+Regardless, it is a Lisp and is intertwined directly with the history of machine intelligence, early computer science and the philosophy of programming.
+
+[[https://youtu.be/j7ygjfbBJD0?si=8tP9OTx6QVYk_iM6][Carin Meier introduced]] a Clojure way of doing HDC/VSA, on which I try to build on, towards "small AIs for personal enjoyment"([[http://gigasquidsoftware.com/blog/2022/12/31/vector-symbolic-architectures-in-clojure/][Carin Meier]]).
+Her communication on explorative programming, like [[https://youtu.be/cHoYNStQOEc?si=9kzG3vdcDibF8fbG][alternative programming paradigms]] is quite inspiring to me; And I feel "a Clojure thing to do".
+
+Why Clojure? Because why would you not want a REPL into your AI?
+
+Here, I provide an example implementation for a /binary segmented sparse/ (BSEG) VSA using an excellent Clojure high-performance framework [[https://github.com/cnuernber/dtype-next][dtype-next]].
+
+Sparsity is a theme of HDC and related fields. Presumably, the brain uses the most sparse encoding it gets away with,
+[[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7710421/][because the amount of active neurons drives brain energy consumption]].
+
+#+begin_quote
+the most important thing in AI right now perhaps is not Consciousness and things like that but how do you make it energy efficient because that is the constraint.
+#+end_quote
+
+G. Buzsáki[fn:10]
+
+
+[[edraw:data=H4sIAEpOaWYAA71WXW+bMBT9K5b7skkhGIdSUgFS97RJ3R62h328ETBgBXBknED263dtw8i2durWJiL44A/Oub73GCXqDiUamrrtYlwptbt13b7vl/1qKWTpUkKICyuwXXI71LzdPrTQW6/XrpnFqOe5qmJ8HRCMKsbLSsV45UPnwGTHRRtjb+nhJMpZ0SGex5jlMu0d3YXRJpVbJn8dd4iTSil6jOzsZ6sQTP23owoM7CTrmDywu27HMvUxVVzEuBUtA3nO+jdiiLHjEaRvqn8YSVZ8ibF9+GoehOSsBb50rwRGnZJiyyaWgtd1jK88oi+Id5eqCkGw74Fx4dxo4sUN8hfkG0ZuErk2QnjQ+0siCVGhwagcTftotuYMbNJsW0qxb/NHgimKwoiVpy+J/IhHPfuSM0rRmWXaxk+iUF9zIP4coG8j1gmD8H2N7svTeyP/Kvwf/iArCkKewu8Hlt9Uz5bIYS0kby/rV1d/GO81fnIQtjDaEL5PUEDuNYQWPHIZVdC5hx1aDE+QXlCfjkhOcNRXbFBIN07aZpWQMW54ntfa0KJVTpE2vIZidWnbOXCaeTFOdPw7SNPr30+hNeZc2eTTsdmImmfo7l3kaqEkYnXNdx37d7PK0fVysJhBX7snGyy6L8xtkvQcckI2qf4g/JV8KsVZ0nIJnwXmcIWmBX8ZoBouoQxK9/Y8GW2D9Lz+9kLrb23vD0x1k6+fp+WFD56lUWulxSAf+0ztJbuEoqcV02bDyz1Xx0nxnNWk8L2iUD9KRyQGz+4i2LHRW5ER6azrlnDD367kBxrv4queCQAA]]
+
+It is circles, because neuronal nets are often depicted with the neurons as circles and lines between them. Squares to make it look different and the 'tree' stands for datastructures, like trees.
+The idea is that currently each approach is strong in either ambiguity (relationships of many data points) or structure, but not both.
+
+I often use blue to stand for data and green to stand for process. This is used here for flair.
+
+
+[[edraw:data=H4sIACxU+mYAA71WTY+bMBD9K5Z72ZVCsNlslqwCUqse9pBeeunHzQEDVohNbROS/vqOsdn0a6VWFRWBB7aZN/NmxmRrTjU6H1tpMtxY2z3G8TAMy+FuqXQdJ4SQGFZgv+Tx3Ap5+N1Cutls4nEWo0GUtskwpQnBqOGibmyG7+gGoxPXRigJc0uK823JK4NEmWFeajZE7hFGj0wfuP5xPCIR01oNGPnZD55iPT0/BRYY6DQ3XJ/4a9Pxwr5nVqgMSyU50As+vFHnDEeUIHcm7oeR5tXHDPubT+ON0oJLsMd6qzAyVqsDn6xUom0z/IoSd4C/HbMNAmffgcVF9OAMLx7QakE+YxTn29h7CDcuvnyrwSt0Hlku4/Vlua4S7FlxqLXqZfmCN1VVjWz19y+p8gL+WX62yF0iJotG6QwfRVm27l0lbVSxo2jBE8OkiUA5UYUJI74CC01/jti5vQKAGCgBAZ7eokIdu94KWW9jRzQPJ1170gQwp2QJpem042hQujQT8yivlygKyiZXzZ7tTbKl7rjKvrrmI0k8bRpCdexxyLZPacQlaN3r9ubVL4V6i//YCZ9HV0A0JQuIbjfiiuyg+zwmgMn8/CPfOvCmgTf1vLxtRWf430urQcOxyc4ei0vQtgi5/GfrNFink/XNZP3eW5+jGpPQAquxBS4d7GwdKzgSBp2YsVM5zpkuoEaQrbvUw/oZUg+uO+cumYl15SHx4B1LrpB6mDyaIyGhTx+gtPJGtarWrGtEsUClgCj6fW95+YhY26K9sAa2LGm1cKPIKmQbyJyslD6674VE/EsPKy+zbmehgO4Bc632/X8qmnRMw27EhOzuyYjz9UnIy8rt2jegsZACNAep4UvNCisK1qKu150y3NxOCsQ1nPC/I/8GVLKsH58IAAA=]]
+
+[[edraw:data=H4sIAHqoamYAA7VXUY/iNhD+K5ZPla4SBGfsxMkJkK689KF96cu195YDB6INCXKyC/TXdxyHkGCfdqvVLktsj7/MfDNjj/GyedmTy7GsmhU9tO3py2JxPp+DMw9qvV8AY2yBCGohXy5lUT35gGGapotulpJzsWsPKxrFjJKDKvaHdkUF4OBF6aaoqxUNg5CulzuVN6TYraja6ew8N0OUHjP9pPRUPmfzTOv6TImd/WYtxLfx770VFJy0apR+UV+bk9q2f2VtUa9oVVcKzRfq/Ft9WdF5yIj5gvmnRKv87xW1nX+6Tq0LVaG+7LmtKWlaXT+pm5a8KMsV/RQy80G+p6w9ECT7J2qczaVRPJNEzNh3Shbr5cIyxI7xb73UyIpcOivX7vnTaN0j8CPbPu11/VztfkImz/PO2H78Ur27Ir1WXVpiHvOs2h5qvaLHYrcrzbt11c7z7FiUSKTJqmaOgSvyfqIp/kUrYfLosGFtqKILkKD/h+vJhHvb1rohmVbkVBdVi3mtSDfVnLKtWi4Mg/VSlWVxalTvxLx3He5eDVYGx3a4BDEzaNWI9cW2WxzzrmN4mM6iz8TbVSfmQ7vUhUIGoYAkkuYpZDQLY7bBftCL8MlnYSQCGASCMU5cSBgMeqJUpIkLEVFwGwnOos1EAMa2SILhBSFwZ5GpCNAOI1NbcWSEmzAaexJFFhkzx2wvHKtIpJCbTsxFEA9yidbjQA4+MECtIANUwdMgHf4SI0YGnAcwUIjlAAaPYvBzAB9fGMcx7D2DcVxYHwM+1hgxFlosH6UvTv1x5pOF4EnWI8CTcAfiLhs+9gVAJHbB8TGhELplSKYBiuRN6lmy39+5D8AEHldQtAFuUmDyBsL04NZD5jhrel1WgZv8drPmDehmzcxNCvde/84GwkEWwh0ZDu+zQcYGO2ywzQY+4cDxxvu9AeCdQbbhhgJnhBsTPMLWLBeUdyZxbJca6fCYOUjtGFI7D4nFd2N8v5vnPR7enSee+OoVT16tVy7EWb4O5HEL8OT1esUTt17x1FOveOqpV4J59r8VOrWiE092nERLY4aJWYKTDRdB5GHzCNk4TrhK3DyMi4yEiAFx48XHglS+zdL/RkxKI8fUumZgTDaUkSE7FtlSj6mTnkLP5dgNW+gNdFKtvDYciMv0EeK6K6cl1B96+Vjy3dC/wdKriPjxFHLXUjxmkki/Gs9S9p/S3Hei89hzQrrczK57dMkAnVh5trV85Xh0AJ764kDcKuXm1pQ36TsdeeI7Hb0FclR17Y/yuaqwmj7r8vMn56rxK31zabY/xfvz05xUf+D5eG+hb0Xfxn2bYAt9K0Zt/ICHkT6r/+P9mPL7eHsJm3Hjd9y3om9h1ILl8REXGp7YGw0ez3SNjrZKV2RbH0+latWMqBdVkSLHI+gXUufkR9Haq05ZN+3tavMRtDAMlpa5aCEJfW0PRbUnqsQ7VJ5pkp2z643AYo9fvKqv/wPXXN/H0g8AAA==]]
+
+
+- Picking a random hypervector (a /seed vector/) is akin to a =gensym=.
+- Hyperspace is virtually infinite for practical purposes.
+- Hypervectors can be used to model /semantic spaces/.
+- HDC/VSA can encode structures like frames, (associative data structures), and sequences.
+- HDC/VSA can be used to compute analogy-like reasoning [[* What Is The Dollar In Mexico?]], a single example of template-like reasoning ([[* 1]]),
+  while being transparent.
+- HDC/VSA can be seen as a theory of programming emerging stochastic (unreliable, low voltage) computing technologies like [[https://en.wikipedia.org/wiki/Memristor][Memristor]]s and quantum computing, and
+  its most distinguishing feature might be "computing in superposition"[[* 8]].
+- /bloom filters/ are shown to be a subclass of HDC/VSA[fn:11].
+  With a bloom filter, all elements are tested for set membership in a /single step/, in parallel.
+- HDC/VSA can be seen as 'programming with embeddings', if one is machine learning-ly inclined.
+- Yet, using VSA we can represent bindings, (key-value pairs), sequences, graphs and so forth; [[* Programming In Superposition]]
+- Beyond the "set-like,", unordered, membership/similarity quality of both bloom filters and embeddings.
+- All operations return new hyper vectors of the same lengths, composite datastructures are hypervectors, too.
+
+* Implementation
+
+I followed [[https://www.researchgate.net/publication/299535938_High-Dimensional_Computing_with_Sparse_Vectors][High-Dimensional Computing with Sparse Vectors]] [Laiho, Poikonen, Kanerva, Lehtonen 2020].
+
+I used Chris Nuernberger's [[https://github.com/cnuernber/dtype-next][dtype-next]].
+
+[[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj?tab=readme-ov-file][github]]
+
+[[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/src/bennischwerdtner/hd/binary_sparse_segmented.clj][Binary Sparse Distributed HD With Segments]].
+
+
+# * Introduction
+
+# Encoding information in large /words/ (10k bits instead of 32 or 64) has unintuitive properties and can encode information structurally ([[*1]]).
+
+# The length of a /word/ here is (N = 10.000). We can see those as points in a high dimensional space, called =H=.
+
+# VSA (Vector Symbolic Arithmetic) provides a way to express the *mix* (/bundle/, /superposition/) of two points in =H=.
+
+# Other high-dimensional computing approaches are for instance word embeddings of machine learning, but they lack a *bind* operator as far as I know.
+
+# This allows us to represent variable-value pairs. Also called /associative data structures/ with /key-value pairs/ in software engineering, and /frames/ with /role filler pairs/ in cognitive modeling.
+
+# Since HD/VSA can represent sequences and variable binding, it is possible to implement a Lisp in terms of it. [[* Hyperlisp V0]].
+
+# ** Why Sparse
+
+# I'll assume pattern activity in the brain is generally sparse, and that this is part of the explanation for the brain's energy-efficient computation.
+# Some of the mechanisms of HDC might even benefit from sparseness. In [[*7]], Pentti Kanerva discusses how a sparse address decoder element of a /sparse distributed memory/ ([[*3]])
+# has been show to have favorable mathematical properties[fn:7].
+
+
+* The Address Decoder Neuron
+
+#+begin_quote
+It should also be noted that the message system used in the nervous system, [...] is of an essentially statistical character.
+In other words, what matters are not the precise positions of definite markers and digits, but the statistical
+characteristics of their occurrence, i.e. frequencies of periodic or nearly periodic pulse-trains, etc.
+Thus the nervous system appears to be using a radically different system of notation from the ones we are familiar with in ordinary arithmetic and mathematics:
+instead of the precise systems of markers where the position - and presence or absence - of every marker counts decisively in determining the meaning
+of the message, we have here a system of notations in which the meaning is conveyed by the statistical properties of the message. [...]
+This leads to a lower level of arithmetical precision but to a higher level of logical reliability: a deterioration in arithmetics has been traded for an improvement in logic.
+#+end_quote
+
+John von Neuman /The Computer And The Brain/, 1957
+
+In [[*3][Sparse Distributed Memory]], Pentti Kanerva provides an alternative view on artificial neurons, the /address decoder/.
+
+Suppose that the neuron =A= has 1.000 inputs (N = 1.000). In the book, the /address/ =a= (a point in =H=) is made from -1 and 1's.
+The 'optimal' input to the neuron is the /address/. If the inputs are equal to the address, the sum of the weighted inputs is =s= = =N= = 1000.
+This is true, because the -1 inputs are -1 * -1 = 1 and the +1 inputs are 1 * 1 = 1, and =sum(weighted-inputs)= is =N= = 1000.
+
+We see that a threshold can be expressed as the /distance/ =d= (the Hamming distance, that is the count of bits that are different) between the neuron's address and the inputs.
+For instance, if the threshold is =N= - 1 = 999, then the distance =d= = 1.
+And 1 bit of the input is allowed to be different from the neuron's address for the neuron to still fire - a wiggle room of 1.
+The /response region/ of the neuron =A= is a circle in a high dimensional space, around the /address/ (=a=).
+
+This region includes a very small amount of points of the space =H=, until at around d = N/2 it suddenly includes most of the points.
+
+These properties of =H= are one of the main interesting aspects of HDC, and they are beautifully explained in [[*1]],[[*3]], and [[*4][Kanerva talks]].
+
+If d = N, then threshold = 0 and it includes the whole space. Then =A= fires for any inputs.
+
+Here, I use binary sparse vectors, and roughly the same thing works for them too:
+
+[[edraw:data=H4sIAEckiWYAA72XS4+bMBCA/4rlvbRSCMZJWe8qILWnHtpLL+32RhcDVgiObCdke+hv79iYPDYbqYcaETLYwHzz8oOV3tfosGk7neHGmO1jHPd9P+8Xc6nqmBJCYngCD488HlrRrd96MHl4eIjdXYx6UZomwx9SglHDRd2YDC8pNPZcaSG7DCfzBOerklcaiTLDvFRFH9km9G4Ktebqsj8iUaGU7DEa7n4fCOnY/uwp0LFVXHO15x/1lj+bb4URMsOd7DjgBe8/yUOGo4Qge1L7w0jx6keGh4sndyGV4B3oK3ZGYqSNkms+aqlE22b4LiH2AHu3hWkQGPsVNM6ie6t4do+WM/ITozhfxYOFcGH9y1cKrEIHR3lx/zejdYrAr+J5XSu568obxlRV5WD1+UuyfMGeN7wUeRQ9aRndOCpi9jgZkp4ZSAaTlyDAfmshEA0/mFchQbYvKrrnRqoMb0RZttZS2ZlIi98ATZhvVsVGtKBSF52OIGuicgQ2EBKQebKKrToPuq35LVWvkZdWnkDgUU4uOGEcYuec/56XJL1OTJh4pVd5CVQAZKICSCBm+Xw+D4mi5FaxBQKlU4HCp4n60l7aEdS7IaBD8mw9HHmi2+5OODfbD1N6xDuYbHeqfXd3tVC9x/88toeJ3C4gEEgEo/iLk0svqZck3LCmbJw5wF2920ziK/O+Mu8r876yk68h+eDzzPKdpF5OwLW5pD6n1OeY2jhQL5depmeSTWAX83Yxbxdz/Cny4LjUc+mUXJt/H2fq4059HuiYF/ZmPpxcEC/DL7k0+F5onM1Z8GVjdMmuhBlahNxIHJcoGnqLdyQF30weSdcLfCjSdfEFIrkVaBKf6HVFBBpQrs5Dby7HLxlbE38yVJQlfAbrkIFcpGeBTJCoKqQRjGfTcFMEBZ/vVgiSAFS90HxkxjWcel/nfwG0D8qk2hAAAA==]]
+
+Say the threshold is =theta= = 3, then the inputs and weights need to have at least 3 bits /overlap/ for the reader to fire.
+
+This perspective makes it easy to see how neurons can deal with /distributed representations/.
+
+Distributed data structures allow us to /mix/ information. Half of a data point is meaningful so mixing half and half of two is also meaningful.
+This opens the door for /programming with superposition/, where /ambiguity/ and /multiple things true/ are expressible.
+
+If the input vector is large (1.000 <= N, here N = 10.000), we say it is a /high dimensional/ or /hyper-dimensional distributed representation/.
+It is a /distributed/ data element because the bit locations contribute equally to the information content. You can see this is true via the logic of the /sum/ in the mechanism.
+The output of the /sum/ doesn't have information about locations anymore - all overlap bits contribute equally. This is different from say 32-bit architecture, where the bit location conveys meaning.
+
+Similar concepts are /sparse distributed representations/ SDR (if sparse and N ~= 2.000),
+/holographic reduced representations/ HRR[fn:3], /spatter code/ (if binary), /distributed parallel processing/ (PDP) ([[*1]] reviews).
+"Cell Assemblies" and "distributed representations" share conceptual history with HDC, Hebb (1949), Marr (1969), Willshaw (1981), Palm (1980), Hinton, McClelland, and Rumelhart (1986), Kanerva ([[* 3][1988]]), and others.
+(I took this list from Rachkovskij and Kussul 2000)
+
+In machine learning, almost the same thing goes under the name of /distributed representations/ or [[https://en.wikipedia.org/wiki/Word_embedding#:~:text=In%20natural%20language%20processing%20(NLP,to%20be%20similar%20in%20meaning.][word embeddings]] (like word2Vec).
+Yoshua Bengio [[https://youtu.be/wdExmzSfw4g?si=COlb89wc1Av87548][recently went as far]] as speculating that something like word embeddings is the mechanism for /qualia/[fn:9].
+
+I think there is a very close correspondance between the /address decoder/ and the /reader-centric cell assembly/ of Buzsáki[fn:12]:
+
+[[edraw:data=H4sIAC2Yi2YAA71X3W+bMBD/VyxPmjatBOMQ6nYh0va0h+5lL/t4o8EEK8RkthPS/fU7f7B03TpV1YxI+IE57nd3vjPnpT5u0GnXSV3i1pj9dZoOwzAb5rNebVJKCElBAnuR61Mn5PZvgtnV1VXqnmI0iNq0JWY5wajlYtOaEi9IjtGRKy16WeJsluHVsuaNRqIuMa9VNST2FkZ3ldpy9ft4QpJKqX7AyD/97BmK8f5DYIGBveKaqyN/p/d8bT5VRvQllr3kQC/48L4/lTjJCLJ/an8YKd58KbG/+OoueiW4BH3VwfQYaaP6LR+1NKLrSvwiI/YAe/eVaREY+xE0XiSXVvHFJcovyDeM0tUy9RbChfVvtVRgFTo5ljt3fjRa5wjcVuvtRvUHWT9iTNM0jmxz/6W+vgPzeNeJvebhvSSw0bOi0ZN7uhhjEAwwz0Xn5HEN98ziyWP6HN3MHv/WneXPVf4EwyGfIyovIiqf04gxn8eYUJo/CLrhJ4PsKankuu1ViXeirjubxr00SVPtRAfv6UrqBGpYNOGBFj+AOmMPa88WkAtLyJqVIcvU6g9F6Ssv4RJq4qC6Vy/+WE9e4ye76uvN1jkjKCPkxgL1kHsoPDAH1ItQLwKxuIGXPNKAecAioJdzoYppP1jmHHBIAxYBmUcanlM6gT1FsKcI9hQ+pA6LgMwjDXI0yNm40RBHSqeJn5s35udvTvz8OWQebdwc0oBBjhZnpCx+SdjlaGUkKpEh6A0y1WGsjhisuScFv1bZBDx2TZmGqJiIyE7bJERuqSRTeMRiE9H8ckbP+TCPylUEr2xCKF7V0KRKflC9jMmaEc+a21gKuT+YQKqjsrKQKtGrbGSi0bP/F1P0JWpkcvn/8vuhN287oQ2XkDGDgP2JH5vChMLW+tLofSXRuqu0HncHjg+2a/wstoYNhkGVRmtoAwE13912d2houZzNZmCt1fJEZW7n4937r91wTsZdQhHvA5qT+0s/Ek2DNFrBZ7Tlpoq6xIzNrE2cqAWejz2C+xagHlxTg9B8iv7Z9Ud56JOK+P1aQXw/uQit+iL0l4s8IL2Hod9NN/DXx83qJxoCqg4fEQAA]]
+
+1. They share a downstream =reader=.
+2. They fire together in a time window given by the integration time ("tau"[fn:13] ) of the reader.
+
+Additionally:
+
+- A *time window* is required for a physiological implementation. (In other words, what counts as /synchronous/, or /co-activation/ is defined by the integration time of the reader).
+
+- We see that the /address decoder/ was the simplest case where the time window is equal to the neuron time step time.
+  (I.e. all neurons have to fire /together/ during 1 time step).
+
+- The time window could be increased, perhaps dynamically - as is the case in the brain via neuromodulators etc[fn:14].
+
+----------------------------------
+
+This is a bit of an aside, but
+
+- A /reader/ is in principle allowed to be any /downstream effect/, as long as there is some /use/ to /something, somewhere/.
+
+- Imagine a domino-falling cognition machine, as Hofstadter asks us (Hofstadter 2007). Say every domino falling gives off a small amount of heat.
+  If a domino falls without causing another domino to fall we might label it /reader-less/, hence /user/-less and /useless/. You anticipate where this goes.
+
+- Not so fast!
+  If the heat has effects in the system, for instance, if dominos fall faster with higher temperatures in the machine, or any variation of this -
+  then even such a seemingly lonely domino did /something/ to the system.
+
+- This suggests at least 2 classes of effects for the firing of neurons in a brain, firstly the ones that cause /reader neurons/, to fire, and secondly, the ones
+  that I would label /substrate effects/[fn:15].
+
+- But for both of these, I think we should ultimately be able to conceptualize in terms of an /address decoder/ or /assembly/.
+  It is just that some assemblies have different kinds of time windows and so forth.
+
+  That would be something like a 'universal' *cell assembly hypothesis*; Saying that cell assemblies don't actually need reader neurons
+  to have effects; They have any kind of reader mechanism or downstream effect. And it is still useful to analyse the assembly.
+
+- Because of this, I don't say /address decoder neuron/ but /address decoder/.
+
+----------------------------------
+
+
+- The reader can take into account the activity of a "whole" (distributed), this makes this a /robust/ encoding. Single elements are allowed to be missing or out of sync etc.
+
+- An /active data structure/, as we might conceptualize neuronal ensembles, must have a reader, or some downstream effect. In other words, all meaning is /relational/.
+
+- Also, different readers can have different perspectives on the same data.
+
+#+begin_quote
+The important thing if this something is *used* by the brain. If you don't have an impact on something, it doesn't matter.
+#+end_quote
+
+G. Buzsáki[fn:10]
+
+See [[* Neuronal Ensembles]] for the neuroscience cell assembly concept.
+I highly recommend G. Buzsáki /The Brain From Inside Out/ on this topic.
+
+A very similar thing are the Population Vectors [Georgopoulos 1986[fn:16]], which are foundational to brain-computer interface technology.
+
+* The Elements of High Dimensional Computing
+
+The hypervectors (abbreviated hv, hd, hdv, hdvs for plural) are high dimensional vectors, typically 10.000 elements long. It is sufficient for them to be binary, they still exhibit interesting high-dimensional properties.
+
+*The Binaray Segmented Sparse HV*
+
+#+begin_src clojure
+
+  ;; -------------------
+  ;; 1. Elements - The Hypervector
+  ;; -------------------
+
+    (defn ->hv
+    "
+    Returns a fresh, random hypervector - the element of VSA.
+
+    __Binary Segmented Sparse__ :
+
+
+      <------ N bits wide, typically 10.000         --->
+
+    +-----------+-----------+------------+------------------+
+    | _ _ _ _ 1 | _ 1 _ ..  |     1      |                  |
+    +-----------+-----------+------------+------------------+
+      s          s            s             ... segment-count (~100)
+    <----------->
+    segment-length (~100)
+
+
+    Each segment has 1 (random) bit non-zero.
+
+    In order to make it sparse, we only set 1 bit per segment.
+
+    For operation, see:
+    [[thin]], [[maximally-sparse?]], [[similarity]], [[superposition]], [[bind]], [[unbind]]
+    "
+    ())
+
+#+end_src
+
+This is also called a Sparse Block-Code[fn:17],[fn:18] because non-zero bits are only allowed to go into certain positions.
+(1 per block).
+
+# I have become more daring now and set the =segment-count= to 20.
+
+[[edraw:data=H4sIAJSzrGYAA3VR227DIAz9FeQ+J0C2h6QK+ZcsXIJCoALWpPv6mTbd+rAJYXN8fHws0aerIfvqfBIw53w5U7ptW7291SEa2jDGKHbAo+W8O+uXvxp513X0zgLZrMyzgKZlQGZlzZwRcARXFZMNXgCvOQx9VFMmuwBkbvf4r9BKAUrGcas+xmkxMXx6CSTlGBYlwAevgGjrnICT1hoIHXrzKgryhn7KOXtJ6tBVT7ffQSfOynmZ1bYaYcT1mpL3R54Qc1YeWOClgoZZ7ZmUUI1+mkMUsFopXdks+FzpcbUOdWn0qUoqWn0QyX6hNW9/XJ9LFJN3zIfHMPa0jB96avDipwzfmhdelLwBAAA=]]
+
+I usually draw a hypervector as /colored-in circle/ and denote them with single lowercase letters (=a=, =b=, =c=, =x=, ...).
+
+Three hypervoctors, or /hypersymbols/ if you like:
+
+[[edraw:data=H4sIALwsrWYAA72T0W6DIBSGX4WcXitot6Y24rtQASVFaIBWu6cfqN16sfWiyRYCBM4533/4E2p/7dA0aOMp9CGcDxiP45iP29y6DpeEEBwzYEk5TFqZ00+JRVVVeI4CGhUPPYX3HQHUC9X1gUIEAboK55U1FIq8gKZ2og1oohAjt3n9tVBxCoI7NmZH1p46Zy+GA/LB2ZOgYKwRgKTSmsJGSgkIN3X3WGT5LeoJrdXZi7UuW9XKb9CmIGk8sPZ7GY/ulvqI+7TsbTwXqa82XhR7Mgu+QOfz457Sy92LdEKOLFnxlL59W+hBTAGlJWOm7a2jMCjOdXLVmpBJNigd6zwzPvPCKbkGvPoQyYEv1XsTSSSxV38aVuOE/1ul5FVz/A+l5FvT3pVwF2f8JM0noCRET0wDAAA=]]
+
+György Buzsáki [[https://youtu.be/tp_GNFav0KE?si=P86i63TRId6mvqN1&t=2756][was asked]]:
+
+#+begin_quote
+If it is true that we have preexisting patterns that we later map onto something, that means that there are only a limited number of things we can learn.
+#+end_quote
+
+#+begin_quote
+Exactly. But those limited patterns are limitless in your |< ____ >| ... 100 years of life.
+#+end_quote
+
+Kanerva ([[*1]]) is describing the /high dimensional space/ =H=. For any given point =a=, almost all the other points have /roughly the same distance/ to =a= (/quasi-orthogonal/).
+
+In /hyperspace/, all the points are so far apart that you can plug a new point again and again, and you will never get 2 that /resemble/ each other;
+That's the property that György Buzsáki sees for computing with many neurons[fn:19], too.
+
+We can pick a random[fn:20] hyper vector =a= (high dimensional vector, HDV) from =H=. Also called a =seed-vector=. These are the *elements of high-dimensional computing*.
+In HDC we deal with high-dimensional points and their relationships (=similarity=) to each other.
+
+We usually need a /cleanup memory/ ([[* Auto Associate Memory]]) to recover a seed back from a noisy hv.
+
+- HDV creation doesn't always have to be random seeds, one can choose to /project/ or /embed/ from some world domain
+- You might also choose to encode scalars for instance via some scheme, so that 9 is similar to 10 and so forth.
+- Instead of random seeds, one can plug from a pool of pre-allocated seeds, which are already stored in some form of memory (like Buzsáki's hippocampal trajectories).
+- This solves half of the memory problem. Even though the space of possible 'seeds' is reduced; The math is in our favor. The /blessing of dimensionality/ quickly
+  gives us enough data points to go for the rest of the sun's lifetime.
+
+** Similarity
+
+A simple distance measure suffices for HDC. For instance, the Hamming Distance counts the bits that disagree
+
+#+begin_src
+a: [0 0 0 1 0 ]
+b: [0 0 1 0 0 ]
+#+end_src
+
+/hamming distance = 2/
+
+Consider that for sparse vectors, the hamming distance is dominated by all the 0's agreeing.
+The above pair has a distance of 'only' 2, yet is as far apart as possible (k = 5, count-non-zero = 1).
+
+So I take the overlap of non-zero bits and normalize with the sparsity.
+
+#+begin_src clojure
+(apply
+ max
+ (let
+     [a (hd/->hv)]
+     (for [n (range 50000)]
+       (hd/similarity a (hd/->hv)))))
+0.07
+#+end_src
+
+** Noice Tolerance
+
+The =similarity= of 2 random hypervectors is guaranteed to be tiny.
+
+Here, /0.1 <= similarity(a,b)/ means that =a= and =b= are /related/.
+
+One can also imagine trying to spoof an address decoder neuron, say N = 1.000 and bits are {1,-1} binary and the address vector is dense.
+If the address is =a= and the current input ensemble is the unrelated =b=, the distance between =a= and =b= is roughly d(a,b) = N / 2 = 500.
+Let's say the neuron threshold (distance to address) is d = 400 = N * 0.4, then you would have to spoof d(a,b) - d = 100  input bits in the right direction towards address =a=.
+Say you are a stochastic process like unreliable hardware, for instance, random skip rate and random intrinsic firing rate of neurons.
+Say that you have a coin flip chance to flip a bit, then for the address neuron to misfire for inputs =b= would mean to throw a coin 100 times correctly, i.e. 0.5^100, which is astronomically unlikely.
+
+#+begin_src clojure
+(Math/pow (/ 1 2) 100)
+7.888609052210118E-31
+#+end_src
+
+In other words, if one picks points from =H= randomly, there is only a tiny region around =a= for with the address decoder neuron responds. Even if there is a 400-bit (d = N * 0.4) wiggle room for the neuron to be spoofed.
+It is quite remarkable that 40% of the bits are allowed to be random in the input, and the address decoder can reliably differentiate noise from its address. P. Kanerva: [[*1]],[[*4]],[[*3]].
+This is impressive already with N = 1.000, but here N = 10.000.
+
+This holds to a lesser extent for sparse vectors, but the properties of sparse HDVs are still similarly impressive (Z. Yang for a more mathematical summary)[fn:21].
+
+One of the deep mysteries of neuroscience is that there is a 40% skip rate for neuron firing [[*5]].
+This is called /failure rate/ in the literature. But perhaps it is a feature, not a bug.
+
+Perhaps it is the amount of skipping the brain gets away with, maximizing energy efficiency.
+
+Or perhaps this roughly makes the /address inputs/ hover right around the detector threshold.
+Intuitively, this is like rolling the ball on the top of an attractor landscape in a recurrent neuronal net, making it less stuck in any basin.
+# It would make sense that all neurons would have inputs hovering around their thresholds.
+
+I am imagining a piano, where the notes are the neuronal ensembles, a good piano will be /fluid/, and all keys (notes) are easy to /compose/.
+
+---
+
+Hearing the voice of a person, say 'Bob', always sounds like the same voice, even though the particulars of the sensor data must be quite variable.
+In Hofstadter's terms, we make an analogy between the instances of hearing Bob's voice. We understand/categorize/make the analogy / analyze the situation / find the essence of the 'hearing Bob's voice situation'.
+Whatever represents such an internal situation is quite robust to noise.
+See [[* Biological Remarks On The Robustness of The Address Decoder]] (appendix)
+
+
+** Auto Associate Memory
+
+*auto-associative memory*: A memory where the address is the same as the content. This is akin to associating a pattern
+with itself, allowing a /pattern to complete/. That is retrieving a pattern from a noisy version of the pattern.
+
+If we allow querying with =a-prime=, which is different, but /similar/ to =a=. You get =a= out, with the noise /cleaned up/.
+
+A /cleanup memory/ component of an HDC/VSA allows us to recover the initial hyper vector (seed vector =a=) from a noisy =a-prime=.
+
+** Hetero Associative Memory
+
+A *hetero-associative memory* is a memory where address and content are different things. For instance in RAM, the address locations are designated pointers,
+usually numbers in the /word length/ of the computer (32bit, 64bit,...). The content of the address location is an unrelated string of bits.
+I.e. all possible bit string permutations go together with any location address. Address and location are /different/, hence /hetero/ associative.
+
+In HDC/VSA a hetero-associative /item memory/ is needed to map from the /hyperdimensional domain/ the the /symbolic domain/ and back.
+(Usually, one would remember all /seed vectors/ one creates. Then the item memory can be queried an provide the nearest neighbor of the seed vectors).
+
+** Ambiguity
+
+There is one other thing you can do with a single hyper vector.
+That is dropping random bits and thereby getting a 'weaker' version of your data.
+
+#+begin_src clojure
+  (defn weaken
+  "Returns a weakened vector by dropping segment bits from `a`.
+
+  This allows one to express the notion of a mix of hypervectors,
+  where they contribute to different amount.
+
+  Weakening the effect of `b` in a superposition:
+
+  (let [a (->hv)
+        b (->hv)]
+    [(similarity a (thin (superposition a (weaken b 0.5))))
+     (similarity a (thin (superposition a b)))])
+  [0.76 0.58]
+
+
+  Mathematically, this is like drawing a line from a to b in hyperspace.
+  Bundle finds a point exactly between a and b. distance(c,b) ≅ 0.5 ≅ distance(c,a).
+
+  With the weaken operation, you can say how far to move from a to b.
+  Like moving on the line between the points.
+
+  This is deterministic.
+  "
+  [a drop-ratio])
+#+end_src
+
+Instead of dropping randomly, here I let the bits decide which drop. So this is a kind of /Context Dependend Thinning/.[fn:22]
+
+#+begin_src clojure
+(def a (->hv))
+(similarity a (weaken a 0.5))
+0.5
+#+end_src
+
+This makes it possible to say things like /a little bit of/, /roughly/, /mostly/... See [[* Ambiguity Primitives]].
+
+* The Means of Combination
+
+HDC has 3 primitive arithmetic operations, =superposition=, which is akin to /+/ or creating a /set/,
+=bind=, which is akin to /*/ or creating a /key-value pair/, and =permute=, a third operation sharing some
+properties with /*/ but works on a single input vector.
+
+They are all /closed/ under the hyper vector datatype. A vector of the same dimensionality comes out.
+(That is what /reduced/ in *Holographic Reduced Representations*, *HRR*, [fn:3] means).
+
+** Superposition (Bundle)
+
+[[edraw:data=H4sIAFC2rGYAA71WW2/TMBj9K5b3AqJpHCdk2dREgicexgs8DHjzGqexmtqV7S4dv57Pl2xlrBJCC2qT4+s5n7+LlZW536DjbpCmxr21++s0HcdxOeZLpTcpJYSksAKHJdfHQcjtSwuzq6ur1M9iNIrW9jV+XxKMei42va1xQaFzz7URStY4W2a4WbW8M0i0NeatZmPiujC6Y3rL9e/jCUmY1mrEKMzeBoVy6n+KKjCw19xwfc8/mD1f2y/MClVjqSQHecHHj+pY4yQjyD3U/THSvPtW49D47htKCy6Bjx2swshYrbZ8YunEMNT4IiPuB/bume0RGPsZGBfJpSNeXKJiQX5glDarNFgIDXe+ZqXBKnT0Kg/+fdZbTx64Y+vtRquDbM8Y03WdF9ucblLtA5jHh0HsDY/7kqhGn4imk5xwVVUFzgDzvHeOAdeu7xswkBHiBV+V3ZM6dloGdu/a4L+ESzjZQQ9vLv7Iirf4r/WD11y0MkoWcJybrIhYniCZX5+CLhz4BjQDkoBZFbE8QfqP3uY5+Ls94+1yimX0tuVHi9wrYXLdK13jnWjbwWWZkjbp2E4MsM8waRIoMdHFCSN+gnRWPS8Nl98+kjFfGrZKHf08Sj55QCl3SnezKlVByWVJs56UXrcSptjk5Qx19ljF87BXz9jniEFOY7QLiMFyuZyiMGfF5q4yS3JTkIg0YnGCVUDIjYA0YhExrqNxXR7X5XT+G8fZ7+0hEemJff9Lv4r6VdSvHv0x3x0Uc6WAfGzezXkz0OolpVe9tV3C++oqivmrK3PVtUYJMgJYmEZWoTsFGcIQky2a9ZYt4n3uztn0YMPXJxvYMCAh9wdrJgvSDTzwndr8Al6HtjrPCgAA]]
+
+
+=(superposition a b)= returns a vector =c= that is similar to both =a= and =b=.
+
+This is typically a /elementwise addition/, optionally followed by normalization and tie-breaking.
+
+Superposition is commutative and associative.
+This is also called a /sumset/ operation because it returns a /set/ of the inputs.
+Just like with a set in programming, it is a data structure representing all the elements without ordering.
+
+Superposition is the same operation that creates a *set*.
+
+Other names: /bundle/, /possibly/, /mix/, /set/, /union/.
+
+*** Thinning
+
+In this implementation, we might want to =thin= after a superposition, to preserve the sparsity of our vectors.
+Thinning can be done by selecting one random 'on' bit per segment.
+Or, one can use the indices to decide, making it a deterministic operation.
+[[* Context Depended Thinning]]
+
+** Bind
+
+The =bind= of =A= and =B= returns a vector =C= that is dissimilar to both =A= and =B=.
+=C= can be used to /release/ either =A= or =B=, given the other.
+
+It can be used to represent a symbol-value binding.
+
+[[edraw:data=H4sIAIx0omYAA7VWwXKbMBT8FY1yaTsmCKI4JGOYcXzpIb30krY3BSTQGEseIQe7X98nJGK3jTttpowNi4TYfXp6K1h0zzXab1rV5bixdnsXx33fX/ZXl9rUcUoIiWEE9kPu9q1U69cGJre3t/FwF6NeVrbJ8fWcYNRwWTc2xzSFxjM3ndQqx8llgotFxUWHZJVjXhnWR64JvRtm1tz83B+RiBmje4z83UevMB/bH4MKdGwN77h55stuy0v7mVmpc6y04iAveX+v9zmOEoLckbo/RoaLLzn2F1+HC20kV8DHdlZj1Fmj13xkEbJtc3yREPeDeLfMNgiC/QSMs+jGEc9uEJ2RbxjFxSL2EcKFm1+xMBAV2g8qh+F8NlvHDDyxcl0bvVPVmWCEEINYffqQrg4QHm9bue14eC4KaumRaJzJyEXIE3N0BsIbsrP3WEI7cUGW0JGRQe+fyYWooKReJ88C9zAgDon12Yu4gnntTPvu4reaeI//Wt7nzK1VkpIZTOYhoQHnAbMTpAFT8gAxeUxPkAacB8w8wliP6Qu+NVlZJs4kKx1XYmS3fG+RO0VMlY02Od7IqmpdjWhlI8E2soXnOqa6CAwiRbjRye8gnWS/FjY6hJXwq10sF7Fjn0Yo8zopBaH7KYWuwoxc1orVpErUKznLFCsUoUoKwQ1sK0gYvUFLxFSFXiY7TXHQ+fRWosSXPg0WoPSIzgoDghUgFo/ZCRKPw/hgPeqt9//3l2TcYK7mb2T/49ZIxpxn0xkyCeV7nU7tyNEoroKK5YdJTTlsYWFdprU/JSdKK1QyhZ442nW8QlbD67/U8ImCuLQNwBI+A44GjWs44Euo+AFXwzt8MQkAAA==]]
+
+- Bind distributes over addition
+
+#+begin_src clojure
+
+(require '[bennischwerdtner.hd.binary-sparse-segmented :as hd])
+
+(let [a (hd/->seed)
+      b (hd/->seed)
+      c (hd/->seed)]
+  (=
+   (hd/bind c (hd/bundle a b))
+   (hd/bundle (hd/bind a c) (hd/bind b c))))
+true
+
+#+end_src
+
+- Bind preserves distance
+
+#+begin_src clojure
+;; 'preserves similarity' in this context means that points that are similar before the transformation
+;; are also similar after the transformation.
+(let [a (hd/->seed)
+      b (hd/->seed)
+      between-a-and-b (hd/thin (hd/bundle a b))
+      c (hd/->seed)]
+  [(hd/similarity a b)
+   (hd/similarity a between-a-and-b)
+   (hd/similarity b between-a-and-b)
+   (=
+    (hd/similarity (hd/bind a c) (hd/bind b c))
+    (hd/similarity a b))
+   (=
+    (hd/similarity (hd/bind a c) (hd/bind between-a-and-b c))
+    (hd/similarity a between-a-and-b))])
+[0.0 0.3 0.7 true true]
+
+;; To put this into other terms, C is mapping from one domain to another domain, preserving relationships
+#+end_src
+
+- Depending on the implementation, bind is commutative and/or associative.
+
+Here, bind is commutative and associative: (for maximally sparse vectors).
+
+#+begin_src clojure
+  (= (hd/bind (clj->vsa :a) (clj->vsa :b))
+     (hd/bind (clj->vsa :b) (clj->vsa :a)))
+  true
+
+  (= (hd/bind
+      (clj->vsa :c)
+      (hd/bind (clj->vsa :a)
+               (clj->vsa :b)))
+     (hd/bind (clj->vsa :b)
+              (hd/bind
+               (clj->vsa :c)
+               (clj->vsa :a))))
+  true
+#+end_src
+
+** Permute
+
+- Like bind, distributes over addition.
+- Like bind, preserves distance.
+- Distributes over bind.
+
+Here, we permute by rotating the segments blockwise.
+
+[[edraw:data=H4sIANYyqmYAA71Wy46bMBT9FcuzmZECGEMZMgpI7aqLdtNNHztPMGCFALKdkOnX9xo7zaOTmU5UqgQOfnDPuS+LhdpWaLduWpXhWuv+IQiGYfCHyO9kFVBCSAA7sN3ysGtEu3puYzifz4NxFaNBFLrO8LuEYFRzUdU6wzGFwZZLJbo2w6Ef4nxR8FIhUWSYF5INnhnC7JrJFZen8x7xmJTdgJFd/WoZkv34o2OBiV5yxeWWv1c9X+ovTIsuw23XcqAXfPjQ7TLshQSZi5o/RpKX3zJsH76PD50UvAV7bKM7jJSW3YrvrZSiaTJ8ExLzA7090zUCsZ/B4sy7N4Zn9yiekR8YBfkisArhwfiXLySoQruR5Wm8X4zWIQKPbLmqZLdpiwtiyrIcyarjl7riCTs++5LnqOjByt6NI0Npmh6EJAeBoyaQHAOA/pSMjG81n6YledZ8+E/MLy+pD+MT81DXV9gn5JGZSL8uP4qv0/9q9CmdKPzxqf3rAvRSAs4cuC5CL2TgzIE4sfbH9rQ96PEWumMjm9ubP06WO/zXImznmY6HoM1CQj6NSB3GgInD1CIE0yJ16PbR5AipQzK97ohY3SNSh6Ajcvoipy9y+iLnR0yOkDp0ejXfaWRuHmuXdSczvBZF0Zgzqmu1V7K1aCA9irXKgwNalG5BiZ8gNUzPD1aTy9B1UwyY+76/CAzBRFyp5TL+5D2X643mez7eNKJX/O2NJk1BGtxZXMI4MoW5dEz/oUIREJqKtJiOOPJe4ZU9nl70auy/ieohJvc+PWSJTVkPBy7jUd7fsrsp6WjiSj2dvtSj/REMnHldbJHi1Rq+d9SUpK694qnz9juQZ0kLKrjgSzb/BWCEfzXxCgAA]]
+
+#+begin_src clojure
+
+(def a (hd/->seed))
+(def b (hd/thin (hd/bundle (hd/weaken a 0.25)
+                           (hd/->seed))))
+
+;; permuting creates a vector dissimilar to 'a'
+(hd/similarity (hd/permute a) a)
+0.0
+
+;; permute-inverse is the inverse of permute
+(= (hd/permute-inverse (hd/permute a)) a)
+true
+
+;; permute-inverse is simply permuting with negative
+;; n. It just means rotate the other way
+(= (hd/permute-n (hd/permute-n a 2) -2) a)
+true
+
+;; permute preserves distance
+(hd/similarity a b)
+0.37
+(hd/similarity (hd/permute a) (hd/permute b))
+0.37
+
+;; permute distributes over addition
+(= (hd/permute (hd/bundle a b))
+   (hd/bundle (hd/permute a) (hd/permute b)))
+true
+;; permute distributes over bind
+(= (hd/permute (hd/bind a b))
+   (hd/bind (hd/permute a) (hd/permute b)))
+true
+#+end_src
+
+- Also called /rotate/, /protect/ - /unprotect/
+- You can think of it /quote/ - /unquote/ since the permute can be interpreted as a quotation of a symbol.
+- We 'map into an unrelated domain'
+- Permute, like /bind/, is said to be /randomizing/, because the input is not resembling the output.
+
+- It is interesting to note that permute is trivially implemented in circuits, just make wires that represent the
+  permutation between an input and output register.
+
+[[edraw:data=H4sIAELBoGYAA71Wy46bMBT9FcuzaSUItkMZMgpI7aqL6aabvtQFDQasEBsZJ2T69b3GZkIfM6pGIiJw8LV9zuH62sq2P9XofGhln+HGmO4uioZhWA3rldJ1xAghEYzAbsjduRVy/6+BdLPZRGMvRoMoTZPhNwnBqOGibkyG1zE0Tlz3QskM0xXF+bbkVY9EmWFe6mIIbROih0Lvuf49HpKw0FoNGLneT04hmdrvvQoEOs17rk/8bd/xnflYGKEyLJXkIC/48E6dMxxSguzN7A8jzavPGXYvX8YXpQWXwFccjcKoN1rt+cRSibbN8A0l9gK/XWEaBGY/AGMQ3lri4BbFAfmKUZRvI+cQXuz35VsNrtB5VHkYn09m65KBH8VuX2t1lOUTZqqqGsXq+SRVPoA93rai67mfF3o1diGavmTGlaYpJAPsjdk5O9xBO7UIbes1egl3aq/nuWm8IDljjnxcNLcyIZeQs6NuX938VW+v8X/Lu/WwdZAQRAm5t8AcxOQ+dQARhz5MfRz2mUM2w8RjurznUYd4Peb9MO+Peb8W4xnGHhOPV/AJOoH1OSKbIfNIHKYXiO0aBNakhXSB4hqLaqlt8Uj+8n3xzIZ+ZJ82huFng+wjLOSuUTrDB1GWrT1qlDRhVRxEC/P6QvYhnLOi8h29+AnSNP3zfLSHHCwKtkfeGjAXsjuabWQlllFj8UxNHc3Ccl4Nlj6nV9CxVZCTKwjZglhWiKWX1F1FaPncTUpj8hYtB5r4KrdKHcrQNxYgGiDyfVKNarjhr1v+C5lw1GfiCQAA]]
+
+The humble permute turns out to be a powerful, simple component for building complex datastructures.
+See [[* Programming In Superposition]].
+
+* What Is The Dollar In Mexico?
+
+The classic example works:
+
+[[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/what_is_the_dollar_in_mexico.clj][Complete source code.]]
+
+#+begin_src clojure
+
+    (def mexico-record
+      (h/thin
+       (h/bundle
+        (h/bind (symbol->hv :capital) (symbol->hv 'mxc))
+        (h/bind (symbol->hv :currency) (symbol->hv 'peso))
+        (h/bind (symbol->hv :name) (symbol->hv 'mex)))))
+
+    (def usa-record
+      (h/thin (h/bundle (h/bind (symbol->hv :capital)
+                                (symbol->hv 'wdc))
+                        (h/bind (symbol->hv :currency)
+                                (symbol->hv 'dollar))
+                        (h/bind (symbol->hv :name)
+                                (symbol->hv 'usa)))))
+
+
+    (let [result
+          (h/unbind mexico-record
+                    ;; this represents the query
+                    (h/unbind usa-record (symbol->hv 'dollar)))]
+
+      (cleanup-lookup-value result))
+  ;;  => peso
+
+#+end_src
+
+# The fact that we do a parallel search over the usa-record here, is what they call "computing in superposition".
+
+Observe that we effectively unbind with the query over a distributed, superimposed mapping. The deep reason is that bind distributes over superposition, the outcome is
+equivalent to the superposition of unbinding each key-value pair.
+In an HDC/VSA "All data structures are hyper vectors and can be manipulated immediately and in parallel, regardless of how complicated a structure they possess" [[* 8]].
+
+--------------------
+
+While this example is coherent on it's own terms, the real world factuality of this depends on the perspective of the reader.
+
+I'm guessing one of my readers is right when they said:
+
+I think "peso" would be the answer to a question close to: "what is the common name for medium of exchange that's backed by the government of Mexico"
+
+
+* The Means of Abstraction
+
+WIP.
+
+* Prototypes
+
+- When the /bind/ is commutative, the notion of /key/ and /value/ is not fixed.
+
+#+begin_src clojure
+(cleanup-lookup-value (h/unbind usa-record (symbol->hv 'dollar)))
+:currency
+#+end_src
+
+- we can ask what is =dollar=, and get =currency= out, just as well.
+
+This suggests that can also simply use the first /instance/ of encountering something, like encountering =dollar= and use that as a /proto-symbol/, or a /prototype/.
+Thenceforth, the symbol dollar could represent the /role/ =currency=.
+
+So for Mexico, we would then say dollar<->peso, using 'dollar' as symbol for 'currency'.
+
+Hofstadter and Sander in /Surfaces and Essences/ [fn:23], describe how children would acquire /meaning cities/, for instance, the /symbol/ =mum=
+would undergo a maturity process, where at first it refers to a single person, and eventually refers to the /role/ mum in a mum-child /relationship/, (other people have mums, grandmums are mums of mums).
+
+If I remember correctly, David Deutsch (or was it Hofstadter and Sander?) talked about something similar. The fact that Galileo discovered a Jovian moon is relevant because now we refer to /moons/ in plural.
+It is that the notion /moon/ grew into referring to a /role/, that /earth-moon/ is not singular, in some essential way, but that there are many earth-moon-like relationship-having planetary objects.
+
+# I would submit /"moon"/ is allowed to be a prototype for the role =moon= (now abstract and generic), in the /planet domain/.
+# Thus, /what is the moon of Saturn?/ is a perfectly comprehensible thing to ask.
+
+* Programming In Superposition
+
+Because it distributes over permutation and binds, generally the VSA operations do the same for a superposition, as they would for the elements.
+
+A single bind of superpositions makes a cross product:
+
+#+begin_src clojure
+  ;; this is the crossproduct the 2 sets
+  (hd/bind (hdd/clj->vsa* #{:a :b :c})
+           (hdd/clj->vsa* #{:x :y :z}))
+
+  ;; contains all key-value combinations
+  (hdd/cleanup*
+   (hd/unbind
+    (hd/bind (hdd/clj->vsa* #{:a :b :c})
+             (hdd/clj->vsa* #{:x :y :z}))
+    (hdd/clj->vsa* :y)))
+  '(:b :a :c)
+#+end_src
+
+I followed some of [[* 8]] and implemented some complex data structures.
+
+For explanation, I can recommend [[* 8]]. [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/fun_with_trees.clj][Fun with trees]] is more of a walkthrough.
+
+Note that I came to the same Clojure->VSA vocabulary as [[https://github.com/gigasquid/vsa-clj][Carin Meier]]:
+
+Clj ={}=  : Becomes the superposition of the bound key-value pairs (equivalent to the undirected graph).
+Clj =#{}= : Becomes the set.
+
+(I skipped interpreting =[]= atm).
+
+** Principles (So far):
+
+- Everything is a set, complex datastrucutes overlap, if they share structure.
+- Intersection, difference, union work for complex datastructures generally.
+- Computing with a set (a superposition) is like computing with an element, and the rest comes along for the ride, in parallel.
+
+** Basics
+
+To go from symbolic domain to hyper domain, =clj->vsa*= creates a new seed vector, remembers it in an item memory
+and returns it.
+
+=cleanup*= serves as an item memory lookup, retrieving the closest match (with a threshold). I.e. hyper domain to symbolic domain.
+
+#+begin_src clojure
+(hdd/clj->vsa* :a)
+#tech.v3.tensor<int8>[10000]
+[0 0 0 ... 0 0 0]
+
+(hdd/cleanup* *1)
+'(:a)
+#+end_src
+
+We might as well interpret a Clojure set in the symbolic domain, returning a set, which is the same as the superposition.
+
+#+begin_src clojure
+
+(=
+ (hdd/clj->vsa* #{:a :b :c})
+ (hdd/set
+  (hdd/clj->vsa* :a)
+  (hdd/clj->vsa* :b)
+  (hdd/clj->vsa* :c))
+ (hd/superposition
+  (hdd/clj->vsa* :a)
+  (hdd/clj->vsa* :b)
+  (hdd/clj->vsa* :c)))
+true
+
+#+end_src
+
+Set comes with =intersection= and =difference=:
+
+#+begin_src clojure
+
+(def sun (hdd/clj->vsa* #{:yellow :warm :space-object :round}))
+(def banana (hdd/clj->vsa* #{:yellow :food :tasty :fruit :banana-shaped}))
+
+(hdd/cleanup* (hdd/intersection sun banana))
+'(:yellow)
+
+(hdd/cleanup*
+ (hdd/difference
+  (hdd/clj->vsa* #{:ice :cold :hard :water})
+  (hdd/clj->vsa* #{:cold :hard :stony :earth})))
+'(:ice :water)
+#+end_src
+
+The simple associative map is the superposition of its key-value pairs (created by bind):
+
+#+begin_src clojure
+
+(=
+ (hdd/clj->vsa* {:a :x :b :y :c :z})
+ (hd/superposition
+  (hd/bind (hdd/clj->vsa* :a)
+           (hdd/clj->vsa* :x))
+  (hd/bind (hdd/clj->vsa* :b)
+           (hdd/clj->vsa* :y))
+  (hd/bind (hdd/clj->vsa* :c)
+           (hdd/clj->vsa* :z))))
+true
+#+end_src
+
+The cool thing is that you treat the set as if it were an element:
+
+#+begin_src clojure
+
+(hdd/cleanup*
+ (hd/unbind
+  (hdd/clj->vsa* {:a :x :b :y :c :z})
+  (hdd/clj->vsa* :a)))
+(:x)
+#+end_src
+
+Unbind releases a value from a key value pair, it also releases a value from the suerposition of key value pairs.
+
+In porgraming in superposition, we general treat the whole as if it was an element. Pretend the forest is a tree so to say. 👈
+
+Querying a map with the result of the intersection of something:
+
+#+begin_src clojure
+;; -------------------
+
+(def fruit-domain (hdd/clj->vsa*
+                   {:lemon :yellow :apple :red :orange :orange}))
+
+(hdd/cleanup*
+ (hd/unbind
+  fruit-domain
+  (hdd/intersection sun banana)))
+'(:lemon)
+#+end_src
+
+*** What Is The Moon of Saturn?
+
+- "What is the dollar in mexico?" kind of thing, but with a directed graph and the values are a superposition
+
+#+begin_src clojure
+(def earth
+  (hdd/->directed-edge (hdd/clj->vsa* [:moon :luna])))
+
+(def saturn
+  (hdd/directed-graph (hdd/clj->vsa*
+                       [[:adjective :saturnian]
+                        [:adjective :cronian]
+                        [:adjective :kronian]
+                        [:rings true]
+                        [:moon :mimas]
+                        [:moon :enceladus]
+                        [:moon :tethys]
+                        [:moon :dione]
+                        [:moon :rhea]
+                        [:moon :titan]
+                        [:moon :iapetus]])))
+
+
+;; let's say you know luna and you want to know what that is in saturn domain
+
+(hdd/cleanup*
+ (hdd/edge->destination
+  saturn
+  (hdd/edge->source earth (hdd/clj->vsa :luna))))
+'(:rhea :iapetus :tethys :dione :mimas :titan :enceladus)
+
+
+;; 0. "What is the dollar in mexico?" kind of things work in general.
+;; 1. the moon of saturn is a superposition 7 things
+;; 2. Saturn is a composite datastructure, yet we pretend it's one element 'edge->destination'
+;;    works on an edge element, and the superposition of elements
+
+#+end_src
+
+*** Nondeterministic Finite-State Automaton, Bending Water
+
+#+begin_src clojure
+  ;; --------------------
+  ;; Nondeterministic finite-state automaton
+  ;; --------------------
+  ;; - it can be in several states at once
+  ;; - there can be several valid transitions from a given current state and input symbol
+  ;; - It can assume a so-called generalized state,
+  ;;   defined as a set of the automaton's states that are simultaneously active
+  ;; - a generalized state corresponds to a hypervector representing the set of the currenlty active states
+  ;; - query the same way, is like executing the automaton in parallel (in superposition)
+  ;; - cleanup will have to search for several nearest neighbors
+  ;;
+
+  ;; automaton in superposition (i.e. just query with states that are in superposition)
+  ;;
+
+  (def water-domain
+    (apply
+     finite-state-automaton
+     (clj->vsa*
+      [[:frozen :heat :liquid]
+       [:liquid :heat :gas]
+       [:liquid :cool :frozen]
+       [:gas :cool :liquid]
+       [:gas :heat :gas]
+       [:frozen :cool :frozen]])))
+
+  (cleanup*
+   (automaton-destination water-domain
+                          (hd/superposition
+                           (clj->vsa :liquid)
+                           (clj->vsa :frozen))
+                          (clj->vsa :cool)))
+  '(:frozen)
+
+  ;; if your state is the superposition of liquid and frozen
+
+  (cleanup* (automaton-destination water-domain
+                                   (hd/superposition
+                                    (clj->vsa :liquid)
+                                    (clj->vsa :frozen))
+                                   (clj->vsa :heat)))
+  '(:liquid :gas)
+
+  ;------------------
+
+  (def water-bender-domain
+    (apply finite-state-automaton
+           (map #(map clj->vsa %)
+                [[:frozen :heat :shards]
+                 [:liquid :heat :bubbles]
+                 [:liquid :cool :absolute-zero]])))
+
+  ;; now I have 2 automatons,
+
+  (cleanup* (automaton-destination
+             ;; ... superimpose them
+             (hd/superposition water-domain water-bender-domain)
+             (hd/superposition
+              (clj->vsa :liquid)
+              (clj->vsa :frozen))
+             (clj->vsa :heat)))
+
+  '(:liquid :gas :shards :bubbles)
+
+  ;; and we just run them in parallel, lol
+  ;; stuff like that.
+#+end_src
+
+Superimposing 2 automatons (union) is equivalent to making 1 large one in the first place.
+It is somewhat suggestive, the primitives of a hyper interpreter might have this 'mixing' at the core.
+
+More of this at [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/fun_with_trees.clj][fun with trees]].
+
+*** What Is the Bread For Lava?
+
+#+begin_src clojure
+
+;; -----------------
+;;
+;; Pretend for a moment you have a cognitive system that already established certain 'samenesses'
+;;
+
+(def liquid (hdd/clj->vsa :liquid))
+;; forgot about the honey
+;; (def honey (hd/thin (hd/superposition liquid (hdd/clj->vsa :honey))))
+(def butter (hd/thin (hd/superposition liquid (hdd/clj->vsa :butter))))
+(def lava (hd/thin (hd/superposition liquid (hdd/clj->vsa :lava))))
+
+
+;; -------------------------------------------------------
+;; Model stuff with finite state automatons
+;;
+;; Say that the outcome of spread is a surface filled with *something*
+;;
+;;
+
+(def bread-domain
+  (hdd/finite-state-automaton-1
+    (hdd/clj->vsa* [[:bread :spread {:surface butter}]
+                    [:bread :spread {:surface :vegan-spread}]
+                    [:bread :crumble {:crumps :bread}]
+                    [:bread :forget {:bread :molded}]])))
+(def lava-domain
+  (hdd/finite-state-automaton-1
+    (hdd/clj->vsa* [[:rocks :spread {:surface lava}]
+                    [:lava :freeze :rocks]
+                    [:vulcano :erupt {:spew lava}]
+                    [:rocks :forget {:rocks :ancient}]])))
+
+
+;; what is the bread for lava?
+
+;; first ask what is the action I would do with lava and bread,
+;; the similarity of lava and liquid doing work now, the shared :spread comes out:
+
+(hdd/cleanup*
+ (hd/unbind
+  bread-domain
+  (hd/bind
+   (hdd/clj->vsa* :bread)
+   (hd/permute (hdd/clj->vsa* {:surface lava})))))
+'(:spread)
+
+
+;; the essential mechanism for this is at fun_with_trees.clj
+
+(let
+    [the-action-that-would-lead-to-lava-surface-given-a-bread
+     (hd/unbind bread-domain
+                (hd/bind (hdd/clj->vsa* :bread)
+                         (hd/permute (hdd/clj->vsa*
+                                      {:surface lava}))))]
+    [:spread-lava-in-bread-domain
+     (hdd/cleanup*
+      (hdd/automaton-source
+       bread-domain
+       the-action-that-would-lead-to-lava-surface-given-a-bread
+       (hdd/clj->vsa* {:surface lava})))
+     :spread-lava-in-bread+lava-domain
+     (hdd/cleanup*
+      (hdd/automaton-source
+       (hdd/union bread-domain lava-domain)
+       ;; for this to work, I need need to cleanup with
+       ;; an item memory
+       ;; (literature mentions this as challange.
+       ;; Resonator networks can do this efficiently)
+       ;; --------------------------------------------
+       ;; cleanup to prestine :spread
+       (hdd/clj->vsa
+        (hdd/cleanup
+         the-action-that-would-lead-to-lava-surface-given-a-bread))
+       (hdd/clj->vsa* {:surface lava})))])
+
+[:spread-lava-in-bread-domain '(:bread)
+ :spread-lava-in-bread+lava-domain '(:rocks :bread)]
+
+#+end_src
+
+This example levarages the =similarity= (the overlap) between *lava* and *butter*.
+Also, you can query a union of finite state automatons and get the mix of automaton outcomes.
+Observe that all other concepts like *vulcano*, *erupt* don't interfere with the query.
+This is because we query /in the *surface* domain/. Since /bind/ is /randomizing/, =surface ⊙ lava= is
+dissimilar to =spew ⊙ lava=.
+
+HDC/VSA expresses ambiguity, similarity *and* structure at the same time in interesting and joyful ways. 👈
+
+* Ambiguity Primitives
+
+/The Cortex is an information mixing machine/ - V. Braitenberg
+
+A HDC software framework might or might not come with [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/ambiguity.clj][ambiguity primitives]] (just ideas).
+# It's a proposed language for saying different kinds of similarities and overlap.
+
+- =everything=  - similar to all other hdvs.
+- =nothing=     - similar to no other hdvs.
+- =mix=         - returns a new point that is similar to the inputs.
+- =vanishingly= - drops bits from input, making it less similar to input, allowing mixing.
+- =mostly=      - ~ =(mix input-a (vanishingly input-b))=
+
+And so forth.
+
+So far I have leveraged this only for the lava example.
+
+
+* Sparse Distributed Memory
+
+*Sparse Distributed Memory*, [[[* 3]]] (SDM) is a conceptually /biologically plausible random access memory/.
+I highly recommend P. Kanerva for an explanation. Here, the explanation is extremely rudimentary.
+
+From Douglas Hofstadter's forewored:
+
+#+begin_quote
+This book, because of its pristine mathematical beauty and its great clarity, excites me deeply when I read it,
+and I believe it will have the same effect on many others... Pentti Kanerva's memory model was a revelation for me.
+It was the very first piece of research I had ever run across that made me feel I could glimpse the distant goal of understanding how the brain works as a whole
+#+end_quote
+
+I call it the 'alien spaceship' effect that comes from 'pristine mathematical beauty and great clarity'.
+It promises to be great building material for software, and it's a great pleasure for me to indulge in exploring such intuitions.
+
+SDM maps onto the Marr-Albus theory of cerebellar function; Which is said to be the most convincing case of computational neuroscience informing the structure and function of a brain structure[fn:24].
+(Although one might have to say that it is perhaps the /only halfway convincing/ example of computational neuroscience saying anything about brain structure and function).
+
+*The Problem*: Given a high dimensional point =a= (for address), reading from the storage should return the stored point =d= (for data) from the storage.
+A /sufficiently similar/ point =a-prime= should still return =d=.
+
+For RAM in current computers, each /address location/ has a number assigned to it, called /address/, usually a number with a bit-width of the /word/ of the computer (32bit,64bit,...)
+If I want to write, the /address decoder/ activates the corresponding /address/ (stored in the /address register/), and the circuit writes /address location/ with the /content/ of the /input register/.
+To /read/ activate the /address/, and the circuit writes to the /output register/.
+
+If the addresses are hyperdimensional (i.e. N >= 1000), having 1 address per word is not feasible.
+Consider approaching the /address decoder/ with a hypervector =a=, it should give you a unique /address location/; This would mean it needs a location for all 2^N addresses
+of your hyperspace =H=.
+
+Quoting Kanerva [[*4]]:
+Even 2^100 would be too many to fit into the human brain, as 2^100 molecules of water would more than fill it (the number of neurons in the nervous system is "only" about 2^36).
+
+The key insight is to use the /similarity/ to /multiple addresses/ (making this /distributed/) instead. Thus, the /address decoder/ activates a /set of address locations/ (called /hard locations/).
+The second part of the design is to say that there are very few /hard locations/ compared to the /address space/ =H=. Making this a /sparse/ memory.
+
+[[edraw:data=H4sIAHoRpWYAA71YS3PaMBD+Kxr1kHYmxpZlbJHBzNDpIYf00h76uLm2DB6MzcgOJv311WMVEpKUlkQMgfXz229X+1Km3XaBduu66VK87PvNle8PwzAa6KgVCz8MgsCXT2DzyNWurprVcw+SyWTi67sYDVXRL1NMSBhgtOTVYtmnOGbyZMtFV7WNvDcieDYteNmhqkgxL0Q2eOpUXl1nYsXF4+te4GVCtANG5u43oyK259dWC0YbwTsutnzebXjef8n6qk1x0zZcqq/48LHdpdgjAVLfUP1hJHj5PcXm4Ic+aEXFG4mX3fYtRl0v2hW3KGVV1yl+RwL1kXw3Wb9EkuxniXjpJQr4MkHRZfATI3829Q1DeaDsm02FZIV2Wsud/n3ZXXsX/Mry1UK0t03xApuyLLW2xcOX2uJO8uN1XW06Du95oC7cA1lT9lg5Y0x6Q/JLlFd2RubyPNQH8kI8DrRCbc5/QDNWPjAz3NsfGofIiMPKPXF0Ej5Tn7/iM4OfhI74A34cu+FPI8f+iQ3+2BX/EPCZI/6AnzjyDwH/J4Hj+HfkH8s/Pi3+j69v7Nb/1OaXI/wI/D92jO9qfSngJ4D/qupPofpTqP6EQvUnE4Pe812P1I+XNfmyFSleV0VRq77UNr1XZuuqlu91WdN5sitXJdzoqt9SNWGH3VRZAAGkHDWbF4Vs5x36xPO24GLqK10Okg6KBnWV1MwtPj3g72JZbOIpeb8uN22uBqwGfeW9XRwXyglNRqFWryJvNneqCzJIzWPWUJf6wsTapmaq2cX84sQwP6gN2o7nmws5LQ6PN9/X4UPlOZ6nzvhHjvFjx/5hj/H11sTsPzzeyI3Brajfv3uyq/qA/5mE2XSo3U4cIFkKbpSIjQiNCLQIzT1p8Q3TwllhimxQqHy9zkSBDqtT56pvjO2wwNyZN7YDreqHWd5X26znBaoPbXO51jKvEZErqSUzUuaikZGUIcgIZAySaek8Fp/wCUzkacmAHwN+DPgx4Mfc8yPgHwL+IeAfcib/KP0qL5V+LSFPlX56hlqh9YP9FOynYD99k0E7enEQdlVraXi+Wnsfx4FZNy0h3inkH4X8o5B/FPKPniO+pN4xxFfEQMYgT1vfo/63tddhZ7Gll6iRt6skQiZQ36LM/VBoh1D1b6oZ6EPdJss5unY6jMIENFHdZqmaqVX+pOG89YKSg4TyF/LbbRezPxOGsw+jFgAA]]
+
+Asking an /address decoder/ in SDM for a location given an /address/ =a=, returns you a set of /similar/ /address locations/.
+
+Each /address location/ points to a string of bit counters (storage) that are as wide as your input and output (/content/) /word/ (content matrix below).
+Each small rectangle here is ~ a hyper vector.
+
+Instead of writing and reading from a single storage location, the user writes and reads from an /ephemeral/ location, that
+is made from the /ensemble/ (if you will) of the activated locations, which "cluster" around your address "A".
+(In the original SDM, this cluster is inside a hypersphere of the chosen Hamming distance between your address A and the /hard locations/).
+
+If the /similarity/ ('distance', i.e. the radius of the hypersphere) and /address location count/ (for instance M = 1e6) is chosen well, then it is very likely that
+for a given address =A'=, which is similar to *A*, you get a similar /location ensemble/ (my words) from the address decoder.
+
+[[edraw:data=H4sIABsQpWYAA7WW0W7bIBSGXwXRi1w5GJIldhUsbVd7DWqwjeKYCFjt7ukHNqzp1HSdJ2QlNpjznV8/Bx2fzHMLpks/GAo7a6+PCI3juB13W6VbRPI8R24FXJY8Tr0czu8txGVZovktBKPktqPwyyGHoBOy7SyFe+IGz0IbqQYK8RbD6qRFbcFEoXvzMv/fDZScQsE1G7MnVp9brX4MHAJjtToLCgc1CAga2fcUPjRNAwGqTu1tkOIvLp/oe3k1IsRlIRt5BT3g3F+3rKIoINBO3tFN62m5125MSv/gJogPQKvo9V06jnR8XOizV/+ALormxkTyai5Z3Mb+7vmHVfzCXx/xXeHMfLJPoz/ycbGGn+dPzNfJB/x9Wn9m3Y6/Sv4n7I/y80TyA58ksucQ8CRt9ZNE9gT5eFXxf6I4i/9x/+/8XTxciXZ3F+xPJT/x7pLA3wW+FZON0RHm5zI21J3SFF4k571vUWqwmZE/hT//Ydiwi+wd1LDBZEZo2SwVWh63ZNkE1wGqzdfNCXlmmmzRMFevFeNcC2OAubJagO8p0+JwTnyPrzqmOYjJe1Uz6z4VzJv09/O9l+BPIW+1zy08eux7eLX59ttj1Lqf++ypfgHed/WmHgkAAA==]]
+
+Say you write /pink-content/ using address =A=.
+Say you wrote /cyan-content/ into the /ephemeral location/ =B=, then when reading with ='A'-prime=:
+
+[[edraw:data=H4sIALwQpWYAA7VUW2/aMBT+K5YrTZtEiG0YhC6J1D3toXvpS7e9ucRJPBKbOYbAfv2OLy20W7VpEoLEjv3luxyOyYd9gw59p4YCt9Zur9N0HMfpOJtq06SMEJICAgfI9aGTavMnIF2tVqnfxWiUlW0L/H5BMGqFbFpb4Nkyw2gvzCC1KjCdUlzmlagHJKsCi8rwMXGPsNpzsxHm+XpCEm6MHjEKu/dBYfH4/CmqwMLWiEGYvbgZtmJt77iVusBKKwHyUowf9aHACSXIXcx9MTKi/lLgMPnqJ9pIoYCP76zGaLBGb8QjSy27rsBXlLgP+N1y2yIw+xkYJ8nSEU+WaD4h3zBKyzwNDmHi8pW5AVfo4FWO/v5qtU4VeODrTWP0TlWvmKnr2os15y/p6gj2rDhY5G4JV+tWmwL3sqo6965WNql5LzswMnA1JFA4WceNQf4EFZq9DOxcO6sQgULxyjvBK6kaiAFlePNjp+2HmzDkqZONiYPtJIZlpxxPvE9Rsqw+KwU7lYgFdToP8hnxmS9F79JdlH/xP/yEPHD3Y/+dH46u5/f9GZowEQraY2e6t1e/Ha13+J9NhNZzLZ8RRDNym7lzRG4piSOL4zyOizhGHIs4FnEs4ljEsYibBZxPcYk2ZmeVKnv+HU69PV6qa30QEJvFtkobuOCftfwFmkf3KIEFAAA=]]
+
+For reading, we can /sum the content/ in the hard locations and use a /majority rule/.
+
+*Implementation - Design*:
+
+Reprintet code comment:
+
+#+begin_src clojure
+;; Adapted from Kanerva 1993:
+;; And mapping to neuroanatomy of cerebellum
+;;
+;;
+;;
+;;         ADDRESS REGISTER                             WORD IN REGISTER
+;;
+;;            N = 10.000                                 U = N = 10.000
+;;        +--------------+                           +------------------+
+;;      x |              |                        w  | 1  |1  |   1  |  |  (sparse, segmented)
+;;        +------+-------+                           +----------+-------+
+;;               |                                              |
+;;               |                                              |
+;;               |      N      d               y                |      U
+;;        +------v-------+    +-+             +-+    +----------v-------+
+;;        |              |    |3|             |1+---->                  |
+;;        |              |    |0|             |0|    |                  |
+;;        |      A       +--> |2| --------->  |1|---->        C         |
+;;        | M hard addr. |    |0|  threshold  |0|    |   M x U counters |
+;;      M |              |    |1|             |0|  M |                  |
+;;        +--------------+    +-+             +-+    +---------+--------+
+;;                                                             |
+;;                                             |               |
+;;                             |               |               v
+;;                             |               |      +-----------------+
+;;                             |               |   S  |                 |  sums
+;;                             v               |      +--+-----+----+---+
+;;                        address overlap      |         |     |    |
+;;                         ~d of [1,2]         |         |     |    |
+;;                                             |         v     v    v        (where S >= read-threshold)
+;;                         activations    <----+       --+-----+----+----
+;;                         ( 2 <= d)                     v     v    v        top-k per segment
+;;                                                    +-----+----+------+    (read-top-k)
+;;                                                 z  |     |    |      |
+;;                                                    +-----+----+------+
+;;                                                      s1    s2, ... segment-count
+;;
+;;
+;;                                                    word out register
+;;
+;;                                                   10.000 bits = segment-count * segment-length
+;;
+;;
+;;
+;; x - address word                        'mossy fiber input'
+;; A - Address Matrix                      'mossy fibers -> granule cells synapses'
+;; M - hard-locations-count                'granule cell count'
+;; y - address-activations                 'granule cell activations'
+;; w - input word                          'climbing fiber input'
+;; C - Content Matrix                      'parallel fibers -> purkinje synapses'
+;; S - content sums                        'purkinje inputs'
+;; z - output word                         'purkinje activations', or downstream purkinje reader
+;;
+#+end_src
+
+For a Cerebellum mapping see [[* Cerebellum Schema]].
+
+*** Address Decoder
+
+It's input is an =address= word =x= of length =N=, here (N = 10.000).
+
+We match against the =address-matrix=, made from =M= (M ~ 1e6) /hard address locations/.
+These are preconfigured, vectors of length N. In the original, they are made from bits where each is {1, -1} with probability 1:1.
+But here, they are sparse {0,1}, and we look at the overlap with =x=, resulting in an overlap (count) vector =d=.
+The sparseness of the address matrix makes this an example of an 'intermediate design' SDM[[* 7]],[fn:25]
+
+We cut off =d= at the =decoder-threshold= yielding the =address-activations=, representing the hard locations that are /on/.
+Observe that a lower = decoder-threshold yields a larger number of addresses. There is an optimal count of address locations (the activation probability).
+Which is important but I don't discuss it here for brevity.
+
+*** Content
+
+*Write*:
+
+Increment the /counters/ in the content matrix =C=, cap it with a =counter-max=, at all the overlap positions of the /activated address locations/ and the /input word/ (length =U=).
+
+If =U= equal =N=, this can be used as /auto-associative memory/.
+
+*Read*:
+
+Given /address location activations/, sum up the counters of =C=, selecting the activated rows.
+In the original SDM design, take the /sign/ (majority) of the resulting /sums/ and call it the output word.
+
+Here, I added steps to get a sparse segmented binary hyper vector out. This takes a =top-k= for each segment.
+If =top-k= is equal to 1, the outcome is usually /maximally sparse/ - i.e. there is one 'on' bit per segment.
+If =top-k= is > 1, then a sumset of outcomes is returned, allowing the user to query for multiple continuations of their query at the same time.
+See [[* What Is The Meaning of read-top-k > 1?]].
+
+In an /auto associative/ usage mode, the user decodes with address =a=, then writes into the activated locations the /content/ =a=.
+
+The user can query with =a'= to clean up back to =a=.
+
+*converged lookup*
+
+This can be done iteratively, where each subsequent =a''= is even more similar to =a=.
+This is a very surprising thing about the SDM. The initial required similarity is called /critical distance/ [[* 4]].
+
+This allows one to rapidly /probe/ the memory, saying whether an item is stored, or not.
+If the iterative outcomes converge (very few steps like 2-3 here), the chance to converge on an actual stored item is astronomically high.
+
+The cognitive connotation is akin to a /tip of the tongue/ situation, where the user is sure they must "know", even though the /remembering/ doesn't work.
+Conversely, one can extremely quickly and I would say with utter conviction say whether one has any chance of remembering something.
+One "knows" one knows or knows that one "ought to know" something.
+
+*** Implementation Concrete
+
+Using [[https://github.com/clj-python/libpython-clj][libpython-clj]] and pytorch, I was able to build a personal SDM at the Clojure Repl.
+This utilizes the pytorch sparse tensor feature, which allows us to have a large amount of /hard address locations/ (M)
+because =address-matrix= is allowed to be extremely sparse. And =content-matrix= is small at small datasets. (T < 10.000).
+
+(M = 1e6, N = 1e4) is handled without a big GPU. (GeForce GTX 1050 Ti, only 4096MiB RAM).
+
+This serves as an example of "neural modeling" using pytorch and [[https://github.com/clj-python/libpython-clj][libpython-clj]].
+
+Code is here: [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/src/bennischwerdtner/sdm/sdm.clj][sdm.clj]] (quite raw, interfaces not figured out and so forth, ad-hoc datatransfers python-cuda-jvm etc.).
+
+# Quick experience report:
+
+# - The integration with python and [[https://github.com/clj-python/libpython-clj][libpython-clj]] is simply great. I would say it is /a better Python than python/.
+# - Love was put into the place that matters most to me, the REPL experience.
+# - I can program /torch cuda/ virtually with the same ease as everything else in Clojure.
+# - There is remaining small friction, which makes working with torch less nice than [[https://github.com/cnuernber/dtype-next][dtype-next]] - which feels completely like Clojure.
+# - Printing tensors, for instance, one is reminded of working with Python. ("True"/ "False" instead of "true" / "false"), nobody is to blame for this,
+#   but it is a downside compared to using type-next.
+# - It also happened to me that I crashed my processes via invalid usage of lib python clj.
+#   One must be careful when passing type tensors and Python objects in each other's APIs.
+#   One also should read the documentation of [[https://clj-python.github.io/libpython-clj/libpython-clj2.python.html#var-stack-resource-context][stack-resource-context]].
+
+*** What Is The Meaning of read-top-k > 1?
+
+- Querying with top-k > 1 results in a =set= of "possible values" for the query.
+- The mechnaism for this is what I call *unmasking* /secondary/ or /latent/ storage counters, which then contribute to the outcome.
+- This is similar to an /excitability iceberg/ [Yuste [[https://elifesciences.org/articles/77470][2022]]]. In this case, top-k represents roughly the /excitability/ of purkinje cells.
+- This is akin to querying for the *halo*[fn:26] of a /neuronal ensemble/.
+- Roughly: Modifying the address decoder threshold increases the radius hyper sphere, modifying the query top-k is
+  saying how many centers to query for.
+- Put in another way, the top-k paramater is like the water we fill into the attractor landscape, which is bounded by the
+  address location.
+- Increasing top-k to segment count is like filling the water so the complete landscape is covered, where values in
+  between give intermediate 'amounts of contributing outcomes'.
+- I.e. querying with top-k = 3 returns a /concept cloud/ of 3 related hypervectors. Querying with top-k = 1 is akin to
+  querying for an ensemble *center*.
+- In Hebbs terms that is /fringes/ and /cores/. In Braitenberg terms that is /halo/ and /centers/.
+- In light of [[* Attention Approximates Sparse Distributed Memory]], this suggests a possible way of updating transformer architecture, this would correspond to having multiple values per attention key.
+- *highly speculative idea*: Interestingly, this would give an interpretation for /quantized inhibition/, in that case the output words of Cerebellum would be
+  discrete superpositions of an elementary neuronal letter/word.
+
+#+begin_src clojure
+  (def m (sparse-sdm {:address-count (long 1e5)
+
+                      :address-density 0.00003
+                      :word-length (long 1e4)}))
+
+  (def d (hd/->seed))
+  (def d-related (hd/thin (hd/superposition (hd/->seed) d)))
+
+  (do
+    (write m d d 1)
+    (write m d-related d-related 1))
+
+
+  ;; top-k = 1 I get something out that is ca 50% d
+  (hd/similarity d-related
+                 (torch->jvm (:result (lookup m d 1 1))))
+  0.75
+
+  ;; and 100% d
+  (hd/similarity d
+                 (torch->jvm (:result (lookup m d 1 1))))
+  1.0
+
+  ;; with top-k = 2 you get both of them out,
+  ;; querying with either of them
+  ;;
+  ;; intuitively, this is because they
+  ;; share 50% of their address locations. So
+  ;; those bit counters are high, but not the
+  ;; highest. with top-k > 1, we *unmask* the
+  ;; relatively high
+  ;; ("secondary") bit counters, this returns us
+  ;; the superposition of *related* addresses
+  ;;
+  (hd/similarity d
+                 (torch->jvm (:result (lookup m d 2 1))))
+  1.0
+  (hd/similarity d-related
+                 (torch->jvm (:result (lookup m d 2 1))))
+  1.0
+  (hd/similarity d-related
+                 (torch->jvm
+                  (:result (lookup m d-related 2 1))))
+  1.0
+
+  ;; to sanity check, a random seed (not stored)
+  ;; will not result in anything resembling
+  ;; anything else, even if top-k is 'high'
+  (let [e (hd/->seed)]
+    (hd/similarity e
+                   (torch->jvm (:result
+                                (lookup m e 10 1)))))
+  0.05
+
+  ;; but top-k == segment-length actually results
+  ;; in 'everything' (this is akin to epilepsy at the purkinje cells)
+  (= (let [e (hd/->seed)]
+       (hd/similarity e
+                      (torch->jvm
+                       (:result (lookup m e 500 1)))))
+     1.0)
+  true
+
+  (= (let [e (hd/->seed)]
+       (dtt/->tensor (torch->jvm (:result
+                                  (lookup m e 500 1)))
+                     :datatype
+                     :int8))
+     (hd/->ones))
+  true
+#+end_src
+
+*Unmasking*, roughly:
+
+[[edraw:data=H4sIADuHo2YAA71YTXOjOBD9KyrNZaYqBCEwJilDVeY0h8xh97Kze2OMsCkToCQc4/n125KaseOJY8eJUo79EB+v+3VL3SIz9bggw0PdqJQu+7679f3NZnO9Ca9bufA5Y8yHO6i95Xaoq2b13I3Bzc2Nb65SsqmKfpnSeMopWYpqsexTmkSMkkchVdU2KQ2uA5rNClEqUhUpFYXMN54ewtmHXK6EfHreY14uZbuhxF79By2M429oBU50UighH8Wd6sS8/zvvqzalTdsIMF+Jzdd2SKkXMKK/XP9RIkX5I6X24F9z0MpKNMCXr/uWEtXLdiVGlrKq65R+Cpj+gL9d3i8JOPsdGK+8qSa+mpLoiv1HiZ/NfOshHGh92UyCV2QwVrbm92i0dhH4mc9XC9mum+KIM2VZGmOL/YfaYgvuibquOiXwOQ+t8R3RqGTHVUDWIRjg3kTjYHEO4+BGH8CJIGTG4AXsZZIkz7Pz8IDdxOp86kR/dkHku+ByG+0gBhz00BE/t/zGzqv5RQjBKV7iN3475A8S5L8sPjhxXuCP3sR/Mv7oPo/c0OPsMVFySM/d0HOcnNwVf/Km8GBdeIF/nDyXZfdsfnTflHVbuz3RQFVdy/rzpz860hd6tg+2YutOASEiYczuYR1bjBD5HkaIHBHXTC+GnugfL2/my1am9KEqilr3grbpvTJ/qGpQo/JGedAIqxIvqOqX0Mk5bGBaejguHMDsriighSqhID4QArX+qfq86au8Ji008DrvyMzXDrx/CiJcAo4yHLM3lf/z+SN3qYr2Vll23871/qa5MjeKwmbs7tL0nCrfE/YkPS7kTfhJeV8vk3e6+02iN8y+0/S/Z8dF9fF8/pA7TM/eBurY7CN5U+yS5MKLeJwk2ou/1kJu0fStU6uoXRfLrG87b0WC0Z7LZgHVhMQJu+cxYmIR8mwRr4d4PmKIeD3C65F93nlz0/5OY+uvxhDH4ThOLGo/DXJEvC+y9zmbw9Pojzzyj8ijjgM0chOPAOMSYB4NMoPOdAe/qzfo/pbLguS205MaF7Iaw/D6tzrcHcqtLUdysDgfm/ocA+6sMI3iot0Ohiy3nZBEdUshxeXS9l5YD6WZ5TQf0LwjaXEyveZGnLaS3TlRMo2fU3LgzHFhe/4f02mMvJuS3b8oDpUk7AOUJOyJEqfdboo7Pt3fM7WGKd21qtLr9SOq1gSrskF4JZlwg867iLGXWLuQUovc2k9wh+Mv4KseF9n/XhXH7MQUAAA=]]
+
+*** Divergence In Hetero Associative Mode
+
+This is more interesting in a /hetero associative/ usage mode.
+
+#+begin_src clojure
+(do
+  (alter-var-root
+   #'hd/default-opts
+   #(merge %
+           (let [dimensions (long 1e4)
+                 segment-count 20]
+             {:bsdc-seg/N dimensions
+              :bsdc-seg/segment-count segment-count
+              :bsdc-seg/segment-length
+              (/ dimensions segment-count)})))
+
+  (def m (sparse-sdm {:address-count (long 1e5)
+                      :address-density 0.00003
+                      :word-length (long 1e4)}))
+
+  (def d (hd/->seed))
+  (def d-related (hd/thin (hd/superposition (hd/->seed) d)))
+
+  ;; heteroassociative:
+  ;; d->a
+  ;; d-related->b
+
+  (def a (hd/->seed))
+  (def b (hd/->seed))
+
+  (do
+    (write m d a 1)
+    (write m d-related b 1))
+
+  ;; sanity check, the address content should be different from the address
+  (hd/similarity d
+                 (torch->jvm (:result (lookup m d 1 1))))
+  0.0
+
+  ;; query with
+  ;; top-k = 1
+
+  [:a
+   (hd/similarity a (torch->jvm (:result (lookup m d 1 1))))
+   :b
+   (hd/similarity b (torch->jvm (:result (lookup m d 1 1))))]
+  [:a 1.0 :b 0.0]
+
+  ;; top-k = 2
+  [:a
+   (hd/similarity a (torch->jvm (:result (lookup m d 2 1))))
+   :b
+   (hd/similarity b (torch->jvm (:result (lookup m d 2 1))))]
+  [:a 1.0 :b 1.0]
+
+  ;; ... look I get the superposition of both a and b,
+  ;; even though a and b are unrelated, they are possible continuations of `d`
+  ;; but `b` is only unmasked secondarily, in a more 'divergent mode' of querying.
+
+  )
+#+end_src
+
+
+[[edraw:data=H4sIAIeho2YAA71ZS2/bOBD+KwR7yC5gWRQlU0phCUjgwx7SS3vobm9aibIFy6JB0bG7v375jJW03mbjULDjkSx6Ps7rmyGyHB7X4LTr+iGHGyH2H8PweDzOj/Gc8XWIEUKhXAHNko+nru23P1sY3d7ehvopBMe2FpscRhFGEGxou96IHKYLAsEj5UPLevlsHsFiWdNmAG2dQ1rz8hioW/ntruRbyp9/H6Cg5JwdITBPvxoI4u7/sCjyiz2nA+WP9G7Y00p8LkXLctiznkr4lh7v2SmHQYSA+sPqDQGnzZ85NBd/6QvGW9pLfeVBMAgGwdmWOi1N23U5/BAh9ZL73ZdiA+RmP0mNsyBVimcpSGboGwRhsQzNDuWFsq9YcrkrcNIo3/XnZXedXfB3WW3XnB36+sJumqbRaOvxj1j9HVpA86PAYuGzFmfHk6JMvc4b0buyP8vMniMlpQUJQhrTG0CUvAsA+gEgIQYAEwNAu67dD/R/YDRNlkkMLpXFKnFORlbyfqHWVWr7kdGuE8RkQUB7GZ4D73778ENu/w5fjW9Cr3JOumi2QOghIlZmRsrCNRJbaddhs07vS9CTAOojKPtqw3gOd21ddyqpWC+Cpty1nbRnKPshkCXVNvbB0P5DVZBelgLQxqdzbIKnimO1DBWAXx/EykaCHrTMjCTIv+9xZnC1zIx0uG/IqOpiRpHYZlQcv1l7ljXoF9rxrb+8ILakpY9gceeywieSzAJY3DskbxSSvj3gr6CQxcJ/Gi8sZRBLGcRSBrGUQSy1ELsuRS8o5EUMLsdzFLZL4X1GIcr6aSgktRSSWgpJ8VWl/IpiS2N/HnQlkGLfxZacG3WxoYJyBsphYFUrx65HCnaspj7hFxY/lqEqvqw+TYGVJv6xyGgAKgTbB1uQ5wD7hFS5oiElrxW1DB5fywkYsIOo2I4OU1hL8NjaaApribL2ZtiUfH/jbPWJO45rNAdfBOMU3LmKYf2Tn69qJ9iSDrakgxNLOpm/Bo8Tx9rZmLSvIs+LdkSTGBI9m1X8RERNKb7awNkSPQutbq4wpfq1KQn2GBR3YFMhmTk71r79ljybIcO1pybqqFd1MTwHn2lZTzH0SDwgo/cQYSsTK4mW3gfP2OLFxMrMyASd8X34O3ZTg6mKGRhaqaXkQDBwDXH9R7kjWyMEv8NMeVl79g6Hz4vaU48hwciVnB4CVj578AjL+2H0jKXHxvspypqoMsr0eQ1I3jRygnJ2eCkayUSfpSbFJ2QkE32O9UsnCI2yaQbuZ2AFSjnXHXpOu1LQ2uuxxI2UqnmUdc3p4HVYf7J2Ijh3wlR4lVwtDyVe3Wl7se78s3HnV/8GKf4FBSqQMy4ZAAA=]]
+
+- Cognitive connotations: It might help model /"possibility clouds"/, or /"concept halos"/, reminiscent of /cognitive fluidity/ [Mitchel, Hofstadter[fn:27]].
+
+**** Biological Remarks
+
+- Such a "query density" surely would be supported by some of the inhibitory interneurons of Cerebellum.
+- Lowering the excitability of the Purkinje is akin to querying with low top-k. Increasing the Purkinje excitability is akin to querying with a higher top-k.
+- As noted, on one extreme, this would would be epilepsy at the Purkinje cells. On the other extreme, it would be too much inhibition of Purkinje cells.
+- [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1201546/][Fast conducting]] parallel fibers might implement a fast feedforward 'sheet' inhibition (selecting subsets of purkinje, i.e. something that looks like the top-k here),
+  it would make sense if the inhibition of Purkinje cells is proportional to granule cell activation.
+
+**** Biological Remarks, The Address Matrix
+
+- The Cerebellum sdm mapping would predict that the /address matrix/ is /static/.
+- The granule cells should not have synaptic plasticity, you might even expect processes that keep the mossy-fiber->granule cell synapses stable.
+- The granule cells would be allowed to not fire for the most part, yet not be prunend etc.
+
+It turns out that this is wrong! [[https://pubmed.ncbi.nlm.nih.gov/21185357/][Mossy fiber -> granule cells make LTP]].
+
+** Sequence Memory - First Order
+
+---
+
+The [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/d043be8896e3aae73454497e99dfecfc10aea50a/src/bennischwerdtner/sdm/sdm.clj#L875][code comments]] here, while raw in some ways, reflect a complete thought process of designing a k-fold sequence memory.
+Arguably, what folllows here is a terser version of the code.
+
+---
+
+A simple way to encode a sequence =[a,b,c,d]= in an SDM is to encode each pair a->b, b->c and so forth as an address-content pair.
+
+So using the memory in a /heteroassiative mode/, where the outcome of query 1 is in turn address for query 2 and so forth.
+
+#+begin_src clojure
+;;
+;;      a     +-->   b      +-> c
+;;   +-----+  |   +-----+   |
+;;   |     |--+   |     |---+    ...
+;;   +-----+      +-----+
+;;
+;;    k = 0  ,     k = 1
+;;
+;;
+#+end_src
+
+- This is akin to a /pointer-chain/ or /linked-list/.
+- This breaks down the moment we share an element /x/ across multiple sequences in the dataset.
+
+** Sequence Memory - Higher Order Via K-fold
+
+- Parallel fibers are slow conducting, /this would overlap with the need for a delayed address decoder in a k-fold memory/.
+- The Cerebellum as a kind of clock [e.g. Braitenberg [fn:28]], is the second main "cerebellum theory", but out of favor recently.
+
+See [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/d043be8896e3aae73454497e99dfecfc10aea50a/src/bennischwerdtner/sdm/sdm.clj#L1093][design and implementation]].
+
+I reproduce the code comment here:
+
+#+begin_src clojure
+;; Version 3:
+;;
+;; K fold memory
+;;
+;; - In [2] Kanerva is building up the principle with a vocubulary, it is reproduced here, not completely but mostly
+;;   and with somewhat different notation that fits the context here:
+;;
+;; (T is the dataset, like everything the machine encounters).
+;;
+;; - kth-Order Transition: 'A sequence occuring in xs(T) is a subsequence of xt(T) of length k + 1
+;;   For example [a,b,c,d] is a third-order transition; it says that the three-element sequence [a,b,c] is followed
+;;   by d.'
+;;
+;; - j-Step Transition:
+;;   A pair of elements in xs(T) separated by j - 1 elements. For example [a,d] is a three-step transition,
+;;   it says that a is followed by d.
+;;   A first-order transition (here, the 'pointer chain' Version 1) is a one-step transition.
+;;   We already see that j-step transitions are easy to store in random access memory.
+;;   Store `d` with `a` as address.
+;;
+;; - j-Step Memory:
+;;   A (sparse distributed) memory sdm-j[j] that stores the j-step transitions of xs(T).
+;;   The data retrieved from reading with `x` can be denoted data-j[j,x],
+;;   or `(lookup-xs sdm-j[j] x)`
+;;   It is further assumed that the data become avalable j time steps after the address x has been presented to the memory,
+;;   so that the memory has a built-in delay. 👈
+;;
+;; - k-fold Memory:
+;;   A k-fold memory is a set of k j-step memores {sdm-j[1], sdm-j[2], ..., sdm-j[k]}.
+;;   The jth memory, sdm-j[j] is also referred to as the jth fold.
+;;
+;; - k-fold Data:
+;;   The k-fold data at time T, D(T), are the multiset of the data available at time T.
+;;
+;; - k-fold prediction:
+;;   To summarize (vaguely):
+;;
+;;   Consider having read `a` from a one-fold memory:
+;;
+;;   [ a, ? ],
+;;
+;;   the data at hand will be `b'`, and the prediction input came solely from the addresses read with `a` at time t - 1.
+;;
+;;   In a k-fold prediction, reading at
+;;
+;;   [a,b,c,d,?],
+;;
+;;   The addresses read t - 1, t - 2, t - 3, t - 4 all contribute to the prediction of `?`
+;;   If T includes sequences:
+;;
+;;   [a,b,c,d,e]  xs1
+;;   [j,k,l,d,f]  xs2
+;;
+;;   Then, the k-prediction will have roughly
+;;
+;;   1/k contributions from the xs2 for `f`.
+;;
+;;   1/k * 4 contributions from xs1 for `e`,
+;;
+;;   The data will include overwhelmingly more of `e`, than `f`, so `e` is the 4-fold prediction for [a,b,c,d,?]
+;;
+
+;;
+;; ---------------------------------
+;; The delayed address decoder:
+;; ---------------------------------
+;;
+;; 1. split all addresses into `k-delay` buckets
+;; So that each address has an associated `delay`. (0 < `delay` <= `k-delays`)
+;; (this can be done by delaying the input to the address decoder, or its output lines,
+;; which would fit the neurophysiology of the parallel fibers - they are slow conducting).
+;;
+;;
+;;
+;; decoding:
+;;
+;; When decoding address `a` at time `t0`,
+;; activate address locations `a0` at time `t0`,
+;; then `a1` at time `t1` and so forth.
+;;
+;;
+;;
+;;          a
+;;                       +----------- delay lines     (~ slow conducting parallel fibers?)
+;;          |            |
+;;          |            |
+;;          v            v
+;;     +----------+      +-+     +---+                  +---+
+;;     | -----    |  ----+-+-----|   |-------------->   |   | a1
+;;     |          |      |1|     |   |                  |   |
+;;     | -----    |   ---+-+-->  |   | a0               |   |
+;;     |          |      |0|     |   |                  |   |
+;;     +----------+      | |     |   |                  |   |
+;;       address decoder | |     +---+                  +---+
+;;        ^              | |       |
+;;        |              | |       |
+;;        |              +-+       |
+;;     addresses       delays      v
+;;
+;;
+;;                             activations
+;;                             {a0}                     {a1}  adress-location activation set
+;;
+;;
+;;                             t0                        t1
+;;
+;;
+;; 2. When decoding, the resulting activation set is the union of active locations,
+;;    Including the ones activated (1...k) steps in the past.
+;;
+;;
+;;  t0:
+;;  decode with `a`
+;;
+;;         a
+;;
+;;      +-------+         +---+
+;;      |       |         |   |
+;;      |    A  +-------> |   |
+;;      |       |         |   |
+;;      +-^-----+         +---+
+;;        |                   ^
+;;        |                   |
+;;     future state:        { a0 }  activation set (now)
+;;     [ a1, a2, a3, ...]
+;;
+;;
+;;     at each times step,
+;;     some a-lines will be on in the future
+;;
+;;
+;;
+;;
+;;  t1:
+;;  the a-lines are still on for a while
+;;  decode with `b`
+;;
+;;
+;;        b               +---+
+;;        |               |   |
+;;        v               |   |
+;;      [ A ]  ---------> |   |
+;;       ^                |   |
+;;       |                +---+
+;;    future state:          ^
+;;   [a2,a3, ...]            |
+;;   [b1,b2, ...]         { a1 , b0 }  activation set (now)
+;;
+;;
+;;
+;;
+;;
+;;
+;;
+#+end_src
+
+
+- The key insight is that a /delayed address decoder/ allows us to smear out the query across multiple pieces of a sequence.
+- Both sequences and auto-associative iterative lookups are shown to converge, if the initial address =a'= is sufficiently similar, inside the /critical distance/ from stored data =a=.[[[*3]]]
+# - A k-fold memory in effect smears out the '/antecedent/' or /query/ over a larger time window. In other words, it provides a larger context for query/response.
+- =reset= can be achieved by querying with nothing or non-sense for ~ 7 steps.
+
+** Future
+
+- Figure out how to make hierarchical sequences.
+- Perhaps a music analogy will help. Perhaps one encodes nested sequences in terms of something like rhythms.
+  (Like Buzsáki suggests [[* 2]])
+
+# *** Thinking about Sequences
+# - A k-fold-memory can also be used as auto-associative memory, in effect we express the notion that
+#   =a= is following itself, an =[a , a]= pair.
+# - /following itself/ is very similar to looking up iteratively in auto-associative mode.
+# - In Braitenberg /Vehicles/ [Braitenberg 1984], the auto-associative concept is called /Mnemotrix/. Saying =[a <-> a]=, a follows a. (This is very similar to Hopfield attractors, too).
+# - The second usage, where things follow each other "in time", is called /Ergotrix/ in /Vehicles/.
+# - We see a general way to use a sequence memory is to store /causality/ pairs =[a b]=, expressing the notion that =b= is caused by =a=.
+#   Such a pair would then be reminiscent of a /cons cell/.
+
+** Cerebellum Schema
+
+[[edraw:data=H4sIAOLJrGYAA71ZbW/bNhD+K4T6oRsQ2xJF0VQRG1j7YRvQAcNQYC/fFIuytciSQclx0l+/o/jQdtK1a7PQyMtDkae7093x7ihd93drdr9t2n4RbYZh92Y2OxwO00M67cx6xuM4nhFF5Eje3Dd1e/tvhEme57NxNWKHuhw2iyhJhYjYRtfrzUBXcawidqdNX3ctXU6TaHld6qpndbmIdGmKw8Re0uy2MLfaPJ6fxJPCmO4QMbf6u5Mh/fVPEEMTO6N7be70D/1Or4bfiqHuFlHbtZrE1/rwtrtfRJMkZvaP29+IGV39sYjc4M9x0Jlat8Sv2A9dxPrBdLfac6nqpllEr5LY/pC+u2LYMFL2F+J4NZlbxldzJq7ivyI2W17PnIY0sM+3vDakFbsfpTyM/79gr5MNborV7dp0+7b8jDpVVY3i1uc3deVDBInupgmE8RMX/yBHRsr+nDTh8qSjip3WqbUaPQO317OXlCAfC5jzwAKkDCYgGQWI5z1BVSl1LuDEnzv+UryoCz7l710sAvGX4P88B5B5qvhr9E8C6+/5j1nAbfWJbmkL7k3z3atPEtj30Vcr4ba3TSzk46ssjt8nCiiBAsiBoAOZowqundVGQBsBbQS0EU4b4bQR0GbQ9wOz/yZFu9p0ZhFt67JsbDLr2mFSFdu6IRP3RdtPKJfXFRb6+iMpkqinOdj6I/P+JvHRcts1erVvCsOa4kGb65mV9n+DQH4SBJlyQoUI92A+0DLC5a97c1u3f2v2TjcNe0v53T9aCNGpOrfprjBFY8VW9Q3V8Wfa9D83bvrEpi+dOMUFfJbEZz7bVWyyZDvvuf6hLXa97kM6LhFn8lcFNTnxlFo5tqO+yofQc/1XjhXnG2p3yNyT26zC4/e5ckiG9wM+Di6jgYAGwmsgvAYXqA6jBhIaSK+B9BrIcGE+R5inNsx+NEW7b1xmOgZ30KpIz63I1SPGDucKKIECCLp5wAqkvDXEWID6/uFJpgxZHUah0+k0qCxsbFtqQ8vyWdrG8CNhQSOKOhhuI8kiBwqgBCqHaeijT/Czle+8Q/eGkruOVfrOVQHFWSdrcxjmx9SFrJogvx97TDSTHL0lR6/J0Xty0KVYT7GeYj316+AjsC5wneE6A312bF6BWJfgMwfd3F+DXoFOYV1hXWE9B78cdDnoctDl6thD+wE/9c+hzxpSOAtbz40Ii1vPjSiBoMtAl8EjGTySwSMZPJLBIxk8ksEjGTxiUYAu8wj6DPQZ6DN1Ot0EaaHUaZcsj81bSeY29aB7RhYu2rUuWd2yzpTaNA+sb6izu0SiSmLlMlMSSz8Q5wNf/bkKZyF+PHHZ2vPztljXrWbDpu5ZWl6iDrljyRp9x6ODXkjjC+l2yIgSqBzOYyAHYl5hXmFe4X6F+xXoctDlPGDXhsjOxHlkF/ddG9JpOY4ktrAvS613bKWNvqFmkQ7p7X7V6DqkeKVO7/uWw0azrqUN2+2H3X5gXcXs1JlCq86QAkGDGDFszfHuJPjdKJj1q43eFl4+LdV0ZPz2U5qx5d6idTfhyloitwOayOfhYiyP/RalwbJuK7qvM6xr6jt9iT1KdZTZvTWiAHKgq7PM7s0RQWfPChSlDjkwdkjh4xDrCusK63Osz+UZcqDrD5jNESNKIOgk6CTosoA525/YlN37q6be3tTt2h1Tgr5I8tFuo+HDpN8UOx20RChxVr3rljZ58PdV2ct8qvg8/5f5UvFZ/jLQh4Qj/2e+z/ta+0sVvjmmhpPRUeT9iMohj4EcKICgswdGKnoOJVCcML1AUy+9PuoMlcM0BnKgAAZ8ccThs7lw70f7W6pvLJ0IW5FtOc5OnfbLvLv/wgcuFSbufarlgfKC9G9IAuUFzz/YB8Yn9gn5dmysO9uiDfq1ZH4UZovOB2ooX3fUVprXbCxAQUUjlm2Xu6RdT3cYpovV5vjZ4SKfiayVKSAK63IvcLamv/5uvfwH03GJSGoiAAA=]]
+
+[Based on [[https://en.wikipedia.org/wiki/Cerebellum][wikipedia]]]: (just as reference)
+
+- The count of Granule cells is a bit of a meme, along the lines of "The brain has 30 billion neurons and 50 billion of those are granule cells".
+- 3/4 of the number of neurons are cerebellar granule cells. (Out of the window goes the idea that many neurons are what makes Neocortex smart.)
+- Input to granule cells comes from /mossy fibers/.
+- Mossy fiber inputs come roughly from the rest of the brain for present purposes.
+- Granule cells outnumber mossy fibers 200 to 1.
+- Granule cells make four to five dendrites (so each granule cell receives input from 4-5 mossy fibers).
+- Each granule cell makes one /parallel fiber/ axon that makes a T shape and goes straight through the /molecular layer/.
+- The /molecular layer/ is made from orderly slaps of Purkinje cell dendrites.
+- [[https://en.wikipedia.org/wiki/Purkinje_cell][Purkinje Cells]] make a very impressive tree-shaped but slap-like dendrite, and the molecular layer is mostly made out of those.
+- Each parallel fiber contacts /one of 3-5 Purkinje dendrites it passes and makes a total of 80-100 synaptic connections/.
+- Each Purkinje dendrite receives 200.000 granule inputs
+- The sole output of the Cerebellar Cortex is the Purkinje axons, which happen to be inhibitory, making synapses on deep cerebellar nuclei
+- (roughly: Deep cerebellar nuclei go to Thalamus then Cortex).
+- The proposed /module/ of the cerebellum is a strip of 1000 Purkinje cells,
+- receiving from ~ 100 million parallel fibers.
+- outputting to a small cluster of ~ 50 neurons in the deep cerebellar nuclei.
+- The parallel fibers are /slow conducting/, /unmyelinated/.
+  They are [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1201546/][among the thinnest]] known vertebrate axons.
+- And 'represent an extreme anatomical adaptation'.
+- There are 2 main ideas for this 1) The pf's are adapted to be compact so that the count
+  of pf->purkinje is optimized, OR/AND 2) the pf's are adapted to make /delay lines/ [Braitenberg 1978], which would
+  mean that the cerebellar cortex is /computing something in time/.
+- (not a *timeless* calculation, functional programmers will appreciate).
+- The *second input* to the cerebellar cortex comes from the /inferior olive/, which makes *one climbing fiber per Purkinje cell* (settles during development).
+- The climbing fiber for the Purkinje branches and curls around its dendrite, making a multitude of synapses, it makes the /strongest excitatory synapses in the brain/.
+- Clearly, there is a second input line, which has a 1:1 mapping to the output lines (output lines are Purkinje axons, second input lines are climbing fibers).
+- This 1:1 correspondence was what allowed Kanerva to map Cerebellum to SDM. He understood that this was required for memory (input and output 1:1).
+
+---
+
+To map SDM and Cerebellum, imagine that the content matrix is the molecular layer, and imagine that the parallel fiber activations are =y=.
+
+Observe that in read mode Purkinje dendrite can sum up its inputs from its pf-synapses (~ =S=).
+Then, per a given "segment" of Purkinje, some can be active (output word).
+
+In write mode, the climbing fiber can activate a set of Purkinje (input word). Purkinje synapses can be put into a "transient receptive mode"
+(I made up this word, but I am alluding to complex spikes, see literature), where all of the input modifies the strength of the synapses akin to updating the bit counters.
+This happens to be negative in Cerebellum, but Purkinje is also inhibitory so I suppose somewhere 2 negatives are canceled out in this particular arrangement.
+
+* Conclusion
+
+I argued that the [[* The Address Decoder Neuron]] is a special case of a /reader-centric cell assembly/ [Buzsáki[fn:12]].
+
+I made a [[* Sparse Distributed Memory][/sparse distributed memory/]] (SDM), [[* 3]] extending the design to accommodate BSEG hyper vectors;
+Using a BSEG-VSA allowed me to uncover a /"divergent"/ query mode for this design, where multiple values are returned given a query.
+In short, the read operation allows a top-k query, instead of a majority rule. Underlying that in general, sparsity makes /working with superpositions/ simple.
+
+I implemented a [[* Sequence Memory - Higher Order Via K-fold][k-fold sequence memory]] via an /delayed address decoder/, and I suggest that the slow-conducting parallel fibers of the cerebellum
+might be a biological implementation of a delayed address decoder. Thus, I would argue that a k-fold sequence memory view on Cerebellum meets the high bar
+of biological plausibility set by SDM. And explains why the parallel fibers are slow conducting, which was a missing, open question.
+I believe this should be a way of unifying clock-centric and learning-centric Cerebellum theories.
+
+* Outlook (Notes)
+
+
+- Check out [[https://ieeexplore.ieee.org/document/9272714][resonator networks]].
+- Be inspired by neuroscience [e.g. [[* 2]], [[* 5]]], and explore conceptually what a /neuronal interpreter/, /neural syntax/, /neural word/ could be.
+- The basic idea of sequence processor [[* Hyperlisp V0]], was to program with something like /multiverse/ and /collapse/.
+- In Lisp, the 'first' element is the verb, but in HDC/VSA-Lisp, any part of the composite data structure could be a verb, or multiple verbs (superposition). (also [[* Neuronal Syntax]]).
+- We know from data-oriented programming [Sharvit 2022] [fn:29] that a software framework can leverage the properties of its data structures - it doesn't necessarily have to be an interpreter.
+- It would be interesting to work out the mathematical relationship between Population Vectors and /address decoders/.
+- modeling effector neurons as /address decoders/.
+# - In /Binding and Normalization of Binary Sparse Distributed Representations by Context-Dependent Thinning/ [Rachkovskij, Kussul], Rachkovskij and Kussul describe a range of binding procedures for Sparse Block-Codes
+#   that preserve similarity. Kinda cool, for instance it makes it easier to have similarity for complex datastructures.
+- Implement a 'slipnet' [Mitchell and Hofstadter], attempt to solve the [[https://en.wikipedia.org/wiki/Copycat_(software)][copycat domain]], an analogical reasoning challange.
+- Explore ways of combining HDC with cellular automata, [[denote:20240208T124507][neuronal ensembles]], chemical computing.
+- For instance, one might map an hv into a [[https://vehicles.faster-than-light-memes.xyz/art/p/assembly-friends/6][neuronal area]] like this. This could serve as an 'active focus'.
+  Using Kanervas [[* 3]] brain design.
+
+Update:
+
+- Blog post already in the making for 2 months.
+- In the meantime I started /using/ this stuff a bit more: [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/tree/main?tab=readme-ov-file#fun-with-sdm-and-analogies-how-to-use-known-worlds][The analogy story arc]].
+- I guess that is for further blog posts.
+
+Current state:
+
+*** "What is the ABC That Starts With J?"
+
+[[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/analogy_arc/what_is_the_abc_that_starts_with_j.clj][source code]]
+
+#+begin_src clojure
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:a :b :c] :j)))
+[:j :k :l]
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:c :b :a] :z)))
+[:z :y :x]
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:c :d :c] :j)))
+[:j :k :j]
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:j :k :j] :o)))
+[:o :p :o]
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:j :k] :o)))
+[:o :p]
+
+(into []
+      (map hdd/cleanup
+        (what-is-the-abc-that-starts-with-j [:c :b :a] :z)))
+[:z :y :x]
+#+end_src
+
+*** Tiny "If abc got changed to abd, what happenend to jkl"
+
+[[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/analogy_arc/tiny_if_abc_got_changed_to_abd_then_what_happenend_to_jkl.clj][source code]]
+
+#+begin_src clojure
+(tiny-if-abc-got-changed-to-abd-then-what-happenend-to-jkl
+ [:a :b :c]
+ [:a :b :d]
+ [:j :k :l])
+'(:j :k :m)
+
+(tiny-if-abc-got-changed-to-abd-then-what-happenend-to-jkl
+ [:b :b :b]
+ [:a :b :c]
+ [:j :j :j])
+'(:i :j :k)
+
+#+end_src
+
+
+* Appendix
+
+** Clojure
+
+Clojure is a highly regarded, functional Lisp hosted on the JVM. It combines the strengths of classical, symbolic, interactive programming of Lisp and Scheme,
+with the full power of homoiconisity, extendibility via macros, and "having the language always there".
+
+It inherits minimalism and emphasis on functional programming from Scheme while being practical by fully integrated on its host platforms. Thus
+making it possible to have a Lisp for virtually all modern use cases thinkable.
+
+It improves on Common Lisp by being implemented in terms of /abstractions/, with powerful abstraction imprimitives[fn:30] not the concrete cons-cell.
+And by providing a powerful set of default, immutable, persistent data structures, which are deeply utilized in every aspect of Clojure programming,
+including code, which is expanded to utilize vectors and maps, next to lists. (Clojure code contains =[]= and ={}= for binding and destructuring).
+
+/Data-oriented programming/ [Sharvit 2022] [fn:29], centering on Clojures immutable data structures
+can be seen as a continuation[fn:31] of dynamic Lisp programming with functional style [e.g. Graham 1993[fn:32]].
+
+** Biological Remarks On The Robustness of The Address Decoder
+
+The /compression of dimensionality/ from address to address decoder is reminiscent of the /pointers/ in /semantic pointer architecture/ [Eliasmith][fn:1].
+
+In G. Buzsáki [[* 2]], a very similar thing is /hippocampal trajectories/, which are preallocated, rich hub neuronal ensemble sequences of the hippocampus.
+They are more like snippets of music, put together from a pool of notes.
+
+Roughly, many cognition theories include something like "Low dimensional", low detail, abstract, /essences/, /situations/ [Hofstadter], /categories/ [Feldman-Barret], /analogies/, /frames/ [Minsky],
+/prototypes/ [Kanverva [[* 1]]], or /trajectories/ [Buzsáki], which must be /filled/ with high dimensional, high detail, concrete "data". Called /fillers/ or /terminals/ at [fn:33].
+
+Note that "low dimensional" is in quotes, because it is a relative statement.
+
+Hearing the voice of a person, say 'Bob', always sounds like the same voice, even though the particulars of the sensor data must be quite variable.
+In Hofstadter's terms, we make an analogy between the instances of hearing Bob's voice. We understand/categorize/make the analogy / analyze the situation / find the essence of the 'hearing Bob's voice situation'.
+
+The same thing is still true while a rainy thunderstorm is overhead, and both people must raise their voices to be heard.
+This fits with our observation of the robustness to noise that the /address decoder neuron/ exhibits.
+
+And further, I can "bring" the voice of my friend Bob "to mind", perhaps not or perhaps even concretely "internally listening" to a snippet of auditory sensor data.
+Even then, the /nature/, or /essence/, or /gestalt/, or /seed vector/, or /inner marble/, or /gravitational center of meaning/ [Dennett], or /symbol/
+of /Bob's voice/ is quite distinct and seems to be a perfectly valid concept for the mind to deal with.
+
+This has led many thinkers to the conclusion that whatever represents a Bob voice situation can exist independently of Bob voice sensor data.
+This /internalizing/ (the opposite of /externalizing/), this /detachment from the outside world/, this /counterfactual planning/, or /imagining a possible future/, or /entertaining an idea/,
+or /thinking of a thought/, or /mental navigation/[[* 2]] of /mental content/ is theorized to be supported via /neuronal ensembles/ ([[* Neuronal Ensembles]], [[* 5]]).
+
+The /Cell Assembly Hypothesis/ one might call conceptual neuroscience going back to Hebb [1949] (and before), roughly saying that ensembles make mental content.
+This is only useful when we can answer questions like /how many ensembles are there?/, /what timewindow does an ensemble have?/, /how are ensembles structured?/ and so forth[fn:12].
+
+In [[https://en.wikipedia.org/wiki/Capgras_delusion][Capgras delusion]], the user suffers /delusional misidentification/. Say Allice suffers an accident and will thenceforth think that her husband Bob is not Bob,
+but Bob-imposter. Believing something strange like "an alien imposter was installed to replace real-bob".
+Perhaps Alice /lost her marbles/, or perhaps there was a hyperdimensional symbol =bob=, which contributed to the /gestalt/ and /identity/ of her perception of Bob.
+But =bob= is no longer activated for some reason. Instead, there is another symbol =bob-2=.
+In hyperdimensional computing, without further assumptions than randomness, =bob-2= is as different from =bob= than any other person symbol, indeed any other concept symbol.
+
+It is sometimes said that the first impression of a person counts most. Perhaps because we "allocate" some kind of "prototype" "referring" to a person,
+and the context somehow ends up contributing to its /gestalt/, basically forever. Perhaps =bob-2= underwent the equivalent of a first impression in Alice's mind.
+
+** Attention Approximates Sparse Distributed Memory
+
+- It's very technical. I can recommend Trenton Bricken's talk, it also gives a nice overview of SDM in the first place: [[*6]].
+- Bricken shows how the overlapping hyperspheres of SDM are approximated by the /softmax/ in Attention.
+- Both designs amplify the differences between addresses roughly exponentially.
+- This is then corroborated by the fact that trained transformers converge on plausible values for SDM parameters.
+  (In SDM, address activation probability is an important factor, in deciding between noise-signal-capacity tradeoffs.)
+- Trained transformers have a /beta/ value for their softmax that roughly optimizes query-noise. I.e. it tolerates
+  noisy queries, trading off memory capacity.
+
+- Attention keys   - SDM /addreses locations/,
+- Attention query  - SDM /address word/ =x=,
+- Attention values - SDM /content/, =~S=, I guess.
+
+- This is quite remarkable, then SDM was pre-empting "Attention" by ~30 years.
+- It's really strange to "learn" your memory via backpropagation.
+- It is like trying out what the system would do if it /would/ have memory /x/.
+- It's like filling a USB stick by shaping it's content. I find it strange.
+
+- That the alternative has to do with having a /dynamical process/ that actually /uses/ a memory
+  by storing and retrieving lies at hand.
+
+- This suggests that "Attention" captures some essential properties of the computation of the Cerebellum,
+  and that the power of Transformers comes from some computational trick(s) that the Cerebellum is doing, too.
+
+- Note that so-called /cerebellum-like structures/ are found across the animal kingdom,
+  [[https://pubmed.ncbi.nlm.nih.gov/12207086/#:~:text=The%20cerebellum-like%20structures%20include,of%20advanced%20bony%20fish%20with][review]]. In flies they are [[https://en.wikipedia.org/wiki/Mushroom_bodies][Mushroom bodies]], [[https://pubmed.ncbi.nlm.nih.gov/21371566/][Are mushroom bodies cerebellum-like structures?]].
+  In [[https://www.sciencedirect.com/science/article/pii/S0960982218314052][electric fish, they enlarge evolutionarily alongside electrosensing]].
+  There is also one kind of fish with a [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5884697/][/gigacerebellum/]], basically the brain of this fish is made from a big cerebellum.
+  I find this funny.
+
+** Neuronal Ensembles
+
+Von Der Malsburg:
+
+#+begin_quote
+Attractor nets are the data structures of the mind. They form a construction kit for our mind states. They are the Lego blocks of the mind. The chunks of cognitive theory.
+And the syntax, the grammar under which they combine is:
+Any combination of coactive networks has to form a stabilized, self-organized, attractor net, that would be, given enough time, stable under self-organization.
+This is in principle a very simple system.
+#+end_quote
+
+[[https://youtu.be/NEf8LnTD0AA?si=r2fot3LIL4OvEJVX][Vectors of Cognitive AI: Self-Organisation]]
+
+These are all the same thing;
+
+/Attractor nets/, /subnetworks/, /population vectors/, /reverberating chains/, /neuronal ensembles/ [Lorente], /Cell Assemblies/ [Hebb].
+
+Lorente de Nó (1938) [fn:34] called them /chains/ or /ensembles/ (I will use the term *neuronal ensemble*), for reviews: [fn:35],[fn:36].
+These are conceptual /recurrent/ connections in neuronal networks that could be /activated on their own/, thus shedding light on the mechanism and function of /internal activity/ of the brain.
+
+Donal Hebb [1949] called them /Cell Assemblies/, in his theory, they are /self-sustaining/, /self-activating/ subnetworks, and the connections between them are allowed to
+represent /causality/. If A goes to B, then B follows A. The cell assemblies together with the proposed local learning rule, /Hebbian Learning/ is called /Hebbian Theory/.
+/Neurons that fire together, wire together/ - the slogan is somewhat misleading. It is the neurons that cause each other to fire that wire, it takes 2 timesteps to do that.
+
+/The Organisation of Behaviour/ 1949 is a classic; I recently found that Daniel Dennnet mentioned in his memoir[fn:37] how Hebb influenced his thinking.
+
+#+CAPTION: A Hebban Cell Assembly (conceptual) is a group of neurons activating each other.
+[[file:./hebb2.svg]]
+
+A Hebbian Cell Assembly is a group of neurons that activate each other.
+Time step 1 the cyan neuron activates the second neuron then so forth, /in a chain/.
+They are in something of a "causal alliance", each causing the rest to fire.
+In that case, such activity would be /self-igniting/ (an old term that I like) or /self-stabilizing/.
+If some of the neurons are active, the whole should be recovered, hence it is /auto-associative/.
+
+A [[https://en.wikipedia.org/wiki/Hopfield_network][Hopfield net]] [Hopfield 1982] is a very simple formalism for *recurrent neuronal nets* inspired by /magnetism/, it can be used as an /auto-associative memory/, when used together with a /Hebbian Learning Rule/.
+[[https://www.trentonbricken.com/SDM-And-Hopfield-Networks/][Hopfield Networks]] are a special case of Sparse Distributed Memory. Thus, the history of HDC, neuronal nets, connectionism, Parallel Distributed Processing [McClelland, Rumelhart], and related ideas have much overlap, Kanerva reviews: [[* 1]].
+
+*elements and substrates*
+
+Note how we are thinking here on the level of the /activity on top of neurons/. These are elements that perhaps are better seen as some kind of icebergs that float on top of the /substrate/ the neurons make.
+When they /move/, they flow through the neurons, made from activity.
+When they /stay/, they are circular, self-sustaining activity, like an activity that carved out a subnetwork, or made pocket in the net; Although they might be spread out in time and space, too.
+Like high dimensional dominos falling 'clack-clack-tick' around the network.
+"Neurons working together" doesn't quite capture it in my opinion. The key idea is that the activity creates a new /emergent/ entity, the ensemble.
+Thinking about the /ensemble/, we disregard the neurons. Like when thinking about the forest, we disregard the trees.
+
+Now you can regard the forest as a kind of entity; For instance, it sort of has tentacles or fingers of trees growing roughly outside of its edges and so forth (The details come from ecology).
+
+The properties of water come from the randomness of the elements. But water is a very predictable substrate.[fn:38]
+/Randomness/ at the neuronal level is very useful, it makes the ensembles more dynamic.
+Such a /randomness/ or /babble/ at the bottom comes up in many theories of self-organization and emergence.[fn:39]
+
+/Randomness/ is an example of something that makes sense on the /substrate/ level, not the /element/ level.
+I think this 'the properties of the substrate' idea is a useful way to think of emergence.
+
+Braitenberg 1978 [fn:40], and G. Palm 1982[fn:41] elaborate on the temporal dynamics (/temporal structures/) of such assemblies.
+Thus, perhaps an assembly encoding for a piece of music, or a muscle movement would have dynamic parts, as well as static parts.
+
+[[edraw:data=H4sIAGPCo2YAA71VS4+bMBD+K5ZzaSUIxrDZZAVI7amH7aWXPm5eMGAFbGQ7gfTXd8yjm7YbaaWWisfYY/N934w9JjHnCg1tI02Ka2u7hyDo+37bR1ulq4ASQgKYgacpD0Mj5PGlieHhcAjGUYx6Udg6xXc7glHNRVXbFMcUOmeujVAyxeE2xFlS8NIgUaSYF5r1vuuCt2X6yPWvfp/4TGvVYzSNfp4Ydkv/w8wCjk5zw/WZvzMdz+0nZoVKsVSSA73g/Xs1pNgPCXIPdTdGmpdfUjw1vo4NpQWXgMdOVmFkrFZHvqCUomlSvAmJu0Bvx2yNQOxHQPT8ewfs3aPYI98wCrIkmBRCw8WXJRpUoWFkuYzvm9l6zsATy4+VVidZ3BBTluVIVl1/pIrLtbyYeKHjmPT4XILzpJs3mz+y/HZh8Wdt9Jl2iXtmnlQAM28a0Rn+6g835d5dkHPIQuxyDznZg82hHxLXAAd1gv8Wnc7odEGPZ/RwvyY6jddEj8iEPi7vCkvqdgwUvweEj5SOdn2+3cy3/z980RTXYxRf2R1YOpcK8Fs+WORePpN5rXSKW1EUjSs9Ja1fslY0sC6GSePDuSPKecCI79ztsN/PCzQuKthhqvKsuEjAyFEO+wQxY3j71FySwFH+o6o6zHsn+llVd+vFFsVXsRkLx++N0IIKHvizZD8A9zQoYIEGAAA=]]
+
+
+*heterogeneous assembly*
+
+[[edraw:data=H4sIAKRDpmYAA71VXW+bMBT9K5b7kkoBbIempAqRMmnSHraXvazbGwUDVogd2U4g+/W7tkHp1laapqVK4NjXl3M/fAxrc2rQsO+kyXFr7eEhSfq+j/tFrHSTMEJIAh44uDwMnZC71xzparVK/CpGvahsm+O7JcGo5aJpLUxIitGJayOUzDGNKd6sK14bJKoc80oXfeSmYN0Xesf17/aIRIXWqscorH4LEZbT/NMYBQwHzQ3XJ741B17ar4UVKsdSSQ7hBe8/qCHHESXIXcz9MdK8fsxxGHz3A6UFl8BXHK3CyFitdnxiqUXX5fiGEveDfA+FbREk+wUY59G9I57fo3ROfmCUbNZJyBAGrr7NWkNWaPBRzv7+ZrcuHXgqyl2j1VFWbyRT17UP1jx/SFVnSI93nTgYPj4XjdHYhWiq5BlXlmXQDEhv5ZoCyVICgxIM1FlKZ8mIj/gP9FlWk0CfjvTpyM7IxM6uwE7Tkd2H+V/sd1PubGKngd3rImx+xCVsy1F3s5sXkr7Ffx0/bLmT2iIlaLEknz2mAdk4Z9OcAbIRiUefl+WDRe4WFbJslc7xXlRV58SkpI3qYi86qMcU0kRwkkQ9Lhjxk7t9//MEOBkvnBqgdoiHN1tj+P6pO6OPs+3tOnGhrtwNqA6KZxfIAoCMAqbXK90fjSG04FL6lqJZCa8QeJHRd+lBFgSRBT04YAGIB5YFCC4suDhl0HdShu8Oi+OpF0kDF3xYNr8Afr8iOoAGAAA=]]
+
+- a heterogeneous assembly has multiple sub-centers. E(A) ("excited A")
+- The opposite is a /homogenous/ assembly, where all connections would have the same strength.
+- Biological intuition tells us cell assemblies should be heterogeneous as a rule.
+- If one would reduce the /excitability/, one would select one of the /sub-assembly centers/ of =A=.
+- The other way around, if one takes a small assembly =A1= and increases the excitability, one /ignites/ =E(A1)=,
+- Or =A1= + halo(A1).
+- The /halo/ is something like the city outskirts of A, somewhat connected, but loosely.
+- That is a larger cell assembly with multiple centers.
+
+*Thought Pump*:
+
+- Activate the /halo/ of the assembly by increasing the /excitability/.
+- By /decreasing/ the /excitability/, the assembly would narrow down into one of its centers.
+- This depends on a /threshold device/, something that regulates the thresholds (excitability) of all neurons in question
+  "area"?, column?, whole cortex?, 'sheet wise', claustrum?, basal ganglia? thalamus?, not figured out.
+- It should select the best-connected sub-center (given ideal inhibition, see below).
+- This move then, could be done at the speed of 2 neuron timesteps, and it could be a parallel search process.
+- Jumping from thought to thought, creating a 'train of thought', hence 'thought pump'.
+
+
+#+CAPTION: Concept of a Cell Assembly with halo. The halo only only activates if the excitability of the neuronal substrate is high.
+file:./halo.svg
+
+
+[[edraw:data=H4sIAIhLaWYAA71WwY6bMBD9Fct7adUAxmYTsgpI6amH7aWXbnujwYAVgiPbCWy/vmNslHTbSFVbVgk825h5M/NerGz0uUbDoe10hhtjjg9R1Pd92LNQqjqihJAIdmC35WFoRbf/3cZ4vV5H41OMelGaJsP3S4JRw0XdmAwnFCZnrrSQXYbjMMb5puSVRqLMMC9V0Qd2CquHQu25+nk9IEGhlOwxck8/O4blNP/gWWDhqLjm6sy3+sh35lNhhMxwJzsO9IL37+WQ4SAmyF7UfjFSvHrKsBt8GQdSCd5BvOJkJEbaKLnnU5RKtG2G72JiP5DvsTANgmQ/QsRFsLKBFyuULMhXjKJ8E7kMYWDryzcKskLDyPI83m9269KBb8VuXyt56sobyVRVNZLV1y/J8hnS420rjpr79wLPRi+BpkqmWJxBNCBSkF5imzI43ME8tknuBj+I/nd06qMnxEU3fDDI3oKi2zVSZfggyrK1dcvOBFVxEC28p4tOByC6qPwDLb4DdZy+FMt2nFo2X0G+jTeRje+pXuy+zXxFcCuRKypbTr6lE9VoGOeKgHeg10m1b+5+8fpb/MdddV6wHoTfK4oT8kipx+UVUo/EYfqXEoKAaZo6CamXkHoJE68gTedT0HeVOQHfNUUrX6O1jNiWPVqwHRyReoQOM9fxseo500gSx5d4ZZP0CqlH4nBGEZbe2kCRh2H4Ot5GzBboYOkgdQAVO3Sb/v1sYt7YzBubxdPJt5ozOrufTzKWXp98KECaG9Pycs4jcOJkNzhn9Ys3DPWOod4y1HuGkYtXohou+J+T/wDNHmTdDwkAAA==]]
+
+- If the assemblies are 'settled' and "don't move" anymore, perhaps this could be interpreted as the 'best reachable interpretation' for the system.
+- This remains to be purely conceptual afaik. But is a cool idea to have in any case.
+
+Since you are scrolling through already, check out this work on visualizing much of the activity in a zebrafish larva:
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lppAwkek6DI?si=ZTEV4rxxrAcK8A4V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Zebrafish larvae are translucent for the first time in their life.
+
+#+begin_quote
+Scientists at the Howard Hughes Medical Institute studied live zebrafish larvae that had been genetically encoded with a calcium indicator called GCaMP5G. They suspended the larva in a gel and then beamed it with lasers. Just before a neuron fires, its action potential is expressed via a spike in calcium ions, so when one of the genetically modified larva's neurons reached its action potential, it glowed. This showed the researchers the firing of the neurons without them having to attach a bunch of electrodes to the fish.
+Over the course of an hour the researchers used laser beams to scan the larva every 1.3 seconds, exciting the retina of the zebrafish with each scan. This microscopy method allowed the researchers to record up to 80 percent of the fish's 100,000 neurons at single-cell resolution.
+This is the first time scientists have recorded such a high percentage of an organism's brain activity at such a high resolution.
+#+end_quote
+
+I'm not saying it makes thought pumps, but something incredibly dynamic is happening either way.
+
+---
+
+
+In Braitenberg 1978 [fn:42] I feel like they become animals made from 'patterns', dynamically dancing, flowing, stretching, like amebas, in the rhythms of music,
+carrying information, working together to activate remote associations and things like that.
+
+It is a small step to consider them little software animals. When they are /information that reproduces/, they become [[denote:20240208T124507][memes]].
+If their effect is to be active again, they have causal power or /competence without comprehension/ [Dennett].
+
+Moshes Abeles 1982 was one of the first to do neurophysiology and find something like ensembles (note they were entirely conceptual up to this point!),
+his theory is dubbed [[https://en.wikipedia.org/wiki/Synfire_chain][Synfire chain]] because he and his collaborators emphasize how it is hard for the activity to survive on its own, hence the activity of synchronous neurons could carry forward in a net.
+Like a forest fire but the forest is sort of wet. And then you have groups of activated neurons going in a chain, or back and forth.
+
+Papadimitriou, et.al. describe a model using Hebbbian Learning[fn:43]. They proved it to be Turing Complete.
+(This is considered another candidate for programming neuromorphic hardware.)
+These are very /Hebbian Assemblies/. With sheet-inhibition (implemented by a simple /cap-k/) and a recurrent neuronal net and /Hebbian plasticity/.
+From this /emerge/ assemblies, which are /auto-associative/. They have coherently activated subnetworks of neurons, i.e. attract subnetworks.
+
+For learning, just like with a Hopfield net, you present a sensory stimulus, which you must /project/ or /embed/ into your neurons.
+
+Then, by presenting a part, the whole can be recovered, hence /auto-associative/.
+
+By presenting 2 stimuli, an /overlap/ assembly will form. By presenting a sequence, /hetero associative/ assembly(s) will form.
+I imagine this as sort of a tunnel that an assembly with /temporal structure/ takes:
+
+[[edraw:data=H4sIAHE+pmYAA9VVS4/bIBD+K4i9tFIcA87msYotbU97aC+9tNsbibGNgiECEif99R0MVvpaqZccKj8+GMbzfYxn7K07t+jSK+1K3Hl/fMrzYRjmQzE3ts0ZISQHDxxdni5K6sPfHOlms8nHVYwGWfuuxI9LglEnZNv5Ei8YTM7COml0iemc4mpbi8YhWZdY1JYPWZiCtef2IOyv9oxk3FozYBRXv0SG5TR/SSxgOFrhhD2LZ3cUe/+Ze2lKrI0WQC/F8MFcSpxRgsLFwomRFc3XEsfB6zgwVgoN8fjJG4yct+YgpiiNVKrED5SEA/Qeue8QiP0EEWfZKgSerdBiRr5hlFfbPCqEQdhftbWgCl1Glut4fzNbtwzs+P7QWnPS9RtimqYZydqfHzL1dZIXNWRCw+rJqncPf2T2/RQ5S3rYjWraa2KLzGHHdElmlJCPdB0RqiUiS7hImPxY8iuSXxH9Run31smSTpZ0sqSTJX0s6WNJH0v6WNInlJJHJ/6Z/aFZhwOKCl7zYygueOkrwD3MaTDswUCL/zd6sYrRvbh4FG4Z1/vO2BL3sq5VqE6jfdbwXip4znHtMmhN2aQFJ78DNV3/3lKhL6BycOgSCo1QebLNQ/z7UhXrQKUnqnvWI9QZKmLdRVwkZDcEn4jL+2W5SFsPHNWL2O0k1+jZOdHv1BU1ygxSwydFIy97MSUmb+GCX0L1A4yt3FM6BgAA]]
+
+=A -> B -> C= If A has many connections to B, then B will fire after A. This causality notion is a major thing coming from Hebb's theory.
+
+Such a flow of activity is akin to water flowing through a riverbed. If it goes in a circle, this would also be called a /ring attractor/.
+
+Essentially, such Hebbian /auto-associative/ subnetworks were already discussed in G. Palm 1982 [fn:41]. /Nothing is new under the sun./
+
+---
+
+[[https://youtu.be/QRr_2PuzTZU?si=ulyt9C_lFv38OPK1][Rafael Yuste]] about the electrophysiology of the neuronal ensembles. They are *not Hebbian* in Cortex
+
+Summarizing:
+
+- They can artificially /produce ensembles/ via opto genetics, it is as if neurons that fire together are /glued together/ (for days!).
+- They can make a mouse behave as if it were seeing /x/, by activating the same ensemble as when it was seeing /x/. (suggesting ensembles indeed are /internal units of perception/).
+- They can activate ensembles via single neuron activation (remarkable I think). But this only works 60% of the time.
+- They find that cortical ensembles are *not Hebbian*[fn:44]. Not /fire together wire together/, but /everybody active has more excitability/.
+  (It's an even simpler, even more local rule, hence very satisfying).
+- The important lesson: the *causality structure encoding things* (the main point of Hebbian Theory) of the brain comes from something else.
+
+---
+
+György Buzsáki[fn:12] provides a cleaned-up definition. The /reader-centric cell assembly/. His neurophilosophy emphasizes truly satisfying, mechanistic, first principles of thinking.
+Buzsáki [[https://youtu.be/pJhlMsc2UKQ?si=HPxcvZLeRDHrbftw][initially wanting to be a radio engineer]], sheds light on his work.
+There are oscillators, rhythms, syntaxes, reader frames, analogies to music. Quite captivating.
+
+Buzsáki's empirical work suggests that we are endowed with pre-allocated symbols, and that /nothing is new to the brain/, we /match/ our internal symbols (which are more like snippets of music)
+to the trajectories of our actions and the world.
+
+Buzsáki also suggests certain departures from current neuronal modeling that I am a fan of. The brain is primarily /maintaining its internal dynamic/.
+Learning doesn't much change those patterns. This does away from the (essentially behaviorist) notion of the brain as a receptacle of knowledge.
+Knowledge creation is an intrinsic, self-generated activity.
+
+/The primacy of action/ - The first nervous systems simply moved bodies around and /sensors/ are a secondary invention.
+
+/Neurons that wire together fire together/.
+
+The meaning of this is that during development, sub-networks of neurons are allocated by growing in the same cohort (~ same day).
+These subnetworks are stable cell assemblies of the brain - mostly pre-allocated. Like the keys of a piano, it's their /composability/ that matters.
+This also fits the notion that the brain is a robust system.
+
+/The brain is a spaghetti/.
+
+/Action is the only second opinion/. - A cognitive system can /ground/ its /internal symbols/ via /action/.
+(How to do this in machine intelligence is a further question, part of the motivation to pursue such things as [[* Sequence Memory - Higher Order Via K-fold]],
+Kanerva also has a shot at a design in [[* 3]]).
+
+This /inside-out/ philosophy is an answer to David Deutsch's critique of AI (which he says is virtually the oposite of AGI), /the idea must be first/.
+The ideas must be essentially random, generic or 'for-free' at the bottom; Tying it together with Kanvervas /path of least assumption/, asking what you get
+from assuming nothing but randomness.
+
+More on this in the future, as I want my AI to be essentially /inside-out/.
+
+
+
+** Hyperlisp V0
+
+This was an early experiment, on the shelf now.
+
+This a sequence processor where all expressions are hypervectors.
+Where /mix/, /bind/ etc. are primitive operations.
+Where symbols are /multisymbols/ and multiple things are evaluated when a multisymbol is encountered.
+
+
+#+begin_src clojure
+ (cleanup*
+   (h-eval (h-read-code (mix :heads :tails))))
+  (:heads :tails)
+#+end_src
+
+=(mix :heads :tails)= is the superposition of it's inputs.
+
+Symbols can be /multisymbols/. If the evaluator encounters a multisymbol in operator position,
+it will evaluate all possible branches, and return the superposition of the outcomes:
+
+#+begin_src clojure
+(cleanup* (h-eval (h-read-code ((mix + - *) 10 10))))
+;(100 0 20)
+#+end_src
+
+similarly, =if= evaluates multiple branches:
+
+#+begin_src clojure
+  (cleanup*
+   (h-eval
+    (clj->vsa
+     [['lambda []
+       ['if [possibly true false]
+        :heads :tails]]])))
+ ; (:heads :tails)
+#+end_src
+
+A slightly more substantial piece of hyper lisp code:
+
+#+begin_src clojure
+
+  (cleanup*
+   (h-eval
+    (clj->vsa
+     ['let ['outcome
+            [['lambda []
+              ['if [possibly true false]
+               :heads :tails]]]]
+      [impossibly 'outcome :tails]])))
+  ;;  (:heads)
+
+
+  ;; the reader cleans up the need for quoting all the symbols:
+  (cleanup*
+   (h-eval (h-read-code
+            (let [outcome ((lambda ()
+                                   (if (possibly true false)
+                                     :heads
+                                     :tails)))]
+              (impossibly outcome :tails)))))
+  ;; (:heads)
+
+#+end_src
+
+** Frames / Analogies / Templates / Possibility / Impossibility and so forth? ("What Is Programing With Concepts?")
+
+- Eventually, perhaps we want to /program with concepts/, or /analogies/. Vocabulary ideas:
+- /tolerate/ - express a range of possible filler values, or express a range of tolerated properties.
+- For instance, /ballness/ (the ball frame) /tolerates/ any kind of /material/, or /color/ and so forth.
+- /require/ - express that a property must hold for the fillers, for instance, the /shape/ of a ball is perhaps
+  required to be approximately round.
+- Everything other than having a round shape /moves away from the notion of baldness in concept space/.
+- In terms of Mitchell and Hofstadter [[https://en.wikipedia.org/wiki/Copycat_(software)][1988]] such a /moving away constitutes /pressure/ on a concept,
+  which might /slip/ into another concept. This /slippage/ and /fluidity/ is a hallmark of creative cognition.
+- A cognitive system might acquire such properties via matching actions and predictions:
+- For instance, you might expect to trace the outline of a ball by moving the eyes in a circle,
+  the ball to be graspable, rollable, throwable, be able to be covered by fingers, have a certain weight when held,
+  have a certain distance when reaching out for it, have the same color from all sides, have a texture when stroked,
+  throw a shadow when illuminated by a light source, sink or float in water (depending on its material), be called a 'ball' by other persons,
+  be permissible to fulfill the role of 'ball' in the rules of games that require a 'ball' (or not, then interestingly so),
+  be able to be put into the mouth, be bouncy or fragile depending on the material, be able to be brought to mind from memory,
+  be able to be talked about, be able to have its properties listed, be different from a banana and from almost all other things for that matter,
+  be able to be in the possession of a person
+- This list tries to stay within "one degree of complexity", we can easily imagine a ball to be food by ball-eating goblins,
+  to explode in a world where all balls are stuffed with gunpowder, to be worth a million dollars because it is a rare special
+  ball relic of an ancient alien intergalactic soccer game, to be a dragon egg in a world where dragons hide their eggs disguised as ordinary balls
+- This /being able to put together/ ideas and concepts must be a deep aspect of computational building materials out of which ideas can be made.
+- If any of these properties are stretched too far, for instance, the ball is made from jelly and doesn't roll anymore, then it's not a ball anymore.
+- Perhaps a useful hyperlisp would be /programming with counterfactuals/ [inspired by Charia Marletto and David Deutsch's 'Constructor theory'],
+  with /what if/s, /possibilities/ and /impossibilities/.
+- Aaron Sloman [in personal communication]: /impossibility/, /necessary connection/, /possibility spaces/.
+- (although he would argue there might be chemical computing at the synapses computing this for all we know).
+
+** Neuronal Syntax
+
+- G. Buzsáki[[[*2]]] points out that /encoding in time/, doesn't need to mean that /something in time/ is being represented.
+- A cognitive composite data structure of the brain might be encoded in something that is spread across time.
+- In fact, Buzsáki thinks that /neuronal syntax/ works by juxtaposing /neuronal letters/.
+- The putative /neuronal letter/ is an assembly firing in gamma frequency ([[https://en.wikipedia.org/wiki/Gamma_wave][Gamma waves]]), juxtaposed /in time/ into neuronal words,
+  that are 7 +/- 2 gamma timestep long (/theta frequency/).
+- In software speech, the elementary or atomic datatype is an ensemble in gamma frequency.
+  A first-order /composite/ is a /"theta word"/ of ~7 elements, (then higher-order composites are made from multiples again and so forth,
+  forming a kind of rhythm hierarchy).
+- [[https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two][The Magical Number Seven, Plus or Minus Two]] is a 'meta' empirical finding of cognitive psychology [Goerge Miller 1956].
+- This would mean that the /neuronal code/[fn:45] is encoded /in time/.
+- In other words, a /neuronal interpreter/ would read a data structure spread across time.
+- To be precise what I have in mind: Imagine you try to build a hyperdimensional ALU using neurons as input and output registers,
+  implementing something like primitive /superposition/ or /bind/ operations, what are the input registers?
+  If I need 2 inputs for a bind (I need 2 input registers), then what is the relationship between the inputs? I'm sure there is a range of possible answers...
+- Suppose the inputs are neuronal activity juxtaposed across two subnetworks (maybe the first idea?), shouldn't these be kept in tandem or something?
+  Intuitively, everything that subnetwork A is saying, I think B should be able to say, too. This seems a very strange requirement for brain neuronal net architecture.
+- This problem is solved, when the input registers are the same neurons, but juxtoposed in time.
+- The relationship is now 1:1. For instance, the overlap of A and B is now simple, it just means overlap.
+- This would mean the brain computation is 'rhythmical' or '*musical*'.
+  [short talk;[fn:46], book-length: [fn:47], review: [fn:48]],
+  [Abeles e.g. [[https://journals.physiology.org/doi/full/10.1152/jn.1998.79.6.2857][Spatiotemporal Structure of Cortical Activity: Properties and Behavioral Relevance]]], [[[https://youtu.be/Kqyhr9fTUjs?si=ZZ9JcGMjD-OQB6sN][Earl K. Miller]]].
+- If true, then *Cognition uses a musical computation*; I consider this a joyful twist, that suddenly puts the human taste for music right at the fabric of cognition.
+- This might shed light on things like [[https://en.wikipedia.org/wiki/Flash_lag_illusion][Flash lag illusion]].
+- If I might speculate, I would think the /situation interpretation/, ~ "essence finding" in terms of Hofstadter + Sander [2013][fn:23],
+  has something of a time window (perhaps 1 theta rhythm or 1/2th?),
+  for finding the /matching hippocampal trajectory/ (in terms of Buzsáki[[[*2]]]), ~ that is roughly one sequential data structure
+  coming out of an SDM here with 7 +/- 2 elements. (Assuming that the Hippocampus is roughly an SDM) - a /neuronal word/.
+- I.e. there would be a 125 - 250 ms time window for finding an interpretation of what "is in short-term memory".
+
+Making use of time:
+
+- Using time for binding is an old idea [C von der Malsburg 1981, [[https://pubmed.ncbi.nlm.nih.gov/7488855/][review]], Abeles 1982].
+  (Bienstock 1996 ties it together with /compositionality/ in a cool way.)
+- An example of making a time-space tradeoff is this neuromorphic, spiking hardware implementation of the block code bind [fn:49].
+- This works via /delay lines/, similar to [[https://pubmed.ncbi.nlm.nih.gov/29951198/]["polychronization feature binding"]] [fn:50].
+
+- Note that it doesn't mean that /we/ (software engineers) need to encode something across time. /We/ merely need to extract useful essential concepts.
+
+
+#+begin_quote
+Tom Riddle:
+[Adjusting ring on his finger, the same one in present day Dumbledore's office] Can you only split the soul once? For instance, isn't seven...
+
+Horace Slughorn:
+Seven? Merlin's beard, Tom! Isn't it bad enough to consider killing one person? To rip the soul into seven pieces... This is all hypothetical, isn't it, Tom? All academic?
+
+Tom Riddle:
+[Smiling] Of course, sir. It'll be our little secret.
+#+end_quote
+
+(from /Harry Potter Half-Blood Prince/).
+
+* Literature
+
+** 1
+
+P. Kanerva, “Hyperdimensional computing: An introduction to computing
+in distributed representation with high-dimensional random vectors,”
+Cognitive Computation, vol. 1, no. 2, pp. 139–159, 2009.
+
+Here and in [[*3]] *opens up a new space* between computer science and neuroscience.
+Highly technical, but still accessible. This is truly fascinating work.
+
+** 2
+
+Buzsáki, G. (2019). The Brain From Inside Out. New York: Oxford University.
+
+** 3
+
+/Sparse Distributed Memory/, Pentti Kanerva 1988
+
+One might check [[* 1]] first. And if one has a taste for more, SDM will be very interesting.
+
+** 4
+
+Laiho et.al. 2015
+High-Dimensional Computing with Sparse Vectors
+https://www.researchgate.net/publication/299535938_High-Dimensional_Computing_with_Sparse_Vectors
+
+** 5
+
+Rafael Yuste /Lectures In Neuroscience/, 2023
+
+** 4
+
+Kanerva talks:
+
+- [[https://youtu.be/zUCoxhExe0o?si=rZ0YrLGczdHzswjT][Stanford Seminar - Computing with High-Dimensional Vectors]]
+- [[https://youtu.be/oB_mHCurNCI?si=oliNXAvPMDNERDJr][Pentti Kanerva]]
+- [[https://youtu.be/82syi1BH_YY?si=3hnArV0ePFdkf7NE][Pentti Kanerva - Modeling the brains computing with hyperdimensional computing]]
+- [[https://youtu.be/1g5VEcnG6fI?si=zzwOrktHF_lF-0Wj][Pentti Kanerva - The computer and the brain]]
+- [[https://youtu.be/hH65_yWSpFc?si=ql9Kcd2vyhM-3jd2][Pentti Kanerva - Cerebellum as a neural RAM (UC Berkeley, Fall 2010)]]
+- [[https://youtu.be/WOcYfaXEAFY?si=721wVgyOblXPX5Us][Pentti Kanerva - Computing in Superposition in the Classical Domain]]
+- Playlist: [[https://youtu.be/oB_mHCurNCI?si=_oH6dJVr28-f7Owr][Some talks]]
+- Related: [[https://youtu.be/ZFqVZX6vaU0?si=iJpfWjPrzm2ciMq1][The Kanerva Machine]] (went over my head at this point in time).
+
+** 6
+
+[[https://youtu.be/THIIk7LR9_8?si=xXxrr0UQkF226Gc9][Attention Approximates Sparse Distributed Memory]]
+
+** 7
+
+Pentti Kanerva 1993
+Sparse Distributed Memory and Related Models
+
+https://redwood.berkeley.edu/wp-content/uploads/2020/08/KanervaP_SDMrelated_models1993.pdf
+
+** 8
+
+Vector Symbolic Architectures as a Computing Framework for Emerging Hardware
+Denis Kleyko, Mike Davies, E. Paxon Frady, Pentti Kanerva, Spencer J. Kent, Bruno A. Olshausen, Evgeny Osipov, Jan M. Rabaey, Dmitri A. Rachkovskij, Abbas Rahimi, Friedrich T. Sommer
+
+https://arxiv.org/abs/2106.05268
+
+* Footnotes
+
+[fn:1]
+
+Crawford E, Gingerich M, Eliasmith C. Biologically Plausible, Human-Scale Knowledge Representation. Cogn Sci. 2016 May;40(4):782-821. doi: 10.1111/cogs.12261. Epub 2015 Jul 14. PMID: 26173464.
+
+[fn:2]
+
+That is, they are 10.000 bit wide vectors, if binary.
+
+[fn:3]
+
+Tony A. Plate (1995), "Holographic Reduced Representations", IEEE Transactions on Neural Networks, vol. 6, no. 3, pp623-641, 1995, 21 pages
+
+You can get the postscript version here:
+http://d-reps.org/index.html#software
+
+[fn:4]
+
+[[https://youtu.be/HB5TrK7A4pI?si=5Cab5tnwwYPumCn-]["We Really Don't Know How to Compute!" - Gerald Sussman (2011)]].
+
+[fn:5]
+
+/The Computer and the Brain/, John Von Neumann, posthumously 1958
+
+[fn:6]
+
+[[https://youtu.be/IeY8QaMsYqY?si=Yqf436SeQcV1z73d][Why has AGI not been created yet? David Deutsch]]
+
+[fn:7]
+
+Garry Marcus analyses the shortcomings of current AI approaches:
+
+- https://youtu.be/zj0Ek32Xoec?si=0F3tp9qtvgKu4qwg
+
+[fn:8]
+
+Louis A. Jaeckel, 1989
+An alternative design for a sparse distributed memory
+
+https://www.semanticscholar.org/paper/An-alternative-design-for-a-sparse-distributed-Jaeckel/fc2d6ed337f00ff0e44fbaabfd326be535eb4b98
+
+[fn:9]
+
+In [[denote:20240208T124507][Neuronal Ensemble Memetics]], I argue that neuronal ensembles (pattern completed, distributed representations) can be seen as a /theory of mentality/.
+The requirement for that is to say how computational systems can represent perception states, motor plans, cognition states or perhaps /mental content/ to itself.
+
+Yuste conjectures ensembles to be the *internal units of perception*.
+Cool talk: [[https://youtu.be/QRr_2PuzTZU?si=BgCsHurIGdjRtQEA][Rafael Yuste: Can You See a Thought? Neuronal Ensembles as Emergent Units of Cortical Function]].
+
+Many people label this /consciousness/. I would like to call this /brain software/, or /cognition software/ maybe.
+
+The second sense of /consciousness/ and qualia are is the the /phenomenological consciousness/ sense.
+My feel is that a mere software theory will not provide a satisfying answer.
+
+My feeling is, that this requires a theory of *simulated virtual realities* and therefore a theory of *reality*.
+
+#+begin_quote
+The new generation will have no trouble accepting that consciousness is a virtual machine.
+They are used to virtual machines when using the software of their computers and phones.
+#+end_quote
+
+(From memory, not verbatim Dennett 2023.)
+
+✓ Consciousness is a virtual simulated reality created by software - this is acceptable.
+
+New questions:
+
+- What is software?
+- What is virtual?
+- What is reality?
+
+Chomsky recently said on YouTube: "What we don't understand is *matter*".
+
+This is also reminiscent of the 4 strands of David Deutsch's /The Fabrik of Reality/.
+
+[fn:10]
+
+https://youtu.be/JUK9PUTKPWU?si=cEA31y5iMHwU1GlY
+
+I recommend the keynote:
+
+https://youtu.be/2ApDpHQI6_I?si=d2dlrhiIgsCWmHaI
+
+[fn:11]
+
+https://arxiv.org/abs/2004.11204
+Classification using Hyperdimensional Computing: A Review
+
+[fn:12]
+
+Buzsáki G. Neural syntax: cell assemblies, synapsembles, and readers. Neuron. 2010 Nov 4;68(3):362-85. doi: 10.1016/j.neuron.2010.09.023. PMID: 21040841; PMCID: PMC3005627.
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/
+
+[fn:13]
+
+τ is the name for the membrane constant. In cortex principal cells this is 10-30ms.
+For a trail of literature:
+[[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/][Neural syntax: cell assemblies, synapsembles and readers]], [[*2]]
+
+[fn:14]
+
+Buzsáki G. 2010 references
+
+Koch C, Rapp M, Segev I. A Brief History of Time (Constants) Cereb. Cortex. 1996;6:93–101.
+https://pubmed.ncbi.nlm.nih.gov/8670642/
+
+[fn:15]
+
+Alluding to things like bio-electric fields, of which I don't know enough to say much at this point in time
+
+[fn:16]
+
+https://pubmed.ncbi.nlm.nih.gov/3749885/
+
+Georgopoulos AP, Schwartz AB, Kettner RE. Neuronal population coding of movement direction. Science. 1986 Sep 26;233(4771):1416-9. doi: 10.1126/science.3749885. PMID: 3749885.
+
+[fn:17]
+
+Binding and Normalization of Binary Sparse Distributed Representations by Context-Dependent Thinning
+Rachkovskij, Kussul 2000
+
+[fn:18]
+
+BSC Fully Distributed Representation Kanerva 1997
+
+[fn:19]
+
+Buzsáki, G. (2019). The Brain From Inside Out. New York: Oxford University Press.
+
+[fn:20]
+
+That HDC can get results by requiring little else than randomness is technically sweet and biologically unproblematic.
+
+[fn:21]
+
+Zhonghao Yang 2023
+Cognitive modeling and learning with sparse binary hypervectors
+
+https://paperswithcode.com/paper/cognitive-modeling-and-learning-with-sparse#code
+
+[fn:22]
+
+Rachkovskij 2001
+
+[fn:23]
+
+/Surfaces and Essences: Analogy as the Fuel and Fire of Thinking/, 2013 Douglas R. Hofstadter, Emmanuel Sander
+
+[fn:24]
+
+[[https://youtu.be/3RkJiFqbg1Q?si=8aswVE-pZxgyRWn9][Ashok Litwin-Kumar: Generalizing theories of cerebellum-like learning]]
+
+Cool computational neuroscience talk
+
+[fn:25]
+
+Jaeckel, L.A. 1989a. An Alternative Design for a Sparse Distributed Memory.
+Report RIACS TR 89.28, Research Institute for Advanced Computer Science,
+NASA Ames Research Center.
+
+[fn:26]
+
+/Cell Assemblies in the Cerebral Cortex/, V. Braitenberg 1977
+
+[fn:27]
+
+https://en.wikipedia.org/wiki/Copycat_(software)
+
+[fn:28]
+
+Braitenberg V. Is the cerebellar cortex a biological clock in the millisecond range? Prog Brain Res. 1967;25:334-46. doi: 10.1016/S0079-6123(08)60971-1. PMID: 6081778.
+
+[fn:29]
+
+https://blog.klipse.tech/data-oriented-programming-book.html
+
+[fn:30]
+
+https://clojure.org/reference/protocols
+
+[fn:31]
+
+But without first-class continuations, haha
+
+[fn:32]
+
+https://paulgraham.com/onlisp.html
+
+[fn:33]
+
+Minsky 1974, A Framework for Representing Knowledge/
+
+https://courses.media.mit.edu/2004spring/mas966/Minsky%201974%20Framework%20for%20knowledge.pdf
+
+[fn:34]
+
+https://anatomypubs.onlinelibrary.wiley.com/doi/10.1002/ar.24190#ar24190-bib-0048
+
+[fn:35]
+
+[[ https://youtu.be/VzO8e_f2Hk8?si=XeWb1kw0N4eD9Wx][Yuste Talk]] (all his talks are great).
+
+[fn:36]
+
+Rafael Yuste /Lectures In Neuroscience/, 2023
+
+[fn:37]
+
+Daniel Dennett /I've Been Thinking/, 2023
+
+RIP one of the most relevant influences on my world view.
+
+[fn:38]
+
+I independently derived the same concept of dynamism or fluidity. Called [[denote:20240208T124507][memetic engine]] here.
+
+[fn:39]
+
+- In a 'subcognitive' model: /randomness in service of intelligence/ [Mitchell and Hofstadter [[https://en.wikipedia.org/wiki/Copycat_(software)][1988]]].
+
+- The same thing for neuronal ensembles empirically: [[https://pubmed.ncbi.nlm.nih.gov/34772802/][Drifting assembles]].
+  Intrinsic firing rate and random skip rate are a feature, not a bug.
+  It's only possible to regard it as a feature, if we consider the substrate, not the elements.
+
+- I recently came across this [[https://poddtoppen.se/podcast/1521758802/theories-of-everything-with-curt-jaimungal/michael-levin-l-karl-friston-l-chris-fields-on-the-meta-hard-problem-consciousness-and-babbling][podcast]] where M. Levin, K. Friston and C. Fields label the concept /babble/.
+  Apparantly, /quantum babble/ is the same thing in a physics theory.
+
+[fn:40]
+
+/Cell Assemblies in the Cerebral Cortex/, V. Braitenberg 1978
+
+https://link.springer.com/chapter/10.1007/978-3-642-93083-6_9
+
+[fn:41]
+
+G. Palm Neural Assemblies: An Alternative Approach to Artificial Intelligence, (first edition: 1982, 2nd ed.: 2022)
+
+[fn:42]
+
+Braitenberg /On the Texture of Brains -An Introduction to Neuroanatomy for the Cybernetically Minded/, 1977
+
+[fn:43]
+
+See 'assembly calculus':
+
+[[https://arxiv.org/abs/2110.03171][Assemblies of Neurons Learn to Classify Well-Separated Distributions]], [[https://faculty.cc.gatech.edu/~vempala/][Santosh S. Vempala's homepage]].
+
+[fn:44]
+
+Tzitzitlini Alejandre-García, Samuel Kim, Jesús Pérez-Ortega, Rafael Yuste (2022) Intrinsic excitability mechanisms of neuronal ensemble formation eLife 11:e77470
+
+https://elifesciences.org/articles/77470
+
+[fn:45]
+
+[[* 5]]: /neuronal code/ is an analogy to /genetic code/, the genetic code is defined by the /interpreter/, the ribosome.
+The /syntax/ of /genetic code/ are /base triplets/, or /codons/.
+Each triplet corresponds to an amino acid or is one of the /stop codons/ or /start codons/.
+See [[https://en.wikipedia.org/wiki/Genetic_code][Genetic Code]].
+
+Analogously, the project of finding a /neuronal code/ or /codes/ would mean understanding what the /interpreter(s)/ and the /syntax/ are.
+
+[fn:46]
+
+[[https://youtu.be/O4FCu1NqdYo?si=mZgyqATa2wsK8Ptn
+][Gyorgy Buszaki - Neural syntax is organized by a hierarchy of brain rhythms]]
+
+[fn:47]
+
+G. Buzsáki /Rhythms of the Brain/, 2011
+
+[fn:48]
+
+Buzsáki G, Vöröslakos M. Brain rhythms have come of age. Neuron. 2023 Apr 5;111(7):922-926. doi: 10.1016/j.neuron.2023.03.018. PMID: 37023714; PMCID: PMC10793242.
+
+[fn:49]
+
+https://dl.acm.org/doi/fullHtml/10.1145/3546790.3546820
+
+Sparse Vector Binding on Spiking Neuromorphic Hardware Using Synaptic Delays
+
+[fn:50]
+
+file:https://pubmed.ncbi.nlm.nih.gov/29951198/
+
+A 'basic polychronous group'[S. Singer and collaborators]
+A and B share a reader C. Via delay lines, C represents the notion that A activates B.
+
+[fn:51]
+
+[[https://youtu.be/HFGh5MZhRnc?si=S8Rkn95zTLD8KP3B][Programming is (should be) fun! - Gerald J Sussman (Boston IEEE 2022)]]
+
+[fn:52]
+
+/The Beginning of Infinity/ David Deutsch (2011)
+
+[fn:53]
+
+Substack:
+https://garymarcus.substack.com/p/marcus-goes-gaga-over-gates-clip?publication_id=888615&post_id=146122555
+
+[fn:54]
+
+Braitenberg /On the Texture of Brains -An Introduction to Neuroanatomy for the Cybernetically Minded/, 1977
+
+[fn:55]
+
+[[https://youtu.be/c5QF2HjHLSE?si=g1z4JJNwg0N70crH
+]["Design in Practice" by Rich Hickey]]
+
+[fn:56]
+
+In particular, the internal inputs might be pre-allocated sequences coming from Hippocampus, as described in [[*2.]]
+This would be an indexing operation in the broadest sense ("Librarian").
+
+[fn:57]
+
+https://en.wikipedia.org/wiki/Engram_(neuropsychology)
+
+In order to implement memory, something has to change.
+Engram and /difference that makes a difference/ are pretty cool first principles little perspectives.
+
+It's the same spirit that Von Neuman's /The Computer And The Brain/ exhibits.
+
+[fn:58]
+
+I suspect this is biologically slightly implausible because inhibitory and excitatory inputs in Cortex do not have a symmetrical role in this way.
+
+Inhibitory systems seem to limit excitability as a 'sheet'.
+
+Can see [[*5]] for an overview.
+Also [[https://en.wikipedia.org/wiki/Basket_cell][Basket cell]].
+
+[fn:59]
+
+https://youtu.be/Pz_NvY1kw6I?si=C4RuN_thbQNDL7OQ
+
+[fn:60]
+https://en.wikipedia.org/wiki/Phil_Bagwell
+
+[fn:61]
+
+https://anatomypubs.onlinelibrary.wiley.com/doi/10.1002/ar.24190
+
+[fn:62]
+
+Buzsáki, G. (2019). The Brain From Inside Out. New York: Oxford University Press.
+
+[fn:63]
+
+https://clojure.org/reference/protocols
+
+[fn:64]
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/
+
+[fn:65]
+
+In the sense of David Deutsch 2011
+
+[fn:66]
+
+[[https://youtu.be/oKg1hTOQXoY?si=1snXrRHi5p63HU5I][Alan Kay at OOPSLA 1997 - The computer revolution hasnt happened yet]]
+
+Alan Kay is one of the pioneers of interactive computer interfaces and he is arguing, among many
+observers of the field, that user interfaces have not even yet reached the capabilities they had in the 1960's
+Smalltalk systems.
+
+The reason for this is historical.
+One reason was that the microcomputer revolution (70s) came with a bare-metal approach to programming,
+C and its derivates became popular.
+
+That Lisp, Scheme and Smalltalk were the conceptually more powerful systems was forgotten.
+And we are stuck with compromises taken for computers that were billions of times slower than the machines we use.
+
+[fn:67]
+
+https://youtu.be/HFGh5MZhRnc?si=SlRrIJ7B5jXmDK9h
+
+[fn:68]
+
+[[https://youtu.be/AO7F0n2Dclc?si=Ig-xccFpn-pF9hrE&t=3429][The Society of Mind Lecture]]
+
+#+begin_quote
+So suppose you put a lion and a tiger in a cage. And how do you predict what will happen? Well, what you could do is if you've got a million lions and a million tigers and a million cages, then you could put a lion and a tiger in each cage.
+And then you could say the chances that the tiger will win is 0.576239 because, that's how many cases the tiger won.
+
+So to me, that's what statistical learning is. It has no way to make smart hypotheses.
+
+So to me, anybody who's working on statistical learning is very smart.
+
+And he's doing what we did in 1960 and quit, 50 years out of date.
+
+What you need is a smart way to make a hypothesis about what's going on.
+#+end_quote
+
+[fn:69]
+
+[[https://youtu.be/zj0Ek32Xoec?si=Fg45hg761xStQqCx]["No AGI without Neurosymbolic AI" by Gary Marcus]]
+
+[fn:70]
+
+Really cool summary of the history of interfaces, centering on J.C.R Licklider:
+
+/The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/, Mitchell Waldrop (2018)
+
+[fn:71]
+
+https://youtu.be/r8k8o7zkA1o?si=0u3_mztiRsGMx30x
+
+Abelson mentioned how the Lisp school is about building little languages.
+
+[fn:72]
+
+https://en.wikipedia.org/wiki/Hackers_%26_Painters
+
+[fn:73]
+
+LISP - NOTES ON ITS PAST AND FUTURE 1980.
+
+McCarthy has a whole section on *Proving Correctness of LISP Programs*,
+which he saw as a feature worth having.
+
+[fn:74]
+
+[[https://youtu.be/4RptzbNNoU0?si=6dYKqZIbSA7KFi2j][What's the difference between programming and coding - Leslie Lamport @ HLF 2019]]
+
+[fn:75]
+
+/On the role of neural synchrony in the primate visual cortex/ Andreas K. Kreiter and Wolf Singer (1996).
+
+[fn:76]
+
+Moshes Abeles 1982: [[https://en.wikipedia.org/wiki/Synfire_chain][Synfire chain]]
+
+[[https://www.frontiersin.org/articles/10.3389/fncom.2010.00154/full][A compositionality machine realized by a hierarchic architecture of synfire chain]]
+
+[fn:77]
+
+Minsky, Marvin (1986). The Society of Mind. New York: Simon & Schuster. ISBN 0-671-60740-5.

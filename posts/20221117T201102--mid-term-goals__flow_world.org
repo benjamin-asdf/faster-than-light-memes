@@ -1,0 +1,437 @@
+#+title:      Mid-Term Goals
+#+date:       [2022-11-17 Thu 20:11]
+#+filetags:   :world:public:feed:mind:
+#+identifier: 20221117T201102
+#+EXPORT_FILE_NAME: mid-term-goals
+
+This is inspired by [[https://en.wikipedia.org/wiki/Hilbert%27s_problems][Hilbert's problems]] list.
+
+This is a list of my current goals for moving humanity forward.
+
+Some of these are easier than others. Being effective means finding the easy things that have leverage.
+
+#+CAPTION: Solarpunk city with clear skies. Utopian high-tech future. Open spaces and trees. Flying buildings. Water.
+https://i.imgur.com/hgAYzqu.jpg
+
+* Thinking big and what I think life is about
+
+Why not think big? It's better than thinking small as far as I can see.
+
+We are already influencing the long-term trajectory of civilization, regardless of whether we acknowledge it or
+not.
+
+I say civilization *is* life.
+We currently have sciences that are largely defined by their
+methodologies and institutions with a different science for say
+organisms, computers and technology.
+You might then think that /life is what biology studies/, but it is
+not so true.
+Life is also ideas, artifacts, civilization and computers.
+
+Life is the craziest thing in the universe and it just starting.
+And we have the opportunity to shape the next stage of life, civilization, and intelligence.
+
+There are a few things that fall out of common sense in my opinion,
+invariants:
+Suffering and death are bad. Life is good. Progress is good because it
+allows for more life, creativity, beauty, harmony and joy.
+
+1. This was true in the distant past. It was true when we were Cambrian fish.
+2. What is true across the eons is likely to stay true in the coming eons.
+3. You really cannot know what amount of beauty and joy lies on the
+   other side of progress.
+   Nobody was foreseeing /Bach/ or /The Witcher 3/ when the first primates
+   started living in trees.
+
+Mid-term I want to work on a solarpunk utopian future, biasing the
+outcomes towards human flourishing and ushering in the /singularity/[fn:1] quicker.
+
+This is a future with many trees and clear skies. In cities full of innovative and
+harmonious people, gazing at the stars and building great things.
+
+* Techno Optimism
+What is techno-optimism, chat gpt?
+
+Techno-optimism is a worldview or attitude that technology can bring
+about positive outcomes and solving some of the world's most pressing
+problems. It is the belief that advances in technology will ultimately
+lead to a better world, and that technological progress will help
+humanity overcome many of its current challenges, such as poverty,
+disease, and environmental degradation.
+
+Techno-optimists tend to be enthusiastic about emerging technologies,
+such as artificial intelligence, biotechnology, and renewable energy,
+and they see these technologies as powerful tools for solving social,
+economic, and environmental problems. They often believe that
+technology can enable greater productivity, efficiency, and
+innovation, and that it can ultimately lead to a more prosperous and
+sustainable society.
+
+However, techno-optimism is not without its critics. Some argue that
+it can lead to an overreliance on technology and overlooking important
+social and ethical issues associated with technological
+progress. Others point out that technology can exacerbate existing
+inequalities and that it can also have unintended consequences that
+are difficult to anticipate.
+
+/chat gpt end/
+
+Those critics are not seeing the full picture.
+Maybe =civilization optimism= would be the better word anyway.
+Science, reason, and humanism are all part of the story.
+
+The point is to understand how and why civilization and technology are useful for
+bringing about human flourishing and well-being. And to continue the
+already made advances. And to realize, historically, how precious our current
+situation is.
+
+For the inequality thing. This is not at all how mobile phones, the
+internet and medical advances (penicillin anybody?) turn out to work.
+By the time technology works well and is cheap to make we can make it
+available to all humans. Humanism and progress give us the ethical
+framework to have equal opportunity etc. as a goal.
+
+* 1. Solve Poverty
+** Why?
+- Obvious low-hanging fruit.
+- Enable huge productivity gains by allowing large populations to
+  contribute to science, engineering, medical research etc.
+
+** How?
+- Make a lot of money and push projects.
+- UBI
+- Democratize[fn:2] goods
+- Democratize education
+- Democratize opportunities
+- Lower the costs of production for material + infrastructure, food
+  and energy.
+
+** How do we know we make progress?
+- See [[https://ourworldindata.org/poverty][Our world in data]].
+- I have been working in this space for 5 years now and my current
+  hope is to fix extreme poverty around 2030. (Which is a few years
+  earlier than current projections last time I checked).
+
+* 2. Solve longevity
+- Fix aging
+- Fix other diseases
+
+This means you get an indefinite biological substrate lifespan.
+This might be rather low-hanging fruit, see [[https://www.lifespanpodcast.com/][Livespan with Dr. David Sinclair]].
+Consider that fixing aging fixes a lot of diseases at the same
+time. Being biologically young means you fend off diseases.
+
+Also, the same kind of advances fixes autoimmune diseases, Alzheimer, and cancer.
+See also the work of Aubrey de Grey for intelligent reasoning on this.
+
+** How do we know we make progress?
+- When you know your biological age the same way you know your weight.
+- When a head of state pronounces /Not a minute longer/ dying from old age.
+
+* 3. Solve energy
+** Why?
+- Energy consumption is linked to affluence.
+- Unlimited or virtually unlimited energy unlocks insane
+  infrastructure and productivity perks
+- Be able to pull CO2 from the air[fn:3].
+- Water treatment plants etc[fn:4].
+- You only need enough energy so there is always some there the moment
+  you look.
+- [[https://www.youtube.com/watch?v=rhFK5_Nx9xY][Kardashev Scale]]. The advancement of the civ.
+
+** How?
+- Industrial scale fusion, a SpaceX for fusion [[https://www.youtube.com/watch?v=aJoRMFWn2Jk][Lex Friedman + Dennis Whyte]].
+- A green manhattan project (Yuval Noah Harari has mentionend this).
+- Fission? [fn:5]
+- Per definition, =renewables=, since we play a long game.
+- When it comes to getting rid of gas and coal you have to acknowledge
+  keeping civilization running is a goal.
+
+** How do we know we make progress?
+- When we put industrial viable fusion energy on the grid.
+- When you pay a flat rate for your electricity bill.
+- When electricity is provided as a public good, in affluent countries.
+
+* 4. Fix software (Rant)
+Seriously, most web and mobile software only works so-so nowadays because of bloated
+software. Everything is bigger and more complicated than it needs to be.
+Reloading some app because it stops working is the norm.
+This garbage is not acceptable in my vision of the future.
+
+Software is supposed to be focused, effective and competent.
+
+The price we pay right now for bloated and uninspired software is
+insanely high. How many mental energy hours go into reloading some app
+that stops responding[fn:6]? Seriously, this is a global humanitarian issue.
+
+Another issue is something I call mind-suck software now. This is
+software that is highly designed and explicitly or implicitly informed by
+behavioral psychology.
+To draw our attention and suck our time.
+When I click on an app with a blue icon because it has a red dot in
+the corner, that is not merely my fault, not only my lack of self restrain.
+That is also the fault of the people that made this software in the
+first place. This is an ethical issue. Long term I hope we understand which kind of
+software is conducive to our well-being and which is sucking our
+minds. [fn:7] Mind-suck software belongs in the trashbin of history.
+
+Existing software that lets me feel the competence of the computer is
+Unix/Linux, FOSS tools, Git, Emacs, and non-bloated parts of the web
+like Wikipedia. We /can/ do it right.
+
+The phone is a completely opaque object to me, with virtually no power to
+reach into it and make it do what I want it to do. Instead, I need to
+hope app vendors come up with something I find useful.
+
+One of my fears currently is that BCIs will inherit from the current mobile model of software delivery.
+I think this would delay the /singularity/ by multiple years.
+
+The issues are uninspired practices and a disregard for the wisdom of the early days of computing.
+Also, the focus on financial incentives breeds less ambitious
+projects.[fn:8]
+
+Also, if it is FOSS, it tends to become small and focused, if it is
+proprietory, it tends to become large and bloated.
+
+All user interfaces could be more like [[https://www.youtube.com/watch?v=bXRDfxp_4H0][Data Rabbit]] right now. Think of
+the difference in productivity across the whole world. People would
+not fight computers anymore but wield great tools of thinking.
+
+** How?
+- FOSS
+- Reinvent the heyday of Lisp and Smalltalk interactive systems.
+  These were made by people for people that build systems.
+- Ideas from [[https://www.youtube.com/watch?v=8pTEmbeENF4][Bret Victor]], [[https://www.youtube.com/results?search_query=rich+hickey][Rich Hickey]], [[https://www.youtube.com/watch?v=8Ab3ArE8W3s][Jack Rusher]] and others.
+- It will be easier when we have more abundance and the
+  incentives don't need to be primarily financial anymore.
+- I choose Clojure. The community has an emphasis on thoughtfulness
+  about how to make good software.
+  It is a Lisp with a focus on interactivity, and raw power through
+  succinctness. Great polymorphism constructs.
+  A strong concurrency model and reach by being hosted on JVM and javascript.
+  In short: A language for humans by humans for building effective information systems.
+
+** How do we know we make progress?
+- When you can change what a button does on your phone.
+- When syncing data between 2 programs on mobile is not an advanced operation.
+
+* 5. Higher tech
+For obvious reasons, any of those can help fix things on this list:
+- AI, information technology, automation.
+- Better computer interfaces (conversational, ... ).
+- Nanotech, material science.
+- Biotech, BCIs, genetics.
+- A science and engineering of processes, policy and government [fn:9].
+- Also infrastructure, networks[fn:10], internet connection, water and goods.
+
+** How do we know we make progress?
+- When a computer asks you back about an edge case you have not
+  thought about while explaining your task to it.
+- When you don't buy toothbrushes at the store anymore because you
+  have a matter compiler or printer or nano factory.
+
+** The special effectiveness of AI
+Say intelligence is the ability to achieve complex goals. If we have
+that in computers the same way we have chess computers, it is an
+instant global win condition.
+A general AI could solve the things on this list, including
+making better AI. Which would further increase its capability of
+fixing the things on this list.
+
+* 6. Solve food
+- Cheap, tasty, clean meat.
+- Just higher-tech food production.
+- Plants. Better plants. More effective plants. And plant-growing buildings.
+
+* 7. Preserve biodervisity and ecosystems
+** Why?
+- Organismic life has an intrinsic value to it.
+- In a medium-long-term situation where energy, material
+  and compute are abundant, /maybe/ [fn:11], the
+  =information= you get from gene sequences and analyzing ecosystems
+  are the most valuable thing there is.
+
+** How?
+- Relatively hard.
+- Fixed by =3=, =8= and =9=, which you in turn push best forward by
+  increasing affluence.
+
+** How do we know we make progress?
+- When the extinction of any species is a global tragedy.
+
+* 8. Solve government and policy
+Why is governmenting not more like engineering?
+Anyway, it is an unsolved problem for obvious reasons:
+- lack of UBI, poverty
+- lack of decisive climate safety action
+- lack of world peace
+- noise pollution
+- +users+ citizens need to bother with paperwork, tax stuff is not automated.
+
+** How?
+I don't know what to do mid-term except try to push affluence
+globally. Higher affluence correlates with a more reasoned
+government generally (See the Nordics).
+This way I would generally bias for more desirable outcomes.
+
+** Outcomes
+The moment we have super-intelligent AI, we get one of multiple
+possible outcomes, with either a group of people controlling
+an AI making the decisions or an AI making the decisions.
+If you are skeptical about this statement, try to play a party of chess
+against a chess computer[fn:12].
+
+** How do we know we make progress?
+- Everybody's education level goes as high as possible.
+  I believe that means everybody can achieve a Ph.D.-level education
+  at minimum.
+- UBI.
+- Explicit policies against noise pollution [fn:13].
+
+* 9. Develop more far-sighted incentives[fn:14]
+** Why?
+Companies are arguably the most competent actors in the world right now.
+
+The fact that [[https://en.wikipedia.org/wiki/Starlink_satellite_services_in_Ukraine][Starlink]] is the entity that fixes the internet in
+Ukraine right now and not a government is showcasing this for me.
+
+What does not fit in my solarpunk future yet is that
+companies are currently *maximizing money*, instead of *human flourishing*.
+
+** How?
+In the mid-term, by pushing forward easier things on this list. Bring about
+abundance and rational decision-making.
+
+Another idea is to make tons of money and become a powerful
+corporate entity yourself. (This counts for anything on this list).
+
+Create enough abundance so money is not the driver anymore. This is
+called /Post Scarcity/ and I think reality looks like this would work.
+Aka more affluence leads to more attention on human flourishing.
+
+** How to know if we made progress?
+- Corporate entities are explicitly pushing to solve other issues on this list.
+- A corporate entity fixes infrastructure in a region of war
+  (Oh, we are making progress!)
+
+* 10. Solve immortality
+For starters something like mind-uploading. Where you have a mind
+backup inside a fault-tolerant system.
+
+
+Medium-long-term we need to make sure earth is safe from meteors and gamma rays.
+Goes into super long-term. By becoming a civilization after the stars
+are gone, and surviving the death of the universe, a civ might ultimately
+decide the fate of the universe.
+
+** How to know if we make progress?
+- When the death of a single person is a global tragedy.
+- When you don't tell children about the history of death until
+  they are old enough to stand it.
+- [[https://www.youtube.com/watch?v=n__42UNIhvU][When Misery /was/]]
+
+* Reading
+- /The Singularity is Near/ Ray Kurzweil
+  It is a truly seminal book. It makes you appreciate exponential
+  processes and then it maps that to computers and
+  biotechnology. Making you see the logic of how fast technology is
+  growing crazy powerful and tiny.
+- Yuval Noah Harari, together with Pinker and others an eminent
+  thinker and proponent of civilization optimism.
+- Steven Pinker /Enlightenment: Now The Case for Reason, Science,
+  Humanism, and Progress/
+- Jared Diamond /Guns, Germs, and Steel/.
+  An eye-opening book about large-scale, big-picture thinking.
+  How civilizations form. Science fiction without being science
+  fiction. It tells you /everything could be different/.
+- David Deutsch /The Beginning of Infinity: Explanations That
+  Transform the World/
+  Big history, big ideas. Connects scientific inquiry with how
+  evolution works. Explains the power of good ideas, talks about
+  beauty, ethics, the fate of the universe and all that with a red
+  thread going through it. Perspective-creating. A continuation of
+  /The Selfish Gene/ in some ways.
+- /Engines of Creation: The Coming Era of Nanotechnology/ K. Eric Drexler.
+  Drexler calmly and matter-of-factly explains how you can have a
+  machine the size of a garage printing a car. The only thing needed
+  is some advances in material science, no new physics is required.
+- If you enjoy thinking about possible outcomes regarding AI,
+  Max Tegmark, /[[https://en.wikipedia.org/wiki/Life_3.0][Life 3.0/]].
+  If you read nothing else from the book, the first chapter describing
+  the fictional near-future secret group called the /Omegas/ is
+  extremely thought-provoking. This is the idea of a small group of
+  individuals controlling a super-intelligent AI, taking over the world
+  and biasing for human flourishing.
+- [[https://www.youtube.com/watch?v=h0962biiZa4][Superintelligence: Science or Fiction? | Elon Musk & Other Great Minds]]
+- I don't fully know why but Richard Dawkins /The Selfish Gene/ is
+  more than an just eye-opener about how evolution works it is also an
+  eye-opener about the power of thinking and common sense.
+- David Sinclair on fixing aging https://www.lifespanpodcast.com/
+- Aubrey de Grey, very vocal about how we need to overcome /deathism/,
+  the idea that death is something to accept.
+- Eliezer Yudkowsky has written about the ethics of progress, longevity and
+  more.
+  If anything in this post resonates with you and you have not read
+  /Harry Potter And The Methods of Rationality/ yet, seriously, I can
+  advise doing that. [[https://www.lesswrong.com/posts/HL6x8zHo9BkuK3tic/transcript-you-should-read-hpmor][I am not alone in saying this.]] The book covers topics on
+  morality, fixing death, being a scientist, and the navigation problem of fixing the world.
+- Isaac Assimovs /[[http://www.thelastquestion.net/][The Last Question]]/ is somehow a good meme about the big-picture.
+
+* Footnotes
+
+[fn:1] In terms of Ray Kurzweil. Techno utopian high tech outcomes that change the game completely.
+
+[fn:2] With =Democratize= I mean make it available to everybody,
+without conditions. And as cheap as possible.
+
+[fn:3] I have picked up this factoid from a Helion Energy blog post somewhere.
+
+[fn:4] Chat gpt mentioned this when I asked what the perks of
+unlimited energy would be
+
+[fn:5]  [[https://www.youtube.com/watch?v=EhAemz1v7dQ][Kurzgesagt fission video]]
+
+[fn:6] I am not even thinking about windows users that are rebooting
+their PC. I can handle only so much brokenness in my mind right now.
+
+[fn:7] Sam Harris has thought publically about this on multiple
+occasions:
+[[https://www.samharris.org/podcasts/making-sense-episodes/226-price-distraction][The price of distraction]], [[https://www.samharris.org/podcasts/making-sense-episodes/304-why-i-left-twitter][Why I left Twitter]]
+
+[fn:8] [[https://www.youtube.com/watch?v=NdSD07U5uBs ][Alan Kay]] has talked about the dynamics of innovation and how
+you don't get this in the climate of short-sighted monetary goals
+
+[fn:9] Already exists, of course, I am just too ignorant to
+even list the correct names.
+
+[fn:10] I really enjoyed this [[https://www.youtube.com/watch?v=Vs1DWYrw2Ps][talk]] by Dylan Beattie it kind of went to
+different concepts about networks and supply chains etc.
+He also mentioned [[https://en.wikipedia.org/wiki/The_Diamond_Age][Diamond Age]] style nanotech that would change the
+game of supply chains completely.
+He pointed out there might be a new logic to supply that would entail
+information and experiences, not goods.
+
+[fn:11] I see multiple possible worlds in this regard. Depending on
+
+- =A=. How hard it is to fabricate evolutionary organismic wisdom.
+- =B=. How valuable evolutionary organismic wisdom is.
+
+We could make some back-on-the-envelope reasoning about =A=,
+but =B= is completely unknown.
+We don't know the value of biodiversity and ecosystems yet and
+we should treat them as extremely valuable.
+
+Also aesthetically, a solarpunk utopian civilization would value
+organismic life just for its intrinsic value.
+
+[fn:12] That is from Max Tegmark, [[https://en.wikipedia.org/wiki/Life_3.0][/Life 3.0/]].
+
+[fn:13] I am just taking noise pollution as an example where
+human well-being is not at the center of what we are doing with
+civilization yet.
+
+The day we ban foliage blowers is the day we can rejoice,
+for we are on the way into our solarpunk utopia.
+
+[fn:14] This idea is straight from Alan Kay. In one of his many
+appearances on youtube and podcasts.

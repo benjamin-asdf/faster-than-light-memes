@@ -1,0 +1,177 @@
+#+title:      generative-art
+#+date:       [2023-09-10 Sun 18:10]
+#+filetags:   :clojure:programming:public:feed:
+#+identifier: 20230910T181003
+#+EXPORT_FILE_NAME: generative-art
+
+I want to do some visualizations and generative art using Clojure. One of my goals is to make a play-through and simulate [[https://en.wikipedia.org/wiki/Braitenberg_vehicle][Braitenberg vehicles]].
+
+I spend time trying to do some [[https://github.com/thi-ng/geom][geom]], which is a really advanced lib with which you probably can do really /a lot/.
+All the examples are sort of on the edges of what you can do with the thing, so not much beginner material in the examples.
+Graphics and OpenGL bring together multiple high-ceiling topics: math, geometry, 3D tech, and shaders (GPU programming).
+
+One day I will speak this language well enough so I straightforwardly know how to make a damn red triangle.
+Eventually, I would like to code shaders like Sebastian Lague in this [[https://youtu.be/X-iSQQgOd1A?si=vP3QDDK_MlQysePP][crazy inspirational]] slime mold simulation thing.
+
+I also tried to generate some SVG, also with geom but realized for the kind of stuff I want to do, I probably want to be more in the direction of a game engine kinda of world with update logic, instead of declaratively say the animations.
+
+I want to make toys and game-like things. For the moment I leave both the 90s svg forms stacking approach, as well as a 3D/pixel/shader approach for another time.
+
+I decided [[https://github.com/quil/quil][quil]] looks like it has a low floor and a high ceiling, so let's go.
+
+* Brownians
+
+#+begin_export html
+<iframe width="605px" height="605px" src="https://vehicles.faster-than-light-memes.xyz/art/p/brownians/20"></iframe>
+#+end_export
+
+/brownians #20/
+
+The Brownian world is my first generative art algorithm toy simulation world.
+
+[[https://github.com/benjamin-asdf/ftlm-vehicles/blob/main/src/ftlm/vehicles/art/gaus_circles.cljs][Current code]], [[https://vehicles.faster-than-light-memes.xyz/art/g/brownians?page=0][art gallery]].
+
+I came across [[https://tylerxhobbs.com/work][Tyler Hobbs]] and decided his stuff is really cool. I started skimming [[https://tylerxhobbs.com/essays/2014/probability-distributions-for-algorithmic-artists][probability distributions for algorithmic artists]] and decided I needed Gaussian Bell curves in my algorithms.
+
+When you do biology, biochemistry and these things, almost all relationships are expressed in [[https://en.wikipedia.org/wiki/Normal_distribution][normal distributions]] a.k.a bell curves.
+Or as overlapping bell curves from multiple factors. Say the height of plant genotype, the count of blood cells in a sample, and the reaction times of a human.
+
+#+begin_export html
+<div style="background-color: white;">
+<img src="https://images.squarespace-cdn.com/content/v1/5c12933f365f02733c923e4e/1548724206632-OAMC8N2U2KA420Y6S3CG/normal-distribution.png" alt="normal distribution">
+</div>
+#+end_export
+
+It only has 2 parameters, the =mean= and the =standard-deviation=.
+
+With the mean, I move the curve left and right, with the std-deviation I make it taller or flatter. =q/random-gaussian= returns a Gaussian random number with a mean of =0= and standard deviation something - So the return values are between =-1= and =1=.
+
+Quil:
+
+#+begin_src clojure
+(defn normal-distr [mean std-deviation]
+  (+ mean (* std-deviation (q/random-gaussian))))
+#+end_src
+
+** Clouds
+
+If I spawn circles in a 2D rect using a normal distribution, I get a natural-looking cloud.
+
+#+begin_export html
+<details>
+    <summary>Circles in a cloud, brownians #22</summary>
+#+end_export
+
+#+begin_export html
+<iframe width="605px" height="605px" src="https://vehicles.faster-than-light-memes.xyz/art/p/brownians/22"></iframe>
+#+end_export
+
+#+begin_export html
+</details>
+#+end_export
+
+** spread
+
+ChatGPT helped generate some code that made them fly away from the center.
+
+I control it with the =:spread-speed= control parameter of the Brownian world.
+
+
+#+begin_export html
+<details>
+    <summary>High spread-speed setting in brownians #5</summary>
+#+end_export
+
+#+begin_export html
+<iframe width="605px" height="605px" src="https://vehicles.faster-than-light-memes.xyz/art/p/brownians/5"></iframe>
+#+end_export
+
+#+begin_export html
+</details>
+#+end_export
+
+** Little motions... Brownian motion!
+
+I think I want to make the wobble around and I realize, I really want some [[https://en.wikipedia.org/wiki/Brownian_motion][Brownian motion]] algorithmic cakeness in my world.
+
+I am not sure how accurately this is of a simulation, but making the velocity of my circles change in a =normal distribution= way, where =0= is the mean and they wiggle in the other directions else.[fn:1]
+
+#+begin_src clojure
+(defn brownian-motion [entity]
+  (let [brownian-factor (:brownian-factor (controls))]
+    (update entity :velocity (fnil (fn [[x y]] [(+ x
+                                                   (* brownian-factor (q/random-gaussian)))
+                                                (+ y
+                                                   (* brownian-factor (q/random-gaussian)))])
+                                   [0 0]))))
+#+end_src
+
+Well, I was very satisfied with the result. So much so that I called the whole toy world and the resulting art gallery =brownians=.
+
+#+begin_export html
+<details>
+    <summary>No spread-speed, but high brownian-factor - brownian #23</summary>
+#+end_export
+
+#+begin_export html
+<iframe width="605px" height="605px" src="https://vehicles.faster-than-light-memes.xyz/art/p/brownians/23"></iframe>
+#+end_export
+
+#+begin_export html
+</details>
+#+end_export
+
+Ah =brownian-factor= I could have called =temperature=. Now the term /absolute zero/ makes absolute sense. =Brownian-factor= cannot get lower than =0=.
+Yes, the way they are flying reminds me very much of physics/chemistry simulation gifs of these things.
+
+** Simulating infection
+
+I added an attribute =infectable?= to my circles and made some of them spawn infected. Then I make some temporary lines between 2 random infected and non-infected circles.
+With a normal distribution, the non-infected now too becomes infected. With full disregard for all prior art on epidemiology, there is a normal distribution in play!
+
+I have controls =infected-rate=, how many circles spawn infected, =:infectiousness= makes it spread faster,
+=:infected-color= and =:infected-transform= changes the appearance of infected ones.
+
+#+begin_export html
+<details>
+    <summary>Defaults with red infection circles brownian #24</summary>
+#+end_export
+
+#+begin_export html
+<iframe width="605px" height="605px" src="https://vehicles.faster-than-light-memes.xyz/art/p/brownians/24"></iframe>
+#+end_export
+
+#+begin_export html
+</details>
+#+end_export
+
+Now you can look at this and see an abstract graph. This could be friends in a network with an idea spreading. A computer virus jumping between computer nodes.
+Or the dankest meme conquering the internet.
+
+I played around with the controls and put some into a [[https://vehicles.faster-than-light-memes.xyz/art/g/brownians?page=0][gallery]]. The code for the gallery is [[https://github.com/benjamin-asdf/ftlm-vehicles][here]].
+
+* Screencast
+
+Probably way too lengthy. You can watch how I spent last Saturday :)
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G1PN8Vnwuds?si=cyQsMCXuQXT1uzhL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Inspirations
+
+- [[https://youtu.be/F4pozY_RF5c?si=ufmx_5kQuJw8ppdq][Heart of Clojure 2019 - Sarah Groff Hennigh-Palermo - Raving Through the 90s with SVG and Clojurescript]]
+- https://youtu.be/HbW5hCdJgjA?si=Fj6fqeF8OHJoEiBW
+- [[https://www.youtube.com/watch?v=TeXCvh5X5w0][Creative Computation – Jack Rusher]]
+- Tyler Hobbs
+- [[https://thi.ng/][Karsten Schmidt]]
+
+* Footnotes
+
+[fn:1]
+
+The Wikipedia article has quite some equations.
+
+Seems like the particle distribution follows, unsurprisingly, a normal distribution. I think my circles are quite close to this.
+
+Most stay where they spawn and some fly off.

@@ -1,0 +1,69 @@
+#+title:      intro-to-clojure
+#+date:       [2022-09-12 Mon 20:23]
+#+filetags:   :clojure:feed:
+#+identifier: 20220912T202304
+#+EXPORT_FILE_NAME: intro-to-clojure
+
+This is a small list of recources for getting into Clojure, for an intro into why
+I believe Clojure is powerful check: [[denote:20230126T094804][The Joy Of Clojure]].
+
+* Introduction
+
+Clojure is a modern, functional lisp with a fiercely convinced community and
+production orientation.
+
+* Start
+
+I highly recommend [[https://www.maria.cloud/intro][Maria.Cloud]], you can just go there and start coding.
+This is great for anybody that does not know yet x
+
+
+* Clojure is different
+
+If you try to do the same things in Clojure that you know from Javascript or Python,
+this will not work. Embrace Clojure is different. You should not be a vegan searching for good
+cheese. [[https://lambdaisland.com/blog/2021-06-04-clojure-beginners-just-like-vegans-searching-for-good-cheese][Use an avocado instead.]]
+
+* A dev environment
+
+Get prepared for your journey as a pilot of an alien spaceship.
+As a beginner I suggest either
+
+** Vs Code
+Easy to make work. A great editor. You will not need to be ashamed of
+your choice. [[https://calva.io/getting-started/][calva for vscode]]
+
+** Emacs
+Strong affinity to hacker culture and a program that is more than a
+tool, but eventually an extension to your hands, heart, and mind.
+
+Here is a config file I tried to make for beginners:
+https://github.com/benjamin-asdf/simple-easy-emacs
+
+A framework by clojurians that might be just right for you:
+https://github.com/corgi-emacs/corgi
+
+There is also doom and spacemacs that enjoy wide appraisal for their
+"out of the box" experience.
+
+* Nr 1 book for beginners
+
+[[https://www.braveclojure.com/clojure-for-the-brave-and-true/][Clojure for the Brave and True]]
+
+* Slack
+
+Meet nice people that are excited about the tech [[https://clojurians.slack.com/?redir][on slack]].
+Seriously a lot of people hang there and answer beginner questions,
+everybody is welcome.
+
+* Other such lists
+
+Carin is cool and has a funny picture of the emacs learning curve here:
+https://howistart.org/posts/clojure/1/
+
+I like that they have a philosophy section mentioning Rich Hickey's talks
+this matters a lot to clojurians.
+
+https://thoughtbot.com/blog/tips-for-clojure-beginners
+https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f
+https://www.clojurenewbieguide.com/

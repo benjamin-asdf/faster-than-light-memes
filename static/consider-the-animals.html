@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consider the Animals</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0e0e0e;
+      color: #d4d0c8;
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+    }
+
+    #hero h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: normal;
+      color: #f0ece0;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    #hero p {
+      font-size: 1.2rem;
+      color: #888;
+      max-width: 560px;
+      margin-bottom: 64px;
+    }
+
+    /* COUNTER */
+    #counter-block {
+      border-top: 1px solid #222;
+      padding-top: 48px;
+    }
+
+    .counter-label {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .counter-number {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: normal;
+      color: #c8392b;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .counter-sub {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 32px;
+    }
+
+    /* QUESTION */
+    #question {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    #question h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: normal;
+      color: #bbb;
+      margin-bottom: 24px;
+    }
+
+    #question p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      color: #d4d0c8;
+      font-style: italic;
+    }
+
+    /* QUOTES */
+    #quotes {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    #quotes h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 64px;
+    }
+
+    .quote-block {
+      margin-bottom: 72px;
+    }
+
+    .quote-text {
+      font-size: 1.25rem;
+      color: #c8c4b8;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      border-left: 2px solid #333;
+      padding-left: 24px;
+    }
+
+    .quote-attr {
+      font-size: 0.85rem;
+      color: #555;
+      padding-left: 24px;
+    }
+
+    /* CHART */
+    #data {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    #data h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 32px;
+    }
+
+    .chart-embed {
+      width: 100%;
+      height: 500px;
+      border: none;
+      background: #111;
+    }
+
+    /* TIMELINE */
+    #timeline {
+      border-top: 1px solid #1a1a1a;
+    }
+
+    #timeline h2 {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 48px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-year {
+      font-size: 0.85rem;
+      color: #444;
+      min-width: 48px;
+      padding-top: 4px;
+    }
+
+    .timeline-text {
+      color: #888;
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .timeline-name {
+      color: #555;
+      font-size: 0.8rem;
+      margin-top: 6px;
+      font-style: normal;
+    }
+
+    /* END */
+    #end {
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+    }
+
+    #end p {
+      font-size: 1.5rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    #end .cta {
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    #end a {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <h1>What would the world look like<br>if this were not okay?</h1>
+  <p>Exactly like this. Nothing would have to look different.</p>
+
+  <div id="counter-block">
+    <div class="counter-label">Land animals killed since you opened this page</div>
+    <div class="counter-number" id="counter">0</div>
+    <div class="counter-sub">~2,500 per second. 80 billion per year.</div>
+
+    <div class="counter-label" style="margin-top: 32px;">Per day</div>
+    <div style="color: #666; font-size: 1rem; line-height: 2;">
+      202,000,000 chickens &nbsp;·&nbsp; 3,800,000 pigs &nbsp;·&nbsp; 900,000 cows
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section id="question">
+  <h2>You probably already know this is wrong.</h2>
+  <p>
+    Not as a feeling — as a conclusion. The people you respect most have already said it.
+  </p>
+  <p class="highlight">
+    The question is not whether you know. The question is whether you're looking.
+  </p>
+</section>
+
+<!-- QUOTES -->
+<section id="quotes">
+  <h2>People who have thought hard about this</h2>
+
+  <div class="quote-block">
+    <div class="quote-text">
+      "The fact that I participate in a system that does this knowingly more or less condemns me as a total hypocrite. That laziness, given the magnitude of the suffering we're imposing on non-human animals, that laziness is a horrible thing about me."
+    </div>
+    <div class="quote-attr">Sam Harris — neuroscientist, philosopher</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">
+      "In 100 or 200 years time, we may look back on the way we treated animals today as something like we today look back on the way our forefathers treated slaves. It requires a level of social courage, which I haven't yet produced, to break out of that."
+    </div>
+    <div class="quote-attr">Richard Dawkins — evolutionary biologist</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">
+      "Animals are the main victims of history, and the treatment of domesticated animals in industrial farms is perhaps the worst crime in history."
+    </div>
+    <div class="quote-attr">Yuval Noah Harari — historian</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">
+      "If a being suffers, there can be no moral justification for refusing to take that suffering into consideration."
+    </div>
+    <div class="quote-attr">Peter Singer — philosopher, Princeton</div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">
+      "I have always eaten animal flesh with a somewhat guilty conscience."
+    </div>
+    <div class="quote-attr">Albert Einstein — letter to Max Kariel, 1953</div>
+  </div>
+</section>
+
+<!-- DATA -->
+<section id="data">
+  <h2>The numbers</h2>
+  <iframe
+    class="chart-embed"
+    src="https://ourworldindata.org/grapher/animals-slaughtered-for-meat?tab=chart"
+    loading="lazy"
+  ></iframe>
+  <p style="font-size: 0.8rem; color: #444; margin-top: 12px;">
+    Source: Our World in Data / UN FAO
+  </p>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2>Common sense across time</h2>
+  <p style="color: #555; margin-bottom: 48px; font-size: 0.95rem;">
+    These people are not ahead of their time. They simply looked.
+  </p>
+
+  <div class="timeline-item">
+    <div class="timeline-year">~500 BC</div>
+    <div>
+      <div class="timeline-text">"Those who are accustomed to abominate the slaughter of animals as iniquitous and unnatural, will think it still more unjust and unlawful to kill a man."</div>
+      <div class="timeline-name">Pythagoras — mathematician, philosopher (via Iamblichus)</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">1789</div>
+    <div>
+      <div class="timeline-text">"The question is not, Can they reason? nor Can they talk? but, Can they suffer?"</div>
+      <div class="timeline-name">Jeremy Bentham — philosopher</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">1813</div>
+    <div>
+      <div class="timeline-text">"I wish no living thing to suffer pain."</div>
+      <div class="timeline-name">Percy Bysshe Shelley — poet, atheist, vegetarian</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">1953</div>
+    <div>
+      <div class="timeline-text">"I have always eaten animal flesh with a somewhat guilty conscience."</div>
+      <div class="timeline-name">Albert Einstein — letter to Max Kariel</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">1975</div>
+    <div>
+      <div class="timeline-text">"If a being suffers, there can be no moral justification for refusing to take that suffering into consideration."</div>
+      <div class="timeline-name">Peter Singer — Animal Liberation</div>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-year">2015</div>
+    <div>
+      <div class="timeline-text">"Animals are the main victims of history, and the treatment of domesticated animals in industrial farms is perhaps the worst crime in history."</div>
+      <div class="timeline-name">Yuval Noah Harari — Sapiens</div>
+    </div>
+  </div>
+</section>
+
+<!-- END -->
+<section id="end">
+  <p>Consider the animals.</p>
+  <div class="cta">
+    Watch <a href="https://www.youtube.com/watch?v=LQRAfJyEsko" target="_blank">Dominion</a>
+    &nbsp;·&nbsp;
+    Read <a href="https://www.youtube.com/watch?v=Z3u7hXpOm58" target="_blank">Earthling Ed</a>
+    &nbsp;·&nbsp;
+    <a href="https://ourworldindata.org/meat-production" target="_blank">Our World in Data</a>
+  </div>
+</section>
+
+<script>
+  // Counter: ~2535 land animals per second globally
+  const rate = 2535;
+  const start = Date.now();
+
+  function updateCounter() {
+    const elapsed = (Date.now() - start) / 1000;
+    const count = Math.floor(elapsed * rate);
+    document.getElementById('counter').textContent = count.toLocaleString();
+    requestAnimationFrame(updateCounter);
+  }
+
+  updateCounter();
+</script>
+
+</body>
+</html>

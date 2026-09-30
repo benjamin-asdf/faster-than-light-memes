@@ -1,0 +1,113 @@
+#+title:      Blog posts
+#+date:       [2022-12-10 Sat 17:12]
+#+filetags:   :ftlm:public:
+#+identifier: 20221210T171258
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: ftlm-navbar
+
+
+
+#+begin_export html
+<span>
+This page preceeds the
+</span>
+<button style="display: inline;" onclick="navbarToggle.toggleNavbar()">search bar</button>
+<span>
+on top.
+</span>
+#+end_export
+
+* Philosophy of Design
+
+** [[denote:20250619T182010][Philosophy of Design - Notes]]
+** [[denote:20251026T183929][Recovering Some Spiritual Concepts]]
+
+* Clojure / Lisp
+
+** [[denote:20251003T195352][Clojure, is weird]]
+** [[denote:20251116T135729][Eight Queens in core.logic]]
+** [[denote:20241101T180747][shadow-css for Personal Use]]
+** [[denote:20230205T105009][Small and Friendly Errors with Cider]]
+** [[denote:20230713T202443][Zappy Cider Eval Overlays]]
+** [[denote:20220919T110439][Binaural Beats with Scittle]]
+** [[denote:20230615T165615][Meta The Meta (Use JVM repl for bb script development)]]
+** [[denote:20230625T201242][Minds And Machines]]
+** [[denote:20230620T202742][Bb Tasks And More (Youtube)]]
+** [[denote:20230126T094804][The Joy of Clojure]]
+** [[denote:20230218T165549][Which Clojure Core Function are You?]]
+** [[denote:20230424T082516][Emacs Clojure Lispy Mind Meld [Youtube]​]]
+** [[denote:20220926T132145][Scittle prints itself]]
+** [[denote:20220912T202304][Intro to Clojure]]
+** [[denote:20221014T102207][Jacking in nbb]]
+** [[denote:20230708T095438][Lisp]]
+** [[denote:20230707T090418][No Iterations - The Lisp REPL for non lispers]]
+** [[denote:20230705T083842][Bobscheme]]
+** [[denote:20230716T113255][Heart Beats]]
+
+* Gen Art
+
+** [[https://faster-than-light-memes.xyz/pareidolia.html][Pareidolia]]
+** [[denote:20230910T181003][Art]]
+** [[denote:20240913T201351][Art Diary]]
+
+* Emacs / Setup / Programming
+
+** [[denote:20230101T200330][Extending your Reach (Good Tools Part 1)]]
+** [[denote:20230101T184022][A System Like Water 1]]
+** [[denote:20221004T160458][Scratching in space]]
+** [[denote:20221014T153337][Backing you up]]
+** [[denote:20221112T160206][Pearls of Introspection]]
+** [[denote:20221213T164726][The Deeper Chat-Gpt]]
+** [[denote:20221130T162931][Cloudwatch Logs Query Iam Example]]
+** [[denote:20220923T185936][Anonymous lambdas in emacs binds]]
+** [[denote:20220922T123209][Bashing is better than extending]]
+** [[denote:20221017T095640][Dir env for process-environment]]
+
+* Thinking and Dreaming
+
+** [[denote:20260813T112235][Psychological Nuggets]]
+** [[denote:20250312T162554][Brain Feelings]]
+** [[denote:20250309T170424][Lip Reading Ideas]]
+** [[denote:20250619T191449][Where I Changed And Did Not Change My Mind]]
+** [[denote:20250105T200113][Critique On Pure Bogus]]
+** [[denote:20241105T104813][Mind Palace I]]
+** [[denote:20221117T201102][Mid-Term Goals]]
+** [[denote:20230430T122647][What I was not told]]
+** [[denote:20230430T202442][In The Business of Building Minds]]
+** [[denote:20230518T185739][Memetics]]
+*** [[denote:20240611T155542][Neuronal Memetics Overview]]
+** [[denote:20230627T085728][The Civ We Want To Be]]
+** [[denote:20221115T192004][Not even the Sky is the limit]]
+** [[denote:20221020T191814][Dreaming code]]
+** [[denote:20230718T145435][The Power Of Intelligence]]
+** [[denote:20230820T125336][Thought dump]]
+** [[denote:20241125T192323][Wizards and Shamelessness]]
+
+* Cybernetics, Living Computation, AI
+
+** [[denote:20240606T185815][Hyper dimensional computing, SDM, Neuronal Ensembles]]
+** [[denote:20240208T124507][Neuronal Ensemble Memetics]]
+*** [[denote:20241116T184716][memetic-engine-wizards]]
+*** [[denote:20240501T104424][Synapse Turnover]]
+** [[denote:20230915T190843][Vehicles (Overview)]]
+*** [[denote:20231001T171901][Vehicle I]]
+*** [[denote:20231016T095054][Vehicle 2 and 3, Fear, Aggression, Love]]
+*** [[denote:20240212T183802][Illusions (Gen Art)]]
+*** [[denote:20240306T183858][Vehicle 12 - Thought pumps, Cell Assemblies]] (part 1)
+** [[denote:20230716T201616][AI]]
+*** [[denote:20241119T151911][Machine Learning Diary]]
+** [[denote:20241122T100843][Current Stuff | November 2024]]
+** [[denote:20250619T175458][front page archive]]
+
+
+* Books
+** [[denote:20230715T105044][Reading (Ongoing)]]
+** [[denote:20230731T094917][Flights of Fancy]]
+
+* Other
+** [[denote:20230617T130706][Screencasts]]
+** [[denote:20230714T111421][FAQ]]
+** [[denote:20230102T115024][Resume]]
+** [[denote:20250627T183258][Work With Benjamin Landing Page]]
+** [[denote:20230301T123854][Contact]]
+** [[denote:20230725T114804][About]]

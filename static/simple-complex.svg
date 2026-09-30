@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="479" height="350" version="1.1">
+  <defs id="edraw-defs">
+    <marker id="edraw-def-0-arrow" markerWidth="6" markerHeight="6" preserveAspectRatio="none" viewBox="-10 -10 20 20" refX="0" refY="0" orient="auto" stroke="none" stroke-width="1" fill="#101010">
+      <path d="M-10,-7 -10,7 4,0Z" />
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="479" height="350" id="edraw-background" stroke="none" fill="#fff">
+    <animate attributeName="fill" repeaatCount="indefinite" values="red;cyan" dur="1s" />
+  </rect>
+  <g id="edraw-body">
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M60 60V80v20v60v20v20v20v20v20v20" />
+    <text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="320" x="100">simple</text>
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M100 60V80v20v20v20v20v20v20v20v20v20v20" />
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M140 60V80v20v20v20v20v20v20v20v20v20v20" />
+    <text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="320" x="360">complex</text>
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M320 80v20v20v20v20v20v20v20v20v20v20" />
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M360 80v20v20v20v20v20H340H320v20v20h20h20v20v20v20" />
+    <path marker-end="url(#edraw-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M400 80v20v20v20v60v20v20v20v20" />
+  </g>
+</svg>

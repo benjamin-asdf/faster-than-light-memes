@@ -1,0 +1,62 @@
+#+title:      shadow-css-in-practice
+#+date:       [2024-11-01 Fri 18:07]
+#+filetags:   :clojure:clojurescript:programming:feed:public
+#+identifier: 20241101T180747
+#+EXPORT_FILE_NAME: shadow-css-in-practice
+
+Tiny overview of my personal usage of [[https://github.com/thheller/shadow-css][shadow-css]], which I like.
+
+-------------
+
+The screencast is meant to showcase the intersection of emacs, meow, lispy, clojure, browser and repl driven development.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8TwLHQrqG4w?si=7DtbBja0wZzSr4Bf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+-------------
+
+Conceptually tiny:
+
+- Write something like =(css :p-4 :mt-2)=, =css= is a macro that just returns a classname, nothing else
+- shadow-css analyses your =clj/cljs/cljc= sources outputs .css files where the class names =your_namespace_L44=, that's it.
+
+This is the /clj hiccup shadow-css scittle/ stack.
+
+It *builds* using *babashka* only, generating *html* from *hiccup* source code.
+
+For *development*, you run a clj *repl*, optionally with a *scittle nrepl* in the *browser*, too.
+
+Your *scittle source code* are *cljs files* that you add to your build artifact (a directory of files in my case),
+and you add them with a *script tag* on the pages you need them.
+
+*CSS* is generated with the /tailwind-like/ *shadow-css*.
+
+This stack grew bottom up.
+
+Resources:
+
+- [[https://github.com/thheller/shadow-css][shadow-css]]
+- [[https://code.thheller.com/blog/shadow-cljs/2024/10/30/supercharging-the-repl-workflow.html][Thomas Heller REPL blog post]]
+- [[https://youtu.be/8TwLHQrqG4w?si=vx3qlq1NIe22xJmH][screencast]] (my blog)
+- [[https://github.com/benjamin-asdf/faster-than-light-memes?tab=readme-ov-file#gen-html-with-clojure-gen-css-with-shadow-css][code]] (my blog)
+
+All build steps run with babashka, which is fast!
+
+The result is [[./documentaries.html][here]].
+
+-------------
+
+(Currently, the build duration of my blog is dominated by the emacs org html gen).
+
+-------------
+
+This would go well together with a clojure server that "just" returns html,
+optionally with [[https://github.com/thheller/shadow-graft][shadow-graft]].
+
+Clojurescript and/or reagent could be added if needed.
+(scittle supports reagent, so clojurescript might not be needed).
+
+-------------
+
+It's something I would consider for small-medium projects.

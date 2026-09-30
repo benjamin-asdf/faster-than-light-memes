@@ -1,0 +1,81 @@
+#+title:      emacs-clojure-lispy-mind-meld
+#+date:       [2023-04-24 Mon 08:25]
+#+filetags:   :clojure:emacs:scittle:feed:
+#+identifier: 20230424T082516
+#+EXPORT_FILE_NAME: emacs-clojure-lispy-mind-meld
+
+My first screencast of programming Clojure.
+
+* Website
+
+Have you ever thought, /I just want to flip a coin/?
+You might have landed on a few bloated websites filled with commercial bullshit.
+
+I thought this is a good chance to make a video while I program something.
+
+- [[https://faster-than-light-memes.xyz/flipcoin/index.html][Just Flip A Coin]]
+- [[https://youtu.be/W5_mEolJ_Bs][Youtube Screencast]]
+- [[https://www.youtube.com/watch?v=708EYQj8n1w][Adding a coin history]]
+
+* Lispy
+
+Thanks to Mr. Oleh Krehel aka abo-abo. This package is truly magnificent and a big part of my Emacs feel and power.
+
+Keep in mind that Lispy has a steep learning curve. Comparable to vim-bindings coming from non-modal editing.
+The payoff is a world of editing =s-exp= at the speed of thought.
+It is raw power.
+
+Being able to modify lisp, interleaved with evaling it, is a profound and mind-expanding
+experience. It is the real deal of feeling and knowing the competence of the computer.
+
+- [[https://github.com/abo-abo/lispy][lispy]]
+- see Meow for my config, I have interleaved the two.
+
+* Meow
+
+After using Evil for years, the desire in me grew to use something more bare bones.
+What pushed me over the edge was realizing that =evil-search= was a second implementation of what
+=isearch=, a truly magnificent library, already covers.
+
+I think Evil is great and maybe also the place to start, because there is a lot of lore for Vim
+beginners, intermediates and masters.
+
+Meow shares with Vim modal editing. It too is uncompromisingly built for power users.
+
+Meow is like a pair of skates that allow you to ride the Emacs builtins.
+
+This design is reified in the =keypad= concept, which allows you to run default Emacs bindings.
+Using the =leader-key= paradigm, which we got from Spacemacs and indisputably a great idea.
+
+[[https://github.com/meow-edit/meow][github]]
+
+My [[https://github.com/benjamin-asdf/dotfiles/blob/master/mememacs/.emacs-mememacs.d/lisp/init-meow.el][init-meow.el]], polished and being polished to my taste and needs.
+
+* Stumpwm
+
+Lisp (and Smalltalk, I suppose) are a profound discovery of humanity.
+In a way, I believe the power of Emacs is just the power of Lisp, molded
+into a tool for thinking and computer usage.
+
+The first time started Stumpwm and went through the /Getting Started/, I immediately
+had the feeling in my bones /this is my wm/.
+
+Basically in the second paragraph, they say how to open Emacs :).
+
+I REPL into Stumpwm with /sly/ and build a few of my own window management commands.
+
+Like emacs, maximal in its capability and minimal in its presentation.
+It lets me get everything else out of the way so I can focus on emacs.
+
+Defining commands that optionally call through to Emacs gives me a new level
+of fluidity making the system feel like made of water and out of one whole.
+The only thing better than that is having EXWM, but this comes with its own tradeoffs.
+With Stumpwm I enjoy a truly solid and trustworthy =x= client implementation.
+
+- [[https://stumpwm.github.io/][stumpwm website]]
+- [[https://github.com/benjamin-asdf/dotfiles/blob/master/stumpwm/.stumpwm.d/init.lisp][init.lisp]]
+
+
+* See also
+- [[https://faster-than-light-memes.xyz/the-joy-of-clojure.html][The quick-eval]] and how I optimize for staying with the flow.
+- [[https://faster-than-light-memes.xyz/extending-your-reach.html][Extending Your Reach]] - Mind expansion is a feature of real tools.

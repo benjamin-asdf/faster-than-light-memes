@@ -1,0 +1,77 @@
+#+title:      popping-in-time
+#+date:       [2022-11-08 Tue 10:14]
+#+filetags:   :emacs:public:
+#+identifier: 20221108T101432
+
+Being a time lord is better than popping.
+Freezing time in emacs practice.
+More control is more power.
+
+* Introduction
+
+#+begin_quote
+A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.
+#+end_quote
+
+A while ago I did something semi-random in my emacs config and it made
+my life better.
+Shlick, smooth, much control, much frozen time but more zappy at the same time.
+
+I removed my completion popup in favor of completing on a key via my
+completion framework (vertico + consult).
+
+* I don't pop
+
+My emacs completion journey went from [[https://github.com/company-mode/company-mode][company-mode]] (spacemacs) to
+[[https://github.com/minad/corfu][corfu]] (handcrafted [[https://github.com/benjamin-asdf/dotfiles/tree/master/mememacs/.emacs-mememacs.d/][config]]) to now manually hitting =completion-at-point=.
+
+#+begin_src elisp
+  (setq completion-in-region-function #'consult-completion-in-region)
+#+end_src
+
+* Freezing time / being a time lord
+
+The same concept comes up when coding (especially Clojure).
+Being able to control time is power.
+I made the frozen time connection when I was working on some
+event handle pipeline. I realized can =def= all the intermediate data
+structures and go 1 by 1. "At my own time".
+I call that being a time lord.
+
+Being a time lord is different from getting rid of time.
+[[https://www.youtube.com/watch?v=ScEPu1cs4l0][Are we there yet]] is an amazing talk about how correctly model time in programming.
+
+* The psychology of IDE popping
+
+It is like being a cat waiting for a mouse to out of its hole [fn:1].
+I feel like in mainstream software development currently your IDE has
+to pop a lot.
+And when it pops quicker and more stuff, that is
+then perceived satisfying.
+This is sometimes part of what is called "development "
+
+and even a deciding factor if you like a tech stack or not.
+
+* Raw notes
+
+Reflections 2 days after removing corfu:
+
+#+begin_quote
+- best thing I did was deleting corfu
+  - only now do I feel the control I am gaining from this
+  - it was before I was waiting like an animal for the complete
+  - now I am like a wizard moving through space where I want to be
+  - zappy
+#+end_quote
+
+I am pretty sure the effect takes at least a day and a night to unfold.
+
+* Slow and deliberate
+
+Another instance of "slow and deliberate" in my emacs practice is only
+enabling flycheck on demand.
+
+* Footnotes
+
+[fn:1]
+I picked that expression up from Sam Harris Waking up App.

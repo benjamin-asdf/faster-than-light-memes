@@ -1,0 +1,6 @@
+#+title:      hotreload
+#+date:       [2023-02-09 Thu 10:30]
+#+filetags:   :public:
+#+identifier: 20230209T103020
+
+https://www.reddit.com/r/Unity3D/comments/10v66xi/we_just_released_a_free_tool_which_lets_you_skip/

@@ -1,0 +1,214 @@
+#+title:      yes-or-no-error-feedback
+#+date:       [2023-02-01 Wed 15:52]
+#+filetags:   :clojure:ftlm:
+#+identifier: 20230201T155248
+#+EXPORT_FILE_NAME: index
+
+
+* The Quick-Eval
+
+The =quick eval= flow:
+
+1. Modify source code sexp
+2. eval
+3. Modify more
+
+There is a place after the hammock where implementing code becomes
+rather mechanical.
+If you know roughly the inputs and outputs of the function you are writing.
+
+One of the places I fell productive with Lisp/Clojure is inside the
+source code.
+
+Modify sexps <-> eval
+
+You can go at the speed of light[fn:1] for modifying sexp, using the
+pareidit-like editor extension of your choice.
+
+Then eval, bam, bam, bam. This can be at the speed of [...]
+
+I want to optimize this process
+
+1. By honing =lispy= skills and juggle those sexp.
+2. By smoothing out the edges of =cider-eval=.
+
+This is a pattern movement, a practice involving both the mind, the
+fingers and muscle memory, as well as the editor.
+
+Like juggleling and touch typing or playing an instrument,
+it requires dedication to practice the movements.
+
+In this practice, we are allowed to mold the tool to our mind, giving
+us infinite possibilities of becomming more effective.
+
+Knowledge of the editor allows unlocks the power and wisdom to modify
+the instrument itself, 
+
+
+* Let it flow
+
+#+begin_quote
+First time I saw a Clojure stacktrace, I thought my computer is broken.
+#+end_quote
+(Ariel Alexa) [fn:3]
+
+#+begin_quote
+Growing by removing is growing stronger.
+#+end_quote
+(Right here this blog post)
+
+Alex Miller mentionend[fn:2] recently that the
+error feedback of Clojure was /never intended the include the stacktrace/.
+
+=Cider= already has a *minimalistic error feedback* available.
+
+#+begin_src elisp
+(setq-default cider-show-error-buffer nil)
+#+end_src
+
+With this setting we get a little overlay right next to our cursor
+when evaling and there is an error.
+
+#+CAPTION: Emacs cider eval error overlay displaying a runtime error message
+https://i.imgur.com/Xk7Lbc1.png
+
+I have switched to those error overlays for 2 weeks or so and I do not want to
+go back.
+
+With this setting I have a more smoothed out =Quick-Eval=
+flow.
+
+My mind is allowed to stay
+right at the spot in the code that I was thinking.
+
+Cider clojure stacktrace buffers are to be honest quite heavy. Even if
+you hide tooling etc.
+
+The aesthetiks of running into an error for me are less
+
+On a more sublte note, I want to go back from the concept that errors
+are something wrong.
+
+Errors are the normal, correct behaviour of my program, at least in the context
+of developing.
+Sometimes I even eval just to check that there *is* an error.
+This should be a regular thing to be doing and I do not want to feel
+like I do something wrong.
+
+* When you want it all
+
+Ok =*cider-error*=, we can always stay friends.
+
+Sometimes you do want the full stacktrace, =*e= exists for this. Also
+=*cider-error*= did not go anywhere, we still faithfully render our
+stacktrace there.
+
+#+begin_src elisp
+(defun mm/pop-cider-error ()
+(interactive)
+(if-let ((cider-error (get-buffer "*cider-error*")))
+    (pop-to-buffer cider-error)
+  (message "no cider error buffer")))
+
+(define-key cider-mode-map (kbd "C-c E") #'mm/pop-cider-error)
+#+end_src
+
+There is also a cider buffer selection dispatch thingy: 
+
+#+begin_src elisp
+(define-key cider-mode-map (kbd "C-c X") #'cider-selector)
+#+end_src
+
+=cider-selector= into =x= to bring up the error buffer.
+
+
+* Don't jump to conclusions
+
+I do not end up missing the jumping:
+
+#+begin_src elisp
+(setq-default cider-auto-jump-to-error nil)
+#+end_src
+
+Currently, if you interactively eval[fn:4] and you have a compile error, Cider jumps to
+the top of the file.
+This is because we do not track a file position during the eval and
+Clojure only sees a piece of text, not the file.
+
+So the most important command =cider-eval= that I want to optimize
+for (my =Quick-Eval=) has a rough edge.
+
+Other use cases/reasons for having jumping turned on:
+
+1. You use =cider-load-file=, it jumps correctly.
+2. You introduced compile errros in your project and you eval another
+   load (ns require) form somewhere.
+
+But these do not do it for me. I like the non jumping better.
+
+* Errors should be friendly
+
+Who invented that errors are red and angry?
+
+#+begin_src elisp
+(set-face-attribute
+ 'cider-error-overlay-face
+ nil
+ :background "DarkGreen"
+ :foreground "white")
+#+end_src
+
+Now I have these green and pieceful boxes without my heart rate going
+up.
+
+* Yes or No
+
+In [[https://www.youtube.com/watch?v=FihU5JxmnBg][Debugging with the Scientific Method]], Stuart Halloway mentionend
+what I calling /Red ligth, Green light/ error feedback. It tell you
+only that something didn't work without what what.
+
+Ok:
+
+#+begin_src elisp
+(set-face-attribute
+ 'cider-error-overlay-face
+ nil
+ :background "DarkGreen"
+ :foreground "DarkGreen")
+#+end_src
+
+#+CAPTION: Emacs cider eval error overlay displayed as a full green block.
+https://i.imgur.com/P7cn70e.png
+
+I was still seeing the error in the echo area.
+A quick =debug-on-message=, to see where the message comes from
+
+#+begin_src elisp
+  (setf debug-on-message "nothing")
+#+end_src
+
+aha, in =cider--display-interactive-eval-result=.
+
+The message is controlled by =cider-use-overlays=.
+
+#+begin_src elisp
+  (setq-default cider-use-overlays t)
+#+end_src
+
+Lol, now errors are green blocks and nothing else.
+I suppose to be consistent with my minimalist philosophy I should try
+this out for a few weeks.
+
+* Footnotes
+
+[fn:4] What I call /interactive eval/ is =cider-eval-last-sexp= etc.
+As opposed to =cider-load-file=.
+
+[fn:3] https://www.youtube.com/watch?v=J5cvCv2hlh4 
+
+[fn:2] https://podcasts.apple.com/us/podcast/e86-2022-in-review-datomic-and-clojure-with-jaret/id1461500416?i=1000590958632 
+
+[fn:1] Speed of light meaning here the hypothetical maximum, that would
+basically be 1:1 thought->code transfer.
+What I mean in practice is that there is basically no limit to honing
+the editor skills and setup to make this faster and faster.

@@ -1,0 +1,135 @@
+#+title:      scratching-in-space
+#+date:       [2022-10-04 Tue 16:04]
+#+filetags:   :emacs:feed:
+#+identifier: 20221004T160458
+#+EXPORT_FILE_NAME: scratching-in-space
+
+Emacs scratch buffers have place oriented design.
+
+A simple alternative: make files.
+
+Musings about persistent scratch technology.
+
+* Introduction
+
+If you ever typed something in a buffer called =*scratch*= you will
+inevitably have found yourself in this situation:
+
+1. Just typed some awesome code.
+2. Kill scratch buffer accidentally or unthinkingly.
+3. That awesome text is gone forever... and it hurts.
+
+I did try [[https://github.com/Fanael/persistent-scratch][persistent-scratch]], in its simplest form, it persists your
+scratch buffer across sessions.
+You still end up having one place for your "current" scratch.
+It just did not click with me.
+
+The whole idea of a scratch buffer might be obsolete ([[http://xahlee.info/emacs/emacs/modernization_scratch_buffer.html][Xah Lee 2008]]).
+
+What I want:
+
+1. Convenient way of writing some code interactively.
+2. Persist it.
+
+* scratching in space
+
+Our disk space is vast, and emacs is great at creating files.
+
+We can be like Sherlock Holmes and never throw our notes away.
+
+Horde those scratches. Put them in git.
+Now you can grep through them, see what you were scratching years in the past.
+
+I have a dir called =~/scratches= with all my scratches.
+This is a bit similar to [[https://start.duckduckgo.com/][denote]], which I use for note-taking.
+
+** here is my current hack for this:
+
+#+begin_src elisp
+(defvar mememacs/scratch-dir (expand-file-name "~/scratch"))
+(defun mememacs/latest-scratch (suffix)
+  (unless (file-exists-p mememacs/scratch-dir)
+    (make-directory mememacs/scratch-dir))
+  (when-let
+      ((f
+	(car
+	 (cl-remove-if-not
+	  (lambda (it)
+	    (and (string-suffix-p suffix it)
+		 (not (string-match-p "#" it))))
+	  (process-lines
+	   "ls"
+	   "-A"
+	   "-t"
+	   mememacs/scratch-dir)))))
+    (expand-file-name f mememacs/scratch-dir)))
+
+(defun mememacs/new-scratch-name (suffix)
+  (unless (file-exists-p
+	   mememacs/scratch-dir)
+    (make-directory
+     mememacs/scratch-dir))
+  (expand-file-name
+   (format "%s.%s" (make-temp-name "scratch-") suffix)
+   mememacs/scratch-dir))
+
+(defun mm/scratch
+    (&optional create-new suffix)
+  "Visit the latest scratch file with `suffix` (a file extension).
+With prefix arg make a new file."
+  (interactive
+   (list current-prefix-arg
+	 (completing-read "scratch filetype: " '("cljs" "clj"))))
+  (let* ((latest (mememacs/latest-scratch suffix))
+	 (buff
+	  (find-file-noselect
+	   (if (or create-new (not latest))
+	       (mememacs/new-scratch-name suffix)
+	     latest))))
+    (pop-to-buffer-same-window buff)
+    (when (eq major-mode 'emacs-lisp-mode)
+      (elisp-enable-lexical-binding))
+    buff))
+
+(defun mm/scratch-el (&optional arg)
+  (interactive "P")
+  (mm/scratch arg "el"))
+#+end_src
+
+#+begin_src elisp
+keybinds:
+leader bs #'mm/scratch-el
+leader bS #'mm/scratch
+#+end_src
+
+With a nice keybind (=leader b s=) I go to my current scratch file - the latest modified file in my scratch dir.
+With prefix-arg, it makes a new file.
+A second bind will ask me to make a ~clj~ or ~cljs~ file.
+
+* clojure scratch repl?
+
+Whatever. I just do this:
+
+#+begin_src shell
+  echo '{}' > ~/scratch/bb.edn
+#+end_src
+
+Now I can start a cider repl with bb in my scratch dir.
+If you want to be asked for =bb= or =jvm=:
+
+#+begin_src shell
+  echo '{}' > ~/scratch/deps.edn
+#+end_src
+
+Also ~nbb~: A nice way to scratch some cljs + javascript + node:
+It currently requires some workaround that you can find [[denote:20221014T102207][here]].
+
+* Further reading
+
+- [[denote:20221014T153337][backups in space]]
+- [[https://old.reddit.com/r/emacs/comments/6zgt0c/persistent_scratch_buffer/][reddit persistent scratch discussion]]
+
+* inspiring talks
+
+- [[https://www.youtube.com/watch?v=-6BsiVyC1kM][The value of values (place-oriented programming is obsolete)]]
+- [[https://www.youtube.com/watch?v=OUZZKtypink][Program like Sherlock Holmes]]

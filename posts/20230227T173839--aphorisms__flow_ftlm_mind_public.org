@@ -1,0 +1,10 @@
+#+title:      aphorisms
+#+date:       [2023-02-27 Mon 17:38]
+#+filetags:   :flow:ftlm:mind:public:
+#+identifier: 20230227T173839
+
+#+begin_quote
+An aphorism (from Greek ἀφορισμός: aphorismos, denoting ‘delimitation’, ‘distinction’, and ‘definition’) is a concise, terse, laconic, or memorable expression of a general truth or principle.
+#+end_quote
+
+wikipedia.org/wiki/Aphorism

@@ -1,0 +1,203 @@
+#+title:      Zappy Cider Eval Overlays
+#+date:       [2023-07-13 Thu 20:24]
+#+filetags:   :clojure:emacs:feed:
+#+identifier: 20230713T202443
+#+EXPORT_FILE_NAME: zappy-cider-eval-overlays
+#+OPTIONS: toc:nil
+
+Cider eval overlays are a great technology of our time. Being able to use the hands and the eyes
+just in the place where I am thinking, right in the source code - just invaluable.
+
+I want the [[denote:20230205T105009][The Quick Eval]] smooth and zappy. Yea. Pure coconut.
+It is my skates with which I ride the ice of the Clojure program.
+
+How to get really fast cider eval overlays.
+
+#+begin_export html
+<iframe src="https://www.youtube.com/embed/XNNEkqlXsz0?start=269" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* The Benchmark
+
+- Make a =cider-eval-last-sexp= after this form:
+
+#+begin_src clojure
+ (repeatedly 10000 random-uuid)
+#+end_src
+
+- is it zappy, or not zappy?
+
+* Numero Uno
+
+The biggest gain - or pain, depending on how you want to think about it is the echo area message.
+
+I set =cider-use-overlays= to =t=, not =both=.
+
+#+begin_src elisp
+  (setq-default cider-use-overlays t)
+#+end_src
+
+Now we do not print the message anymore which is a night and day difference.
+
+* cider--make-result-overlay perf hacks
+
+I still am not completely satisfied with those overlays.
+You might think that fontifying the string takes long but it seems like in my perf investigation that did not seem to be an issue.
+(Hence have =cider-overlays-use-font-lock= to =t=).
+
+** =length= instead of =string-width=
+
+I went into =cider--make-result-overlay= and one of the performance bottlenecks was that we called =string-width=
+on those large strings, which is an expensive computation.
+
+It needs to calculate the actual string display width, which is different from the character count of the string.
+I just changed this to a =length= call. Doesn't matter much to me. It's just about saying when to cut off the result-overlay.
+
+This does another little speed up.
+
+In case you don't know.
+
+- =profiler-start=
+- do the action you want to debug
+- =profiler-stop=
+- =profiler-report=
+
+** Truncate after 1 line, not 3 lines
+
+I am fine with rendering less data in the preview overlay. I can use cider pretty print for bigger outputs.
+Instead of cutting off after (* 3 (window-width)) I just cut off after 1 window-width.
+
+Here is the updated function that I use:
+
+#+begin_src elisp
+
+;;; cider-overlays.el --- Managing CIDER overlays  -*- lexical-binding: t; -*-
+
+;; Copyright © 2015-2023 Bozhidar Batsov, Artur Malabarba and CIDER contributors
+
+;; Author: Artur Malabarba <bruce.connor.am@gmail.com>
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+  (cl-defun cider--make-result-overlay (value &rest props &key where duration (type 'result)
+                                                  (format (concat " " cider-eval-result-prefix "%s "))
+                                                  (prepend-face 'cider-result-overlay-face)
+                                                  &allow-other-keys)
+        "Place an overlay displaying VALUE at the position determined by WHERE.
+      VALUE is used as the overlay's after-string property, meaning it is
+      displayed at the end of the overlay.
+      Return nil if the overlay was not placed or if it might not be visible, and
+      return the overlay otherwise.
+
+      Return the overlay if it was placed successfully, and nil if it failed.
+
+      This function takes some optional keyword arguments:
+
+        If WHERE is a number or a marker, apply the overlay as determined by
+        `cider-result-overlay-position'.  If it is a cons cell, the car and cdr
+        determine the start and end of the overlay.
+        DURATION takes the same possible values as the
+        `cider-eval-result-duration' variable.
+        TYPE is passed to `cider--make-overlay' (defaults to `result').
+        FORMAT is a string passed to `format'.  It should have
+        exactly one %s construct (for VALUE).
+
+      All arguments beyond these (PROPS) are properties to be used on the
+      overlay."
+        (declare (indent 1))
+        (while (keywordp (car props))
+          (setq props (cdr (cdr props))))
+        ;; If the marker points to a dead buffer, don't do anything.
+        (when-let ((buffer (cond
+                       ((markerp where) (marker-buffer where))
+                       ((markerp (car-safe where)) (marker-buffer (car where)))
+                       (t (current-buffer)))))
+          (with-current-buffer buffer
+            (save-excursion
+              (when (number-or-marker-p where)
+                (goto-char where))
+              ;; Make sure the overlay is actually at the end of the sexp.
+              (skip-chars-backward "\r\n[:blank:]")
+              (let* ((beg (if (consp where)
+                              (car where)
+                            (save-excursion
+                              (clojure-backward-logical-sexp 1)
+                              (point))))
+                     (end (if (consp where)
+                              (cdr where)
+                            (pcase cider-result-overlay-position
+                              ('at-eol (line-end-position))
+                              ('at-point (point)))))
+                     ;; Specify `default' face, otherwise unformatted text will
+                     ;; inherit the face of the following text.
+                     (display-string (format (propertize format 'face 'default) value))
+                     (o nil))
+                ;; Remove any overlay at the position we're creating a new one, if it
+                ;; exists.
+                (remove-overlays beg end 'category type)
+                (funcall (if cider-overlays-use-font-lock
+                             #'font-lock-prepend-text-property
+                           #'put-text-property)
+                         0 (length display-string)
+                         'face prepend-face
+                         display-string)
+                ;; If the display spans multiple lines or is very long, display it at
+                ;; the beginning of the next line.
+                (when (or (string-match "\n." display-string)
+                          (> (length display-string)
+                             (- (window-width) (current-column))))
+                  (setq display-string (concat " \n" display-string)))
+                ;; Put the cursor property only once we're done manipulating the
+                ;; string, since we want it to be at the first char.
+                (put-text-property 0 1 'cursor 0 display-string)
+                (when (> (length display-string) (window-width))
+                  (setq display-string
+                        (concat (substring display-string 0 (window-width))
+                                (substitute-command-keys
+                                 "...\nResult truncated. Type `\\[cider-inspect-last-result]' to inspect it."))))
+                ;; Create the result overlay.
+                (setq o (apply #'cider--make-overlay
+                               beg end type
+                               'after-string display-string
+                               props))
+                (pcase duration
+                  ((pred numberp) (run-at-time duration nil #'cider--delete-overlay o))
+                  (`command
+                   ;; Since the previous overlay was already removed above, we should
+                   ;; remove the hook to remove all overlays after this function
+                   ;; ends. Otherwise, we would inadvertently remove the newly created
+                   ;; overlay too.
+                   (remove-hook 'post-command-hook 'cider--remove-result-overlay 'local)
+                   ;; If inside a command-loop, tell `cider--remove-result-overlay'
+                   ;; to only remove after the *next* command.
+                   (if this-command
+                       (add-hook 'post-command-hook
+                                 #'cider--remove-result-overlay-after-command
+                                 nil 'local)
+                     (cider--remove-result-overlay-after-command)))
+                  (`change
+                   (add-hook 'after-change-functions
+                             #'cider--remove-result-overlay
+                             nil 'local)))
+                (when-let* ((win (get-buffer-window buffer)))
+                  ;; Left edge is visible.
+                  (when (and (<= (window-start win) (point) (window-end win))
+                             ;; Right edge is visible. This is a little conservative
+                             ;; if the overlay contains line breaks.
+                             (or (< (+ (current-column) (length value))
+                                    (window-width win))
+                                 (not truncate-lines)))
+                    o)))))))
+#+end_src

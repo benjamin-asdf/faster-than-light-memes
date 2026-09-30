@@ -1,0 +1,262 @@
+#+title:      scittle-prints-itself
+#+date:       [2022-09-26 Mon 13:21]
+#+filetags:   :clojure:feed:
+#+identifier: 20220926T132145
+#+EXPORT_FILE_NAME: scittle-prints-itself
+
+Description of the crafting of a website.
+Up [[https://benjamin-asdf.github.io/scittle-prints-itself/][here]].
+
+* Introduction
+
+I was wondering about what is cool for a newcomer to coding.
+I love lisp and I think one of the real joys in programming is interactive programming.
+So if I find some way of communicating this magic, that would be great.
+
+After my [[denote:20220919T110439][binaural beats]] adventure I feel like Scittle is an amazing tool
+so I want to try it on something bigger.
+So I had this idea of a Scittle website that prints its source code,
+then you update the code and get an immediate effect.
+
+I wanted this to be *my* website so maybe a new team member can also
+go into the code and hack around.
+
+* Problem statement
+
+1. print your source code
+2. ability to update code
+3. no code editor in the browser (input field...)
+   I am thinking getting this approximately non-clunky would be hard.
+   Especially balancing the parens.
+   I decided to go with a drag and drop area where you slurp in a
+   file into the browser.
+4. This is not a [[https://en.wikipedia.org/wiki/Quine_(computing)][Quine]] because it receives the source code as input
+
+* Some reagent code
+
+I do some StackOverflow-driven development for a drag-and-drop area.
+
+I needed to figure out how [[https://www.w3schools.com/jsref/event_ondragover.asp][ondragover Event]] and friends translate with
+hiccup.
+Luckily the legendary question answerer  =@p-himik= helped me out in the
+=#clojurescript= slack channel.
+Turns out that when I add ~:on-drag-over~ in the attribute map it works.
+
+#+begin_src clojure
+  (ns main
+    (:require
+     [reagent.core :as r]
+     [reagent.dom :as rdom]))
+
+  (defonce state (r/atom {:code-text ""}))
+
+  (defn drop-area []
+    [:div#drop-area
+     {:style {:margin-top "1rem"
+	      :height "10rem"
+	      :width "10rem"
+	      :background "Aquamarine"}
+      :on-drag-enter
+      (fn [event]
+	(set! (.. (js/document.getElementById "drop-area") -style -background) "cyan"))
+      :on-drag-exit
+      (fn [event]
+	(set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))
+      :on-drag-over
+      (fn [event]
+	(doto
+	    event
+	    .stopPropagation
+	   .preventDefault)
+	(set! (.. event -dataTransfer -dropEffect) "copy"))
+      :on-drop (fn [event]
+	(doto
+	    event
+	    .stopPropagation
+	    .preventDefault)
+	(let [file (->  (.. event -dataTransfer -files) first)]
+	  (->
+	   (.text file)
+	   (.then
+	    (fn [t] (swap! state assoc :code-text t)))))
+	(set! (.. (js/document.getElementById "drop-area") -style -background) "Aquamarine"))}
+     [:div
+      {:style {:margin "1rem"
+	       :padding-top "2.5rem"}}
+      "drop a file here"]])
+
+  (defn code-snippet []
+    [:div
+     {:style {:background "gainsboro"}}
+     (:code-text @state)])
+
+  (defn my-component []
+    [:div
+     [drop-area]
+     [code-snippet]])
+
+  (rdom/render [my-component] (.getElementById js/document "app"))
+
+  (comment
+    (swap! state assoc :code-text "foi110"))
+#+end_src
+
+With this, I have a drop area for a file.
+
+Wonderful thing:
+Updating ~state~ redraws the UI for us.
+
+Evaluating ~(swap! state assoc :code-text "foi110")~ makes ~reagent~ 's magic take effect.
+
+* Fetch
+
+I also want to show the default code on the first load.
+After some StackOverflow research, I determine [[https://www.w3schools.com/jsref/api_fetch.asp][fetch]] should work.
+
+#+begin_src clojure
+(->
+ (js/fetch "main.cljs")
+ (.then (fn [x] (.text x)))
+ (.then (fn [x] (swap! state assoc :code-text x))))
+#+end_src
+
+* Pretty print the code..?
+
+At this point my website looks like this:
+
+#+CAPTION: Halfway there. Sort of printing the source code now.
+https://i.imgur.com/VU5LqMM.png
+
+I want to do something where at least the white space is rendered.
+
+After searching the web, I decide I need a ~<pre>~ tag to say it is preformatted.
+Also ~<code>~ sounds great.
+
+#+begin_src clojure
+(defn code-snippet []
+  [:div
+   {:style {:background "gainsboro"}}
+   [:pre
+    [:code
+     (:code-text @state)]]])
+#+end_src
+
+Update the function, re-eval the ~rdom/render~ form. Boom I instantly look at my updated visuals.
+With cider, I can also call ~cider-eval-buffer~, or ~cider-eval-file~.
+I first had the background ~style~ inside the ~code~ tag, which did not have
+the look I wanted.
+I can hack on a piece of UI in isolation. Directly. Without any mental
+suspension time. It is great.
+It is how all coding should be.
+
+* Eval string
+
+Now for the magic of updating the website with whatever you upload.
+First, I ask Borkdude on slack how to evaluate a string.
+-> You use ~load-string~.
+
+#+begin_src clojure
+(load-string
+ (prn-str '(js/console.log "hello")))
+#+end_src
+
+Says =hello= in the console.
+
+I update my file drop handler with the side effect of loading the text:
+
+#+begin_src clojure
+    (fn [t]
+     (load-string l)
+     (swap! state assoc :code-text t))
+#+end_src
+(Yes there is a syntax error in this snippet).
+
+I add this to the bottom of the file to see if my code is evaluated:
+
+#+begin_src clojure
+(js/console.log "hello2")
+#+end_src
+
+Now loading silently fails when I upload my file, but the text updates.
+
+So I evaluate this in isolation:
+
+#+begin_src clojure
+  (load-string (@state :code-text))
+#+end_src
+
+Ah, I get an analyzer error about =l= not being defined or something.
+
+I update my handler like this:
+
+#+begin_src clojure
+      (try
+       (load-string t)
+       (swap! state assoc :code-text t)
+       (catch js/Error _ (js/alert "That code does not work.")))
+#+end_src
+
+following Stew Halloway's example of binary error feedback. Either
+there is an error, or there is no error.
+Error messages are just bloat anyway.
+
+console says:
+
+#+begin_quote
+hello2
+#+end_quote
+
+Another piece in place, another hit of dopamine, wonderful coding moments.
+
+* Only fetch once
+
+I update the fetch code like so:
+
+#+begin_src clojure
+(or
+ (:code-text @state)
+ (->
+  (js/fetch "main.cljs")
+  (.then (fn [x] (.text x)))
+  (.then (fn [x] (swap! state assoc :code-text x)))))
+#+end_src
+
+I can do this because in Clojure everything is an expression and I can
+put expressions anywhere.
+
+* Make a big aquamarine rectangle into a small magenta rectangle
+
+I want something on the eyes so I change the style of the drop area:
+
+#+begin_src clojure
+           {:margin-top "1rem"
+            :height "5rem"
+            :width "5rem"
+            :background "magenta"}
+#+end_src
+
+
+Drag and drop, and:
+
+#+CAPTION: Visuals updated via dragging and dropping a source file.
+https://i.imgur.com/IUrSY7t.png
+
+In emacs: ~list-colors-display~, nice. And drag and drop with [[https://github.com/mwh/dragon][dragon.]]
+
+This contraption of course pales in comparison to having a REPL running.
+But the idea is that it is might useful to somebody that doesn't even
+know what a REPL **is**.
+And if you are a beginner and now you wonder what that REPL thing is.
+[[denote:20220912T202304][Here]] I try to make a list of how to get a dev setup.
+
+Here is an idea I had and did not put into the initial version: Make
+an ~undo~ button. So that the user can go back in the history of the website
+
+* Codepen
+
+An arguably more mature version of this is up on [[https://codepen.io/Prestance/pen/PoOdZQw][codepen]].
+
+A key difference is that my website prints its whole code.
+No machinery is hidden anywhere.
+
+If I may say so I think this is cute.

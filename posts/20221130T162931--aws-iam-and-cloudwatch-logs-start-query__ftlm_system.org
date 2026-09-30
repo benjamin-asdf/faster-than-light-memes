@@ -1,0 +1,43 @@
+#+title:      aws-iam-and-cloudwatch-logs-start-query
+#+date:       [2022-11-30 Wed 16:29]
+#+filetags:   :system:feed:
+#+identifier: 20221130T162931
+#+EXPORT_FILE_NAME: aws-iam-and-cloudwatch-logs-start-query
+
+
+#+begin_quote
+User with accountId: 123456791011 is not authorized to perform StartQuery
+#+end_quote
+
+Example iam policy for querying cloudwatch logs (that one works):
+
+#+begin_src js
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:StartQuery",
+            "Resource": "arn:aws:logs:us-east-1:123456791011:log-group:hairy-log-group-name:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:GetQueryResults",
+                "logs:StopQuery"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+#+end_src
+
+The above error you get when you try the log-group arn without the
+`:*` at the end.
+
+You need the `:*` behind the log-group for some reason, probably
+because the log-streams also participate in the resource permission
+thing or something.
+
+This was kind of hard to figure out, no examples on the official
+websites and you think you do it right from reading the documentation.

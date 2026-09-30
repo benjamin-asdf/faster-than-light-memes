@@ -1,0 +1,93 @@
+#+title:      faq
+#+date:       [2023-07-14 Fri 11:14]
+#+filetags:   :public:feed:video:
+#+identifier: 20230714T111421
+#+Options: toc:nil
+#+EXPORT_FILE_NAME: faq
+
+* What theme are you using?
+
+Here it is:
+
+https://github.com/benjamin-asdf/dotfiles/blob/master/mememacs/.emacs-mememacs.d/lisp/visual.el
+
+https://external-preview.redd.it/Z9UDrTfwrGa89JgPw-CrtYbgO9WuZulccPJZfZbExC4.jpg?auto=webp&s=cd43fed947bdc62db92383ee75d50c44822493ff
+
+I picked this image from a subreddit r/'magical mindscapes' or something.
+And used the colors as basis.
+
+I also use the palatte for [[https://youtu.be/W2di0Fx1Qn0?si=xJW_3AnqkAJ045ZH&t=5359][livecode]], or on websites [[https://benjamin-asdf.github.io/type-pi/][here]].
+This blog is deployed using org export [[https://github.com/benjamin-asdf/faster-than-light-memes][code]], this exports the theme as css.
+I.e. org verbatim looks like =keyword face=.
+
+The themes spirit is *Magic fruit in a dark forest*.
+
+- primates evolved to differentiate green shades in forests
+- bright fruity colors signal foot
+
+** pretty show paren
+
+To get a little extra flourish and show me (more or less) when I am at a special lispy position, I do:
+
+#+begin_src elisp
+(defun mememacs/lispy-set-faces ()
+  (if
+      (and (eq meow--current-state 'insert)
+	   (or
+	    (lispy-left-p)
+	    (lispy-right-p)
+	    (and (lispy-bolp)
+		 (or (looking-at lispy-outline-header)
+		     (looking-at lispy-outline)))))
+      (set-face-attribute
+       'show-paren-match
+       nil
+       :foreground mememacs-visuals/heliotrope
+       :underline t)
+    (set-face-attribute
+     'show-paren-match
+     nil
+     :foreground mememacs-visuals/mint-bright-2
+     :underline t)))
+
+(setf
+ show-paren-style 'parenthesis
+ show-paren-context-when-offscreen nil
+ ;; 'overlay
+ show-paren-when-point-in-periphery t
+ show-paren-when-point-inside-paren t)
+
+(add-hook 'meow-insert-mode-hook #'mememacs/lispy-set-faces)
+(add-hook 'meow-normal-mode-hook #'mememacs/lispy-set-faces)
+#+end_src
+
+Also possible with evil.
+
+Alternatively, I would set =show-paren-match= to white. It makes it blink pretty!
+
+* How do you repeat keys so quickly?
+
+I modify the x key repeat rate to the *maximum*.
+
+Oh boi, once you have this you will not go back. See: [[denote:20230101T184022][A System Like Water]].
+
+
+* Lispy how to to insert single =[=, ={=, ="=, =(=
+
+A frequently asked question when using [[https://github.com/abo-abo/lispy][Lispy]] is how do I insert single brackets, quotes, and parens?
+
+The answer is =quoted-insert=, which is bound to =C-q= by default.
+
+It reads the next character and inserts it, bypassing your current keymap and such.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kPWUYT6kYLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* What keyboard is that?
+
+This is
+
+Advantage360 Linear Quiet
+
+Other notable kinesis users are ThePrimagen and Lex Friedman.

@@ -1,0 +1,151 @@
+#+title:      jacking-nbb
+#+date:       [2022-10-14 Fri 10:22]
+#+filetags:   :clojure:code:emacs:public:feed:
+#+identifier: 20221014T102207
+#+EXPORT_FILE_NAME: jacking-nbb
+
+A cider jack in command for nbb.
+
+* Introduction
+[[https://github.com/babashka/nbb][Nbb]] is a beatiful [[https://www.youtube.com/watch?v=tX4wg4wOFuU][parasite]].
+A node script that is an interpreter for Clojurescript.
+You get the upsides of Node.js + it is Clojure.
+
+Want to try out some npm packages?
+Sure, just make a =package.json=, works instant, is part of the design
+principles of nbb.
+
+You get Clojures immutable data structures, polymorphism constructs, a
+repl, etc.
+
+On the tooling side, you might be surprised how far nbb gets with very little.
+
+Scratching ([[denote:20221004T160458][in space]]) is very usefull and nbb is a natural fit for a quick cljs repl.
+
+* Update 2:
+
+You can jack in =Nbb= nowadays with
+=cider-jack-in-cljs= then select =nbb=.
+
+Alternatively, if you have cider
+=d292d8d7eea5d3a12c138687133761a7256b1705=
+
+We can define jack in commands like so:
+
+#+begin_src elisp
+  (defun cider-jack-in-nbb-2 ()
+    "Start a Cider nREPL server with the `nbb nrepl-server` command."
+    (interactive)
+    (cider-jack-in '(:jack-in-cmd "nbb nrepl-server")))
+#+end_src
+
+You can also set a project jack-in-cmd in =.dir-locals= by setting
+=cider-jack-in-cmd= locally.
+
+#+begin_src elisp
+((nil
+  (cider-jack-in-cmd . "nbb nrepl-server")))
+#+end_src
+
+This is especially useful, if you have an nbb project. You can now
+call =cider-jack-in-clj= without the need to select anything further anymore.
+
+*Note*: Commands and elisp below are workarounds we do *not* need
+anymore because Cider supports Nbb much better since recently!
+
+* Update:
+
+This is no longer needed with cider 1.6.
+There is a dedicated nbb cider build tool now.
+I still also think my proposal [[https://github.com/clojure-emacs/cider/pull/3286][here]] would be useful.
+
+#+begin_src elisp
+;; the equivalent of the proposed change
+(advice-add
+ 'cider--update-jack-in-cmd
+ :before-until
+ (defun cider-dont-update-jack-in-cmd-when-given (params)
+   (when (plist-get params :jack-in-cmd) params)))
+
+;; now a nbb jack in command becomes:
+(cider-jack-in '(:jack-in-cmd "nbb nrepl-server"))
+#+end_src
+
+* Jack-in command
+
+** cider repl workaround
+
+We currently need this workaround for sci-based cljs repls for cider:
+
+#+begin_src elisp
+(cider-register-cljs-repl-type 'nbb-or-scittle-or-joyride "(+ 1 2 3)")
+
+(defun mm/cider-connected-hook ()
+  (when (eq 'nbb-or-scittle-or-joyride cider-cljs-repl-type)
+    (setq-local cider-show-error-buffer nil)
+    (cider-set-repl-type 'cljs)))
+
+(add-hook 'cider-connected-hook #'mm/cider-connected-hook)
+#+end_src
+
+*Note*: You do not need this workaround in recent versions of cider anymore.
+
+** the command
+
+Unfortunately, cider does not have the concept of a nbb repl currently.
+I think ~cider-jack-in-resolve-command~ and similar functions could be
+thrown out and replaced with data.
+
+So I went 1 level deeper to bypass ciders auto-detection of
+project type (+ jack in cmd):
+
+#+begin_src elisp
+(defun mm/cider-jack-in-nbb ()
+  "Start a nbb nrepl process and connect."
+  (interactive)
+  (let* ((cider-allow-jack-in-without-project t)
+         (orig-buffer (current-buffer))
+         (params '(:jack-in-cmd "nbb nrepl-server :port 0"
+                   :cljs-repl-type nbb-or-scittle-or-joyride))
+         (params (cider--update-project-dir
+                  params)))
+    (nrepl-start-server-process
+     (plist-get params :project-dir)
+     (plist-get params :jack-in-cmd)
+     (lambda (server-buffer)
+       (with-current-buffer
+           orig-buffer
+         (cider-connect-sibling-cljs
+          params
+          server-buffer))))))
+#+end_src
+
+This is what I wanted to say:
+
+#+begin_src elisp
+(defun mm/cider-jack-in-nbb ()
+  "Start an nbb nrepl process and connect."
+  (interactive)
+  (cider-jack-in-cljs
+   '(:jack-in-cmd "nbb nrepl-server :port 0"
+     :cljs-repl-type nbb-or-scittle-or-joyride)))
+#+end_src
+
+** hack for the remaining issue
+
+With this, you should get an error "ClojureScript is not available...".
+[[https://github.com/clojure-emacs/cider/issues/3255][Until there is a fix in cider]], you can hack it by redefining ~cider-verify-clojurescript-is-present~:
+
+#+begin_src elisp
+ ;;; FIXME: https://github.com/clojure-emacs/cider/issues/3255
+ (defun cider-verify-clojurescript-is-present ()
+   "Check whether ClojureScript is present."
+   (unless (nrepl-dict-get (cider-sync-tooling-eval "cljs.core/inc") "value")
+     (user-error "ClojureScript is not available.  See https://docs.cider.mx/cider/basics/clojurescript for details")))
+#+end_src
+
+#+RESULTS:
+: cider-verify-clojurescript-is-present
+
+* Results
+Hehe, insta nbb repl. Works good.

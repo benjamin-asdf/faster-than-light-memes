@@ -1,0 +1,161 @@
+#+title:      vehicles
+#+date:       [2023-09-15 Fri 19:08]
+#+filetags:   :clojure:clojurescript:cybernetics:programming:
+#+identifier: 20230915T190843
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: vehicles
+
+#+begin_export html
+<iframe width="500px" height="500px" src="https://vehicles.faster-than-light-memes.xyz/art/pe/getting-around/21?width=500&height=500"></iframe>
+#+end_export
+
+*Vehicles gone? Reload page*
+
+- [[denote:20240208T124507][Meme Machines (Evolving overview, thinking about models of cognition)]]
+- [[denote:20231001T171901][Vehicle I - Getting Around]]
+- [[denote:20231016T095054][Vehicle 2 and 3 - Fear, Love, Aggression]]
+- [[https://vehicles.faster-than-light-memes.xyz/art/p/taste/0][Vehicle 3 and 4 - Values and Special Taste]]
+- [[https://youtu.be/5N7cRJLH0M8?si=m8bSajeAjLT0xY_u][Youtube Video]]
+- [[https://youtu.be/tTWyML0n8MM?si=m9iuoAhOCVTjizXH][A Vehicle ant colony inspired by Kurzgesagt]]
+- [[denote:20240306T183858][Vehicle 12 - Thought pumps, Cell Assemblies]] (part 1)
+- [[denote:20240212T183802][Illusions (Interlude, buildup to vehicle 15)]]
+- hyperdimensional programing: [[denote:20240606T185815][current]].
+  (I consider HDC a formalization of cell assemblies modulo their dynamics.)
+  (future vehicle would have a 'smell' ganglion, made with a [[https://en.wikipedia.org/wiki/Sparse_distributed_memory#:~:text=Sparse%20distributed%20memory%20is%20a,of%20the%20human%20neural%20network.][SDM]] at the core.)
+
+#+begin_quote
+This is an exercise in fictional science, or science fiction, if you like that better. Not for amusement: science fiction in the service of science.
+Or just science, if you agree that fiction is part of it, always was, and always will be as long as our brains are only minuscule fragments of the universe,
+much too small to hold all the facts of the world but not too idle to speculate about them.
+#+end_quote
+
+[[https://en.wikipedia.org/wiki/Braitenberg_vehicle][Braitenberg Vehicles]]. The book is called /Vehicles: Experiments in Synthetic Psychology/.
+
+I love this intro, hinting at this view of science, where imagination and explanation are the core of it.[fn:1]
+
+What is the land of the middle? When neurons are at the bottom and psychology is at the top. What is the stuff of theory in between?
+Such is the spirit of the early cyberneticians, to find the things that make machines and animals have purpose and thought and these things.
+
+Computer science is about software, not the transistors the way this cybernetics is about minds, not the neurons.
+
+Braitenberg takes us into the simple world of /vehicles/. Every chapter is a little thought experiment vehicle. These happy little robot toy car things have a few sensors and motors
+and we follow them getting slightly more complicated with each chapter, with them more and more coming to life, steadfastly going about their business of moving around,
+importantly, we never lose sight of *the mechanics* of how they move around.
+
+The way this book makes you explore a mental world, one where we see behavior implemented from organism parts.
+It is a bit like how math geeks describe the beauty of math. But it's for biologists and people thinking about brains and behavior.
+
+Cybernetics in its original instance is the study of control systems [fn:2]. But the spirit was always to eventually understand minds.
+
+You don't understand computers by looking at how the transistors work.[fn:3] But you don't understand computers by tapping on the screen either.
+The correct level of analysis has somehow something to do with software and memory and caching and programs and file systems and processes.
+
+The science of how thought works, and the level of its *mechanics*, this is what I am after.[fn:4]
+
+This is where AI and computer science came from, also. It was always the story of putting thought into a machine.[fn:5]
+
+---
+
+Ahh the power of abstraction, I wonder which science will tell us one day what it is.
+I am sure it is the power of simple explanation and imagination again, from a slightly different angle.
+
+Braitenberg mentions the power of abstraction:
+
+#+begin_quote
+Get used to a way of thinking in which the hardware of the realization of an idea is less important than the idea itself. Norbert Wiener was emphatic about this when he formulated the title of his famous book: /Cybernetics, or Control and Communication in Animals and Machines/.
+#+end_quote
+
+The ideas are something else than their implementation. The abstract notions of sensors, effectors, behavior etc. are best explored abstractly.
+So one of the things about the vehicles is that they model things like organisms and machines.
+
+
+---
+
+Either way, let's go and build some toy brains.
+
+Be my guest in my Braitenberg vehicle world. For each piece, you can navigate to a version with controls as well.
+
+Here is the [[https://vehicles.faster-than-light-memes.xyz/art/g/getting-around?page=0][gallery]] for chapter 1 ("Getting around").
+
+* Reading
+
+** /The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/, Mitchell Waldrop (2018)
+Seriously, it's one of my favorite books now. See [[denote:20230715T105044][books]].
+
+** [[https://youtu.be/dmAVinK43Io?si=YRkPLFbY3V5GKXPc][Presidents Series 12 Cybernetics, Cognitive Science and Philosophy, Joe Dewhurst and Carl Sachs]]
+The first part is a cool cognitive science cybernetics history rundown.
+
+** [[https://www.youtube.com/watch?v=obvzUj76eNo&list=PLB81F4FC0EDC4DECC][6 Hours Tutorial Professor Umpleby delivered at WMSCI 2006]]
+  Interestingly, he mentions that at Dartmouth in 1956 the field split into cybernetics and AI.
+  On one side were the people who wanted to build self-assembling systems, on the other side you had the people who wanted to program intelligence - one way or another.
+
+  Well, it seems like an unnecessary limitation to me to put only one and not the other into the minds I build.
+
+** [[https://youtu.be/cbTUxPQZBX4?si=uJR7Ctsq-ad3tQKR][Marvin Minsky On Advanced Theories Of Intelligence]]
+
+#+begin_quote
+If you look at the... what we know about the function of the human brain, and my favorite example is to take a big book on neurology and look at the index, you’ll find the names of maybe 200 or more different parts of the brain that have been identified, at least for the present, as being involved with slightly different or grossly different functions, so... some parts are clearly involved with language and others are clearly involved with vision and hearing and different sensory systems, some parts are involved with planning ahead for motor activities and so forth. And we know that you don’t want to describe what the brain does by anything like three laws or seven laws, because that wouldn’t account for why there are more than 100 different... different kinds of computations going on in the brain.
+
+I have a lot of friends in neuroscience who say: 'Oh, don’t worry about that, there’s a lot of evidence that all of the different areas of the brain are very similar, they have almost the same structure, they’re just in different places and just connected to different things.' And, yes, you could say that. You could say all people are almost the same because they’re all between four and eight feet high and they all weigh between 50 and 500 lbs and there are very few differences. So it makes me nervous to see neuroscience moving in the direction of saying: 'Look, all the different parts of the brain, they’re all made of the same kinds of cells – neurons – maybe axon... maybe neuro... glial cells and so forth. So you know there’s a very popular theory that says almost all parts of the brain are practically the same and I don’t want to go into that.
+
+But it’s clear to me, that what you want is to elaborate theories of the differences. Why are some people so much better at some things than others and can you correlate that with small differences between parts of the brain, not... not saying: 'Oh, they... they must all be doing virtually the same thing.' Maybe they are, but it’s the differences that matter.
+#+end_quote
+
+- See: [[denote:20230716T201616][Cybernetic Intelligence]]
+
+** [[https://youtu.be/qiwSli7eiS4?si=xsCvcV7LnknMhRM9][Robopsychology, Perceptual Control Theory, and Braitenberg’s Vehicles, Dr Steve Battle FCybS]]
+This made me aware of much I have no idea about yet.
+
+Perceptual Control Theory? I guess the main thing about this would be to have parts of the system that change which inputs to pay attention to.
+Certainly, something I want to put into my vehicles.
+
+** [[https://youtu.be/HPPfRf2cRjY?si=wX99zEBaYLSTF9Jc][Embodied nervous systems: Braitenberg vehicles]]
+
+Hmm, seems like these complexity theory kinds of people go and do the maths of what steady state, attractors and what not such systems have.
+
+This lecture was very interesting to me.
+But instead of studying the simple ones, I want to see how I make them more complicated. Give the complexity theory people something to study.
+
+** /The Door into Summer/, Robert A. Heinlein (1956)
+
+For real I am not kidding this book contains an almost fleshed-out description of how to build a simple robot with "cybernetic switch circuits".
+The design is thought-through. Enough for me to take it as a template for some later vehicles of mine.
+
+Maybe inspired by the early analog neuronal network things built by Claud Shannon, Marvin Minsky and others?
+
+The one in the book is more like a collection of fixed action patterns (Tinbergen 1951). Put together with an
+orchestration layer and various inputs. He also explains how to implement the fixed action pattern out of a memory circuit or something.
+If you can store a sequence of stimulations to your effectors, it's already doing it.
+
+* Footnotes
+[fn:4]
+
+Also see [[denote:20230716T201616][AI and Minsky]], where I continuously dump my thoughts on understanding Minskies and Paperts /Society Of Mind/.
+
+[fn:1]
+
+See David Deutsch (2011)
+
+#+begin_quote
+I am enough of an artist to draw freely upon my imagination. Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.
+#+end_quote
+
+Albert Einstein
+
+[fn:2]
+
+See /The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/, Mitchell Waldrop (2018)
+for a nice account of the early cybernetician era.
+
+[fn:3]
+
+And it won't do so much either to do systems analysis math on the transistors.
+Yes, looking at you Luiz Pessoa.
+But seriously, I should check out his work, there are well-thought-through nuances in his view I am sure.
+
+[fn:5]
+
+See the history of computers books and wiki articles.
+One usually mentions Von Neuman, Turing, Warren McCulloch and Walter Pitts but the story is quite a bit more nuanced and multi-faceted, with many more characters in the play.
+Also, did I mention /The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal/, Mitchell Waldrop (2018) is an awesome
+account of the history of the computer?

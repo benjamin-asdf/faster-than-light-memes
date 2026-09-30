@@ -1,0 +1,576 @@
+#+title:      Lisp
+#+date:       [2023-07-08 Sat 09:54]
+#+filetags:   :public:clojure:feed:lisp:
+#+identifier: 20230708T095438
+#+EXPORT_FILE_NAME: lisp
+#+OPTIONS: toc:nil
+
+[wip]
+
+* Clojure
+
+- [[denote:20230126T094804][The Joy Of Clojure]]
+- [[https://cljdoc.org/d/clj-python/libpython-clj/1.45/doc/so-many-parenthesis-][So Many Parenthesis!]] (Chris Nuremberger's quick intro to Clojure)
+
+
+* Blog posts for non-Lispers
+
+- [[denote:20230707T090418][No Iterations]]
+- Immutability is better
+- Don't Brake Me, Man!
+- The Sanity Game
+- Calculations are sexy
+
+
+It is the spirit of =C=, to be close to the computer. A bare-metal language for expressing the very substance of the computer itself.
+
+It is the spirit of =Lisp=, to be close to the ideas. It is an indispensable step to take, to have a program grow in the dynamic content of itself.
+No AI program will be an AI program if you need to restart it to make a change. For it would not be an evolving, dynamic, self-modifying thing.
+It is the moment when you are done with computer science and you can start doing thought science. This step was taken by McCarthy in 1960.
+
+Ideas are a great building material.
+
+You cannot know /how/ it is different before you have tried it yourself because it's different in a way that you have to discover yourself.
+What is joy for the programmer's heart? To have effects on the computer, precise, straightforward, frictionless effects.
+If the expression /intimacy to the computer/ does not make sense to you, it is because you have not experienced what it means to program a system with deep interactivity.
+See [[denote:20230707T090418][No Iterations]].
+
+Batch-oriented programming is 60 years out of date and we still have to deal with it.
+It is another example of the whole field of software engineering not growing up. Simply embarrassing.
+
+Imagine interactive computing didn't become successful and dominant for accidental reasons.
+There would be people talking about terminals and overlapping windows and buttons and mice and instant feedback.
+These people would be seen as esoteric.
+
+And /real/, /serious/ programmers and computer people would stamp punch cards.
+
+Nothing in the world says that we need to stamp punch cards to do computing.
+It is these kinds of limitations of thinking, that open-mindedness and imagination enable us to take a step back from.
+
+It is merely accidents of history, that made =C= and its derivate became the mainstream.
+Sadly, the mainstream is sometimes wrong. And we end up having to deal with less powerful languages.
+
+This is not a small issue. This is an opportunity cost of humanity not growing up to the potential already available.
+Consider the internet. And consider interactive ("personal") computing. Are these not 2 ideas that change the world?
+This is tech that shines like the sun and changes everything.
+
+Literally from the same birthplace of ideas, the ARPA community and early computer science pioneers also came /interactive programming/.
+My claim is that it is as big of a deal as interactive computing and the internet, too.
+
+Lisp is called the /Maxwell Equations of computer science/, because it was discovered as the simplest expression of computer programs.
+Lisp is said to be the only language which is beautiful. Lisps syntax exists for a single purpose, to be out of the way.
+Because Lisp is about ideas the way programming is about ideas.
+This is why it will stay relevant, the same way that Newtonian mechanics will stay relevant.
+
+If you don't know Lisp, you don't know what /power/ in a programming language /is/. You think that all languages are roughly the same power and I agree with you.
+The mainstream =C= derivate languages you tried all look equally powerful from my perspective, too.
+
+Lisp is a more essential form of programming. To the point where I feel like batch-oriented programming is something else entirely.
+These are 2 activities, normal programming and batch-oriented programming.
+Batch-oriented programming is more like having a battle with the computer until it does what I want.
+Interactive programming, on the other hand, is a crafting process. It is like having a piece of wood and forming it under one's fingers.
+It is like having a brush and painting on a canvas. The relationship between the craftsperson and the art piece is 1:1 and direct.
+This is essential to an actual creative and artistic process.
+
+These kinds of blind spots contribute to the coldness, number-oriented and low-level math-like activity, which is the dominant general population's
+view of programming. But it is not what the soul of the computer is about.
+
+The soul of the computer is a malleable, joyful and open-ended well-spring of creative expression.
+
+This is simply missing in all mainstream batch-oriented programming languages[fn:4]. You don't know what you don't know until you know what you didn't know.
+
+Clojure is a Lisp implementation on the JVM with a strong focus on practicality. It was created by Rich Hickey, who is a software engineer, not an academic.
+Clojure is explicitly designed for general-purpose application development, allowing you to do /everything/ you might do with Java or C++.
+
+Lisp is capable, by design, of expressing programs that are about programs.
+Once you have a machine that is capable of being /about/ ideas, you can have /ideas about ideas/.
+I think this is the fundamental universality of memes and ideas, which gives such a system an open future.
+
+It is this open-ended future that mainstream languages are still missing to this day.
+They are bound to reinvent it, and by doing so will have implemented a Lisp.
+
+Consider JSON, it comes from javascript being a scheme, a Lisp variant. The power of JSON is that you can
+abstractly talk about the content of your program. A program about lists and sets is more powerful than a program about
+customers and shopping carts. And everything nests, everything prints etc.
+Luckily, the lingua franca of our shared data has some of Lisp's sanity inside it.
+
+The core idea of Lisp is that this content is the program itself. This is not a small wrinkle in the programming model.
+It's the move that gives it its open future.
+
+Whenever somebody builds command interpreters of (JSON) data, they are implementing a Lisp (Greenspun tenth rule).
+Soon they will make interpreters that assert subroutines into their databases and they will slowly invent Lisp, 60 years after its discovery.
+I already wrote this language, it's called Bobscheme (see below).
+
+/The key to understanding Lisp is realizing that it's simply layers upon layers of abstraction./ - Hal Abelson
+
+/Emacs is not just a text editor, it's an extension of your mind that's limited only by your imagination./
+
+/To appreciate Lisp and Emacs, one must unlearn the ordinary, and then relearn the extraordinary./
+
+/Lisp and Emacs have something in common – a deep, underlying assumption that the power of abstraction will conquer all problems./ - Richard Stallman
+
+** Potential future blog posts
+
+*** Immutability is better, Immutability is better, Immutability is better
+
+Clojure has immutable data structures by default.
+
+You might have read Brian Goetz's /Java Concurrency In Practice/.
+
+Using immutable values frees the mind from worrying about what somebody else might do to it.
+And it gives us the chance to get concurrency and time right.
+
+This is a huge deal. /The Thing That Lets You Sleep At Night./
+
+I had this where I was lying awake in bed and I thinking about some code I know is hard to understand.
+And I think about all the ways this might break. It was all written in a statically typed language.
+The safety of static types is a mirage, the safety of immutable values is solid and evident.
+
+This is an immensely freeing experience that matters.
+
+- [[https://www.youtube.com/watch?v=-6BsiVyC1kM][The Value of Values with Rich Hickey]]
+- [[https://www.youtube.com/watch?v=VSdnJDO-xdg&t=9s][Clojure Made Simple]]
+- [[https://www.youtube.com/watch?v=u4OsmT-Ugpk][Clojure Simple by Design (with PPT) - Stuart Halloway]]
+- [[https://www.youtube.com/watch?v=E4RarTAZ2AY][Are We There Yet]]
+  Rich Hickey talking about a model keeping refs to immutable values.
+  This is the one that is in the Clojure state primitives.
+
+*** More REPL-Driven development, Emacs + Clojure in practice
+
+See [[denote:20230617T130706][Screencasts]]
+
+*** Don't Brake Me, Man! - The Sanity Game
+
+Clojure is the *one* ecosystem where we think about breaking somebody else's code and just /don't do it/.
+
+- Breakage is broken
+- In the software industry we are scared of updating our dep
+- In the npm ecosystem "dependency-free" is now a quality badge
+- left pad, talks about complexity etc.
+- Breakage is an embarrassing failure of the software industry
+- You gotta hand it to the Roc[?] ecosystem, at least they acknowledge the problem
+  but I don't think figuring out the right way to do breakage is the way to go.
+  I don't think that making brakage hard fixes the issue.
+- This is a cultural/social thing
+- The *Clojure ecosystem is the only one that is /sane/ about this*.
+- Rich Hickey said /Brakage is broken/ and now there is a culture of sanity
+- https://www.youtube.com/watch?v=oyLBGkS5ICk
+- In Clojure, we update with impunity for the most part.
+- Accretion is ok. Software is allowed to grow.
+- Breakage is not ok. Don't do it. Don't figure out a way to do it. Don't do this to other people.
+
+**** providing context (return values, namespace members)
+- I give you more: OK, accretion
+- I give you less: breakage, not ok
+
+**** requiring context (parameters)
+- I want more from you: breakage, not ok
+- I want less from you: ok, accretion, /the less you need the more you are/
+
+If your language doesn't allow for accretion, wtf?
+
+Rich Hickey is smart, has good taste and puts thought into how he wants to program.
+
+*** Calculations are sexy
+
+Functional programming is about being careful and sensual. Where are actions (side effects) in our code?
+
+A pure function, /a calculation/, is timeless. It does not matter how often you call it.
+In Clojure functions are assumed to be calculations by default. And 90%+ of all =vars= is pure functions. [see code analysis talks]
+
+Data > Calculations > Actions.
+
+We try to first express ourselves in terms of data, then calculations, and only carefully, with consideration, we use actions.
+
+*** What Did Smalltalk Have That I Don't Have?
+
+One thing I am sure of is that I can mold Emacs and a Clojure REPL into anything that it was.
+
+- https://www.youtube.com/watch?v=s6HJEnGRt88
+
+* Bobscheme
+
+[[denote:20230705T083842][Bobscheme]] is a scheme implementation on dotnet using JSON as code.
+
+Its purpose is to make it obvious to non-lispers, who know what JSON is, to see what Lisp is.
+
+And I have fun making screencasts of building my language.
+
+[[https://github.com/benjamin-asdf/bobscheme][Github]]
+
+* Why is Lisp not more popular?
+
+/Everything is the way it is because it got that way/.
+
+Computer science is still in its infancy. We are still figuring out left and right how to do things and what it is about.
+There was a time when *Assembly* was unpopular. There was a time when structured programming, like =C=, was unpopular.[fn:1]
+
+One of my intellectual heroes is Marvin Minsky.
+
+#+begin_quote
+And in the early 1950s for the first time, computers got enough memory so there was actually room to store
+new programs in them and some pioneers started in 1954, 5, 6 started experiments where they actually wrote programs
+that wrote new programs that would then run.
+
+And this led to the development of certain languages which were very good at...
+In which you could write programs that would write in the same language so they could keep changing.
+
+There was a lot of progress and by 1960 we had 2 major languages that were good at modifying themselves.
+
+Unfortunately, these languages were a little bit unfamiliar to people who did not see the great power of programs that could change themselves
+
+And the world was overtaken by other terrible languages like the famous C language or Fortran or Algol and so forth.
+
+Which became universally popular and in which it is almost impossible to write programs that change themself.
+That is just the parenthesis.
+
+/The bad drives out the good/, whose law is it? Gresham's law.
+
+In modern software practice, we see this.
+I can't understand why this 35-year-old language called Unix is suddenly popular.
+
+But the only thing I can think of is that the other operating systems got filled with so much garbage in the intervening years that nobody can deal with that.
+And it is not that Unix is the latest thing it is the last fossil that has not completely dissolved from the past.
+So they are starting over and as far as I can see they are starting over to make the same mistakes.
+#+end_quote
+
+[[https://www.youtube.com/watch?v=CIoddZ1NOVM][Youtube]]
+
+In [[https://www.lesswrong.com/s/oLGCcbnvabyibnG9d][Inadequate Equilibria]], Eliezer Yudkowsky explains in a very eye-opening way why societies
+end up in /inadequate equilibria/, Nash equilibria that are worse than other potential, better Nash equilibria.
+
+Using Lisp is an odd thing, so it doesn't fit with the idea of /best industry practices/.
+See Paul Graham's [[http://paulgraham.com/icad.html][Revenge Of The Ners]] talking about exactly this dynamic.
+
+If you look for the next program's language, all kinds of people are excited about this or that (usually new) language or framework.
+You hear left and right people making plausible claims about why =x= or =y= technology is great.
+
+It is not clear that an ancient, magical programming language would also be the most powerful at winning in that market.
+
+It would have some advantages sure, like actually doing something different. But this would also come at the cost of it
+looking a bit unfamiliar.
+
+More history:
+
+- [[https://www.youtube.com/watch?v=QyJZzq0v7Z4&t=107s][Why Isn't Functional Programming the Norm? – Richard Feldman]]
+- [[https://www.youtube.com/watch?v=QM1iUe6IofM][Object-Oriented Programming is Bad]] simply amazing video about how the current paradigm *is not good*.
+
+* But the safety of types!
+
+1. Static types simply don't matter so much.
+2. Static types are a tradeoff.
+   I think those people ignore the effort and price they pay for having those types.
+   There is a time and place where you want something made out of concrete.
+   But for many things and many moments, I want to choose to have something more malleable.
+   Lisp and Forth programs have been debugged while in space. Know the price you pay.
+3. You get intermittent rewards from the types helping you now and then. The reward pattern of gambling addicts.
+4. I have to grant it to the Haskellers, Elm, Roc and maybe Rust persons, that getting leverage
+   from the compiler giving feedback sounds useful.
+
+Datomic is a great database and it is written in Clojure. If somebody can write a database
+in a dynamic language, then what do you think you need types for?
+
+It is something we have science on. Having a good night's sleep has a bigger
+effect on the amount of bugs you make compared to having static or not having static types.
+[which studies?]
+
+Unless you are implementing a smart contract or something, it simply does not matter so much.
+There are /way/ more powerful things a language can provide you.
+
+=Immutability=, now here is somethihng that is self-evidently powerfully helping you to get programs right.
+Like the moon hanging in the sky. Static types? Its a belief system whether it helps you or not.
+
+=Interactivity=, you know the difference between quick feedback and non-quick feedback.
+If you don't, I cannot take you seriously.
+
+** Eric Normand
+
+[I will find the podcast episode where he is musing about this, something like:]
+
+Like a slot machine addict, now and then you get a spritz of the types
+helped you.. and then you praise the types for helping,
+but you forget the tradeoff you paid for having them.
+And all those countless times they did not help.
+
+** [[https://www.youtube.com/watch?v=v2ifWcnQs6M&list=PLdlYlZ7UVTGZ_9RklD0unuSEro6m1ubOV][Douglas Crockford]]
+
+[Something along the lines of:]
+
+.. You forget the pain that you are taking on with the types...
+.. in my feeling, it is not worth it.
+.. I am on the dynamic side of things.
+
+** Jack Rusher
+
+They just don't matter so much. https://www.youtube.com/watch?v=8Ab3ArE8W3s.
+
+Here, he talks about static types of functional languages:
+
+#+begin_quote
+I have not seen the programs in these languages have any fewer defects than programs in any other
+programming language that I use, modulo the ones with really bad memory allocation behavior.
+#+end_quote
+
+#+begin_quote
+If you're doing some kind of, you know, horrible cryptocurrency thing, where you're likely
+to lose a billion dollars worth of SomethingCoin™, then, yeah, you maybe want to use some kind of verifier
+to make sure you're not going to screw it up. But, that said, space probes written in Lisp and FORTH) have been debugged while off-world.
+#+end_quote
+
+** Rich Hickey
+
+/What is true of every bug found in the field?/ - /It passed the type checker!/.
+
+From [[https://www.youtube.com/watch?v=LKtk3HCgTa8][Simple Made Easy]].
+
+From [[https://www.youtube.com/watch?v=2V1FtfBDsLU][Effective Programs - 10 Years of Clojure - Rich Hickey]], Things you need to solve your problem:
+
+At the top, there is the domain, your understanding of the domain etc.
+This is the stuff where /real/ bugs come from, misunderstandings and so forth.
+
+At the bottom, there are issues like typos etc. It just is not a big deal.
+These are small mistakes. Static types help you with stuff like typos and maybe sort of 1 level up from typos.
+
+** Richard Feldman
+
+Richard Feldman is a static type of person doing =Roc=, =Elm= and a great software podcast called /Software Unscripted/.
+
+Getting great feedback from the compiler about the errors you are doing at least sounds like the kind of thing that has a chance of being useful.
+
+I really should be writing some Haskell, Elm, Roc and Rust to know for myself.
+
+** Weak arguments for strong types
+
+*** That is you being lazy!
+
+There could be an answer.
+
+But I choose to spend my time on something more useful right now.
+
+*** I want to have the safety of knowing my program works
+
+Do you interact with mainstream software at all? Whatever they are doing to not have bugs doesn't work.
+
+** Good reasons for static types [wip]
+
+- Writing smart contracts
+
+* Silly parenthesis!
+
+- Are the thoughts you think not more important than the syntax of a language?
+- In Lisp, the verb is always at the front. Is the noun always at the front in Java?
+- Not every change is an improvement, but every improvement is a change.
+  How would it look if Lisp is different?
+  How would it look if there is a /reason/ to call it the only language that is beautiful?
+- Show me a language that looks like all the others and call it special and I am suspicious.
+  Show me a language that looks completely different (=APL=) and call it special and I am intrigued.
+- Is it not true that we are children compared to the territory of things we don't know yet?
+- Would it not be hybristic to think you know at this date and age what the syntax of a language should look like?
+- Is it not the person, who has programmed in both languages, that can make the judgment: which is better?
+- Is it not true that Vim bindings are unfamiliar but powerful?
+- Is it not true that even git is unfamiliar but powerful?
+
+Many things in the world that are powerful are also unfamiliar at first.
+Language is a tool of thought. A language is like an instrument. It is not in the first 5 minutes of engaging with it that you will know its power.
+
+Maybe I was just lucky and I discovered Emacs and hence Lisp early enough, so it never was an issue to me that languages would
+look differently. I just took it for granted that some look differently.
+And I never was stuck with this strange mental illusion to think to know what languages are supposed to look like. How limiting?
+
+The landscape of possible languages, even the ones we already are exploring is like a continent, where you know but one valley.
+Here are just a few completely different relatively popular programming paradigms and languages:
+
+- Array-based languages: APL, J.
+- Logic programming: prolog, datalog, core. logic.
+- Stack-based languages: FORTH.
+- Erlang (heritage from Prolog, Smalltalk, Planner). A lang with fault tolerance at the center. Sometimes said to be /process-oriented/.
+
+It is sometimes said that Lisp has no syntax, which is not entirely true because the order of things has meaning.
+But there is another fundamental thing about Lisp syntax and the form of Lisp. It exists to be /out of the way/.
+Because the form barely matters, what matters is the content.
+McCarthy discovered Lisp's syntax accidentally, by just writing the AST of that hypothetical language in his paper.
+
+So he deliberately was /not/ thinking about the source code syntax but about the ideas. But it turns out that just talking about
+the ideas is a simpler and better way to program. Really funny.
+
+Ah, and since [[denote:20230424T082516][structural editing]] is fucking awesome anyway you don't want to go back to something more complicated afterward.
+
+** Common Lisp has annoyingly many parents
+
+#+begin_src lisp
+    (let ((foo bar))
+      foo)
+#+end_src
+
+This overload of =()= to mean different things, binding, application, ... is =fixed in Clojure=.
+
+#+begin_src clojure
+    (let [foo bar]
+      foo)
+#+end_src
+
+In Clojure, =[]= is a syntactic hint that you are doing =binding=, it gets rid of annoying parenthesis and it makes everything super regular.
+Because I can think the same binding thoughts (Clojure has amazing =destructuring= support for its idiomatic, plain immutable collection objects) everywhere I see =[]=.
+
+* REPL? Yea language =x= also has this
+
+One hears that *interactivity is at the center of what Lisp is about* and says:
+
+/Python has a REPL./
+
+/Yeah there are things like edit and continue in lang =x=/.
+
+When you make a project, is the first thing you do start a REPL and then not kill the process for days until your project is done?
+
+When I come to your project, can I fire up a REPL and jump into the program?
+
+When you want to look at your program's state in production, do you /REPL in/ and simply see?
+
+No, I don't think so. Because the interactivity was /not/ at the center, not at all.
+
+Programming also is a concrete thing, with concrete activities and cultures. You can do everything sort of in all general-purpose programming languages. What is practical is guided by this culture and practices. To ignore this is simply being a nerd for no good reason. It is pretending to care about essentials, but ignoring that in the real world, practicality is essential, too.
+
+And the irony of the situation. The one is deluding themselves into the dreamland of those great Python REPL and edit and continue lands, where stuff works great and it's the normal way to do things.
+
+Who is the one being unpractical, then?
+
+* The Blub paradox
+
+http://www.paulgraham.com/avg.html
+
+Learning multiple languages is virtually a must. To see what is different, and what is the same.
+Because what is the same is the soul of the computer. Well, at least it's data structures, algorithms, and control flow, and not that much more.
+And what is different are idioms and styles and culture and emphasis.
+
+The one that has tried multiple mediocre mainstream languages will have a "mature" feel of the relative power of languages. And conclude it is simply a matter of taste.
+That all are roughly equally powerful.
+
+Because there are many languages with devoted followers, there is a market of people saying /this or that language is the best.../.
+You stop taking these people seriously because you have understood that all languages are the same, and it depends on the context of which tool to choose.
+
+Now the Lisp devotee pronounces the superiority of Lisp 100x and 10000x to other languages. And all it does is make your bullshit sensors fire.
+You have a mental model of the power of general-purpose languages.
+
+Way more powerful than Assembly. Who would be so crazy as to give up all that expressivity for writing Assembly?
+It would be /insane/ to program Assembly because the power difference between the mainstream high-level programming language and Assembly is so massive.
+
+If I say Lisp is to those default langs like those default langs are to Assembly; Do you see maybe /why/ it is such a big deal for me? It is /insane/ to me to give up this power.
+
+The point of this website is to increase the surface area of idea space association lines that make a person check out Lisp and understand why it is a different language entirely.
+
+Lisp is different from what you consider "normal" languages the way a spaceship is different from a hot air balloon.
+Flying Lisp is simply a different activity, with a different range of spaces where you can go.
+
+Here is an [[denote:20230707T090418][Answer]] for /why/.
+
+What in the world needs to look different for this to be true? It's an ancient magical language made for AI, made by imaginative, brilliant people.
+It looks alien and it is said to have been discovered. It has been called the Maxwell equations of computer science and it has not changed ever.
+For if you change it, you simply end up with another dialect of it, because its ideas are at the bottom.
+
+It is mentioned as the one language that changes your taste. That makes you understand what power means.
+
+Programming is wizardry, but the magic is real. How sad, to not be excited enough about magic so you don't look into ancient lore of powerful alien technology.
+
+* Fixing the BBM
+https://www.marktarver.com/bipolar.html
+
+This is an existential blog post, so my answer is existential, too.
+
+Yes, culture is simply off.
+
+But what do you gain from getting depressed and lethargic from that? For me, this is simply another call to action.
+Simply another edge for which there is still a challenge to overcome.
+
+Reality is not a video game, where you only get challenges that you /can/ live up to.
+
+Reality is not a video game, where all the challenges you get are /proper/, not in any sense and not even a little.
+
+If culture is off, you don't get to complain that /if only people listened.../.
+
+If only people listened, we would be exploring the stars many times over right now.
+
+So either you put people into the navigation problem you are solving, or you are making yourself blind to the world.
+Like somebody that goes through the motions of making some mistake, chasing some unattainable appearance of what, consistency?
+Like somebody who was tricked into thinking reality is a video game, and when its challenges are unorthodox, they pretend to not get it.
+
+If reality is posing you a challenge and don't you live up to it; You die.[fn:3]
+We either fix humanity, despite all its problems, or we die.[fn:2]
+
+If you go forth and you think getting a university degree is equal to navigating the world. You are making the
+mistake of being a blind video gamer. You pretend there is a pre-allocated set of challenges to overcome for you to contribute to the world.
+But then you realize that university is part of culture, just like anywhere else.
+
+The problem is not culture, the problem is not the many people in science are in for their careers. The problem is not the uselessness of money.
+Or the uselessness of hanging out with /friends/ just for the sake of it.
+
+The problem is you mistook the open-ended set of solution spaces for fixing the world with this pre-defined list of things to do.
+And then the fakeness and uselessness of it all crushes you to the ground.
+
+
+* More rambling
+
+*** No IQ Tests
+
+The many little ways in which we make software a puzzle. And how we can fix this.
+
+- Rembering operator precidence by heart, juggling numbers and =<= and =>= in your head. That's little puzzles, not programming.
+- Guys (mostly) enjoy the puzzle of it and mistake it for programming. That is a mistake.
+- Imperative programming inherently makes you keep track of those little places in your head.
+- Don't do this to yourself and others, it is pain and it is not programming, it is too low level.
+
+- Fix 1: interactive programming. I never think about how =<= works. I just try with some example inputs until it does what I want.
+
+  This is like programming with clay. Just touch it with your hands and form it into what you need.
+  See [[denote:20230707T090418][Interactive Programming]].
+
+- Fix 2: Everything immutable values, everything pure functions. Except in the small places you need it.
+
+  You don't know the amount of mental distress you suffer until you have programmed in a language where immutability is the default.
+  Seriously, this is like some annoying sound in the background for years and you don't notice. Once it's gone you realize how much it was bothering you.
+
+  Data is simpler than calculations which are simpler than actions. And you need very little action to make a machine go.
+  Datomic is a database that has one single reference cell compare and swap thingy. One.
+
+- I wonder what the next-gen higher levels of programming will be.
+
+  When I feel myself into software and wonder what are the next things, then I think of putting all the code, the symbols of a system into a database, and having it evolve and queriable etc. by itself.
+  It would be the ultimate dynamic Von Neuman Machine.
+  Then the whole system would become one level more like clay. But with history like in git.
+
+
+* Quotes
+
+* Reading
+
+- Rich Hickey's YouTube talks
+- [[https://www.youtube.com/watch?v=P76Vbsk_3J0][Clojure for Java Programmers Part 1 - Rich Hickey]]
+- Paul Graham, /On Lisp/
+- Paul Graham, /Hackers And Painters/ + his blog
+- [[https://www.youtube.com/watch?v=PUv66718DII&t=1s][Bret Victor - Inventing on Principle]]
+- [[https://www.youtube.com/watch?v=8pTEmbeENF4][Bret Victor The Future of Programming]]
+- [[https://www.youtube.com/watch?v=YaWVHyIBVeI&][Marvin Minsky - The beauty of the Lisp language]]
+- https://www.annualreviews.org/doi/abs/10.1146/annurev.cs.03.060188.001123
+
+
+* Footnotes
+
+[fn:4]
+
+Javascript is sort of the odd one out. Because it is a Scheme (a functional, academic, tiny lisp dialect).
+
+In JS, you can very dynamically build the program while it runs. Not sure if people are doing it so much, but it has this power.
+
+
+[fn:3]
+
+That is from Eliezer Yudkowsky.
+
+[fn:2]
+
+In the "best world" limit, this means all the people dying from disease, aging and poverty, could live in a space-faring utopia right now.
+
+In the worst world, this means we either avoid extinction events, or we don't.
+
+[fn:1]
+
+Bob Martin has a story somewhere where he tries to convince his coworkers, who used Assembly, to use C.

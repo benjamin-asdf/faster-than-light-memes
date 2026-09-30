@@ -1,0 +1,139 @@
+#+title:      Memetics
+#+date:       [2023-05-18 Thu 18:57]
+#+filetags:   :public:feed:ftlm:ideas:
+#+identifier: 20230518T185739
+#+EXPORT_FILE_NAME: memetics
+
+(This is a work-in-progress page).
+
+
+---
+
+See [[denote:20240208T124507][Biological Notes on The Vehicles]] for my current musings on meme-engine
+algorithms for cognition.
+
+Kinda 'slides' page [[denote:20240611T155542][Overview]]. My theory of cognition is full-blown memetics.
+Memes are software animals. It's a biology. (technology, biology, computers, cognition are the same kind of stuff on certain continuums).
+---
+
+Go read /The Selfish Gene/ if you have not done so yet.
+
+Seriously, do it.
+
+It is not accidental that I call this blog /faster than light memes/.
+
+The concept of the *meme* has intrigued me and many others.
+
+/The Selfish Gene/ is a book that introduces a perspective, /Genes Eye View of Evolution/ ([[https://en.wikipedia.org/wiki/The_Selfish_Gene][Dawkins 1976]]).
+Introducing perspective might be the most powerful /kind of knowledge/.
+
+With a happy little conceptual jump, Dawkins applies the perspective to mental content and discovers the /memes/.
+
+* Notable works on memetics:
+
+** /The Beginning of Infinity/, David Deutch
+Deutsch fleshes out the existence of 2 classes of memes that he calls =rational= and =non-rational=.
+
+A fascinating read, with a red thread through scientific inquiry, why flowers are beautiful,
+ethical truths, the nature of the universe and the fate of civilization. Big history.
+
+** /The Meme Machine/, Susan Blackmore
+Blackmore lays out some memetic concepts, =Copy-the-product=, =Copy-the-instructions=,
+
+introduces the term =Memeplex= ([[https://en.wikipedia.org/wiki/The_Meme_Machine][Wikipedia]]), a term that comes from genetics =geneplex=.
+In memetics, we can play the game of reasoning by analogy to genes.
+
+Blackmore goes on to describe a meme's eye view of how culture and the brain evolved.
+And makes hypotheses about how music, language and other aspects of cognition, especially social cognition might be explained by memetic processes.
+
+Also big on how memes might become the driver of genetic evolution.
+
+** Daniel Dennett's recent work
+For instance, /From Bacteria to Back and Back/.
+
+Dennett is an exceptionally clear thinker.
+He shows how memetics fits as a nice model for how religions work.
+
+He is pointing out the power of /good ideas/, the most powerful ones he calls /intuition pumps/.
+
+He makes the analogy of computer virtual machines to how minds work.
+Meaning that on some level of the hierarchy, the underlying working of the mind are abstracted away enough
+so any idea fits on any brain, the same way the Java Virtual Machine abstracts about different operating
+systems.
+
+/download memetic applets to your neck top/.
+
+This idea ties into Blackmores /Meme Machine/, where she hypothesizes that the genetics that makes brains
+suitable for memes where selected for.
+
+An evolutionary driver for making brains that have the infrastructure of having ideas, without
+specifying the contents of the ideas.
+
+Naively, content is the memes like software is to hardware.
+
+One thing I think Dennett gets wrong is that much of his theorizing is about person-jumping memes.
+
+I think it is important to notice that memes can reproduce and live within a single mind and I always felt like
+Dennett was ignoring this idea for some reason.
+
+The strongest example I can come up with is a personal rumination or some such.
+This is a memeplex that might never be replicated in another mind but reproduces itself again and again within one mind.
+
+But of course, once you think of it this way, then maybe much of the machinery of the mind is assembled, in part, darwinistically.
+
+
+* Why this blog is called /Faster Than Light Memes/
+
+Replicating information, and ideas are the real deal of what the universe is about.
+
+The difference between humans and other animals is our ideas.
+=Humanity= /is/ the memes, more than it is about the biological substrate carrying them.
+
+It is the memes that allow us to go to the moon - /In spite/ of our biology, not /thanks/ to our biology.
+
+David Deutsch has recently described his philosophy nicely on the [[https://tim.blog/2023/03/23/david-deutsch-naval-ravikant/][Tim Ferriss Show]].
+
+As civilizations become more advanced, it is knowledge and ideas that are the driving force behind what happens in the universe.
+
+Consider a meteor flying towards Earth. Newtonian physics predicts an impact.
+But because of civilization, it might be deflected.
+
+Eventually, ideas will have the power to create, transform and destroy stars and galaxies.
+
+Dawkins mentions the memes are currently still clumsily floating around in their primordial soup.
+
+Once we start doing things like converting all reachable matter into =computronium=[fn:1],
+it will be the descendants of our ideas that will shape the universe.
+
+If we should find ways to go faster than light, the memes will spread faster than light through the universe.
+
+The title of my blog is just a hopeful wish, that the axiological potential of humanity is greater by a factor of =x= because if you go faster than light you can reach more of the universe.
+
+Of course, we, the memes, might figure out something more useful than populating the universe. Like making ourselves smaller
+and smaller or something.
+
+/Faster Than Light/ is just a phrase underlining the idea of potentially spreading in the universe.
+
+Going faster than light or even spreading in the universe is not necessarily a goal - maximizing human flourishing is.
+
+* Sabine Hosenfelder 'I Believe The Universe Might Be Able to Think.'.
+
+The physics is equivalent to what is required for faster than light memes.
+
+Namely =information= (signals) traveling faster than light.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UqIjhcEb-MU?si=JZshOLvpjoJHk0b5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+I decide that from now on, whenever somebody makes fun of the concept of /faster than light memes/, I think they are just closed minded.
+
+* Greg Egan: /Diaspora/ 1997
+
+This book features stranger and grander things than /faster than light memes/.
+
+* Footnotes
+
+[fn:1]
+
+A hypothetical optimal configuration of matter for doing computation.

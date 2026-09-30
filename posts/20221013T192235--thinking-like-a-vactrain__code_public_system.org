@@ -1,0 +1,4 @@
+#+title:      thinking-like-a-vactrain
+#+date:       [2022-10-13 Thu 19:22]
+#+filetags:   :code:public:system:
+#+identifier: 20221013T192235

@@ -1,0 +1,90 @@
+#+title:      dreaming-code
+#+date:       [2022-10-20 Thu 19:18]
+#+filetags:   :dreaming:feed:programming:dreams:mind
+#+identifier: 20221020T191814
+#+EXPORT_FILE_NAME: dreaming-code
+
+I produced source code in a dream once.
+
+When I dream of coding it is /usually/ sort of "disembodied" just
+concepts and problems + in the earlier part of the night.
+
+What is the business of these early-night dreams?
+
+* Sleep mentations
+
+#+begin_quote
+NREM dreams are typically shorter, more fragmented, and more thought-like whereas REM dreams are longer, more emotional, and more bizarre
+#+end_quote
+([[https://www.researchgate.net/publication/320356182_Dream_Recall_and_Content_in_Different_Stages_of_Sleep_and_Time-of-Night_Effect][Carr and Solomonova 2019]]).
+
+These /dreams/ from the early part of the night are more like
+thinking with some dream logic.
+
+Here is an example from my dream diaries:
+
+#+begin_quote
+I have an internet connection in my brain and I need to connect to a
+database, then send some data to my feet.
+It is like thinking about the problem itself more, with some
+disembodied visuals of code.
+The coding itself is a little like being able to modify code
+blocks by raising an eyebrow or a finger.
+Every time I wake up I sort of want to "go back" to the problem, because
+I "know",  I have almost solved it. Always so close.
+#+end_quote
+
+Another quote from Carr and Solomonova:
+
+#+begin_quote
+Some use a more inclusive dreaming definition, such as ‘sleep mentation’, which is characterized by any cognitive activity, whereas the  original concept of dreaming was more qualified as  hallucinatory, predominantly visual, imagery (see also chapter 5). The questions used by an experimenter can alter a participant’s interpretation of dreaming.  For example, the question, “what was going through your mind just before I called you”, will encourage more frequent dream reports than, “what were you dreaming about?”
+#+end_quote
+
+I like the idea of calling these /sleep mentation/ instead of dreams.
+
+* The night goes on - REM, NREM
+
+#+begin_quote
+Attributes such as length, bizarreness, and perceptual vividness increase for both NREM and REM sleep reports across the night
+#+end_quote
+([[https://www.researchgate.net/publication/320356182_Dream_Recall_and_Content_in_Different_Stages_of_Sleep_and_Time-of-Night_Effect][Carr and Solomonova 2019]]).
+
+Additionally, it is well known that in the later part of the night you have more [[https://en.wikipedia.org/wiki/Rapid_eye_movement_sleep][REM sleep]].
+
+I was grouping dreams into 2 categories on a continuum:
+
+1) "Episodic" dreams, a reference to [[https://en.wikipedia.org/wiki/Episodic_memory][episodic memory]].
+   Featuring persons, places, **situations** with a story.
+   In many cases featuring a main character.
+   Later in the night.
+2) "Non-Episodic" dreams: Usually no characters, no real story. More
+   like thinking about a problem. Or tool/toy/concept usage in
+   the abstract somehow. As if the brain parts for the tool usage are
+   online without any of the storytelling, and little of the "world integrating"
+   parts.
+   More abstract, fewer visuals and perceptions (low "vividness").
+   Also, *extremely hard* to remember any content.
+   Also, it is very hard (impossible?) to become lucid during one of those.
+   Earlier in the night.
+
+* Source code in a vivid dream
+
+It *did* happen to me recently halfway through the night.
+A dream purely about coding but more on the side of what I would call
+/episodic/.
+This was a complete first time. Usually, code dreams where these
+ephemeral problem-solve dreams.
+
+I was dreaming about my emacs config.
+
+I recall a visual of colored source code (+ content!).
+There was also a bit of a first-person main character, thinking along
+the lines of "I want to make this part smoother...".
+Here it is:
+
+#+begin_src elisp
+  ;; This code came to me in a dream almost verbatim:
+  (add-hook 'kill-emacs-hook #'save-some-buffers)
+#+end_src
+
+I was able to type in this code the next morning, haha!

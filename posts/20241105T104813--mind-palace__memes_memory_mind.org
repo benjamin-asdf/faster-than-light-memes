@@ -1,0 +1,297 @@
+#+title:      mind-palace
+#+date:       [2024-11-05 Tue 10:48]
+#+filetags:   :memes:memory:mind:
+#+identifier: 20241105T104813
+#+EXPORT_FILE_NAME: mind-palace
+
+This is quite raw. Pure, raw, intimate thought. That's part of the design philosophy of this blog.
+
+I recently went into memoizing pi again, for fun.
+
+** German memoization video (first 120 or so digits):
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wyyHLdg3qPk?si=iDEGlinyZ5iZISFu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+
+** Live programming video:
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/un7SscvuNEA?si=hgVygNs4HM9tOUD4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+
+* Recipie for when you also want a mind-palace (Beginner)
+
+- take a full breath out
+- bring to mind a random room from somewhere you lived or visited
+- count the doors and windows
+- pick one door or window,
+- pick a person, for example a friend, or an actor from a movie or series
+- "imagine" the person sitting or standing next to the door or window.
+  Let random associations come, if the imaginary person wants to smile into the camera, let them.
+  Associations are happy little friends.
+- linger with this piece of imagination, appreciate it as artistic expression,
+  created by yourself for yourself.
+- This place can be your first mind-palace,
+- This scene can be your first mnemonic scene
+- Maybe 'mnemonic devices work', or 'mind-palace is a thing'?
+- Everytime you visit this place in your imagination and remember the scene, you might remember
+  'mind-palace is a thing'.
+
+* P - B - O - B -  P ,  PBOBP Scheme, person object body-part scheme
+
+person - body part - object - body part - person
+
+2 - 1 - 2 - 1 - 2
+
+** My Body parts  B:
+
+mix of some chakras, orifices and extremities.
+
+- 0: mouth
+- 1: genital
+- 2: leg/food       | update: back
+- 4: hands
+- 3: heart
+- 5: nose
+- 6: ass
+- 7: eye
+- 8: ear
+- 9: above the head | crown chakra
+
+- eye / eyes, leg / legs, etc. Yogis choice.
+
+Picked some of them with vague little connotations.
+
+Genital, because phalic - 1
+Mouth making O          - 0
+Heart emoji <3          - 3
+2 legs in line drawing  - 2
+eye 7 seemed right.
+ear 8 because of the form of pinna, and I was imagining
+an 8 circeling around a persons head/ ears.
+
+the highest digit and the higher self, crown chakra thingy - 9
+
+Nose and ass I put wherever.
+
+----------------
+
+You could do 100 there, too. (meaning you cover 2 digits in the body part slot).
+
+Imagine,
+
+- one spot for each finger,
+- one spot for hand palm, for hand back,
+- a spot on each tooth,
+- inside the ear, on the earlobe, bla and bla.
+
+* Stream of Consciousness Walktrhough the first 4 pictures (4 * 8 digits) of PI
+
+(Note I swapped 0 and 1 encoding in the example).
+
+-------------------------
+
+14 - 1 - 59 - 2 - 65
+
+Albus Dumbledore - mouth - black candle wax - foot - Felix Zemdegs
+
+in the final version:
+
+--
+
+Albus Dumbledore - penis - black candle wax - foot - Felix Zemdegs
+
+----------
+
+I close my eyes and internally reach / visit some mind palace spot.
+
+I have already prepared this space, a new planet, a pi planet.
+I imagine a scene from a space faring movie with a spaceship flying in orbit.
+
+Then the starting point of my scene, a clearing in a jungle, nothing much commited yet.
+
+-----------
+
+When I come up with a new place I make hand movements like a conductor, pointing
+to space, letting it fill with pieces of scenery and architecture.
+
+I might at times flip through a few alternative layout building blocks, like in some kind of
+city planner our house building video game.
+
+Then I simply decide and commit to it perhaps with a settling hand movement, as if putting
+something down. Not on a table but more like letting it hang lose when it is secured by
+a surrounding net.
+
+I found it is important to decide and commit on a layout. So as to not be tempted to re-arrange things.
+Such an endevour is one of the things that don't work well and are a waste of time.
+
+Better work around the idea to do so.
+
+This seems to be a benefit of using real places from memory, but then you will always have the myriad dymamic
+aspects of memory-trajectory building.
+
+At this spot, is the door open, or closed? At this spot, is the bath in front or behind the cupboard?
+
+----------------
+
+I see Dubmledore with black wax on his foot. Then a picture of Vane (Black Seas) crosses my mind.
+This is from dableling with earlier versions of the above scheme.
+
+In my memory image, D. is lifting his foot grazefully, there is a close-up.
+
+The hole thing is basically like a camera moving through mostly static scenery, it is then
+the perspectives, close ups and so forth that are dynamic.
+
+----------------
+
+Either way, let's encode some pi with the scheme above:
+
+Let's, see - 14.
+
+Dumbledore, standing tall and wise head purched back and looking through his
+glasses - nodding knowling yes.
+
+But hold on. I am careful to not imagine him in the scene already
+(though while writing this I already did a little).
+
+I don't want to put an image of D. in the scene.
+
+I want
+
+14 - 1 - 59 - 2 - 65
+
+so I first 'read through' the complete encoding.
+
+Since I am a visual person, to hold this temporarily in mind, I will
+imagine the elements, but as a buffer.
+
+Like some kind of video game where you have a drawing board available.
+
+And you can put some buildings or whatever scratchpad like, before
+building it in the scene.
+
+Dumbledore  - mouth
+
+I imagine D. pursing his lips. (close up, zoom).
+
+59 - black candle wax - I remember the opening scene from Black Sea,
+I remember the sprit of the music, if not the music.
+Was that a piece from Imagine Dragons? - No I think, that one was the
+League Series.
+
+Either way, I image black, dripping candle wax.
+Then D. with the lips again to hold it all together.
+
+2 - [...rembering, ... almost looking up then remembering the legs on the line drawing ] legs.
+
+Now I imagine candle wax on a line drawing leg.
+And D. with the lisp again.
+
+65 - that is Felix Zemdegs.
+
+Now I have him in mind, smiling with Rubiks cube in the cam.
+
+
+I take a picture of him, like some cut out photograph, and move it on the
+imaginary scratch pad of the video game I imagined earlier.
+(This only comes up because I write this text).
+
+Now Albus Dumbledore pursing lips, then black wax on a line drawing leg and Felix.
+
+--------------------
+
+I move my hands as conductor, 'making space', 'allocating' a spot in the scene.
+This is a wiping away, wiping away anything that distracts me.
+
+[excuse me while I perfom]
+
+Ok so I made some mouth sounds 'ahh' and imagined a pond in the jungle,
+then I imagined D. and I thought it would be epic if he is spewing the black
+wax. Then I remembered food and Felix, so he is dangling with his foot from
+the wax now (he is more figure sized compared to D.).
+
+For some reason, I have this [[https://mightandmagic.fandom.com/wiki/List_of_Heroes_III_Heroes?file=HeroAstralIII.jpg][Astral]] hero from Heroes of Migth and Magic 3 in
+mind when thinkin of Dumbledor and the wax.
+
+So I make sure I remember it's D. by imagining some camera-shots of his
+wizard had, the glasses slightly dislocate upwards as the wax leaves his body ad violently.
+
+One could spend now time on the details of the picture.
+
+I realize the person hanging from the wachs could be anybody, so I google
+Zemdegs again.
+
+After letting my mind move for a moment, I'll replace him with Robert Pattinson (Cedric Diggory). I'll leave the cube as object for 65.
+
+I find actors are great because I can imagine them engaged in my scenes.
+
+-------------
+
+Hard cut. Next scene.
+
+I want to do 1. pond, 2. floating on pond, 2. other side of pond.
+
+(Then I already have a little staircase made from wood and mud in my mind that
+would lazily lead somewhere up, and providing another 3 spots)
+
+-------------
+
+Floating on the pond...
+
+35 - 8 - 97 - 9 - 32
+
+(I don't write down my thinking process in that much of detail now).
+
+Cercei (Game of Thrones) - ear - Heroes Of Might And magic 3 [[https://mightandmagic.fandom.com/wiki/List_of_Heroes_III_Heroes?file=HeroNagashIII.jpg][Nagash]] - head chakra - Holden from 'The Expanse'
+
+Cam moves behind Cedric dangling on the wax, on top of pond.
+
+Cercei annoyed at the golden amulet coming out of her ear, amulet is gold with Nagash face roughly as stone.
+(Nagash also has something like that on his head).
+
+The amulet dangles and flows into the head / head chakra of Holden. Glowing a little bit over the top like
+some angle bla-bla depiction.
+
+Quicly appreciating the scene, putting in mind again how it follows the Dumbledor scene.
+
+
+Actually, from this I have the idea that a 'second track' that goes Dumbledore - Cercei - ... would be quite useful.
+
+A hard part of this technique is making sure you don't 'oversee' (quite literally) one of the scenes.
+
+If every spot has 3 sub-spots, rules like this help.
+
+But a second memory track, keeping track of 'scene labels' perhaps simply with the first person of each scene - that might be
+useful, too.
+
+-----------
+
+At the other end of the pond...
+
+38 - 4 - 62 - 6 - 43
+
+Aubrey De Gray - hand - Mel (GOT) Object: Lightbringer sword (is a sword that glows with fire or sth.) - ass - Dr. Cox from scrubs
+
+Aubrey De Gray putting the sword proudly in the air, then second part of the scene, he shows it into Dr. Cox ass.
+He is making sounds of pain.
+
+(I imagine this more as if it was from a Monty Python movie, not a Saw).
+
+I make sure I remember I mean the hand/ arm with 4.
+Another cam movement on the other hand of Aubrey.
+
+** Challanges I ran into with this scheme:
+
+- If you have objects that can also be interpreted as one of the body parts, might be confusing.
+- (for instance I had somewhere a skeletton hand I think).
+- If you have objects like swords that are obviously used with 1 body part there is another confusion.
+- You might think 'I see sword but what was the body part?'
+
+** Updates
+
+- I realized leg/foot did not work so well after learning for a few days.
+- The visuals did not go into the flow of the trajectory easily.
+- So I update to 'back' I think this works.

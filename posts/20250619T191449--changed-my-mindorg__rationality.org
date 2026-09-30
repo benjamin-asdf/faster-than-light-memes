@@ -1,0 +1,262 @@
+#+title:      changed-my-mind.org
+#+date:       [2025-06-19 Thu 19:14]
+#+filetags:   :rationality:
+#+identifier: 20250619T191449
+#+EXPORT_FILE_NAME: changed-my-mindorg
+
+The only way you know your rationality works is when you change your mind.
+
+- ⚖ - on the fence / trying to understand the real problem.
+- ✅ - acknowledged as fact for the moment.
+- ❌ - rejected for the moment.
+
+
+* 2025: Sunscreen ✅
+
+I stopped using sunscreen a while ago because of Andrew Huberman and got a burn recently,
+prompting me to double check.
+
+Quite disappointed by Huberman! He just said something without good reason.
+
+[[https://youtu.be/wCPp8EJSG-Y?si=YmzLI215fucRk86K][Debunking the worst sunscreen misinformation on TikTok]].
+
+* The Holy? The Spiritual ⚖
+
+I follow Ian McGilchrist to some extend and he manages to make me rethink the hardcore science only based view I have from Dawkins.
+
+Is there something to the notion of 'the holy' that makes sense and is useful?
+
+Maybe /prayer/ also has a place in a well lived live.
+
+I generally subscribe to /Spinozas God/. The grandour of nature makes me exclaim hallelujah.
+[[https://youtu.be/5lfTPTFN94o?si=gYUtZAOTvyp96-iW][Here Dawkins and Dennett praising natures grandouer]].
+
+** techno spiritualism
+
+The idea that software is the approach to describe the sprits of old. (A very cybernetic idea).
+
+Further, the idea that by understanding software, by building ones own operating system, by getting a feel for the composability and harmony of software components,
+one get's to know intuitive truths about the mind. On the level that is below the user interace level and above the hardware level. But in the land in between, Minskie's middle.
+
+The ability to ride a bike cannot be described with text.
+It is the same for the abilities one grows from mediation.
+
+Similarly, there are truths about what /a good software interface is/ that is hard to approach via language only.
+
+Other names: *techno budhism*,
+
+** neuronal animism
+
+The idea that mentality is a software where the datastructures are living, memetic entities.
+This means that thoughts, habbits, pieces of personalities should be seen as alive.
+Micheal Levin says it is a kind of /substance chauvinism/ that we see thoughts, from their ephemeral nature as non-living.
+
+But from a different perspective, ideas - their /information content/ is /immortal/ in the same sense that genes are immortal.
+
+The relationship between life, knowledge, information, replicators, memes, genes is topic of Dawkins, Dennett, /abstract replicator theory/
+and is central for David Deutsch and Chiara Marletto, too.
+
+
+*Neuronal animism* thus brings certain nuances regarding spirituality.
+
+*Animism* is perhaps not the best model for physical reality, but it is perhaps the /correct/ model of /our model of the world/.
+
+The objects are not alive, but /our/ objects in our mentality are.
+
+I am saying you look at an object and the representation you have, the concept of the object, the datastructure, it is a living thing.
+It sort of has goals, it wants be 'looked at', i.e. it wants to cause the rest of your nervous system to output eye movement commands so that it is in focus,
+wants to be understood, wants to be given a name, i.e. when a child learns a language there all the spirits in it's mind that play the game of
+getting assignend a word, ... etc.
+
+It is a datastructure of brain software made from (something like) neuronal activity and it is there to stay, similar to a virus.
+
+Dennett said 'words are memes with a pronounciation'. And it is possible to give a spirit a name, thereby /making it a thing/.
+
+- That Aristotle and Socrates would nowadays probably be philosophically inclined software engineers is a common idea I think.
+- [[https://youtu.be/YZl4zom3q2g?si=hi172AL78sAotdKj][Cyber Animsim by Joscha Bach]] is a similar position. Software /is/ spirit.
+
+
+* 2024: Qualia / The Hard Problem ✅, Consciousness explained ❌
+
+** Previously
+
+I was impressed early by Dan Dennetts /Consiousness Explained/ (1991), it is still a relevant read
+with enormous breadth and depth.
+
+Braitenberg sums the view up:
+The problem of 'consciousness' seems to go away almost entirely, if replaced with 'short term memory' or 'decision basis'.
+
+Consciousness is not such a big deal for the biologist - how would it look if there is an evolved software running on brains for making decisions,
+including signaling things like pain or affection to conspecifics?
+
+From the inside, it would look like this mentality of ours 🤷.
+
+But theoretical physics is where the problem of qualia (the hard problem) becomes obvious;
+It seems to be a question similar to 'where does matter come from?'.
+
+** Dennett
+
+To me, Dennett establishes the nature of the mind as a software; 'Mentality' or the 'decision basis' is a /virtual interface/.
+
+In software, the higher level user does not concern itself with the lower layer implementation.
+This 'hiding of details' is part of the concept of an *abstraction barrier* in software design.
+
+This 'not concerned with the how' is the main point of Dennett's 'user illusion'.
+
+In this read, 'illusion' of illusionism is rather tame.
+
+In any case, 'illusion' does *not* mean 'not real' - illusions are real,
+they are just a thing that does not actually have the explanation that it seems to have.
+
+Dennett's favorite example of an abstraction barrier is the java virtual machine (JVM).
+The point of this software interface is to provide a set of affordances, a language, /in terms of which/ an application can be specified.
+
+The JVM in turn is /implemented/ for many operating systems - each /implementation/ is using a bespoke low level language for an operating system.
+
+(In principle, the JVM could run on a toaster, if the toaster provides hardware instructions out of which you can make a Turing universal language.)
+
+The benefit is that the same program can now run on all of those operating systems for which a JVM implementation exists.
+
+In Von Neuman's days, the high level language was called /short codes/ and the low level language /long codes/.
+
+The beauty of programming is that it is possible to create a /virtual machine/ /in terms of/ /long codes/,
+which are implemented by a thing, implemented by a thing ... bottoming out to machine instructions and physical circuits.
+
+The /virtual machine/ acts /as if/ it was a machine that had the higher level /instruction set/.
+
+Virtual means /as if/, this is the 'illusion' of 'illusionism' in my read.
+
+Or mentality is a higher level software module that can act /as if/ the objects and affordances of mentality exist - thoughts, perception of objects,
+motor programs feelings, access to long term memory, ...
+
+The conjecture that those should made from /simpler/ things, i.e. they must be implemented by something that is /not itself/ mind-stuff,
+is Dennetts idea of 'Darwinism' (Dennett 1995) .
+
+** Virtual worlds??
+
+Now I encountered /The Fabric of Reality/ and /The Beginning of Infinity/ by David Deutsch, and a topic are virtual worlds, computability,
+theoretical physics and such issues.
+
+Apparently Turing universality means that all physical objects can be simulated by a universal computer.
+
+I suppose it also means that all virtual machines create virtual worlds. Even a chess board is a virtual world.
+
+Deutsch discusses funny things like:
+
+#+begin_quote
+If you find yourself /thinking/ in a world as simple as chess, you know that what you see is not all there is,
+because the rules of your world are not complicated enough to support minds.
+#+end_quote
+
+Or /any sufficiently understood magic is indistinguishable from technology/.
+
+Dennett said 'the next generation of thinkers will have no problem to understand the concept of virtuality' and I think he was more or less right.
+
+But the obvious problem is 'what is virtual?', 'what are virtual worlds?', 'how do they relate to the cosmos'?
+
+How relatively trivial the first step of illusionism (being comfortable with the concept of an abstraction barrier),
+and how profound this new problem: /What are virtual worlds in the physical universe/?
+
+It is enough to give me a sense of vertigo.
+
+** Ethics
+
+Another perspective on the hard problem / qualia is the question of 'how does biological information processing relate to ethics?'.
+
+Ethics is like a lense that makes the problem of qualia/ suffering come into focus.
+
+There should be a *theory of fun and suffering*, that probably has to do with personhood, creativity and AGI.
+
+-----------------------
+
+During the time of changing my mind on these matters, I encountered /Permutation City/ 2008 by Greg Egan,
+which explores the problem of virtual worlds.
+
+* 2024: Neo-Lamarckism still ❌, Baldwin-Effect still ✅
+
+In recent times, transgenerational epigentic inheritance prompts biologists to say something like
+"Lamarck was not so wrong after all.".
+
+Lamarckism as a /theory of complex adaptation/ is still wrong. It's confusing to bring forth the name.
+
+Just let it rest in peace. Leave it in the /history of bio philosophy/. It belongs in a museum.
+
+What system knows that a muscle is used, and how to tell the muscles in the offspring to be bigger?
+
+This by itself is a complex adaptation, making Lamarckism as an explantion of adaptation /plop/ away.
+
+On it's own terms, 'the use of transmitting information to the offspring made the capacity to transmitt
+information to offspring more pronounced'.
+
+This is confusing, it is. How does it know how to design itself to do that?
+Also, this sounds almost like abstract replicator theory to me.
+The replicator knows how to transmit information to the offspring.
+
+No. Transgenerational epigentic inheritance is a form of a *Baldwin effect*, where the /dynamism/ is /across generations/.
+
+Transgenerational epigentic inheritance is a phenotype that is stretched out in time across generations.
+
+
+*Bonus*: I delightfully found Schroedinger's /What is Life/ contains a description of Baldwin effect in all but name!
+
+* ca. 2015: Veganism ✅
+
+Just think for a sec what kind of civilization you want to be.
+
+Seriously? Imagine being space faring, meeting aliens and you say 'yes on our planet we mass-kill lower life forms to eat them'.
+It is embarrassing.
+
+In recent times, I am worried veganism becomes married to wokeness in the minds of people. Not correct.
+
+Veganism existed before /wokeness/. You do *not* need to subscribe to any post modernist perspective for veganism to make sense.
+
+Very much on the contrary; it is a highly rational, fact-based stance to take.
+
+Veganism is for me the kind of idea that Socrates, the Stoics, Da Vinci or such people ahead of their time would subscribe to, if they'd be around.
+
+#+begin_quote
+Man has great power of speech, but the greater part thereof is empty and deceitful. The animals have little, but that little is useful and true; and better is a small and certain thing than a great falsehood.
+#+end_quote
+
+— Leonardo da Vinci
+
+[[https://bitesizevegan.org/was-leonardo-da-vinci-vegan-the-history-of-veganism-spotlight/][On Leonardo Da Vinci's Vegansism]]
+
+#+begin_quote
+It is my view that the vegetarian manner of living by its purely physical effect on the human temperament would most beneficially influence the lot of mankind.
+
+#+end_quote
+
+- Einstein in a Letter to 'Vegetarian Watch-Tower', 27 December 1930
+
+[[https://www.ivu.org/history/northam20a/einstein.html][Einstain's Vegetarianism]]
+
+In general, Einsteins (moral, political) philosophy is extremely cool. He had kindness in his heart!
+
+
+* ca. 2009-2011: Religion ❌
+
+Maybe sounds silly but here is something I remember as a crack in my religious belief:
+
+What happens if one of my friends is in hell and I am in heaven?
+
+Then /we are in heaven/ and have to mourn the people in hell? A strange heaven, then.
+Heaven is either perfect or people can go to hell.
+
+--------------------------
+
+Another thing that truly cracked my believe and put perspective was reading wikipedia on the history of religion.
+I remember browsing [[https://en.wikipedia.org/wiki/Zoroastrianism][Zoroastrianism]] because I loved the [[https://en.wikipedia.org/wiki/Prince_of_Persia_(2008_video_game)][Prince of Persia 2008 video game]].
+It came to something like '... this might have influenced God and Devil in christianity'.
+
+I realized that the explanation of 'this is a cultural artifact' was stronger than the Jesus stuff,
+from every angle it explains what we observe.
+
+From no angle does it /not/ look like it is a cultural artifact.
+
+A Muslim says "I have reason =x= for my belief". But the reason for my belief in Jesus is also =x=.
+Clearly, one can be confused around the topic of =x=.
+
+So, I cannot trust the process that makes me think that =x= justifies a belief in Jesus.
+
+It is a funny thing: Everybody is an atheist with respect to the other Gods. Atheists just go one god further.

@@ -1,0 +1,135 @@
+#+title:      flexiana-devoloper-profile
+#+date:       [2023-06-08 Thu 09:34]
+#+filetags:   :clojure:flexiana:public:
+#+identifier: 20230608T093400
+
+Picture (please insert your photo in here and also send it by e-mail - in case there needs to be some changes done)
+
+* I am Benjamin
+
+I am excited about technology and programming. Especially Lisp, Clojure, Emacs and Linux.
+Many think I am joyful and curious. I like simple, straightforward and playful ideas. This fits with working at a Clojure Repl.
+
+I am committed to building great software, understanding the problem and thinking about the design.
+I choose Clojure as my weapon because it is an amazingly practical Lisp with a great community and an evolved data-oriented paradigm.
+
+I have spent much of the last 5 years programming all day with a team of philanthropists.
+I am inspired by Paul Graham, Rich Hickey, Eric Normand, Sherlock Holmes and other thinkers around Lisp and Clojure.
+
+I was born in the lovely German town Esslingen am Neckar, known for its historical city core and a big medieval market.
+From my dad, a master baker and probably one of the finest gingerbread makers in Germany, I learned to put love into my craft
+and the value of having the heart in the right place.
+I studied biology and got to appreciate clear and simple thinking, starting by reading /The Selfish Gene/.
+I do not want to go back to the lab after knowing how fast I can make experiments with the computer.
+
+In my free time, I like to think about how the brain, evolution and computers work.
+I do Inline-skating, juggling, and Rubik's Cube. I like finding little things that I am not good at yet and then dominating them.
+
+I read a lot of science fiction and science, especially about neuroscience, computers and big history.
+
+I express my ideas and document my growth on my blog: https://faster-than-light-memes.xyz/.
+
+* RECENT PROJECTS
+
+- Application development, Clojure, Clojurescript, contracting at https://www.united-signals.com/en/, 3 months.
+- https://hotreload.net/, Static Code Analysis, made it run on Linux + MacOs. 2 months.
+- Medium size discord bot on Datomic Cloud, 6-9 months.
+- Unity game development: https://mobileminigames.com/, 4 years.
+- Emacs + Clojure tooling + Babashka space https://github.com/babashka/babashka.nrepl/commits?author=benjamin-asdf, continously
+
+* A LIST OF SKILLS
+
+Programming languages
+
+- Clojure, 2 years.
+- Emacs Lisp, 4 years.
+- Common Lisp, Scheme: Exposure but no big projects
+- C# + .NET, 5 years.
+- Unix Shell, bash: 5 years.
+- When I needed them:
+  Javascript, Python, Golang, Typescript, Java, Kotlin
+
+Frontend
+
+- Unity Engine, Unity Editor, 4 years.
+- HTML, CSS Javascript, working knowledge.
+- Browser application development, 3 months (United Signals).
+- Clojurescript, reagent, re-frame, 1 year.
+- Having fun with Scittle and trying to juggle web technologies on my website, ongoing.
+
+Backend
+
+- AWS, EC2, Lambda, Datomic Cloud, 2 years.
+- Clojure servers, 1 year.
+- Micro-services for the mobile game, AWS Lambda, Golang, Nbb, bb, Holy Lambda.
+- Personal website: ngnix, Linode.
+
+DevOps
+
+- GNU/Linux scripting, man pages, 5 years.
+- Babashka, 1.5 years.
+- Docker, 5 years.
+- Gitlab, 1 month.
+
+Database
+
+- Datomic, 1.5 years.
+- AWS Redshift (SQL), 6 Months.
+- I worked on systems using Postgres, Redis, and DynamoDB.
+
+Other Skills
+
+- Emacs, Git, Unix Shell
+- Clear and concise written communication (see my blog)
+- Familiar with Clojure tools, clj-kondo, babashka, clj
+- Engagement with Clojure Community.
+- Jira, Github, Gitlab, Rider, VSCode
+- I would sometimes be the person to ask for some ffmpeg or git commands, because of my love for the Linux shell and proficiency and patience with documentation
+
+WHAT ARE MY STRONG SIDES?
+
+- Outstanding passion, enthusiasm and curiosity.
+- I make quick and straightforward web UIs. With an emphasis on functionality. Like https://faster-than-light-memes.xyz/flipcoin/index.html
+- I know Emacs Lisp, I am a power user and I can maximally smooth out the edges in my workflow
+- I have already acquired a certain reputation in the space of Emacs + Clojure. And worked together with Borkdude and Bozhidar.
+
+* INDUSTRIES I HAVE EXPERIENCE WITH
+
+- Open source, Programming languages, tooling (Emacs, Cider, Babashka).
+  For instance, I added functionality to the babashka nrepl (improved completions),
+  I made cider work for Nbb and Scittle Nrepl.
+  I have blog posts and screencasts on Clojure, Sci.
+- Banking (administration) / paperless contracts
+  I did software development in the context of paperless contract business requirements.
+- Mobile games, blockchain, NFTs
+  https://mobileminigames.com/
+- Non-profit, charity, NGO.
+  I worked with a team of volunteers: https://singularitygroup.net/
+  We have worked together with Save The Children, fundraised for charity, and published MoMi
+
+TESTIMONIAL FROM FLEXIANA
+We are going to fill in this here so you can skip that.
+
+xxx
+TESTIMONIAL FROM COLLEAGUE/S
+
+Milan Munzar:
+
+I am happy to give my recommendation to Ben, with whom I have worked on a game Mobile Minigames. As of the time of writing the game has 1+ million downloads on Google Play and among many other features includes storyline, multiplayer, live streaming and blockchain integration.
+
+Ben was an essential part of the team with his work on the front end of the game written in Unity. He also developed many extras from which other developers benefited like build tools, testing tools and editor plugins.
+
+Ben helped newcomers to the project to set-up their developer environments and helped with their coding tasks. Ben was well-liked by the whole developer team for his awesome skills and curious nature. I would love to work with Ben.
+
+https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140/details/recommendations/
+
+
+Hi Luara,
+
+I updated my profile. Let me know if I should modify anything about it. My hourly rate is €60 currently.
+I'd be excited about hearing from you!
+
+Attached is my profile picture.
+
+Cheers,
+Benjamin

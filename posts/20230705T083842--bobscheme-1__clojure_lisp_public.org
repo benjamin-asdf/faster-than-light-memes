@@ -1,0 +1,203 @@
+#+title:      Bobscheme
+#+date:       [2023-07-05 Wed 08:38]
+#+filetags:   :clojure:lisp:public:feed:fun:
+#+identifier: 20230705T083842
+#+EXPORT_FILE_NAME: bobscheme-1
+
+Sometimes you just want to implement a Lisp using JSON data on dotnet.
+
+[[https://github.com/benjamin-asdf/bobscheme][Github code]]
+
+Mainstream programmers understand the value prop of JSON, the internet is built with it.
+JSON comes from Javascript being conceived as a  Scheme, which got its dynamic data structures from IPL.
+
+The important part of a language is the ideas, what is idiomatic, and what you can express.
+The kinds of thoughts you are thinking with it.
+The syntax is the least important part of a language, seriously. JSON allows me to express Lisp code,
+because I only need to say lists, and atoms - numbers, symbols.
+
+I am implementing a [[https://www.youtube.com/watch?v=-J_xL4IGhJA&list=PLE18841CABEA24090][SICP]] metacircular evaluator.
+There are functions, there are values, you can call functions on values and you get a value back.
+There is also reference type =atom=, which is more or less the one from Clojure.
+
+I can ask ChatGpt to produce Bobscheme, I can read and modify Bobscheme ad-lib. After all, it is just JSON.
+We know how to read, modify and create JSON.
+
+They, who understand Bobscheme are but a small step away from understanding Lisp and Clojure.
+
+* Foo Accumulator
+
+This Bobscheme code defines a function called =make-adder=.
+This function returns a function object, that accumulates the sum of all the args it was called with.
+Paul Graham was describing this function as a small example code snippet to get a feel for the power of a language ([[http://www.paulgraham.com/icad.html][2002]]).
+
+#+begin_src js
+[
+  "define",
+  "make-adder",
+  [
+    "lambda", ["n"],
+    [
+      "let",
+      [
+        "state", ["atom", "n"]
+      ],
+      [
+        "lambda", ["i"],
+        ["swap!", "state", "+", "i"]
+      ]
+    ]
+  ]
+]
+#+end_src
+
+Def a machine:
+
+#+begin_src js
+["define", "machine", ["make-adder", 0]]
+#+end_src
+
+Use the machine:
+
+#+begin_src js
+["machine", 10]
+#+end_src
+=> 10
+
+#+begin_src js
+["machine", 15]
+#+end_src
+=> 25
+
+The Bobscheme code is almost the same as the Clojure code:
+
+#+begin_src clojure
+(defn make-adder [n]
+  (let [state (atom n)]
+    (fn [i]
+      (swap! state + i))))
+#+end_src
+
+Because the ideas are the same, we get to call that =dialects= of Lisp.
+
+The Bobscheme is just annoyingly bloated with commata and quotation marks, inheriting from its JSON notation heritage.
+
+* Bobscheme part 3 - Local Environment, Let foo be bar!
+
+Skipping some episodes where I made =lambda= and macros work.
+
+I was thinking about lying in bed and how =let= could work and it shows in how quickly I put the code I think.
+
+This time I tried to cut out a functional chunk.
+Program. cs now has a function called =IsLet= and is now called =EvalLet=.
+
+I chose the same default sequential semantic that Clojure uses for my let bindings.
+In Emacs Lisp and Common Lisp, this would be called "let*".
+
+Clojure, Lisp, Json, Scheme, Interpreter, joyful, hacking, hacker, Emacs, fun with the computer, lisp evaluator, chat gpt
+
+#+begin_src csharp
+  Object EvalLet(JToken expr, ImmutableDictionary<String, Object> env)
+{
+    var letExpr = expr.Skip(1);
+    var bindings = letExpr.First().ToObject<JArray>();
+    var localEnv = env;
+
+    for (int i = 0; i < bindings.Count(); i += 2)
+    {
+        var nameExpr = bindings[i];
+        var valueExpr = bindings[i + 1];
+
+        if (!IsSymbol(nameExpr))
+       {
+            throw new Exception("Expected symbol for binding name in let: " + nameExpr);
+        }
+
+        var name = nameExpr.ToObject<String>();
+        var v = Eval(valueExpr, localEnv);
+        localEnv = ExpandEnv(localEnv, name, v);
+
+    }
+
+    var bodyExpressions = letExpr.Skip(1);
+    return EvalSequence(bodyExpressions, localEnv);
+}
+#+end_src
+
+This bob scheme code
+
+#+begin_src js
+["let", ["bar", 10,
+         "foo", ["+", "bar", 100]],
+ "foo"]
+#+end_src
+
+says =110=.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I9EcTw4IgkY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+
+* Part 2 - global env, variable lookup, little emacs things
+
+I settle on a string atom representation.
+
+This is the symbol =foo=:
+#+begin_src json
+  "foo"
+#+end_src
+
+This is the string "foo":
+
+#+begin_src json
+  "'foo"
+#+end_src
+
+So hello world in Bobscheme is:
+
+#+begin_src json
+  "'Hello, world!"
+#+end_src
+
+Then I add a global environment, assignment and variable lookup, and at the end of the episode I can say:
+
+#+begin_src json
+  ["define", "foo", 10]
+#+end_src
+=> foo
+
+#+begin_src json
+  "foo"
+#+end_src
+=> 10
+
+In between I ramble about Lisp and Emacs things.
+
+Keywords: Lisp, Scheme, Dotnet, C#, .Net, Csharp, JSON, Newtonsoft, LINQ, SICP, The structure and interpretation of computer programs, metacircular evaluator, own evaluator, own language, personal language, how to, emacs, screencast, programming, coding, showcase, showing off, Lisp explained, scheme explained, evaluator explained, emacs obarray, emacs variables, debug on variable change, trace-function, emacs theme, down to code, fun programming, global environment, variable lookup, immutable dictionary
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mhoqefw5eBg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Part 1 - dotnet new console, REPL
+
+I make a program that reads JSON and then evaluates it using the meta-circular evaluator from
+/the structure and interpretation of computer programs/.
+
+In this episode, I get to self-evaluating forms. So I can say "Hello, World!".
+
+The cutest thing about Bobscheme is the prompts I use for the REPL.
+
+#+begin_src csharp
+  string[] prompts = { "user> ", "what next?> ", "what is my purpose?> ", "say the next piece of the program> " };
+#+end_src
+
+They set the tone for joyful, toyful programming.
+Also doesn't this just clear up so much about the interaction of the programmer with the program?
+
+Keywords: Lisp, Scheme, Dotnet, C#, .Net, Csharp, JSON, Newtonsoft, LINQ, SICP, The structure and interpretation of computer programs, metacircular evaluator, own evaluator, own language, personal language, how to, emacs, screencast, programming, coding, showcase, showing off, Lisp explained, scheme explained, evaluator explained
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VHku_9dH2Lc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export

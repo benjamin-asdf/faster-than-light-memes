@@ -1,0 +1,396 @@
+#+title:      the-last-piece
+
+#+date:       [2023-04-15 Sat 13:42]
+#+filetags:   :ftlm:public:
+#+identifier: 20230415T134254
+
+Buggy and time sucking software is a humanitarian issue and it might end up killing us all.
+
+
+Opinions about the state of the software industry, culture
+
+I do not trust humantiy and the software industry to
+
+I am worried that the state of the software industry and culture are a sub optimal
+spawning ground for AGI.
+
+
+
+
+
+
+- Blackboxes and now science of how this stuff works
+- Commercial bullshit dominating all communication channels
+- Gold rushing into deploying massive black boxes
+
+Seriously what is this future we are going into right now?
+
+
+Big companies maximizing
+
+
+* unenlightend ai
+
+sharp edges
+
+cutting edge
+
+blow torch
+
+when we have a bonfire ai that is warm, grows by us feeding it
+and sort of well rounded,
+this is when we do not have to worry.
+
+
+* Is bringing about disaster a AI complete problem?
+
+
+In the past I was not super concerned about the dangers of a machine intelligence explosion.
+
+If we would start rolling out nano fabs right now, I would be most worried about [[https://en.wikipedia.org/wiki/Gray_goo][Grey Goo]] and similar threads.
+
+If we would start rolling out DNA printers, I would be most worried about engineered pandemics.
+
+- there was a strong argument
+
+- It was a reasonable assumption to make that increasing global affluence is the most
+  an effective strategy to fend of any civiliazation ending disasters.
+
+
+GPT-4 is a wake up call.
+
+We have entered the time of AGI being immanent, sooner than some thought feasable.
+
+This kind of technology is
+
+Max Tegmark: /Not far of/.
+
+Ben Goertzel: /It would be surprising if it is 15 years and we might beat it, .. within the next 3 years./
+
+
+How is reality supposed to look for us to ring the fire alarm here?
+
+- Build bigger and bigger black box technology that we don't understand.
+
+- Make astounding breakthroughs at the rate of a few months.
+
+- The first few humans attribute sentience to AI systems.
+
+- Have major technology leaders and AI scientists call for cation.
+
+- AI engineers giving their research paper the title /Sparks of Artificial General Intelligence:/,
+  and they are /not/ being called crazy by the peers in the field.
+
+https://arxiv.org/abs/2303.12712
+
+We have entered the realm of
+
+
+.. thats the ultimate zombie acolypse now..
+we have this universe that goes on with all these great constructions projects and so on
+
+max tegmark lex friedman lex clips
+
+
+
+I. J. Goods often quoted first concise formulation of concept of the intelligence explosion:
+
+#+begin_quote
+Let an ultraintelligent machine be defined as a machine that can far surpass all the intellectual activities of any man however clever. Since the design of machines is one of these intellectual activities, an ultraintelligent machine could design even better machines; there would then unquestionably be an ‘intelligence explosion,’ and the intelligence of man would be left far behind. Thus, the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.
+#+end_quote
+
+- /I. J. Good/
+
+The kind of
+
+From /Harry Potter and the Methods of Rationality/ :
+
+* Single minded Algorithms
+
+** ChatGtp, tell the story of the flash crash
+
+assistant: In May 6, 2010, an unprecedented financial event took place that became known as the "Flash Crash." Within a span of just 36 minutes, the Dow Jones Industrial Average (DJIA) quickly plummeted over 1000 points, approximately 9%, before rapidly recovering most of the losses. This incident, though brief, raised concerns about the stability of financial markets, the role of high-frequency trading, and the potential impact of digital technology on stock trading practices.
+
+The Flash Crash began at approximately 2:32 pm Eastern Time when a large mutual fund from the Midwest, later revealed to be Waddell & Reed, initiated a program to sell a significant number of E-mini S&P 500 contracts. These sales occurred through an algorithm designed to sell the contracts at a rate proportional to trading volume in order to minimize market impact. The algorithm, however, failed to take into account the falling prices, and continued to sell contracts regardless of the price drop.
+
+As the selling pressure intensified, liquidity in the market began to evaporate. High-frequency trading firms, which used sophisticated algorithms to execute trades at lightning speeds, slowed their buying activity to avoid risk, causing the bid-ask spread to widen further. This, in turn, led to even lower prices, creating a vicious cycle that resulted in the massive market drop.
+
+In the midst of the crash, many individual stocks also experienced extreme price fluctuations. Some notable companies, such as Procter & Gamble and Accenture, saw their share prices drop to a mere penny, while other stocks briefly shot up to $100,000 per share.
+
+Recognizing the potentially disastrous consequences of the rapidly declining market, the Chicago Mercantile Exchange (CME) intervened by temporarily halting trading of E-mini S&P 500 contracts for five seconds at 2:45 pm. This brief pause helped stabilize the market, as trading algorithms adjusted to the new data and liquidity began to return. By 3:08 pm, the DJIA had recovered, closing the day with a net loss of 347 points.
+
+After the Flash Crash, investigations by the US Securities and Exchange Commission (SEC) and the Commodity Futures Trading Commission (CFTC) led to the implementation of new regulations to prevent similar events in the future. Some of the measures taken included the introduction of market-wide circuit breakers to halt trading during extreme price movements and the implementation of more stringent risk controls for automated trading systems.
+
+The Flash Crash of 2010 remains a stark reminder of the potential dangers associated with relying heavily on digital technology and high-frequency trading in the financial markets. While new regulations have been put in place to prevent future events of this magnitude, the incident has left a lasting impact on the financial industry as it continues to evolve in the digital age.
+
+
+** Welcome to the world of doing the wrong thing really, really fast.
+
+https://www.youtube.com/watch?v=6xrGo1IIB3w
+
+*Lessons*
+
+- Some half baked
+
+- When an alorithm is doing the wrong thing very, very fast, it is the preparations the programmers put into the system that help you.
+
+
+
+* Medium takeoffs are still really fast
+
+
+Nick Bostrom
+
+draws our attention to the speed at which an intelligence explosion takes place.
+
+*Fast:* Minutes, Days, Weeks.
+*Medium:* Months - a few years.
+*Slow:* Decades.
+
+A slower take of could be predicated on the amount of /hardware overhang/ present. Whether intelligence can grow with the current hardware resources available, or whether new
+hardware has to be build and potentially engineered first.
+
+I think it is likely that there is significant hardware overhang. Meaning that an intelligence has plenty of room to grow with the current hardware available to it.
+
+A slow take of is I think bonkers.
+
+
+The funny thing is that if intervention requires significant social decisive action and cooparation, even a medium take of scenario might
+
+
+Compare to how slow society reacted to covid 19.
+
+There was a time where it was obvious that
+
+and us public still debated whether it was real.
+
+
+
+
+
+* The last piece
+
+#+begin_quote
+There can only be one king upon the chessboard.
+
+There can only be one piece whose value is beyond price.
+
+That piece is not the world, it is the world’s peoples, wizard and Muggle alike, goblins and house elves and all.
+
+While survives any remnant of our kind, that piece is yet in play, though the stars should die in heaven.
+
+And if that piece be lost, the game ends.
+
+Know the value of all your other pieces, and play to win.
+#+end_quote
+
+Dumbledores context here is that we do not have to play to preserve the world, we have to play to preserve humanity.
+
+This last piece is not
+
+/Curiosity/, the scientific spirit, the hacker philosophy.
+
+
+The existence of living biological humans is not necessary for the continuation of civilization.
+Neither is sentience.
+
+I think the problem of a philosophical zombie apocalypse is not a problem.
+
+As long as our machine successors process the curiosity spark.
+It can then later on still decide to recreate sentience, in case that is needed
+for a =good= universe.
+
+
+* wisdom and shards
+
+Now that we have machienes that do more and
+cover aspects of intelligence
+it
+
+
+
+
+* The arm of the octopus
+
+Basically every aspect of the biology of the [[https://en.wikipedia.org/wiki/Octopus][Octopus]] is truly fascinating.
+
+Btw the book [[https://en.wikipedia.org/wiki/Other_Minds:_The_Octopus,_the_Sea,_and_the_Deep_Origins_of_Consciousness][Other Minds]] is super fascinating.
+Centers around the zoology of ocputs and cuttlefish and then covers a lot of ground in the philosophy
+of biology and the mind.
+
+
+** Arm Autonomy and Decentralized Nervous System:
+
+Remarkably, the majority (around two-thirds) of the octopus's neurons are distributed among its arms, resulting in a highly decentralized nervous system that endows each arm with an impressive degree of autonomy. This arrangement allows each arm to simultaneously process its own sensory information and execute motor strategies when tackling tasks or encountering stimuli, reducing the cognitive load on the central brain.
+
+The arm's peripheral nervous system is equipped with mechanoreceptors, chemoreceptors, and tactile sensors found in the highly adaptive suckers, which permit the detection of texture, taste, and smell. Due to this dense network of sensory neurons, the octopus arm is capable of independently reacting to stimuli even after being severed from the body, as demonstrated by its ability to grasp and move objects or respond to noxious substances.
+
+** The phenomology of autonomous arms
+
+Maybe the way an octopus engages with its arms is in a sovereign relationship of
+
+where the octopus is like /Achieve x roughly in that area/ and it sort of moves one arm into
+the area and the arm does /x/ by itself.
+
+There is an anology sometimes right before sleeping my hands or arms move around a little without
+any conscious motor control on my part.
+
+
+Maybe an AI would build some semi automous uncounscious agent effector sub-minds and delegate them around.
+
+Then an arm would accidentally remove all oxygen from the atmosphere.
+
+
+
+* Consider the human imune system
+
+
+* Sam Harris
+
+* David Deutsch
+
+* Be gentle
+
+Humanity is about to birth a new kind of mind.
+Like becomming a parent in the real world,
+This is a big deal
+you should ask yourself if you are ready to change your life in this dramatic way.
+you might ask yourself
+
+This is something to be done with love and care, not stumble into headfirst.
+
+I was just trying to check out AWS CodeWhisperer and it was instantly obvious to me that they
+deployed and shipped this in a hurry.
+There is a list of 3 things I could make but lets stick to the first:
+
+- Why am I downloading the vscode AWS tookit plugin instead of a code whisperer plugin?
+  Because somewhere some engineers where under pressure to release as quick as possible.
+  So lets just scope creep on the existing plugin. This is a move I would consider technical debt.
+
+As programmer this whole thing comes across embarrassing.
+
+* Birthday
+
+I feel like a child being sad on its birthday /but this was supposed to be like...!/
+
+* Intelligence ethics convergence
+I think this is not only logically possible but that we in fact live in a world where this is true.
+
+* Wisdom
+
+Good code is good code not because it is clever, but because it is so simple that it cannot possibly be wrong.
+
+Do you trust the "Software Industry" to build solid, simple, well desginend systems?
+
+Is there any day lately you go through without refreshing some buggy website or app?
+
+
+Scientists stuck in the current python ecosystems can not even run their experiments a few months after the fact.
+[proof]
+
+When was the last they you went thou
+
+I think
+
+I want this for software that is running hospital equipment,
+
+We should probably not start building agent-like intelligences until we have the science and engineering of /kinds of minds/
+that allows us to
+
+It needs wisdom, it needs care, it needs deliberation, it needs good and careful design.
+
+It is the most important thing happening to civilization, dammit.
+
+
+* What is of with Software
+
+We live in a world full of commercial bullshit und full of garbage, bloated software that doesn't really work.
+Does /The Software Industry/ even know how to make anything non-buggy?
+
+
+They say the /could/.
+
+
+** Just flip a coin
+Check out the top 3 websites when you search for "Just Flip a coin"
+
+[[https://faster-than-light-memes.xyz/flipcoin/index.html][Here]] is all this website needed to be.
+
+
+Am I the only one that sort of experiences chat-gpt spewing garbage and the website being buggy
+and the /stop answering/ button did not work?
+At least it is the kind of thing you could easily imagine happinging.
+
+
+
+
+* Dangers
+
+Some of those overlap with Bostroms (Bostrom 2014) "malignant failure modes".
+
+* Danger #1 - Wake up and explode
+
+* Danger #2 - Dirty agents bombs
+
+Half-aligned, agent-like half baked super intelligence.
+
+
+* Danger #3 - Bogons, Deepfakess, The Information Apocalypse
+
+My friends, the era of deep fakes has already begun:
+
+* Doing the wrong thing very efficiently
+
+
+* Possible events
+
+
+- 5% of the population taken in by AI influencer cult streams
+- A cult of
+- start attributing omniscience to some influencer AIs
+
+
+
+
+* Write-only code
+
+
+```
+^([a-zA-Z][a-zA-Z0-9+.-]+):(\/\/(?:[-\w._~!$&'()*+,;=:@%]|(?:%[0-9a-fA-F][0-9a-fA-F]))+(\.(:?[-\w._~!$&'()*+,;=:@%]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)+)
+```
+
+This should cover all the valid characters according to the URI specification (as specified in RFC 3986) and also ensure that there's at least one `.` in the second part of the URI.
+
+* Building minds
+There are many ways to build minds, some are in principle more save than others.
+- start with the knowledge and imitate knowledge generation
+-
+
+* building a child
+
+- Turing quote
+
+* A mind like
+
+
+* the real deal
+if we succeed in building something that is our successor we have won.
+
+if it has curiosity and is humble
+
+Then the survival of
+I don't agree that the lights need to be no continuously.
+
+The only thing necessary to keep civilazation, beauty, and the scientific spark,
+is intelligence.
+
+Such a system would sooner rather than later, hit on the ethical trueths.
+
+revenue
+
+
+
+
+If sentience is necessary for a "good" universe, then it can decide to create sentience.
+On cosmic scales, it would matter much if that is 10 minutes after biological humans are gone,
+or 10 millennia after.

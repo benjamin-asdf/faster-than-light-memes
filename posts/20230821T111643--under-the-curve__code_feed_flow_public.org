@@ -1,0 +1,17 @@
+#+title:      Under The Curve
+#+date:       [2023-08-21 Mon 11:16]
+#+filetags:   :code:feed:flow:public:
+#+identifier: 20230821T111643
+#+EXPORT_FILE_NAME: under-the-curve
+
+
+What irony, to meassure is to blind yourself.
+
+- estimates are crazy
+-
+
+
+- to know where numbers are useful
+  and where they are garbage is relevant
+
+-

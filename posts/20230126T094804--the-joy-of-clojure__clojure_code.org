@@ -1,0 +1,195 @@
+#+title:      the-joy-of-clojure
+#+date:       [2023-01-26 Thu 09:48]
+#+filetags:   :clojure:programming:feed:
+#+identifier: 20230126T094804
+#+EXPORT_FILE_NAME: the-joy-of-clojure
+
+* Introduction
+
+We don't yet have a strong psychology and sociology of programming
+languages. One day we will, and we will be able to retroactively make
+sense of why Clojure is so powerful.
+
+#+CAPTION: The soul! A computer.  Solar punk Clojure. The inside of a computer. Rubics cube colored gems are flying around. Lighting.
+https://i.imgur.com/6usJE0L.jpg
+
+[[http://www.paulgraham.com/power.html][Paul Graham]] has suggested /The Taste Test/ for understanding the power
+of a language.
+A programming language is a tool for thinking. Ultimately, its power
+comes from letting you think thoughts and express them.
+With sensibility (/hypersensitivity/), you can tell which language
+feels more restrictive than another.
+
+If all languages would be the same, we would be programming assembly.
+But we are not, because we live in a world where languages have varying degrees of power.
+
+Here I try to describe a few things that set Clojure apart, even from
+other Lisps.
+
+* What interactivity brings
+
+With Lisp, you can quickly test each piece of code as you write it,
+ensuring that it is solid and functioning correctly before moving on
+to the next piece. This allows for a more streamlined development
+process and eliminates the need to keep in mind all of the potential
+issues that could arise with a piece of code. Additionally, the
+ability to quickly evaluate code and make small experiments allows for
+a more agile and flexible development process.
+
+Here is a simple example:
+
+#+begin_src elis
+  (file-exists-p "~/.clojure/")
+#+end_src
+
+Are you getting the file path right?
+When I write Lisp, I know the answer while I am writing the
+program. I just =eval= whatever form I have to build the file
+path. Because of structural editing, I can wrap whatever form in
+=(file-exists-p)= quickly and experiment right then and there.
+
+Doing little experiments is quick enough so it can mesh with your
+thinking. I have the freedom and agility to just do and move. We get
+the same power in the small during development and in the large
+while diagnosing a problem in production. [fn:1]
+
+* Philosophy of simplicity
+
+Clojure first clicked for me via Rich Hickey talks.
+Keep things simple. Let data be data. Then you can just manipulate the
+essence of the stuff and be done. [fn:2] [fn:3]
+
+He establishes the reasons for Clojure and the opinions
+on how to build things. And this permeates the culture.
+
+The combination of data-orientedness and functional programming
+while making real-world pragmatic tradeoffs,
+lends itself to a complete[fn:4], robust, no-bullshit style.
+
+* Strong community
+
+When I use a library I can go to the slack channel and usually the
+maintainers help me out.
+It happened to me more than once when I made a bug report, somebody
+fixed it within a few days.
+Everybody is excited about technology and wants to help you out.
+It ties in with the joy of Clojure as well. You get happy, friendly
+people. This is power. Humans are more effective when they are
+happy and friendly.
+
+Not to mention Borkdude.
+
+* Non-breaking versioning
+
+It is an explicit value (again from Rich Hickey's philosophy), to not
+make breaking changes. This is one of the things where once you have
+it, boy, you don't want to ever go back.
+
+After acquiring /this/ taste, getting broken because I bump a version
+makes me think /Why are you doing this to me?/.
+
+* The aesthetics of data orientedness
+
+The core library is a huge =lever= because we lift everything that can
+be into the space of data structures, then manipulate those data
+structures.
+
+Config input, REST API response, database queries, and responses. It is all
+the same kind of stuff once it is in our system.
+
+I think of this as a /lift and manipulate/ kind of lever. Unix has this with
+program input output text. Once you are in the realm of textual input
+and output you can leverage shell commands to manipulate.
+Emacs has the same thing with text in buffers. If you can express your
+domain as text in the buffer you can give it to the user for
+manipulation, and you can leverage the core library for manipulating text in
+buffers.
+
+This data-orientedness is something I can expect from libraries and
+other people's code.
+The dominating amount of stuff will always be **just data structures
+acting on pure functions**.
+
+* Freedom and joy
+
+The workflow is an utter joy, with the REPL at the center of it.
+I start a program once and it grows together with my ideas.
+There is something about a program that runs for days and you don't
+restart it that I cannot explain but it does something to your mind.
+The closest analogy is a kind of friendship with the program.
+
+- =inline def= some of your data, craft your code forms.
+- Functional programming (and The Value of Values)
+   - able to fabricate data
+   - able to get the time right with atomic successions
+   - able to easily keep records of the past
+
+I get a /real/ kind of safety. The kind where I can sleep at night
+because I know my program is bug-free.
+You get this from there being few enough ideas in the program that you
+can hold the relevant pieces in your head.
+
+Any program that is small enough to be self-evident is with a step
+function dramatically more likely to work bug-free. [fn:5]
+
+It helps that everything is accessible from emacs which is the other ancient
+and powerful tool that feels like an extension of my mind.
+
+Because of this focus, solidity and ease of development, I am more
+joyful and creative when programming with Clojure.
+
+It allows me to focus on the actual problems. So I can spend time on
+getting the user experience right etc.
+
+* Summary
+
+So here is a tool that lets me think the right thoughts and express
+them. It lets me move with ease where I want to be.
+
+From Lisp, I get the interactivity and the tradition of FP and simplicity.
+When I want to make a small experiment with the code,
+I can just do a small experiment with the code.
+
+Beyond that, there is a solid and dependable community,
+the data-orientedness and the leverage of targeting big platforms.
+
+I can model information systems and can make the program just do what it
+needs to do, and do nothing more.
+
+Clojure just delivers.
+
+#+begin_quote
+The silent competence of the computer.
+#+end_quote
+(Marvin Minsky)
+
+* Note
+
+I know there is a book of the same title. This is not accidental.
+The power of Clojure also lies in the /joy/ it brings.
+An alternative title for this post could be /Joy is power/
+in analogy to Paul Grahams [[http://www.paulgraham.com/power.html][Succinctness is power]].
+
+* Footnotes
+
+[fn:1] [[https://www.youtube.com/watch?v=MZy-SNswH2E&t=1s][Bradford Cross]] has mentioned this and other things in a very
+convincing talk recently.
+
+[fn:2] I believe I see hints of the same craftsmanship of getting shit
+done ideas in other places:
+[[https://www.youtube.com/watch?v=IRTfhkiAqPw][Brian Will]] /Object-Oriented Programmin Embarrassing/,
+his counterexamples are very straightforward and complete.
+[[https://www.youtube.com/watch?v=fifbMZliHjI][Chris Keaathley - SOLID code isn't flexible]]
+
+[fn:3] [[https://changelog.com/posts/rich-hickeys-greatest-hits][Rich Hickeys greatest hits]]
+The start point. Get your mind expanded by simplicity and clear thinking.
+
+[fn:4] Complete in the sense that you make a piece of code that gets
+the job done. Instead of scattering logic around the place.
+
+[fn:5]
+Stuart Halloway has similar thoughts, [[https://www.youtube.com/watch?v=f_Fi8YXt2fs&t=1s][Radical Simplicity]].
+Other people like Dan Friedman also made this relatively explicit.
+I think at this point it is obvious that simplicity is crucial for
+building good software. The question is
+/what is simplicity and how to do it?/.

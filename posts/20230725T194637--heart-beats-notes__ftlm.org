@@ -1,0 +1,158 @@
+#+title:      heart-beats-notes
+#+date:       [2023-07-25 Tue 19:46]
+#+filetags:   :ftlm:
+#+identifier: 20230725T194637
+
+* some controls
+
+** bpm
+
+#+begin_export html
+<input type="range" min="40" max="250" value="79" class="slider" id="myRange" oninput="updateBPM(this.value)">
+<label id='bpmLabel'>BPM: </label>
+#+end_export
+
+** ms time for 1 cycle
+
+#+begin_export html
+  <label id="msLabel"></label>
+#+end_export
+
+#+name: ms-per-cycle
+#+begin_src clojure
+
+  ;; The number of milliseconds for one beat can be calculated by dividing 60000 (the number of milliseconds in a minute) by the BPM.
+
+  (let [bpm 79
+        ms-per-cycle (/ 60000.0 bpm)]
+    ms-per-cycle)
+  759.493670886076
+
+  (let [bpm 60
+        ms-per-cycle (/ 60000.0 bpm)]
+    ms-per-cycle)
+  1000.0
+
+  (defn ms-per-cycle [bpm] (/ 60000.0 bpm))
+  (set! (.-msPerCycle js/window) ms-per-cycle)
+#+end_src
+
+
+
+#+begin_export html
+<script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js" type="application/javascript"></script>
+
+    <script type="application/x-scittle">
+      (defn ms-per-cycle [bpm] (/ 60000.0 bpm))
+      (set! (.-foo js/window) ms-per-cycle)
+    </script>
+
+<script type="text/javascript">
+  function updateBPM(val) {
+    window.bpm = val;
+    document.getElementById('bpmLabel').innerHTML = `BPM: ${val}`;
+    document.getElementById('msLabel').innerHTML = `MS per beat: ${foo(val)}`;
+  }
+
+  updateBPM(79);
+
+</script>
+#+end_export
+
+* idea: analyse audio for heartbeat
+
+giving up on this for the momeent, requires a lot of grit to make sound analysis
+
+
+* zapsplat
+“Sound effects obtained from https://www.zapsplat.com“
+
+# http://localhost:8081/heart-beats.html
+
+
+* fourier analysis
+https://en.wikipedia.org/wiki/Math_Kernel_Library
+and chris n. has a lib for that
+
+ffts
+
+
+cdeln
+  30 minutes ago
+I'm thinking if it's hackable. The SNR is really good, and the lubs and dubs have very distinct wave profiles (a dub. You might be able to throw something together with some normalization + threshold and a small state machine. Will all your clips sound similar to this one?  If that is the case, and you don't expect any tricky background noise, that could be a way to do it.
+
+
+Benjamin
+:speech_balloon:  29 minutes ago
+:writing_hand:
+
+
+Benjamin
+:speech_balloon:  28 minutes ago
+I could tell my users that if they have funny backgrounds it might not work. The clips all sound like this yea, breathing + heartbeat sounds
+
+
+Benjamin
+:speech_balloon:  27 minutes ago
+Its what you get when  you hold a phone mic to the chest so it should sound roughly the same
+
+
+cdeln
+  23 minutes ago
+Cool, it's supprisingly good quality, didn't expect that from a phone mic. Anyways, just some ideas, I don't have any specific tips really, extracting a fourier (i.e. mel-spectrogram) and give to a sliding window classifier is a kind of "default approach" otherwise. Maybe look into VAD and see what they do and tune for this type of data.
+
+
+Benjamin
+:speech_balloon:  19 minutes ago
+[11:12 PM]
+Yes - there is a fourier transform library you can use - jtransforms.  Its fine but not state of the art in terms of speed.  If you are on an intel machine then you can use mkl's fourier transform via https://github.com/cnuernber/mkl.  Finally if you are on mac we could bind to the mac math system's fourier pathway the same way the mkl library works.
+Do you agree with trying those libs to do fourier transforms? What did you use to load the audio clip?
+
+cnuernber/mkl
+Basic mkl bindings based on dtype-next's ffi system
+Stars
+3
+Language
+Clojure
+Added by GitHub
+
+
+cdeln
+  17 minutes ago
+I am currently playing around with libpython so I just pull in stuff from pyworld. torchaudio has a convenient load function.
+
+
+Benjamin
+:speech_balloon:  17 minutes ago
+I see (edited)
+
+
+cdeln
+  3 minutes ago
+You can get something like that with normalization and thresholding.
+PDF
+
+
+heartbeats.pdf
+PDF
+
+
+cdeln
+  3 minutes ago
+Then you feed the high and low peaks into a FSM for detection.
+
+
+Benjamin
+:speech_balloon:  3 minutes ago
+yea looks pretty promising
+New
+
+
+cdeln
+  2 minutes ago
+Seems like lubs have a "high -> low -> high" profile, while dubs have a "low -> high -> low" profile. But heck what do I know, I'm not a doctor, maybe it's just for this particular person :stuck_out_tongue:
+
+
+Benjamin
+:speech_balloon:  2 minutes ago
+damn

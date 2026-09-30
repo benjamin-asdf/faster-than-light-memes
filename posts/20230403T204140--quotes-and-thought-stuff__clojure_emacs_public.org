@@ -1,0 +1,26 @@
+#+title:      quotes-and-thought-stuff
+#+date:       [2023-04-03 Mon 20:41]
+#+filetags:   :clojure:emacs:public:
+#+identifier: 20230403T204140
+
+This list is brought to you by our
+
+#+begin_quote
+To appreciate Lisp and Emacs, one must unlearn the ordinary, and then relearn the extraordinary.
+#+end_quote
+
+#+begin_quote
+The key to understanding Lisp is realizing that it's simply layers upon layers of abstraction. - Hal Abelson
+#+end_quote
+
+#+begin_quote
+We can't solve problems by using the same kind of thinking we used when we created them - Albert Einstein
+#+end_quote
+
+#+begin_quote
+Any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp. - Philip Greenspun
+#+end_quote
+
+#+begin_quote
+Lisp is worth learning for the profound enlightenment experience you will have when you finally get it; that experience will make you a better programmer for the rest of your days, even if you never actually use Lisp itself a lot. - Eric S. Raymond
+#+end_quote

@@ -1,0 +1,362 @@
+#+title:      art-diary
+#+date:       [2024-09-13 Fri 20:13]
+#+filetags:   :art:braitenberg:clojure:diary:emacs:programming:vehicles:public:feed
+#+identifier: 20240913T201351
+#+EXPORT_FILE_NAME: art-diary
+
+For earlier stuff:
+
+- [[denote:20230617T130706][screencasts]]
+- [[https://faster-than-light-memes.xyz/vehicles.html][Vehicles]]
+- [[denote:20230910T181003][Generative Art]]
+
+* Gen Art Visuals | EDM | Der Knöller In Zeitlupe
+
+shoutout to http://quil.info/sketches/show/example_waves for the wave alg.
+
+I'm giving them German titles now.
+
+I developed `picture-jitter` quill middleware and use it a lot here.
+
+Also, some more progress on interactivity with the program.
+And there are certain growth areas that would be really cool to have.
+
+Maybe I just switch to making vars to callbacks and reference them with #'var.
+
+I feel like I'm hammocking on the kind of 'instrument' I want my software system to be.
+
+Music:
+
+https://soundcloud.com/juniortr/junior-tr-extima
+
+Shoutout to
+
+909 Production
+
+Shoutout to
+
+EXTIMA Records
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+Keywords:
+
+Algo rave, EDM, software, live programming, Zeitlupe, slow motion, quill, Clojure,
+Emacs, interactive programming, programming art, software art, generative art,
+gen art.
+
+
+* Re-Cooking Kurzgesagt Ant Emergence Alg, Software animals
+
+I'm a Kurzgesagt fan, video:
+
+[[https://youtu.be/16W7c0mb-rE?si=rf8HmGhO0QMF4XLV][Emergence – How Stupid Things Become Smart Together]]
+
+[[https://github.com/benjamin-asdf/hyper-substrates/blob/main/src/ftlm/emergence/1.clj][Code]] (highly explorative).
+
+I had the vision of implementing the local ant smell count algorithm.
+
+I made some Braitenberg Vehicles with colors that flip between things.
+
+This was an exercise in making an emergent behaviour from local rules.
+If you enjoy such a concept, you will enjoy [[https://www.youtube.com/live/RtYLLyfs1Ts?si=KGR8TdiWpeGxS5k7][Jessica Flack talking]].
+
+Video is the current result.
+
+You can get in touch with me or sponsor me for more: [[denote:20230725T114804][link]].
+I could make an agar.io kind of game using this technology.
+
+Music:
+
+Thank you
+https://soundcloud.com/royalty-free-music-btm
+
+* Random Gen Art Picture
+
+I developed a little on this for the 'pareidolia' [[https://faster-than-light-memes.xyz/pareidolia.html][blog post]].
+Then made a video to capture some of it.
+
+Wikipedia:
+https://en.wikipedia.org/wiki/Pareidolia
+
+I want to explore what I call 'musico rhythmic pareidolia',
+the phenomon that makes one percieve random transformations of visuals to 'dance' with music.
+
+And more general, I suppose for things to be 'in rhythm' or something.
+
+Music:
+
+https://soundcloud.com/courtesy707/nts-210624-with-courtesy
+
+Shoutout to [[https://www.studiovestbirk.com/][Courtesy]].
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+---------
+
+Ps: I forgot to install https://wiki.archlinux.org/title/Unclutter.
+There is a mouse in the video.
+
+
+* Algo Ricing | Hyper Flower turns Disco Spider Because why not
+
+I initially had a =hyper flower= in mind; Turns into a disco matrix spider under the right conditions.
+
+https://www.reddit.com/r/unixporn/comments/3iy3wd/stupid_question_what_is_ricing/
+
+Quote:
+
+RICE stands for Race Inspired Cosmetic Enhancement. When you put a scoop on your car (that doesn't lead to a cold air intake) or a big spoiler (which won't make a difference), you're ricing. The idea is to increase its perceived performance through cosmetics.
+
+The term 'ricing' is used by unix users to refer to the the practice of grooming the aesthetics of ones system.
+
+Algo ricing is the presumably recreational practice of developing algorithms for enjoyment.
+Like all software development, this is an artistic loop with the software at hand.
+
+
+I wanted to make a video for demonstration purposes. To supplant my
+idea-flow text at https://faster-than-light-memes.xyz/.
+
+"The common language of rhythm".
+
+Quote:
+
+There is something happening when you look at this and listen to the music at the same time.
+You feel like that... the picture and the music are "dancing" or "related"...
+
+There is a common language of rhythm.
+
+And this is completely basically just made up.
+
+I think it's something that - that basically you are looking for things to happen at the same time,
+or you have rhythms in how you percieve and the system is kinda like in a top down way pretending
+that things happen at the same time.
+
+Even though they don't really.
+
+Or Maybe it's even more sophisticated than /happening at the same time/.
+
+It's kinda like in harmony or rhythm or something.
+
+It's like the picture knows what to do or something.
+
+
+Music: Bonnie Ford | Fusion Tanzwüste 2022
+
+https://soundcloud.com/bonnieford-1/bonnie-ford-fusion-tanzwuste-020722
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+Code:
+https://github.com/benjamin-asdf/hyper-substrates/blob/main/src/animismic/vehicles_and_bubbles.clj
+
+
+
+Keywords: spatter viz, emacs, quil, clojure, 2d, game engine art, live coding, live programing, algorave,
+deep tech, toy world, coding, real world programming, algorithms, hacker aesthetic, furious hacking
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4TemsBfH7u8?si=3MLUHK6Knh5RAsJ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+
+* Live Programming | visuals on EDM | algorave - Gravity v1
+
+I implemented a gravity that is merely inspired by Newton.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W2di0Fx1Qn0?si=BOc6HwVR_fp1M2KP&amp;start=5772" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Added some simple blocks flying around, tried some live programming.
+
+I learned about Sam Aaron's work recently (https://x.com/samaaron).
+Apparently stuff is called algorave.
+
+I thought about live programming art and realized, you would only get good at if you do it everyday,
+just like programming, like everything.
+"Mind needs a wetstone" kinda thing.
+
+When you don't draw a background in Quill, the shapes accumulate on the screen.
+I'm not sure what this is called. Claude thought "onion skinning" or "frame accumulation" (guess from the prompt).
+
+I just call this /spatter viz/. You see it around 01:40 in the video.
+
+Where can you go with something else than "pixel by pixel shader style"?.
+
+Eventually I would like to play deeper with the concept of interactivity. Along the lines of picture
+being software, a toy, a tiny game world, which I hack on the fly.
+
+Music:
+https://soundcloud.com/danieljaegermusic/daniel-jaeger-burning-man-2024-long-feng-man-burn-night-us
+
+Thanks Danial Jaeger
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+Code:
+https://github.com/benjamin-asdf/hyper-substrates/blob/main/src/animismic/vehicles_and_bubbles.clj
+
+Keywords: spatter viz, emacs, quil, clojure, 2d, game engine art, live coding, live programing, algorave,
+deep tech, toy world, coding, real world programming, algorithms
+
+
+
+* Bring back the Temperature Bubbles | Chill Livecode | emacs, meow, stumpwm
+
+Prepping for some more complicated vehicles down the line. Temperature bubbles are back.
+You can see some progress in my quill lib, I can now add a variety of functionalities fast, stuff happening
+when clicking and stuff like that.
+
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_pRqZh1NAvQ?si=g924BunO8Z59AREY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Music is
+
+https://soundcloud.com/vomfeisten/vom-feisten-sisyphos-strand-15624
+
+vom Feisten (44 Hertz)
+
+- thanks!
+
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+code: https://github.com/benjamin-asdf/hyper-substrates/blob/5dc9a4a4f6d21381f48f40412fb0cceb0486327c/src/animismic/vehicle_1.clj
+
+Keywords: Chill, Code, Software, Emacs, Clojure, Quill, Braitenberg Vehicle, Game Art, emacs, meow in action, stumpwm,
+
+
+* One Take Live Programming on EDM | Gamelike Visuals
+
+Don't think in time. Don't think in numbers. Think in intensity. Think in feeling. Feel. - Wim Hof
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P6WZApJiab8?si=fM0SR6fyk3GVsYQk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+- Now I modify the state without killing the window, for better or worse
+
+I'm thinking about changing the layout so you have me and the code only tiny in the corner of the screen.
+
+- I'll fix the fact that escape kills the quill window. I can use stumpwm key to dimiss is.
+
+- I need to organise my rich comment, perhaps use files and emacs buffers
+- It only needs to be a rich comment in essence. I think it get's large fast, I will have to give things names.
+- I am not at the state yet where I put in and kill objects at will on the fly,
+- perhaps this is the ultimate interactive programming ideal, to modify the picture in the computer at the speed of thought
+- And humans will only get closer and closer to that
+
+Music is
+
+https://soundcloud.com/vomfeisten/vom-feisten-symbiotikka-berlin-040924
+
+vom Feisten (44 Hertz)
+
+Ist schon irgendwie geil.
+
+Music used in this video is for entertainment purposes only. All rights belong to the respective owners. No copyright infringement intended.
+
+code: https://github.com/benjamin-asdf/hyper-substrates/blob/5dc9a4a4f6d21381f48f40412fb0cceb0486327c/src/animismic/getting_around5.clj
+
+
+
+* First Attempt at a One Take Live Programming
+
+I want to make it an art. There is stuff to do to get the whole thing more dynamic.
+Also from watching this first attempt I feel where I could have done a lot with good timing and so forth.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LCxC0nvVYDs?si=F97wmw6RLrvwofl2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+Video description:
+
+Do. Or do not. There is no try. - Yoda
+
+
+Clumsily making the mistakes I need to make in order to become a live programmer.
+
+I haven't seen anything like this myself on youtube, if you have examples of fellow travelers let me know.
+
+Music is licesed (allegedly) licensed Creative Commons
+
+Thanks for the playlist:
+https://www.youtube.com/watch?v=JnMVEY5IirA&t=0s
+
+Keywords: Clojure, Emacs, Quill, Linux, Programming, fast programming, art, performing, performative software, performative programming
+
+
+* Visual Software Art, Clojure, Emacs (Attempts)
+
+I declare my goal to make a software that is exploring implementations "Inside Out" (pixar movie) cognitive computer system.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjpHiDA0lxg?si=P3SNmQpKuoHUFkhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+[[edraw:data=H4sIALDA5mYAA7VUS4+bMBD+K5ZXqlopBJsQQrYBqT2lh6pSD33dnGCDFbBT2wlsf33Hhuxu212pWikCw9iW53vMwMaea9TLyjUFXmYEo4bLunEFThOYDF2rbIEb5463cdz3/bxfzLWp44QQEsNRjM7cWKlVgemcTgduh1aqw1PH6Hq9jsMuLjcVFxbJqsC8MqyP/BRWO2YO3Py5HpGIGaN7jMbdryPf7DLfTpxh4Wi45ebM39kj37vPzEldYKUVB6aS9+/1UOCIEuRH4m+MDBffCjwG30OgjeQK8rGT0xhZZ/SBX7II2bYFvqHEX8D3yFyDgOxHyDiLVj7xbIXSGfmBUVxu4pEhBF5fuTHACg0B5S48n/X+wYEd2x9qo0+qeoaMECKA1Y8P6eoO6PG2lUfLp3PRhJY8JLoouc+V+wvMAHqpN2UY33uYL4gPYCEnAS9oHwVGXAH0ybSvb/4p2xv83/CjLG9nDsXJyJckhXcoFEE0J1sKMc1C7NcCDccHh/wjYmrfaFPgTlZV6/3RykWCdbIF9pYpG0FzSDFtWPkLGND876L6yiy8RFBKAaNkbQ0t4ZrObmKP8wJb2U5wtnzaVppPtibZ9QSF3BNGabVwPTMcMeNeLElk+do3npe0nCQtJ0mrSVG6vH6npNAiNCXnxN/b1A9CtlDA7SKDkcJIrugrGX3132zZafjJ2BnaaX2475WroKaPUF/9PGn39oOysuLo08mN8wt8XMOAX3X5G4eiDFfrBQAA]]
+
+
+If there are algorithms, datastructures, programming languages on one end, and movies, books on the other end, this software art wants to be in between,
+towards a software implementation of the computer system of 'inside out'.
+
+Music is: https://soundcloud.com/royalty-free-music-btm, thanks!
+
+https://soundcloud.com/royalty-free-music-btm/background-music-for-youtube-videos-trance-energetic-sport-workout-powerful-instrumental
+
+Really cool, a lot of meditation music for free: https://soundcloud.com/royalty-free-music-btm/sets/royalty-free-music-meditation
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EiJcucK9wiE?si=KplbDXwTx_bdnRc1&amp;start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+
+
+* Vehicles in space, current state of my programmatic art
+
+Viewing the last video gave me the idea of underwater - sea - or space jellyfish.
+
+So I tried to bring it a bit of space jellyfishness.
+
+I feel like now I'm slowly coming to something that starts looking like artistic style at the edges.
+This style at the moment comes from cybernetic and some physics / chemical concepts.
+Braitenberg vehicles with mechanism of motion, elements with brownian motion.
+Then, there is the aspiration of network science concepts with the connection lines.
+This is expressed in a straightforwart, toy-like software framework.
+Going fast, going with joy, bottom up.
+I'm not ashamed to aspire to the label of doing software sensually.
+
+Trying to learn from the previous video and make it more engaging.
+I guess the meditation music does immediately bring in some relaxation and also epicness.
+
+What I have learned from the previous video:
+
+1. I try to show the art longer on the screen in fullscreen, I suppose many viewers just click for the art.
+2. Just be more relaxed man, it's programmatic art.
+3. It's art and programming, programming art, artistic programmig. Kinda programming but also kinda doing art.
+   Really, it's the intersection of programing and art and cybernetics and a little bit computational a-life.
+
+Keywords: software, a-life, Braitenberg vehicle, Clojure, Emacs, art, meow, professional software art, space, trippy,
+
+The music used is: https://soundcloud.com/musicofwisdom, thanks!
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wE3B96zXW8c?si=WRWRbw0TDfDce4wE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+
+* Ideas:
+
+- The whole thing is the show, if I open a terminal and type, that's part of the show
+- Erros and software concepts are allowed to be part of the show
+- For instance, on error open another quill or terminals etc, *error*
+- you could play with the concepts like boot-up and calibration,
+  have something like a loading bar or spinner in the mix
+- introduce interactivity with mouse and so forth
+- if I kill random elements, some will stay around as corpses or something.
+  -> actually fascinating idea, get a glitchy look by actually having bugs and glitches
+- if I don't draw the background I get a ghost look, things like this
+- perhaps its exactly the interplay between working and not working, that is a deep aspect of
+  software - debugging. If one can transport this feeling, one transports some of the nature of technology!

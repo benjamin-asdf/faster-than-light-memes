@@ -1,0 +1,34 @@
+#+title:      thoughts
+#+date:       [2022-11-20 Sun 18:44]
+#+filetags:   :ftlm:
+#+identifier: 20221120T184404
+
+* if you are using emacs you are more pleasant to work with
+
+* programming matrix
+
+programming is not like viewing the matrix. It is
+about the matrix, not the matrix.
+
+organizing ideas, keeping things simple.
+
+* emacs / the kingdom of feeling
+
+I cannot tell you what is great about emacs because it is your
+personal story that is great
+
+emacs is your own path
+
+feeling: the greates stories stimulate your whole mind
+
+* lisp + rainbow
+
+Lispers have an experience like this:
+
+You walk outside
+You think about lisp, you see a rainbow, you smile and think "McCarthy was right."
+
+1. Walk outside
+2. Think of lisp
+3. See a rainbow
+4. Smile and think "John McCarthy was right"

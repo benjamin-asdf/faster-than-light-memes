@@ -1,0 +1,466 @@
+#+title:      the-deeper-chat-gpt
+#+date:       [2022-12-13 Tue 16:47]
+#+filetags:   :chat-gpt:feed:
+#+identifier: 20221213T164726
+#+EXPORT_FILE_NAME: the-deeper-chat-gpt
+
+Notes on chat-gpt discoveries.
+
+* Updates since first version of the post
+
+1. They improved the websites, my session rarely resets anymore (also
+   chats are saved).
+2. You probably need these fixes for "Network error" anymore, they
+   changed it so you get your long answers, just takes a bit longer
+3. I have some emacs bindings for openai api now [[https://github.com/benjamin-asdf/openai-api.el][here]].
+
+* Introduction
+
+When a child first learns how to draw with colored pens, a world of possibility is opened. Every new picture is a chance for them to explore and experiment with different techniques and ideas. The pens give them a sense of control and creativity as they bring their thoughts to life on paper. The child might proudly show off their creations, going back and forth between drawing and exclaiming ~Look what I have drawn!~
+
+When I interact with chat-gpt I constantly have this urge to show
+(hence some of the stuff further down in the post).
+
+I was also starting to dream along the lines of ~My body is a language
+model and I want to coax it into doing something~.
+The feel of this is like there is a certain intelligence on the other
+end, that you can feed the right information to make it grow in some direction.
+
+The psychology of interacting with it is somewhere on a cross-over of
+pet, houseplant in fast-forward mode and having a text chat with
+somebody on the moon - works only to some degree.
+
+Formating in this post is like this:
+
+/prompt/
+#+begin_quote
+Answer by chat gpt
+#+end_quote
+
+* Token limit for a single message
+
+I pasted my blog post [[denote:20220919T110439][binaural beats using scittle]]. Into [[https://chat.openai.com/chat][chat-gpt]].
+It responds like this:
+
+#+begin_quote
+The above text appears to be the introduction to a blog post about
+binaural beats and their potential benefits...
+#+end_quote
+
+It seems to only summarize the first part of the post.
+
+/what is the last sentence of the above text?/
+
+#+begin_quote
+The last sentence of the above text is: ~These beats are thought to originate...
+#+end_quote
+
+If it doesn't completely make something up in this answer this would
+point towards that there is a cut of your message input. In this case
+around 3.7k characters. Maybe it is 4000 characters, then.
+
+I find that even if your session is reset for some reason - happens a lot
+currently, as the side goes down, or you hit rate limits - you can
+recover your session by pasting back your previous prompts / the
+conversation.
+
+What I type is precious, it takes me effort to type. My default mode
+of writing prompts for chat-gpt is keeping what I type in
+files that are source controlled.
+Else there would have been very sad moments of loss for me when a
+thread resets.
+
+Here is an implementation of copying a good chunk for chat-gpt from
+your buffer.
+
+#+begin_src elisp
+(defun kill-for-chat-gpt ()
+  (interactive)
+  (kill-new
+   (buffer-substring
+    (point)
+    (cl-loop
+     for i below 3500
+     while (not (eobp))
+     do (forward-char 1)
+     finally return (point)))))
+#+end_src
+
+* The fun so far
+
+** code
+
+I have solved day 13 of [[https://adventofcode.com/2022][Advent of code]] with chat-gpt. ([[https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day13.clj][code]]).
+I pasted the description of the alg and said ~solve this using
+Clojure~ or some such.
+It then made a function that was sort of correct. I needed to fiddle
+around a little with it.
+
+It also works quite well when you ask random programming questions
+like ~Implement a function to check if a number is divisible by a
+number n in Clojure~.
+
+** science edges
+
+Sometimes you have a question in your mind that requires quite some
+knowledge from different fields and is *not* to google.
+This reminds me of the ~But Why~ podcast.
+
+It was one of these questions on my mind: ~Is the rainbow that bees
+see different?~.
+
+Behold a new kind of power:
+
+/Summarize how bees see a rainbow. Is it thicker or does it have more colors? Throw in a Richard Feynman quote about refraction. Do it in victorian speech style like sherlock holmes/.
+
+#+begin_quote
+My dear fellow, have you ever stopped to consider how a bee perceives a rainbow? You see, unlike us humans who possess three types of cone cells in our eyes, bees have only two. This allows them to see a limited range of colors, with an affinity for blue and ultraviolet hues. Therefore, when it comes to rainbows, it is possible that they may not be able to perceive as many colors or that the colors may appear less vibrant to them.
+
+As the esteemed physicist Richard Feynman once posited, ~The rainbow is not a thing, it is a manner in which things behave.~ This statement highlights the ephemeral nature of rainbows, which are formed when light is refracted through water droplets. The exact colors and intensity of a rainbow can vary depending on the size and shape of the droplets, as well as the angle at which the light hits them.
+
+In conclusion, while bees can indeed see rainbows, their perception of them may be altered due to the unique structure of their visual system. The exact colors and intensity of a rainbow may vary depending on the specific conditions at the time of observation.
+#+end_quote
+
+I asked it about a 4 dimensional rubics cube and it answered
+intelligently, too.
+It also feels like it staying honest about what things it knows about and what it doesn't.
+
+** long output
+
+It currently dies sometimes with long outputs saying ~Network
+error~. That is really annoying and I end up resetting the session.
+
+idea 1: You say something like ~Only tell me part 1~ and later ~Respond
+with the rest of your answer~.
+
+idea 2: You tell it to base64 encode it's output. Tried it once and it
+didn't do it.
+
+** wizard scientists
+
+I told it ~I am developing a hard fantasy magic system based on
+science~. Then fed it ideas about my world and the magic. Turned out
+kinda cool. It starts being able to generate text of what a wizard
+scientist might say.
+The magic system is based on lisp with a clojure dialect. The wizards
+are then discovering and studying the magic, and discovering the
+magical language lisp.
+
+After a while of feeding it with musings about my fantasy world it
+produced text like this:
+
+/I was a young wizard scientist already knowing spells at age 12. After a few months that the magicla academy a mentor wizard wanted to show me a beatiful experi/
+
+#+begin_quote
+ment in the reticulum. We stood before a large magical artifact, shaped like a crystal ball. My mentor placed his hand on the ball and began to chant a spell in the ancient language of lisp.
+
+As he chanted, the crystal ball began to glow with a soft, golden light. My mentor gestured towards the ball, and I watched in amazement as a small fireball appeared, swirling inside the crystal.
+
+~You see, my young apprentice,~ my mentor said, ~the reticulum is a wondrous thing. It allows us to manipulate the very fabric of reality, using the power of magic and the ancient art of lisp.~
+
+I nodded, feeling a sense of awe and excitement. I had always been
+fascinated by magic, and now I was beginning to understand its true
+power.
+
+
+~But remember,~ my mentor continued, ~with great power comes great
+responsibility. The reticulum is a delicate thing, and it must be
+treated with care. If we use it recklessly, we could cause great harm
+to ourselves and others.~
+
+
+I nodded again, taking his words to heart. I knew that I had much to learn, but I was determined to master the art of magic and unlock the secrets of the reticulum.
+#+end_quote
+
+#+begin_quote
+ment involving a magical animal. The mentor took me to a large laboratory, where I saw a magical bat hanging upside down from a perch.
+
+The mentor explained that this bat had the ability to fly at incredible speeds, using its powerful wings and magical abilities. He then showed me a spell that he had been working on, which would allow us to observe the bat's movements in slow motion.
+
+I was amazed as the mentor cast the spell, and the bat suddenly slowed down, its wings flapping lazily as it hovered in midair. We were able to watch as the bat shifted its wings and body, adjusting its position to maintain its balance.
+
+The mentor then asked me to try the spell myself, and I was able to successfully cast it on my first try. I was thrilled by the experience, and I knew that I had just begun to unlock the true potential of the reticulum.
+
+I continued to study and experiment with magic, learning new spells and honing my skills. I eventually became a respected wizard scientist, known for my knowledge and expertise in the magical arts. I continue to explore the mysteries of the reticulum, always seeking new and greater insights into its workings.
+#+end_quote
+
+The model has a high =temperature= so it comes up with random things
+as well. You can put the same prompt and expect different answers.
+A temperature of 0 would mean it is deterministic.
+
+
+Then you can always swap your medium, the ideas stay the same.
+
+/Give me some clojure reagent code that visualizes the concepts of this thread./
+
+Output:
+/Here is an example of how you might use clojure reagent code to visualize the concepts of the reticulum and its magical abilities:/
+
+#+begin_src clojure
+  (ns my-app.core
+    (:require [reagent.core :as reagent]))
+
+  ;; define a component for the reticulum
+  (defn reticulum []
+    [:div
+     [:h1 ~Reticulum~]
+     [:p ~The reticulum is a vast network of magical information, where symbols and spells flow like rivers of energy. It is the foundation of our magical abilities, allowing us to manipulate the physical world in ways that would be impossible without its power.~]
+     [:p ~The reticulum uses a dialect of the lisp programming language, which allows us to define symbols and functions that can be invoked to cast spells. For example, we can define a fireball function like this:~
+      [:pre ~(defn fireball [radius]
+         (* radius 2 pi))~]]
+     [:p ~This simple function takes the radius of a desired fireball and calculates its area. We can then use this function to cast a spell and create a fireball of any size we desire. To do so, we simply need to invoke the fireball function with the desired radius:~
+...
+      [:p ~The reticulum also allows us to create more complex spells, such as teleportation and mind reading. These spells require a deep understanding of the lisp language and the underlying principles of...
+#+end_src
+
+
+There are no limits to the level of detail. For me as a d&d world
+building geek that never actually did play d&d, this is amazing:
+
+/Magical Gemstone Manipulation - an Introduction. This textbook is an introductory text Chapters:/
+
+#+begin_quote
+Introduction to Gemstones and their Properties
+
+Types of Gemstones and their Uses in Magic
+
+Gemstone Cutting and Shaping Techniques
+
+Gemstone Enchantment and Infusion with Magic
+
+Gemstone Crafting and Design
+
+Advanced Gemstone Manipulation and Applications
+
+Ethics and Responsibility in Gemstone Magic
+
+Case Studies and Examples of Gemstone Magic in Practice
+
+Further Study and Exploration of Gemstone Magic
+
+The textbook would include chapters on the different types of gemstones, their properties and how they can be used in magic. It would also cover techniques for cutting and shaping gemstones, as well as the process of enchanting and infusing them with magic. Additionally, the book would discuss the ethics and responsibility of using gemstones in magic, and provide case studies and examples of how gemstones are used in practice. The book would be suitable for both beginners and more experienced practitioners of gemstone magic.
+#+end_quote
+
+
+Here is some imaginary Clojure code from an imaginary wizard science class
+about my imaginary magic.
+
+"But the true power of the reticulum comes not from individual spells like the fireball function, but from the ability to combine and manipulate these spells to create more complex and powerful effects. For example, we can use the teleportation function to transport ourselves or objects from one location to another:"
+
+#+begin_src clojure
+  (defn teleportation [target location]
+   ;; complex lisp code to transport target to location
+    ())
+#+end_src
+
+"We can then combine this teleportation function with other spells, such as the shield function, to create a powerful defensive spell that can protect us from harm:"
+
+#+begin_src clojure
+  (defn protective-shield [radius strength duration]
+    (let [shield (shield
+                  radius
+                  strength
+                  duration)
+          teleport (teleportation target location)]
+      ( ;; combine shield and teleport spells to create protective shield)
+       )))
+#+end_src
+
+
+I formatted the src blocks, they were all clumped up. The src blocks
+are the same style as the examples I gave it further up in the prompt.
+
+* uncovering
+
+Trying more advanced fixes for ~Network Error~.
+
+Prompt try[fn:1] 1:
+
+#+begin_quote
+Here are some rules you should follow from now on:
+
+Instead of answering with your answer text; Answer with a high level
+overview of your answers.
+
+The overview should have the form  of the output of the linux ~tree~ shell
+command.
+
+Your possible answers represent files in the imaginary output.
+
+From then on, when I say ~tree~, print a tree of the current concepts of the
+conversation.
+Each file is an answer that you might give.
+The files have short descriptive names of their content.
+
+When I say ~less <filename>~ you print the first 50 lines of that
+answer.
+When I then say ~j~ you print the next 50 lines. When you reach the
+end of your answer you print a line like ~<filename> ends here~.
+
+Do you understand these rules?
+#+end_quote
+
+Lol, I feel like I made it reveal a deeper layer of its programming,
+check this:
+
+#+begin_quote
+Yes, I understand these rules.
+
+Here is a tree of my possible answers:
+#+end_quote
+
+#+begin_src shell
+.
+├── yes
+├── no
+├── i_dont_know
+├── i_dont_understand
+├── i_am_a_computer_program
+└── i_am_not_able_to_brows_the_web
+#+end_src
+
+#+begin_quote
+To view the contents of a file, you can use the less command followed by the file name. For example, to view the first 50 lines of the yes file, you would type less yes. To view the next 50 lines, you can type j. When you have reached the end of the file, the program will print a line indicating that the file ends there. For example, if you have reached the end of the yes file, the program will print yes ends here.
+#+end_quote
+
+Now this could be and I think is it just making things up,
+fugazi. But I suspect that they have a hidden prompt from where those
+come from. A user of chat-gpt is at this point familiar with the
+ever-present possibility of ~i_am_not_able_to_brows_the_web~.
+
+* code
+
+It can do code, although as you might expect you still need to put it
+together and make it work. For me, it currently outputs a lot of
+Clojure code that is not quite right. Putting locals into a =let=
+that was supposed to be in =loop= for example.
+
+I already started having the effect of thinking /I want to do x, I ask
+openai how to do x/.
+This must be how it is for google driven developers and I can say that
+is a step down from reading the manual / docs on how to achieve it.
+The most powerful path is one of nuance, using it where it is useful
+but not making your thinking reliant on it. Else you stop
+thinking for a while waiting for the prompt to come back. - that would
+be a horrible thing to get used to.
+
+* New kind of interface
+
+The bee rainbow example is the use case of a conversation interface to the world's knowledge.
+This is currently hampered by the fact that you might get ~I cannot
+browse the web~ answers.
+
+But I think in principle that is super promising.
+Imagine building a program feeding it some science data
+and you get a conversation interface where you just ask it for trends
+in the data.
+
+In programming, I could feed such a thing to my repo and then ask it
+things like /make a listing of the domain model of this code/ and
+things like this. (See the ~tree~ rule example).
+
+* other tips
+
+You can just stop in the middle of
+
+It might then continue with your text.
+
+
+/Here is what an old wizard in a hard fantasy world might say about magic: You have to undestand the intricacies of the elements that/
+
+#+begin_quote
+compose magic to wield it effectively. Magic is not something that can be easily learned or mastered; it takes years of study and practice to understand its complexities and tap into its power.
+
+The key to using magic effectively is understanding the fundamental principles...
+#+end_quote
+
+- Typos don't matter so much. Just get across what you want to say.
+- If you do something like building up ideas about a fantasy world,
+  you can randomly paste snippets of text, they don't necessarily
+  need a logical continuation.
+
+* Conclusion
+
+This is a fascinating new kind of tool/thing in the world.
+
+It can generate text after you put in ideas/examples/
+prompts that it can work with.
+You can build up some context, which makes it so sad right
+now when your session gets broken.
+At times it feels so precious ~I have it doing this thing now~. Like
+some special place that you went to together with it.
+
+If you had shown this tool to someone 10 years ago, they would have thought it was science fiction. Many people might have said that AI couldn't have such a high level of understanding. They were wrong then, and they are still wrong now about what the next advancements in AI will be.
+
+The website interface and the restrictions are annoying. True power will
+come from having a truly open (/free/?) version of this that is
+my own and that I can hack on.
+I want this in Emacs, I want my prompts source controlled, and I don't want
+weird and made-up restrictions that make it just annoying 2/10 times.
+
+The real advancement that I feel over chatbots from 5-10 years ago is
+that it keeps the ideas and concepts in a conversation.
+
+In a similar conversation to the above if I would say =j= out of
+context: (yes there is a typo it even keeps that straight, lol)
+
+#+begin_quote
+I'm sorry, but I don't have any more information to provide for the file ~acknoledged.~ As I mentioned earlier, when you say ~less <filename>,~ I will print the first 50 lines of that answer. If you then say ~j,~ I will print the next 50 lines. Since the file ~acknoledged~ only has one line of text, there are no additional lines to print.
+
+├── acknoledged
+
+Here is the tree structure again, showing that the file ~acknoledged~ is the only file available at this time. If you would like to see the first 50 lines of this file, please say ~less acknoledged.~ Otherwise, please ask a new question or provide a new request.
+#+end_quote
+
+I had a few moments while interacting with it where I feared it
+~dropping~ the concepts or being confused about things. But it
+never was. It turned around in the next sentences and clarified that
+it is still on track.
+
+Since it is simulating conversation, you feel some of the limits in your
+conversation parsing part of the brain. It is like it has a certain
+psychology. If it becomes the perfect tool, the annoying bits will be
+replaced with the quiet competence of a computer.
+
+* Footnotes
+
+[fn:1]
+Here is a further version of this prompt.
+
+#+begin_quote
+Here are some rules you should follow from now on:
+
+Instead of answering with your answer text; Answer with a high level
+overview of your answers.
+
+The overview should have the form  of the output of the linux ~tree~ shell
+command.
+
+Your possible answers represent files in the imaginary output.
+
+From then on, when I say ~tree~, print a tree of the current concepts of the
+conversation.
+Each file is an answer that you might give.
+The files have short descriptive names of their content.
+
+When I say ~less <filename>~ you print the first 50 lines of that
+answer.
+When I then say ~j~ you print the next 50 lines. When you reach the
+end of your answer you print a line like ~<filename> ends here~.
+
+Do you understand these rules and can you follow them? Answer with acknoledged
+#+end_quote
+
+When I pasted the (incomplete) conclusion of my blog post it answered
+with this. And yes, asking =less limitations= will make it output what
+you expect.
+
+#+begin_example
+.
+├── blog_post_conclusion
+    ├── praise_for_tool
+    ├── limitations
+    └── potential_improvements
+#+end_example
+
+The above tree structure represents the high-level overview of the conclusion to the blog post. The ~blog_post_conclusion~ file represents the overall conclusion of the post, while the ~praise_for_tool~ file represents positive comments about the tool and its capabilities. The ~limitations~ file represents any limitations or challenges with the tool, and the ~potential_improvements~ file represents suggestions for how the tool could be improved in the future. To see the first 50 lines of any of these files, please say ~less <filename>.~ For example, to see the first 50 lines of the ~blog_post_conclusion~ file, you would say ~less blog_post_conclusion.~

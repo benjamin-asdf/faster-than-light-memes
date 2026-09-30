@@ -1,0 +1,796 @@
+#+title:      Neuronal Memetics Overview
+#+date:       [2024-06-11 Tue 15:55]
+#+filetags:   :memes:public:
+#+identifier: 20240611T155542
+#+EXPORT_FILE_NAME: benjamin-overview
+
+# #+begin_export html
+
+# <h1>Welcome To My World</h1>
+
+# #+end_export
+
+# [[file:/home/benj/Pictures/foopic.jpg]]
+
+
+This is my evolving theory of cognition.
+I believe in science fiction and wild ideas. If human creativity as a whole is a search process, then there must sometimes be tentacles of 'out there' ideas.
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5N7cRJLH0M8?si=Df4iTHvfdu6kEPgN&amp;start=2200" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#+end_export
+---
+
+Refinenments (future):
+
+- Memes should have a recipie part in order to reproduce faithfully.
+- The difference between a 'programing with attractor states' (Von Der Malsburg) is that I emphasize how memes are *biological*.
+- They are agents that want to stay on. This way they implement both agentness and objectness.
+- It turns out that cognition is a kind of a-life problem.
+
+
+---
+
+* One of the deepest unsolved problems:
+
+[[edraw:data=H4sIAJtxgmYAA72Wy46bMBSGX8XyLNpKAxjDEDIKSNNVNt10Mb3sXDBghdjIdkKmT99jA51eMlIvSkJAxjb/d3z827Axxxad9r00Be6sHe6jaBzHcExCpduIEkIi6IGnLvenXsjduY7xer2OfCtGo6htV+A7kmLUcdF2tsBJSjA6cm2EkgWOwxiXm5o3Bom6wLzWbAzcLdTumd5x/XN9QAKmtRoxmlo/TIRsud/OFKgYNDdcH/mDGXhl3zMrVIGlkhzwgo9v1anAQUyQO6n7Y6R587HAU+GTLygtuAQ9drAKI2O12vFFpRF9X+CbmLgD4h2Y7RAE+w4Ub4OVE75dofSWfMYoKjfRFCEU3PjKjYao0MlTnvz1xWw9Z+ALq3atVgdZvxBM0zQe1v74kKqfIDze92IwfH4umGn0WWgZyXet3B2QDAgvd0mBYOMVFCqoiF2+KqihCfHEv5bPqqYhZJKnszxd1MmsntBLqGdL7OklY6fkkurxHLt33WStgEuY9IPuX9/8tmDe4D/mT4ZyRgYGAuAWEobi/PI8yBgCYz16bka2lF6Bmc2snKAE+MnCvwYbeBl5nDNr+ckidwmYrDqlC7wXdd27xa2kDRq2Fz04wDBpAtjZRDM3GPEVIPTu1x3JbSve4bPTyweJWA/7GTIDq7jpxAB7DoxO1JyZTeTQ/7JNNDn8zrs1X5ZCdqWJTGHyqDft5XlgmJxsk2ugUo9alsP/GSXOzxoln4zilnkZhiGqNIdXpoQXiX1lkBolOoDW4pKohRM+B8pv6uq6ADYIAAA=]]
+
+
+- What *kind of computer* is the brain?
+
+- What is the nature of *software that supports its own user?*
+
+[[https://github.com/benjamin-asdf/Conceptrons?tab=readme-ov-file#functional-properties-of-brain-software-or-cognition-software][Functional Properties of brain software]]
+
+My current ideas include action-hero wizards that manifest bananas in a virtual simulated world.
+
+
+
+
+
+
+# My approach
+
+
+# # [[edraw:data=H4sIANqvaWYAA7WUzY6CMBCAX6UZzwhFV8VYLvsCvgJCKY2lJW0V3KffqcCuB72YCKGTMj/fTGfSg7sKMrRKOwaN990+jvu+X/arpbEiTpMkidECRpP9oKQ+PzOkWZbFdy2QXla+YfC1SYA0XIrGM1inuLly66TRDOiSQn6wvPRkYICa23196SgrBryyRR+divIsrLnoCojz1pw5A200B1JLpRgs6roGEucH8ehkqhvyuFKyc3zyiyZa+h9oQZPwPsTa4QPEYnor/G2HUZa43waJ+zTYI8/zwZOwRIUuG2MZtLKqVEjMaB/VRSsVurlCu8hxK+tJ4eQPkunuDzrngMY7FHdkAvlJGmXE7RAHxhu1JMmpCEfzrJZ0NRWTjbW8cVAVTsqL4PNJremb0TdlXb+KTukUfbX9XB/oemzEGgcz1/xijSsl1yWfu/EJaOh6gAZ4/m3a7uKlFuTYSGWc6ZrbR+HpVHEYvaM1whZti/iZGQv88F7IfwEOuZXcPwQAAA==]]
+
+
+# file:./approach.svg
+
+# - studied biology, I 🩷 biology and the brain, quit to learn programming instead
+# - software engineering, game development, user interfaces
+# - Lisp + Clojure, programming toys and art, emacs + unix /user interface philosophy/
+
+# - The software engineering approach /Guessing and Debugging/, /Conjecture and refutation/
+# - my goal is /a feel/ for the /neuromorphic computing/ I do.
+
+* Programming
+
+
+[[edraw:data=H4sIAAKmamYAA71WS3ObMBD+Kxr10s4YkIQQkDHutKce3EsvfdwUI2wmGBgJB6e/visBsZM4ncx4CK8P9Pi+3WUXsTT3W3TcV7XJ8K7r2psg6Pve70O/0duAEUICGIGHITfHqqzvLg2kaZoGrhejvsy7XYYjQTDaqXK76zLMGTzcK23Kps4w9SleLXNVGFTmGVa5lr1nH6F1L/Wd0k/bPeJJrZseo6H356Agpudvowo0tFoZpe/VF9OqTfdDdmWT4bqpFciXqv/aHDPsUYLsyeyBkVbFrwwPN7/dTaNLVQOfPHQNRqbTzZ2aWIqyqjL8gRK7g72t7HYIjP0OjAsvtsSLGPEF+YNRsFoGg4VwY/1bLTVYhY5O5cFdX43WKQK3cnO31c2hzl8xpigKJ7Y9n9TkD3jUGyZ5oxQ7sUxuPBIldj8ZQvnJQsYHmyEnsPXAGhxcK3DGL57SO7mr+cVLfn4Nv9gUBSH/sz+8yn5CbqV9mRf4+TN+MvB36tghe/Fkvdk1OsP7Ms8rmxxN3XmF3JcVTDOyNh5URlmMHab8C/o0eZ7R5xo2D1ebZt8eOltItaxQJR+UXgZWcMz9t7+bIndG22KhCVkwsqZp6POYJHwhqM+jJI3WLIx9IkIenTUR6sepCKNFAn0JI3zNaOQzEdMFZYkfcUp4Om7J2nJTwvyUxumacu7HIUsvDowSn5FQnPFSBvOgJSLjRk9mUCH8iKVUPDYNJe6iMJS5p2rw7qCrjx9efLw+4TeHaihuFydBEBTh2qEYMRlwyoA59UHD6qwtWl2HYkQ+XwaKMQHBxZVpiq6XWl3IvZm8Djl4B+npkI8oRoQohMzh7NF/tIM5nC3aVJzVe7dTqDjUaCvbKdazaJKzV7zsTCtrtKmkMdMC5vTgj0KdhsGfhqxL475FYJud88apbime3xn70V99fo8UZZASkB5rh2LEZEBuC5Y7nC1l+ORx4paIXL2L08nodDI4DevUgGMQbL2EYsZ1cayT0Drd6majjJn8DrZwwq/y6h9CFMMhUgsAAA==]]
+
+
+#+begin_quote
+*The Fun Gap*: The difference that when you study the system in terms of the /computational layer/,
+and there is an *operating system with a cognitive user* in the system that is so much more relevant to the thing you study
+that they can mess with your experiments *just for fun*.
+#+end_quote
+
+Bricks are not the theory of buildings, architecture is.
+
+No programmer is at hand.
+
+/Brain software must be an instance of self-assembling, biological software/.
+
+Software engineering starts with the problem.
+
+[[edraw:data=H4sIACH6amYAA71WS4+bMBD+K5b3sisFsI0BswpZtace0kvVqo+bF0yCQnBk2CXbX98xOA37qlqtKATGjO355huPJ1629xt03NdNm+Ft1x2ug6Dve78PfW02ASOEBDACj0Ouj3XV7F4aSNM0DYZejPqq6LYZjhOB0VZVm22XYR4zjO6VaSvdZJj6FK+WhSpbVBUZVoWRvWc/QbuXZqfMY71HPGmM7jEae786hNP3B4cCioNRrTL36l17UHn3SXaVznCjGwXwlerf62OGPUqQfZj9YWRU+S3DY+P70NCmUg3Yk3edxqjtjN6pk5WyqusMX1Bib/D3ILstAmc/gsWFl1jDiwTxBfmBUbBaBqOH0LD8VksDXqHjgPIwvF+N1jkCtzLfbYy+a4pXnCnLcgDbTCfp4gE7vHGS56DY2cqJxm9Dwt4TRyYOjh4zqzo6GbzVfvzcvniL/TgvS0L+5H/4Jv8JuZU21i/Y50/sk9F+p44dsi9PNvlWmwzvq6Ko7drppvNKua9qmNbKpvUgcavSdbTVT8Cn4mnCTTE4ZO8q1/vDXWfzvJE1quWDMsvAArrU/Oe1sblMBVnEZE3T0OcJEXwBI30eiTRaszDxSRzyaKqDVpLGIegY9ApG+JrRyGdxQhc0Fn7EKeGpu8Tamqec+SlN0jXl3E9Clr44MBI+I2E8NUwZTARVRNxFJ57QOPYjltL4rBv34RCLcS96qgGOd6a+vHhWYa7wXwds3IFDtGKgIyBcIGHdR8mcdHk2Jz5gWpz1IJmTZJRUzJeHdLKXVjePsm4upowsQoi0lZw4yZy0EeCDnI0xPzEWw84r1H8hLRxpMZIOiZMuCCEf5HykyUg6tKQPRueqbU+8ZylvDg+2D6TVDZoTy61naCvp562C44O+rdV+TkgxKd5fYBL8gUDuSMieTZVDCa+aTplS5gp1GskaTiJorPHnwj7LZmaTVb5sVV0i2bZqD+Eork7AwQYeOA+ufgGe5xU0NwoAAA==]]
+
+- Then back and forth with candidate building blocks
+
+
+#+begin_quote
+This is an exercise in fictional science, or science fiction, if you like that better. Not for amusement: science fiction in the service of science.
+Or just science, if you agree that fiction is part of it, always was, and always will be as long as our brains are only minuscule fragments of the universe,
+much too small to hold all the facts of the world but not too idle to speculate about them.
+#+end_quote
+
+Valentino Braitenberg (Vehicles).
+
+
+#+begin_export html
+
+<h1> High Dimensional Computing </h1>
+
+#+end_export
+
+
+[[edraw:data=H4sIAEpOaWYAA71WXW+bMBT9K5b7skkhGIdSUgFS97RJ3R62h328ETBgBXBknED263dtw8i2durWJiL44A/Oub73GCXqDiUamrrtYlwptbt13b7vl/1qKWTpUkKICyuwXXI71LzdPrTQW6/XrpnFqOe5qmJ8HRCMKsbLSsV45UPnwGTHRRtjb+nhJMpZ0SGex5jlMu0d3YXRJpVbJn8dd4iTSil6jOzsZ6sQTP23owoM7CTrmDywu27HMvUxVVzEuBUtA3nO+jdiiLHjEaRvqn8YSVZ8ibF9+GoehOSsBb50rwRGnZJiyyaWgtd1jK88oi+Id5eqCkGw74Fx4dxo4sUN8hfkG0ZuErk2QnjQ+0siCVGhwagcTftotuYMbNJsW0qxb/NHgimKwoiVpy+J/IhHPfuSM0rRmWXaxk+iUF9zIP4coG8j1gmD8H2N7svTeyP/Kvwf/iArCkKewu8Hlt9Uz5bIYS0kby/rV1d/GO81fnIQtjDaEL5PUEDuNYQWPHIZVdC5hx1aDE+QXlCfjkhOcNRXbFBIN07aZpWQMW54ntfa0KJVTpE2vIZidWnbOXCaeTFOdPw7SNPr30+hNeZc2eTTsdmImmfo7l3kaqEkYnXNdx37d7PK0fVysJhBX7snGyy6L8xtkvQcckI2qf4g/JV8KsVZ0nIJnwXmcIWmBX8ZoBouoQxK9/Y8GW2D9Lz+9kLrb23vD0x1k6+fp+WFD56lUWulxSAf+0ztJbuEoqcV02bDyz1Xx0nxnNWk8L2iUD9KRyQGz+4i2LHRW5ER6azrlnDD367kBxrv4queCQAA]]
+
+
+Large amounts of elements, all contributing to a piece of data, produce the /properties of high dimensionality/.
+
+
+[[edraw:data=H4sIAGC4amYAA71UTW+cMBD9K5ZzaaVlsR1KdiNAatVDDu2ll6a5OWDAWrCR7V3Y/vqOMXTbtJFaqan4GGOb9968GcjsqUFT3ymb49a54TaOx3HcjtdbbZqYEUJi2IHDltupk+rwu410v9/H8ypGo6xcm+M3KcGoFbJpXY5ZmmJ0EsZKrXJMtxQXWSVqi2SVY1EZPkb+EWZ7bg7C/DwfkYgbo0eMwurnwJCuz3cLC0wMRlhhTuKtHUTpPnEndY6VVgLopRjf6SnHESXIX8yfGBlR3+c4DL7MA22kUIDHj05jZJ3RB7Gi1LLrcnxFiT9A78Bdi0DsR0DcRDceeHODkg15wCgusjgohIHPr8gMqELTzHKe78+6dXHgkZeHxuijqp4RU9f1TNb8+JKuziDPickhf4u4KlttctzLqur8u1q5qOa97ECI5cpGYJyslwUrvwIL3T1N2KtOIEAKO0j/7j0qdT8cnVRNFnuel6GkJHAysKmgZAt9iR6ls94+gUZtKrvSzw4Hm6LFXHbx7Tvoat3OHxfrk0tJGAvcLFBTX6F4KXioaiQU+H003aurX3r1Nf5jEaGWvoeAckN35MMcU4jJElOIyX/gTxZ+iPDtz7yMBF7RdXKw4u+tNYuHZgqx9PX0yZQwcf0v0OmCThd0Rhd0tg/oL9KSaeiLJPHfwXmAn9vAS4GkRSdu3dqOcQMX/EKLb0087j9qBQAA]]
+
+[[edraw:data=H4sIAHqoamYAA7VXUY/iNhD+K5ZPla4SBGfsxMkJkK689KF96cu195YDB6INCXKyC/TXdxyHkGCfdqvVLktsj7/MfDNjj/GyedmTy7GsmhU9tO3py2JxPp+DMw9qvV8AY2yBCGohXy5lUT35gGGapotulpJzsWsPKxrFjJKDKvaHdkUF4OBF6aaoqxUNg5CulzuVN6TYraja6ew8N0OUHjP9pPRUPmfzTOv6TImd/WYtxLfx770VFJy0apR+UV+bk9q2f2VtUa9oVVcKzRfq/Ft9WdF5yIj5gvmnRKv87xW1nX+6Tq0LVaG+7LmtKWlaXT+pm5a8KMsV/RQy80G+p6w9ECT7J2qczaVRPJNEzNh3Shbr5cIyxI7xb73UyIpcOivX7vnTaN0j8CPbPu11/VztfkImz/PO2H78Ur27Ir1WXVpiHvOs2h5qvaLHYrcrzbt11c7z7FiUSKTJqmaOgSvyfqIp/kUrYfLosGFtqKILkKD/h+vJhHvb1rohmVbkVBdVi3mtSDfVnLKtWi4Mg/VSlWVxalTvxLx3He5eDVYGx3a4BDEzaNWI9cW2WxzzrmN4mM6iz8TbVSfmQ7vUhUIGoYAkkuYpZDQLY7bBftCL8MlnYSQCGASCMU5cSBgMeqJUpIkLEVFwGwnOos1EAMa2SILhBSFwZ5GpCNAOI1NbcWSEmzAaexJFFhkzx2wvHKtIpJCbTsxFEA9yidbjQA4+MECtIANUwdMgHf4SI0YGnAcwUIjlAAaPYvBzAB9fGMcx7D2DcVxYHwM+1hgxFlosH6UvTv1x5pOF4EnWI8CTcAfiLhs+9gVAJHbB8TGhELplSKYBiuRN6lmy39+5D8AEHldQtAFuUmDyBsL04NZD5jhrel1WgZv8drPmDehmzcxNCvde/84GwkEWwh0ZDu+zQcYGO2ywzQY+4cDxxvu9AeCdQbbhhgJnhBsTPMLWLBeUdyZxbJca6fCYOUjtGFI7D4nFd2N8v5vnPR7enSee+OoVT16tVy7EWb4O5HEL8OT1esUTt17x1FOveOqpV4J59r8VOrWiE092nERLY4aJWYKTDRdB5GHzCNk4TrhK3DyMi4yEiAFx48XHglS+zdL/RkxKI8fUumZgTDaUkSE7FtlSj6mTnkLP5dgNW+gNdFKtvDYciMv0EeK6K6cl1B96+Vjy3dC/wdKriPjxFHLXUjxmkki/Gs9S9p/S3Hei89hzQrrczK57dMkAnVh5trV85Xh0AJ764kDcKuXm1pQ36TsdeeI7Hb0FclR17Y/yuaqwmj7r8vMn56rxK31zabY/xfvz05xUf+D5eG+hb0Xfxn2bYAt9K0Zt/ICHkT6r/+P9mPL7eHsJm3Hjd9y3om9h1ILl8REXGp7YGw0ez3SNjrZKV2RbH0+latWMqBdVkSLHI+gXUufkR9Haq05ZN+3tavMRtDAMlpa5aCEJfW0PRbUnqsQ7VJ5pkp2z643AYo9fvKqv/wPXXN/H0g8AAA==]]
+
+- *pattern complete* allows us to /identify symbols/.
+- Steven Wolfram: /concepts are particles in concept space/.[fn:1]
+
+
+- hypothesis: we can model /symbolic concept space/ in terms of a hyperspace.
+
+[[edraw:data=H4sIAPioamYAA7VUTY+bMBD9K5ZXqloJwkdYkmwBqT310F42h37cHDBgxdjUNoH013eMSdNtu1IrNTIw9ljz3pvxmEyfGjSyyrQ5vk9DjFrKmtbkeL1OMZo6LnSOW2P6hyAYx3E1rldSNUEchmEAoRidqNJMihxHq2gJeJg4E8c/hUW73S6Yd3GRVbTWiFU5ppUio2+X4O2IOlL11O+HPlFKjhi53Y9Ob3pZv1s0g6NXVFN1om90T0vzSAyTORZSUFDK6PhWTjn2oxDZN7YPRorWn3LsJp/niVSMCsAjg5EYaaPkkV5QasZ5ju+i0A7Q2xPTIhD7ARA9f2OBvQ1KvPALRkGRBU4hTGx+RaZAFZpmlvP8fbb21wocSHlslBxE9YyYuq5nsubnIFmd8cLngvyFKr6iXNL4AbS14yokuQpMnOItGJBv1Qb/Hz1Kn8DPtXUF9KmA1AbFX9791hav8F9rcGWzx7UNvSgO31uTOJM6s3XclHPWa/rv2SnIY227aXK2tHnNE+vY3QL9/oK+ceiGTuaXRkXW5xNRtlLluGNVxW3/SGF8zb4BYbRdljXpGAdUTYT24S6xej6a5WTg4uNif+4OkmsPPVJub5jQLWTjob1RQ2kGuIJZYPluoyRKnBRriwMT1U3JloZPIP+CaC1LRgy9JWMcO8Y1MBcvvg7SvN4PPVW91LbUznMREDTwwn+4+A5++JKWyAUAAA==]]
+
+- every encountered concept is allowed to be a new prototype symbol
+- [ ≅ Word2vec ]
+
+Penti Kanerva:
+
+#+begin_quote
+*Now we have a system where we can actually represent structure.*
+
+We could implement Lisp. And if you think of computational linguistics, 30 years ago, 40 years ago, 50 years ago.
+
+It was all Lisp programs. So then came neural nets and this tradition was sort of lost.
+We can bring this together. With this system, we can bring them together.
+#+end_quote
+
+HD represents *symbols*, *composition*, and information is allowed to be *fuzzy and mixed* etc.
+
+- pattern complete allows to /mix information/.
+
+- HD has a *bind* operation, it can represent /role-filler/ pairs (key-value pairs in software engineering)
+
+- *Vague* data structures are possible:
+
+[[edraw:data=H4sIAEbSaWYAA7VTy47bIBT9FXRn00ohxo47MxkZS+2qi3bTTR87JmAbxYEIcOzp1/dinLqPGambyobL85xzD1D5S0umU288hy6E80OWjeO4HXdb69qsYIxluALSkoep1+b43MJ8v99n8yyQUcvQcSjflEA6pdsucNiVDMhFOa+t4ZBvc6grqRpPtOSgpBMjjV0cPQl3VO73ccqocM6OQNLs58Rwe+2/X1hw4OyUV+6i3vqzOoRPImjLwVijkF6r8Z2dONCckViK+ANxqvnCITW+zg3rtDKIJ4Zggfjg7FFdURrd9xxuchY/1HsWoSMo9iMibuhdBN7ckXLDvgHJ6ipLCrER86srh6rINLM8zfWLbq0OPIrDsXV2MPIFMU3TzGTtr5usfIKFL22iC1WxolzTuAKpHULJVcjtKhCvwiw5j9owgTz2kTOoKZBYUWEOnXUcTlrKPoqzJtBGnHSP27wwnuLJ6GaZ8Po7Csjv/3R05rhPHNGH+iLaQVVZpFjcTpZSZTDZwfWvbv66KK/hn3NORsYDLEq8DyX7UBRLZCmimjUW/y/rYsk6xlqQ3o5EqiB0T6QIAuUPhzC4n1ZkLRZ8m/UPdZazosMDAAA=]]
+
+
+/The cortex is a knowledge-mixing machine./ -  V. Braitenbgerg
+
+In neuroscience, the equivalent study is the study of the *Neuronal Ensembles*
+
+
+[[edraw:data=H4sIAGVOaWYAA7VUXZOCIBT9K8zdZwO1mmrEt33d/2AKyoTQAKXtr18otX3Yr2lzGEC4955z5gBm9lyjvpXKUmicO+4w7rpu0aULbWqcEEKwz4Bbyq6XQh2+Soy32y2+RgF1onINhdWaAGqYqBtHYZn4xZkZK7SiEC9iyDPDSod6Cj5yuY7fFoqKAqtM0UX7ojzURp9UBcg6ow+MgtKKAeJCSgovnHNAOM/qz0W6ung+JqU4WjbURQNbcgd6iUlod6xNaICMlxdkmP42l2G9DB9+Iw47+Mno8WZEXz+Ivi45J+Q37ZsZ0CftV5qnOzNpJ3NoJ/915kftyZzOTKc6L3r6qO9/uu8jumO9Q2GIClU22lBoRVXJ8M61chEvWiF9nS2UjSwzgg8BK949dbKaWEcRPjkNbIHUz/kbOxmtColelWXtXrIMB7pnuzbep3R4x7j23f9Q8w8nYWBkeAUAAA==]]
+
+[Lorente,Hebb,Abeles,Braintenberg,Palm,Hopfield,Yuste,Buzsáki]
+
+Rafael Yuste: The neuronal ensembles are the emergent property of neuronal nets.
+
+G. Buzsáki: /The letters of brain code/
+
+- exploring high dimensional computing architectures inspired by empirical work on neuronal ensembles.
+
+- M. Sherman: Thalamus and Neocertex are wired in regular ways.
+- R. Yuste: Non-Hebbian plasticity
+- V. Braitenberg: Think of devices that modify the neurons.
+- G. Buzsáki: A hippocampal librarian, mental navigation, oscillations, trajectories and experiments,
+  inhibitory interneurons
+- M. Abeles: Neocortex electrophisiology is hostile to activity. Synfire chain: synchronous activity.
+
+G. Palm + V. Braitenberg, the *thought pump*:
+
+file:./halo.svg
+
+
+[[edraw:data=H4sIAIhLaWYAA71WwY6bMBD9Fct7adUAxmYTsgpI6amH7aWXbnujwYAVgiPbCWy/vmNslHTbSFVbVgk825h5M/NerGz0uUbDoe10hhtjjg9R1Pd92LNQqjqihJAIdmC35WFoRbf/3cZ4vV5H41OMelGaJsP3S4JRw0XdmAwnFCZnrrSQXYbjMMb5puSVRqLMMC9V0Qd2CquHQu25+nk9IEGhlOwxck8/O4blNP/gWWDhqLjm6sy3+sh35lNhhMxwJzsO9IL37+WQ4SAmyF7UfjFSvHrKsBt8GQdSCd5BvOJkJEbaKLnnU5RKtG2G72JiP5DvsTANgmQ/QsRFsLKBFyuULMhXjKJ8E7kMYWDryzcKskLDyPI83m9269KBb8VuXyt56sobyVRVNZLV1y/J8hnS420rjpr79wLPRi+BpkqmWJxBNCBSkF5imzI43ME8tknuBj+I/nd06qMnxEU3fDDI3oKi2zVSZfggyrK1dcvOBFVxEC28p4tOByC6qPwDLb4DdZy+FMt2nFo2X0G+jTeRje+pXuy+zXxFcCuRKypbTr6lE9VoGOeKgHeg10m1b+5+8fpb/MdddV6wHoTfK4oT8kipx+UVUo/EYfqXEoKAaZo6CamXkHoJE68gTedT0HeVOQHfNUUrX6O1jNiWPVqwHRyReoQOM9fxseo500gSx5d4ZZP0CqlH4nBGEZbe2kCRh2H4Ot5GzBboYOkgdQAVO3Sb/v1sYt7YzBubxdPJt5ozOrufTzKWXp98KECaG9Pycs4jcOJkNzhn9Ys3DPWOod4y1HuGkYtXohou+J+T/wDNHmTdDwkAAA==]]
+
+
+excitability+   → activates the ensemble *halo*
+
+excitability-   → finds the most supported *center*
+
+This is a massively parallel search mechanism, *making use* of the neuronal net.
+
+*devices*:
+
+[[edraw:data=H4sIAJmiamYAA71WXW+bMBT9K5b7skkhGIdRWoVU29Meuj3sZR9vLlyCFWJHthPIfv2uDVnSdZW6TUwErj/vOT4+trK0hzXpt62yBW2c293Gcdd1824x12Ydc8ZYjCPoMOS2b6Xa/G5gcnNzE4deSjpZuaagbzJGSQNy3biCphwrBzBWalXQZJ7Q1bKC2hJZFRQqI7rIV7F1K8wGzOP2iEXCGN1RMvR+HhCyU/39iIINOwMWzAHe2h2U7pNwUhdUaQUIL6F7p/uCRgkj/uX+R4mB+ktBh8LXUNBGgsJ8Yu80JdYZvYFTllq2bUGvEuYf5LsTriFI9gNmnEXXPvHsmqQz9o2SeLWMB4ZY8OtbLQ2yIn1AOYbvs2qdFXgQ5WZt9F5Vz5Cp6zqArS8n6eqI9KBt5c7COC8a0fg50WklP3Pl/kExkF7qRUGy1xhLrCe+ocQG7icgoIPeEf+JhCobbQq6lVXVemZauagWW9niPCuUjXBbZD12WPkdoZP8Vzm9JjkGhEhQkNVH2But7DL2GKN4L19JXed5flaVn9VO2IDF+QjGh/WEzRx2LAKFWu5N++rqiQ9f0xezGPbJ+wPFI4h3HyIbYpKPMcOYhTg5D8QOeD7ycd1/Kmye15d2PQubDroGfVHXRTqdT0Ju70WMqwoOsgRLXCMc2YK1SAgldA0Q9dhDU1DhJ896KtCX0okH2Up3JAOv/4EdZLibEikZD0vqT2YrH4wwRyJVBT2YO/KXZ3S8bU5Wyp5aKXtspX/Lz5/mz6e36gkjZZd7NOUhXzA2w0N4v+AhTn6pBBy83ALueKnEa3zxz8PqB0D3KqZkCAAA]]
+
+- The function of the devices is likely simple
+- Only heuristic or random elements can modify the /content/ of /brain-software/
+- Devices should treat all mental content equally 👈
+
+#+CAPTION: *Neural Assemblies. An Alternative Approach to Artificial Intelligence.* (G. Palm)
+file:./neural_assemblies_book.jpg
+
+*1982*, models and works out some of these aspects.
+
+"Has largely been ignored".
+
+* Attenuation:
+
+[[file:/home/benj/repos/faster-than-light-memes/public/attenuation-medium.gif]]
+
+Ensembles move around in a substrate with /attenuation/. As described by Braitenberg 1977[fn:2]
+
+* Neurophilosophy
+
+Neurophilosophy is a *biophilosophy of programming*.
+
+The brain is doing computation, but what is the software it implements?
+
+
+[[edraw:data=H4sIAJmLemYAA71XTZObOBD9Kyrlsls1yBJIAlKGqt2TU5Vc9jDZzY2AsFXG4BLyV379tkDMODOT2plNsPmQAOu97tZT0yz74xqddGU3GZZxiNFG6fXGwkVEMTrvmrbP8Mba/fvF4nQ6kVNEOrNehJTSBQzF6KhMr7s2w4wwP+D9udHt9qVhLE3TxfAU58tK1T3SVYZVZYpT4C7h7q4wW2W+vx/QoDCmO2E0Pv3s7Z2uV5PNGO2N6pU5qj/6vSrtX4XVXYbbrlVgqVanP7tzhgNGkTtCt2NkVP13hsfOP0OnM1q1gFccbIdRb023VRNKrZsmw+8YdRvYuy/sBoGxnwDxLogd8F2M+B39gtEiXy5GC6Hj/MuXBqxC54HlMpx/GPvHCHwtyu3adIe2+oExdV0PZOvrQV11wZ5vHBR4qvARZXJjAqL0a+GwJkP4lYGjxa4B85lrgdGqs0XuFBRtuelMhne6qhpnWtfaoC52uoFRfdH2AcyLrv2DXn8DepY8jaejYOHIARrDedlVarlwDPlSNY3e9+r17tSJ22BiLw4N2vPYlo4lcZ2zp5vLleTKlQ+tVQb0CefJo0E8o0IC1cLcHUzz27tnuv8dv9rnURdOj2yQNz2Gbt9M+9F7OzszpytG6SqhK3kb0gRI5c1cHNlWzB38gfLNCpVlXVP6skIj6hUq5wAPJ/nzOdGd8OdaXJHPEy5O+d50pep7Z+2htAfzkDRmYfZZEBSAc1v0235WNp9E3EzlhJCbJA9OEZ+Sx+yrCVTyhO3Nakwlpe7N9ZIaefKzWn8V+pxaF/Q7reudtvqo0OzaE9P7fuDdXHpdFg0USkWj7eVWQhTPhfjmEsBhwUJCDOo+WL4IHLpnVKwiDi2DVkIb+qLtJyjAXCY8hYPmAJ1AKzyF/H8UdTWoy1GA3hCg8yQhaUKFRElMZJRGK8ESQnkYfeQpJyKiKTjJSRyySEIIIyIY44hFIQFDoEIdgiFIGCcgbv9jiAtJAFpe/VEKwmXKrtA4ZyQVcfxAzWNGKEs5/zJfKeWVKHy2X5ti97QwfBKt/w7vS+s5nF67w8Kepupal79I6tNkhiG9d+USeHYfyhtxAh+Xj3y/NoJTRuSzoosb1BYieVTb89pi7iKauYzBh8R07xJW4ov48ctyDQd8guf/ApGl+uXDDwAA]]
+
+** The Fun Gap
+
+[[edraw:data=H4sIAFWtaWYAA71W227bMAz9FUEFhg2Ia1lOnaSLDWx72UP2sg3Y1jcllmIhjpXJSp3u60daMnof2mIpHJuiLoeHNEln3l6uyWFbN21OK+d253Hcdd1pl54au445YyyGHdRvOT/Uutk8tDGZzWZxv0pJp0tX5fQsY5RUUq8rl9MxB+VS2labJqfJaUKLeSlVS3SZU1la0UWowuxW2I20t+cjFglrTUeJX/3hLWSD/jlYgYmdla20l/JDu5Mr91U4bXLamEaCeS27j+aQ0yhhBG+OP0qsVD9z6ge/+oGxWjaAJ/bOUNI6azZyQFG6rnN6kjC8gO9OuIoA2S+AOIomCDyakPGIXVASF/PYM4QB+lfMLbAih97KVf98NFrXEViK1WZtzb4pHyGjlOqNrW8eMuUV0JN1rXetDOeiYI1fAw2eDFjZSimGwQB6KcqDlyvQ+QQHMJHggfgF6IwtBZJFdB7QeUBPs4Cesv+APr7DPR0P3NMXov8rMulZQOcvjYya4vVI3GcD+sSjO3lwRJnGRa3+A2AJHMS5SDSryticbnVZ1pgguEeJra4BphVNG0F1aHU3jckQILAxBll8Mtvd3mH1NKImC3El7TxGCyHhn+6WKjkGDSuEczYas0UyZaMpW6CWcJAZqhdH82sa3AIWxTejXCesfMAjX6eRbIDp3tZvT+51n3f0yW776kSfg7MoEhYkDzLEIsn8Sz0mDR/kPtZIo5ch9kijlzdp4JnUL9JjcIpDJ3x2eQwtkl+3zr5bwotOuH/T/EaNPDN5bmfe/VzqYzTUiFgCWbHCGiFLCIN+nYyCuiHAY9FLX0fwGQuSBzkOMruj89v7h/OvkoJP43t0HtDnertpsA9fG88jC9KvHy2H+NBnwUbxvZLkze+9ce/VviFrsfPKkEfxGm74/1X8BZiZtoCnCQAA]]
+
+
+*Software* / *Computation*
+
+- Architecture ⇔ Building blocks
+
+- Organisation ⇔ Elements (?)
+
+- Operating System ⇔ Data structures
+
+- Theory of evolution ⇔ biochemistry
+
+
+#+begin_quote
+*The Fun Gap*: The difference that when you study the system in terms of the /computational layer/,
+there is an *operating system with a cognitive user* in the system that is so much more relevant to the thing you study
+that they can mess with your experiments *just for fun*.
+#+end_quote
+
+Imagine...
+
+Statistical methods that make biochemistry at the thermal rocks until you get something like cells? 🤔
+
+That is not an explanation of *life*.
+
+What is missing to explain the *mind* as a theory of /knowledge/.
+
+*Brain software is software and there is no programmer at hand.* It is /self-assembled/ software.
+
+- The genes facilitate the growth of /self-assembled software/ on the brain,
+- The function of the brain is to allow for software to self-assemble
+- The biology of the brain is the theory of brain software, and it is the theory of self-assembling software
+
+It must be an interactive and dynamic computing framework (Alan Kay, JSC Licklider, John McCarthy).
+
+#+begin_export html
+
+<h1> The Meme World </h1>
+
+#+end_export
+
+
+[[edraw:data=H4sIAHaMaWYAA71WyW7bMBD9FYK9tIAVUbSiMIGlogUKtEByaQ9dbopFyYRlySBpy+7Xl8t4yWI3ixXb8qMo6s3jcIbDkVpWaDWrG5XiidbzqzDsuu6sG561sgopISQ0I7AfcrWqRTN9bGB0eXkZuqcYdaLQkxSfJwSjCRfVRKc4puZmyaUSbZPi6CzC2ajgpUKiSDEvZN4F9tb0znI55fJuf0CCXMq2w8g//ektJJv7r2DFdMwlV1wu+Sc152P9PdeiTXHTNtyYF7z73K5SHEQE2YvaH0aSl79S7Bu/XaOVgjeGL1/oFiOlZTvlG5ZS1HWK30XEfo3eea4nyIi9MYyD4MISDy5QPCB/MAqzUegVmoadXzaSRhVaOStr93/QWzsP3ObjaSXbRVMcEFOWpTNW7b/UFmsM9vxLAZiiO5bNNLZEzH53QiKyU+jaRjO14swMrODwtQbojp/2QB8fpGf9qnfO6lF+RHvWH/ekP+43eJJXrC4ht7lNpP+rP83qHpZ/mtU9or+v1WX95G58l74v9w/Ja/aGsqCEPIX+NN4/wv8i99yP/iP8EJ2arzQq20YHSvw1jJFRZ/uCvBlPWpnimSiK2lYpO6bMZ6I2LCpvVGBKtCjv11JnYy8Dshs+41qM0ZemEg0fhZY8G/G6FnPFn+85ufZLKy3/uWmMbUzZSY1Nz/Dcz8rVc1+0A96YcrqQ9ft3D44iH/CTBfhSbY8IzB44yLWBiHlIPMTk2qyaRwoY+8fm8gjDKQGkgDCO+nG9z8HqtJNwehnoZaCXgV4GehnoZaCXgV72BjqNDgo6KOigoIOCji3G0L9BCv3U+9Uh8zgkDnvLgGivAmfcHJnXeiKaCs1bpcRtzdHL86Bk5uPzgEIeUEgDFzkuDWDzeDZ7Mi5L++5j7K7uOHb6Qvb9HH7Avk3hpAd2F6uWPe5F+8YzMdkLqWfG0F4AJo+F1KZsGsyWQupFXiMlZos617xAXSvrAn3cxtXJqjaDLR0OHUPa3wxjKE02ArKCL8WYq818+txkhrDJWDSZ45ECxoBvsCkPGRkYO9cOY0AKSDw6nRaTk6wDOxJpsd27fujcblffCp5v1yKszKWWVfYPFblhwHcQAAA=]]
+
+- Neuronal ensembles survive or don't survive.
+- The logic of the *memetic engine* predicts *neuron failure rate* (/skip rate/), and *intrinsic firing rate*.
+- This supports what is called Neuronal Assembly Shift
+
+- *devices* are things that mess with the neurons in substantial ways, like modifying the *excitability*, *making memory lookups*, etc.
+
+- if this is initiated from the neurons, then little /computer usage/ pieces are /possible/, too
+
+
+- the memetic engine creates a /second biological plane/, some kind of /simulated virtual world/, in which /many things are possible/.
+  and everything possible is also true a little bit.
+
+
+Memes are information with causal power, they know how to replicate themselves:
+
+[[edraw:data=H4sIAKNZaWYAA71VTY+bMBD9K5b30koBbKCERAGpPfXQXnppt5fKCQasEBsZJ7D99R1j02w/VuqFyuDnz3lvPGM4DLcGTZdODgVujen3UTSOYzgmodJNFBNCIliB3ZL91Al5/ttCutvtonkWo1FUpi3wm4xg1HLRtKbAyTbH6Mb1IJQsMA0pLg8VrwckqgLzSrMxsF0YvTB95vrX8YAETGs1YuRmPzuGbOm/9yww0Gs+cH3jb4een8wnZoQqsFSSA73g4zs1FTigBNk3tg9GmtdfCuwaj3NDacEl2GNXozAajFZnvlipRdcV+IESW0Bvz0yLQOxHsLgJttbwZovSDfmKUVQeIqcQGta/8qBBFZpmlqe5fvG07idwZKdzo9VVVi+Iqet6Jmueb1LVE8gTF9ZwNEdm34KDBT4yCSVIKEnT3bcsJWEvmzt3lvzURFOnMgeYHETeYedVwCXwXXX36uGPWL1etAbeWnwXv5ye1+98sWcIjIhm5MOMuUPIQYexx9Rj5vTwrhP9wP+Z7aHObYFwg2tz/MG3BPBk+9bJEwzQZE3r8dZZN3wyyFYBk6dW6QJfRFV1NrJKmqBmF9HBvoHJIYC0FrWfGMR3oKb57+loo5UQF64UyMqjZkKCVmb4cIgs0zqkc6ospJr3nTgxo/SalEnsKClgaehCtWp65pB2kJaQkg7jZ5h5TD3GHolD+h+uD2iZr8+MucOZP/d6cq8vv1+fNUNjOUoTr5kFsf84WcoyDMOFK2rghT9X+QM/h1im4QYAAA==]]
+
+
+- High dimensional, /pattern completed symbols/ 👈 it's fair to call them memes
+
+
+Hypothesis: Brain software implements a simulated world supporting high-dimensional, biological software entities.
+
+
+[[edraw:data=H4sIAB27amYAA71VwXKbMBD9FY1yaWdMkGTXxhnDTHvqIb300jY3BYTRWCCPJBu7X9+VBAlpk06STjrYPFjQe6u30rKxxy06taqzOW6c21+lad/3l/38UpttygghKbyB4ytXJyW73WMv0vV6nYanGPWyck2OlyuGUSPktnE5XjCC0VEYK3WXY3pJcbGpRG2RrHIsKsP7xN9CtOVmJ8zDeEISbozuMYpPvw0K4/3nQQUCeyOsMEfx0e5F6b5yJ3WOO90JkJei/6RPOU4oQf7P/A8jI+rvOY4XP8KFNlJ0wMcPTmNkndE7MbLUUqkcX1DiD8h3z12DINkvwDhLVp54tkKLGbnBKC02acwQLvz8io2BrNApqJzD+Um37h245eVua/Shq55Ipq7rILadDtLVGdITSsm9FcO4ZFBj90TjTO64Mn+AGZDeypsCyVKfTwkB6l8sfSQjQTFM59ncYg6ZVpN5TuYfDfEwCqaDuc9Pva6zDFL31QCGGSXkOiADXEzQx5cT9PFsgiRiRq5hA4wwRh8Z/QorRptHK7J7K9giesEGM5av4SfklvtV8bTVI32QezH/sqxrQv7GPycP+V9Yy8GfsZZsqB2jgPMJ+irQCfo4GTCOu/lHecYiPRvk2XyCkBajE6RxsQSM46K8EyeH/CnhXdlok+NWVpXye1h3Lql5KxWYZnlnE2hgsh4eWPlT+O32e+MJDrPo8AdwuCh1uz843+86rpDiZ2E2qRd8G2061ba6dj034j/IZlF2AYurOErjDjBZK9uD4k5UqNdGVaN+qHhsv4nooJIHo95d/PFReY+fvSxi0/VrAvQR9IV5FoEFYPEO1gmKPcMDjUHoFGjomW/hy7CXF4CFawR8BwS3KJRE7vzJOSUQ72TLlR0NSrfwh6978QsuW5noBQgAAA==]]
+
+
+- the *meaning* of the high dimensional data structures is /their effect/ on the computational system
+- roughly: The connections of the neurons they are made from (?)
+
+** Structure And Function of Memes
+
+- *The structure and function of memes is their meaning in the computational framework*
+
+
+[[edraw:data=H4sIAGBThmYAA72WTY+bMBCG/4rlvexKIRhwWbIKkdpTD9tLL+32UnnBgBswkSEh6a/v2J5s0o+VqpUSkfCAMTPvfGiS5bCryb5r9ZDTZhw3D2E4TdN8Sua9qcOYMRbCDuq3POxbpdf/2hgtFovQPaVkUuXY5PRdyihppKqbEW4Yp2QnzaB6ndNoHtHVspTVQFSZU1kaMQX2FlY7YdbS/L4esEAY00+U+KdfvIf0eP8RvcDCxshBmp18P2xkMX4Wo+pzqnstwb2S04d+n9MgYsR+Y/uhxMjqa079xZO76I2SGuyJ7dhTMoymX8ujlUq1bU5vImYP0LsRY0NA7CewOAvureHZPeEz9o2ScLUMvUK4sPGtlgZUkb3zcnDnV7N1ysCzKNa16be6fEVMVVXOWX3+Ul8eQJ5sW7UZJL4XoLf4ZOgYyclWCVWHZIC8xHLvWcB97C5gIVow51B1opbE1f2hgfTl9FloOIIkYpwvvqeczTe6PkWWniKOYp+DyK6BzcybdPn0SQukhnC2pr29+asV7uh/h+RTZUvE2SyJ2WPqkXlEDBkjcVeE26LsjMwzRrGj3I/EngKhi6Y3Oe1UWba2Mr0eg0p0qoUQB6GHANpSVfhgUD9BZ5T92U42HwnmA3TQVdHrH9AxWyPJbWEktLO2RZZiuFuG1vFlNSSZ1WDUqAo1dEePlyxRgtlPsBoJOyPzjK/QKglW35F5XsMvx3g5xst9vJ4pkl9BB9aBYx54dkbm6XRlqCtzutz+OL68PvBh/TyCT88UmZ2RI1Psm9T31Qs50taZn5EjU6z7kRxp96EfV48jGa4jYVJ4Yt0cYyRHpki/z+XtDTO7yrLMz2yOM5vjzHZG7cxO4jdbP/0ixGg9fs36JaYRZziNwNlK6p0y0AbdeMkBeHTJMz+EITdC6eEqExA6JfONiYgY8oI5zny8ttCr8qDBRCHa9kC63myal7jDGr7wf3D1C0Jr5bI3CgAA]]
+
+- the /context/ /criticizes/ the /ideas/, their creation is akin to /conjecture/.
+
+- Conjecture and criticism are an explanation of /creativity/ and /knowledge/ [Popper, Deutsch]
+
+- Make it hard for activity to survive [Abeles 1982]
+- Allow 'lateral inhibition', in a broad sense (various inhibition systems).
+-> *Inhibition* is *criticism* and is an essential component of a theory of brain-knowledge
+
+- Conjecture: Neuronal ensembles are /active data structures/, representing /clouds of counterfactual possibilities/.
+  (via their halos).
+- Ensembles leave their neurons behind,
+- Perhaps more like activity amebas on top of the neurons
+
+---
+
+
+[[edraw:data=H4sIAB0jb2YAA71WTXObMBD9K6pyaafGCKESOWPcaU89pJde+nHpKEaAxlh4BAmkv776WBunTWaSzNiDzRNi2X27+yRYdncVGreN7nJc9/3uKo6HYZgP6bw1VUwJIbG1wMHkamyU3jxmmCwWi9jfxWhQRV/n+ENGMKqlquo+x4zaiztpOtXqHCfzBK+WhSw7pIocy8KIIXKXdnYrzEaah/MRiYQx7YBRuPs9RMj2118gip3YGdlJcyc/dTu57r+JXrU51q2WNrySw+d2zHGUEOT+1P0wMrL8keMw+OkHrVFSW3/itm8x6nrTbuTeS6maJscXCXGH5bsTfY0s2a/W4yy6dI5nl4jNyC+M4tUyDgztwOW3WhrLCo0+yr0/P1mtqQI3Yr2pTHuriyfIlGXpg1XHD7XFvaWntqKSyHfmqrYJ5vhGaHtEaUIYW/zOGJnvdDXFztIDp4QFlg5GB8RHkU2jdp0EKhEY04nbvjgTvYK6Z4315Qs+Blz7azdwE+zV3kvO+ePekwy8+0EM3QotiaS2xbo1zduL/4T2Dj87fmiEEwClZEYzcp3sMQtoUwwI8zbTCSHrXo49cqdI6HXdmhxvVVE0rsWt7qNSbFVj8+mE7iKrb1XCjU79sZQS/q8uXdsoD31zJV69R2sjRS+XsYsCOnx+jbk7JpHwSbgcgtG9SHw+L3QPAnnEPX3oPjtduVKQeeLKZYQu2i1SupCjNB/3VTtJXHLUpkrq7n67D/fytQB9MrBqDXTEr4XDSuOnK2J2lIvounatRN+aV4rOresj0bFJFbAxgcBTdobFzQlya9YCI9e2Zx5oABYgCxBMWDBhwYSxA5xhJ3K8bLs9sYScIR4P8VzOHiE+O1d8W3m76/oOJNAJu/uG/LPQJ4/kCM8gGpZBHYAfA34M+HnkUCcOdeNQRx6k5BHsUrBLwS4FO8qPEFR6jvwo9J1CnpQdIQVkgBngCXcfPn2orN6ccs+e3nZun1vbj0yN7Bu2Fro6vGHjyv7tt/PqL0hl8/ZjCwAA]]
+
+- A Buzsáki librarian module would allocate random high-dimensional sequences,
+  which an associator would imbue with meaning by doing /action/, using the /corollary discharge/ and the sensors [[*3]].
+
+- for present purposes: /the ideas are there first/
+
+[[edraw:data=H4sIAJUjb2YAA7VUTY+bMBD9K5b30qohGDZlySpEak89tJdeuu3NhQGsgB3ZTiA99Ld3jJ2yH1lpW2kFZsZj+72Z5xEbc2zI2HfSFLS1dn8bx8MwLIfrpdJNnDLGYtxB/ZbbsRNyd2ljsl6v42mVkkFUti3o+4xR0oJoWlvQVYqTI2gjlCxoskzodlNBbYioCgqV5kPkphjtud6BfhiPWMS1VgMlfvWbZ8jO80+BBQN7DQb0ET6YPZT2K7dCFVQqCUgvYPioxoJGCSNupO6lREN9V1DvfJ8cpQVIxOMHqygxVqsdnFFq0XUFvUqYezDfPbctwWS/IOIiunHAixuyWrAflMTbTewzRMfVt91ozIqME8tp+j6r1qzAT17uGq0OsnommbquJ7Lm/iFVnTA96DqxNxDORYEtnYHOlcxYFd46ioHpTeqM3pbT3DkusGIT4X+g13meX0ZPsoA+OXGQ1usXgcTKDrp7c/WkK97SF/N71dxtpSlbpBn7nJxt5i2W6G2IY6WzDVVbGC1xn4jLslW6oL2oqs7dh5I2qnkvOqzHcGkibEZRhwUjfmFKSf64iVwnpDna0Uu8fUdKDdzCJnYsoWlernHunrmb8rnL8kCWerJQzz/Chwa5AJ8+hM9eT65rdk+uBqQ59WexXoVu5ekSR/eb9NCDFSUB2Qj595biBgf+LLd/AE1r/pBUBQAA]]
+
+
+- Via the basic Hebbian Cell Assembly notion:
+  An idea is either /supported/ or /less well/ supported, given the /context/
+
+[[edraw:data=H4sIAKhJhmYAA81VS4+bMBD+K5b30koh2EDZZBWQ2lMP20sv7fbGBgNWiI2ME9j++o7xoGS7Tds9pKp4fH6M55snbPpjTcZ9q/qMNtZ2d2E4DMNyiJfa1GHEGAtBgnqRu7GVavcrQb5er8Npl5JBlrbJ6LuUUdIIWTc2o0kEk6MwvdQqo3zJab4pRdUTWWZUlKYYAjeF1X1hdsI8Xw9YUBijB0r87hfPkM7zj8gCC50RvTBH8b7vxNZ+LqzUGVVaCaCXYvigx4wGnBH3RO6mxIjqa0b94GEaaCOFAn3FwWpKemv0TsxaKtm2Gb3hzF1gb1fYhoCxn0DjIrh1ihe3JFmwb5SE+Sb0Fl7wi/93fq1TxqrqFX6FLm/5xoBVZJxYnqb3xSo4ReCx2O5qow+qvGBMBZY4svr8kC6fwDzRtrLrBZ4LkC06KZozdNJVQjVDMMC8KTqjxy3M+coN3ELCJkIrRkvcKyjUttEmo3tZlq2zTCsbVMVetnCuL1QfQFpkhRu9/C6cup/LxMUkdmwTKZRNf+g6bawoN6GjuQ4jR8YYvMqVtuQF65Rkn8lAKIjxwbRvbl7U51v6mzhjxSC/z5+rm3gqQ3bvEAJ8HzOP0WrCKc5/4md/wf88zyd+xxM5vhQxQYwQmUeOchzlOMpxlOPsDFPEBDFCZB45nuOoj6P+f+Hv5EeKfqToR4p+zJggRrgfofyMDOPBMD7sev3A07PqDIlUjXyUZ7X5+g5fuct3eIodHmOHRyl2eBxfscMT75H7zOVCHaWB5Ozhi0tCsoXDwDY7F9bwwI81/wElpos6gAcAAA==]]
+
+- The environment/context is roughly speaking whatever else is active right now
+  (but neuromodulators, synassembles[fn:3], etc.)
+
+#+begin_quote
+If you shit on all ideas evenly, that's a way for the good ideas to survive.
+That's the basic notion of a threshold device.
+#+end_quote
+
+- The most complex critic is the rest of cognition.
+  This fits well with Joshua Bach's notion of consciousness as a coherency function.[fn:4]
+
+- whatever you mean, means whether you survive or not, given the rest of the system
+
+
+- /neuronal ensemble anatomy/, or the /memetic game of the circuits/, or their /ad-hoc epistemology/
+
+
+[[edraw:data=H4sIALknb2YAA72WXY+jNhSG/4rluWmlAIYYxhkFqn5c7MXsTbtSP24qbzBgDbEjQybZ/voe45NJup2VdlaCYZIXB3jPc4yP7e3w3JLzvjdDSbtxPDwkyel0ik/r2Lo2yRhjCdxBwy0P516bp9duTDebTTJdpeSk67EraV4wSjql224sabGGxrNyg7ampGmc0mpbq2Ygui6pqp08Rb4Jv+6le1Luv79HLJLO2RMl4ervIUJxab+7RKHk4NSg3LP6cTio3firHLUtqbFGQXitTj/Zc0mjlBH/yfw/JU41f5Q0nPw5nVinlQE/eRwtJcPo7JO6uDS670t6lzJ/AO9Bjh0B2PfguIruvfHqnvAV+4uSpNomgRBOfH7V1gEVOU9RPk3fX+ytaw98lLun1tmjqb8A0zTNFKy9fcjWnwBP72WryPRmHjpIsKQfpYEjWqeM883fBWfxwbTX2Cm7QqUiYPpeOmMzwZRDXpEyEPHo+u/u/ve2vr/QRmiXXfEv/YcZhGx8L2YZW3H26KUIIoIAV9BsAYgiQBQBoggQBUIUy0Cs2QThpQgigniISZeA4AGCh+hXmSD4ZxBf63/XCH9gZ9+zFbzYx8y7bUDz/Kq++8WNbjB1fz08F8psKqs3h3+pt5s6zHDI8zDmMb03+jcC/l71Lxa1T/nM+MW3+Ks1TFj11/iLee0zFvxHdR6J/4qk2XXWlXSv67r3E6w1Y9TIve7hsUGaIYLVRTd4YdD/KD8tfr4qTDFEiAFFQqs4jreJDzBvtRaMQHU8esmC8CDFfHmuMU8IUcmmsa4Gb7VEtjD1TOlOmqFyVJgwYPAvkrlfFittRuVg8zH6HYe5pD9nWF971YrEMblEU32vD4N6+zzowNaXhAPbDejOt33P7XycfIEFlzHC/drqNUPlqAWqCJrjffkSGwGOXBy5OHJx5OLIxZGLL8QlkEsgl0AugVwCuQRyiWW4oAwnrkkzVI5aoIqgOd534ZqjVqZBfA6b2upn68B+ztLMGc75fkaQTsnhm0vzsog53H67KQssTY6luV6Hrnt74eMK/6q7mMM9Q/f8hX2h4ZiHPfRVM9SwiyZczDf88ptt0u0eYM5Y01D/0Mle7o/DnAELHOx+o1O9j8lvnXJ7aR7Ih04RbQ5HiGjJCA3jo/tyIHogeztaR+xxhBtmXSb5TS2++4XUcpQwYI678ehgLB+kMdq0ZDdNCj+8rKFJC5/hua3+BSaD4msZEQAA]]
+
+
+
+[[edraw:data=H4sIAIdaaWYAA71Wy47aMBT9FcuzaSXyMjQTRiRSu2qldtNNHzsPdhKLYCPHEKZf3+tHCjMFaVopEMKNnZtzzj32jVj1hwYdt53sS9was3tIkmEY4mEeK90kJE3TBDKwT3k4dkJuLiVmy+UycXcxGgQzbYnf5SlGLRdNa0pMChgcuO6FkiXO4gxXK8brHglWYs40HSI7hNkt1Ruun89HaUS1VgNG/u43z5CP44+BBSZ2mvdcH/j7fsfX5is1QpVYKsmBXvDhgzqWOMpSZE9ivxhpXn8vsb/44S6UFlwCHt0bhVFvtNrwEaUWXVfiuyy1B+jdUdMiEPsFEGfRvQWe3aPFLP2JUVKtEq8QLmx91UqDKnR0LE/u96pbJwce6XrTaLWX7IqYuq4dWXP+kGJPOPD5h6JARU4oYxl/gAp7nITkZwKJl0wybPXbUfLP8HUBn4vw+Q3Rs8W04vP/gedzWEX2CvhiUnToeAdv+NG82OvIzkVUrlulS7wVjHV2Cyppol78AtKsCMOabkUHmD2VfQTtKGpHkXuKOdhfxXG8Sixg6CDfJhGXsIH3untz91fzv8WvLtc3h21K6KRZkX22ARJ8JCEuQrSyxoqvl3ipppe1P7fryc6GksHk6hNaU4keOeoUiGaImls4kOXOARusAy6SEBch5iGGPBLyCJnOGRI2AyHnzjSawnubjb5MsiTkjHhouea32odu43n7na1Tr7pb5kWI5MQ7pauFNdW9Y0ZXkwZO+AtR/QZIN0OUaggAAA==]]
+
+
+** Perception
+
+
+[[edraw:data=H4sIAK4BbGYAA72U2Y6bMBSGX8XySFUrhWCWEjINSK1UqZUyvWgvutx5wgGsGDu1Tcj06WtjSLqNNDepwMYb5//OAht9bNCp40IXuDXmcBuGwzAsh2QpVRPGhJDQnsD+yO2JM7H/18FovV6H4y5GA6tMW+A8JRi1wJrWFDiN7eQISjMpChwtI1xuKqg1YlWBoVJ0CNzUrnZU7UH9vh6QgColB4z87mevkM3zd5OKXTgo0KCO8FofYGc+UsNkgYUUYOUZDG/kqcBBRJBrsbsxUlB/KbAffB0HUjEQ1h7tjcRIGyX3MFupGecFvomIuyzvgZoWWdg7a3ERrJzhxQqlC/INo7DchJ7QDpx/5UZZKnQaVR7G/tFoXSJwT3f7RsleVI/A1HU9ijW/viSrBzzp+ZeCSSq+WJndOBvK3XUBiS+AaeqRbUlg54CbhpP7T7df13lu7bt4xSlZ2LZN0mS5jpPF6uU2SrIlWa3s0AfPwMkg1wVU7FqpCtyxquLOcSlMUNOOcYukqdCBzTqrpw3NfljxKP8zWyN/NvFb38pn33tpXn0CoaVCWzgC9yub0KleByCKJ4D0DHAHVDDReAJ9fYQpBJlNZfkBeiUF5eit0NDdc3DJA7NrHVA3gfERbEYac+7rOgBhc9kr/vzmr6/1BX5yYfhqdlWR5ARlZBtfHjm5Wi1EcyCycyreIw2AKLrnPaDK/kz+QzrmksxcRTjhWSxsbLO/3/In09B0zaYFAAA=]]
+
+Perception is about the stuff that we don't see.
+
+#+CAPTION: The dress blueblackwhitegold
+https://upload.wikimedia.org/wikipedia/en/2/21/The_dress_blueblackwhitegold.jpg
+
+- It's still there even when closing the eyes
+- phantom pain
+- Joshua Bach: creatures in the dark
+- the second tenant of memetics: /inhibit your alternatives on every level of meaning/
+
+---
+
+- maybe memes are /bags of counterfactual expectations/
+
+- memes know themselves how to be /used/
+
+[[edraw:data=H4sIANC9aWYAA71Wy3KbMBT9FY0y02lnTHjaJqmhk3bTRbPppo+dagRoDBKVZOP063v1YEjSZKZZEGM46OFzzr1cCe/UqUHnvuOqwK3Ww3UYjuN4OaaXQjZhEkVRCDOwm3J97hg/PDUxvrq6Cu0oRiOrdFvg9SbCqKWsaXWBswQaJyoVE7zA8WWMy11Fa4VYVWBaSTIGpgm9PZEHKh/2B1FApBQjRm70m1PYTO3PXgU6BkkVlSd6owa611+JZqLAXHAK8oyOH8W5wEEcIXMm5ouRpPX3ArubH/ZGSEY58JGjFhgpLcWBTiw167oCX8SROcDvQHSLwOwtMK6CrSFebVG2in5iFJa70DmEGxNfuZPgCp2typ29PputOQO/yP7QSHHk1TNm6rq2Ys39H4nqDns996PASyUzyxTGTJTDZzaymQ1CKVjLGQD4j81Q+FJ+moLV6kn++CF/4vltel0OA8ohuqPs3l78Uxnv8H+bcJkzTyxNolUefTEA6g4Tj5nHDWBm0drR9KyRuQSE71shC9yzqurMoxBcBzXpWQdBKMJVAHXIaj+g2B9wEueP68dEHOcu5BQ0SkW5EhJVRJNdaISWTQE8VZMCAyYFFhOPmceNR5gH58raXSgVtshMdcECKOkdRYNQDJYwn3KxiGh2T5TUtZAVkNNXST9sQanLs0XIrcPNPUw8Rg6T3KMvSdp1bFD0BYs8Nwdsd6b2zLYHsa8B99BOTcferL/tEuzpouzrR+xLFEuaz/tT+eb3Uej3n0TfM93DG+OD61iyWDO/QkzRev0brUEbFskryCfTXjXLN+zEOLx5uBZItxQU+8G8djmCjk6Iw/Ku7O48rWAn14rxaf2wgRP+0pR/AVvAAnD6CAAA]]
+
+
+Up to pre-frontal areas, perhaps...
+
+[[edraw:data=H4sIAKDJaWYAA7VWXW/bNhT9KwT7kA6wJH6LCiwDnV9aYHvpS9u8KRZlC5ZFg1IiZ79+lyIdO10CrBtiW7ofJM8594oivBwet+h06PqhxLtxPN5m2TRN6cRT67YZI4RkMAOHKbenru33r02kRVFk8yhGU1uPuxJLRTDamXa7G0vMicbo0bihtX2JaUrxalmbZkBtXWJTu2pKfAjZQ+X2xr3MJySpnLMTRmH0W2BQ5/hzZIHE0ZnBuEfzaTiazfi1Gltb4t72BuhbM/1uTyVOKEH+Yv6HkTPN9xIH58fsWNeaHvCqh9FiNIzO7s0ZpWm7rsQfKPFf0Husxh0CsX8C4iLJPfAiR2JB7jDKVsssKATH17daOlCFTjPL03x/s1uXDtxXm/3W2Ye+fkNM0zQz2fZ6ka2fcOQLi5JIxS4o5zKegbT/XoSoK4EsSGYUe/0+yn4ZvtHweRVevYY+mtP4U8ORzyVVv9lZV+JDW9ed74Ptx2Ro/wJOqmPYVIe2A8ih6ocE9kTbzAwqMFCgWKVpusw8YHyM4VklpocuPrju44d/7MDf8L+uNjwhvzMEQYr8AXc93ykJhgUjglFXJb9d42tF/Vz8y375phISatZQ8xe0qXp0b9DNznQ1ans0Wbdv+y06mIN1TzfnjryLEkEu3X9WcnS2h929MfW7cuvIra65D/CiV133hPrqsd1Wo6nRaF9sil9+efwj51KncsGISOWaSwWeTCXiks5ZFj04Nddnz4+K2fOjRfDWXMlzThVgVVrkknOWi5zDfDqnAXAdrPYkSiwYFTOd8nR0FiHys4+4CDJUKrgQsJKpPBf8OU/WwaMFgRzQapZynXtZ3l/znIClHikHoYwWuaJKCBDl16RCUVEUQvJC6VwgrokH9SI0mUWA7Bx6QtUsF4QzAJu3/3/vOJPAwuU6WDjZBTAxCZZ4u4axEPM4zuN8Jr1FjEEML2KwPg9W+hjGZVwnI46PRbQy5mWMVVynIo6KuDLyBJ13/7Nc7uXBecIJS1VeeG4IeJ7CwBxcEbzTsabCGabCGaYuZ9h7kupAqgOpvpBmW7jgr8rqbzfLAw3SCAAA]]
+
+
+*templates* (?)
+
+[[edraw:data=H4sIAK1ygmYAA71WXW+bMBT9K5YrTa0UinEYpV1A2p720L1sD/t4c4MJVsDOjFPS/fpdfxDSdpW2SkwJPsY299x7z7Vh1d9v0KFrZV/gxpjdTRwPw3A5LC+V3sSUEBLDCuyX3BxaIbd/WphcX1/HbhajQVSmKfDbjGDUcLFpTIFTCjf3XPdCyQInlwkuVxWveySqAvNKsyGytzDaMb3l+vF4RCKmtRow8rNfPUM23n8MLDCw07zn+p6/73d8bT4zI1SBpZIc6AUfPqhDgaOEIHtR+8dI8/pbgX3nu+soLbgEe2xvFEa90WrLRyu1aNsCnyXE/sDfHTMNAmc/gcVFdGUNL65QuiA/MIrLVew9hI6Nr1xp8AodHMuDa1/M1pSBO7bebrTay+oFZ+q6dmSb04dU9TC65x+KAhWdrIxhTIYqkBy7eJKcLJKM3D7ClNzCAo/0BLOAOWA6Iaz1SP38EYOdI9LnaPmOCOuAw2N6gjSMj0g8Wv4kPcEsjD+Nx2Y9Dqr8c5ZGuegkI/W6Aie2KlPq7TsVfCVEXEJ297o9P3tW3xf4r53w+ludlhlBNh6HEO8yDUgDEo80D+jXOb8MPxhkm4jJdaN0gTtRVa2tLCVNVLNOtBBOz2QfwbYSdZjoxS9wKcmfbofT2JfAUWrV8n4VW4qZs0CnqG0VOKQBU58FV215wMzhK9TP1nX9gvppyADxGchfY56QO2a38/EsmMxnwXzuzafz15bbM2HvJTTspf9Q00k4OxL6CGerWRoUswdv+ebnXpl3Uqwb3vv+WMCzUKfPqHth9vbFJZ/Qz5lxSDjoDG3m2ty1UMi3XvHbbBJ+jiyEJNidU9pZ+FJYoOpBgq31nNlfBuFtAZSGd7uWGY7O2R0kjK3Nxazc2fSSKL+wjiPTCLlZICaVaeAbqOMdHx2IN3DBl1j5GyDKE2SxCQAA]]
+
+Also called /frames/, /roles/, /fillers/ in cognitive modeling.
+
+The notion of /a line/ is allowed to abstract, the color is a dynamic filler
+(we already required this above).
+
+- they are allowed to be made from the same stuff.
+- neuronal ensembles already are /context/ for other neuronal ensembles
+
+- similarly, neuronal ensembles can mean verbs, transformations, and causality structures
+  via their affordance representations
+
+*Composability*
+
+In order to be useful, this data structure must have dynamic composability.
+On-the-fly mapping, on-the-fly making sequences.
+
+
+[[edraw:data=H4sIAK3OaWYAA71WTXObMBD9Kxrl0s4YIyRCSMZ4pj31kF566ceNGAEaY8kjlOD013clLU6TNjM9lAyGp4/VvqddsXgzPnTkdBj0WNHeueNNmk7TtJ7E2tgu5YyxFCxoNLk5DUrv/2aYXV9fp2GWkkk1rq/oJcsp6aXqelfR/BI6D9KOyuiKZuuMbjeNbEeimorKxtZT4rsweqjtXtrn4wlLamvNREmc/RoZirn/CVlg4GjlKO2D/DAe5c59qZ0yFdVGS6BXcvpoThVNMkb8zf2PEivbbxWNje+hYaySGvzV985QMjpr9nL20qphqOhFxvwFeo+16wmI/QweV8mVd7y6IvmK/aAk3W7SqBAafn/bjQVV5BRYHsPz1Wg9ReCu3u07a+5184qYtm0DWff7ItM8gjw5DOo4SlyXIBt/cjTv5Oyr9BcEA+QJH5RTxB30s9CAgeySBcJlvHOxpHeRLeCdv4xMOBYx94nUkJV7O7y7+ONEv6f/zB8z7k9alrMV3LcBC8QyIryxETli/gZ6isBzG5AjsohBV4E6i6D7beKDccCwILuHMgDoC8DPUEaAhYsL5CiQR4E8CuRRII8CRRQo+BnKCLNAJ0+O+EdS611vbEUPqmkGXxWMdklbH9QAJ3Os9ZhASVQtTozqJ2jLypelzNcj7n37N7CE0mY0cb0k7fBI7pRulO42qedbNjawe2C/BRA+hQwxRywQcd5nTGAkA+I8x3mB6wXaCbQTaCfKJ/S0537x3P7sN3/B65Ej5v+hsHAsLBwLS87mosiXSzvsNqYddrC1sm7gAzwpyPFQ2w7aTh0kDOjGTPMRWOT0lVEGBJZuMyL1KA93g5wp0w5u+DOy/QU031gWtAgAAA==]]
+
+
+Ensembles have /a temporal structure/.
+
+Perhaps Buzsáki's "Neuronal Syntax" can yield good ideas.
+
+There is only one kind of entity in this system, the high-dimensional, replicating, data structure  👈
+
+Their power and versatility come from the available "devices".
+
+The system only needs to deal with a single type.
+(I.e. everything is closed /closed/ under the fundamental data structure).
+
+The one datatype in the system is a living, biological entity.
+
+Understanding the brain entails understanding /simulated worlds/.
+
+
+---
+
+David Deutsch:
+
+The *adaption* of a /replicator/ is the *knowledge* that makes it a replicator, given a *niche*.
+
+- memes are *biological entities* in a computational framework
+- the memes know themselves how to be *used*
+- memes somehow /self-assemble to brain software/
+
+
+- memes are *strategic*
+
+[[edraw:data=H4sIAC7RaWYAA71WTY+bMBD9K5Z7aaUA/opjViFSe6h6aC+99ONSscEEKwRHht0k/fUdY6dh292qrZQNgQdmmHk8DzNe9vcbdNy1XV/gZhj2N1l2OBzSA0+t22SMEJKBBQ4mN8fWdNvHDGme59l4F6ODqYamwHNJMGq02TRDgbmAi3vtemO7AtOU4tWy0nWPTFVgXbnykPhLGN2Vbqvdw/GEJKVz9oBRuPspRJDn63cxCgzsne61u9ev+71eDx/LwdgCd7bTEN7owxt7LHBCCfI783+MnK4/FzicfBlPrDO6A3/l3WAx6gdnt/rspTZtW+AXlPgN+O7LoUFA9gN4nCUL73i2QGJGvmKUrZZZYAgn/v1WSwes0HGMchqPT6p1UeC2XG83zt511RNk6roeg22mD9nqBPTMrtxoNLiy62vrdgXelYMzx5ckzXkucyYZWah5TpSYJSTlghFGqOCczaVUi9mjQ78/yfJ0oRgYCLnIcyrnasZpSnIpOOFirtSCEPUKsshnyE0DQhf4tuxgSzglQuTfpCDpvttcNKDkIg5VQS6vEWjn1cmilEGPJBqyi0DnGfqpkfLbxD+b+BfB/xgHAjASIoxzGyYw0R1Ie+faly9+S8tX+K9phGnz6QIxEZXk/YgqIMQNyCIKQBlRBQSbgCyimCCLCH6YjKgmyCKCPScTBB6cTVBEBHse/F5dD8+bssCbRp4ePb8R2QQjPxr5ev1GviS+zxmfgTeP88OjroJMkEUkAcf8Aj66bc2+1/+QvHWtFCSvO/nkBDwGXJ9i8q7Hz+Ka3ufPoKWI34KIOSxiTouY40JOkEUkAf9f21gY/qytDN4HfRyQPyRlt26sg3pqqqr1pdh2Q1KXO9PCcz2U2wT6kKnjjd58176+/No/xqpDzmUN+ontlpn3f+VQ0oeq6+eI5RPn2q8V67YAXKVpeo511VyVoQ4JFXBOIob6dLVs4Sz2KIixeo0a6GaoMjvd+aVV2aJ1o/se3drSVWcZwhpg2ntrp/XebBN93Fs3JNDhBZGUUSkEV29bWj7sxTksA/LJT106J4W13PRWPpJksCCQZPJjMcNVqsKyaAM7LCxXPwBMgPxUgAoAAA==]]
+
+- Micheal Levin: /The *cognitive light cone* of an agent is how far into the future its goals reach/
+
+- In order to solve a Rubik's cube, one has to break existing patterns.
+
+- memes are *harmonic* and they have extended phenotypes [Dawkins 1982]
+
+[[edraw:data=H4sIADNZhmYAA71VS4+bMBj8K5ZXqlopBGNolmwD0vbUQ3tpD33cXDDECuDUdkLSX9/PD5ptu7tqV6IiMNiGmfHks9noY4tOfTfoAm+N2d/E8TiOyzFdStXGlBASwxPYP3Jz6sSwu+/BZL1ex24Uo1HUZlvglyuC0ZaLdmsKnFFoHLnSQg4FTpYJLjc1bzQSdYF5rdgY2Sb09kztuPq1PyIRU0qOGPnRj15hNbXfBBXo2CuuuTryW73nlXnPjJAFHuTAQV7w8bU8FThKCLIntT+MFG8+FdjffHY3Ugk+AB87GImRNkru+MTSiK4r8FVC7AF+98xsEZh9B4yL6NoSL65RtiBfMIrLTewdwo2dX7lR4AqdnMrZXR9M65LAV1btWiUPQ/2AmaZpnFh79yVZn8Ee7zqx1zy8FwU1eiGaZnLhyvPGhgH2XDonjxW0E2uych3ECf47e26P+9kpDez5DOQpCeRuDk9ifyQYOgWTPjmYx2LP52SfyGkIxhW0r9qID1BPB9U9v/pjLb7Afy3va9WuEZoRlJO38E87ID8hIQFpwOw/mLE6QZ8GfRr0wajHlXfrMAu4Cpg7nN1nGvykwV/q/c6fTx7yWd3BMP8kC0gDBj+Gnwyyl4gN1VaqAveirju7VcnBRA3rRQc1p9mgI9inRRMGtPjObaH/vr/aTdLVAhRoBhrlh7M2vEeyQT3vud7EVmwe3ZR63RRWSPns20GaV7eVEUdmODrLg0LMt6TSfnROMzQPIYCpkqGKHTTrUCVZJ+ATN0zScQsnfLDLH85uLILYBwAA]]
+
+- Donald Hebb: /The Organization of Behavior/ 1949 - same thing on the level of cell assemblies
+- Daniel Dennett: /Consciousness Explained/ 1991 - similar thing on the level of ideas
+
+- Here, it is on the level of *software*.
+- meme compositions are allowed to be made from the same data in HD software.
+- *meme compositions somehow are allowed to be arbitrarily sophisticated users of the computer they run on*
+
+- Competent memes /cause/ the /computing framework/ to reproduce themselves:
+
+[[edraw:data=H4sIACG1aWYAA71X226cMBD9Fct9aCstwRiHkGqhap9aKX3pSy9vDphdawGvbG/Y9Os7xkbk0kRpIrK3AxjPmRnOjL1rc7VBx67tTYG31u4/xPEwDCdDeqL0JqaEkBjuwP6WD8dW9rt/3Zicn5/H4yhGg6zttsCnGcFoK+Rma+GEMYyuhDZS9QVOThJcrmvRGCTrAota8yFyp3C143on9O3rEYm41mrAyI/+8AzZdP4lsMCFvRZG6CvxyexFZb9zK1WBe9ULoJdi+KyOBY4SgtyXug9GWjQ/C+wPfo0HSkvRgz1+sAojY7XaiclKI9u2wG8S4t7g757bLQJnv4HFVXTmDK/OEFuR3xjF5Tr2HsKBi69ca/AKHUeW6/H3wWzNGbjk1W6j1aGvH3CmaZqRbHNzkqqvwT3RtnJvRJgXBTY6G5oimW3l8IJkgHvMJeXosYLzxKWrOoaDOATvI4xED9wH3b57c++5vcdP5vdxuXwCxyrJyYVD0KFHGpB5/jGbTw6NkEvuMjWlOZvTnxD/QKi7dvRD/22/yd17tk/v20/JC+xnVdMQ8qh9mt+yb8XRIvcT8b7aKl3gTtZ165Sjehs1vJMtzDK8NxGUjWzCgJF/gD/J78rdUYQMOQmUler2wkKtoE50Yh07qmVYaUgcKAKXsrdCN7xalDG9G+jByn6DGs07MSi9m7gXrYGcIJDMBUTvkQZkM8Ij95gB5jcw9+juS8P8NMxPw3yIEY2SfLHW2azF7LYU03z5XgEcKxf3iCwgDUg8JsGPF3XENHTEdOqISeiI6flyFZfc1P6nJTU/MTHmmN6+hsSZl+AFC1I9pbMkly4tKO2xtEakIy7O60p15MsC5q/Dm4Y4UxqQzbyLNGwapATPsvz4GkpykTHf65jPK/NpDpB5yBdfGseQK34wAva31oi2QVahS9dy+GW76KLlCte54JpvCQ40hxYZ1diBazGu0WZi/+82OO0+9LXfebg2SEMbdBH7jSF7ZpOd9mb/tJ7dsb5I5kLrc72n/GqRNIi3RoFYawGLvupemL5pwXw0fdlzl6jHjLNg/Nnr3yPGT8lt44t2bOZKefwD4JF4zD1kM1APzI8FyDzkI5yS5ZSUhs6XukUUSt4KRBfdqAY+t0X2fMlEF2/gC//fy79gHRcs5w8AAA==]]
+
+- These are *computational survival software user entities using an operating that evolves to be useful*
+- What is useful software? This is a programming design philosophy question. What is *expressivity*?
+
+
+[[edraw:data=H4sIAOF0aGYAA7WVy46bMBSGX8VyNq0Uwi3NkFFA6qxaqd1002l3DthgxdjIdgLp0/cYgybtzKjVSISA7+f7j/mdHMylRkMrpMlxY213H4Z932/6dKN0HSZRFIUwA/sp94Pg8vTSxHi/34fjKEY9r2yT4w+7CKOG8rqxOd4m0LhQbbiSOY43MS4OFWUG8SrHtNKkD1wTeluiT1T/2R9EAdFa9Rj50e+esJvbnyYKdHSaGqov9KPpaGm/EctVjqWSFPCc9g9qyHEQR8jdiftipCl7zLGv/BgrSnMqIR45W4WRsVqd6ByFcSFyvIojd4HejtgGgdivEHEd3LnA6zu0XUc/MQqLQ+gVQsXlVxw0qELDSLmOz1d362kHjqQ81VqdZfWKGMbYCKtvF6nqOsvzGgIqYfSsxbvVs519P0cOJj3JE2rOdaJ5sss4ziIU76IvY5n5EhzjS5dCuCw/mfjJxE8mfnLDp0LwztD/jr5imbvADPB6RncMvixd272kEjri7VujswoU/iM66F9Q+8iH6JYOFrlHQGTZKJ3jlleVcK5S0gaMtFzAOkOkCeBIcTYNGP4L0HH291Fwfk7cvgzewIW5GktbpBiigzuW7uwfQkdcBp4mHp5CpsXDmYuKyxodhSpPZlHu9oZbqrZThsPPjiSC2+ui4N0EBgEFOYIrSGkX3uQ4u0n2s7RUM1LSmfiG85DBxzs2nRybTo7dz4ZNlzNsHE3pQFmcYdWcSVjDDf98xW9wViYaIQcAAA==]]
+
+
+- This somehow must make /interfaces and languages/, "hide the details"
+- We know this "hiding" thing is true for sure because we are *a cognitive user* ourselves.
+
+- Daniel Dennett called this /hiding the details/ the /user illusion/.
+  I call this the /magical interface/ instead.
+
+- *Explaining cognitive user entities was required for a theory of cognition*,
+  so it is sweet when the explanation requires them, too.
+
+- Conjecture: Languages cannot use themselves (otherwise it has its own ideas, and isn't a good language),
+  therefore, each language needs a user level.
+  /Systems of expressions/ are required for powerful software design.
+  (philosophy of programming, underdeveloped)[fn:5], [fn:6]
+  (future constructor theory of programming and design?)
+
+** The Living Language
+
+- *expressivity* predicts that the elements are composable
+- a language that has it's own ideas isn't a good language
+- Imagine you need to use the word banana in every sentence
+
+critical periods, synaptic /overproduction/ and synaptic pruning 👈
+
+** user - producer (resource) symbiosis
+
+[[edraw:data=H4sIAJctb2YAA71XXY+bOBT9K5YrrXbVYQDHYchsQJo+tVL70j603ZcVEwyxQuyscULSX99rX5Ok7Y5UjcSEkIPty/32gSz7Q0uO2071BV1bu7uP42EYbofZrTZtzJIkiUGCosj9sZNq83+C6WKxiP0qJYOs7bqg+YxRshayXduC8vmCkoMwvdSqoOltSstlLZqeyLqgojbVELkhzG4rsxHmx/koiSpj9EAJrn5GC9k4fhuswMTOiF6Yg3jod2JlP1ZW6oIqrQSYl2J4o48FjdKEuJO5LyVGNF8Kihdf/YU2UijQV+2tpqS3Rm/EqKWRXVfQV2niDvB3V9k1AWc/gMab6M4pvrkj/Cb5h5K4XMboIVy4+MqlAa/I0Vs5+d8ns3XJwGO12rRG71X9hDNN03hj7fVNuj6Be6Lr5K4X4b4oWGMXRWMkF105fCAZ4N7MJeWIuILxwiGMmZOPn6W8OStnQTkLyqHXUHuaoXa5rVpBfFPdr6E2BX2sFBzRLE04X/yb8eR2p9pL2vKrdGJ+GQcElUGjrxUWJBIKUrU33Z+vfmmzv+hvR4RlcOUHr2/y5H3Kz5AmPyEP+BLe5AmB8z0kFZEF5FeYBeTojxVHS9xPVKnVWpuCbmVdd67NtLJRU21lBzntK9VHsMdkExZ6+Q1cSfOf94YrQMqwADPA8sPe7quOPKysPLiNqZaxMzeN5VB55gzv4abR1qRZhyzPsMqI2RWygAkiywNmAYOcc/glugM6w3eHRxaQXyELyAOGbnF+M/T/uRxQ+63uOCANHJCOHHBmmLvpenKWYGtwwPLhEfysgJPfeG4hn07bR92NzfKM4FZPExwLwc3z6YI7Mx7YKAdtavLHf3tt/0bqxOspt12G5ueA5evXZEpTaahj5my9I53cCGLXsicu7EkNhxzfuQaSllRIaKInW0GkqqV7yHenKV0Yy+yqLJW0Enh1Z7TV9rQTL0F1jgIcE+QeYEt54Ag4yXGSMwRc43gfR5E5isxRZI4icy8yOQnOA8k54x4TRB7GLgqPQW7GrpBjzGfMMBVnnHCHhx3mur9shRKm6qQ9kdrIw+Up518zf5+1cndcvX9eXqR44Ex27rfJaHkMjDvqGAOJWzjhH0j5HS/YRgOpDAAA]]
+
+
+1. User-level entities will want their producers to be general
+2. Producer level entities want to be general, and /composable/ (building blocks).
+   Because *systems of expression* are even more *powerful* and *useful*.
+
+- users want to be *competent composers of useful languages*.
+
+- user level entities should be allowed to be /symbiotic with the languages they use/,
+  creating harmonic, expressive building blocks at the producer level that I label /systems of expression/ 👈
+
+* Magical Interfaces
+
+#+begin_quote
+Any sufficiently advanced technology is indistinguishable from magic.
+#+end_quote
+
+Arthur C. Clark
+
+#+begin_quote
+Any magic is indistinguishable from technology, given the right knowledge.
+#+end_quote
+
+David Deutsch
+
+
+[[edraw:data=H4sIAMF6aWYAA7VXW2/aMBT+K5b7skkJcZwrFUHaqkl7aF/20q1vLnGCRS7IMQ3tr9+xkwzoSltaAiTHx5fvXG0fZs1DjrZlUTUJXiq1vnSctm0nrTepZe5QQogDM3A35XJbiGr10kR3Op06ZhSjVqRqmeAgJBgtuciXKsE+BeaBy0bUVYLdiYvns5RnDRJpgnkqWWtrFnpLJldcHvbbxGZS1i1G3ehtJyEc+J+9FOhYS95w+cC/NWu+UL+YEnWCq7riIF7w9nu9TbDtEqQfqn8YSZ79TnDX+GMatRS8Ajy2UTVGjZL1ig8omSiKBF+4RH9B3zVTSwTK3gCiZUca2IqQb5E7jJz5zOk0hIa2bz6ToBXaGimP5n3UWzsP3LPFKpf1pkqPKJNlmRGW7y+q08dBvW6R3YuiO5TBjB1QCiHHxh4aEYuSKxpFk8DyAkTjwPLpBBpTeFsBDEFPEOkeMyfUDWLFMBDSng+GGX7UrwkGFDPH69bQ3lu8KMS64acoHMMHQgfO9HQItx1dAD/VFHgQYMCN69+PHOvvLiYu2QXLtEEC1XECCeE5BNAdPh0B3j8KH4+rvXHWiOq7dGT9/ZH098dNnvAT0SXknukz5W3tzxPd4+qfJ7qv6D9WdONx9q5/CD+W+z3ymbOhv0Xehj+P91/B/5B7nmf/K/h9diq+Vc8qA6T7bFYtlrVMcCnStNAXdl0puxFPINWNezZjpSgAtGFVY0PxIrJOxt4OmN/wkiuxQD+qXFR85mjw/nLvCgybV3Bpb2Tx5eK/sukrfrftXVlhrv+QWBCea0PDnsYdheh2dN/84/a+ZOBzRxz67rHLvK3Od7D+qi7XXEFJhm7FE5PpYP/J5cIQWV0u0L5coH25YE4cUy/0e/ZkdO5BIZa+ge7RD6JnptZ5Gd2A7qOPERF3PyQly8WCFWjT6GK9UlxmbHGYmCfvZ5N2FNJKpxkBGvY0ItcgfEenfX9PPZ2O3bq70awftrwPR9b8QUi1AesbUW4KpniK2loW//LSyeGBv03zv/KZ2KJeDQAA]]
+
+# #+CAPTION: Neo (Keanu Reeves) stopping bullets in The Matrix (1999)
+# file:./neo.webp
+
+#+begin_export html
+<iframe src="https://giphy.com/embed/uvoECTG2uCTrG" width="480" height="341" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-matrix-neo-thomas-anderson-uvoECTG2uCTrG">via GIPHY</a></p>
+#+end_export
+
+Neo (Keanu Reeves) stopping bullets in The Matrix (1999)
+
+
+
+[[edraw:data=H4sIAIHbaWYAA71VXW/bIBT9K4g9bJPiGGPHcao40va0h3YPe9nHG42xg0KMBaRO9+t3MTdru63SNil1gg/g4/txuOC1u+vI6aB7V9Od98NVmo7jOB/zubFdyhljKTBopFydtOr3fyJmq9UqnZ5SMqrG72paFYySnVTdzte04DC4k9Yp09c0m2d0s25k64hqaiobK8YkDGH2IOxe2qfzCUuEtWakJD79HD2U5/EH9AITg5VO2jv5zg1y6z8Jr0xNe9NLcK/k+N6cappkjITGw58SK9svNY2dr1PHWCV7sCeO3lDivDV7ebbSKq1r+ipj4QfxDsLvCAR7AxZnyTIYni1JMWPfKEk36zRGCJ2Q32ZtISpymrzcT/dn1XpQ4FZs9501x755Jpi2bSdn3eOXTHN/Di++lKAr/mDlnMbZkMzBFHgJ+XBIJOPsOud8vqhyvpjxgl2vlvMiK5cLhlcWZmOq/+Qqxh/8lIxkYLiKAC0iTmc4D5UYkSMijyOPIy9HXo68HHk58nLkFcgrkFcUT8ZTQl6ePAm3RPTbnbE1Paim0UF30/ukFQelYRGd6F0CRadafODUd0g4q34tlrDiebAN6w/x082N8FadyGCcU7dartPgDIWMdZPIHjQ6Wv3m1W+74S39D7WDPmWUqUK1GCJHFTmqylFlfjk1qigGLMpPMZwXLyRFKLUyVlyFhccQORYgxwK8oARYD6HmNh+lgbDN4MjtUWvp3VmGSziGHTV5XpTouTHS9a89Ed7Lw+BB9k5tZ3AYxh5phdLuRWq0DAdz3LsTckQWMVTphMjjkfdwCF0oruAvx10xIUdkj5BFhBgjljEuqbUanPz7o7htK7jgowRLFaZt2CeA2zCeOuEUyaL1tIMG3+nND+GHH3fPBwAA]]
+
+- The inverted logic for magical universes in our reality
+- The sliver of magical universes are the ones being /selected/
+
+The *optimism and competence overlap*:
+
+[[edraw:data=H4sIAJ0lb2YAA7VXW6+jNhD+K673oVuJi2/cjkKkti+ttPtSVerlpeIEk1ghEBlyyNlfv2MDJTl70G57IATGHtvfN54Z27BpnvboeiqrJsWHtj0/+H7XdV7HvVrvfUYI8aEH7rs8XEtVHV/rSJMk8W0rRp3K20OKg5BgdJBqf2hTLBhUnqRuVF2lmHoUbze5LBqk8hTLXGeda6qgPWX6KPW93iVupnXdYdS3/tEzhGP9l4EFFGctG6mf5I/NWe7a37JW1Smu6koCvZLdT/U1xS4lyNzM/DHSsvgzxX3hL1uotZIV4GWXtsaoaXV9lCNKocoyxe8oMRfYe87aAwJjPwKi40YG2ImQcMjfGPnbjd9bCAUzv+1Gg1Xoalme7XPWW5MHHrPdca/rS5XPGFMUhSXb3w6q8+fRvH6QO1CxCWWcxgSUQ8ixnQ/lxGHkZ8ojL3B4gKgIHME8KATwdAJoAk0QGY3tE5oCcWJoYGyo07EHiYYxdESxfXg/hg3ekmWpzo38LwbH8IPQgTO5CeG1lzuoJ0ZCnRoFgLfy2r4IHzI6N6t2h1qn+KTyvDReravWbdQn4KPxUC2ykyoBtMmqxoUMU4UNIDXeAg7jtW2nPmU63/gGdKCbx38N8CXxva3PPY2h4zHQPWYVXN+NfDazvt1xsbmmlKNsykVbNpMLp8kZB76NIZwIwhf44Tr4jN3bb9dCvx5dWUGOX3T5/t0Xu8wP+JuN6FehXS2CwAohH6wMBxn3Evg/gK6XsZVTQi6dIYNPhUnIX1FeV9+36FjV3UJpQm7ShPSU/N81sEAUb9KQrQAvZuHFutYvkuLz1sfrWk8X2QFeMZ+tmzriDbEl5DEz5+rXrV8ktvPWLxLbeetXi224YGxv4MU9/FrOj9+yLQyvUV+HX8b58/j/yzsvM38ePl7vIBPj1mNedX4/SPQxa7W6jsfY2mc5rA57ZlsZ9xJi2kt2I1c8y8cNwLrg0sjiUo7TV6dsL1GrAa6o9QnYrHfeEy/hSZiwkJEoDhISC8clHocPCkao4JwFYRhHzquqL0fywKM8FCRgEHDOg8gJI48TaI14JEQYCPCv/ep7OMDHU4r7V1KXUyJE8g+M9M7VfkqkeEqk+P4VkK6YSXRK1m19btVJNa3ajZ7093DDJ+72M2yDUyAKDwAA]]
+
+
+* Technology
+
+- hypothesis: Higher-order memes have a /technology crafting/ interface to /resources/ of the neuronal computer
+  by constraining the environment, the memetic engine or randomly firing neuronal ensembles fill the niches.
+  They are active, substrate /creating/ ideas.
+
+[[edraw:data=H4sIALdVhmYAA7VVS2+cMBD+K5ZzaaUQbC9J2GhBak89tJde+rg5ywDWgr2yvQvpr+8YTJOmjdRGQgaPH5pvvhl7xjt3bsigKt8W9PqGUdKCalpf0EzgZOw77Qraen+8S9NhGK6GzZWxTSoYYymqUnIG65TRBeVXPCrcjZ3Sh7+p8e12m067tNxVUDuiqoJCZeWQhCmu9tIewP6+nrBEWmsGSubdLzPfm2X+IXLGhaMFB/YM79wR9v6z9MoUVBsNyFTB8N6MBU04I+EX4aPEQv21oPPg2zQwVoFGPHnyhhLnrTnAglKrrivoBWehId+j9C1Bsp8Q8TK5DcCXtyS7ZN8pSctdOjPEQfCv3FlkRcbJysPUvxj7xwjcy/2hseakqxfI1HU9GWueKpnqgUZ7s1ISTYlHlMWNX0B5aE+IPBLMZsY88ByjRJPQdero4D9M1HWeowkbwELQx1nuJ/BrHOCC2LwSHTaIX72Ani/oYg3u2wX9egV0wRd0vkZklrjz7Rro22foU8rMeZGAxht7st2biz+y/S39Z/tzNoQsFDkjnLGP4ibKLEoRJZslz59IEWX26pPL85rN3ovovVi8nwa4sIm3zsPoSegSqfetsQXtVVV1IZuN9kkte9WhnpPaJVjKVB03nPoB4RI/L0EhKzdZzEqUpdx7dUb2p3vkKz3s0mBtHcMilgMMKy01nKzRsiOgHfT3HTgsHnjUVurK9KhtlW4WNmteAh4qe46HinLD1gs7Z7P3WQh7iyUTHy5jK+x76FeNex7Djneq3BsdDlpph4E/KzyCHl+vxXra4I8vdfkTg7MHzOoHAAA=]]
+
+- Brain software is a "technium"
+
+[[edraw:data=H4sIAABYhmYAA71WTY+bMBD9K5b30kohGENZsgqR2lMP7aWXftwoDMQK4Mh2Qra/vmNsNsl2V+2uREXgGX/MzJt5dljrY0NOXdvrnG6N2d+F4TAMyyFeStWEnDEW4gzqptydWtHvnpoYrVarcBylZBCV2eb0Xcoo2YJotianCceXIygtZJ/TaBnRzbqCWhNR5RQqVQyBfcXerlA7UNf9AQsKpeRAiRv96jyk0/tH7wU79go0qCO813sozZfCCJnTXvaA7gUMH+Qpp0HEiL25/VGioP6WU9f4PjakEtCjveJgJCXaKLmDyUot2janNxGzF8a7L8yWYLCf0eIiuLWGF7ckWbAflISbdegixIblt1krjIqcRi/34/PZbJ0z8LMod42Sh756Jpi6rkdnzeUiWd1T788tCrwrfrYy0XgwlNnrHEh6DjB1EXMbGsYfJWx0CW0r9hpe7kKhsdgmHY2tEEt8j25tAzvi2Fk3cDLEPoKiL7dS5bQTVdVa5rI3QV10osV1uuh1gGUXtR/Q4he6jrLH5bIM4uzMYAPLZkk66KS6JxUcRQnr0Pp7DbE6y2rmiHFPjE/E0okYe23arPns2no0WWfeOl8566MmnfAC6FESB9W+ufljO72l/+zfyc3KnGdsgXQ+8dRj4pF7ZA6j7AIzhzjmkLs4XyhOn+AnxMkfiTP7D3lAntzz5j4PI2YXmHjk88mZJ45zjOnYlLLbg8Gzixxw/STlWXbRxTkwuj0YPLWvt9BLy+sUPpWXP1/e5HXy+av99Nr+rPJJGcF9a2XjkHtkDlHCDv28KLnAGeV0eTi2oDV5WlJzpiZBinhgJJ5x4jOT+MzEPjOxz0zs5s1esQd/6VgBh4nH1MeRzlcZL077bbApWtxtPX7cHMH+e4ERJdGyFNgAPdUobPDGj7fNbxvQ/4nkCQAA]]
+
+- The memes that exploit the capabilities of the computer in sophisticated ways are the ones we see around
+- "Perfusing the computer they run on with competence".
+
+- And since high dimensional computing allows for many, many things to be possible, the system can find
+  competencies in unlimited ways.
+
+
+* Recent work:
+
+- [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj?tab=readme-ov-file][Binary Sparse High Dimensional Computing]]
+- [[https://faster-than-light-memes.xyz/biological-notes-on-the-vehicles-cell-assemblies.html][Neuronal Ensemble Memetics]]
+- [[http://localhost:8095/art/p/assembly-friends/6][Neuronal Ensemble Area]]
+
+
+* Future:
+
+** Compositionality?
+
+- Neuronal Syntax (Buzsáki)
+
+** The means of abstraction?
+
+- 'analogy', templates (high dimensional computing helps)
+- /action/, /transformation/, /change/ (?)
+
+** Wiring, Devices, Oscillations
+
+** Try to beat ARC
+
+https://lab42.global/arc/
+
+
+** Constructor Theory of Knowledge
+
+- The *constructor theory of knowledge* would be an extension of Dawkins's replicator theory
+- Chiara Marletto says this would also talk about civilization and technology
+
+
+** Philosophy of computing
+
+A [[denote:20240528T115907][constructor theory of computing]]
+
+
+[[edraw:data=H4sIAKbqWmYAA71XW4+bOhD+K5b70krBGGMMVCFSDy+nUvpyqqqXNxpMgpZAZNhN2l9/xhc2pEmq3a3S3MaMPTPfXCHz/mGN9nU5bDIcCYrRRtbrzZBhzuDisG3aPsObYdi99f39fk/2IenU2meUUh9EMXqQqq+7NsMBCZzA20NTt3eXxII0TX2zixfzUlY9qssMy1IVe09fAndbqDupTvke9Qqluj1GdvezxSvG638dZmDslOylepDv+p1cDf8VQ91luO1aCUhruf+nO2TYCyjSX6Y/GClZfcmwXXw1i07VsgV9xf3QYdQPqruTo5aqbpoMvwqofgPeXTFsEID9ABpnXqwVz2LEZ/QbRv5i7luEsND+LeYKUKGDsfLD/F6N/TEC34vV3Vp19215BUxVVcbYeirUlT9GeFbIc6b4UQtIQiLpRJG91P4IOmOM5hEjgusV4jFhM0YTEug0jq9k5FMSi9ysgzQkHFnBIIlJGp2cB8Xn3FzEJBSXjseMJHTyCpz+c77DcGnjDLQ1x4KQREIjsqv8cYVEQMQvWn6/sYxTHQeWmnVCGD89FFKShBMMcf6UQ4CNiGgaETDHX3Iof6mmMCDJNb5zOqIQzUtORxAsvtRRDSFnSx5AgqbBi8YjnJ4mjXKnNb+6g6KUhHxiMHBYr/DzZ5w/D8xTDl307yylF321ZRMlhJ/sjCWaX91Btk8dsUPnQtOzSdO72fXY9Il+26YPTHPSZcCBCkdjoGxCU8d3FNpu6eT+2DyohxKyap15SLZR/0hDxx8ps7BAzpof5GFA+scr2tWmUxne1mXZ6HHZtYNXFdu6gdnbF23vwb2irtxGX/8EeCz6dcbrQR3qqQhjG6b04hMIzX1tYDGXTVPvevkMb92EVaCUa3qwdAXXTG+sgMH0/L+xJ9qYcQW9bwepqmIlX+6US+FvneLUOvVs7WKlg2a1h0576LSnTnkY0WPp2VuuJ1soqXvVvH519iDxBj/ZvL3R6uIMhX5eoMuQO8qOVPeMocJR7ij7C7i4sWNwGbvc4eAOlzD0ZhWV2ILSDy2LD3I7VtEtTJlwjrY+DsUgb2ltbBVduYu82+7uh2Pn3zKjzFUaS1yFUUNvX0naDnN2NRWGvqxtKf1e6OdSZYaAbVvm2taU48ol8lZ1GYyFmZj0lY+14q/hC39eFv8Da5xsVf0MAAA=]]
+
+
+I want to make progress in describing theoretically what computing frameworks, interfaces, languages,
+and operating systems are.
+
+
+Machine Learning?
+
+[[https://faster-than-light-memes.xyz/biological-notes-on-the-vehicles-cell-assemblies.html#org9204ef6][Learning]] and behaviouristic paradigms are not explanations of the mind.
+
+
+* Main influences
+
+- Richard Dawkins (abstract replicator theory).
+- David Deutsch (theory of knowledge and reality).
+- Marvin Minsky (software engineering approach to the mind).
+- Valentino Braitenberg (mechanisms that *click*). [[http://localhost:8095/art/p/taste/0][taste]]
+
+* In my free time
+
+- well this
+- rollerskating, gym, listening to science and science fiction audiobooks
+- fun with the computer: Emacs, Clojure, Unix, explorative programming and artistic programming
+- Rubics cube, lucid dreaming, memory techniques (not recently. Knew 15k digits of pi once)
+
+
+* Appendix
+
+** The Dinosaur of Our Age: Spirits, Souls, Ghosts...
+
+- Dragons were not real, dinosaurs were real
+- Perhaps spirits were not real, but living ideas were
+
+- Living ideas: memes made from stable information that make software entities
+- Information represented via high dimensional data structures in a computational system
+- ... made from neuronal activity
+- Intrinsic activity and central pattern generators:
+  Perhaps they are like the spirits, the inner life, the creative spark
+- The idea of life in a virtual simulated world, representing the essentials of the outside world.
+  A seed grows into a tree, this tree-growing causal structure can be represented as a tree spirit living in the seed.
+  Those causal structures, internal mechanisms and surface interactions, are real things in the world.
+
+** Coherence Challange Model of Working Memory
+
+You make an area that is this hard to spread into,
+for instance with low excitability or frequent resets.
+
+
+[[edraw:data=H4sIALa+amYAA7VUTY+bMBD9K5b30kohGJISsgKk9rSH7aWXftzc2IAVx0a2E9j++o6x2Wy7u1JVacXHG8bDvDfjgcpeOjSdpLI17p0bbtN0HMf1uFlr06U5ISSFCBxCbicp1PGlwGy/36fzKkajYK6v8YeCYNRz0fWuxptdidGFGyu0qnG2znBTMd5aJFiNOTN0TPwjeE/UHLn505+QhBqjR4zC6tfAUCzPd5EFHIPhlpsL/2gHfnBfqBO6xkorDvSCj5/0VOMkI8hfuT8xMrz9VuNgfJ8NbQRXkI+encbIOqOPfMnSCilrfJMRf4DegboegdjPkHGV7Hzi1Q5tV+QHRmlTpUEhGL6+pjKgCk0zy8N8f7Vb1w78pIdjZ/RZsVfEtG07k3VPX9LsAeRxKcVgeXwviWz5NdFSyWOu0h/QDJDnNRkQm3njAI5s6w3w5N5IY/X/mjto9r3KSoJKcu8hIxHziFvAIuI2Yh6RBAxhVwGhxwlXkPts5LubZ5PzHv+HSmCHOu895AHIDCBzhiJACPH6iwBLNWTGWabjk0P+llB16LWp8UkwJv0WauWSlp6EhP5aqmwC8yvauGDFL1CYlX/PnR+evAT0u0NgDg89lZKqDj4dpRmvUk/2Nryb/AnvHTUMOY0sfHiUIaGcfkvuIlBvYPcbxc9GK7vQpR1c8K9qfgOrWytN0wQAAA==]]
+
+
+[[edraw:data=H4sIAPu+amYAA81Xy5KbOBT9FUXZJFXQCCHUOGVcNbOaRc9mNvPYYSMwZYxcAjfu+fqR0FWbcTdO0m5SKT8OFvJ96J77YNk+lui0r5s2xduuO3wJgr7v7/roTqoyoISQQO/AdsuXU101u9c2hovFIhjuYtRXebdNccwJRltRldsuxfcxx+hRqLaSTYrDuxCvlrkoWlTlKRa5ynrf/NSr+0zthPr/uk/8TCnZY2Tv/mk1cPf7N9CiFw5KtEI9il/ag9h0f2RdJVPcyEZo9ZXof5WnFPshQeZDzRsjJYq/Umwv/h4upKpEo+Vlx05i1HZK7oSTUlR1neKPITEvbe8h67ZIG/u7luj590awd4+YR/7BKFgtA2vhhF/hz+aXKtfZp5B79k3u+IKFn7/Dy8BEcbVU2kZ0GnQ+Dd+TnDifxzrb7Eolj00+ceRFUQzKyvGfZP6kzRN1XR1aAf/zQRs9C3LxepaVmJc+Gm2esUlpY0NzsdELITMXeoWaiwC8/1bZ1mZzVmFCUEIeDIQEkAIyjRyQAVJAYtFuuzRgKkZAGV80WvVR1Z8+vqDZZ/zSiUubtS3a6wcD1AIZQBs9ALdgtxhvuAXnGxlwMLoTp27S6DDmC22P2eNnzWYrVYr3VZ7XJt6y6fwi21e1DkabNa2vqV8VcKOt/tXywuQ6ZQ3vaKINMYElOlE326yus6bUOdjIXCwDo/otzCmKJAHmUGAOdcShQJwI4va+0rmjJR+x4krYyXTYv8pdmthgRwSQArIR3pYeg0gKKjRS4BDlZw7N6iKzeUkpIBnlKYH8JCMuvwNZn415guoCZFn1Ituh9ng4SNW9nZvXqlpM3q2qeYwNx+QxDmjLnBfbY7PIACkgsWi3fVN0r9StrxTDl2XN40Mh8+LEArfALFALdovxhltwvpEBz1S4WnqmeTKiwxRtTOjYLHUrSQryemUZXLuxbk1Lj+lF3Xpf239wVRy4EhFACshGSG5KLyPSUC6ylDNV0SI/U3DmqjikNaWAZJTm3KY3myOQsZu6otsOENrHA2UjJHMaTOeQ/pyTrsvaunOuIjT+7vHpRQtirtKYFvThzbVFRHpuya0foes7bmoJnR/RfK2UgxsaVwfZttW6Fh5aHztdMzuUbbpjVjvv5tDPqDVAx2w1vzZOrDZm+kNZy3VWe2gjt0Lpp7vLIWKWycUZYM5bNK3Y6/NGoVM5Z3li7lnEPYy4pxHIdgZDJYOhMoKhMuIXDyYXXt3as2P+2pHQH3Qkdo5xg4ybZGCUYdBRGHSUCDpKNOooQak/7WO5+g+EPtBjEBIAAA==]]
+
+
+Dan Dennett: /Fame in the brain/.
+
+Fits with 'global work space theory'.
+
+Perhaps an ensemble can say /think me/, by spreading a little bit into the challanger node.
+
+
+[[edraw:data=H4sIALK/amYAA81WTXObMBD9KxplppPMGCMJQnBq3GlPPaSXXtr0hkGAxhi5Qg5Of31XH9ROE7dJ03Q6fDwkpN232reCeX9To0GUusnweUIwarioG53hmEFjt267PsON1pvLMByGYTpEU6nqkBFCQpiK0Q1XvZBdhumU+gmXu1Z0q4em0dlsFtq3eDEvedUjUWaYlyofAtOE3nWuVlzd7Q9IkCslB4zc20+ObzK233vO0LFRvOfqhr/tN7zQH3MtZIY72XFgKvjwTu4yHFCCzMXMiZHi1ecMu4dr+yCV4B3Yy7daYtRrJVd8tFKJts2wqpf5KU0m7iTTZBbTM2C/yXWDgPoHsD8JLoybyQWKJ+QLRuFiHjq+R6Kk/1uUJ5SY4wlxhSaLi7kCVmhnvdza+1GF7VdgmRerWsltVx4hU1WVdVYfTpLlLdDjbSs2PffzAu+N7Q2NkfywlZoDFgPoGU4KyFLzUEAHM8QK6GExsR5t9I+17TibtaIpAXWQK4upQygchwww8Rh7ZB6JQzdsz8AtcsA7ML5V7enJvQI5w8dpPizZe6SBSwS+DRALLHWQOIgduCEmmsTBGBuxaElrvtNH3dPzZHb263JCxkCQd0UjVYbXoixbowbZ6aAX38AmTX2zyteihcz1edcHUBmissKLTEZNZoHQomjyts27GsqukyWfh8b6n0inqtLUS4d56bBROcQrJ/LK+bvW41GXyeNUQX+viqPiZalLdkQ8Mo/xAbJn1Yc1SbwLQOY1xJK9hl40xNjVJYThkOzr1GJi8Tkh+lCuWLzH0eSTtcEjUEfptEHHTctrg868Nmh0UHx3t/Fn1xNLXT3FoL8F73q+XrYc0bGUXjJX8bgFjXvQuAn5hY29lmKvpchrKfpXWjJaGRNMvKaI15Tf8y36cdSPo+wA/TcA3jlMPKYHKT2ew4eS9nNy7+oBBvuMwnLBDgkfX81VlRd6m7doI/teLEUr9O2Y4ZdgQJmnYET16utW6tfXcouKvEO6gT9FtOau9w0aaYQ1XPD3ufgO5vuERb4KAAA=]]
+
+The challanger node is 'merely' a handle for using the rest of the system.
+
+** Perspective
+
+[[edraw:data=H4sIAHPIamYAA9VXXW+bOhj+K5YnTTtSKMahlG4h0nZ1JvXc7GYfdxRMsAI2s01J9uvP6w+SdW21LVMqTQl5wJj3fd5vstJ3G7TrO6EL3BozvI7jaZoupuWFVJuYEkJi2IH9lte7jovtYxuT6+vr2N3FaOK1aQucpwSjlvFNawqckUuM7pjSXIoCJxcJXq9q1mjE6wKzWpVTZC9htS/Vlqn76xGJSqXkhJG/+9FryObrf2ctGA2Kaabu2Fs9sMp8KA2XBRZSMFDP2fRO7gocJQTZg9ovRoo1nwrsTz67E6k4EyCvHI3ESBslt2yW0vCuK/CLhNgP8B1K0yIg+x9IXERXVvDiCqUL8gWjeL2KPcMn7Er+Aru8Wc6q6KFZsQ3beqWAFNo5JXv3+2QSHB1wW1bbjZKjqJ/g0jSNU7b5/iFZ74Ed6zo+aBaei4I2ehQ0G3KQldsP+GJveQAC2cSSq2AhIfYEVmhOnEZnzm/Lnu104sJjCfUuoRatBuI1OPd6J0balAoeG1X36sWD3PgH/zIR7zwbsxwyICU3FqgH4iDJPWQe/JbEbwHWN3B4pAHTgJlDx/yPXJ8E18+ep1fB88Hxhu0Msj9RKapWqgL3vK47mxNSmKgpe97BY7oUOoJ64E24ofk30JzkP+axdf0yuB5UrF9+HaV5U8m+56aHWvDXq9iqPMW0Js8b4k2jwTQaTMvnnHok4kzUD+JN/iDeEKeFDTjEySFE3aNffx79edBvMfcItnukAf2+84U6D1VmY/0eVR2vtkiVopY9uh2NkUKjURjeIS17ZlouNqgth4EJPefAOd20JL4gHRKPtiQdZgHp+cNFM8/DIfFoeTjMAqYBn4MPDXxo4EMDHxr40MCHHvmcI31cqUL6XIKOdc+0hi4OVpuWIcFGZbOHizmfpnJ/SJqzkAm5nJJD3xrgBcqOf37H7jeuc7bN1NZSX9YMNQrMnh0RQQmhnkEV8erk/smWMOPrx/vncShnpw4e257zn0hfklNGPiG3pX07mUc+PU78Hwb+afLBKy4Zn5a/JPflu/o8oXPD5PeNe4bkRMJ+Eh7f9Q6EM0/4ci6uZ5iHUMCLFBqGwyxg7hH0e3yGxnaZOj03DolHxyMNvFLH82wNLQ09ZAk61lxU3VjbkRc6GFSvVHvUSbkdh7P2MmejrT7LA7oYzNyDvngDB/zHXP8PtAbMrosOAAA=]]
+
+
+- have a /perspective/ mechanism that makes random inputs to neurons
+- modifies the attractor landscape dynamically, from within the neurons (/perspective-effectors/)
+- ≅ attention in machine learning
+
+** Tip of the Tounge
+
+Just an idea, perhaps one aspect of the tip of the tongue.a
+
+- the mechanism for the feeling of /tip-of-the-tongue/ is here in the notion that a
+  /vague/ "narrative unit" coming from user-level entities
+  is undergoing /destabilization/, "fleshing out", "filling the blanks"
+  This fleshing out fails to provide the memory lookup required, yet the "speak" part
+  is being "fleshed out", too.
+  The hypothesis is that this fleshing out usually is a way for the producer level to
+  find a result, but didn't work.
+
+
+[[edraw:data=H4sIAPssb2YAA71ZW3PqNhD+KxqfmV5mIMjCNuI0MNM+tTPpS1/anjfHlkGDsTmSDKS/vquLwXFJCuYoSWBlW97VXvTtrvIo9yt03JaVXARrpXafJ5PD4fBwmD7UYjUhGOMJzAjslM/HklebSxPD+Xw+MU8DdOC5Wi8CipMArRlfrdUiCEmCA7RnQvK6gsuHMFg+5qyQiOeLgOUiPYz1JdzdpmLDxOv7YzxOhagPAbJP/7Qikvb6VycGbuwEk0zs2c9yxzL1R6p4vQiqumIgnrPDL/VxEYxDjPSH6L8ACVb8tQjs4G8zqAVnFfBLG1UHSCpRb1jLpeBluQg+hVj/wnp3qVojWOzvwHE0nmnGoxmKRvhLgCbLx4ldIQy0fstHAatCRyPlxXy/ba6zCZ7TbLMSdVPlb6ymKAojbdV9qc5fAifQvjR2ssiZS6vHiRHVv+eVROcVRpFdM9U2Aw0IxUYmK0u+k+wGGQWFHzA3MDP2P1qaaeaawnWILXPFjgrpr3FaZetaLIItz/NSa15XalykW17CazKt5Bj8zgv3QPJ/QHJI+/7SCoSRVUDLWDbw1uNES3CmcvPZFGx6Mvd7Wr1jqlZSayoTKzcL0ME1TfAoTPCTodRSQhyNHE3ulZJg4A7cDE0cpZYCFlhKHI38echoYqICPPTd16ZWP/0GK06Fgj26Zdtn4FOt7IPWeUbra2PQbh5jWKfy1Kk8tSqfDTmAJXEsiWNJeiwtJIxZBbMbUf7w6T9A9+M1HuvLhXhGWp6h4LWQOBo5mjhKLSVuHnHziJ3n3asR7Xi19edrZ/oUnyTdoNqxdPNa9m2AifFzqsH3AgqQyyDgBdKwlTHVuu3TVcMgEbB0mEotZlxSKbHy4kvAdrMAs1kiPIr1ZtE0sRTgxVLiaBdqesq/bciOvd6yK1wmrSbRh0BN7KAmdlAT3w81sYOa2EFNTD1aq93CyXVb2JP4j97C/XD3Ak9uCwNqt7pl9XbL1RZK0XvUe6ek66k3dfvMG/9kEH8oF4vLdVaPfzRo/UlWFPg6/sSvfSLs2f7U8/qH+fd6/oPWf71/429v/54A4g8/YtLpasIHJJssY1KiLJXMWx3Q9oJRt/UYXAdQl++pqwcotXTu6oE5uVeKblyoa2Coa3Soa3Soa3TmrtGZd531jRPZvO2hP6bqMIZ1Kk+tyvdWHYYlcSzJmaVPa3102u+fdPjQjbaVu46EtJQ1StEaFoRyplJe3lHG/z+utvoNy8vvwUMPHTzl5RP/QXn5hvV7yssn+3vKy3109hm/Ju2QB1RA0DaC3ZF2CnM+eI1eM4+HhHFnbyzf2pB+WvnOrllmosl4WrbCt1xKSAyDUsIpYAyEz/EocueHMH6azuIzhYQY4Q6F+zDXPrfvffFm92lnTy+fGPBfMwQZkSmeIVateMXgrZUOsbqxT61t5CujeDpiMweioS4gSDugbjDDrwbYDXDSDqJ20M7BPs+4Q9cqx+cKg1eKVZIXnOX2xgg1sknL8gVyzo4J8x8TvmdICZ5tvMZ42+yaGH8GP+Y8r75X6FCLzTDUuL7Kb1HjvioydtVj7KrH2FWPiaseE1dlJp5z32xQbrqefzKoNriBv8eWaE47WAIYUosX9LWBl5n0i+C4I1cnRJajVCm23amT4MkKPnK/Wv4Lwihv6oIdAAA=]]
+
+** Development
+
+- neurons don't heal- synaptic 'overproduction' is a misnomer, when it is part of the functioning
+- critical periods: Language phonemes
+
+[[edraw:data=H4sIAJkDa2YAA71WTY/bNhD9KwQDNClgWRRFfW0tF+2phy1Q9NKmN65F2cTKokpSKzm/vkORyjrp7iFFvbCtx895b0acoXfm6Yjmc9ebGp+sHe7ieJqm7ZRulT7GlBASwwrsl9zNnewfX1qYVFUVL7MYTbKxpxonCSUYnYQ8nmyNmes8CW2k6mFum+D9rhGtQbKpsWg0nyLXhdEz149CfzkekYhrrSaM/OwfniJf+78EFhgYtDBCP4mfzCAO9ndupapxr3oB9FJMP6u5xlFCkPtR98VIi/bPGvvGx6WhtBQ92OOjVRgZq9WjWK20sutq/C4h7gN6B25PCMT+ChY3UeEMbwrENuQvjOL9LvYKoeH82+80qELzwnJZnq+H6zkED/zweNRq7JtX1LRtu7Adrzep5gL6RNfJwYiwLwp09NnQ6spqS6RgDYg06CtcVGaPB+gnlWvMTi5ZCK2YLXKPiPeHk9I1Psum6Zwy1duo5WfZwT7DexPBe5FtmDDyE1An5dfxdEFhBNBxMIiv4Lq73MF77i/InmR/NGhQxsiHTuxiR3wbDem1BnPp+WDlAb1XcIQHrZrxAOeqf78quE2MWepj/M3W80PbOv16ccRbp6v1bLXOvrRuNcSnVfoM4eNWy/kD2VZplVc0p6Qos4qUcKi3KRxNShKWpjTL87LYRC+MvbCTZsW2ymlVsTRJWZImmyhJsm1WZAUrc8aqglb0e/z/OEnT4GRKvZNLkvpMjEQPKTLq7sO7f9WXb+D36efyHooklBFyT2lAFjAPWHpMw7rUz99cV8bIxvFlecDSY04C0oBhXe7nb5bWa0q52rYf9NhDMt8yhdcy4g76/ru/R2V/aLUQn4DW91DHL3AjIdUiMbt7w11OP/7nnL4+kK/mdFHcMMAsOJy7miV6o/QFcS24gcXa2I27HFGrwQ7vwHlj3yL8pVPzm9AnPhjUQZCRjz7v5JPwzQ16GC3iaDQjh7qOjGrtBMKRuRgrzm9R54sSVELdG/Xna+WWuQl0CC78+wVZwJzcl+QKS0D6jG9RMxYe5vk/Iw1IvM4Vna4iv8I8YLhY4iP84M/j/h8ZO6xXZAoAAA==]]
+
+
+Perhaps brain software is made out of ghosts of living memes, like a landscape carved from rivers.
+
+
+
+Kantian pre-fill mode: prepare a net for some physical inputs.
+
+- [developmental neuroscience, sensor motor inputs ]
+- traveling waves?
+
+
+Has an analog in machine learning. [pretrainend convolutions I think].
+
+
+** Dreaming
+
+
+[[edraw:data=H4sIAOsBa2YAA71XUY+jOAz+KxH7siu1NAlJgFWpdNeXe9h7uZe7mzdumrZoKFTATDv3689OAg3QlW416rZTbGzH/mI7Vmbdvh3I9VRWbRYcu+78dbW6XC7hJQrr5rDilNIVWATW5Ou1LKqXe4YsTdOV0QbkUuy6YxZIRQNy1MXh2GWBYCwgb7ppi7rKAhayYLPe6X1Lil0W6F2TX5b4CtJT3rzoZixf0mXeNPUlIFb7p42g+vffXBQQnBvd6uZN/9Ke9XP3R94VdRZUdaUhfKEvv9bXLFgySvDH8S8gjd7/lQWW+dswdVPoCvzlr10dkLZr6hfde9kXZZkFnxjFL+A9592RANjfweNiGaPjRUzEgj4FZLVZryxCYHB/m3UDqMjVRHk3z+9m65aBf/Lnl0NTv1a774DZ7/cm2MFfVO/eAZ4uy+Lcardu6aLxm6N+J4OvBL+QDIBnsnO19BnemWFAwCg1AR/jnatHehfCeu/0tSP4WObV87FusuBU7HYlZrWuuuU+PxUlrGvzql1CSxV7p2iLfyE0S6atgPVE4BgC0rPRpT5BF7Wk3hN9xb7E5l+vMORjovPEhueww81zfTrXbQH9X+Vl0b2T5rXULfncvlddfv3S4zDta3t0qSvontem/PxpdvK+BP+7CrYz8UTA9CBQy2+GCkc5/cYSR5WjwlHuUddhD8WnHD7l8Dk8PPEotRQwG/1A1ePxRdziM1Q4Crgil6/I4Y0cXkE9Si1FvIIbesP7wwcK0UgeJjJmguNTcrkAGFsZh04Cz3gRRSLkg5UgMzULh1eZypmey7CPICIqt9J3hyF5Eg4YBKz3/SXgnxLhW0QSZVvhQxfS2tFZOCsbuYzlFoVMhOqGk8go5APuNAaHNA4lUTSkw4dJykBOt0qF8RA94r1xMneb3Auf3MEZ+2lL7H7icWrNvtUoW8ZMjV3NMqr8VKl5Rab6aUVn+nFDqFHBY9tEarJnFBLp4xLcCe/04NMH+xqmDcCEkmxZhLnG4jDTCbznGEctcqZ0DNuKGi2uoEaL63opv3FuzZaxQYbeBn5YTwcZHeLQITYd8LABY4/7owlQ4CdFjDEwSd+bCXdMjACQUajC6ihUoTEyW2U2bmRqYJz5VvYSyQcr2a8UvUT03kUfT/QIZI+pR/nxcvstKGA/MCahfH5nRRBq3Ldz/aTvZwbJ5OAw/yTx2EyHZHz22OgscggCc3t0wDDBKaCN/D1IaS1NziaTwgqnM8VI4/HwYdyfUxRb2JSEsTRMhw8OGwUAmD8BVTwY0zuO6V0I9B5a6ieRuX1RPyvUZYD5Dp0h82qmcARO88tGpb9To6nBrMozg0mbMH8DnLvmYj4OZqWQ8NEWYpE68Z3+fHr8XQima4R3HaR49+GOUkvxzhbxn3Anw/iJi5+4+ImL7+4wqwP84L/SzX8YvlXCvQ4AAA==]]
+
+
+- Consider the banana language (every sentence is required to have the word banana in it).
+  It is less useful than English.
+
+- The /repertoire/ of a system of expression is the set of sayable things.
+- everything possible to say should be sayable.
+- You want to be able to compose the elements freely.
+- (same as 'the living language problem').
+
+
+Perhaps dreaming is keeping the system of expression smooth that we use to create our 'waking dream'.
+
+** Culture
+
+[[edraw:data=H4sIAFdahmYAA7VWTY+bMBD9K5b3siuFYDtslqxCqraXHtpLe+jHjYUhWAE7Miaw/fUdY9ik267UroQIHuOP994MniHb5rQnfV2pJqGltcf7MOy6btmtltrsQ8EYC3EF9Uvu+0qqw98W8s1mEw6zlHQyt2VCb9eMkhLkvrQJjQQ+nMA0UquE8iWnu20ORUNknlDITdoF7hFH69QcwPw+HrAgNUZ3lPjZr55hPT1/GFlw4GigAXOCt80RMvs5tVInVGkFSC+he6f7hAacEXcL96PEQPEtob7zfehoI0EhXtpaTUljjT7AhFLIqkroFWfuQr3H1JYExX5CxEVw54AXdyRasB+UhLtt6BVix/m32xpURfqB5XFoX4zWOQIPaXbYG92q/AUxRVEMZPvLTTp/pCOf3xSMVOKMMrnxBBS760LIWWDkFXOnsx8tUkJVyWMD/0FRFHGMFMaBuaD33mYD+C12cECsXokOK8TPX0CPJ3Qxh/bNhH47A7rgEzqfIzJT3PlmDvTNM/QhZXxeBKDwxLamur76I9tv6D/z+2xwWShiRjhjH8V6tNFoxWiZtzy+sGK00avfXBwXzHsvRu/F5P3QwYHVeOos9Ja4JkhVVmqT0FrmeeWyWSsbFGktK9zXpKoJsJTJYpxo5E9wh/h5CXJZuYrGrES7SzMrT6i+fUC9qYVt6NjmDTt3tTTGMKJdsfkc5cw7GjlHSyxS+KnQJse2hvrJ0zmYY0/sascu08qFVqqGgDpJo1WN34s52cVUdmPnd1vjXhKSB6/hDZmTen0R8S86k2Afkfp9W9nWzBpxHl0wX8MJFLl84zcTd7jHG/+k7H4BBF0IhcwIAAA=]]
+
+
+- Reminds me of the book title by Wiener */The Human Use of Human Beings/* (1950).
+
+- Cultures are *living entities*, just like ideas are
+- Systems of ideas *use their resource level*, perhaps these 2 things together are a definition of *technology*
+
+** Reality
+
+#+begin_quote
+The new generation will have no trouble accepting that consciousness is a virtual machine.
+They are used to virtual machines when using the software of their computers and phones.
+#+end_quote
+
+From memory, not verbatim Dennett 2023.
+
+- Consciousness is a virtual simulated reality created by software ✓
+
+New questions:
+
+- What is software?
+- What is virtual?
+- What is reality?
+
+
+
+* Literature
+
+** 1
+
+Pentti Kanerva. Hyperdimensional computing: An introduction to computing in distributed representation with
+high-dimensional random vectors. Cognitive Computation, 1(2):139–159, 2009. doi:10.1007/s12559-009-9009-8.
+
+** 2
+
+Rafael Yuste /Lectures In Neuroscience/, 2023
+
+** 3
+
+Buzsáki, G. (2019). The Brain From Inside Out. New York: Oxford University.
+
+
+* Illustrations
+
+- https://giphy.com/gifs/the-matrix-neo-thomas-anderson-uvoECTG2uCTrG
+
+* Footnotes
+
+[fn:1]
+
+[recent youtube talk]
+
+[fn:2]
+
+/Cell Assemblies in the Cerebral Cortex/, V. Braitenberg 1977
+
+[fn:3]
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/
+
+[fn:4]
+
+https://youtu.be/YZl4zom3q2g?si=7ANYffcvqi_nJB0X
+
+[fn:5]
+[[https://youtu.be/HB5TrK7A4pI?si=5Cab5tnwwYPumCn-]["We Really Don't Know How to Compute!" - Gerald Sussman (2011)]].
+
+[fn:6]
+
+Harold Abelson, Gerald Jay Sussman, Julie Sussman, /Structure and Interpretation of Computer Programs/, 1983

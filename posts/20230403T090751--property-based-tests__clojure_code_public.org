@@ -1,0 +1,10 @@
+#+title:      property-based-tests
+#+date:       [2023-04-03 Mon 09:07]
+#+filetags:   :clojure:code:public:
+#+identifier: 20230403T090751
+
+* property based tests
+- David Nolan, the power of toys https://www.youtube.com/watch?v=qDGTxyIrKJY
+- He talks about playgrounds and property based tests
+- We can think about tests where we are certain about forward and backwards compatibility
+- Eric Normand: https://www.youtube.com/watch?v=r5i_OiZw6Sw

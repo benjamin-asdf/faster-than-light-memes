@@ -1,0 +1,153 @@
+#+title:      pearls-of-introspection
+#+date:       [2022-11-12 Sat 16:02]
+#+filetags:   :clojure:emacs:feed:
+#+identifier: 20221112T160206
+#+EXPORT_FILE_NAME: pearls-of-introspection
+
+Recently, I watched [[https://www.youtube.com/watch?v=6M1JesjbtDM][BugsWriter falling in love with elisp]] [fn:1] - he said
+about =describe-mode=
+
+#+begin_quote
+Why did nobody ever tell me about this?
+#+end_quote
+
+This post is called Pearls of introspection.
+
+#+begin_quote
+All of Emacs is one bright pearl.
+#+end_quote
+
+* The describes
+
+** describe-mode
+
+Lists all current keybinds in a buffer. Huge output, sometimes what
+you want.
+
+** describe-char
+
+Emacs is a text editor, text is made up of chars.
+=describe-char=  is useful if you want to know what face is rendering.
+It goes beyond that by showing string properties, overlays,
+and buttons. This can be useful for debugging.
+
+Story:
+Once I deleted some packages on my system, then I go into emacs =info=
+and some of the text is not rendered right.
+
+=describe-char= gave me the hint, the =fixed-pitch= face wanted
+"Monospace Serif" or some such but I only had Monospace.
+
+So I did this and was happy ever after:
+
+#+begin_src elisp
+(set-face-attribute 'fixed-pitch nil  :family "Monospace")
+(set-face-attribute 'fixed-pitch-serif nil  :family "Monospace")
+#+end_src
+
+Worth binding:
+
+#+begin_src elisp
+  (define-key help-map (kbd "c") #'describe-char)
+#+end_src
+
+
+** describe-key
+
+"What does this key do?" - the answer is =describe-key= and hit the
+key.
+
+** describe-function
+
+Emacs functions have amazing docstrings.
+
+The help buffer has a keymap of its own, try =?= to list keybinds.
+
+Highlight: =s= to go to source.
+
+** describe-keymap
+
+Probably faster than describe-mode, renders a keymap in a help buffer.
+Try =describe-keymap= -> =help-map= hehe.
+
+** prefix-help-command
+
+You type =?= after starting to type a prefix, then you get the binds.
+
+*** embark-bindings
+An alternative to the default =?=, it is amazing. I get a vertico
+ completing-read of the binds.
+
+** M-x =describe-=
+
+There are more, some of them I never used. Emacs is vast like the ocean.
+
+* view-lossage
+You accidentally hit some key, and something unexpected happens.
+=view-lossage= is your friend. It shows the last keys + commands.
+
+It is like the morning-after pill version of =describe-key=.
+
+story:
+I sometimes accidentally hit =y= before typing the text for
+an =avy= command.
+
+Every time I was like "Holy cow whatever I hit there is powerful". [fn:2]
+
+I didn't know about =view-lossage=. The thing is, it would not have
+helped, because =avy= is reading the key, then dispatching on the key.
+I guess it needs to go through the keymap system or something to show
+up in =view-lossage=.
+
+* apropos-value
+
+This helps me about once per year.
+
+It is extremely satisfying when you use this and it helps you.
+I once figured out about =revert-buffer-function= by using it.
+
+You can revert =shell-command= buffers to rerun the command but I did
+not know by which principle.
+
+=apropos-value=, then typing my shell command showed me there was a
+buffer-local
+variable called =revert-buffer-function=. It worked because
+Elisp closure objects print with their environment. In other words, the
+value of =revert-buffer-function= was a lambda that printed with my
+shell command. It is quite wild.
+
+* find-library
+
+Read code, and do little experiments. I am not sure but I think there
+might be something profound about Elisp and emacs.
+I think the language is the program and the program is the language or
+something. Knowing the program is to know the language and knowing the
+language is to know the program.
+(Insert link to top Elisp functions blog post here).
+
+* where-is
+
+I just discovered this via =describe-keymap= into =help-map= lol.
+This is like =describe-key= but you say the command and it says the
+keybinding.
+
+
+* Footnotes
+
+[fn:1]
+#+begin_quote
+I thought lisp was going to be complicated but it is simple.
+#+end_quote
+That is an interesting tension between outside perception and the
+actual language.
+Since you write the AST directly, you can say what you mean.
+The power of lisp is that the code is made of
+1. Ideas
+2. There is nothing else.
+
+[fn:2] It makes the cursor stay and yank the target word.
+Hit =?= before typing the keys for avy.
+The way it works is that avy can dispatch with different actions, the
+default is to jump to the location, but =y= for example yanks a word
+and makes your cursor stay where you are. It is really powerful.
+Ace-window has the same paradigm.

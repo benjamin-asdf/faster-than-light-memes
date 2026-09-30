@@ -1,0 +1,522 @@
+#+title:      technical-notes-on-synthetic-psychology
+#+date:       [2024-03-06 Wed 18:38]
+#+filetags:   :cybernetics:memes:programming:
+#+identifier: 20240306T183858
+#+EXPORT_FILE_NAME: technical-notes-on-synthetic-psychology
+
+I'm publishing my code comments as blog posts now.
+
+==============
+Wavemaker (just an experiment)
+==============
+
+An Ergotrix implementation using assembly calculus, using a random directed graph with geometry.
+
+Current overview: [[denote:20240208T124507][Meme-Machines]]
+
+---
+
+* Update:
+
+Very similar ideas here: [[https://arxiv.org/abs/2309.08045][Traveling Waves Encode the Recent Past and Enhance Sequence Learning]].
+
+---
+
+
+#+begin_export html
+<iframe width="800px" height="800px" src="https://vehicles.faster-than-light-memes.xyz/art/p/assembly-fun/8?width=500&height=500"></iframe>
+#+end_export
+
+To the right is the world, going into 1 of three states. Move the mouse across the scene to change the world.
+Left is a neuronal area, with inputs from the world.
+The wavemaker is the orange element that simply activates random neurons geometrically through time.
+
+(You don't see anything useful here, basically because this thing doesn't have any outputs)
+(Getting to it :P).
+
+
+---
+
+I think these kinds of things may be obvious to computational neuroscientists people, but my biological brain
+needed to spend some time on getting the inferential steps.
+
+It helps make visualizations so I see the thing happening.
+
+---
+
+[ insert intro to assembly calculus ]. Santosh Vempala is explaining his model amazingly [[https://youtu.be/mSX9CCKdBDA?si=0ZzdG4zEgQ-t3aXK][in this talk]].
+
+In my current coding adventure, I implemented some neuronal areas (random directed graphs of neurons)
+with inhibition model and Hebbian plasticity (that is the model).
+
+From this, you get 'cell assembly' properties, which are wonderful. A cell assembly is a subnetwork of well-connected
+neurons that will form predictably from some signals coming in.
+The beautiful thing is that just like hypervectors they are allowed to represent half of information and so forth.
+I.e. a cell assembly can be ignited back with partial information. And you can represent the combination of
+information ('mixing machine') and such things.
+
+There are even theorems and math on this to some degree.
+This is [[https://arxiv.org/abs/2110.03171][paper]] of which I implemented a subset in the browser. And [[https://faculty.cc.gatech.edu/~vempala/][Santosh S. Vempala's homepage]].
+
+In order to make an assembly calculus you:
+
+- Make a random directed graph of neurons with weights
+- Say that a neuron can be either active or not active
+- Say there are discrete time steps
+- Say there is an `inhibition model` that limits the amount of active neurons
+- Say there is a plasticity rule called Hebbian learning that increases the weight for
+  2 neurons firing together
+
+[[https://github.com/benjamin-asdf/ftlm-vehicles/blob/main/src/ftlm/vehicles/assembly_calculus.cljs][Here]] is my current browser implementation using Clojurescript, [[https://mathjs.org/][mathjs]], and [[https://github.com/cnuernber/tmdjs][tmdjs]].
+
+This is one update step:
+
+#+begin_src clojure
+
+  (defn update-neuronal-area
+    [{:as state
+      :keys [activations weights inhibition-model
+             plasticity-model]}]
+    (let [synaptic-input (synaptic-input weights activations)
+          next-active (inhibition-model state synaptic-input)
+          next-weights (if plasticity-model
+                         (plasticity-model
+                          (assoc state
+                                 :current-activations activations
+                                 :next-activations next-active))
+                         weights)]
+      (assoc state
+             :activations next-active
+             :weights next-weights)))
+#+end_src
+
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QzjbRc0yJtE?si=9c2CM17ZKU0Ub5u2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Wavemaker
+
+** Geometry
+
+=Geometry= means that the graph of connections is not all over the place, but that there are
+rules that make you more likely to be connected to somewhere,
+presumably, usually to your neighbors, other geometries are thinkable and potentially interesting
+
+
+Idea:
+
+#+begin_src
+
++---------------+          -+
+|               |           | Here I roughly from 'columnar' cell assembles
+|     A       A |          -+  (they are horizontal, saying column because it invokes cortical columns)
+|        A      |   ^
+|               |   |
+|   B       B   |   v   ^
+|        B      |       |
+|   C  C    C   |       v
+|     C         |
+|     .         |
+|     .         |
+|               |
++---------------+
+
+
+#+end_src
+
+What could you do with a wave of activation going through the geometry?
+
+#+begin_src
+                    [ 'wave maker nucleus' ]     (see also syn-fire-chain)
+                             |
+                             | Imagine a slow fiber here
+                             |
++-----------+      <---------+   t1
+| |         | A              |
++-+---------+      <---------+   t2
+| v |       | B              |
++---+-------+      <---------+   t3
+|   v       | C              |
++-----------+                |
+
+#+end_src
+
+Here, A, B, and C roughly correspond to cell assemblies forming from the input
+(remember cell assemblies are something like a data structure that represents some information)
+
+wavemaker:
+A hypothetical element in the circuit that has the relatively stupid
+wiring of making (timed) waves of activation through the geometry.
+Limiting myself right now to imagining it goes top to bottom through.
+
+The frequency of the wave maker is sort of the time resolution for this event flow anchor mechanism.
+This could also be implemented with a syn-fire-chain, listening to events in the system, instead of
+static time.
+
+---
+
+I have called a very similar idea an n-clock somewhere, for neuron-clock or neuronal-clock.
+You can count how often something happens (going around a clock of states) and something
+else in your assemblies can base itself on that.
+For instance, you can say 'Event b happened 3 neuronal events after event a'. Where neuronal-event is
+already allowed to be arbitrarily abstract - i.e. events coming from somewhere else in the cognition machine.
+
+---
+
+We might be allowed to imagine a wave-maker made from many neurons himself, so he could be
+swapping from t1 to t2 only under certain circumstances.
+
+-> Still, it is joyful to try to come up with extremely simple elements, at least initially.
+
+
+Consider this case,
+1. Inputs already ignited cell assembly A,
+   In other words, A is in short-term memory (the information representing the signal a)
+   (signal-a, lower case; cell-assembly-A, upper case)
+2. The wave maker goes through the neuronal area. In front of A, the additional activation from the wavemaker
+   doesn't do anything (for the sake of consideration).
+   On top of A, it doesn't do anything because it is active already
+3. Now, just behind A, there is an interesting overlap in the circuit:
+
+   A is activating the area behind A a little bit AND now Wavemaker (time sayer) is activating it too!
+
+   This area now represents a question: Is there any part of the system that would mean a yet-to-be-allocated B?
+
+   Is there anything in our existing signal processing machinery the region of this potential B is already listening to,
+   that would now allow it to fire?
+
+   If it does fire, Hebbian plasticity already automatically strengthens its inputs, I call those inputs lowercase b.
+
+   Lowercase b is the answer to the question of what follows A in time.
+   Keep in mind that A was active from short-term memory, to begin with.
+
+   The relationship A->B is a 'follows in time' relationship, and we are allowed to represent it in our circuit.
+
+   Braitenberg called this an Ergotrix wire. (Vehicle 11 - Rules And Regularites).
+
+   Other names:
+
+   Causality wire, e-line (borrowed from Ergotrix), across-line, T-line, time-wire, directed association, Association through time,
+   also very similar to Minsky's Transframes
+
+   It is especially satisfying that Hebb plasticity is resulting in both association lines (m-lines for Mnemotrix)
+   and e-lines - simply because cell assemblies represent information across time.
+   Allowing the association wires to form between something in short-term memory and something new coming in.
+
+
+#+begin_src
+
+                    [ 'wave maker nucleus' ]
+                             |
+                             |
+                             |
++-----------+      <---------+   t1
+| |         | A              |
++-+---------+      <---------+   t2
+| v         | ???                                   !         -> B
++-----------+  <--------------------------------------- b
+|           |
++-----------+
+
+#+end_src
+
+If this works the way I think then such a mechanism would find and represent those b-signals.
+
+---
+
+One of the things a model of cognition will be able to explain is why are there orientation columns in the visual cortex.
+
+It is a hunch of mine that something in the space of what I describe here is happening. But on what levels I don't know.
+
+Something that somehow constructs itself from the fact that when you turn your head the world rotates - predictably so.
+Maybe the movement brain is allowed to be b-signals in such a scheme as above.
+When I say 'I am oriented at x degrees and now I am moving', the cell assemblies can already flow a little bit into the shape of
+x + speed-of-movement-per-timestep.
+
+But whether one column now means one cell assembly 'region', I cannot say.
+
+Whatever the purpose of the cortical columns, considerations like this at least get my imagination going in a space that looks
+a bit like where an explanation of such things would come from.
+
+---
+
+A wavemaker has some parameters that determine its behavior.
+1. How many 'segments' of the neuronal area it reaches (n)
+2. How well it is connected (density)
+3. It's speed
+
+#+begin_src clojure
+(->wavemaker
+  {:density 0.01 :n 5 :n-neurons n-neurons :wave-speed 5})
+#+end_src
+
+---
+
+In general, something like causality is an important challenge to connectionist models.
+
+I can think of other important challenges [more elsewhere].
+
+- Perspective making: Make the differences between things more important than their similarities.
+- Directed thought / fine-grained thought / focused thought: If everything just connects to everything else,
+  how can you represent something like a story without the elements all flowing into each other?
+- Purely connectionist models are frozen in time. But the brain needs to run on reality and navigate
+  the world online (online means there is no pause to calculate something).
+- These kinds of reasonings bring me to something like these activity-flow cell assemblies
+  because by having the activity in the model we get to something that looks way more like
+  alive memes, embedded, physical pieces of information with an agenda, reproducing themselves etc.[fn:1]
+
+* Other ideas on time and causality
+
+** N-Clock accumulator:
+(doesn't need geometry)
+
+#+begin_src
+
+        +-------------------+
+        |  +--X             |
+        |  |     +--O       |
+        |  +-X   |          |
+        |  |     +--O       |
+        |  |     |          |  neuronal-area
+        +--+-----+----------+
+           |     |
+           |     |
+         line1  line2
+       [ orange nucleus ]
+                             X - active orange neuron
+                             O - inactive orange neuron
+
+#+end_src
+
+- =Orange nucleus= activates a random line each time step.
+- An orange line goes into the neuronal area and activates a few orange neurons (can be random, just make a wire grow through it).
+
+Consider a signal-a coming in, for the sake of argument, say that when any signal wire also resets the neuronal area.
+
+From assembly calculus, we know that the connectivity of `wire-a` will produce a =cell assembly `A`= of well-connected neurons,
+that represent the information 'a'. I call these =blue neurons=, the ones that listen to signal wires.
+
+
+#+begin_src
+                          signal-a
+                             |
+    +----------------------+ |
+    |                      | |
+    |       A    A   <-----+-+
+    |        A       A     |
+    | +-O       A          |
+    | |                    | neuronal-area
+    +-+--------------------+
+      |
+      |                     A - signal a (blue neurons)
+  orange line
+
+#+end_src
+
+Since we reset the whole area, all orange neurons are currently off.
+
+Now in the next time steps, this is allowed to happen:
+
+#+begin_src
+
+   +----------------------------+
+   |                            |
+   |  X       A   A  +X..       |
+   |    X       A               |
+   |   X      A   A             |
+   |                            | neuronal-area
+   +----------------------------+
+
+X - orange time neurons, more and more
+A - established cell assembly representing signal-a
+
+#+end_src
+
+As time passes, we activate more and more random orange time accumulation neurons.
+
+From the properties of assembly calculus (the information mixing machine),
+you will see that there are now cell assemblies forming that represent the information
+
+=AX = (mix A X)=
+
+That is they are =blue-orange= cell assemblies that will ignite when A is active in the area and X happens.
+That means when A happens and then some time passes. So `AX` now represents '`a` in the past'. Or a-prime `a'`.
+
+This is very useful because now somebody else in the system can associate (with Hebbian learning or equivalent)
+the concept of `(associate AX B)`.[fn:2]
+
+
+Now representing the information 'signal-b follows signal-a'.[fn:3]
+
+I call this n-clock accumulator, for a neuronal-clock accumulator.
+Accumulation because there are more and more orange 'time passed' signal neurons.
+
+---
+
+If you do not want to reset the neuronal area for every signal coming in,
+you can add some neurons Y, that listen indiscriminately to the concept of new
+information coming in.
+
+
+#+begin_src
+                signal-x, any signal
+                  |
+                  |
+                  |
+     +------------+-----------+
+     |YYYYYYYYYYYY|YYYYYYYYYYY|
+     |  |         |           |
+     |  _         v           |
+     |  X                     | neuronal-area
+     +------------------------+
+
+                               Y - listens to all incoming signals
+                               Y -| X (Y inhibits X), representing a time reset
+
+#+end_src
+
+We can achieve this by forcing every input signal wire through a layer of Y neurons, leaving
+collaterals in this Y layer.
+
+Y is allowed to be a well-connected cell assembly itself, but perhaps its inhibition model forces it
+to make a quick burst and then extinguish.[fn:4]
+
+Now you can hook up all the orange X neurons to be extinguished by Y, representing the idea that time is reset to 0.
+(Of course, this stuff is allowed to become arbitrarily complicated).
+
+This overlaps (and indeed I had this in mind when thinking of this scheme), with the neuroanatomy of the
+pyramidal cell A-System and B-System, where A-System is remote signals coming in and the B-System is sort of the
+local group ('ensemble') of neurons that make some local computation on the inputs, then.
+-> The A-system pyramidal cells are allowed to take the role of the Y layer. If they all inhibit the orange neurons
+a little indiscriminately, then every new signal coming in can reset the time representation in the system.
+
+---
+
+You can go one further on this idea and come to something that keeps track of events more sophisticatedly:
+Instead of merely saying 'More time passes' you can say 'Event 1 happened, event 2 happened' etc.
+For instance, a simple thing would be to say 'One in-breath happened' or something. Then you can count the
+breaths you take between signal a and signal b. Sort of makes an anchor for representing a time flow then.
+
+That is somewhat equivalent to a syn-fire-chain idea.
+
+---
+
+The n-clock accumulator might be implemented with a slightly simpler operation:
+
+=(mix random-noise A) -> A'=
+
+As time passes, you can mix random noise into the neuronal area.
+
+* Wavemeakers Might Create Geometries In The First Place (Sleep Spindles?)
+
+Consider a neuronal area:
+
+#+begin_src clojure
+
+  +----------------------------+
+  |                            |
+  +----------------------------+
+                          neuronal area
+#+end_src
+
+
+If we assume, initially, baby brain arraignment:
+
+- a random directed graph (low bar, plausible).
+- hebbian plasticity [Hebb, Kandel]
+
+Now you have a wavemaker nucleus making waves:
+
+#+begin_src clojure
+
+
+     t1     t2
+  ---+------+-----+-----------------
+     |      |     |
+  +--+------+-----+------------+
+  |  X1----->X2   O            |
+  +----------------------------+
+                          neuronal area
+
+
+  X1, active at t1
+  X2, active at t2
+  O, not active
+#+end_src
+
+Via Hebbian plasticity, we will strengthen X1->X2, but not X1->O.
+It is easy to see that this arrangement will create a geometric network.
+Further, this geometry even has a =direction= in such an arrangement.
+
+I submit that creating geometries in an initially random graph of neurons might
+be /one/ reason for [[https://en.wikipedia.org/wiki/Sleep_spindle#:~:text=Sleep%20spindles%20are%20bursts%20of,usually%200.5%E2%80%931.5%20seconds).][sleep spindles]], which travel across hole cortex at 100ms[fn:5].
+(But cortical activity might only be one side of a 2 sided process, see musings/thalamus).
+
+It is interesting to consider that babies have stronger sleep spindles [Terry Sejnowski, dito].
+This at least overlaps with the idea that sleep spindles are part of mechanisms (or byproducts thereof)
+shaping cortex networks.
+
+---
+
+It is important to keep in mind that this also depends on the initial layout of the graph.
+
+#+begin_src clojure
+
+    1    2,  ...  n-compartments
+  +----+----+----+----+----+---+
+  |X->X|    |    |    |    |   |
+  +----+----+----+----+----+---+
+                neuronal area compartmentalized
+
+#+end_src
+
+If we consider a compartmentalized neuronal area, wich the neocortex presumably is.
+
+This would presumably be useless, if there are no 'horizontal' lines between 1-2.
+
+---
+
+Just musings:
+
+I am in the camp of people that explaining the cortex means understanding the Thalamus<->Cortex.
+
+Conser /neuronal area/ might be a relay nucleus in the thalamus. I am not sure, but perhaps you have
+such a /Hebbian plasticity makes geometry/ scheme happen in the thalamus primarily, then you see a secondary activity in Cortex.
+This would be a way out of the conundrum, why make waves across compartments if they aren't connected horizontally?
+Perhaps because it's a mirror of a wave going across a nucleus in the thalamus, which presumably doesnt' have compartments.
+
+
+* Reading
+
+- Braitenberg Vehicles, if you have not already
+- /On the Texture of Brains An Introduction to Neuroanatomy for the Cybernetically Minded/, Valentino Braitenberg
+- [[https://www.youtube.com/watch?v=mtPgW1ebxmE&list=PLCEC78997E3E2DAB4][Coding And Vision - Clay Reid and Christoph Koch]]
+- Corticonics 1991 Moshe Abeles
+
+* Footnotes
+
+[fn:1]
+
+In some ways, we already know that cognition can be explained in terms of some kind of meme-machine.
+See Dennett 2017 for this.
+
+So the question becomes how to build meme-machines.
+
+[fn:2]
+
+What I call an m-line for 'mnemonic-line'.
+Alternative names: 'memory-line', 'association-line', Hebbian plasticity synapse.
+
+[fn:3]
+
+Which Braitenberg calls 'Ergotrix', alternative names: e-line, causality-line, directed-association.
+
+[fn:4]
+
+I.e. you make some cells that are strongly activated by Y and then inhibit Y strongly.
+
+[fn:5]
+
+Terry Sejnowski mentionend this here:
+[[https://youtu.be/pWnE3qjE-sY?si=NlxbbpKEkRZWfP3i][A conversation between Terry Sejnowski and Stephen Wolfram]]

@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  pre {
+
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: black;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #faf7f7;
+    background-color: black;
+  }
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="simple.min.css">
+<link rel="icon" type="image/png" sizes="16x16" href="./lambda.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+<div id="preamble" class="status">
+
+
+<style>
+
+#pixel-lambda {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+}
+
+  
+#navbar {
+  display: none;
+}
+
+#navbar.is-open {
+  display: block;
+}
+
+
+#navbar a {
+    padding: 4px;
+    text-decoration: none; 
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+
+.hoverable:hover {
+    color: #F689FF;
+    background-color: black !important;
+    font-weight: bold !important;
+}
+
+.hoverable:hover a {
+    color: #F689FF;
+}
+
+
+
+
+#navbar li {
+    list-style-type: none;
+}
+
+#navbar ul {
+    padding-inline-start: 0;
+}
+
+
+.tooltip-text {
+    display: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    white-space: nowrap;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 10px);
+}
+
+button:hover .tooltip-text {
+    display: block;
+}
+
+a:hover .tooltip-text {
+    display: block;
+}
+
+.spinner div {
+  width: 20px;
+  height: 20px;
+  background: var(--text);
+  animation: spinner 2.5s linear infinite;
+}
+
+.spinner div:nth-child(1) {
+    animation-delay: 1s;
+}
+.spinner div:nth-child(2) {
+    animation-delay: 0s;
+}
+.spinner div:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+@keyframes spinner {
+  0%, 100% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+button:hover .tooltip-text {
+    display: none;
+}
+
+a:hover .tooltip-text {
+    display: none;
+}
+
+}
+
+</style>
+
+
+<div style="position: absolute; top: 2.5%; left: 2.5%" id="topbar-button"></div>
+<div style="height: 25px"></div>
+
+<div style="display: none" id="topbar">
+
+<h4>
+  
+  <div style="display: flex; justify-content: center; align-items: center">
+    
+ <canvas id="pixel-lambda" width="16" height="16">ftlm</canvas>
+       
+  <button onclick="location.href='/'"
+          style="background-color:black;;text-decoration:none;padding:0.5rem;font-size:1.5em;">
+      <span style="color:#feb48f">:faster-than-light</span>
+      <span style="color:#F689FF">/memes</span>
+      <span class="tooltip-text">Joyful ideas are better ideas</span>
+      
+  </button>
+  </div>
+</h4>
+    
+    
+<div style="display: flex; justify-content: center; align-items: center;">
+  <button style="padding-top 12px; padding-bottom 12px;" id="navbar-toggle"><span>search</span>
+  <span class="tooltip-text">This is your fathers rock. I mean this is the searchbar.</span>
+  </button>
+    <span style="margin-left: 1rem;">
+<button id="rand-page-button">
+    Explore!
+    <span class="tooltip-text">Get a random piece of Bennis mind!</span>
+</button>
+
+<button onclick="location.href='lisp.html'">Lisp
+    <span class="tooltip-text">What does it mean for a language to be beautiful?</span>
+</button>
+
+  <button onclick="location.href='documentaries.html'">Documentaries etc.
+    <span class="tooltip-text">History of cybernetics and related fields</span>
+  </button>
+
+  <button onclick="location.href='faq.html'">FAQ
+    <span class="tooltip-text">Answers and reasons for everything.</span>
+</button>
+
+  <button onclick="location.href='dreams.html'">Dreams
+    <span class="tooltip-text">Infinitely more angles.</span>
+</button>
+
+  <button onclick="location.href='reading.html'">Books
+    <span class="tooltip-text">Like a whetstone is to a sword</span>
+  </button>
+
+  <button onclick="location.href='ftlm-navbar.html'">Posts
+  <span class="tooltip-text">A list of all posts.</span>
+</button>
+
+<button onclick="location.href='screencasts.html'">Screencasts
+    <span class="tooltip-text">Dancing</span>
+</button>
+
+<button onclick="location.href='/work-with-benjamin.html'"> Work With Benjamin
+  <span class="tooltip-text"></span>
+</button>
+
+    </span>
+</div>
+</div>
+
+
+<div id="navbar" style="width: 100%"></div>
+<div id="navbar2" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge207ef0">The Metaphenomon of ASMR</a></li>
+<li><a href="#orga46ebff">Brain Feelings</a>
+<ul>
+<li><a href="#orga504237">Hofstadters Abstraction Ceiling</a></li>
+<li><a href="#org156902a">The Jolt of Fun / The Humor Ball / The Muses</a></li>
+<li><a href="#org9b108c3">The Chat Dim Offload</a></li>
+<li><a href="#org0bfc888">The Swiper</a></li>
+<li><a href="#org781cef3">Mental Effort | Imagine!</a></li>
+<li><a href="#orgcaffec4">The Mind Twist</a></li>
+<li><a href="#org1fba27f">The Water/Glass Wall of No Return</a></li>
+</ul>
+</li>
+<li><a href="#orga9f063c">Conclusion</a></li>
+<li><a href="#org2885e92">Appendix A: Hardware Level Sensors?</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge207ef0" class="outline-2">
+<h2 id="orge207ef0">The Metaphenomon of <a href="https://en.wikipedia.org/wiki/ASMR">ASMR</a></h2>
+<div class="outline-text-2" id="text-orge207ef0">
+<blockquote>
+<p>
+An autonomous sensory meridian response (ASMR)[2][3][4] is a tingling sensation that usually begins on the scalp and moves down the back of the neck and upper spine. A pleasant form of paresthesia,[5] it has been compared with auditory-tactile synesthesia[6][7] and may overlap with frisson.[8] ASMR is a subjective experience of "low-grade euphoria" characterized by "a combination of positive feelings and a distinct static-like tingling sensation on the skin". It is most commonly triggered by specific auditory stimuli, and less commonly by intentional attention control.[1][9]
+</p>
+
+<p>
+The term ASMR can also refer to media (usually audiovisual) meant to evoke this phenomenon, with the sensation itself being informally referred to as "tingles".
+</p>
+</blockquote>
+
+<p>
+The original blog post was "WEIRD SENSATION FEELS GOOD" in internet forums somewhere around 2010. <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+
+<p>
+The phenomenon ASMR obviously was part of the human condition before 2010.
+It just historically contingent fact that in this culture nobody gave it a name, nobody talked about it and <i>it was not a thing</i>;
+The moment something has a name, we can refer to it, we can <i>manipulate</i> it, we have a <i>handle</i> on it.
+</p>
+
+<p>
+In fantasy books, some magic systems are based on <b>naming</b>. And <i>naming a spirit</i> is an important concept of programming philosophy <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>.
+</p>
+
+<p>
+<a href="https://youtu.be/o268qbb_0BM?si=0lpLTU8C61VL-Hkw">Vsauce</a>:
+</p>
+
+<blockquote>
+<p>
+Words put handles on things so we can manipulate them, hold them down offer them to others, &#x2026;
+</p>
+</blockquote>
+
+<p>
+<b>concept</b>: A mental datastructure, a full fledged citizen of mentality, capable of being referred to,
+capable of having a pronounciation (having a name, a word), capable of being a meme.
+</p>
+
+<p>
+In some ways science and using imagination is giving names to things, thereby <i>making them a thing</i>.
+</p>
+
+<p>
+The <b>Metaphenomon of ASMR</b>: ASMR was not a thing until it was a thing.
+</p>
+
+<p>
+A psycho-physiological phenomenon similar to goosebumps, presumably part of the human psyche before even <i>sapiens</i>,
+yet it was not <i>a thing</i> until we gave it a name.
+</p>
+
+<p>
+ASMR is an example of a whole art form and an emerging cognitive psychology. Just by talking about a thing.
+</p>
+
+<hr />
+
+<p>
+<b>"This only happens to me"</b>.?
+</p>
+
+<p>
+Maybe inner psychological phenomenon have a tendency to fly under the radar?
+</p>
+
+<p>
+Maybe it is a mix of shame, the need to keep some things private, and the challenge of verbalizing mental phenomena.
+The person of 'WEIRD SENSATION FEELS GOOD' needed to confess somehow, didn't he?
+</p>
+
+<p>
+Talking about mental phenomena out in the open is rare. One thinker that has made it his avocation is Douglas Hofstadter.
+</p>
+
+<p>
+"This only happens to me" is a form of <b>solipsism</b>. How different could stuff be? Humans share a genetics and a brain hardware.
+</p>
+
+<p>
+On the software / mentality layer, every person is different form others, perhaps even maximally different.
+[David Deutsch thinks as different as species are from each other - perhaps even as different as different trees of life would be from each other].
+</p>
+
+<p>
+But on the hardware architecture layer. For all the parts where the genes had the chance to <i>adapt</i> a design of a computer system,
+on this level we should be relatively similiar; Because a evolutionary proven design is used.
+</p>
+
+<p>
+By the same logic of <a href="https://en.wikipedia.org/wiki/Convergent_evolution">Convergent Evolution</a>, the relevant aspects of the design should deviate very little from the local optimum.
+</p>
+
+<hr />
+
+<p>
+Douglas Hofstadter described the , a specific, visceral sensation associated with cognitive effort.
+When I experienced this 'abstraction ceiling feeling' myself, I thought 1) this is a real component of human experience. 2) Basically nobody talks about it.
+</p>
+<ol class="org-ol">
+<li>What if there is a whole array of things that are sort of like ASMR, that are not talked about but are interesting 3a) either understanding</li>
+</ol>
+<p>
+the nature of cognition or 3b) simply for artistic enjoyment?
+</p>
+
+<p>
+So here I am on the quest for unnamed things. Private psychological phenomenons which have no name, and no community.
+The generalized notion of an ASMR-like phenomenom - I just say <i>brain feeling</i> (german: Hirngefühl).
+</p>
+
+<p>
+Let's look for "brain feelings" without narrowing down too much what they could be.
+</p>
+</div>
+</div>
+<div id="outline-container-orga46ebff" class="outline-2">
+<h2 id="orga46ebff">Brain Feelings</h2>
+<div class="outline-text-2" id="text-orga46ebff">
+</div>
+<div id="outline-container-orga504237" class="outline-3">
+<h3 id="orga504237">Hofstadters Abstraction Ceiling</h3>
+<div class="outline-text-3" id="text-orga504237">
+<blockquote>
+<p>
+When I hit math graduate school I hit what I call, I describe it in [Strange Loop Book].
+An abstraction ceiling and it was a very unpleasant experience.
+It was about as unpleasant as hitting myself you know when you stand up
+and there's a open cupboard and you stand up quickly and it hurts like hell, well that's how it felt.
+</p>
+</blockquote>
+
+<p>
+<a href="https://youtu.be/UT5CxsyKwxg?si=dqEe97HDN0bCvCiH">D. Hofstadter at Stange Loop 2021</a>
+</p>
+
+<p>
+I have captured an abstraction ceiling moment in an audio diary, here complete stream of consciousness style text:
+</p>
+
+<details>
+<summary>Analogies about analogies...?</summary>
+
+It is like - say you categorize the move of an analogy in design space.
+Like 'this is knight shape, it goes one up and 2 left or something'.
+
+... and then you can say things 'this shape relates to this other shape in the space of moves of analogies'.
+
+let's say 'the atom is to the solor system as the what is to the what?'.
+
+Calling a program multiple times with different arguments is like making a function call within an application.
+
+The atom is to the solarsystem like a subroutine to a program.
+
+I remember somebody saying functions/ subroutines are programs within programs.
+It took me some time to actually connect this.
+
+So here I have 2 analogies that have the same shape I think I'm allowed to say this.
+
+Either way.
+
+Let's say something harder like taking an analogy pair but fill out a missing part.
+But something in the space of analogies...
+
+Let's say "The atom is to the solarsystem like the Baldwin Effect is to /what/" ?
+</details>
+
+<p>
+[a few moments of thinking]
+</p>
+
+<p>
+Direct quote from my audio diary:
+</p>
+
+<blockquote>
+<p>
+
+</p>
+
+<p>
+&#x2026; woar! I wonder if somebody super, super smart would have an idea what to say now.
+</p>
+
+<p>
+Holy shit.
+</p>
+
+<p>
+Hofstadter was saying it is like a cupboard and you stand up and hit your head and I have almost the same feeling right now.
+</p>
+
+<p>
+Holy shit, what the hell I have the abstraction ceiling what the fuck?
+</p>
+
+<p>
+Woar, it's exactly how this feels.
+</p>
+
+<p>
+For some reason something in this feeling tells me. Like part of why this is so painful in a way&#x2026;
+</p>
+
+<p>
+It is not painful actually, but the concept of it.
+</p>
+
+<p>
+Part of it is feels like, &#x2026;  it's completely impossible for me to grow out of this.
+</p>
+
+<p>
+Like this is the first barrier I ever encounter where I don't have the deep feeling &#x2026; -  That I would in principle be capable of growing on it &#x2026;
+</p>
+
+<p>
+It is deeply unsettling.
+</p>
+</blockquote>
+
+<p>
+The abstraction ceiling brain feeling feels like there is a plank of wood going through your head.
+Like you banged your head on some wood right above you, but actually the wood is inside your head now.
+</p>
+
+<p>
+If you have this sensation, there is no mistake about it.
+There is a viscerality to it, as substantial as pain is a feeling. It is located across the head.
+</p>
+
+<p>
+The shape is such that if you would have put on a small hat, everything above the hat-line feels 'turned off', tortiously so.
+</p>
+
+<p>
+In it's weaker form, it feels like one put's on a cap, a cap that makes thinking harder, 'in the upper parts of ones brain'.
+</p>
+
+
+<div id="orgb782a26" class="figure">
+<p><img src="./abstraction_ceiling_1.png" alt="abstraction_ceiling_1.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>AI generated image attempting to depict the feeling of a Hofstadter abstraction ceiling. A piece of solid wood goes through the brain in the horizontal plane. Roughly parietal, dorsolateral prefrontal and premotor cortex are above the line. (the picture is not correct).</p>
+</div>
+
+<p>
+Audio diary:
+</p>
+
+<p>
+<i>I never had this feeling, that there is something I would not be able to conquer mentally.</i><sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>
+</p>
+
+<p>
+This is visceral feeeling. This is not on the level of thought-content, not on the level of ideas or insight.
+</p>
+
+<p>
+This came relatively suddenly, or I noticed it suddenly. It stayed for certainly more than 20 seconds but certainly not more than 5-10 minutes.
+</p>
+
+<p>
+My personal pet hypothesis is that is a hardware level feedback from the machinery of the brain. <a href="#org2885e92">Appendix A: Hardware Level Sensors?</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org156902a" class="outline-3">
+<h3 id="org156902a">The Jolt of Fun / The Humor Ball / The Muses</h3>
+<div class="outline-text-3" id="text-org156902a">
+<p>
+I could put every single word in quotations or say it like this:
+</p>
+
+<p>
+A few times I felt a joke jumping like some kind of lump of electricity from somewhere, usually the head, into my mouth,
+where it could be spoken effortlessly.
+</p>
+
+<p>
+Could it be the same circuits involved in tip of the tongue -  Destination speech muscles?
+</p>
+
+<ul class="org-ul">
+<li>I once had the experience of a 'lump / ball' coming from inside the head, a bit above the left ear and 'falling' into my mouth.</li>
+<li>This was fast, like half of a second.</li>
+<li>Somehow I could speak the joke, then.</li>
+
+<li>This is almost diametrical opposite of mental effort, it feels like something is simply 'coming into the mind',
+but with forewarning in the form of a sensation.</li>
+</ul>
+
+<hr />
+
+<p>
+Other times it would 'jolt' out from the belly or heart and the be sort of ready to be spoken;
+As if possessed, ignited by the idea. This happens faster than a second.
+</p>
+
+<p>
+During those times, it is as if jokes are spirit animals that make their way to the mouth.
+</p>
+
+<hr />
+
+<p>
+The <a href="https://en.wikipedia.org/wiki/Muses">muses</a> were the idea that creativity comes from some spirit gods, that one recieves the spirits and merely expresses them when doing art.
+</p>
+
+<p>
+Given the extreme dynamical nature of the software system of the brain; The infinite openness and intricacy of it's search spaces;
+It is not too crazy of a perspective to take; To see the brain as a kind of reciever of ideas or even <i>software animals</i>,
+which are out there in the space of possible software - waiting for the right kind of brain to come along, which they inhabit.
+</p>
+
+<p>
+Also: <a href="recovering-some-spiritual-concepts.html">Recovering some spiritual concepts</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org9b108c3" class="outline-3">
+<h3 id="org9b108c3">The Chat Dim Offload</h3>
+<div class="outline-text-3" id="text-org9b108c3">
+<p>
+"The chat Dim Offload": The feeling of ones problem solving mentality to be turned off, the moment you chose to open a chat window to ask about your problem.
+</p>
+
+<p>
+I feel a subtly visceral 'slumping' / 'drooping', 'loss of forward action', 'loss of poise'.
+It feels like something is turned off in my forehead. That my forehead is soft and 'turned off'.
+</p>
+
+<p>
+It is a momentary feeling that stays on the order of 1-5 seconds.
+</p>
+
+<iframe src="./lightbulb.html" style="width: 100%; height: 600px; border: none;"></iframe>
+
+<p>
+Situation:
+</p>
+
+<ul class="org-ul">
+<li>I have a problem.</li>
+<li>I usually would use my mental resources to make progress on solving the problem.</li>
+<li>E.g. start debugging, start reading code, start making notes, start thinking about what I need to google, etc.</li>
+<li>After using LLM chats for a while, I notice instead of using my mental resources, I open a chat window.</li>
+<li>I have a subtle brain feeling, the 'chat dim offload'.</li>
+<li>It's relative disconcerting.</li>
+<li>You might know about <a href="https://www.media.mit.edu/projects/your-brain-on-chatgpt/overview/">MIT EEG Study</a> with the bottom line, solving a problem with a chat window means less brain activity.</li>
+<li>It could have been otherwise, but apparantly using ones brain also means there is activity.</li>
+<li>I recommend Cal Newport as antidote.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0bfc888" class="outline-3">
+<h3 id="org0bfc888">The Swiper</h3>
+<div class="outline-text-3" id="text-org0bfc888">
+<iframe src="./idea-swipe.html" style="width: 100%; height: 600px; border: none;"></iframe>
+
+<p>
+I have seen, in a group of young programmers, a spread of a peculiar head motion (cultural meme).
+</p>
+
+<p>
+This was using ones neck muscles to cock the head to the side (either sides), with an occasional flip,
+as if to fling out, or swipe away objects in the head (one side).
+</p>
+
+<p>
+It was accompanying coding behavior, and seemed to signal a situation of mental effort, technical thinking and focus.
+</p>
+
+<hr />
+
+<p>
+I have seen a version of this by the 'mental calculator' Rüdiger Gamm.
+</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7e_wm0reJGc?si=k2X59dLIGoEtst3i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<p>
+I would tentatively say he seems to move his head as if on tracks.
+</p>
+
+<p>
+If I had to guess, I would think he has a system of mnemonics where mentally, each part of the calculation outcome
+is seen in his imagination from left to right.
+</p>
+
+<p>
+He probably can speak the number without the movement, but why should he?
+</p>
+
+<hr />
+
+<p>
+Here are my thoughts on this interplay of cognition and movement.
+</p>
+
+<p>
+The German speaking world discovered a core concept of neurophilosophy early, the <a href="https://en.wikipedia.org/wiki/Efference_copy">Efference Copy</a>.
+The same concept was discovered in neurophysiology and called Coroallary Discharge [<a href="https://en.wikipedia.org/wiki/Corollary_discharge_theory#cite_note-pmid14794830-8">Sperry 1950</a>].
+</p>
+
+<p>
+Broadly speaking, it is usefull to copy the signals going from the brain to muscles, back into the brain as inputs.
+</p>
+
+<hr />
+
+<p>
+One reason for this is to factor out ones own movement from movement in the world. The best example are the eye movements.
+</p>
+
+<p>
+You can observe the logic of this effect:
+</p>
+
+<ol class="org-ol">
+<li>The world stays still even though you move your eyes.</li>
+<li>You are blind for a moment during eye movement - see <a href="https://en.wikipedia.org/wiki/Saccadic_masking">Saccadic masking</a>.
+This can be observed powerfully by looking at your face in the mirror for a short while.
+You never see your eyes move.</li>
+<li>Press sideways on your eyeball gently. Here, the world / the vision moves peculiarly.
+Only the eye movement motor systems are hooked up to allow for this movement factoring, not external eyeball press movement.</li>
+</ol>
+
+<hr />
+
+<p>
+Clearly, through movement (mental or motor), the brain can stimulate itself and create it's own "micro" situations.
+</p>
+
+<p>
+If there are neuronal subnetworks representing certain mental resources, and the subnetworks find a way to stimulate themselve by using motor resources,
+then why shouldn't they do so?
+</p>
+
+
+<div id="org480dff6" class="figure">
+<p><svg viewBox="0 0 672 840" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="672" height="840" version="1.1"><defs id="edraw-orgaea4d1d-defs"><marker id="edraw-orgaea4d1d-def-0-arrow" markerWidth="6" markerHeight="6" preserveAspectRatio="none" viewBox="-10 -10 20 20" refX="0" refY="0" orient="auto" stroke="none" stroke-width="1" fill="#101010"><path d="M-10,-7 -10,7 4,0Z" /></marker></defs><rect x="0" y="0" width="672" height="840" id="edraw-orgaea4d1d-background" stroke="none" fill="#fff" /><g id="edraw-orgaea4d1d-body"><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="20" rx="20" cy="80" cx="240" /><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="20" rx="20" cy="60" cx="180" /><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="20" rx="20" cy="120" cx="180" /><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M120 120V140 160 140 200 220 240 260" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="100" x="460">mental resources</text><ellipse stroke-width="2" stroke="#101010" fill="#ffa500" ry="20" rx="20" cy="280" cx="240" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="280" x="460">&quot;input nuclei&quot;</text><ellipse stroke-width="2" stroke="#101010" fill="#f689ff" ry="20" rx="20" cy="280" cx="300" /><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="20" rx="20" cy="280" cx="360" /><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M120 260v20h20h20h20h20h20" /><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M120 280v20v20v20v20v20v20v20v20v20v20v20v20v20" /><ellipse stroke-width="2" stroke="#101010" fill="#f689ff" ry="40" rx="20" cy="640" cx="120" /><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M120 560v20v20" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="660" x="180">muscle</text><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M240 640h20h20h20V620V600V580V560V540V520V500V480V460V440V420V400V380V360V340V320V300" /><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M240 260V240V220V200V180V160V140" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="340" x="200">efference copy</text><path marker-end="url(#edraw-orgaea4d1d-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M300 260V240V220V200V180V160V140" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="620" x="460">muscle sensoric / proprioception</text><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="200" x="380">self-stimulation</text><ellipse stroke-width="2" stroke="#101010" fill="#ffa500" ry="20" rx="20" cy="100" cx="120" /><ellipse stroke-width="2" stroke="#101010" fill="#ffa500" ry="20" rx="20" cy="780" cx="60" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="780" x="300">active mental resource, causing motor movement</text><rect stroke-width="2" stroke="#101010" fill="#ffa500" height="40" width="40" y="260" x="220" /><rect stroke-width="2" stroke="#101010" fill="#f689ff" height="40" width="40" y="260" x="280" /><rect stroke-width="2" stroke="#101010" fill="#f8f8f8" height="40" width="40" y="260" x="340" /></g></svg>
+</p>
+</div>
+
+
+<p>
+Through plasticity, the resources associate with the movement.
+A movement can then conviniently become a kind of button to press for the person, activating certain mental states.
+</p>
+
+<p>
+This effect is operationalized in a technique called 'Anchoring' of self-hypnosis (also <a href="https://en.wikipedia.org/wiki/Autogenic_training">Autogenic Training</a>).
+</p>
+
+<p>
+It is the definition of 'utilizing all of ones available resources'. And a real version of the idea of 'using 100% of the brain'.
+</p>
+
+<hr />
+
+<p>
+While using a mind palace, I have developed a similar habbit.
+</p>
+
+<p>
+I would either mentally or actually move my head and also flick of the hand, as if to swipe away thoughts/ideas, which were distracting from the task at hand.
+</p>
+
+<p>
+At other times, using the hands like a conductor, pointing to and 'arranging' objects in the imaginary scene. This helps.
+</p>
+
+<p>
+A version of this is depicted in the form of the loathsome Charles Augustus Magnussen villian [<a href="https://en.wikipedia.org/wiki/Sherlock_(TV_series)">Sherlock TV Series</a>], who keeps incriminating data in his mind.
+</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gz8QbDoHFUQ?si=kG6GbdRmhpLA1KTC&amp;start=106" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+</div>
+<div id="outline-container-org781cef3" class="outline-3">
+<h3 id="org781cef3">Mental Effort | Imagine!</h3>
+<div class="outline-text-3" id="text-org781cef3">
+<ul class="org-ul">
+<li>Imagine a cube with all sides simultanously, put the effort.</li>
+<li>Imagine multiple melodies at the same time. Beginner is 2. 3 and 4 is advanced.</li>
+<li>Imagine a gear turning one way, imagine a second gear moving with it, add as many gears as possible,
+keep track of the movement using imagination.</li>
+<li>Learn memory techniques</li>
+</ul>
+
+<p>
+Mental effort feels similar to working out - the feeling of going into the effort.
+</p>
+
+<p>
+What exactly is the nervous system doing when this happens? Meassuring sugar consumption?
+</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=PXTQsHOSpv4&amp;t=4247s">Minsky 2007</a> came up with an idea of an <b>Imagine!</b> book full of imagine exercises of gradually increasing difficulty.
+What if things like this are missing dimensions of education?
+If the field of education would be more advanced, perhaps you could teach all of school math in 2 years.
+</p>
+
+<hr />
+
+<p>
+Minsky [The Emotion Machine 2006] has another idea on mental effort.
+What if a 'high intelligence person' is simply somebody that learned to enjoy the pain of mental effort early on?
+</p>
+</div>
+</div>
+<div id="outline-container-orgcaffec4" class="outline-3">
+<h3 id="orgcaffec4">The Mind Twist</h3>
+<div class="outline-text-3" id="text-orgcaffec4">
+
+<div id="orgd4d3817" class="figure">
+<p><img src="./twist.png" alt="twist.png" />
+</p>
+<p><span class="figure-number">Figure 2: </span>AI generated drawing trying to depict a mind twist brain feeling. A human head with a contortionist figure in the middle.</p>
+</div>
+
+<p>
+Situation:
+</p>
+
+<ul class="org-ul">
+<li>Sort of have the idea that a concept would apply analogously to another domain.</li>
+<li>I try to keep in mind both domains and the concept at the same time,</li>
+<li>I have a 'glimpse' of it 'fitting together', a 'glimpse' of the unified perspective.</li>
+<li>It causes me significant mental effort to attempt to 'recreate' the insight from the 'glimpse'.</li>
+<li>It <i>feels</i> like I have to 'twist' my mind, it feels like I sort of know the shape I want my mind to be,
+but it is demanding to 'contort' it.</li>
+<li>Then it 'clicks' and the perspective is available, and the analogy makes sense.</li>
+</ul>
+
+
+<p>
+Concretely, this happened to me:
+</p>
+
+<ul class="org-ul">
+<li>I read <i>The Rational Optimist</i> Matt Ridley (2011), a while back.</li>
+<li>Similar to <i>Harari's Sapiens</i> it describes the effects of commerce / trading on human society and stuff like that.</li>
+<li>For instance commerce drivers specialization etc.</li>
+<li>I am inspired by Minsky <i>The Society of Mind</i>, where a core idea being collaboration mechanisms of multiple agents.</li>
+<li>In the book, he describes how flooding the labor market with cheap labor makes a society lose specialization.</li>
+<li>I think "shouldn't this kind of concept have something to say in a cognitive system of agents?".</li>
+<li>I think of both Chinese farmers having children and my then view of a Society of Mind software system.</li>
+<li>I have the 'mind twist' described above, I 'glimpse' the perspective unifying them&#x2026; then put mental effort, as if I need to twist my mind.</li>
+<li>I need to take on a certain perspective which I did not before.</li>
+<li>After I can think "If a cognitive system would be flooded with general purpose agents, they would specialize less".</li>
+<li>And the general, unifying perspective is on the level of abstract agents and their degree of specialization etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1fba27f" class="outline-3">
+<h3 id="org1fba27f">The Water/Glass Wall of No Return</h3>
+<div class="outline-text-3" id="text-org1fba27f">
+
+<div id="orgec9cf70" class="figure">
+<p><img src="./water.png" alt="water.png" />
+</p>
+<p><span class="figure-number">Figure 3: </span>AI generated drawing trying to depict a Water/Glass Wall of No Return mind feeling. A head with a water fall in the front.</p>
+</div>
+
+<ul class="org-ul">
+<li>I have this to varying degree of intensity. It happens when I engage in a confrontational situation.</li>
+<li>When I decide to say/ behave in a way that can be hard for the other person / the relationship.</li>
+<li>for instance when I set a hard boundary, or make a foundational criticism to a team member.</li>
+
+<li>If feel like there is a soft wall, through which I go through with my head.</li>
+<li>Kinda like it is made from water</li>
+<li>In the most intense version I know, even my vision would blur for a moment.</li>
+<li>This takes on the order of 1-2 seconds and is quite salient.</li>
+<li>The 'shape' of this 'wall' can be different;</li>
+<li>I remember at least once where it was to the right side only, like a blob.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9f063c" class="outline-2">
+<h2 id="orga9f063c">Conclusion</h2>
+<div class="outline-text-2" id="text-orga9f063c">
+<p>
+Tentative definition:
+</p>
+
+<p>
+<b>brain feeling</b>: A sensation that seems to be located inside our around the head;
+It appears to be associated with mental content or features of cognition itself, making it a meta cognitive feeling.
+</p>
+
+<p>
+Please <a href="contact.html">contact me</a> if you know a potential brain feeling.
+</p>
+</div>
+</div>
+<div id="outline-container-org2885e92" class="outline-2">
+<h2 id="org2885e92">Appendix A: Hardware Level Sensors?</h2>
+<div class="outline-text-2" id="text-org2885e92">
+<ol class="org-ol">
+<li>The <code>brain</code> is a computer (software running on hardware) with <code>inputs</code> from <code>sensory surfaces</code>,
+like retina, cochlea, skin receptors, <b>sensory aparati</b>.</li>
+</ol>
+
+
+<div id="org7eb1967" class="figure">
+<p><svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="560" height="420" version="1.1"><defs id="edraw-org075a328-defs"><marker id="edraw-org075a328-def-0-arrow" markerWidth="6" markerHeight="6" preserveAspectRatio="none" viewBox="-10 -10 20 20" refX="0" refY="0" orient="auto" stroke="none" stroke-width="1" fill="#101010"><path d="M-10,-7 -10,7 4,0Z" /></marker></defs><rect x="0" y="0" width="560" height="420" id="edraw-org075a328-background" stroke="none" fill="#fff" /><g id="edraw-org075a328-body"><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="70" rx="120" cy="130" cx="220" /><rect stroke-width="2" stroke="#101010" fill="cyan" height="60" width="80" y="260" x="100" /><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="60" width="80" y="260" x="200" /><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="60" width="80" y="260" x="300" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="140" x="400">brain</text><path marker-end="url(#edraw-org075a328-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M140 260V240V220V200" /><path marker-end="url(#edraw-org075a328-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M240 260V240V220" /><path marker-end="url(#edraw-org075a328-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M340 260V240V220V200" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="300" x="480">sensory surfaces</text><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="360" x="240">eyes, ears, skin, temperature, etc. </text><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="220" x="400">inputs</text></g></svg>
+</p>
+</div>
+
+
+<ol class="org-ol">
+<li>Idea: There should / could be hardware level feedback <i>sensory aparati</i>.
+Just as simple as additional sensory surfaces, but they readout states
+of the central nervous system. For instance the amount of activity.</li>
+</ol>
+
+
+<div id="org00cf569" class="figure">
+<p><svg viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="860" height="420" version="1.1"><defs id="edraw-org8312520-defs"><marker id="edraw-org8312520-def-0-arrow" markerWidth="6" markerHeight="6" preserveAspectRatio="none" viewBox="-10 -10 20 20" refX="0" refY="0" orient="auto" stroke="none" stroke-width="1" fill="#101010"><path d="M-10,-7 -10,7 4,0Z" /></marker></defs><rect x="0" y="0" width="860" height="420" id="edraw-org8312520-background" stroke="none" fill="#fff" /><g id="edraw-org8312520-body"><ellipse stroke-width="2" stroke="#101010" fill="#f8f8f8" ry="80" rx="130" cy="100" cx="210" /><text font-size="24" text-anchor="middle" font-family="sans-serif" fill="#101010" xml:space="preserve" y="60" x="180">brain</text><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="40" width="40" y="300" x="40" /><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="40" width="40" y="300" x="40" /><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="40" width="40" y="300" x="100" /><rect stroke-width="2" stroke="#101010" fill="#00ffff" height="40" width="40" y="300" x="160" /><path marker-end="url(#edraw-org8312520-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M120 280V260 140" /><rect stroke-width="2" stroke="#101010" fill="#ffa500" height="40" width="40" y="300" x="300" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="380" x="120"><tspan class="edraw-text-line" x="120">brain external sensors</tspan><tspan class="edraw-text-line" x="120" dy="1em"> </tspan></text><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="340" x="420">??</text><text fill="#101010" xml:space="preserve" text-anchor="middle" font-size="30" font-family="sans-serif" y="340" x="260">+</text><text fill="#101010" xml:space="preserve" text-anchor="middle" font-size="30" font-family="sans-serif" y="340" x="380">+</text><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="380" x="360">brain 'internal' sensors</text><path marker-end="url(#edraw-org8312520-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M320 300V280 260 160" /><ellipse stroke-width="2" stroke="#101010" fill="#f7b4b4" ry="20" rx="30" cy="120" cx="250" /><path marker-end="url(#edraw-org8312520-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M240 140v20v20v20v20v20v20v20v20h20h20h20" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="260" x="380">inputs</text><path marker-end="url(#edraw-org8312520-def-0-arrow)" stroke-width="2" stroke="#101010" fill="none" d="M620 120H600H580H460H420H360H340H280H260" /><text text-anchor="middle" font-family="sans-serif" font-size="18" fill="#101010" xml:space="preserve" y="100" x="620">hypothetical brain activity sensor nucleus</text></g></svg>
+</p>
+</div>
+
+<p>
+Sounds reminiscent to Attention Schema Theory (AST) but is a more general idea.
+</p>
+
+<p>
+<b>content level</b>: The software content. For example my datastructure is about a shopping cart.
+</p>
+
+<p>
+<b>harware level</b>: 'superficially' measurable aspects of the machinery of a computer. For instance the temperature of the wires.
+</p>
+
+<hr />
+
+<p>
+In other words, if we have sensors for the state of the nervous system itself;
+It would make sense to feel them as another kind of interecoption - as brain feelings.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+As an aside, where did internet forums go? I grew up somewhere in between it and social media.
+There were like 10 minutes I was posting on a lucid dreaming forum around 2014.
+Either way.
+</p>
+
+<hr /></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+G. Sussman, H. Abelson, <i>The Structure And Interpretation of Computer Programs</i> (1985)
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"></p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js" type="application/javascript"></script>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js"> </script>
+
+
+
+    <script src="./navbar_toggle.js"></script>
+    <script type="application/x-scittle" src="navbar.cljs"></script>
+    <script src="./pixel.js"></script>
+    
+<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
+<script src="https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.nrepl.js"></script><p class="date">Date: 2025-03-12 Wed 16:25</p>
+<p class="email">Email: <a href="mailto:Benjamin.Schwerdtner@gmail.com">Benjamin.Schwerdtner@gmail.com</a></p>
+
+<div><a href="/about.html">About</a></div><div><a href="atom.xml"</div><div><a href="planetclojure.xml"></div><div><a href="/contact.html">Contact</a></div><div><a href="/gen-ai-critic.html">This website is made without the use of generative AI</a></div>
+</div>
+</body>
+</html>

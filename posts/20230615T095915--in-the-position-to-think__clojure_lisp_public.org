@@ -1,0 +1,30 @@
+#+title:      in-the-position-to-think
+#+date:       [2023-06-15 Thu 09:59]
+#+filetags:   :clojure:lisp:public:
+#+identifier: 20230615T095915
+
+
+not even iterations,
+different paradigm
+
+
+- can a painter paint withotu seeing what they are doing?
+
+- clay
+s. Daniels talk
+
+
+building material
+
+The power of Lisp is not quick iterations, it is that it does not have iterations. Like molding clay, like painting a canvas, the material grows by the artist hand 1:1 and directly.
+The power of Lisp is not quick iterations, it is that it does not have iterations. Like molding clay, like painting a canvas.
+The power of Lisp is not quick iterations, it is that it does not have iterations. Like clay or brush strokes.
+The power of Lisp is not quick iterations, it is that it does not have iterations. Like clay.
+
+The power of Lisp is not quick iterations, it does not have iterations. Neither does clay or paint brush strokes.
+The power of Lisp is not quick iterations, it does not have iterations. Neither does clay nor paint.
+
+
+The power of Lisp is not quick iterations, it is that it does not have iterations - a building material.
+
+The power of Lisp is not quick iterations, but no iterations. Like a moldable building material.

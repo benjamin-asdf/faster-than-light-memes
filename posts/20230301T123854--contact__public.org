@@ -1,0 +1,19 @@
+#+title:      Contact
+#+date:       [2023-03-01 Wed 12:38]
+#+filetags:   :public:feed:ftlm:
+#+identifier: 20230301T123854
+#+EXPORT_FILE_NAME: contact
+
+My name is Benjamin Schwerdtner. I am excited about life and technology.
+You can [[denote:20250627T183258][work with Benjamin]] to build your frontend for you.
+
+Contact:
+
+- [[mailto:Benjamin.Schwerdtner@gmail.com][Benjamin.Schwerdtner@gmail.com]]
+- @Benjamin.Schwerdtner on the Clojurian slack.
+- Discord: benjaminasdf
+- [[https://github.com/benjamin-asdf][github]]
+- [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140/][LinkedIn]]
+- [[https://www.youtube.com/channel/UCa489obTo6UE2sh4bXq670A][YouTube main channel]]
+- [[https://bsky.app/profile/ftl-mentality.bsky.social][bluesky]]
+- [[https://www.youtube.com/@benni-mentality][YouTube secondary]]

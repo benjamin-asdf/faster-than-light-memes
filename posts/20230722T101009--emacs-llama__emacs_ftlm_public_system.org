@@ -1,0 +1,6 @@
+#+title:      emacs-llama
+#+date:       [2023-07-22 Sat 10:10]
+#+filetags:   :emacs:ftlm:public:system:
+#+identifier: 20230722T101009
+
+https://gist.github.com/Gopiandcode/165f3cbfec3e7616be11378cb2111bc1

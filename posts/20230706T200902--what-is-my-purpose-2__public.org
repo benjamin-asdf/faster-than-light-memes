@@ -1,0 +1,31 @@
+#+title:      what-is-my-purpose-2
+#+date:       [2023-07-06 Thu 20:09]
+#+filetags:   :public:
+#+identifier: 20230706T200902
+
+#+begin_quote
+True, most of the world
+of "Computer Science" is involved with building large, useful, but shallow
+practical systems, a few courageous students are trying to make
+computers use other kinds of thinking, representing different kinds of
+knowledge, sometimes, in several different ways, so that their programs
+won't get stuck at fixed ideas. Most important of all, perhaps, is making
+such machines learn from their own experience. Once we know more
+about such things, we can start to study ways to weave these different
+schemes together. Finally, we'll get machines that think about themselves
+and make up theories, good or bad, of how they, themselves might work.
+Perhaps, when our machines get to that stage, we'll find it very easy to
+tell it has happened. For, at that point, they'll probably object to being
+called machines. To accept that will be will be difficult, but only by this
+sacrifice will machines free us from our false mottos.
+#+end_quote
+
+Marvin Minsky, [[https://web.media.mit.edu/~minsky/papers/ComputersCantThink.txt][Why People Think Computers Can't]].
+
+
+
+A spaceship where you only knew hot air balloons.
+
+The sun where you only knew candles.
+
+And it is the realm of how you have effects on the computer, which is what programming languages are for.

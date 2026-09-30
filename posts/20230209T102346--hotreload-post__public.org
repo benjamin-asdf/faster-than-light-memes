@@ -1,0 +1,28 @@
+#+title:      hotreload-post
+#+date:       [2023-02-09 Thu 10:23]
+#+filetags:   :public:
+#+identifier: 20230209T102346
+
+* LinkedIn
+
+Recently, @Sing released
+
+Here is a recent achievement of mine that I am proud of:
+
+.Net methods (unity engine for the moment) while the program is
+running.
+
+While I would have loved this tool to be open source, I am happy  that
+decided to make it free for indie unity developers - and they love
+it! https://www.reddit.com/r/Unity3D/comments/10v66xi/we_just_released_a_free_tool_which_lets_you_skip/
+
+"Spent a few hours using it today and yeah this rules. Even just adding Debug.Logs while the game is running feels like magic, I can’t wait to see what else I can do. We’ve only got three Unity devs at our company but they seem instantly sold."
+
+My hope is that this is an oppurtunity to give unity programmers the
+chance to breathe some interactive air ala Bret Victor https://www.youtube.com/watch?v=ZfytHvgHybA.
+
+As Sr. .Net Developer I was instrumental in the implementation (Roslyn, Cecil) and
+this is one of my highest achievements yet for which I am proud of.
+In principle you could use the worker code for any C# project btw, we
+just have a bespoke unity integration for the moment. I am toying with
+the idea to make it work for blazor and see the effect.

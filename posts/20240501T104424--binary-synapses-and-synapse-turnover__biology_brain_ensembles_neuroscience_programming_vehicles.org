@@ -1,0 +1,156 @@
+#+title:      binary-synapses-and-synapse-turnover
+#+date:       [2024-05-01 Wed 10:44]
+#+filetags:   :biology:brain:ensembles:neuroscience:programming:vehicles:
+#+identifier: 20240501T104424
+#+EXPORT_FILE_NAME: binary-synapses-and-synapse-turnover
+
+[[denote:20240208T124507][Context: Neuronal Ensemble Memetics]]
+
+My assembly calculus mathjs [[https://github.com/benjamin-asdf/ftlm-vehicles/blob/main/src/ftlm/vehicles/assembly_calculus.cljs][Code Here]].
+
+* Synapse Turnover
+
+This is a neurobiological concept. Seth Grant and collaborators showed that there are different classes of synapses with different turnover rates.
+
+[[https://pubmed.ncbi.nlm.nih.gov/36202095/][A brain atlas of synapse protein lifetime across the mouse lifespan]].
+
+#+CAPTION: From Neuron, Graphical abstract,  brain atlas of synapse protein lifetime across the mouse lifespan
+https://www.cell.com/cms/attachment/eb41d39d-fd13-46e0-9294-4281dcfbf79d/fx1.jpg
+
+From https://www.cell.com/neuron/fulltext/S0896-6273(22)00814-5?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0896627322008145%3Fshowall%3Dtrue
+
+
+The intuitive conclusion is that high synapse turnover makes synapses more stable. That is if a synapse is broken a little it is replaced by a new one.
+
+My reasoning:
+
+Perhaps during this dynamic turnover, the network has the chance to be more dynamic, i.e. to make different connections.
+The synaptic turnover then should be a hyperparameter for the neurons, saying how dynamic the network is.
+
+Note that it is not clear that high turnover is just better. Perhaps it makes sense to have a developmental phase of high dynamism, followed by a long arc of low dynamism.
+Perhaps a brain with low dynamism can form different kinds of ideas without jumping to conclusions to fast.
+
+* Create New Synapses
+
+#+begin_src clojure
+;; ==============================
+;; binary Hebbian-plasticity
+;; ==============================
+#+end_src
+
+Documentation:
+
+---
+For each neuron that is active right now, look at the neurons that were active at the last step,
+for each of those edges (i->j) there is a chance, proportional to β, that there is a new synapse formed between the 2 neurons.
+Doesn't matter if there is already a synapse or not.
+
+---
+
+In order for the network to not be overrun with synapses everywhere, in a second process prune synapses.
+
+You could also model a lifetime for each synapse formed. The plasticity rule could then reset the lifetime.
+
+It is biologically intuitive, that some processes form (semi-random) fresh connections. You might wonder if
+such a thing would happen during sleep. This would re-normalize the network, and make new interpretations possible again.
+
+We could simply do this by shooting a bit of random activation into the network. The plasticity rules would then already make new synapses.
+As a variation of this, you can construct the geometry in the network, by making not completely random activation, but random activation with geometry.
+For instance, if you make a wave across the network, you automatically create synapses to neighboring neurons.
+
+params: β `plasticity` is now the chance that a new synapse is formed, per time step.
+(per pair of active neurons)
+
+#+begin_src clojure
+(defn scalar? [m]
+  (zero? (mathjs/count (mathjs/size m))))
+
+(defn binary-hebbian-plasticity
+  [{:keys [plasticity weights current-activations
+           next-activations]}]
+  (let [subset (.subset weights
+                        (mathjs/index current-activations
+                                      next-activations))
+        new-subset (if (scalar? subset)
+                     (mathjs/bitOr subset
+                                   (< (mathjs/random)
+                                      plasticity))
+                     (mathjs/map subset
+                       (fn [v _idx _m]
+                         (mathjs/bitOr v
+                                       (< (mathjs/random)
+                                          plasticity)))))]
+    (.subset weights
+             (mathjs/index current-activations
+                           next-activations)
+             new-subset)))
+#+end_src
+
+* Prune Synapses
+
+I played around with a fixed =prune-rate= and realized that I would need to carefully balance the connectivity (basically impossible).
+
+So you have the problem: You are either overrun with connectivity, which sounds useless; Or you are starved of connectivity, which sounds fatal.
+
+A simple solution is to keep the connectivity fixed instead. This way the turnover rate depends on the plasticity (the chance to make new synapses) and nothing else.
+
+
+#+begin_src clojure
+;;
+;; Prune (random) synapses so that the connectivity of the network stays the same.
+;;
+;; The synapse turnover rate is given by
+;; --------------------------------------
+;; 1. The plasticity (chance for new synapse forming when 2 neurons are active across 2 time steps)
+;; 2. That's it because we prune back to the fixed connectivity
+;;
+;;
+;; ---
+;; Biologically, it would be easier for me to think in terms of synapse lifespan.
+;; However, intuitively, it should all average out with large numbers.
+;;
+(defn prune-synapses-fixed-density
+  [{:as state :keys [density n-neurons]}]
+  (update
+    state
+    :weights
+    (fn [weights]
+      (let [prune-rate (/ (- (.density weights) density)
+                          (.density weights))]
+        (if-not (< 0 prune-rate)
+          weights
+          (.map weights
+                (fn [v _idx _m]
+                  (boolean (< prune-rate (mathjs/random))))
+                :skip-zeros))))))
+#+end_src
+
+* Developing Ensembles As Cohorts of Neurons
+
+Here is a developmental strategy that will create ready-made ensembles (sub-networks). Perhaps this is useful, somewhere:
+
+0. Neuron model with Hebbian plasticity, make new connections when neurons fire in succession (like =binary-hebbian-plasticity= above), or otherwise 'together'.
+1. Grow the neurons in cohorts.
+2. Make young neurons have a higher intrinsic firing rate.
+   For instance, say that neurons younger than 1 day have a very high intrinsic firing rate. And older neurons less.
+3. Each timeslice, the fresh cohort of neurons will make connections amongst themselves.
+4. Observe that at each time slice, the old neurons will make fewer connections to the fresh ones,
+   and the fresh ones will make more connectivity amongst themselves.
+5. This will create subnetworks of neurons. Depending on how tight the intrinsic firing rate regulation is and so forth, you can
+   modify what kind of network you get (i.e. how many connections you have between subnetworks).
+
+
+This is inspired by *Emre Yaksi: Function and development of habenular circuits in zebrafish brain*:
+https://youtu.be/VzO8e_f2Hk8?si=tZ-FyEJqFUlTG4fc&t=5255
+
+
+* Lit
+
+There is the whole concept of the 'Synaptome':
+
+#+begin_quote
+The diversity of synapses and their location in the brain are described by the synaptome.
+#+end_quote
+
+[[https://youtu.be/vWuSpIAZW9s?si=dLSvbuuV6gh2rT60][BS 211 Molecular Biologist Seth Grant]] (brain science podcast)
+[[https://pubmed.ncbi.nlm.nih.gov/31348488/][Synapse diversity and synaptome architecture in human genetic disorders]]

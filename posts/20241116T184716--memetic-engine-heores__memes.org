@@ -1,0 +1,385 @@
+#+title:      memetic-engine-wizards
+#+date:       [2024-11-16 Sat 18:47]
+#+filetags:   :memes:public
+#+identifier: 20241116T184716
+#+EXPORT_FILE_NAME: memetic-engine-wizards
+
+These notes are part of the very large pile of notes at [[denote:20240208T124507][Neuronal Ensemble Memetics]].
+
+* Life Inside A Memetic Engine
+
+It is pretty much obvious now that the brain is an information-processing device [McCulloch] that
+creates user illusions [Dennett].
+
+---
+
+Summary:
+
+Vast amounts of tiny programmer memes that figure out how the computer they run on works, not because they set
+out to understand how it works, but because of the many that didn't mean the right thing, the ones that
+mean something useful are selected in a process of natural selection.
+
+In a substrate where your meaning is your connectivity, or generally your effects on a computer system.
+
+The best memes are the ones creating magic interfaces for confident wizards.
+Creating user-level entities that use the computer with swag.
+
+This is the (very, very) raw audio diary:
+
+#+begin_export html
+<audio controls src="meme-machine-heroes.mp3"></audio>
+#+end_export
+
+---
+
+If the brain has brain software running, we can go and understand the nature of this software, too.
+
+It is clear that it is a valid viewpoint to say 'the mind is a programmer, programming the computer it runs on'.
+(I.e. it is executing a programming task).
+
+Of course, whatever is programming cannot be competent by itself. It must bootstrap from simple elements.
+
+I had this activity flow of the cell assemblies (see notes) in mind and wondered what software can run on such a computational system.
+
+I came up with a thought experiment, called /Magic banana maker algorithm/.
+
+Suppose we already have a nice memetic engine, capable of trying out vast spaces of possible memes (and fast) and selecting them
+after some useful criteria.
+
+Let's pretend for a moment this machine implementing a virtual world algorithm, a big imaginary planet with a cyber-highway along the
+equator that makes you pass ten thousand cities, twenty times per second.
+
+Suppose further that there are simple agents in the system, let's pretend they are super-competent action heroes, who need to act
+on a clock. These people are very, very fast. And very competent and confident.
+
+Let's assume they exist, because we assume natural selection can select for competence [Darwin, Dawkins] - the ones that were not competent and fast were discarded.
+
+How to engineer this is then a question for later.
+
+Let's suppose for a moment that the memetic engine can select action-hero short movies. In effect you, as an action hero, have a short amount of time,
+to please the memetic engine in some way. Of course, you can hack its mechanisms, too, if you are competent enough.
+
+You get created (some activity flow makes you spawn) in a place in meaning landscape that you already have supplanted with useful tools and so forth.
+Part of what a good meme does is plan for the next iteration of its existence.
+
+The other thing you do is quickly go to some city, where many generally useful memes provide information for more derived memes.
+
+The most successful memes will be part of vast societies of contributing, more generally useful, memes.
+One might imagine some other meme leaves a sticky note on a wall, they don't know why they do it and you don't know why they do it.
+
+But information can flow, and more useful information flows are selected.
+Say the meme-machine selects action-hero timelines, including the cities they move through or something.
+
+Here is the next thing: This matrix has certain competencies, like spawning new cities and roads or manifesting a banana.
+
+Everything that the computer can do, the matrix can do, and the memetic engine might also try it out.
+
+Now and then the matrix will simply manifest a banana in a place, just to try out what happens.
+An 'everything possible' magic system mechanism.
+
+Now you are a competent, optimistic action hero. And you trust in the magic of the matrix. 'I hold out my hand and there will be a banana'.
+
+Again, the 2x2 matrix of optimism and competence, the optimism-drive, produces the following:
+
+All the memes that are optimistic and pretend they know how to use the magic of the matrix, have a chance to survive.
+All the memes that are pessimistic have no chance and are discarded.
+
+Optimism is not the only thing you need, you also need competence. In this case, it is the competence of the rest of the computer to provide you
+with what you needed at that moment to be a successful action-hero wizard (with swag).
+
+#+begin_src
+
+     banana!   I don't know.
+   +---------+--------+
+   |   S     |   X    | competent
+   |         |        | (the information flow is capable of creating a banana, if you ask)
+   +---------+--------+
+   |   X     |   X    | incompetent
+   |         |        |
+   +---------+--------+
+
+S - memetic success
+X - discarded
+#+end_src
+
+Commanding the magic of the computer without knowing how the computer works.
+
+This holy overlap of competence and optimism is how there is a magic piece in this whole thing now. From the thousands of memes that said 'There is a banana',
+there is one meme action hero that confidently puts out her hand and says 'there is a banana', and the system tried out randomly what would happen if there
+is a banana in that place - this short story movie timeline then was especially useful to the system and selected.
+
+Because for some reason a banana is what this hero needed to be successful in its matrix short-term movie.
+
+Nobody knows why: The memetic engine sees an information flow that worked well, and the hero sees the matrix that made a banana for her, similarly, the banana memes
+are just information flow pieces that had a chance to be active, and they do what memes do. Trying to be active more.
+
+The interface between the user and the lower software world is something like 'competent query' and 'competent result', where both are selected memetically /afterwards/,
+so that the matrix becomes more and more magical to use (obeys every whim so to say, and is very useful, retrieves from midterm memory for instance),
+and the user-level entities become more and more competent, artistically elegant, on-point, demanding, confabulating, and confident.
+
+If you would stop to understand the matrix you run on, some other meme would simply be faster.
+
+I conjecture this would create /competence hierarchies/, where the higher agents in the system delegate the lower agents.
+
+To put it the other way around; The more generally useful memes have a great memetic strategy - be so useful that all the higher-level agents can't help but incorporate you into their short-movies. So that you are 'on', memetically selected, in many situations.
+
+When a high-level meme delegates lower-level memes to provide it with information, we can imagine little hacker wizard memes, in the substrate of the matrix so to say,
+that either figure out how the computer works and provide you with competence or not figure out how the computer works. Then they are discarded by memetic selection.
+Of course, they don't know how the computer works, they either represent a wiring that has meaning, or not.
+
+The memes don't know what they mean when they start, it is only afterward that the meaning that made sense is leftover. This is the strange inversion of reasoning of
+Darwin's idea. Taken seriously for software-level mechanisms of computers that run meme-engines.
+
+On the highest levels of this hierarchy, you have memes that are so competent, that they command everything that the whole computer can do with precision and artistic swag.
+
+This then looks like a mechanism for a memetic machine to perfuse its computer with competence, to build information processing hierarchies that will use the computer,
+completely and competently.
+
+Of course, the matrix machine is only a thought experiment, the matrix algorithm that runs on human brains is the one we know ourselves, usually called 'the mind'.
+
+'The mind' is a class of software that implements magic interfaces to user-entities. (More on that in the [[denote:20240208T124507][notes]]).
+
+The brain has something to do with navigating the world as an animal. Not because in principle all meme machines are about
+that, but because this specific meme-machine evolved biologically.
+(Whatever shapes the memetic landscape, coming from the genes, are biased to be about navigating the world and being an animal).
+
+---
+
+From thinking about it in this terms, I'm almost certain that the problem of phenomenological consciousness is the problem of what are virtual realities,
+and what are realities. I think it's the same theory that says what it is. (Greg Egan /Permutation City/ and David Deutsch inspire me).
+
+---
+
+This puts half of the problem onto the machine hardware. It's how sick your sense organs are that allow you to create a world inside the mind.
+How well the thinking goo is tuned to lock into nice ideas while still having the dynamism to consider many possible things and so forth.
+
+You don't get away from the fact that a neurophilosophy must talk about 'how the brain relates to the world'.
+
+---
+
+Those memes are allowed to get arbitrarily tiny, down to single-unit (whatever that might be) stupid computations. It's kind of sweet (technically sweet) to have a mechanism where arbitrarily
+abstract entities are allowed to coexist and refer to each other.
+
+---
+
+With this space of thinking you can muse about civilizations of memes, that build vast stores of knowledge.
+And archeologist memes going through the libraries of eons of accumulated knowledge.
+
+Harmonious memes, cooperating memes, that never truly meet across times and space and yet, together contribute to the budding
+ideas, that only artistic memes and old wise-wizard memes can glean from the flow of time and history.
+
+Social attractors of a kind that are bigger than a single meme on its own.
+
+---
+
+Update Thu Sep 12 07:57:24 PM CEST 2024:
+
+I just listened to this again. These little poster stickers I was imagining could be implemented by the ensembles the way
+G. Buzsáki is describing them in /The Brain from The Inside Out/.
+If you have ensembles that are active for ~ 1 second, then you can implement a bit of evolving computation perhaps.
+Perhaps the same thing implements what you call 'short term memory' in cognitive psychology.
+
+Each piece of computation could leave 1 second beacon of information blobs behind, it's intermediate outcomes,
+for its friends that come later in time in the course of the computation.
+Kindof straightforward 'working memory register' implementation from one perspective.
+
+The analogy of action heroes flowing through cities might be more than strictly conceptual.
+If ensemble sequence trajectories (G. Buzsáki) have the chance to overlap, information can flow.
+
+
+[[edraw:data=H4sIAJ/x42YAA72XTXObMBCG/4pGOSSZCUZgTHDGeCY55dJLO9Ovm2wWoxokV8jG6aG/vSsBiZMmbZopHgQSX3r2Xa1WMKt3K7KvSlmntDBmc+X7TdOMmvFI6ZUfMsZ8fIK2j1ztSyHXzz0YTKdT392lpBGZKVKasJiSAsSqMCmdsIiSHehaKJnSYBTQ+SyDvCYiSylkmjeePcWrFddr0I+ve8zjWquGkvbup5YQ9+e3HQUvbDTUoHdwXW9gad5zI1RKpZKAeAHNjdqn1AsYsXtoCyUa8s8pbRtfXENpARL741ujKKmNVmvoe8lFWab0JGB2Q3s33BQEjX2HPV54l7bji0sSXbCvlPjzmd9aiA2rbz7TaBXZO8qdO77orQcPLPhyvdJqK7MXjMnz3MFWhy+p7A7Ng7IUmxq697yOFj501Cu57yuxGzoDzXPe2bf1Es8D19h3Db8T3yr0QCJ7q8uzk9/G7Zy+mt/qsv5EBgki9jGIsU5a3n9Vg8F9XDVhyD6GEdbxEGqSJ2oM7A2xB4/LZaF0SiuRZaWNGiWNl/NKlPhezWXt4ZQReXejFj8QHSRPQ93G6zjCumPMP8D3LcglkOuZbznDIJ0cRKLP5iYYkuTioSeFg5KSA9K4J/17OMTJ1M78PwZ3OGA4uEBGxtiGg5AGdAWZ4AaI2pqlqoCArKFalPB2ja9JR5NoOI19/EWJC8DTXsmQyQL12NS3C20ZPDW5lMRYEbIicse/ld1BuZ3YnbFb9M8xjLWuwenzxJy3pVO+yIFPno8tl+mW3bi/LVnDIkpemJ33vcdHcBkqIOP4KKODcg5RQ+ZOm9fmvBQ7ID9JUA+ZrqM+BTxa9W6OgYzZI+TpsOvf5Sg88O2g+roPicjquznj58eATRIHk8qQYYFhP3rWj0bzb/jRr/QdWWjLGJLcf6DFbrUKj7JaBQ/rhyvtf88Kd/xznP8CCh9S8mEOAAA=]]
+
+
+In other words, the precence of =A= can steer the trajectory of =B=. I would hypothesize this
+must be possible in order to program with sequence trajectories of ensembles.
+
+- A and B don't need to coincide, the computation can evolve over time given the /itermediate outcome ensemble/ livetime.
+- =B= is akin to an action hero flowing through a city, looking at the graphity on a wall (=a=) of some previously
+  acitve action hero =A=.
+- longer time evolutions are possible via synapsembles, (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3005627/).
+  These are biochemical changes of neurons that modify their excitability etc.
+  (also called /fast weights/, /dynamically changing constellations of synaptic weights/).
+
+- /trajectory branch/ could be implemented by 'microcircuits'.
+- Or: The activation of =a= changes the attractor landscape so that =B(a)= is more likely
+  than =B(not a)=.
+- Essentially, this just says that the present activation state influences what is active next; That's rather trivial.
+- (The devil is in the detail)
+
+
+** Multiverse Meme Machine
+
+#+begin_quote
+What about the reality where Hitler cured cancer? The answer is don't think about it.
+#+end_quote
+Rick Sanchez from 'Rick And Morty'
+
+As a variation of this thought experiment, let's say the brain is creating a virtual multiverse.
+In our real multiverse, we don't need to worry about all the histories that are a chain of magical things happening.
+
+Like the history where all objects turn into bananas when you point at them and say 'banana!'.
+We don't need to worry, because, for every universe like that, there are many more where it isn't.
+
+Not so in the brain's virtual multiverse. Because some histories survive better than others.
+If there are magical universes that work, the memetic engine will roll with them.
+
+[[edraw:data=H4sIABvAOWcAA71W23LaMBD9FY0600lmMJZvAlJMp31KHvrSh/TypmAZa5AtKskY+vVd+RJImnQyybgDwtIK7dndc1ixNPsNakRmixQvyAyjgotNYVNM5wSjQykrk+LC2t2V7zdNM22iqdIbPySE+HAUoz3XRqgqxcE06A9cHaSotk8dCxaLhd/u4tUy47lBIksxzzRrPLcEa8n0luuHdo94TGvVYNTtfuvipcP6eogZo53mhus9/2R2fG2/MitUiitVcYhU8OazOqTYCwhyI3RvjDTPv6e4m/xoJ0oLXoE/VluFkbFabfngJRdSpvhdQNwL4t0xWyAI9gt4nHgz53gyQ/GE/MTIXy39LkKYuPxWSw1RoUOLcmw/n639qQJ3bL3daFVX2TPB5Hnegm3OD6nsOITXHfJ6qPDkZUhjcMQjcAUoLp8wJiiAEkU0mIZxlKAwSa6DYD6dJTTpkmuddwl6vIJDtZYX7/6i7RK/OIIuLQcfxY4dchs6ltycwnB1AVzLD/YREcjZPFatC6VTXIosk64+qrKeEb8BKJj3y5yVQkLtDauMB1oReUtFRJze4XsUWC2Z1eKAdsoYcSf50nfex8WNwxOusQxQ0YXhEuTCs8shAC6l2Bn+ckJzOl84cWhAcmZ96J5rWIeJm4AhSsiJztdpBUiKnVbiXisJaGVxLpUxSkfPGNsLbWsmUVlLK1xPgvK9/1Ur+6GraTe/HJPJeFAQPFe74mjE+kFAY2LTAdup6LFs36SasFdN2KsmmPeqmZHxfoxBn47DWNVgH1IZs+MA2HnHuYYujBI3oPskYEtgPx6xAwXxWdKdXm8q1BTMorrqNc1KdPOx2xtTTm2jHUIp2UaskTBwPzL5ak0N7eIpTcX0kabGphlovHV0Aq0tzRQuFwo0U6CZkp52+v+oT/pW5i5+0Ds0MnmcoPvCV8q+rfj/ugaS+2sg6hL0NzDgv93qD/mdFE8cCgAA]]
+
+- In the physical multiverse, everything possible exists, and 'non magical' trajectories (previouslay called 'histories') have higher frequency.
+  The chance that the user finds herself in a non-magical universe is astronomically high.
+- In a virtual matrix multiverse, magic trajectories can be selected, *implementing a magic system*.
+  The chance that the user finds herself in a magical universe depends on the selection (collapse) implementation rules
+  of the computer she runs on.
+- (the devil is in the details)
+- I think these might mirror 2 'collapse strategies' in non-deterministic programming. (more on that in another place).
+- One where you find broad statistical regularities, and one where you find outlier ideas. Perhaps a bit of a System 1, System 2 thing, too.
+
+
+I Imagine the counterpart of Neo in the matrix, he is moving around in the matrix and stopping bullets with his hands.
+Perhaps at the start, in most virtual worlds something incompetent happenend.
+Either he didn't think that he could stop bullets in the first place, or the matrix didn't make an information flow that meant bullets stopped.
+
+The histories where Neo is stopping bullets, using what he percieves to be the magic of his reality, could at first be very few.
+Like the real histories in our mutliverse, where everything happens /as if/ some magic system is actually being implemented.
+
+They are like a tip of an iceberg.
+
+In the second step, the histories where Neo and his magic are stable, are the ones we see around.
+
+If information flows are stable /because/ they implement software with a magical interface to users in a matrix, so be it.
+
+* 'Try Out Everything' / Memetic-Engine Mechanisms
+
+** Intrinsic Firing Rate
+
+#+begin_src clojure
+  (defn intrinsic-firing-rate
+      "Applied after the threshold model.
+
+      Says that neurons are allowed to fire at each time step with chance `intrinsic-firing-rate`.
+      "
+      [{:as state :keys [n-neurons intrinsic-firing-rate]}]
+      )
+#+end_src
+
+Give your neurons an intrinsic firing rate!
+
+This is a substrate-level mechanism to allow the network to try out everything a little bit.
+
+#+CAPTION: Blerps from https://github.com/benjamin-asdf/hyper-substrates
+file:./blerps.gif
+
+** Skip Rate
+
+#+begin_src clojure
+
+    ;; ================
+    ;; Skipping Rate
+    ;; ================
+    ;;
+    ;; Neuron 'failure rate' to fire.
+    ;;
+    ;; This is biologically plausible. At first glance, this looks like an imperfection,
+    ;; but I am reasoning that this would modify the dynamism of the substrate.
+    ;;
+    ;; Higher neuron failure rate is similar to attenuation, it makes the ensembles spread more
+    ;; and be less stuck. But high attenuation makes them move around, whereas the skip rate makes them spread more
+    ;; if applied before the threshold model, and simply smaller if applied after the threshold model.
+    ;;
+    ;; Intuitively, this means you might find other attractor states if you have some neurons that usually strongly
+    ;; contribute to one interpretation, now you have the chance to find a new interpretation.
+    ;;
+    ;; This has been described under the topic of 'assembly shift' [insert paper]
+    ;;
+    ;; This could be applied before or after the threshold model, with distinct results.
+    ;;
+    ;; Skip rate is counterintuitive but useful! And might (or not) be implemented 'explicitly' biochemically in brain.
+
+      (defn neuron-skip-inhibition
+          "Give every neuron at each timestep a chance to =skip=.
+
+          This is an inhibition model modifier, applied `after` the threshold model.
+          "
+          [{:as state :keys [skip-rate n-neurons]}])
+#+end_src
+
+Yes, this is useful. And these 2 together give the ensembles the chance to move around and so forth.
+(Also called assembly shift).
+Finding new connections between sensors and motors that nobody ever dreamed of!
+
+We can imagine a neuron that fires together with another ensemble, through plasticity, it will be associated more with the new ensemble.
+If it now also skips when its old ensemble fires, this neuron will shift, and migrate to the other ensemble.
+
+-----
+
+Lit:
+
+- [[https://www.pnas.org/doi/10.1073/pnas.2023832118][Drifting assemblies for persistent memory: Neuron transitions and unsupervised compensation]]
+
+** Non deterministic computation and computing in superposition
+
+- Not using quantum computing, but pretending to be a little bit quantum, in the classical domain.
+- [[https://en.wikipedia.org/wiki/Nondeterministic_Turing_machine][Nondeterministic Turing machine]]
+- [[https://youtu.be/WOcYfaXEAFY?si=DvoeUj3kqyR8CmT9][Pentti Kanerva - Computing in Superposition in the Classical Domain]]
+
+- In computing in superposition, you have datastructures that are both the tree and the forest,
+  both the molecule and water
+- [[denote:20240606T185815][hyperdimensional computing and some relationships to neuronal ensembles]]
+- [[https://github.com/benjamin-asdf/vsa-binary-sparse-distributed-segments-clj/blob/main/examples/what_is_the_moon_of_saturn.clj][Here is a simple computing in superposition example]]
+
+- 'Everything possible a little bit' needs to be meaningful in the software system for this mechanism to work,
+  this can be done with hyperdimensional computing techniques.
+
+- The [[https://metta-lang.dev/][hyperon MeTTA interpreter]] is a non-deterministic metagraph rewriter. Looks interesting.
+
+
+** Random Perspective?
+
+=Perspective= mechanisms is a hypothetical class of mechanisms that simply make some random inputs to the neurons.
+Thereby modifying the attractor landscape dynamically.
+
+If we also take some neurons and designate them as perspective effectors (p-effectors), then you can see how this
+the system can learn to dynamically modify its landscape.
+
+Consider the case where there is a single large concept in the user's mind, like /pizza/.
+If you know how to press the p-effector buttons, you can play around with random perspective lines, until a landscape is reached that
+splits the concepts of pizza.
+
+That is, you stretch and form the meaning of landscape so that you highlight some dimensions.
+And this new dynamic meaning landscape is for instance well suited for highlighting the space of pizza toppings.
+Vegan cheese, tomatoes, paprika, mushrooms. Where before the was the concept of pizza, there is now a nuanced view
+of the kinds of possible pizza.
+
+A similar mechanism is labeled 'attention' in contemporary machine learning.
+
+If 'doing some random things' to your p-lines is a possible thing to do, then you can evolve memes that are good at using this move for you.
+
+The cognitive user can then create certain 'thinking' situations, that the rest of the system is allowed to fulfill,
+not only using the neurons but also such higher-order orchestration mechanisms.
+
+Note that the cognitive user would simply create the situation 'zoom into the concept of pizza until I see its constituents'.
+It is the nature of having 'confabulation and subsequent best guesses until a stable interpretation of the situation is reached that makes the system stop thinking'
+as the mode of operation, that the goal state is in some ways pre-determined, but vaguely so. The shape of the situation is set, and the thinking machine goes and
+pattern completes the details, using whatever buttons are available.
+
+I think we see the failure modes such as a layer of mechanism in things like 'tip of the tongue'.
+
+Note that the intrinsic firing rate can be seen as the simplest perspective mechanism: that is everything possible is possible with non-zero chance evenly.
+
+Also:
+
+*A toy idea for a meme-pruning algorithm / A Candidate Dream Mechanism*
+
+[[denote:20240208T124507][Neuronal Ensemble Memetics]]
+
+--------------------------------
+
+This is important for me:
+
+- Randomness at the bottom.
+- A framework where random skip rate and intrinsic firing rate make sense.
+- The idea of a virtual reality as brain-operating system.
+- High dimensional computing, programing in superposition, non deterministic computation
+  and things like Sparse Distributed Memory are usful computational primitives.
+  [[denote:20240606T185815][Latest stuff on that]].
+- The joyful meme-hero wizards as intuition pump. They help.

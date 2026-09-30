@@ -1,0 +1,6 @@
+#+title:      thinking-in-space
+#+date:       [2023-01-09 Mon 16:07]
+#+filetags:   :public:thoughts:
+#+identifier: 20230109T160705
+
+"Which directory are you /inside/?"

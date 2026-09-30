@@ -1,0 +1,7 @@
+#+title:      juggleling
+#+date:       [2023-07-27 Thu 09:49]
+#+filetags:   :ftlm:public:
+#+identifier: 20230727T094949
+
+
+* juggle simulator

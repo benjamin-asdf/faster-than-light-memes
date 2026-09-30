@@ -1,0 +1,10 @@
+#+title:      screencast-ideas
+#+date:       [2023-06-26 Mon 08:57]
+#+filetags:   :public:
+#+identifier: 20230626T085744
+
+* bobscheme in clojure
+
+compromise with "@foo" means symbol =foo=
+
+* explain inline def

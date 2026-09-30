@@ -1,0 +1,77 @@
+#+title:      growing-a-fire-with-chat-gpt
+#+date:       [2023-03-12 Sun 19:08]
+#+filetags:   :code:public:
+#+identifier: 20230312T190839
+
+#+begin_quote
+There are different kinds of fires. There are fires that are very hard to start, but once you get them going, they’re very easy to sustain. And there are fires that are very easy to start, but very hard to sustain. And fusion is kind of like the latter. It’s very easy to start fusion. You can do it with a hydrogen bomb. But it’s very hard to sustain fusion. You have to keep putting energy into it to keep it going. And that’s because fusion is not a self-sustaining process. It’s a process that requires external input of energy and control.
+#+end_quote
+[[https://lexfridman.com/dennis-whyte/][Dennis Whyte]]
+
+LLM-integrated programs are like fires. 1) Some are like the sparks flying from a flint and steel, easy to start but hard to keep going. 2) Others are like a campfire, once you start them, they can self-evolve, growing and living on their own.
+I have yet to see an implementation of 2).
+
+* Feed + Shoot + Done
+
+Level 1, the feeding mode. Feed the LLM system information in the prompt.
+
+Here is a function that generates commit messages from diffs.
+
+#+begin_src elisp
+(defun openai-current-commit-msg (&optional git-diff)
+  "Make a commit msg from your staged changes.
+This inserts 2 variations currently so you can choose."
+  (interactive)
+  (let* ((git-diff (or git-diff
+                       (shell-command-to-string
+                        "git diff --cached")))
+         (input (format
+                 "I am a commit message generator designed to produce professional and informative and concise messages based on a git diff. Given a diff, I will analyze the changes made and generate a commit message that accurately describes the modifications made to the code. My goal is to provide clear and concise commit messages that are useful for other developers who are reviewing the code.
+
+Diff: --- a/main.py
++++ b/main.py
+@@ -1,5 +1,5 @@
+ def foo():
+-  print(\"foo\")
++  print(\"bar\")
+
+Message: Update foo function to print bar instead
+
+Diff: %s
+
+Message: "
+                 git-diff)))
+    (cl-loop
+     for
+     answer
+     in
+     (openai-api-sync
+      (list
+       `((model . "text-davinci-003")
+         (prompt . ,input)
+         (max_tokens . 60)
+         (temperature . 0.6)
+         (presence_penalty . 0)
+         (stop . ["\n"]))
+       `((model . "text-davinci-003")
+         (prompt . ,input)
+         (max_tokens . 60)
+         (temperature . 0.8)
+         (presence_penalty . 0)
+         (stop . ["\n"]))))
+     do
+     (insert (string-trim answer) "\n"))))
+#+end_src
+
+*** ideas:
+- A chat window on a website with the contents of the website in the prompt
+- Stuff like sending it the contents of my emacs buffer and asking it to summarize
+  (some of that being done in [[https://github.com/benjamin-asdf/openai-api.el][Emacs package]])
+- A conversation interface with any kind of data: file system, gene database data
+
+* A self-evolving Program
+
+
+
+
+

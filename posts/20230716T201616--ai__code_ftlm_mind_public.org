@@ -1,0 +1,1292 @@
+#+title:      AI Or Cybernetic Intelligence
+#+date:       [2023-07-16 Sun 20:16]
+#+filetags:   :code:ftlm:mind:public:minsky:ai:cybernetics:overview
+#+identifier: 20230716T201616
+#+EXPORT_FILE_NAME: ai
+#+OPTIONS: toc:nil
+
+/There has not been much AI research lately/ - Marvin Minsky.
+
+The story of computers is the story of AI, is the story of thinking about thinking machines.
+
+---
+
+This page is kinda outdated. I had a phase of refining my thinking, in part by programming some
+biologically inspired toy intelligences (ongoing journey), see here:
+
+- [[denote:20240208T124507][Biological Notes on the Vehicles, Cell Assemblies, Models of Cognition]]
+- [[denote:20230915T190843][Vehicles (Ongoing)]]
+
+I call what I do now computational cybernetic psychology. The study of what kinds of machines you need
+in order to build psychologies, or implement meme-machines, or model cognition.
+
+---
+
+#+begin_export html
+<details>
+    <summary>Posts</summary>
+#+end_export
+- [[denote:20230718T145435][Marc Andreessen is wrong about the power of intelligence]]
+- [[denote:20230430T202442][What I Don't Like About Current Commercial AIs]]
+- [[denote:20230915T190843][Vehicles (Ongoing)]]
+#+begin_export html
+</details>
+#+end_export
+
+The science of =thinking= is 50 years behind.
+
+At the high level, you have psychology and at the low level, you have the neurons.
+To explain how thinking works, the interesting level of reasoning is the middle layer.
+This was the object of study of Marvin Minsky, the cyberneticians and early computer scientists.
+
+/Alan Turing told us we could make computers intelligent, and Marvin Minsky told us how to do it./ - Pat Winston[fn:1]
+
+#+begin_quote
+I thought that artificial intelligence was a very fascinating goal... to make rigid systems act fluid.
+#+end_quote
+
+[[https://youtu.be/R6e08RnJyxo?si=jqcTwdWXr4G44f54][Doug Hofstadter]]
+
+How to get fluidity from rigid computers? How to make a computer program with understanding, concepts, analogies and these things?
+
+*Here is my cybernetic view, where the most similar things to minds are societies and biological systems.*
+
+A machine mind is running /on/ a program, using the computer to its fullest capabilities. To make a mind, one thinks of the orchestration of a society,
+a society of sub-agents that contribute in their tiny ways to the functioning of the whole.
+
+The orchestration of a multitude of a growing number of sub-agents, some of which are self-reflecting on the system itself.
+A system that grows richer and richer without getting stuck. Growing ever deeper layers of indirection in its ongoings, making its
+concept ever more granular and multiplied. Such are the properties of a mind growing in a child and I think making a system that provides
+its content the ability to make more content in this way, is indispensable for building minds.
+
+Once we have built minds, it will be obvious I believe. You make a program that is sort of like a self-assembling society and
+which has useful primitives to operate on the computer and its programming.
+
+I think we are on the verge to hit on the right orchestration layers because it is now that we have a little common sense coming
+out of the LLMs that engineering a mind around that becomes obvious.
+
+Minsky and Papert (The Society of Mind) were thinking about what designs make fluid common sense, like nobody else I know of.
+
+* (re)discovering Society of Mind theories
+
+It is now, not before, that we have some much substance (with the llms) that thinking of the orchestration becomes obvious.
+
+** [[https://arxiv.org/abs/2201.11903][Chain-of-Thought Prompting Elicits Reasoning in Large Language Models]]
+- Similar to =chat-iteration= or multiple drafts model (Dennett 1991).
+
+** [[https://github.com/zmedelis/bosquet]]
+A cool overview of recent ideas and implementations.
+All these things are (embryonic) Society of Mind models IMO.
+
+- They implement a Wikipedia sub-agent.
+- https://arxiv.org/abs/2210.03629i
+- Putting together different sub-capabilities into a system and thinking about how to orchestrate it
+
+* The Problem
+
+#+begin_quote
+If a program works in only one way, then it gts stuck when that method fails. But a program that has several ways to proceed
+could then switch to soe other approach, or search for a suitable substitute.
+#+end_quote
+
+(Minsky 2006)
+
+Make a computer program that acquires knowledge and does reasoning in a fluid and dynamic way. The program has some meta competencies like learning from its mistakes,
+monitoring its current progress toward goals etc. Its style of solving problems is sort of amorphous. It doesn't get stuck. So it probably tries different approaches to things for instance.
+
+The hardest part is that this thing has [[https://www.youtube.com/watch?v=o6suzoRLZD4][common sense]]. Why does pushing on a string not move the object it is attached to? GPT-4 can give you a Wikipedia article-style text on this.
+
+*We need only make an intelligence roughly on the reasoning capacity of a 6-year-old once.*
+And give it the ability to make itself better etc. Intelligence like this will very quickly go into a full-blown intelligence explosion.
+
+After all, it has the competencies of the computer right there meshed into its thinking. It can define new subroutines, clone itself, and make experiments while it is thinking.
+
+*We need only make an intelligence roughly on the reasoning capacity of a 6-year-old once.*
+
+Seriously, this part is one of the most important insights about this project. It's a different game to play if you only need to produce a single instance of the thing you are engineering.
+Those who think that this or that approach to AI doesn't sound like elegant design. Consider how it only needs to take off ones.
+
+---
+
+Recently, I was thinking more clearly about form and content. Architectures and content. Maybe it invokes a more useful frame of mind to say:
+
+/Make a computer program that makes a mind, the mind is a process which acquires knowledge and .../
+
+We are in the business of making a program out of which a mind would self-evolve. It is on us to provide the architecture, the primitives, out of which the system builds its content.
+
+There is nothing in our code saying anything about the /content/. I realized this when I built [[denote:20231016T095054][Braitenber Vehicles]] recently. My code does not speak of the animals' behavior.
+The behavior is /emergent/ in a useful sense of the word. There is a new level of analysis, its behavior (content), which doesn't make sense to express in terms of its lower layer, its architecture (form).
+
+In the same way that natural selection doesn't speak of organisms, the organisms are the content, /emerging/ out of the logic, the form, of natural selection.[fn:2]
+
+* How fast does your mind grow?
+
+#+begin_quote
+Instead of trying to produce a programme to simulate the adult mind, why not rather try to produce one which simulates the child's? If this were then subjected to an appropriate course of education one would obtain the adult brain.
+#+end_quote
+
+Alan Turing
+
+Let's say you build a nice Society of Mind mind-engine, then you observe it grow.
+If you perceive its progress as slow, you have to ask yourself what is the timescale you expect this mind to grow?
+
+It takes a human roughly 6 years to become a 6-year-old mind. If our mind-engine is only 100x faster, this is still 21 days.
+So if you observe your mind and it looks like nothing after 2 days, this might be expected.
+
+This is one of the things that are very dangerous about the way we build AIs right now. You maximize what it can do, and instantly, you
+don't have the perspective of building something that might need time to grow.
+
+What if it is necessary for a moral agent, situated in its environment and these things, to grow over some period?
+Depending on the approach you take, you might cut yourself off from building minds like this completely. In the limit, categorically
+excluding the minds that are moral agents.
+
+From engineering intuition, I feel a machine mind engine should be 100-1000x faster to grow a mind.
+Meaning I expect the right kind of program to potentially *not do anything interesting for at least 2-3 days*.
+
+The moment its a 6-year-old level mind and it has curiosity and drive to improve itself, it will make an intelligence explosion.
+
+* The Memetical Engine[fn:3]
+
+Your mind program better supports memes, or it is not an AGI. Meme Machine or Memetical Engine are alternative names for AGI.
+
+It is not a coincidence that the one thinking of designs of mind engines needs to think of the meme level of the resulting program.
+
+A mind fails if it gets stuck, in what ways can it get stuck?
+
+1. It can be invaded by a virus of useless memes
+2. It can go in loops
+
+These are the design goals and problem constraints of the meme machine engineer.
+
+A healthy mind builds the right kinds of critical layers to self-reflect before 1. and 2. happen.
+
+Maybe some theoretician will prove someday that you can't get a general mind without the /possibility/ of useless memes.
+
+* Ben Goertzel thinks agent architectures around LLMs alone won't do it
+
+I enjoyed this conversation quite a bit, especially the last part about how to build AIs [[https://youtu.be/xw7omaQ8SgA?si=EdkEIrJE3Wk-RdFO][Joscha Bach Λ Ben Goertzel: Conscious Ai, LLMs, AGI]].
+(Towards the middle I think they get sidetracked quite a bit on the nature of /consciousness/, whatever).
+
+I thought in the past few months that a motivated agent architecture around the LLMs might be enough for an AGI. But I changed my mind towards thinking we will put in other kinds of layers,
+wich represent knowledge in more effective ways. And which have the right primitives to facilitate the system to produce the capacity of finding essences in situations and these kinds of things.
+(More about the Society of Mind below).
+
+The question is not /is it in principle/ possible to get intelligence from LLMs.
+We already know a brute force algorithm to make all possible programs, including ones that make intelligent minds. I can write that in like 30 lines of Lisp.
+So the question is always about how to practically engineer something with the resource constraints given.
+
+I share Ben's intuition - if you use LLMs in this day and age to make a mind, the biggest part of it will be coming from somewhere else.
+
+* Cutting through the confusion
+
+What is the point of acting like minds are these mysterious, incomprehensible things?
+It's like the dudes from 150 years ago saying that we will never understand life and how a tree grows.
+Such people don't come across like the smart ones in hindsight. And false modesty is a useless thing indeed.
+
+I recently decided it's harmful to listen to confused people.
+
+/Confusion is there to tell me that I am not looking from the right perspective yet/. ([[https://youtu.be/TeXCvh5X5w0?si=pSedYYrZUnaIzNdC&t=940][Jack Rusher on Perspective]]).
+
+In programming, the state of mind where one is locked into a single perspective, from which a bug seems *simply impossible* is called /thrashing/[fn:4].
+One might end up spending hours going deeper into rabbit holes that are completely beside the point.
+
+One of the most important skills that sets apart senior programmers from junior ones is knowing when to take a break and step away from the keyboard.
+To have a sense of when one's perspective is locking in too much.
+
+In what world is it supposed to be impossible to build a mind? You see it happening in two dimensions. Ontogenetically, when a child grows it's the brain and its mind.
+And phylogenetically, apes and humans evolved gradually towards having brains and minds.
+
+You have to know when the kinds of things you are thinking are not making sense anymore.
+Take a step back, relax your mind and let go of the assumptions that lock you into a state of confusion.
+
+It is this power of imagination and simple explanations that is what Albert Einstein was about, too.
+It's the same creative reasoning that allowed Darwnin to think the thoughts of evolutionary theory and with a /flip/, life made sense.
+
+* Fistness has appeared[fn:5]
+
+/Simplicity is the ultimate sophistication/ - Leonardo da Vinci
+
+let =x= = /Consciosness/, /Awareness/, /Qualia/, whatever
+
+/How does =x= arise from the neurons?./
+
+Urm...,
+
+/How does =acceleration= arise from the car engine?/
+
+/How does the car engine work?/ seems to me like the more straightforward question to ask. With good answers.
+
+So we simply ask: /How does the brain work?/ and are right to expect much fruit from this inquiry.
+
+Programming is about how to think. One insight from programming is to keep things simple. The world is complicated enough,
+You will not succeed if your ideas are /accidentally/ complex on top of it.
+
+See [[https://www.youtube.com/watch?v=DbVClq1pT9M&list=PLiI6j3jrFEppvf08P14LdU57UACmvN6z3&index=3][Marvin Minsky - What is the Mind-Body Problem?]]
+
+* The Equations of Navigating The World
+
+About trying to find the simple equations that make minds...
+
+Biology and psychology are messy. The power of these systems comes from the function, structure, and behavior of many contributing elements.
+Minsky called this /physics envy/ and his view was that it is almost the opposite of the simple equations we should try to find.
+It is the variety and redundancy of the system where its resourcefulness comes from.
+
+The one comes up to you and says:
+
+/We should find the mathematical equations that govern intelligence. After all, everything in the world is governed by simple maths./
+
+When a car engine has 5 subparts and you walk up to it and try to find the equations that govern *acceleration*...
+
+When you walk up to the engine and you say "It is all one thing, one underlying principle...".
+
+That's not what anybody would say that is close to understanding car engines.
+
+An animal has a heart and lungs and eyes and a liver... It's about navigating the world in a resourceful way.
+
+I think there is an organizational layer to the answer.
+
+For organisms, it is physiology and zoology. Reasoning about the organization of the organism, what it needs to achieve in the world, what its functioning is, how the sub-parts contribute to this or that functioning and so forth.
+
+For minds, that is cybernetics; I also have heard this being called /mind architecture/ or /Minskian architecture approach/.[fn:6]
+Some of it is computer science nowadays. But the term invokes static number crunching ideas, which is not the idea.
+
+The question is how do I make dynamic programs, acquire knowledge, modify themselves and organize themselves? For instance, using Society of Mind architecture;
+Critic layers, association lines, and things like this.[fn:7]
+
+All parts of the organism are made from cells and tissue. Do you want to disregard the differences and find the underlying principle?
+To say of many things that they are one thing is abstraction, is power.
+
+But to say of many things that they are one thing while the functioning of the things came from their differences, not their similarities, is a losing move.
+
+In a way, we know an algorithm that produces complex adaptions, including brains and minds - it is called natural selection and it gets the job done.
+
+But what are the equations out of which you predict a heart and lungs and eyes and a liver...?
+
+The particulars of biology are a series of historical accidents, layer on layer of duplicated and differentiated systems, that evolved gradually.
+There is not 1 thing that makes a brain go, there are 400 little subcomputers that gradually got added and evolved.
+
+/You tell a person something and then you wonder how could they understand so perfectly what you said? The answer they did not understand perfectly and neither did you/.
+/... It's all wonderfully complicated/. [fn:8]
+
+A mind has memory and self-reflection and goals and ways to switch between ways of thinking, it has administration layers and so forth.
+Now we already have file systems and databases so I think a certain storage, and retrieval layer of memory is figured out. Then you have some more dynamic layers on top like fuzzy
+similarity detectors, memory consolidation jobs and so forth.
+
+Just make progress on the sub-parts and put them together as a machine. The zoology and physiology of minds and intelligence.
+The system just needs to always have something there the moment it looks.
+
+And if I were to go look for mathematics of behavior and intelligence, I would look at cybernetics, too.
+
+See:
+
+- [[https://www.youtube.com/watch?v=cbTUxPQZBX4&list=PLVV0r6CmEsFxJatFYBb7P4NZscvJw1f0r&index=82][Marvin Minsky - The strange history of neuroscience]]
+- [[https://www.youtube.com/watch?v=4os4nLE9PUU][Minsky On How Biology And Psychology]]
+
+---
+
+What are the kinds of things somebody would say that are close to figuring out how a car engine works?
+
+/I wonder where the pistons are./
+
+/The wheels rotate./
+
+/The gas pedal is a user interface./
+
+---
+
+The sub-parts of a mind...
+The parts are virtual, they exist on the same plane as the sup-parts of a computer program. I am not saying you could look at the transistors and draw boxes around which of them is a sup-part.
+
+* Computers and Thought
+
+Cutting to the chase: The only thing missing from AGI are the orchestration layers.
+
+The Cyberneticians (Turing, Church, Neuman, etc.) figured out how to express thought so abstractly and precisely, they were able to build a machine that does it.
+The computer is the perfect thinking machine. And its perfect design makes it perfectly useless. It does not know /what/ to think by itself.
+
+We, the programmers, must think of the thoughts and encode them in the computer. Programming is about architecture. It is about the societies of process that a program is.
+
+Completely different from computers, the machine learning neural networks we have now, including LLMs, are like the substance of the mind. Without direction, structure, architecture.
+It is like they are dream machines, they are dreaming up the rest.
+
+We have a feel for it since [[https://en.wikipedia.org/wiki/DeepDream][2015]]:
+
+#+CAPTION: The Mona Lisa with DeepDream effect using VGG16 network trained on ImageNet
+https://upload.wikimedia.org/wikipedia/commons/d/d0/%22Mona_Lisa%22_with_DeepDream_effect_using_VGG16_network_trained_on_ImageNet.jpg
+
+Similarly consider GPT. It can for sure take text, take the concepts, and do something with them.
+I am not sure why yet, but I feel the same kind of generative mirrorlike quality in a deep dream image and in GPT text:
+
+#+begin_export html
+<details>
+    <summary>A poem about the ideas here</summary>
+#+end_export
+
+In the halls of Turing, Church, and Neuman's shrine,
+A perfect machine was born of abstract design.
+Binary whispers threaded in silicon veins,
+Yet autonomous thoughts the computer disdains.
+
+Every coder, an architect scribing in rhyme,
+Sketches society's process, one loop at a time.
+A blueprint of thought, an algorithmic town,
+Where data are citizens, zeros and ones the gown.
+
+Against this stark logic, there rise neural dreams,
+An ocean of ideas, teeming with unseen realms.
+Unbound, unfettered, in synaptic dance,
+The formless substance of mind in cyclical trance.
+
+But, what if these realms were not two but were one?
+Structured yet fluid, beneath the same cognitive sun.
+Architectural planning with the neural network's zest,
+An elegant symbiosis for an intellectual quest.
+
+Programming's discipline, with machine learning's flight,
+In binary branches, and neurons alight.
+Bridging the chasm between rigidity and flow,
+In the name of progress, and knowledge we sow.
+
+So, let the silicon dream, let the algorithms sway,
+In the union of structure and fluidity, a new dawn lay.
+In this vast realm of man and machined minds' fusion,
+Lies the birth of our future – a grand revolution.
+
+#+begin_export html
+</details>
+#+end_export
+
+They are like an ocean without a ship. Like flesh without a skeleton. Like clay without walls and rooms.
+
+For the moment I can describe this as the substance of the mind. Wondering why ANNs are not intelligent is like wondering why a piece of meat is not running around.
+Because there is some architecture missing around it. An animal has other layers of organization necessary to make it go.
+
+For me, it almost seems obvious, that if I took a piece of brain tissue, it would in principle do the same kind of thing.
+
+It is the stuff that minds are built out of. It does not need to be the architecture and it should not be the architecture. Architecture is about the clay the way programing minds is about neural networks.[fn:9]
+If you succeed in throwing enough clay at it so it becomes an AGI, the first thing it will do is rewrite its architecture in a programming language.
+
+We only need to think architecture thoughts about how to build a mind for a while. Make computer programs that make a society. A society capable of having complex goals and making progress on them without getting stuck.
+
+Use regular programming to program the structure, the bones, the memory layers and maybe things like the economic system of the society of mind, choose how to solve credit assignments, conflict resolution and such things. I call this a =mind-engine= below.
+
+And breathe the flesh back in using ANNs, knowledge graphs, logic systems and these things [fn:10] as subroutines.
+
+The idea is so ripe I can almost taste it - which is why I think 1000 engineers will try in the coming months to years, and somebody will succeed.
+
+* Society of Mind model
+
+The [[http://aurellem.org/society-of-mind/index.html][Society of Mind]] is a model of how the mind works developed by Minsky and Papert.
+The book (Minsky 1986) is often cited as one that changes a person's view of things.
+
+Scruffy AI is a school of thought that asserts that there are no neat simple tricks (neat AI). See [[https://en.wikipedia.org/wiki/Neats_and_scruffies][Neats and scruffies]].
+The mind is grown of many subsystems, it is a biological system of a kind.
+
+Interestingly Russel and Norvig declared the victory of the Neats in 2003 and changed their mind in 2021, saying that the current paradigm of iterating and finetuning is scruffy.
+
+#+begin_quote
+"Neats" use algorithms based on a single formal paradigm, such as logic, mathematical optimization or neural networks. Neats verify their programs are correct with theorems and mathematical rigor. Neat researchers and analysts tend to express the hope that this single formal paradigm can be extended and improved to achieve general intelligence and superintelligence.
+
+"Scruffies" use any number of different algorithms and methods to achieve intelligent behavior. Scruffies rely on incremental testing to verify their programs and scruffy programming requires large amounts of hand coding or knowledge engineering. Scruffies have argued that general intelligence can only be implemented by solving a large number of essentially unrelated problems and that there is no magic bullet that will allow programs to develop general intelligence autonomously.
+
+John Brockman compares the neat approach to physics, in that it uses simple mathematical models as its foundation. The scruffy approach is more like biology, where much of the work involves studying and categorizing diverse phenomena.
+#+end_quote
+([[https://en.wikipedia.org/wiki/Neats_and_scruffies][wikipedia]])
+
+Some of the architecture is further fleshed out in The Emotion Machine (Minsky 2006). This is the base model with which I want to build my /common sense/ pump, scraping the small reasoning and knowledge-providing capabilities
+of the LLMs.
+I guess one critique of /the society of mind/ is the incredulity of where knowledge is supposed to come from. Well, it's a theory of orchestration and organization. The model is made for having different kinds of knowledge-making subroutines
+build into it.
+
+In a way, Minsky was predicting the current progress in /some/ forms of knowledge representation layers. Paving the way for engineering the stuff around these parts. The LLMs are like a piece of meat, not an animal running around.
+And the society of mind is one model in thinking about the orchestration layers that make an animal go. One thing I can rely on is the plentiful and rich progress in llm tech.
+Another reason to focus on architecture is because better people are already working on the ML layers anyway. So the place a hacker in the basement could potentially win is in using the substance layers as material in his engineering.
+
+So in order to build a mind, I want to go through the emotion machine and implement the ideas - using LLMs on the substance layer. This might take some iterations, as I make arbitrary decisions at first, and I won't get the design straight the first time for many things.
+
+This is something that simply was not possible before. The LLM tech is becoming available to us right now; Not before. So whenever somebody mentions how many people have tried and are trying to build AGI I am very skeptical.
+I think you don't have any feel for how innovation works. You need the right context, the right materials, the processes. And when the time gets ripe, many people have the same kinds of ideas at once.
+
+Ben Goertzel played around with neural nets in the 80s and they /were sort of shitty and did not get much done/. Times change, and ideas get ripe. The neural net substance layer is powerful now, not before.
+The other thing I draw from /other people who have tried AI/ is saying /Good. Somebody else already did some work, where do I pick up from there?/.
+
+The field of AI is destined to re-discover the scruffy organization layers before they will build an AGI.[fn:11]
+
+* Oceans in the mind
+
+Considering the amount of neurons in human brains I make one invariant. If your theory of how the mind works has an ocean, or a galaxy, somewhere in how it works, I get interested.
+
+This is one reason why the Society of Mind theory fits. Because the agencies, agents, resources, micronemes, and such can be arbitrarily multiplied.
+
+The brain has 86 billion neurons. Let's say complex agents are 1000 neurons and simple ones are far less, averaging 500 neurons.
+
+#+begin_src elisp
+  (/ (* 86 (expt 10 9))
+   500
+   (expt 10 6))
+172
+#+end_src
+
+I get 172 million agents to build my mind with. So when I say the mind comes from an interplay of resources, I am thinking of an ocean of resources.
+
+There are not 172 million different /kinds/, there are maybe 5-30 /kinds/. That is still plenty scruffy but from another perspective /elegant/.
+Give a mind some primitives, then allow it to spawn and multiply and copy its contents.
+
+And the intuition here is that we have roughly something like xxx * 1000 * 1000 entities in a mind.
+
+* Form and Content
+
+We are shaped by natural selection, does that mean we are limited by it?
+
+It is almost the hallmark of building a higher level of organization out of some substrate, that the next more dynamic layer has a life of its own.
+
+Natural selection is the form layer, which shapes a dynamic layer of replicators, and genes.
+The genes are a form layer that shapes a dynamic layer of development and organismic substrate.
+The organism layer is a form layer that shapes a dynamic layer of neuronal tissue, growing.
+The neuronal tissue is a form layer that shapes a dynamic layer of neuronal activity.
+The neuronal activity is a form layer that shapes a dynamic layer - here I start conjecturing - of computational mind primitives.
+The mind primitives are a form layer that shapes a dynamic layer of mental content.
+
+Now if you zoom in, your mind discerns 5-6 abstraction layers between the simplest, low-level computational primitives and high-level content.[fn:12]
+
+The high-level content is the stories we can tell each other. And the user interface that we experience. The concepts we use to parse the situations we find ourself in.
+And cognitive content like imagination and so forth.
+
+In a way, the concept of an idea is the most dynamic, most fluid content yet discovered.
+Our mind is content, but it is also a shape again, shaping the dynamic layer in which ideas are allowed to be content.
+
+It would be an interesting idea to have; What the next layer would look like.
+
+To make ideas into something concrete enough so it has a content of its own. Such is the nature of a Von Neuman machine. A machine with content.
+
+This is the reason Lisp is the one language with an open-ended future, for it takes this hierarchy one up (or down if you like).
+A machine with the content (the Lisp interpreter), which is about content/ideas itself.
+
+If you consider what is the open-ended power of a general idea/meme machine, the brain, you might realize why Lisp is called 50.000x more powerful than other languages.
+If it is the difference between an analog computer you have to reconstruct each time and a Von Neuman machine you can load up with ideas as you go.
+
+Another hallmark of each of these hierarchy transitions is the timescales on which the content operates. Maybe there is the factor of 50.000x again.
+
+Goals and lessons
+
+- An AGI program expresses not the content, but the form which allows the contents of a mind to emerge.
+- The most effective layer to do AI engineering is just one layer below the mental contents, it is the layer of the mental primitives.
+- This is the fundamental disconnect of the current mainstream approach - they model the neurons or max the neuronal activity. It is incredibly primitive.
+  Like simulating the atoms to make a physics engine.
+  This is the reason I need a supercomputer to run these models.
+  If we know how to build minds, my laptop will be able to run one.
+  So it is one proxy to see if your approach has anything to do with engineering minds. If you need a supercomputer you know you are doing something wrong.
+- What are the primitives out of which a mind is built? Minsky and a tiny handful of other people, for instance, Hofstadter[fn:13] have some ideas.
+
+* The special practical effectivity of memory layer engineering
+
+Organisms and minds need to operate under resource constraints in the world. Maybe some theoreticians will prove sometimes that a mind needs something like memory consolidation and working memory,
+that you cannot have all your memories always participating with the same weight in order to get anything done.
+
+Static noise is the same as being blind, if you don't know which memories of yours are relevant, you know nothing.
+
+Those who use current LLM tech for agent-like programs will inevitably start engineering in the space of memory-layer orchestration things.
+Since you have a limited context window of input;
+
+I think that there are 5 or 20 things you need to do in order to make minds. And that memory is 1 or 5 of these things.
+But it *is* the right kind of abstraction layer you are thinking about, which is I think one reason that engineers will start getting a grasp on what
+it means to build minds while they engineer the memory layers. And why I expect from this angle the most solid, most evident progress.
+
+There are multiple reasons I think this.
+Firstly, the practicality of it is obvious, because of the limited context window of LLMs.
+
+Secondly, memory and memory retrieval is an aspect of the mind that computer science got hold of and for historical luck accidents,
+business and money went into developing different kinds of memories in computers.
+
+Such that filesystems, RAM, cloud storage, and databases are at our disposal now. The storage layer of memory is figured out to a solidness and vastness
+that is I think as vast as the ocean compared to the thin trickle you would have needed to make a mind in the first place.
+
+Imagine if another aspect of the mind would be this far developed right now. For instance, if the concept of analogy were as obvious an engineerable thing.
+On the flip side, was there any guarantee that we would develop memory this far? Maybe the need to store memory is so fundamental to how minds work that it
+was always obvious. Turing had the tape in his machines for a reason.
+
+Either way, storage and retrieval are very straightforward engineering problems at this point.
+Allowing us to think interesting thoughts about what different kinds of memory layers you can build into a mind.
+
+Fundamentally, there are 2 processes on the interface between us and each memory layer.
+
+=remember= asserts new memories to the storage.
+
+=retrieve=, or query, finds relevant memories for a given context.
+
+Let's be concrete, imagine making a prompt manager that has a context as a parameter and wants to build a prompt for an LLM, which is another round of its agent functioning.
+
+- *short-term*, simply keep a log of what happens and add it to your prompt.
+- A *rolling summary* of the current context -> another kind of *working memory*.
+- Now and then, take the current context or take snapshots from the last few contexts, and ask the LLM to extract interesting memory points -> memory *consolidation* from *short-term* to *long-term*
+- It seems almost obvious, that the human brain has such a consolidation going on as some kind of batch job during sleep.
+  Sounds like the kind of thing a neuroscientist might ask right before they figure out how something in the brain works.
+- Association layers, where some context is activating or retrieving similar memories from the past.
+  One way to do this is to implement Minskies *k-lines*, which are pointers to a set of resources, including memory resources and other *k-lines*.
+
+#+begin_src clojure
+;; Arbitrarily taking 10 random relevant memories
+(defn ->memory-prompt [ctx]
+  (str
+   "Current relevant memories: "
+   (let [memory-resources (query-relevant-memories ctx)]
+     (apply str (take 10 (shuffle memory-resources))))))
+#+end_src
+
+A scheme like this I call =Mixed Memory Resources=. The system has a multitude of applicable memory resources
+(which are likely text snippets for your llm).
+
+Then according to some scheme, for instance, a prioritization or more sophisticated things like association layers or *k-lines*, you pick a mix of memories and at it to your driver prompt.
+
+Prompt manager:
+
+#+begin_src clojure
+(defn ->prompt [ctx]
+  (str
+   base-prompt
+   (rolling-summary ctx)
+   (->memory-prompt ctx)))
+#+end_src
+
+The next most obvious ideas in the space of engineering minds
+
+- Conflict resolution and coordination
+- Credit assignment
+- Dispatch sub-agencies or recursive calls
+- Manage clones of yourself
+
+* Stream of consciousness kinda further ideas on that memory topic
+
+** Forms of memory
+
+One idea is to take cognitive psychology and see what kinds of memories they have come up with and build them into your mind.
+
+*** Procedural memory
+
+The first ideas are very straightforward. For instance, I can assert Clojure functions in the database of my mind. And I am already talking in a language of process.
+Just build a dynamic programming environment that allows for process entities to be asserted and modified.
+
+Procedural memory can be a list of actions that your system knows how to execute.
+
+A slightly more sophisticated example comes from /The Door Into Summer/, by Robert A. Heinlein (1956).
+(Also [[denote:20230915T190843][Vehicles blog post]]).
+
+This is a design with fixed action patterns (Tinbergen 1951), mixed with more open-ended purposeful goal states.
+For instance, I can say
+
+- turn left (fixed)
+- Search for the light (higher level goal state)
+- when close to light
+- grab it
+
+This way, we can quickly imagine a more complicated system where the procedural memories themselves are far above the concrete level of function calls
+on the computer. But they could themselves go forth and bias the whole system to have certain contents of mind - which in turn bias towards intermediate level
+agencies to be active etc. etc.
+
+The procedures of machine intelligence make we wonder What are its actuators?
+Because I am not building a robot right now with the equivalent of muscles.
+The actuators in my system are its effects on the computer it is running.
+
+*** Semantic memory
+
+Maybe RDF tuples will do. However, in the context of a society of mind, it will always come with activating many associated resources etc.
+
+If I think of a castle, then there are a little bit of tiny Hogwarts ideas active in my mind at the same time. Minsky calls this =micronemes= ([[http://aurellem.org/society-of-mind/som-20.5.html][Minsky, 1986]]).
+
+*** Episodic memory
+
+In order to have a model of episodic memory, I think you will have to model a lot of what the mind is about in the first place.
+
+I'm thinking right now on a high level this is a kind of retrieval that in turn activates many pieces of resources that are relevant to parsing a situation.
+
+There are probably many sup-parts and varieties of how such a thing can work.
+
+One thing that comes to mind is that it is similar to imagination; At the same time, the brain has resources to keep track of which things are imagination, which are memory
+and which are reality. A capacity that strikingly is absent during usual dreaming; The relationship between imagination and memory, or lack thereof, is a topic of cognitive psychology, too.
+
+So from a high-level view, I think that very similar machinery is used for some aspects of episodic memory and imagination.
+
+** What if 5 other things are like memory?
+
+What if memory is one aspect of the mind and we have luck that we figured out so much about it in computer science?
+What if there are 3 or 5 other things that make up the functioning of a mind and are as important?
+
+Maybe analogy, imagination, attention, representing relationships between ideas, and procedural knowledge.
+
+What are things that computer science has figured out to a highly developed degree?
+I am thinking of networking, data structures and algorithms, knowledge bases, Search engines, and query semantics.
+
+Maybe there are hidden, obvious things that help when building minds. The dynamic nature of Lisp comes to mind, asserting new procedures as you go.
+
+What comes to mind is that we can express processes via programming languages. We can express effects on the operating system via system calls.
+We can express effects on the programming image it is running on via Lisp. So I see at least one other thing that is figured out:
+The actuators of the system. It will instantly totally and precisely have all the power of the computer it is running on.
+It only needs to figure out how to make the text output to its interfaces.
+
+From operating systems and Lisp, we get the full power of the computer the system is running on, as well as its programming.
+So its actuators are perfectly figured out on the other side of the interface. The mind just needs to be a program using the interfaces.
+But it doesn't need to be like an animal that learns how to use its muscles to walk.
+
+Once it finds its muscles, they are instantly there, 100% precise. Part of the appeal of being a mind running on a computer.
+
+** Alternative histories
+
+Imagine we would *not* have done the engineering work and figured out memory storage and all the things. USB sticks, hard drives, information theory.
+
+Maybe in some alternative history, computers were not picked up by the military and businesses, and it would be a curious side branch of cybernetics and biology,
+to build machines that think.
+
+I guarantee, there would be philosophers out there talking about how memory is a thing in the mind that /you will never understand/ and such things.
+
+This is the situation we are experiencing with things like *common sense*, *reasoning*, *knowledge acquisition*, *understanding*.
+They have not been done yet so you say they are mysterious and unsolvable.
+
+And the other way around, once we solve the engineering problems, they will almost seem trivial.
+
+* Cybernetics
+
+Lately, I have been very interested in the /cybernetics people/ of the 50s and so forth.
+I think after we can explain how to build minds, we will be able to look back and
+it will look like the computer was the hard part, and the AI part was just some pieces of more
+robust, dynamic programming.
+
+#+begin_quote
+True, most of the world of "Computer Science" is involved with building large, useful, but shallow
+practical systems, a few courageous students are trying to make computers use other kinds of thinking, representing different kinds of
+knowledge, sometimes, in several different ways, so that their programs won't get stuck at fixed ideas. Most important of all, perhaps, is making
+such machines learn from their own experience. Once we know more about such things, we can start to study ways to weave these different
+schemes together. Finally, we'll get machines that think about themselves and make up theories, good or bad, of how they, themselves might work.
+Perhaps, when our machines get to that stage, we'll find it very easy to tell it has happened. For, at that point, they'll probably object to being
+called machines. To accept that will be will be difficult, but only by this sacrifice will machines free us from our false mottos.
+#+end_quote
+
+[[https://web.media.mit.edu/~minsky/papers/ComputersCantThink.txt][Why People Think Computers Can't]].
+
+So this is the kind of AI research I want to conduct, having ideas about how to make a program more robust,
+not get stuck, debug its intermediate output and things like that.
+
+Minsky and Sloman are the furthest thinkers on this kind of approach.
+
+This cybernetics is more or less what we now call Computer Science nowadays.
+Much of computer science comes from AI research. Like garbage collection and structured programming.
+
+I cannot help but make the connection to Dennett's multiple drafts model, just from a high-level point of view.
+You have some intermediate representations, that get revised multiple times.
+
+In EM-ONE[fn:14], we apply critics for instance to an intermediate plan. Say something like
+/the current plan is not good, because we don't know what will happen after/.
+
+Minsky:
+
+/1950s was when humans started to be able to speak/.
+
+We did not have language for things that changed. Now we can talk about
+recursion, caching, memoization, application, etc.
+We start to be able to express process.
+
+* Wheather patterns in the transistors?
+
+It seems to me it is fashionable in neuroscience to say /we have been too simplistic, we need to look at the system and the connections and the interconnectedness/ and such things.
+Called systems neuroscience or such.
+
+So you think there is left and right and left is going reductionistic on looking at the neurons and right is going up and looking at the system.
+
+I think there is a third way. Let me elaborate:
+
+You see a computer and you want to understand how it works so you start making systems analysis math on the connectedness of the transistors in the system.
+
+When I look at you, I see somebody doing meteorology on the transistors. Aha! These are the underlying principles that make this part active when this other part is active.
+
+I don't think these are wasted efforts entirely. But make no mistake, your science is still contributing to understanding the substance of the mind. Not its architecture.
+It's not wrong to understand more of the substance. It's very insightful to understand more of the substance. But it is not the path, not the only path, to understand how minds work.
+
+To understand how a computer works the resulting theory has to do with software, processes, file systems, memory layers, caching, recursion, function calls and these kinds of things.
+The land of the middle. Not the visuals on the computer screen at the top and not the transistors at the bottom.
+But the abstract, virtual entities that produce its functioning. Implemented on the transistors yes, but many layers of abstraction further up from them.
+One important concept of cybernetics is that it doesn't matter what the underlying implementation is made of. You can make a mind on transistors and you can make one on neurons.
+The interesting stuff is when you ask what are the functional properties of the system and how could you go achieve putting the software together to achieve this.
+
+* Cyc
+
+[[https://en.wikipedia.org/wiki/Cyc][Cyc]] makes a lot of sense as a subsystem of an AGI. An AGI is a system of many resources and, presumably, paradigms.
+I say build a knowledge database into your AI, like a lobe of its brain.
+
+If the first AGI arises out of the giant inscrutable matrixes then the first thing it does is write a new version of itself, using a programming language, programming its architecture - a cybernetic AI.
+This is why I say tongue in cheek:
+
+#+begin_quote
+If the first AGI doesn't use Cyc, the second AGI will use Cyc.
+#+end_quote
+
+Every time somebody mentions /cyc doesn't work/ I just think they are missing the point. Cyc is meant as a lobe of an AI program, not to become sentient
+by itself.
+
+* CI, Cybernetic Intelligence
+
+I skip =BI=, which I don't know what it would mean, and go to =CI=.
+
+We could call this cybernetic intelligence. The field of AI is so far split into different landscapes that it starts being confusing.
+=AI= right now, especially for the general public is virtually synonymous with artificial neural networks, which Minsky invented in college and then said will not solve
+the big problems.
+
+What is the point of doing something that 20 thousand other people are doing? Better to find the things that only a few people are doing.
+
+I think that in the limit =llm= /would/ become an AGI. That predicting language would be predicated on understanding enough of the fabric of the world to have implicit
+models of physics, the social realm etc. - /common sense/.
+
+But making an AGI out of LLMs and nothing else would be bad design, wasteful and dangerous. Yudkovski calls this the giant inscrutable matrices (GIM).
+GIMs likely can become sufficiently capable to make intelligence explosions. This doesn't sound like a good way to make a mind; Where is the sensuality?
+Where is the care? Where is the absolute perfused, complete, maximally bare knowledge I have as a programmer over my program? I have seen it fail again and again until I have debugged it and know its simple and elegant design.
+This is the only truly practical idea I have about the alignment problem.
+
+* =mind-engine=
+
+A mind engine is a program that makes a process that can solve problems and doesn't get stuck while it's doing it.
+
+One of the best ideas ever is Von Neuman's architecture. The beautiful thing about this idea is that it abstracts how a computer can be built far enough so it suddenly was /easy/ to build one.
+This is a typical concept in cybernetics and computer science, the almost magical power of abstraction.
+
+Our job then, is to express how you can build a mind at a sufficiently abstract level so we can go ahead and implement the code for the subparts.
+
+These are alternative names for program design and thoughts on the level of mind engines:
+
+Maybe anything resonates:
+
+The program around the LLMs. The prompt loop. The chat iteration. The orchestration program. The AGI main loop. The read-eval-print-loop for the LLM.
+A system that uses stuff like LLMs as some lobes in its brain. The master system of the sub-processes that in turn might use a LLM prompt. The common sense pump.
+The auto prompt machine. The prompt generator, pre-processor, post-processor, evaluator, repeat loop.
+
+* LLMs as drivers. In need of a =mind-engine=
+
+The Society of prompt making sub-processes that make the story of a mind.
+The LLM is a little knowledge generator and I want to build an engine that is capable of accumulating some useful knowledge about what to do next, or what to think next.
+
+Give us enough /intelligence substance/ and somebody will engineer a layer of architecture around it that starts taking off.
+I think that somebody will put enough machinery around =llms= and similar tech so that it becomes generally intelligent (an =AGI=).
+
+If the neural nets make just barely enough common sense so that you can scrape this common sense, using an engine; You can build an AGI that way.
+Maybe that needs 200 completions per second, maybe 1000, only 1.
+
+The model is a driver looking for an engine. Raw, creative, knowledgeable substance producers. And if you build the right pump, you will pump enough common sense out of that to get an AGI.
+
+Another perspective on the same idea is this: Consider the movie /Inside Out/ ([[https://en.wikipedia.org/wiki/Inside_Out_(2015_film)][2015]])[fn:15]. If GPT-4 can make a story, then why not the story of a mind?
+It is just a matter of zooming in far enough to what a mind is so that the LLM knows what the next step is. And on the macroscopic level, this system will have goals, thoughts,
+internal struggles, reasoning, strategies, etc.
+
+And how to build this engine? Exactly what Minsky and collaborators were thinking about. How a mind could be architected so the system is robust and fluid.
+
+Minskie's main idea is
+
+1. The mind is made of many resources, agents, little machines, and subroutines (you can use any word that fits your needs for the time, they are all the same thing).
+2. /Resourcefulness/ comes from having multiple ways to think. The interesting problem to solve is how to orchestrate the different ways to think.
+   For instance
+
+   /We did =x= for =y= amount of time, we should try something different/.
+
+   A program resourceful in this orchestrating way, would not get stuck in a infinite loop. The way that our conventionally programmed programs do.
+
+What is this mythical engine? It is a computer program with entities like resources, critics, suggesters, committers, association builders, plan makers, plan critics, higher-order critics,
+selectors of resources.
+
+Minskie's most refined and accessible work on this is /The Society of Mind/ (1986) and /The Emotion Machine/ (2006).
+
+It is called the emotion machine but makes fun of emotions. They are the simplest ways of thinking - activating large blocks of resources at a time.
+The stuff that is much more interesting is the integrated and refined ways of thinking that produce our thoughts.
+
+What if you have 2 resources that are in conflict? Does 1 override the other? Is there some economic system built in? How many levels of these machines do you have?
+Do we put in some randomness by activating random resources - Would this simulate divergent thinking?
+
+These are things to figure out by programming the thing. You put different ideas into your program, make a few arbitrary decisions, try out things, and refine the ideas.
+We will probably run into things that turn out to be hard. For instance, if you have an economic system, maybe resources can bypass the system.
+Can a system think itself into a dead end by adding more and more deliberative resources?
+
+One promising approach for me is to go through the emotion machine book and make some toy programs for the ideas.
+
+More here about the =EM= architecture when I get the ideas straight.
+
+Note that I say here LLMs because that is the most your face tech right now. I am open to throwing in different kinds of sub-processes to the system.
+That is similar to Ben Goertzel's multi-paradigm approach.
+Stuff like Bayesian nets, fuzzy logic, graph databases, and knowledge bases (I mean =Cyc=, I think there is only really one right now). Maybe even rule-based systems.
+
+In my architecture, any resource would be allowed in principle to shell out or sub-routine out to another system part.
+
+Would be kind of exciting if the system itself came up with the idea of implementing some capabilities into itself.
+
+* Give your intelligence an Emacs
+
+If you know Emacs, you sort of know why I think Lisp is especially well suited for building the architecture of a mind.
+Imagine you are a little knowledge-producing machine and you sit on an interface, and on the other side there is a system like Emacs. Now you can define symbols there, to remember them for the
+next thing that happens. Now you can make functions and give them names and later on, the version of yourself can use them.
+The system on the other side is malleable to whatever output you have. (Yes, you can achieve this by putting JSON output into a DB. But there is a language /designed/ for this).
+
+If I prompt an LLM and give it all the functions and docstrings available to it. And in the prompt, there is some stuff like the recent thoughts of the system, will it not have an idea of what to do next?
+
+If we have limited context, we would make sub-entities, that have their own, smaller prompts.
+
+And then you might build in more deliberation into the system, by not just evaluating what the LLM returns, but by making intermediate plans, /like =x= would like to eval this code.../.
+Then apply critics to the intermediate plans --- Which I call the multiple drafts model (Dennett [[https://en.wikipedia.org/wiki/Consciousness_Explained][1991]]).
+
+Critics could be emacs lisp functions. Including ones that go off and ask an LLM again, or spin up a recursive =mind-engine= again - with something set in the =*current-goal*= dynamic variable.
+
+A very simple critic could just look for certain characteristics of the plan like /there are fewer than 3 steps/. And do nothing but recommend a few =selectors=, for instance, some that do nothing but add more steps to the plan.
+In Minsky's emotion machine, selectors would in turn activate a set of recourses. Such a resource might just be a set of memories that would then bias the system into some direction or help with reasoning and so forth).
+
+* Give your intelligence a source-controlled mind
+
+If you know Git, you sort of know why I think Clojure, using an immutable database[fn:16], is well suited for building the architecture of a mind.
+
+- Make the program the source-controlled repository of code and data
+- All content of the mind is in a git repo file tree
+- Series of commits
+- All history there
+- make a copy of myself, setting the current goal /branch out/
+- resources are files (blobs)
+- I can have a list of active resources
+- Resources are pieces of knowledge, pointers, symlinks or pieces of code, recepies, instructions, lists
+- The program extends or modifies itself by modifying the file tree.
+- Ask the LLM for the next pieces of the mind.
+  For more deliberation in the system, don't commit instant but have other resources discuss the current drafts.
+- At some point, you have somewhere a collection of resources that are a detective finding out why the mind made this or that
+  the decision in the 3000th cycle of its beta circuits on Thu Aug  3 06:11:34 PM CEST 2024.
+  Is that not a cool premise for a sci-fi short story?
+
+Of course, I don't do that with git. I do that with the default immutable data structures of Clojure and put that optionally into a database with history semantics.
+This way, everything the system was ever thinking is in the db. If you wonder about storage, I am not worried about that. I don't think you
+will need that much code to have an AGI trucking along, when it uses LLMs as knowledge subroutines.
+
+Immutability only roughly doubles the amount of storage you need.
+
+* The Bobscheme prediction
+
+How to make a mind engine? Or how to make the architecture of a mind?
+
+Now, that we have those LLMs, it is too obvious, to take the outputs of an LLM and make a program around it. Whenever somebody is doing it, they are
+engineering in this problem space of =mind-engines=. Or orchestration problem that Minsky was thinking about and producing useful knowledge about 60 years ago.
+
+I think a working AGI will come from the thousands of tinkerers and engineers on the internet, using the gears and materials we get from the ML research people.
+How does innovation work? Many people have similar ideas and try out stuff. And for random reasons, somebody hits on something working. If everybody is trying to engineer an AGI,
+what tech is likely to be used? Mainstream tech of course. Which data format is obvious to mainstream programmers? JSON.
+
+I see it happening that people start asking the LLMs for intermediate JSON data outputs, then have subroutines, including other LMM completions or recursive calls, that will improve the intermediate outputs.
+You then make a command language to interpret this JSON into a process. Including modifying the program itself or updating its internal database (whether that be in memory or somewhere else).
+
+Welcome to [[https://en.wikipedia.org/wiki/Greenspun%27s_tenth_rule][Greenspun's tenth rule]], you will then have implemented a Lisp. And you could have just used Lisp directly which gives you the right primitives and elegance to think the kinds of thoughts to solve
+your problem. But hey, if it is an AGI it will figure out computer science and rewrite itself in some Lisp dialect :).
+
+Lisp and Clojure are centered around data and program symbols. I can call =read= and =eval= on the output of a LLM. I have the primitives that those people will have implemented right there.
+=(defn foo ...)= makes a new function called =foo= with a body =...=. This hypothetical AGI JSON language will have primitives like this. (more [[denote:20230708T095438][here]] and [[denote:20230707T090418][here]]).
+
+The funny thing is, I already made a Scheme implementation of this language, which is unrefined in my implementation, but refined in its ideas (it is Scheme).
+
+My prediction is, it is likely for the first AGIs to run on a shitty version of [[https://github.com/benjamin-asdf/bobscheme][Bobscheme]].
+
+The more I think of it, of the need for a mind to dynamically modify itself, the more I think it is almost inevitable, that an AGI program would implement a Lisp.
+
+Why am I not beating them to it using Clojure? I want to, but I would be delusional about how innovation works. It is simply more likely that somebody will make an AGI with mainstream tech,
+because more people are using mainstream tech.
+
+* Reading
+- https://www.technologyreview.com/2021/05/27/1025453/artificial-intelligence-learning-create-itself-agi/
+
+* The Cybernetic people
+McCulloch, Pitts, von Neuman, Wiener
+
+They build the digital computer - Von Neuman, etc.
+
+They spawned the internet and personal computing - Licklider later via Engelbart, ARPA community etc.
+
+They spawned the cognitive revolution - Miller
+
+I cannot help but feel the spirit is /just makes plain sense/.
+Minds are made of many tiny simpler parts, there is no other way.
+
+
+** interactive computing
+The hallmark of the sanity of Licklider and his friends. They knew it would be more interesting to be able to interact
+with the computer and they were so right.
+
+** Reading
+This book is kind of amazing:
+Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal.
+
+- [[https://youtu.be/JJ6orMfmorg?si=h49HgXvIwahjPUJb][What is Cybernetics? Conference by Stafford Beer]]
+- The guided-missile paper that spawned the field
+- Wiener, McCulloch, Ashby, Mead
+- Minsky
+  - Finite and infinite machines
+  - Society of Mind
+  - Emotion Machine
+  - Perceptrons
+- Licklider: Man-Computer Symbiosis
+  - I find this fascinating: /Getting into the position to think/.
+  - If I make you 1000x more effective at thinking in the right place, I have made you superintelligent.
+  - We are already like 5% there with Emacs and it is crazy how much it does.
+- Everything from Valentino Braitenberg
+  - A neuroscientist cybernetics person
+  - /Vehicles/ is amazing
+
+** [[https://www.youtube.com/watch?v=obvzUj76eNo&list=PLB81F4FC0EDC4DECC][6 Hours Tutorial Professor Umpleby delivered at WMSCI 2006]]
+Umpleby makes a distinction of the first order, second order and third order cybernetics.
+First is control theory, second is self-assembling and biological systems, and third is societies and epistemology.
+
+Certain accidental historical facts made cybernetics a super important and influential field in a way, but there is little science being done on the field itself.
+
+In my words, parsing the world in this information processing style, to see the brain as a computer of a kind, to see societies as a system exchanging information...
+all these. To know that machine intelligence is possible in the first place. To see biological systems as information processing devices[fn:17].
+Almost nothing in our worldview and daily lives is not touched by computers, the internet, systems thinking and such by cybernetics.
+
+
+** The term machine
+
+A =machine= is a thing that is doing =process=. It is something that does not stay the same over time.
+This is different from the entities of mathematics, which are timeless.
+
+Even though animals and industrial machines are different in some ways, we do not have a better word than
+/machine/ to talk of the overarching same thing that they are.
+
+Humans (which are animals, which are organisms, which are machines) have souls that are made up of many, many little processes-thingies. Many tiny sub-machines.
+
+Every machine has a bit of a soul and if you have a machine that is made of a lot of smaller machines, and those machines are about machines that are about machines, you get bigger souls.
+
+Machines /in terms of/ smaller machines, machines /about/ smaller machines, are what we call higher-order machines in computer programming.
+
+For me, the term machine does not invoke /mindless, industrial, or clunky/ at all.
+The term machine is way more open-ended and broader than some narrow sense of an industrial-like, clunky contraption.
+
+/Machine/ is what organisms are. The human brain is a /machine/. It is a thing that does process.
+
+Another useful thing about the term machine is, that it incorporates virtual and abstract machines.
+For example, the /Von Neuman machine/ is an abstract process-expressing thing.
+A regex engine is a machine entirely made up of ideas. The JVM is a virtual machine. A computer program cosplaying as an abstract computer.
+
+We could go off and invent another word for this broad concept. Words are there to serve us, not the other way around.
+
+We could call it =cy-thing= to say /this is a thing in the world, which is described by the science of cybernetics/.
+
+But maybe the general public will start having the same warm feeling that we, the computer scientists and cyberneticians, have towards the word /machine/.
+
+* Minsky
+
+/Marvin was *the* greatest thinker in AI/ -  Hal Abelson [fn:18]
+
+#+begin_quote
+But I’m not really talking here about intelligence on something as obvious as a linear scale. It’s more that Marvin’s mind was extraordinarily free. He could fly through idea space the way a swallow flies through the air. He would see connections where nobody else even thought to look, leap effortlessly from one concept to an entire new category of concepts, and in general make anybody he was talking with feel ten times smarter.
+#+end_quote
+
+Ken Perlin[fn:19]
+
+/Science does not have gods, only heroes/.
+
+Marvin has this huge footprint on thinkers in computer science, education, MIT hackers, and AI people.
+It seems like most people who had the luck to get in touch with his ideas and genius felt the magic of his mind.
+Crystal clear, straightforward and down to earth.
+
+I think it is the same imaginative, playful, childish freedom that is shared by great scientists and hackers.
+Deep explanation, for which imagination is indispensable - Feynman, Darwin, Dawkins, and Einstein are all pointing to this.[fn:20]
+There is something overlapping in the cluster of ideas. Having the heart at the right spot, being open-minded and imaginative.
+
+Common sense, the scy-fy ethos, the hacker mentality, /Science with capital S/, the nurturing creative force of the universe.
+I think all those symbols point to a similar cluster in idea space.
+
+Marvin makes so much sense in what he talks about, for me, it is like exploring my own mind when I get exposed to his ideas.
+
+Taking on a scientific hero is not admiring them. It is appreciating the processes that made their ideas. Brilliant people want to be corrected, not admired.
+
+With every new turn I take and the new perspective I gain, my mental model of how minds work simply grows out of the kernels laid out by Minsky the first time I read through Society of Mind.
+I want to think about his thoughts, build what he wanted to build and find out things he was wrong about.
+
+I know that David Deutsch must have something similar with Popper and it doesn't seem like it would detract from your scientific mind.
+
+One good that comes of it is you can always answer a question with, /well =x= would have said.../. This way you are
+automatically /less attached/ to the ideas, after all, it's =x='s ideas.
+It's like getting 1 level of indirection for scientific ideas or something. It also gives the benefit of holding the door open for
+=x= would say this but =y= would disagree on point =z=.
+
+Might as well go in and try to understand one great thinker's mind from the past to the max and roll with that.
+If we had fixed death in the meantime, Minsky would be there. But now his ideas need to be thought by other brains.
+My brain wants to be such a brain. Approximately think the thoughts that he was thinking.
+And then maybe I can do 1 of 100 things he would have done, but I will have succeeded.
+
+This means I will dig into what the cybernetic people were about. I want to describe and implement common sense roughly along
+the lines of Minsky and Sloman's ideas.
+
+A student should try to figure out how their teacher /works/, not the content they are producing.
+
+One thing that is obvious to Marvin but completely /what the hell/ for me is that reality might just be one
+possible computer program and that it doesn't make sense to say what is real, just what is possible.
+This is so mind-bending for me and I know I do not have to build the mind for which something like this is obvious.
+I recently did come to the same idea from multiverse theory though.[fn:21] It seems to be an identical idea,
+and maybe all this is a hint that the multiverse, indeed, is being calculated on a computer somewhere.
+
+In multiverse theory also, everything that is possible just exists, in the multiverse. /real/ and /possible/ are the same in a way.
+
+But that this stuff was /just obvious/ to Marvin in some way is crazy. To me, this is still really mind-bending. So this is one point where
+I know I have the chance to build more mental machinery until I can simulate Marvin's mental mentality.
+
+** Music
+From the outside I can tell, there must be interesting stuff on the other side of learning to play an instrument.
+It must give a new way of listening, that is clear to me. The same as learning blender gave me a new way to experience objects.
+
+The overlap of great thinkers who also play instruments is striking.
+
+I suspect you start feeling music with your motor cortex as well or something. I suspect you can feel music as if you are producing it.
+As a mix of muscle movement and listening. Just me conjecturing.
+
+** Lisp
+
+One funny thing about my intellectual path is that I found Minsky twice, once from cognitive science and once from my text editor of choice.
+
+*** Early (when I studied biology)
+
+I read /The Society Of Mind/ when I was 20 or something and I was blown away by the clear thinking, the joyful approach, and the simple building block nature of it.
+
+And by /actually/ talking about how a mind might work, /really/. Pinker /How the Mind Works/ also helped a little but that
+is more the framework along the lines of /it is built by evolution and an information processor with such and such goals/.
+Minsky was the first I got exposed to talking about what this information processing could be.
+
+Minsky straight up says /the soul/, /spirit/, /consciousness/, etc. Simply are not useful concepts when you want to explain how minds work.
+They have to work in terms of things that are simpler than themselves. These words just throw in a blocker, passed by which no further questions are asked.
+
+All this made so much sense to me after growing up with such unrefined ideas of /consciousness/ as some kind of substance of mind.
+
+I will forever see the mind as a collection of resources, agents, or sub-processes (whatever). Working not by a single principle, but by many ways of thinking.
+It just fits so damn well with the rest of the picture I have about how animals and brains work.
+
+Here was this super joyful, super clear thinker and his ideas stuck with me.
+
+*** As programmer
+
+I went into programming and went about the struggle, thinking compiling is normal. 1 year in I discovered Emacs.
+
+It was obvious to me that the most powerful tools and the most mainstream ones don't need to overlap.
+Knowing Linux, I thought /This makes me more stupid/ when being exposed to Windows. The /why/ of this is not easily put into words.
+It has to do with the relationship, or lack thereof, of the mind and the computer. It is something that exists not as a property of the computer,
+but as property of your interaction, your togetherness, the combined system which is your mind and the computer.
+
+A tool I use shapes my mind, is this shape beautiful or not? The persons who think this sounds nonsensical. It sounds nonsensical because you have not
+experienced what beauty is. This is a Socratic insight: The person who knows both can make the judgment.
+
+Because of Emacs, I understood that good software has a /feel/ to it. That one can have a taste and get a feel of the software and its underlying beauty.
+And that good software is a cultural phenomenon. It also has to do with the documentation you read etc. This is one reason why open-source software is of higher
+quality. Software is also a piece of culture.
+So I find this magical piece of software that appeals to my tastes and gives me more power than ever. It is sort of joyful, playful and
+helps you get shit done and think more interesting thoughts.
+
+And I see this language in the config code, /ok this is what the code looks like./
+So I started hacking Lisp and everything has the feel of /making simple software that works and does it joyfully/.
+This is close to what the soul of the computer is.[fn:22] It is a language for joyful and playful people, it lets me think more interesting thoughts.
+It gives me infinitely more degrees of freedom to express myself. And it is obvious why it is called /the only language that is beautiful/. And why
+the best text editor is written using it. Because if you build a text editor out of it, you will have made the best text editor.
+
+And then only after a while, do I learn more history about McCarthy and the early AI people, and Minsky, my hero - holy shit. And Minsky just talks about Lisp
+the way he talks about most things, plainly making pure sense. Joy, power, simplicity, making sense and good taste are all intertwined and Lisp is the language
+you end up with, then.
+So I find this super joyful, most playful, most interesting thinker twice, once when thinking about the brain and once through my editor of choice,
+using this wonderful and cleaned-up language that we both love [fn:23].
+
+Well, great minds think alike. So I was not surprised. But how easy it could be to accidentally miss out on learning about Lisp is crazy.
+
+Lisp is a language that is open-ended and magical. It is not so easy to simply say /why/. Because it is magic. But the most important part is putting
+the ideas into the computer and then being able to program with the ideas.
+
+To be poetic, the difference here is that of loading up a magic stone with a recipe, and the magic stone becomes a machine for any kind of machine,
+That is the first magical step that we got from Von Neuman architecture, basically what /software/ is about.
+But Lisp goes further: Loading up a magic stone with a /magic/ recipe, and now I have a /magic machine/ that can *, in turn,* be anything.
+And it can be anything with infinitely more malleability because I don't have to load the stone with a fresh recipe to make changes.
+The contents of the machine are now clay, building material stuff.
+This allows me to make machines that think thoughts about machines and I form the magic stone like clay under my fingers,
+making little experiments. Like the joyful scientist child that we all are somewhere.
+
+See: [[denote:20230707T090418][Thoughts on interactive programming for non Lispers]]
+
+** Influenced by
+
+This is probably embarrassing because I leave out so many.
+Oh, there is the same list but better [[https://web.media.mit.edu/~minsky/people.html][here]].
+
+- Andrew Gleason
+- Aaron McCulloch
+- Goerge Miller
+- John von Neumann
+- Norbert Wiener
+- Richard Feynman
+- John McCarthy
+- Seymour Papert
+- SciFy writers
+- J.S.R Licklider
+- Oliver Selfridge
+- Edward Fredkin
+- Claude Shannon
+
+** Influenced
+
+- Aaron Sloman
+- Douglas Lenat ([[https://en.wikipedia.org/wiki/Cyc][Cyc]])
+- Ray Kurzweil
+- Gerald Susman
+- Hal Abelson
+- Patrick Winston
+- Cynthia Solomon
+- Alan Kay
+
+These lists are fascinating. I just found Eric Drexler on there.
+He is the one dude I know from the outside making sense of nanotech.
+
+* Seymour Papert
+
+/The closest thing we have to learning is programming and the closest thing we have to learning how to learn, is debugging./
+
+* Idea #1 - Use an LLM as a driver and wrap it with a critic-engine
+
+I consider this approach obvious. Using Clojure (Lisp) we can go straighter paths because we can call =read= and =eval= on the output of the LLM.
+This is not how I think you build a mind, but it is the first idea you have when wondering about how to engineer an orchestration layer around an LLM.
+
+I consider this reminiscent of Dennett's multiple drafts model so I would almost be tempted to call it that.
+I just asked GPT to make some code for the =chat-iteration= idea.
+
+I would put the mental sub-routines into a database to get a different dynamism.[fn:24]
+
+I would say the engine has a primitive that allows the agent (critic) to say "Clone myself and go forth into a recursive chat-iteration with goal =x=".
+
+** Critic, suggest, commit
+
+When thinking about how to get something done with such a model, I came up with considering splitting the critics into 3 kinds, phases, whatever.
+
+- =suggestors=: I have no plan yet, what to do next?
+- =critics=: The current plan is not good, because...
+- =commitors=: OK, good enough - take action.
+
+But maybe it's fine if they are just all called critics, and they go gradually between those 3 kinds. For instance, some critics might say.
+/We currently have no plan of what to do next, that is bad!/ /Or, we were thinking about this plan for too long, throw it away or take action!/.
+
+This has nothing to do with the 6 layers of critics that Minsky came up with by the way.
+
+* Footnotes
+
+[fn:1]
+http://blog.kenperlin.com/?p=17144
+
+[fn:2]
+
+Form and content are something that hit when contemplating Lisp. I realized, that one person's architecture is another person's content.
+
+You hand the source code to the compiler, and your source code is now content. The compiler is a higher-level program.
+
+You load and move data in your program, the data is your content, and your program is its form.
+
+It is like there is this dynamic, flowing part, flowing through the static pre-formed part.
+
+This is content and form.
+
+At some point in a lisper's journey, they think of the form and realize it is content, depending on perspective.
+And form and content become infinitely malleable and stackable and usable layers in a cake of abstraction.
+
+In order to build a mind I think you want to have this relationship to form and content at some point.
+To make a fluid program, which makes a fluid content, which makes a fluid mind.
+
+To be concrete and maybe in mainstream terms, make a database, which then truly represents your program.
+The mind then, asserts new facts, including new subroutines, into the system. Into its own program.
+
+So there you go, you have a small layer of architecture, form, at the bottom. A static part that makes the DB
+and handles assets etc.
+
+And you have a dynamic content part, which is the self-evolving, mind-making process.
+
+Of course, you will have implemented a Lisp by doing so, because this is the fundamental idea of Lisp, to
+express the program in the dynamic part of a tiny architecture program (the LISP interpreter).
+
+[fn:3]
+
+The name comes from Charles Babbage's [[https://en.wikipedia.org/wiki/Analytical_engine][Analytical engine]]
+
+[fn:4]
+
+[[https://www.youtube.com/watch?v=UNMF5AS4SLg]["Expert Software Developers' Approach to Error" by Marian Petre (Strange Loop 2022)]]
+
+[fn:5]
+
+Original: [[denote:20230820T125336][thoughts]]
+
+[fn:6]
+
+[fn:7]
+
+See Minsky
+
+[fn:8]
+
+That is from another one of those Minsky snippets.
+
+[[https://youtu.be/jSOXlKjk6pg?si=YCkdvNJfQJS2CBrU][Minsky on Qualia]]
+
+[fn:9]
+
+I remember right now that Dennett also mentioned exactly this about current ML.
+
+[fn:10]
+For instance, A-life, genetic algorithms, Bayesian nets, fuzzy logic, and huge graph knowledge bases.
+
+[fn:11]
+
+Unless the matrices become sentient. I also think that is possible and kinda scary, too.
+
+[fn:12]
+
+As Minsky does, see Society of Mind and his lectures.
+
+[fn:13]
+
+See Hofstadter and Sander 2013, see [[https://youtu.be/n8m7lFQ3njk?si=fDL2fVUrp9en81l0][Analogy as the Core of Cognition]].
+
+[fn:14]
+
+[fn:15]
+
+There is a book called [[https://hpmorpodcast.com/?page_id=1958][Crystal Society]] with a similar premise but way deeper thought-through. What a joy.
+
+[fn:16]
+
+When I say database, that is open to be in memory.
+
+[fn:17]
+
+[[https://www.youtube.com/watch?v=XheAMrS8Q1c][Michael Levin]] - a software engineer turned developmental biologist. So good. Some of the best philosophies I have encountered recently.
+
+[fn:18]
+
+https://youtu.be/kcPiLx31Tio
+
+[fn:19]
+http://blog.kenperlin.com/?p=16998
+
+[fn:20]
+
+Also see David Deutsch /The Fabrik Of Reality/, and Hofstadter and Sander 2013.
+
+[fn:21]
+
+When Reading David Deutsch, /The Fabrik of Reality/
+
+[fn:22]
+
+I started learning Lisp with the Emacs info manual
+
+And then with [[https://www.youtube.com/watch?v=m0TsdytmGhc&list=PL2VAYZE_4wRJi_vgpjsH75kMhN4KsuzR_][Mr Baggers]].
+And then with [[http://www.paulgraham.com/onlisp.html][On Lisp]].
+And then [[https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs#:~:text=Structure%20and%20Interpretation%20of%20Computer%20Programs%20(SICP)%20is%20a%20computer,Jay%20Sussman%20with%20Julie%20Sussman.][SICP]].
+
+[fn:23]
+[[https://www.youtube.com/watch?v=YaWVHyIBVeI&][Marvin Minsky - The beauty of the Lisp language]]
+
+[fn:24]
+
+- [[https://github.com/benjamin-asdf/mind-engine][first toy impl with xtdb]]
+- [[https://github.com/benjamin-asdf/chat-iteration-engine][chat-iteration-engine]], a more refined version of the same, without implementation baggage like a db.
+
+=(iterate think self)=, [[https://github.com/benjamin-asdf/chat-iteration-engine/blob/main/examples/mind/engine.clj][engine.clj]]
+
+[fn:25]
+
+[fn:26]
+
+See

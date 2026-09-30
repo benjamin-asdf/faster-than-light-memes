@@ -1,0 +1,72 @@
+#+title:      Experiments In Synthetic Psychology Chapter 2
+#+date:       [2023-10-16 Mon 09:50]
+#+filetags:   :art:braitenberg:cybernetics:programming:vehicles:
+#+identifier: 20231016T095054
+#+EXPORT_FILE_NAME: fear-aggression-love
+#+OPTIONS: toc:nil
+
+
+Exploring the boundaries between artificial intelligence and biological consciousness.
+
+See: [[denote:20230915T190843][Vehicles Overview]].
+
+The most canonical Braitenberg vehicles. have 2 sensors, 2 motors, ray sources in the environment and different wiring makes different behavior.
+
+#+begin_export html
+<iframe width="500px" height="500px" src="https://vehicles.faster-than-light-memes.xyz/art/g/fear_and_aggression?page=0"></iframe>
+#+end_export
+(Vehicles gone? refresh page).
+
+Works only so-so in an embedded window. Check the [[https://vehicles.faster-than-light-memes.xyz/art/g/fear_and_aggression?page=0][link]] to the gallery.
+
+You can double-click them to blow them up. You can click one and rotate it with the mouse wheel.
+In the version with controls, you can spawn them as you like.
+
+[[https://github.com/benjamin-asdf/ftlm-vehicles][Code]]
+
+---
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LIhU1WOPnDI?si=RoocTkosXfA1GLrb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+I am just calling them animals now. What is life? Trying to find a precise definition doesn't matter, but biology is still a useful school of thought.
+
+I am recently thinking more intensely about what it means to program minds. Mhmm building those vehicles made me dream a little of the structure and form of programs, from which animal behavior self-evolves.
+
+Braitenberg vehicles are cool because they are simple, maybe not *the* simplest, but very simple, sub-symbolically instantiated and enacted[fn:1] minds you can think of.
+The behavior of the vehicle is nowhere else but in the combination and interplay of the organism and its environment.
+
+#+begin_quote
+“From a drop of water," said the writer, "a logician could infer the possibility of an Atlantic or a Niagara without having seen or heard of one or the other. So all life is a great chain, the nature of which is known whenever we are shown a single link of it.”
+#+end_quote
+― Arthur Conan Doyle, A Study in Scarlet
+
+What is there to be learned, from building little brains?
+
+Pondering the Braitenberg vehicles in their simplicity, seeing their little purposes.
+One can go forth and imagine a vast system, of a million million little purposeful, citizens.
+Not alive by themself, not thinking by themself, nor loving, nor dreaming.
+And yet, from the contributions of the many, an ocean of little purposes makes a mind.
+
+
+---
+
+For an explanation of how they work, see [[denote:20230915T190843][Vehicles Overview]], several YouTube explanations, as well as the book.
+
+---
+
+I love how love is broken. This animal is just stuck in adoration of the source.
+
+Aggression looks like it is finding optimal paths to hit as many ray sources as possible.
+
+Fear sometimes darts between the sources without hitting any.
+
+From the explorer, I get the feeling the ray sources a little opposing magnets to it.
+
+
+* Footnotes
+
+[fn:1]
+
+Varela et. al. (1991)

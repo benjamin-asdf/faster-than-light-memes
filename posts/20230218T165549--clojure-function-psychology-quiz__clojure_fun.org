@@ -1,0 +1,79 @@
+#+title:      Which Clojure Core Function are You?
+#+date:       [2023-02-18 Sat 16:55]
+#+filetags:   :clojure:fun:feed:
+#+identifier: 20230218T165549
+#+EXPORT_FILE_NAME: clojure-function-psychology-quiz
+
+[[https://faster-than-light-memes.xyz/clojure_function_quiz/index.html][Which Clojure Core Function are You?]]
+
+* Introduction
+
+Since Chat-Gtp generating a certain kind of text is starting to be a
+solved problem.
+
+I sort of liked what it had to say about what it means to be a
+fire bender in /Avatar/.
+
+For some reason, I decided to make Clojure core function psychology
+puzzle, along the lines of =What Clojure Function Are You?= but also combine it with /Avatar/ elements.
+
+* Avatar is cool
+
+Is it just me or is there some /Avatar The Last Airbender/ affinity in
+the Clojure ecosystem?
+
+There is a database called /Asami/ and Stuart Halloway is cosplaying
+as Aang somewhere.
+
+Anyway, I dig /Avatar/ myself, the whole world and the bending
+fit together very organically. Plus it sort of comes with
+thoughtfulness. And the bending, the choreography and the philosophy of
+it. Fire is anger but also life, it is about control. And with the
+highest control and focus you can lightning bend.
+
+The bending choreography is amazing.
+Yes, I mean the choreography of the animated characters. It is inspired by
+Thai-Chi and other disciplines.
+Every element (fire, water, earth, air) has its style.
+It is one of the best magic systems I have encountered. The animations + sounds
+have a physical oomph. I almost feel like I know how it would be
+to bend. Water is fluent and dynamic, earth is solid and unmoving,
+fire is pure power, air is flying around and seeing the big picture.
+
+* Prompt engineering, Chat-Gpt makes a quiz
+
+/prompt 1/
+
+Help me make a quiz in the style of "Find out your harry potter house
+by answering those 6 psychological questions".
+
+The quiz asks psychological questions that establish some
+personality traits of the user.
+
+But we tell the user in the end which clojure.core function fits their
+personality.
+
+Say one of those:
+- conj
+- reduce
+- juxt
+- swap!
+- into
+
+We also map those with elements and bender power to Avatar the last airbender.
+For the bender psychological traits there are the elements and then
+there is another one for characters like Asami, who uses technology
+instead of bending.
+
+Map the clojure core functions to avatar elements with a short
+description why.
+
+/prompt 1 end/
+
+I then kept asking a little, to get hiccup formatted data etc.
+
+* Result
+
+I went and made a [[https://github.com/babashka/scittle][scittle]] re-frame app.
+
+[[https://github.com/benjamin-asdf/faster-than-light-memes/tree/main/src/ftlmemes/clojure_function_quiz][Code]] and [[https://faster-than-light-memes.xyz/clojure_function_quiz/index.html][link to the quiz!]].

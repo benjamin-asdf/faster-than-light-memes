@@ -1,0 +1,61 @@
+#+date:       [2025-06-27 Fri 18:32]
+#+filetags:   :meta:
+#+identifier: 20250627T183258
+#+title:       Work With Benjamin Landing Page
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: work-with-benjamin
+
+
+*Benjamin Schwerdtner* is fullstack developer with creative, non-linear background that is highly regarded by professionals.
+
+I self-start contributions and translate your needs and problems into actionable, technical solutions.
+
+I emphasise practicality, straight forward design, product velocity without ever trading off solid, extensible software that 'just works'.
+
+#+begin_export html
+<img src="./benjamin-2.png">
+#+end_export
+
+You are: A professional stakeholder or team that
+
+- wants to augment their Clojure/Clojurescript team with a contributor.
+- looks for a senior frontend developer to architect and lead their frontend project.
+- looks for a research engineer coming from the industry to help you design and implement systems
+  using hyperdimensional computing, neurosymbolic AI, evolutionary or biological principled algorithms, meta-programming, program synthesis, analogical reasoning or similar.
+
+* Experience:
+
+Mid-Senior engineer, 7 years experience with a variety of technologies.
+
+Lisp, Clojure, Browser (javascript, typescript, HTML, CSS, Clojurescript), Mobile, Unity, C#, Java, Python, Unix.
+Directly integrated frontend and backends. Open source contributions in the emacs and Clojure ecosystem.
+
+Specialities: functional programming, data oriented design, neuroscience and biology background.
+
+* Biggest Ideas:
+
+#+begin_quote
+Solving a problem without writing new software is one of the most character building moments as software engineer.
+Because once 'do nothing', and 'use existing stuff' is on the table, the space of possible problem solving solutions is that much wider.
+#+end_quote
+
+#+begin_quote
+Design is when you write down at least a second idea and then say which is better.
+#+end_quote
+
+#+begin_quote
+The largest mistake to do is building the wrong thing. This is why the place of most leverage,
+where design and problem solving can save you the most amount of time, is outside the reach of programming languages.
+But in the space where we iterate on the ideas.
+#+end_quote
+
+
+
+# #+begin_quote
+# When you ask for gold and diamonds, my job is to say "we have wood and clay, here is what we could build instead".
+# The magic of software comes from sharing a vision, knowing ones tools
+# #+end_quote
+
+* Links
+
+[[denote:20230102T115024][Resume]], [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140][LinkedIn]], [[https://github.com/benjamin-asdf][Github]], [[https://faster-than-light-memes.xyz/][Personal website]], [[denote:20230301T123854][Contact]]

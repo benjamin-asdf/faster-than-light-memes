@@ -1,0 +1,68 @@
+#+title:      lightning-generative-art
+#+date:       [2023-07-22 Sat 10:08]
+#+filetags:   :clojure:clojurescript:ftlm:public:
+#+identifier: 20230722T100809
+
+
+I like the aesthetics of lighting and I feel like it would be cool to figure out a bit about how lightning works and then
+have generative art that makes it.
+
+* The first idea
+
+I went to bed with this idea and I was sort of mulling it over in my imagination how lightning gets this jagged appearance.
+
+And what is the kind of process that produces such a form?
+
+I start thinking along the lines of drawing a path, you move a little into any random direction, then move again into a random direction etc.
+
+I wonder, /but how does lightning end up looking to go sort of straight from the clouds to the ground?/
+
+It struck me as if by lightning (pun intended), that if you have /many/ such paths going in random directions from 2 surfaces,
+and then you *select* the 2 paths that win, and /or find/ themselves first, then you probably get something like this jagged path.
+
+The 2 paths that make the connection, the full path, were produced randomly, but they were pretty good that going into the direction of the other surface,
+so by selection, they will come across more or less straight, straighter than what you usually get from random paths.
+
+#+CAPTION: Back of the envelope abstract idea of a process that produces a shape like lighting. There are 2 large straight lines, one on top saying "clouds" and "S2", which stands for surface 2. And one at the bottom saying "Ground" and "S1". These straight lines represent the ideas of 2 surfaces in the model. From each surface, there are paths, denoted pG1, pG2, pC1, pC2, and p... pn. These are drawn as sort of sticks of a sort of fixed length, glommed together and going in "random" directions with little circles representing the places where the path "decides" to move into a new random direction again. There are a few paths drawn that do not move far away from the surface, which makes sense for most paths, there is nothing in the model that gives them direction, so they roughly stay where they started. There is one ground path called =pG2= that roughly, jaggedly goes upwards and one cloud path, =pC2= that roughly, jaggedly goes downwards. These paths are connected that there is an orange checkmark, arrows at the surfaces pointing to the path and an orange cloudy shape around this connecting path.
+file:/.whiteboard-lightning-idea-1.jpg
+
+Now, I sort of know a little from reading the Wikipedia article on lightning at some point, that all this has to do with the charges and ions loaded in the 2 surfaces or something.
+So what I currently imagine is that for some reason, when these paths meet, they open a channel for a short while that lets through shit tons of ions or something.
+I seem to remember something about how those channels in lightning are made up of plasma. Not sure what that is but sounds so cool. I think maybe it's when the electrons flow independently of the atom nuclei.
+
+So my basic idea is that as time moves forward, paths grow from the 2 =surfaces= with density =path-density=, most paths don't traverse a lot of =y= distance, because they move randomly. Each time tick =t1=, =t2=, ... I make the
+paths grow by length =path-lenght=.
+Each time tick, I try to find 2 paths that are sufficiently close to each other. (Ah does that mean only heads, or any parts of the path... ?). Say smaller than distance =path-meet-distance=.
+
+Then, I throw away everything else, call this connected path the =connected-path=, and now maybe I have a lightning shape.
+
+Lighting also sometimes looks like a tree, so I am thinking that I should model those paths with a branching factor of more than 1.
+
+** realizing how this is more complicated than it needs to
+
+So I go away from the keyboard for 2 minutes and I think of this tree and those surfaces and I start thinking my current model is way more complicated than it needs to.
+I don't need the paths coming from both surfaces. I only need to make trees coming from 1 surface, then find the ground, S1, and that is my path/ tree.
+
+This also seems to fit better with how I think of lighting in a storm. It comes from the clouds, it never looks like it's a tree going upwards. I think.
+
+But before I go code, I want to investigate the physics of lightning a bit. Maybe I will want to throw away my model, or maybe I can simplify it further or whatever.
+
+* Gpt
+
+Generally, lightning is an electrical discharge caused by imbalances between storm clouds and the ground, or within the clouds themselves. Cloud particles can produce electric charges. Typically the negative charges (electrons) congregate at the lower part of the clouds and positive charges accumulate at the top.
+
+The Earth's surface and the air have a positive charge which tends to be stronger towards the ground (simply because the ground is closer to the clouds). Over time the charges build up until the air, usually a good insulator, can no longer prevent the free electron movement, leading to a rapid discharge, or what we call lightning.
+
+This overall process can be broken down into three main phases:
+
+1. **Charge build-up phase**: The charge builds due to a variety of mechanisms such as turbulence in clouds causing an accumulation of charge.
+
+2. **Stepped Leader phase**: This is where the majority of the action starts: Negative charge will start propagating downwards from the cloud towards the ground in discrete steps (hence "stepped"). This movement isn't straight, but instead follows a path of least resistance through the air, which gives the lightning its characteristic jagged appearance. The 'stepped leader' moves in steps of 50-100 meters, pausing for a few millionths of a second after each step.
+
+3. **Discharge phase**: As the stepped leader is nearing the ground, a positive surge of energy steps up to meet it. This is the 'return stroke' and is the most energetic part of the lightning strike, and most visually bright. It's the path illuminated by this energy that we're seeing when we say we see lightning.
+
+For generative art, perhaps a simple model starts with random steps for simulations of the stepped leader phase. The direction could be influenced by factors such as a general downward bias (to simulate gravity's influence), previous trajectory (to simulate inertia), and potentially some randomness simulating the local variation of the atmosphere's resistance variance. This path can be divided into segments which you vary in direction and length to create the jagged branching effect.
+
+After the stepped leader phase is done, choose some segments for the return stroke phase, making them brighter or larger to simulate the increased energy.
+
+Now, bear in mind these are very simplified models of the actual process. Real physics includes factors like the distribution of charges, electromagnetic fields, atmospheric pressure, temperature, and humidity variations. You might end up with visually pleasing results that may not be an entirely accurate physical representation, which is okay for the scope of an art project.

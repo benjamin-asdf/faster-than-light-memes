@@ -1,0 +1,139 @@
+#+title:      Meta The Meta (Use JVM repl for bb script development)
+#+date:       [2023-06-15 Thu 16:56]l
+#+filetags:   :babashka:clojure:public:feed:
+#+identifier: 20230615T165615
+#+EXPORT_FILE_NAME: meta-the-meta
+
+If you desire a good Clojure nrepl development environment using Babashka...
+yea just use =print-deps= and start a =jvm= repl.
+
+#+CAPTION: Highway street at night. Rain. Need for Speed Underground 2. Fast car light pass by. colorful neon lights in the background, reminiscent of the atmosphere in A mechanical keyboard and a set of headphones complete the look of the ultimate hacker workstation.
+https://i.imgur.com/DIYt9os.jpg
+
+* Bb Nrepl
+
+#+begin_src shell
+  bb nrepl-server 0
+#+end_src
+
+Or just =cider-jack-in=. It will ask you for =bb=, if you have a =bb.edn=.
+
+Babashkas nrepl is useful for interactively building scripts but the moment you like to use more complicated (cider) features, some stuff is not implemented.
+
+* Middleware
+
+Nrepl middleware support compatible with cider middleware would potentially unlock things like
+
+- Cider inspector
+- Cider debugger
+- Keyword completions
+
+I tried tricking Borkdude into solving the problems needed for cider middleware in bb.
+And I accidentally thought for 5 minutes it might be easy but yea, it is hard [[#middlewares-issues]].
+
+It started brewing in me:
+
+#+begin_quote
+Just run a jvm nrepl for developing your script, it works.
+#+end_quote
+
+Turns out the same was obvious to Martin Kavalar all along - [insert a link to babashka-conf talk].[fn:1]
+
+* print-deps
+
+The basic idea:
+
+#+begin_src shell
+  bb print-deps > deps.edn
+#+end_src
+
+#+begin_src elisp
+  (cider-jack-in-clj)
+#+end_src
+
+We are done, we have all the =bb= packages as dependencies, =fs=, =process= and friends.
+Now we develop our script as a usual Clojure =jvm= program with all our advanced Cider goodness.
+
+- Development: =jvm= nrepl with bb deps loaded. All the dev goodness from our editors and middlewares.
+- Production: =bb= process executing the code we have produced.
+
+And since =sci= is a great Clojure implementation, everything just maps over.[fn:2]
+
+You are not trying to do anything serious like a production server with babashka anyway... right?[fn:3]
+
+* Add an alias, if deps.edn already exists
+
+Here be a script that might be useful:
+
+#+begin_src clojure
+#!/bin/bb
+
+(ns bb_print_deps_or_alias
+  (:require
+   [clojure.java.shell :as shell]
+   [clojure.pprint :as pp]
+   [babashka.fs :as fs]))
+
+(let [file (fs/file "deps.edn")
+      deps (-> (shell/sh "bb" "print-deps") :out read-string)
+      deps
+      (if-not
+          (fs/exists? file)
+          deps
+          (update-in
+           (read-string (slurp file))
+           [:aliases :bb :extra-deps]
+           merge
+           (:deps deps)))]
+  (spit file (with-out-str (pp/pprint deps))))
+#+end_src
+
+In the basic case, it makes a =deps.edn=, else if there is a =deps.edn= already existing, it ads a =bb= =alias=.
+
+[[https://youtu.be/BYFeM5lQoFM][Here]] is me using Emacs and Lispy to come up with the following:
+
+#+begin_src elisp
+(defun mm/cider-jack-in-babashka ()
+  (interactive)
+  (let ((cider-clojure-cli-aliases
+         (concat
+          cider-clojure-cli-aliases ":bb")))
+    (cider-jack-in-clj nil)))
+#+end_src
+
+* Conclusion
+
+I give up on making the babashka nrepl even better. It is fine like this for my use cases.
+Instead, I will run a JVM repl for developing bb scripts.
+
+This then means that more Clojure nrepl tooling efforts can flow into making the =jvm= nrepl good.
+And by doing so we get leverage into the bb development experience also.
+
+Unfortunately, this does not help us when it comes to =Nbb= and =Clojurescript=. This is another front for tooling.
+
+Since the door is open, would there be a way to have 1 jvm repl and develop =Clojurescript=?
+
+* middlewares?
+  :PROPERTIES:
+  :CUSTOM_ID: middlewares-issues
+  :END:
+
+- I did hack around with a babashka nrepl user land middleware [[https://github.com/babashka/babashka/issues/1529][#1529]].
+- Current overview issue: https://github.com/babashka/babashka.nrepl/issues/62
+
+* Footnotes
+
+[fn:1]
+
+Or, maybe Jack Rusher's practical interactive development genius was an influence, see the recent [[https://clojurescriptpodcast.com/][Clojure Stream Podcast]].
+
+[fn:2]
+
+With exceptions like the =clojure.core.async= =go= macro uses virtual threads instead of a thread pool.
+
+Assuming you are using babashka for its intended use case, some smallish user land Clojure script,
+I think it will turn out great to just assume the development jvm will do the exact same thing as the prod bb script.
+
+[fn:3]
+
+Unless your production server is being implemented by simple scripts, that is legit of course.

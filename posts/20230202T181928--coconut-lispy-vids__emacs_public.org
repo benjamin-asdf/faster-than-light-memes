@@ -1,0 +1,7 @@
+#+title:      coconut-lispy-vids
+#+date:       [2023-02-02 Thu 18:19]
+#+filetags:   :emacs:public:
+#+identifier: 20230202T181928
+
+thinking about making how to lispy videos
+

@@ -1,0 +1,40 @@
+#+title:      a-system-like-water
+#+date:       [2023-01-01 Sun 18:40]
+#+filetags:   :system:feed:
+#+identifier: 20230101T184022
+#+EXPORT_FILE_NAME: a-system-like-water
+
+I want to use my computer at the speed of thought. I want my mind to
+reach into the realm of files and websites and ssh servers and do
+things the way I am doing things with objects in the real world.
+
+Here is the one thing that will make your setup instantly feel much more like water.
+
+This setting changed my life. If I had discovered it later I would have
+wished I had discovered it earlier. I had it from one of [[https://www.youtube.com/@LukeSmithxyz/search?query=vim][Luke smith vim videos]].
+
+You put this in .xinitrc.
+
+#+begin_src shell
+xset r rate 120 250
+#+end_src
+
+This controls how quickly you are repeating your key after holding it down.
+
+#+begin_quote
+The first specifies the delay before autorepeat starts and the  second  specifies the repeat rate.
+#+end_quote
+
+If you use vim bindings j/k are now the way you can scroll. Oh yeaa.
+This feels sooo smooth - like water.
+
+Once you get used to this going back will make your fingers feel like they're wading through molasses.
+
+Start with
+
+#+begin_src shell
+xset r rate 200 200
+#+end_src
+
+or something. You need to build up your ability to hit keys quickly.
+I needed to slowly increase the numbers for this.

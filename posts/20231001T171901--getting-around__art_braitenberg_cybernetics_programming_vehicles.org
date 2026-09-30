@@ -1,0 +1,202 @@
+#+title:      getting-around
+#+date:       [2023-10-01 Sun 17:19]
+#+filetags:   :art:braitenberg:cybernetics:programming:vehicles:feed:
+#+identifier: 20231001T171901
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: getting-around
+
+See [[denote:20230915T190843][Intro Page]].
+
+* Vehicle I - Getting Around
+
+#+begin_export html
+<iframe width="500px" height="500px" src="https://vehicles.faster-than-light-memes.xyz/art/p/getting-around/21?width=500&height=500"></iframe>
+#+end_export
+
+Here is the [[https://github.com/benjamin-asdf/ftlm-vehicles/blob/main/src/ftlm/vehicles/art/vehicles/getting_around.cljs][Code]] if you want.
+
+[[https://vehicles.faster-than-light-memes.xyz/art/g/getting-around?page=0][Watch them go!]]
+
+You can also click on the screen to move the temperature bubble and see the effect.
+
+With [[https://vehicles.faster-than-light-memes.xyz/art/p/getting-around/0?controls=true][this link]] you get a [[https://leva.mentat.org/][leva control]] panel to modify some paramaters.
+
+Some of [[https://vehicles.faster-than-light-memes.xyz/art/g/getting-around?page=4][these (warning, link will open a tab with flashing lights)]] I was building while listening to the finest [[https://soundcloud.com/mehrismehrberlin/mehr-is-mehr-kater-blau-220723?p=a&c=0&si=ddd123fdaa214364814863f65c52e5d2][Berlin techno]].
+
+* Function
+
+Cart number one has 1 motor 1 sensor and 1 connection.
+
+Braitenberg asks us to imagine it having a little Brownian motion so it doesn't get stuck.
+
+Otherwise, the sensor senses high temperature and makes the motor go. The motor moves it forward without rotating (this will change in vehicle 2).
+This animal then stays in areas of low temperature and moves away from high temperature.
+
+I have to say this whole pond thing really went somewhere. My world is sort of this microscopic world of little animals, darting around and getting excited by some bubbles flying around.
+
+They sort of have 2 modes, being indecisive and wobbling around a bit, or they dart around.
+
+Trippy vehicle number 1 getting excited by disco bubbles, bouncing of walls and finding the few dark spots on the canvas.
+
+#+begin_export html
+<iframe width="800px" height="800px" src="https://vehicles.faster-than-light-memes.xyz/art/p/getting-around/6?width=800&height=800"></iframe>
+#+end_export
+
+*They all fly away when you scroll the screen away right now but you can reload the page to get it back*
+
+---
+
+The first part is an intro, then lengthy engineering, and in the end first version of the vehicle's number one microscopic animal bubble world:
+
+#+begin_export html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GuSxKBc_ha8?si=BlVaTjnOcjGf75ih" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#+end_export
+
+* Form
+
+Each Braitenberg vehicle is described by:
+
+- env
+- body
+- sensors
+- effectors
+- brain (connections)
+
+=Body= Is synomous with =cart= for my purposes. For now, my body is represented with this rounded rect.
+The body moves around, depending on the forces acting on it.
+
+Let cart-1 be:
+
+#+begin_src clojure
+(defn cart-1
+  [{:keys [pos scale rot color shinyness]}]
+  (let [sensor (->sensor :top-middle)
+        motor (->motor :bottom-middle)
+        line (->connection sensor motor)
+        body (assoc (->cart pos scale rot color)
+                    :components (map :id [motor sensor])
+                    :motors (map :id [motor])
+                    :sensors (map :id [sensor])
+                    ;; particle means it has brownian motion
+                    :particle? true
+                    ...)]
+    [body sensor motor line]))
+#+end_src
+
+
+#+begin_export html
+<details>
+    <summary>Some green little round vehicle #1</summary>
+#+end_export
+
+#+begin_export html
+<iframe width="500px" height="500px" src="https://vehicles.faster-than-light-memes.xyz/art/p/getting-around/20?width=500&height=500"></iframe>
+#+end_export
+
+#+begin_export html
+</details>
+#+end_export
+
+Sensors have an =activation= based on the =env=. I also gave it a =modality= ('Temparature' for now, light, smell etc. later).
+
+Sensors are circles in my world.
+
+The temperature sensor has the =environment= as a parameter and changes the =activation= of the sensor:
+
+#+begin_src clojure
+(defmulti update-sensor (fn [sensor _env] (:modality sensor)))
+
+(defmethod update-sensor :temp
+  [sensor env]
+  (let [temp (->temp (position sensor) env)
+        sensitivity 10
+        activation (* sensitivity (max 0 temp))]
+    (assoc sensor :activation activation)))
+#+end_src
+
+A body experiences "force" depending on its effectors. (effors == motors for the moment).
+
+#+begin_src clojure
+(defn update-body
+  [cart state]
+  (if-not (:cart? cart)
+    cart
+    (let [effectors (effectors cart state)]
+      (-> cart
+          (update :acceleration + (reduce + (map :activation effectors)))
+          (assoc :angular-acceleration (reduce + (map effector->angular-acceleration effectors)))))))
+#+end_src
+
+Later, motors are not only =:bottom-middle=, but left and right. Thereby rotating the cart by their action.
+
+The only thing missing to make it go is a =connection= between the sensor and the motor.
+
+#+begin_src clojure
+(defn ->connection
+  ([a b] (->connection a b identity))
+  ([a b f] {:source a :destination b :f f}))
+#+end_src
+
+An abstract connection in my world has a =source=, a =destination= and a transduce signal function =f=.
+I am happy I found the name source and destination for these. The Sender and receiver sounded like they were talking over the radio and some other ideas by GPT were controller and controlled or such.
+I did not want to limit my thinking towards either one of them being more important than the other.
+
+So =source= and =destination=. Both sound so wonderfully important. Just right.
+
+The meat of the signal transduction is =transduce-signal=.
+
+#+begin_src clojure
+(defn transduce-signal [destination source {:keys [f]}]
+  (update destination :activation + (f (:activation source))))
+#+end_src
+
+With the current choices I made, the activation of the destination is updated accumulatively sort of.
+=f= is allowed to return a negative number, thereby making the connection =inhibitory=.
+
+The difference between my model and a McCulloch-Pitts neuron is:
+
+- =f= is allowed to be *any* function. Including shelling out or querying a database, not just weight.
+  Both models allow the input functions to be =excitatory= or =inhibitory=.
+
+- I don't have =theta (θ)=, the =threshold=. My neurons are simply gradually activated.
+
+- My activation is modeled as a number, =activation=. Allowed to be any number.
+  In neurophysiology, this activation is encoded in the rate of the neuron firing.
+
+- In a McCulloch-Pitts neuron, on the other hand, a neuron is either on or off.
+
+I decided to draw the connection on the screen as a line.
+
+Then I went and I gave all the entities with =activation= a color shine, depending on the activation.
+
+#+begin_src clojure
+(defn activation-shine
+  [{:as entity :keys [activation shine]}]
+  (if activation
+    (let [shine (+ shine (* *dt* activation))]
+      (assoc entity
+        :shine shine
+        :color (q/lerp-color (q/color 40 96 255 255)
+                             (q/color 100 255 255)
+                             (normalize-value-1 0 1 (Math/sin shine)))))
+    entity))
+#+end_src
+
+It lerps the color between cyan and yellow. And it is faster when the activation is higher.
+
+This, I have to say, turned out amazingly cute and gives my whole simulation its unique flair.
+
+When a vehicle finds a high-temperature bubble, it starts blinking like crazy and moves straight away.
+
+Check [[https://vehicles.faster-than-light-memes.xyz/art/g/getting-around?page=9][# 10]] with really hot temp bubbles. Comes across like they completely vibrate from that!
+
+Isn't there something deep about the honesty of this animal in a way? We see all its functioning, all its desires and purposes and its inner workings, its brain. Everything there is in the open.
+
+Certain animals are coming to mind, namely cuttlefish and octopi. They have a special structure in their skin that makes them able to change color via muscle input.
+
+A video: [[https://youtu.be/XocHDvHlcJM?si=-xKP4-jdV-2-IR_3&t=30][OCTOPUS Camouflage | Changes color, texture and shape]].
+
+This book is quite amazing: [[https://en.wikipedia.org/wiki/Other_Minds:_The_Octopus,_the_Sea,_and_the_Deep_Origins_of_Consciousness][Other Minds: The Octopus, the Sea, and the Deep Origins of Consciousness]].
+
+Godfrey-Smith had this hypothesis, how cuttlefish are perfectly signaling their internal states, without any message. No communication because nobody is there to interpret. Because cuttlefish are colorblind themselves.
+Except when they camouflage or hypnotize prey I suppose.

@@ -1,0 +1,111 @@
+#+title:      Resume
+#+filetags:   :public:contractor:
+#+identifier: 20230102T115024
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: resume
+
+[[mailto:Benjamin.Schwerdtner@gmail.com][Benjamin.Schwerdtner@gmail.com]], [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140][LinkedIn]], [[https://github.com/benjamin-asdf][Github]], [[https://faster-than-light-memes.xyz/][Personal website]], [[https://faster-than-light-memes.xyz/work-with-benjamin.html][Contractor website]]
+
+
+Living and breathing *Clojure and functional programming*. I am genuinely interested in technology and computers and value craftsmanship.
+I have a particular focus on *Clojure, Linux and Emacs* and *functional, data-oriented programming*.
+
+Experienced with full-stack web applications, frontend, react, clojurescript, backend, cloud infrastructure, CI/CD,
+language tooling and making *open-source contributions*.
+
+Committed to *delivering*, *understanding* the problem, iterating on the ideas, and *communicating* effectively as a programmer.
+
+Fluent in English and German. I am frequently praised for my high enthusiasm and curiosity.
+
+- 2025-present: Senior Clojure developer at [[https://www.united-signals.com/en/][United Signals]]
+- 2024: AI engineer and frontend developer working on [[https://athenegpt.ai/][AtheneGpt.ai]]
+- 2023-2024: Contractor, Clojure
+- 2018-2023: Fulltime programmer at [[https://singularitygroup.net/][Singularity Group]]
+- 2014-2018: Studied biology at the University of Hohenheim (discontinued)
+- 2013-2014: Studied cognitive science at the University of Osnabrueck (discontinued)
+
+** Skills/Experience
+
+- *7+ years in software development*
+- *Linux, AWS, .Net, Clojure, Python, Javascript, Typescript*
+- *Frontend Development at [[https://athenegpt.ai/][AtheneGpt.ai]], react, vite, frameworks, css + tailwind, browser*
+- *AI Engineering, CUDA, pytorch* at [[https://mysentient.ai/#/home][mysentient.ai]], 2 Months
+  - Profiled and debugged transformer inference frameworks
+- *Full stack web application development* paperless contracts at [[https://www.united-signals.com/en/][United Signals]], 16 Months.
+  - Clojure, Clojurescript, Datomic, Malli, Reitit, Pair-Programming
+  - Profiled frontend performance, themeing, self-started a usability feature, increasing user satisfaction
+  - Integrated third-party APIs, and built a shared schema on frontend and backend.
+- *Website: https://benjamin-schwerdtner.de/*
+  - Clojure and Emacs content, [[https://faster-than-light-memes.xyz/screencasts.html][screencasts]] and blog posts
+  - [[https://youtu.be/EiJcucK9wiE?si=CBNG8cmpkwWL14ow][Software Art]], /interactive programming/
+- *[[https://hotreload.net/][Unity HotReload]]*
+  - I worked on the *Roslyn* / *Cecil* implementation
+  - I made it run on Linux and macOS and needed a deep working knowledge of Unix and .Net
+- *Developed a top-grossing [[https://l.linklyhq.com/l/1SFTp][mobile game]] with C# / .Net / Unity*
+  - Cross-functional team, 25+ people, 3+ Million downloads
+  - Mobile client game development
+  - *Mentored junior team members*
+  - Worked with AWS cloud/microservices, IAM, S3, lambda, DynamoDB, Golang, Typescript, GraphQL
+  - I build code linters, code quality pipelines (*Roslyn*) and a Rider plugin (*Kotlin*, *Clojure*).
+- *DevOps, CI, Gitlab, Github*
+  - *docker*, *Linux containers*, Linux servers
+  - I build CI pipelines on Gitlab for MobileMinigames and HotReload
+  - *Configuration as code*, observability
+- *tools*
+  - Linux, shell, git, Bash, Babashka, Emacs, vim, Jira, Github, Rider
+  - A deep working knowledge of emacs and unix is evident from my [[https://youtu.be/IJuQm0aDVIo?si=K1d8zeWYusevdi-b][content]], [[https://youtu.be/W5_mEolJ_Bs?si=_Px3X_w_J079XTSp][screencast]]
+- *7 years Lisp*: *Emacs Lisp*, *interactive programming*, *metaprogramming*, functional-style, bottom-up, *Scheme*, *Common Lisp*
+- *4 years Clojure*:
+  - Datomic cloud, datalog, *AWS EC2*, backends, http-servers, reitit, malli, spec, re-frame, reagent, core.logic, test.check,
+    repl-driven development (with contributions to emacs cider and babashka repl integration), unit testing, koacha
+  - functional programming techniques, domain modeling, property-based testing, transducers
+  - Babashka + Babashka ecosystem contributions and community engagement
+- *Frontend:*
+  - Expert: CSS, HTML, Javascript, Clojurescript, Scittle, Reagent, React, Re-frame, Performance, Accessibility, Privacy
+- *Database*
+  - Datomic 2 years
+  - AWS Redshift (SQL), 6 Months (Analytics for Mobile Minigames)
+  - PosgressSQL, Redis, DynamoDB (Mobile Minigames, exposure)
+- *Industries*
+  - *Banking - paperless contracts* (United Signals, application development)
+  - *Open source, tooling*
+    - clj-kondo, nbb, cider, Emacs packages, etc.
+    - I had the opportunity to work with Borkdude ([[https://github.com/clj-kondo/clj-kondo/issues/1817][clj-kondo]], [[https://github.com/babashka/nbb/pull/192][nbb]], [[https://github.com/babashka/babashka.nrepl/commits?author=benjamin-asdf][babashka nrepl]]).
+    - I also contribute to open source projects via [[https://github.com/techascent/tech.ml.dataset/issues/312][bug reports]], and [[https://faster-than-light-memes.xyz/jacking-nbb.html][blog posts]].
+  - *Mobile Games, blockchain, NFTs*
+  - *Non-profit, charity, NGO*
+    - Organized with a team of volunteers to fight poverty. See [[https://docs.google.com/document/d/1a-65IWzLkc3kGxOyQdhapDYfHaHPgPRtfpaxukpVoTg/edit][Track Record]].
+- *Alternative AI and programming topics, a-life*
+  - Latest: [[https://faster-than-light-memes.xyz/high-dimensional-computing-with-sparse-vectors.html][Hyperdimensional Computing With Clojure]]
+  - Here it is on the [[https://www.hd-computing.com/popular-writing][VSA/HDC]] overview page,
+  - [[https://scicloj.github.io/docs/resources/reading/][Here]] it is on the reading list of scicloj community under /algorithms/.
+- *Strong base knowledge of all major topics of biology and neuroscience*
+  - Molecular biology lab experience, physiology, neurophysiology, biochemistry, zoology, botany, evolutionary biology etc.
+- *Research Engineering Interests*: How the brain works, cognitive architectures, cybernetics, software synthesis, neurosymbolic ai, evolutionary algorithms, biologically principled algorithms, self-organisation, a-life, neuronal codes, [[https://faster-than-light-memes.xyz/high-dimensional-computing-with-sparse-vectors.html][hyperdimensional computing]], programming in superposition
+- *Self-starter*
+  - I cultivate a sense for what is needed and useful.
+  - I choose practicality where ever I can.
+- *Self-taught*
+  - Textbooks. I am on a never-ending journey of learning and improving my craft.
+  - Rich Hickey, Eric Normand, SICP, Paul Graham, Bret Victor
+
+*[[https://github.com/benjamin-asdf][Github]]*:
+  - [[https://github.com/clj-kondo/clj-kondo/issues/1817][Clj-kondo]], [[https://github.com/babashka/nbb/pull/192][nbb]], [[https://github.com/babashka/babashka.nrepl/commits?author=benjamin-asdf][babashka nrepl]]
+  - [[https://faster-than-light-memes.xyz/flipcoin/index.html][Flip Coin Website]]
+  - [[https://github.com/WorksHub/leona/pull/50][workshub/leona contribution]], also [[https://github.com/WorksHub/flow-bot/pull/13][workshub bugfix]],
+  - [[https://github.com/benjamin-asdf/openai-api.el][Openai-api emacs package]]
+  - [[https://github.com/benjamin-asdf/just-40hz-binaural-beats][Binaural beats]] (scittle)
+  - [[https://github.com/benjamin-asdf/bobscheme][A Lisp dialect where the code is JSON]]
+  - [[https://github.com/benjamin-asdf/faster-than-light-memes][My webstie]] (emacs denote notes to html, babashka for the atom feed)
+  - [[https://github.com/clojure-emacs/cider/pull/3291][Cider contributions]]
+  - [[https://github.com/benjamin-asdf/simple-easy-emacs][A getting started emacs config]]
+
+*Interests*: Alternative programming paradigms, hyperdimensional computing, biologically inspired modes of computation, [[https://github.com/benjamin-asdf/advent-of-code/blob/master/src/Y2022/day21_logic.clj][relational programming]]
+
+*Availability*: Available for remote contract work and permanent roles. CET.
+
+*Location*: Berlin area, Germany.
+
+*Languages*: German: primary, English: fluent, Latin: rudimentary
+
+*Recommendations*: From my former colleague Milan: [[https://www.linkedin.com/in/benjamin-schwerdtner-4987a1140/details/recommendations/][LinkedIn Recommendations]]

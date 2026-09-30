@@ -1,0 +1,11 @@
+#+title:      Scared To Update
+#+date:       [2023-07-21 Fri 13:01]
+#+filetags:   :clojure:code:ftlm:public:
+#+identifier: 20230721T130124
+#+EXPORT_FILE_NAME: why-the-world-is-scared-to-update
+#+OPTIONS: toc:nil
+
+[[denote:20230708T095438][Lisp]]
+
+
+- migrating guides: puke

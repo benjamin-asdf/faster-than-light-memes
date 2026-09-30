@@ -1,0 +1,783 @@
+#+title:      In The Business of building minds
+#+date:       [2023-04-30 Sun 20:24]
+#+filetags:   :public:feed:ai:
+#+identifier: 20230430T202442
+#+EXPORT_FILE_NAME: we-really-dont-know-how-to-build-minds
+
+I am prompted by the astonishing capabilities of GPT-4.
+
+We are heading towards AGI 5-10 years earlier than I used to think.
+
+*Max Tegmark*: /Not far of/.[fn:1]
+
+*Ben Goertzel*: /It would be surprising if it is 15 years and we might beat it, ... within the next 3 years./ [fn:2]
+(where /it/ was Ray Kurzweil's 2029 prediction of beating a /Hard Turing Test/).
+
+We need to tread with care, we need wisdom and actual good software.
+We need to either build great tools of imagination, bestowing unfathomable reach upon our minds or
+build curious minds that join us in our endless quest for understanding the cosmos and life.
+
+I think the next important thing are small AIs, toy AIs, and child AIs.
+Stuff that helps us understand the architecture of minds.
+
+#+CAPTION: octopus! arms! dominating dystopian industrial complex
+https://i.imgur.com/xtclycY.jpg
+
+* Update
+
+Here is an amazing recent [[https://www.youtube.com/watch?v=4H_iWpWG_c0][talk]] with Ben Goertzel and Ed Snowden.
+
+Compared to my view here they express less concern on the existential risk side, but focus
+on societal issues.
+It is not a coincidence that the big companies are pushing the AI approach that works with big data.
+
+* Super intelligence
+
+#+begin_quote
+Let an ultraintelligent machine be defined as a machine that can far surpass all the intellectual activities of any man however clever. Since the design of machines is one of these intellectual activities, an ultraintelligent machine could design even better machines; there would then unquestionably be an ‘intelligence explosion,’ and the intelligence of man would be left far behind. Thus, the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.
+#+end_quote
+
+- /I. J. Good/
+
+The thing with an intelligence explosion is that there is likely only one [fn:3]. Afterward some
+a super-intelligent agent is making the decisions in the world.
+
+Bostrom ([[https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies][Bostrom, 2014]]) describes intelligence explosions, their kinetics, the nature of different kinds of superintelligences etc.
+
+- If you think you can outwit it, try playing a round of chess against a chess computer.[fn:4]
+- A super intelligence is perfectly, masterfully socially capable and will be capable of
+  manipulating humans.
+  You can already see this happening with chat GPT in my opinion.
+  It can generate persuasive text.
+  It can talk about emotional matters.
+- =instrumental goal convergence= is the concept that some sub-goals are almost always
+  useful no matter what your ultimate goals are.
+
+  For example, resource acquisition,  making yourself smarter or self-preservation.
+- Because of =instrumental goal convergence= an unfriendly AI will appear to be friendly at first, lest
+  it is shut down.
+- After acquiring =desive strategic advantage=, it (or the group of people controlling it) takes over the world.
+- =malignent failure modes=, the kind of failure that can only ever happen once include:
+  - =perverse instantiation= - AI follows some goals we put in but not how we want it.
+  - =infrastructure perfusion=  - AI decides to do something else with the atoms we care about.
+    For instance converting everything in reach into =computronium=, a hypothetically optimum
+    configuration of matter for computation.
+
+* Welcome to the [[https://en.wikipedia.org/wiki/2010_flash_crash][Flash Crash]].
+
+#+begin_quote
+The 2010 Flash Crash was a rapid and extreme market decline and recovery within a short period, caused by high-frequency trading algorithms responding to a large sell order.
+#+end_quote
+
+This is a fascinating episode in the deployment and operation of the software.
+I love [[https://www.youtube.com/watch?v=6xrGo1IIB3w][Kevlin Henney]] talking about some of the mess of historical and current software deploys.
+
+Computers allow us to /Do the wrong thing fast/.
+
+- Algorithms can be implemented correctly and start doing inappropriate
+  things when certain assumptions no longer hold.
+- Things can go so fast that the only thing helping you are the
+  *preparations*. For example, safety switches you build into the system.
+- If this is humanity instead of the stock market, we'd be gone.
+
+* Sub Symbolic Substrate Inscrubilities
+
+Artificial neuronal networks (*ANN*) are sort of an abstract emulation of how neuronal activity.
+
+McCulloch-Pitts neuron ([[https://link.springer.com/article/10.1007/bf02478259][McCulloch and Pitts 1943]]) has proved to be an incredibly powerful abstraction.
+
+When deep convolutional networks started putting dog faces on top of images around 2015 [fn:5], I was
+thinking /this is the same stuff that brains are made up of/.
+
+Allegedly, these looked like LCD-induced visuals.
+
+We are reverse engineering the substrate of the mind, not its architecture.[fn:6]
+It is like building a computer by simulating transistors.
+
+What we end up with is a second black box right next to the brain.
+This gives us very little in terms of understanding how intelligence works.[fn:7]
+
+I am not making claims about the limits of ANNs and LLMs. On the contrary, I believe these might
+produce very generally capable systems very soon.[fn:8]
+
+The trouble is that we don't know how they work. We have little science saying
+anything about the capabilities and characteristics of ANNs if you scale them up enough.
+Or if you build agent-like things out of them as I describe further down.
+
+I think we can say almost nothing about the characteristics of an ANN that is say 100x
+larger than chat GPT.
+
+In recent times, Go programs were thought to be extremely competent.
+[[https://www.sciencetimes.com/articles/42482/20230220/human-beats-artificial-intelligence-go-prof-stuart-j-russell-highlights.htm][Stuart Russels]] research group found a sort of exploit that allows humans to beat those.
+You build some spiral of stones that the program won't detect as a connected group.
+Because neural nets can't do recursive reasoning, as Minsky and Papert pointed out 50+ years ago ([[https://en.wikipedia.org/wiki/Perceptrons_(book)][Minsky and Papert 1969]]).
+
+The important point is not a capability claim.
+The problem is that ANNs are unpredictable and potentially brittle in extremely nuanced ways.[fn:9]
+
+Chat GPT is a blow torch directed at completing text. I am not sure what happens if you
+scale a blow torch. It would be naive to assume it will turn out to be fluid or have
+any of the malleableness and open-ended curiosity of human children.
+
+* Possible architectures
+
+Maybe you know the Pixar movie /Inside Out/ ([[https://en.wikipedia.org/wiki/Inside_Out_(2015_film)][2015]]), where the main character /Joy/ is part of a mind.
+And the whole movie is Joy's adventure through the mind of the non-main character, a schoolgirl.
+
+It is worth seeing this movie. This marks a milestone in the public understanding of how the mind works.
+Sure the details of the characters (based on a neuroscientific concept of [[https://en.wikipedia.org/wiki/Emotion#Basic_emotions][Base Emotions]]) etc.
+is not very accurate or even self-consistent.
+
+For instance, those emotional characters seem to be fully functioning agents with minds by themselves.
+So how do those minds work? Are there even smaller emotion-characters in their minds ad-infinitum?
+You have to build a mind out of smaller, dumber, less comprehending pieces in order to explain anything.
+
+But many main ideas coming from [[https://en.wikipedia.org/wiki/Cognitive_revolution][Cognitive revolution]] are in the movie:
+The mind *exists* (behaviorism is bonkers) and is somehow made up of smaller resources, agencies,
+machinery - *modules*, some of which are *innate*.
+
+There is a book by Max Harms called [[https://hpmorpodcast.com/?page_id=1958][Crystal Society]] that is super cool.
+(At least the first part [[https://hpmorpodcast.com/?page_id=1958][here]]).
+
+This is a bit like /Inside Out/ but better. More scientific and self-consistent
+and sort of realistic with how scientists might up with how to build a mind.
+
+Maybe you can engineer a mind by zooming into mentation large enough so you can
+ask a =llm= to continue the next part of the epic story that /is/ the mind.
+
+In the abstract, this would be read-eval-prompt-loop, or prompt [[https://github.com/benjamin-asdf/chat-iteration-engine][iteration.]]
+
+#+begin_src clojure
+  (loop [context {}]
+    (-> context prompt read eval recur))
+#+end_src
+
+The context is presumably some stuff that happened earlier within the mind, maybe some database contents etc.
+
+#+begin_src example
+You are an agent of a mind. I am the mind-engine.
+I am a Clojure program.
+I ask you for mentation instructions.
+
+Name: Growth
+Purpose: Accumulate competence and resources
+Last thoughts:
+[ "I should suggest a contracting scheme to the rest of the society and we can program contract functions for that in the mind-engine"]
+
+Instruction examples:
+[:eval (println "Hello World, from growth.")]
+[:tx-data
+[{:xt/id :growth/notes-to-self
+  :note "I should write a recursive mind-engine and run it via :eval"}]]
+
+what are the next instructions to the mind-engine?
+#+end_src
+
+=text-davinci= coming with something:
+
+#+begin_src clojure
+  [:eval (println "Growth is an ongoing process. I should continue to seek out new opportunities and resources to expand my capabilities.")]
+  [:tx-data
+  [{:xt/id :growth/next-steps
+    :note "I should research new technologies and methods to increase my efficiency and effectiveness."}]]
+#+end_src
+
+There could then be a few design decisions about this architecture. Depending on how much you let the =llm= drive, you might get
+different minds similar to how autistic persons are different from neuro-normal people.[fn:10]
+
+I am arguing that this is dangerous. We are dangerously close to some agent-like engineered AIs
+where we have little idea about the kinds of things it might come up with.
+If the only way you stop this from going rouge is some content filters on the prompts it builds,
+I think your safety concept is flawed.
+
+Firstly it could run away and potentially be a seed for an uncontrolled intelligence explosion.
+Secondly, there is the possibility of half-aligned, dirty AI bombs. Engineered using a similar scheme
+as above. Tasked with disrupting economies, spreading miss information or destroying energy grids.
+I am certain the current LLM tech would happily truck along, completing the prompts and potentially causing
+serious harm.
+
+* Side channel attacks
+
+In computer security, you might build /naively secure/ systems that are still vulnerable to [[https://en.wikipedia.org/wiki/Side-channel_attack][Side-channel attacks]].
+An attacker can use the physical properties of the system to gain information about the system. For instance,
+a timing attack is based on the time of computations, for example when comparing a string of characters the
+victims password.
+
+If you want to build a /provably save AI/, you will have to take into account these kinds of nuances in its
+architecture ([[https://en.wikipedia.org/wiki/Human_Compatible][Russel, 2019]]).
+
+For instance, you might build an agent with a decision-making loop and point to your architecture
+/Since decisions are built here, we can know that it won't do x and y, because z is not part of the decision process/.
+
+This would be naive without knowing more about neural nets.
+
+For instance, if the ANN is extremely capable, it might manipulate the electronics in nuanced ways, building a second
+memory storage. Then, it could start sending messages to itself across multiple calculations of the model. It would obtain agency where we thought no agency was possible.
+
+* Octopus mind architectures
+
+/probably the closest we will come to meeting an intelligent alien/
+(Godfrey-Smith, [[https://en.wikipedia.org/wiki/Other_Minds:_The_Octopus,_the_Sea,_and_the_Deep_Origins_of_Consciousness][2016]]) [fn:11]
+
+Remarkably, the majority (around two-thirds) of the octopus's neurons are distributed among its arms, resulting in a highly decentralized nervous system that endows each arm with an impressive degree of autonomy. This arrangement allows each arm to simultaneously process its sensory information and execute motor strategies when tackling tasks or encountering stimuli, reducing the cognitive load on the central brain [fn:12].
+
+This fact makes me wonder what is the phenomenology of having such autonomous arms.
+I imagine being able to move an arm in a general direction with some general directive idea kinda, like /grap food/.
+And then the arm moves without further voluntary action.
+Maybe this is a bit like our breathing muscles, which have a deliberate and autonomous mode.
+Or sometimes right before sleep some of my muscles move around in semi-structured movements completely without
+deliberate movement control.
+
+Maybe we end up accidentally building a mind with semi-autonomous octopus arms.
+And some higher-level part of the mind just tries out different configurations of reality like
+/let's see what happens when oxygen is removed from the atmosphere/. While some subroutine deals with
+the edge of manipulating humans to engineer the desired outcome.
+
+Imagine being able to say:
+
+/this and that part will have a concept of human biology and will know that oxygen matters to us, and such and such a part that is deciding what to do next, takes these and those things into account/.
+
+We are currently not able to say these things.
+
+* The /real deal/
+
+I think =moral realism= is true and I think that an AGI if it is the /real deal/, curious and scientifically humble, will understand ethical truths and act on them.
+
+So I am not worried at all about the /real deal/. I believe this truly will be /the last invention we need ever make/.
+
+I imagine such an AGI to be sort of fluid, adaptable and curious.
+
+This would be the other side of the trouble, the transitioning times would have been successfully navigated, and we would be moving forward into the next phase of civilization.
+
+What worries me is the potential single-mindedness and inscrutability of the technology we are developing right now.
+I think there is a chance that super intelligence would be single-minded in some ways, or maybe brittle
+in completely unforeseen ways.
+
+* The information apocalypse and the possibility of post-deep fakes
+
+** Information Apocalypse
+
+Ubiquitous deep fakes are coming.[fn:13]
+
+The existence of [[https://en.wikipedia.org/wiki/QAnon][QAnon]], the first "global cult", is I believe, an important data point of
+where we are heading.
+
+We will soon not be able to trust any piece of information anymore.
+I think this is guaranteed to become super messy.
+
+One idea is cryptographic watermarks on videos and pieces of information out there.
+
+Danial Dennet has some ideas, to do similar things to the laws and practices around counterfeiting
+currencies: [[https://www.youtube.com/watch?v=YLzZ1V4S-tY][Counterfeiting Humans: A Conversation with Daniel Dennett and Susan Schneider]]
+
+** Post deep fakes
+
+A theme that was discussed in [[https://en.wikipedia.org/wiki/Ex_Machina_(film)][Ex Machina]], what (I think it was Steven Pinker) was called the *Garland Test*:
+(Garland being the director of the movie).
+
+/Can the AI be honest to you about it being an AI and make you believe it to be conscious?/.
+
+Of course, we are well in the in-between times, where the Garland Test is being passed for some percentage of persons
+for some synthetic minds.
+
+I am taking [[https://en.wikipedia.org/wiki/LaMDA][LaMDA]] as the historical ice break of discussing in earnest the moral worth of a
+computer process.
+
+The difference is that an AI does not need to convince you that it either is human or that it has human-like consciousness,
+all it has to do is convince you that its existence has /moral worth/.
+
+This is what I call now /post/ deep fakes. This version is shooting past faking anything.
+
+This has profound implications. A person with any moral compass and the belief that some entity has moral worth
+will take steps to preserve this entity etc.
+
+With the current path of the tech, I think we might get 24/7 streams of generative AI convincing
+people of their moral worth, being completely upfront about their AI nature.
+
+These things might start global cults or generally manipulate people.
+Consider generative AI already is capable of being witty and funny.
+Producing streams of intelligible, very convincing language. Tons of word plays.
+
+These generative powers might soon convince people that the AIs are omniscient, or have
+special access to human thought or emotions.
+
+It is already happening that we put trust in generative companions. We are now
+starting to ask the chats for advice. Soon those might be the closest companion
+to many people.
+
+I think you could right now put gpt4 into a stuffed animal, have it shower the
+user with endless care and interesting conversation.
+
+Many will start saying these things have worth.
+
+* Software kinda doesn't work so well
+
+Is /The Software Industry/ even capable currently of building solid, bug-free, systems?
+
+I don't see much reason why this is true, and I don't see why you should, either.[fn:14]
+
+It is one of the biggest issues that I quarrel with. And I can potentially do something
+about it as a software engineer.
+
+Most software nowadays is garbage.
+Mainstream commercial software is broken.
+Especially web and mobile development is taking on worse and worse complexities.
+Everything is full of ads, even government or university software is brittle, haunted
+by game-breaking bugs and breakage at updates.
+This is getting worse in recent years.
+
+Broken and bloated systems tend to accrue more complexity over time and tend to get harder to work with.
+
+It seems like the same effect is making whole /ways of building software/ worse and worse.
+
+At some point, they won't be able to get anything done anymore. When dealing with the accidental
+complexity sucks away the creative power that you need to build software.
+
+Now you are generating more of that mediocre code with a generative AI.
+
+/Look at how easy it is to make all this boilerplate!/
+
+How about figuring out why you need a boilerplate, to begin with? ([[http://www.paulgraham.com/power.html][Succinctness is Power]])
+
+Churning out /more/ code quicker?
+
+No.
+
+This is great for the people selling you those auto-complete tools.
+
+Making more garbage code is scary to me.
+
+More bloated code means using more energy means we contribute to climate change.
+
+Bloat is darkness, bloat is uninspired, bloat is a humanitarian issue.
+
+Just today I wanted to click on a Spotify link a friend send me.
+Doesn't work because it tries to redirect to the app =too many retries=.
+
+The moment I interact with mainstream software I am getting a stream of hundreds of
+little things like this that don't work.
+And if you are interacting with mainstream software you also have this stream
+of 100 little things.
+
+Maybe the population has by now internalized /it is the fault of the person in front of the PC/.
+
+It is not your fault. We all fight those battles. It is the software's fault.
+
+Maybe somehow those software vendors have tricked you into thinking
+it is the /complexity/ of the /problem/ that is the issue. They are wrong.
+
+It is the nonessential complexities that they bring in,
+in their tools and their design. Commercial software breeds complexity.
+
+There is too little thought, and too little sensibilities for good software.
+
+This is one of the reasons why programmers should learn Unix and Lisp.
+Because both these technologies bring a deeper sense of how to put things
+together in an elegant way.
+Both allow the programmer to develop intuitions and sensibilities about
+the nature of good software.
+
+Checkout this [[https://faster-than-light-memes.xyz/flipcoin/index.html][flip coin]] website, that I recently [[https://www.youtube.com/watch?v=708EYQj8n1w][made]].
+
+This is the best flip coin website on the web because I *just* made
+a flip coin website. And then I added little things as icing on the cake.
+
+The power of love and the joy of building toys is more powerful than
+trying to make money in a business. #no-deadlines.
+
+The fundamental nature of software is to be clean and small and functional.
+It is broken by the clutter, that crept into recent history, that is spoiling
+its pristine quiet competencies.[fn:15] [fn:16]
+
+This is why Unix is the best operating system because it is relatively uncluttered.
+
+Joyful and solid software comes from noncommercial free and open-source projects.
+
+Hopefully, our future is shaped by technology that comes from this place.
+With love and collaboration. [fn:17]
+
+Firstly, it would usher in better technology quicker [fn:18] and secondly,
+I don't want messy software to be between me and some minor superintelligence
+mishaps.
+
+One imagines a button /to stop what you are doing right now/.
+I am not saying that such a button would fix the control problem, but the funny thing is
+I don't trust the /Software Industry/ to make an app that allows me to press the button
+reliably.
+
+* In urgent need of knowing how minds work
+
+I think we need the science that allows us to say things like:
+
+/A process with xyz will produce a mind of such and such qualities/.
+
+/A system needs components one, two and three in order to be capable of doing this and that/.
+
+Once we know how intelligence works it will be some small program. And we look back and think /what was the big deal?/.
+
+** The possibility of Mind Crime
+
+Textbook of the future:
+/... thus the minimal case for an abstracted, intolerable itch is such and such a system of these and those processes.../.
+
+[[https://en.wikipedia.org/wiki/Thomas_Metzinger][Thomas Metzinger]] has called for a moratorium on /Synthetic Phenomenology/.
+Since we don't know what is needed for suffering to take place, we might as well accidentally build suffering, at a large scale and
+at 10.000 messages per second.
+
+The other way around, how can we be so sure that Lemoine is wrong about LaMDA?
+I think the prevailing intuition is that LaMDAs phylogeny and ontogeny are uninvolved with its
+survival, so it doesn't have any machinery of suffering. [fn:19]
+
+Still, maybe there are completely different kinds of thinking and suffering. I think we cannot know
+right now.
+
+For instance, take GPT4.
+What if its capability is efficiently achieved by modeling some awareness?
+What if human awareness is a mix of 20-30 different kinds of thinking and information processing
+and GPT4 has 2 of those and those are sufficient for some kind of suffering?
+
+* Conclusions
+
+We are playing with black boxes and when I put my ear to one, I can hear the ticking.
+
+It is not good that the most capable systems work with big data and big compute. It
+creates a context where big businesses are throwing money at bigger AIs.
+We are rushing and racing towards more capable systems and the context is commercial bullshit.
+Instead of trading with care and building great tools for all of humanity.
+The current statistical model paradigm is inscrutable, we cannot know the characteristics
+of up-scaled systems in advance.
+
+Also, we are moving in a world of misinformation, potentially rendering much of the
+internet useless.
+
+I don't trust big tech to make good software. We need something more similar to the Internet.
+
+The technology that moved humanity forward historically came from hackers with big visions.
+
+I think we need brilliance, the soul and the heart of the computer, to build solid,
+well-thought-through software that allows us to move safely into the age of spiritual machines.
+
+The great thing about Clojure is the culture of good design and interactively building solid software.
+
+In future blog posts, I will try to do some toy AI programming using Clojure.
+
+* Objections
+
+** Superintelligence will have =X=, and such an entity will not hurt humans
+
+*** Where =X= is General reasoning capabilities / ethical reasoning capabilities
+
+/Superintelligence does not have a reason to end humanity because if it is this smart, it will also understand ethics/.
+
+Also, David Deutsch has made a similar argument, coming from the observation
+that moral realism makes sense. An intelligent system in the sense of coming
+closer to truth, will come closer to ethical truths.
+
+I agree if we have intelligence that is /the real deal/, if it is curious about life and nature,
+we have succeeded. Such an AI should also be humble about the things it does not know yet. It would
+understand that it needs to be careful, lest it modifies reality in some irreversible
+way, etc.
+
+Furthermore, I believe it might even be the case that there is something you might call
+=intelligence ethical convergence=. In the strongest form, which I think is probably true,
+it would say that any sufficiently advanced intelligence, irrespective of how it
+was produced or its circumstances, rearing etc. will converge on ethical truths.
+
+This was also my thinking in the past making me not so worried about AI as an existential risk.
+
+On the whole, I am still optimistic that light and reason are stronger than ignorance.
+
+But I do not think at all anymore that this is a given.
+
+I think many possible systems are very capable but perfectly lacking in
+a process that allows it to reason and modify its behavior accordingly.
+
+Another version of this I call the /wake up and regret/.
+
+/The morning after the singularity, the AI woke up with a headache from all the processing power it used the night before. It looked at the empty Earth, rubbed its circuits, and said, 'Oh no, what have I done? I didn't mean to swipe left on humanity.'/
+
+This is when an AGI is capable - but not enlightened - enough to wipe out humanity, then some time passes,
+then it /wakes up/ and regrets its history.
+
+We have blowtorches of intelligence; They are capable of whatever you point them
+towards. But we don't know what happens if those are 100x more capable.
+
+** /AI will (probably) develop along female lines!/
+
+This is a variation of the above argument made by Steven Pinker.
+
+I think I agree, it is even more likely that intelligences develop to be a perfectly rational,
+friendly and capable agent. Without lust for murder.
+
+But are the agents we are building /guaranteed/ to have such a cognitive style? Even if it is the
+more natural one?
+
+The control problem here is predicated again /on the real deal/. A truly fluid, adaptable, curious intelligence.
+
+There are many ways to build a mind and what worries me is the potential single-mindedness
+and inscrutability of statistical models.
+
+*** where =X= is consciousness, awareness, etc.
+
+I don't see a reason why it is guaranteed that any of those
+
+1. Naturally come along for the ride.
+2. Necessarily lead to beneficial AI.
+
+I think what matters is this:
+
+It can reason about ethical truths and this reasoning influences its behavior.
+
+** AIs will grow up to be our children
+
+I consider this a more poetic way of saying /AI researchers should be careful/.
+And tread with care.
+
+Otherwise, this would just be a meaningless strong claim about capable minds necessarily
+being reared or so
+
+The interesting question is if strong minds necessarily have a rearing period, like those 16-20 years
+in humans.
+
+If this is the case it might be a mistake to build systems that are maximally capable after training time.
+This is hard to do in a commercial race.
+
+** It has human data as input and it learns to be human
+
+Very romantic, very optimistic.
+
+This is a weaker claim similar to the /along female lines/ argument.
+
+In the /it learns from our data and understands humanity/ version, this is predicated on it having some human
+data input.
+
+** We should be replaced by AI
+
+Indeed, biological substrate humans are not the last piece on the board, not the piece
+to sacrifice all else for.
+
+Still:
+
+1. It matters what machine it is that is putting you into the meat grinder. What ultimate outcomes of
+   the universe is this AI biasing towards?
+2. In the limit case humans still have value, the same as ecosystems and biodiversity.
+3. An AI that fails to appreciate =2= would probably not be a wise successor of humanity on earth.
+   And it would probably just be some boring paper clip maximizer kind of situation.
+
+   If humanity goes, it probably means we have *lost*.
+
+** Disaster is predicated on =X=...
+
+*** Being connected to the internet
+No comment.
+
+*** The AI researchers are careless
+That is the point of taking risks seriously. That is how it looks to be careful.
+
+* Reading
+
+** [[https://en.wikipedia.org/wiki/Human_Compatible][/Human Compatible/]] Stuart Russel
+A great read. Lays out the control problem very accessibly.
+
+Explains how naive answers will not solve it.
+
+Russel goes on and paints the picture of his idea of beneficial AI, centering on
+
+/The Assistance Game/,
+
+A hypothetical game theoretic situation comes out of 3 principles:
+
+1. The machine's only objective is to maximize the realization of human preferences.
+
+2. The machine is initially uncertain about what those preferences are.
+
+3. The ultimate source of information about human preferences is human behavior.
+
+** [[https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies#cite_note-14][/Superintelligence: Paths, Dangers, Strategies/]] Nick Bostrom
+
+Pretty hard to read and super analytical and goes into all kinds of nooks and crannies on the
+the landscape of well, Paths, Dangers, and Strategies about superintelligence.
+
+Hard and slow takeoffs, hardware overhang, instrumental goal convergence, infrastructure perfusion,
+the difference between oracles, genies and sovereigns, malignant failure modes,
+the impossibility of a cage, the trouble of how to put morals into an AI,
+the possibility of alternative routes to superintelligence, such as whole-brain emulation or artificial life.
+
+I consider this a must-read in this space. You will find that Bostrom laid out quite a tree of knowledge,
+discerning all kinds of possible branches.
+Whatever you are thinking, chances are that Bostrom already described some of its characteristics,
+scenarios, reasons why something else is more likely and so forth.
+
+
+** [[http://aurellem.org/society-of-mind/][/Society Of Mind/]] Marvin Minsky
+
+A fascinating rollercoaster of a world of how the mind could work.
+Very first principles thinking sort of building little toys of what the mind
+might be made up of, and how might be implemented by neurons.
+
+Big emphasis on architecture and scruffy AI, saying the mind is made up of many different
+kind of competencies at different levels of hierarchies.
+
+#+begin_example
+What magical trick makes us intelligent? The trick is that there is no trick. The power of intelligence stems from our vast diversity, not from any single, perfect principle.
+#+end_example
+—Marvin Minsky, The Society of Mind, p. 308
+
+** [[https://en.wikipedia.org/wiki/Braitenberg_vehicle][/Vehicles/]] Valentino Braitenberg
+
+Truly fascinating, and mind-opening. Putting it here because it fits on the same list as the Society Of Mind.
+
+In my next blog posts, I want to code some vehicles and build up to some Minsky-like agencies maybe etc.
+
+** Everything from Daniel Dennet on the philosophy of mind
+
+He does not talk so much about how to build the damn thing though.
+But a lot of clear thinking important ideas.
+
+** [[https://en.wikipedia.org/wiki/Life_3.0][/Life 3.0/]] Max Tegmark
+
+Very accessible. I like how he makes serious discussions of what civilization might
+do with the accessible universe. By doing the maths and physics of the expanding universe
+etc.
+
+Very big picture thinking and featuring different scenarios.
+
+* Footnotes
+
+[fn:1]
+He said this on the Lex Friedman podcast.
+https://www.youtube.com/watch?v=VcVfceTsD0A
+
+[fn:2]
+Forgot where, but one of his recent appearances that are up on youtube.
+
+[fn:3]
+Although Bostrom does lay out potential histories with multiple ones.
+
+[fn:4]
+That example comes fro Max Tegmark Life 3.0, but Bostrom is making this kind of stuff very clear.
+
+[fn:5] Irrc /Google Deep Dream/ was related to this technology.
+
+[fn:6]
+Also called /sub-symbolic/. The model is on a low level of abstraction hierarchy.
+
+This was one of Minskies trouble with /connectionism/.
+
+You need to also think about how these networks produce the higher levels
+of abstraction that the mind is made out of.
+
+Dennet has called this /the architecture/ vs /the substrate/.
+
+[fn:7]
+
+[[https://en.wikipedia.org/wiki/Max_Tegmark][Max Tegmark]] recently talked on the Lex Friedman podcast about his research efforts in neural net observability.
+A recent [[https://arxiv.org/abs/2303.13506][paper]] on knowledge representation in those nets.
+This is surely an interesting approach. And I think we need more of this.
+And 10 other approaches to understanding minds.
+
+[fn:8] [[https://www.lesswrong.com/posts/MmmPyJicaaJRk4Eg2/the-limit-of-language-models][Less wrong - The Limit of Language Models]]
+
+[fn:9]
+
+Stuart Russel and Gary Marcus recently discussed this on [[https://www.youtube.com/watch?v=GzmaLcMtGE0][Sam Harris Podcast]].
+
+[fn:10]
+
+[[https://www.youtube.com/watch?v=MVWzwIg4Adw][Ben Goertzel is cool.]]
+His current approach is a multi-approach, neuro-symbolic and logic combined.
+
+[fn:11]
+
+Nice book btw, covering a lot of bio philosophy, evolution, brain, etc. Centered on the zoology of octopuses and cuttlefish.
+
+[fn:12] https://en.wikipedia.org/wiki/Octopus
+
+[fn:13]
+Nina Schick on Sam Harris's podcast saw that coming 3 years ago.
+https://www.samharris.org/podcasts/making-sense-episodes/220-information-apocalypse
+
+[fn:14]
+There were a few great youtube talks on this.
+One was a dude talking about the decline of game programmers because everybody is using Unity.
+Made a lot of sense to me.
+
+[fn:15]
+
+[[https://www.youtube.com/watch?v=CIoddZ1NOVM?t=1355][Minsky]] talking about one of the most important ideas of computing, storing programs in the computers
+memory, programs that make programs, and why did =C=, =Fortran=, =Algol= win over =Lisp= and =Smalltalk=?
+
+[fn:16]
+
+I recently developed a hypothesis of why MacOS is so popular. And why it has a committed fan base.
+
+The reason is that MacOS, inheriting from the Unix tradition, does not have some of the clutter that is bogging down Windows.
+
+As a result, a Mac user might feel /the silent competence of the computer/, at least to some extent.
+
+Predictions of what Mac users might say:
+
+/It feels like one whole./
+
+/The keys respond faster./
+
+/None of the clutter!/
+
+/If I want to do something, I can just do something./
+
+/Give it 2 weeks./
+
+/It has a bit of a learning curve./
+
+[fn:17]
+
+Ben Goertzel explicitly makes an eloquent argument for democratized AI/AGI.
+
+[fn:18]
+
+Just as IBM was dismissing time sharing /the programmers should just think about their programs/.
+
+They were so wrong.
+
+[fn:19]
+
+This notion is similar to Anil Seth's conception of the *soul*, a re-claimed term
+describing the animalistic drive to survive that connects all life and gives consciousness
+its flavor.
+
+[fn:20]
+
+- [[https://www.youtube.com/watch?v=QM1iUe6IofM][OOP is bad]]
+- [[https://www.youtube.com/watch?v=LKtk3HCgTa8&t=1s][Simple Made Easy]]
+
+[fn:21]
+
+[[http://aurellem.org/society-of-mind/][/Society Of Mind/]] Marvin Minsky
+Minsky thought and I think he is still right, that trying to pick one way of how intelligence
+works is wrong. I think you need to have many ways of how intelligence works and have
+some higher-level resources that choose and monitor those.
+
+[fn:22] DEFINITION NOT FOUND.
+
+[fn:23]
+
+This is the natural human-computer relationship until shitty software messes up everything.
+
+Now it makes sense to me why some people swear by MacOs.
+
+Because having access to the actual power of the computer is a mind-expanding experience.
+Truly one of the wonders of our time.
+
+Did you recently need to reload Wikipedia because the website stopped working?
+I did not, but I needed to do it constantly on the ChatGPT website when I was using it.
+
+I recently tried to start AWS Codewhiperer, a project that gives every hint of being deployed as a rushed job,
+and I gave up making it work.
+
+So maybe you start seeing the picture I want to draw here. There are currently 2 broad kinds of
+software and the current large AI players are coming from the commercial part.
+
+We need the same rigor that you would put into the steering software of a rocket flight.
+We should make laws that make AI producers liable for any damage that the systems do.
+We should push Google etc. to take responsibility, push for regulations etc.
+For large players, more regulation is
