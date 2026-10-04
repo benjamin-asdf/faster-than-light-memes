@@ -63,12 +63,44 @@
   (cons (cons :path file) (ftlm/denote-file-data file)))
 
 (defun ftlm/post-files ()
-  (mapcar
-   (lambda (p) (expand-file-name p denote-directory))
-   (cl-remove-if
-    (lambda (s)
-      (string-match-p "org_archive$" s))
-    (ftlm/file->denote-links ftlm/posts-file))))
+  (ftlm/with-translations
+   (mapcar
+    (lambda (p) (expand-file-name p denote-directory))
+    (cl-remove-if
+     (lambda (s)
+       (string-match-p "org_archive$" s))
+     (ftlm/file->denote-links ftlm/posts-file)))))
+
+;; Translated posts are one file per language, named <base>_<lang>, e.g.
+;; the-maxim-of-evidence_en and the-maxim-of-evidence_de. They export to
+;; <base>_<lang>.html. Our own links point to <base>.html, a small page that
+;; picks the language (see ftlm/write-language-pages).
+(defvar ftlm/languages '("en" "de"))
+
+(defun ftlm/lang-split (name)
+  "For NAME like \"foo_de\" return (\"foo\" . \"de\"), else nil."
+  (when (string-match (format "\\`\\(.+\\)_\\(%s\\)\\'" (regexp-opt ftlm/languages)) name)
+    (cons (match-string 1 name) (match-string 2 name))))
+
+(defun ftlm/link-name (name)
+  "The name our links use for the page exported as NAME."
+  (or (car (ftlm/lang-split name)) name))
+
+(defun ftlm/with-translations (files)
+  "FILES plus the other language versions of any translated post among them.
+Only one language version needs to be in the navbar."
+  (delete-dups
+   (append
+    files
+    (cl-loop for f in files
+             for base = (car (ftlm/lang-split
+                              (dw/strip-file-name-metadata
+                               (file-name-nondirectory (file-name-sans-extension f)))))
+             when base
+             append (directory-files
+                     ftlm/posts-dir t
+                     (format "--%s_%s\\(__.*\\)?\\.org\\'"
+                             (regexp-quote base) (regexp-opt ftlm/languages)))))))
 
 (defun ftlm/posts+index-files ()
   (append
@@ -148,7 +180,7 @@
                                 :contents-begin link-object)
                                (org-element-property
                                 :contents-end link-object))))
-            `((:path . ,(format "%s.html" p))
+            `((:path . ,(format "%s.html" (ftlm/link-name p)))
               (:description . ,description)
               (:tags . ,(ftlm/denote-curr-keywords
                          path))))))))))
@@ -178,7 +210,7 @@
          (validation-link (cdr (assq ?v spec))))
 
     (concat
-     "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>\n\n    <script crossorigin src=\"https://unpkg.com/react@17/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js\"> </script>\n\n\n\n    <script src=\"./navbar_toggle.js\"></script>\n    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>\n    <script src=\"./pixel.js\"></script>\n    \n"
+     "<script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.js\" type=\"application/javascript\"></script>\n\n    <script crossorigin src=\"https://unpkg.com/react@17/umd/react.production.min.js\"></script>\n    <script crossorigin src=\"https://unpkg.com/react-dom@17/umd/react-dom.production.min.js\"></script>\n    <script src=\"https://cdn.jsdelivr.net/npm/scittle@0.6.15/dist/scittle.reagent.js\"> </script>\n\n\n\n    <script src=\"./navbar_toggle.js\"></script>\n    <script type=\"application/x-scittle\" src=\"navbar.cljs\"></script>\n    <script src=\"./pixel.js\"></script>\n    <script src=\"./i18n.js\"></script>\n    \n"
      
      (concat
       "<script>var SCITTLE_NREPL_WEBSOCKET_PORT = 1340;</script>
@@ -207,9 +239,7 @@
 <div><a href=\"/about.html\">About</a></div>"
      "<div><a href=\"atom.xml\"</div>"
      "<div><a href=\"planetclojure.xml\"></div>"
-     "<div><a href=\"/contact.html\">Contact</a></div>"
-     "<div><a href=\"/gen-ai-critic.html\">This website is made without the use of generative AI</a></div>"
-     )))
+     "<div><a href=\"/contact.html\">Contact</a></div>")))
 
 (setq org-html-head-include-default-style
       t
@@ -306,7 +336,7 @@ backend."
      ;; Links to private notes outside posts/ do not resolve: export just the text.
      ((null path) desc)
      ;; I also do not want target=_blank. I want _self (the default)
-     ((eq format 'html) (format "<a href=\"%s.html\">%s</a>" p desc))
+     ((eq format 'html) (format "<a href=\"%s.html\">%s</a>" (ftlm/link-name p) desc))
      ((eq format 'latex) (format "\\href{%s}{%s}" (replace-regexp-in-string "[\\{}$%&_#~^]" "\\\\\\&" path) desc))
      ((eq format 'texinfo) (format "@uref{%s,%s}" path desc))
      ((eq format 'ascii) (format "[%s] <denote:%s>" desc path)) ; NOTE 2022-06-16: May be tweaked further
@@ -314,6 +344,63 @@ backend."
      (t path))))
 
 (org-publish-all t)
+
+(defun ftlm/write-language-pages ()
+  "For each translated post in public/: add hreflang links to every language
+version, and write <base>.html, which redirects to the language from
+localStorage, else ?lang=, else English."
+  (let ((groups (make-hash-table :test 'equal)))
+    (dolist (f (directory-files "public/" nil "\\.html\\'"))
+      (when-let* ((split (ftlm/lang-split (file-name-sans-extension f))))
+        (push (cdr split) (gethash (car split) groups))))
+    (maphash
+     (lambda (base langs)
+       (let* ((langs (seq-filter (lambda (l) (member l langs)) ftlm/languages))
+              (fallback (if (member "en" langs) "en" (car langs)))
+              (alternates
+               (mapconcat
+                (lambda (l)
+                  (format "<link rel=\"alternate\" hreflang=\"%s\" href=\"%s_%s.html\">" l base l))
+                langs "\n")))
+         (dolist (l langs)
+           (with-temp-file (format "public/%s_%s.html" base l)
+             (insert-file-contents (format "public/%s_%s.html" base l))
+             (goto-char (point-min))
+             (when (search-forward "</head>" nil t)
+               (replace-match (concat alternates "\n</head>") t t))))
+         (with-temp-file (format "public/%s.html" base)
+           (insert
+            (format "<!DOCTYPE html>
+<html>
+<head>
+<meta charset=\"utf-8\">
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+%s
+<script>
+  (function () {
+    var langs = %s, lang = null;
+    try { lang = localStorage.getItem('ftlm-lang'); } catch (_e) {}
+    if (langs.indexOf(lang) < 0) lang = new URLSearchParams(location.search).get('lang');
+    if (langs.indexOf(lang) < 0) lang = '%s';
+    location.replace('%s_' + lang + '.html' + location.hash);
+  })();
+</script>
+<noscript><meta http-equiv=\"refresh\" content=\"0; url=%s_%s.html\"></noscript>
+</head>
+<body>
+%s
+</body>
+</html>
+"
+                    alternates
+                    (concat "[" (mapconcat (lambda (l) (format "'%s'" l)) langs ", ") "]")
+                    fallback base base fallback
+                    (mapconcat
+                     (lambda (l) (format "<a href=\"%s_%s.html\">%s</a>" base l l))
+                     langs " "))))))
+     groups)))
+
+(ftlm/write-language-pages)
 
 (dolist (file
          (append (directory-files-recursively "src" "\\.js$")

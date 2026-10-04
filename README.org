@@ -9,6 +9,10 @@ Posts are [[https://github.com/protesilaos/denote][denote]] org files in =posts/
 The navbar note (=posts/*--ftlm-navbar__*.org=) decides what gets published.
 Links to notes outside =posts/= export as plain text.
 
+Translated posts are one file per language, titled =<base>_<lang>= (e.g. =the-maxim-of-evidence_en=, =the-maxim-of-evidence_de=, with =#+LANGUAGE: de=).
+Only one of them needs to be in the navbar. They export to =<base>_<lang>.html=, and our links point to =<base>.html=,
+which redirects to the language in localStorage, else =?lang==, else English. The language picker on the page sets localStorage.
+
 - =static/= :: hand-made pages and images, copied into =public/= as is
 - =static-private/= :: gitignored, copied and deployed but not in this repo
 Deploying is currently =scp= into a linode server.
