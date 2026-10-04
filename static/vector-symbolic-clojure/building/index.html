@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="building_the_interpreter_files/md-default1.js" type="text/javascript"></script>
 <section id="building-a-vector-symbolic-interpreter" class="level1">
 <h1>Building a Vector-Symbolic Interpreter</h1>
-<p><em>The code behind <a href="../">A Vector-Symbolic Clojure</a>, step by step. September 2026.</em></p>
+<p><em>The code behind <a href="../">A Vector-Symbolic Clojure</a>, step by step. September 2026, updated October 2026.</em></p>
 <p>This notebook builds a small interpreter from nothing but vector operations. At the end it runs <code>(fact 5)</code>, and every value along the way is one vector. The finished interpreter (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/core.clj"><code>src/vsc/core.clj</code></a>) does the same with more care. The last section lists what it adds.</p>
 <p>The only library used is the substrate bridge <code>vsc.hdc</code>: thin Clojure wrappers around numpy, reached through libpython-clj. A vector is an opaque Python object. Clojure never looks inside one.</p>
 <section id="random-vectors-are-almost-orthogonal" class="level2">
@@ -395,8 +395,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">false?</span> x) FALSE</span>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">symbol?</span> x) (sym x)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">seq?</span> x) (<span class="kw">reduce</span> (<span class="kw">fn</span> [acc <span class="kw">e</span>] (kons (encode <span class="kw">e</span>) acc)) EMPTY (<span class="kw">reverse</span> x))</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">vector?</span> x) (encode (<span class="kw">apply</span> <span class="kw">list</span> x))</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">:else</span> (<span class="kw">throw</span> (ex-info (<span class="kw">str</span> <span class="st">"cannot encode "</span> (<span class="kw">pr-str</span> x)) {}))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">;; a vector is just a list here; the real interpreter encodes it as a</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">;; positional superposition (see the last section)</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">vector?</span> x) (encode (<span class="kw">apply</span> <span class="kw">list</span> x))</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">:else</span> (<span class="kw">throw</span> (ex-info (<span class="kw">str</span> <span class="st">"cannot encode "</span> (<span class="kw">pr-str</span> x)) {}))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> items</span></span>
@@ -554,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>6</td>
+<td>8</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -563,7 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>a</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>5</td>
+<td>7</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -572,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>17</td>
+<td>24</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -581,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>yes</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>9</td>
+<td>11</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -590,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(1 2 3)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>12</td>
+<td>16</td>
 </tr>
 </tbody>
 </table>
@@ -635,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>255</td>
+<td>287</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -644,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1354</td>
+<td>1508</td>
 </tr>
 </tbody>
 </table>
@@ -665,12 +667,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Decisions without fixed thresholds.</strong> <code>same?</code> above says “similar enough” at 0.9. That caps how much noise the interpreter survives, whatever D is (failure mode 5 in the overview). The real <code>eq?</code> cleans up both sides and compares identities, and <code>kind</code> compares with the chance level 1/√D.</li>
 <li><strong>Maps and sets</strong> as bundles: <code>{k v}</code> is ν(Σ k⊗⟨v⟩) plus the set of keys and the size. <code>get</code> is one unbind and one cleanup. Keys are listed by <em>explaining away</em>: clean up, subtract what was found, repeat.</li>
 <li><strong>A global memory</strong> F instead of a global list. It is probed with L⊗name, as in the original paper.</li>
+<li><strong>Vectors as positional superpositions.</strong> Here a vector is a list. In the real interpreter <code>[x₀ … xₙ₋₁]</code> is ν(Σᵢ Πⁱ(V⊗xᵢ)), with Π a fixed random permutation: no pointers, so vectors that share elements at the same positions are similar vectors, and <code>nth</code> is one readout. Lists stay pointer chains. The program picks the trade-off: similarity and indexing, or robustness and unbounded length.</li>
 <li><strong>The residue integers in full</strong> (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/resources/vsc/hdc.py"><code>resources/vsc/hdc.py</code></a>, class <code>Numbers</code>), and integers boxed behind pointers inside maps and sets.</li>
 <li><strong>Closures, varargs, <code>let</code>, <code>cond</code>, <code>and</code>, <code>or</code>,</strong> and a prelude written in the dialect.</li>
 <li><strong>A CEK machine</strong> in which the evaluator’s own control state and rules are vectors (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/machine.clj"><code>src/vsc/machine.clj</code></a>).</li>
 <li><strong>Superposition programming</strong> (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/worlds.clj"><code>src/vsc/worlds.clj</code></a>).</li>
 </ul>
-<p>The tests compare each of them with real Clojure (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/tree/main/test"><code>test/</code></a>).</p>
+<p>The tests compare the interpreter, the CEK machine and a benchmark suite with real Clojure (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/tree/main/test"><code>test/</code></a>).</p>
 <div style="background-color:grey;height:2px;width:100%;"></div>
 <div><pre><small><small>source: notebooks/building_the_interpreter.clj</small></small></pre></div>
 </section>
