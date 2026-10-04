@@ -5,7 +5,8 @@
 #+EXPORT_FILE_NAME: gen-ai-critic
 
 
-*This website is made without the use of generative AI* (except in paragraphs marked as such).
+/Update 2026:/ This website used to say it was made without the use of generative AI. That is not true anymore:
+I use Claude Code as a thinking assistant and calculator.
 
 Thought feed on the ongoing accelerating [[https://en.wikipedia.org/wiki/Enshittification][enshittification]] of the internet and everything.
 
