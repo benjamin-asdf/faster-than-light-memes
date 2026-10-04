@@ -18,6 +18,9 @@
     --preformatted: #444;
     --marked: #ffdd33;
     --disabled: #efefef;
+    --table-head: #eceef5;
+    --table-stripe: #f7f8fb;
+    --table-border: #d5d8e2;
 }
 @media (prefers-color-scheme: dark) {
     ::backdrop,
@@ -33,6 +36,10 @@
         --code: #F689FF;
         --preformatted: #ccc;
         --disabled: #111;
+        /* woodsmoke, a little lighter than --bg */
+        --table-head: #24252c;
+        --table-stripe: #1a1b21;
+        --table-border: #33343c;
     }
 }
 *,
@@ -292,18 +299,18 @@ table {
 }
 td,
 th {
-    border: 1px solid var(--border);
+    border: 1px solid var(--table-border);
     text-align: start;
     padding: 0.5rem;
 }
 th {
-    background-color: var(--accent-bg);
-    color: var(--text-accent);
+    background-color: var(--table-head);
+    color: var(--text);
     font-weight: 700;
 }
 tr:nth-child(even) {
-    background-color: var(--accent-bg);
-    color: var(--text-accent);
+    background-color: var(--table-stripe);
+    color: var(--text);
 }
 
 table caption {

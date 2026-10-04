@@ -1,0 +1,307 @@
+#+title:      Die Maxime der Evidenz
+#+date:       [2026-10-04 Sun 12:00]
+#+filetags:   :epistemology:philosophy:public:rationality:
+#+identifier: 20261004T120001
+#+LANGUAGE: de
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: the-maxim-of-evidence_de
+
+Ein Freund erzählt dir von Michael Newton.
+Ein Hypnosetherapeut, der in /Reise der Seelen/ seine Klienten über ihre Geburt hinaus zurückgeführt hat,
+über ihren letzten Tod hinaus, in den Ort /dazwischen/.[fn:newton]
+Sie berichten von einer Seelenwelt. Seelen kehren heim, treffen ihre Führer, ihre Seelengruppe,
+stehen vor einem Rat der Ältesten, wählen den nächsten Körper und das nächste Leben.[fn:newton-content]
+Fall um Fall, und nach seiner Darstellung stimmen die Berichte auffällig überein.[fn:newton-consistent]
+
+Der übliche Umgang damit ist Abwägen.
+Was spricht dafür? (Übereinstimmende Berichte, aufrichtige Menschen, ein ernsthafter Praktiker.)
+Was spricht dagegen? (Eine ebenso lange Liste.)
+Und dann streitet man über Newton, seine Methode, seine Klienten, und niemand ändert seine Meinung.
+
+Ich will einen anderen Zug machen. Ich werde kein einziges Wort gegen Newton sagen.
+
+* Was müsste ich sonst noch glauben?
+
+Statt /Stimmt diese Behauptung?/ frage:
+
+1. Wenn ich diese /Art/ von Evidenz akzeptiere, was /sollte/ ich dann sonst noch glauben?
+2. Wenn jemand anderes mit derselben Art von Evidenz kommt, was darf /der/ behaupten?
+
+Das ist Kants Zug, verpflanzt.
+Kant sagt: Handle nur nach derjenigen Maxime, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz werde.[fn:kant]
+Man beurteilt nicht die einzelne Handlung, sondern die /Regel/ dahinter, so als ob alle ihr folgten.
+
+Also, die *Maxime der Evidenz*:
+
+#+begin_quote
+Glaube nur nach derjenigen Maxime der Evidenz, durch die du zugleich wollen kannst, dass sie ein allgemeines Gesetz der Erkenntnis werde.
+#+end_quote
+
+Die Evidenz ist hier nicht die Behauptung. Die Evidenz ist:
+/eine lebhafte, bedeutungsvolle, emotional überwältigende Erfahrung, in einem besonderen Bewusstseinszustand (Hypnose, Gebet, Trance, Meditation, Nahtoderfahrung, eine Droge),/
+/deren Inhalt dann als Beschreibung der Wirklichkeit genommen wird./
+
+Verallgemeinern wir das. Wer darf sonst noch etwas behaupten, wenn das eine legitime Quelle von Wissen ist:
+
+| Wer                             | Erfahrung                                    | Also                                                  |
+|---------------------------------+----------------------------------------------+-------------------------------------------------------|
+| eine Christin                   | begegnet Jesus im Gebet                      | Jesus ist der auferstandene Sohn Gottes               |
+| ein Muslim                      | spürt die Gegenwart Allahs im Gebet          | es gibt keinen Gott außer Gott, und Mohammed ist sein Gesandter |
+| eine Vaishnava-Devotee          | erlebt Krishna in der Bhakti                 | Krishna ist die "Höchste Persönlichkeit Gottes"       |
+| ein alter Grieche               | das Orakel von Delphi spricht für Apollon    | Zeus und die Olympier regieren die Welt               |
+| ein Schamane auf Ayahuasca      | spricht mit dem Geist der Pflanze            | Pflanzen haben Geister, die lehren                    |
+| jemand auf DMT                  | trifft "self-transforming machine elves"       | es gibt ein hyperdimensionales Elfenreich           |
+| ein Entführter, unter Hypnose   | erinnert sich an Untersuchungen im Raumschiff | Außerirdische besuchen uns                           |
+| ein Scientologe im Auditing     | erinnert sich an Leben auf anderen Planeten  | wir sind Thetanen (und, ab OT III, Xenu)              |
+| eine buddhistische Meditierende | durchschaut das Selbst                       | Wiedergeburt, aber /keine/ Seele, die wandert         |
+| jemand um 4 Uhr nachts          | ein Glitch, ein Déjà-vu, alles ist zu passend | wir leben in einer Simulation                        |
+| Newtons Klient                  | erinnert sich an das Leben zwischen den Leben | Seelen wandern, durch eine Seelenwelt                |
+
+/Die Zeilen, geprüft:/[fn:table]
+
+Jede Zeile hat dieselbe Form. Dieselbe Art Erfahrung, derselbe Schritt von der Erfahrung zur Ontologie.
+Wenn die letzte Zeile legitim ist, sind es alle.
+
+* Sie können nicht alle wahr sein
+
+Und jetzt ist das Problem offensichtlich, einfach indem man die Liste macht.
+
+- Ein Leben, dann das Gericht (Mainstream-Christentum, Islam) vs. viele Leben (Reinkarnation).[fn:one-life]
+- Eine Seele, die reist (Newton) vs. gar kein Selbst, das reisen könnte (Buddhismus).[fn:anatta]
+- Ein Gott vs. viele Götter vs. keine Götter, aber Elfen vs. keine Götter, aber Aliens.
+- Jesus ist Gottes Sohn (Christentum) vs. Jesus ist ein Prophet und ausdrücklich /nicht/ Gottes Sohn (Islam).[fn:islam-jesus]
+
+Die Erfahrungen unterscheiden sich nicht bloß im Detail, sie widersprechen einander.
+Aber die /Evidenz/ ist jedes Mal von derselben Qualität. Das Gebet der Christin ist nicht weniger lebhaft als die Erinnerung des Hypnotisierten.
+Niemand in dieser Tabelle lügt.
+
+Evidenz, die X und nicht-X gleich gut stützt, stützt keins von beiden.
+
+Die Schlussfolgerung ist also nicht /Newton liegt falsch/. Die Schlussfolgerung ist:
+
+#+begin_quote
+Wenn der Muslim X sagt und die Christin nicht-X, beide auf Grundlage von Erfahrungen der Klasse Y,
+dann sind Erfahrungen der Klasse Y keine Grundlage für Wissen.
+#+end_quote
+
+Die Erfahrungen sind echt. Sie sind echte /Erfahrungen/. Sie sind hervorragende Daten über den Geist,
+darüber, was Gehirne in Trance, im Gebet, unter Hypnose, am Rand des Todes tun.
+Sie sind keine Daten über das Mobiliar des Universums.
+
+* Popper: Es gibt keine autoritativen Quellen
+
+Das ist ein Spezialfall von etwas, das Karl Popper in /Von den Quellen unseres Wissens und unserer Unwissenheit/ gesagt hat:
+Die Frage /Woher weißt du das?/ ist die falsche Frage.
+Es gibt keine letzten, autoritativen Quellen. Nicht die Sinne, nicht die Vernunft, nicht die Tradition. (Und, ergänze ich: nicht die Bibel, nicht die Trance, nicht der Experte.)[fn:popper]
+Jede Quelle ist als Anregung willkommen, und jede Quelle ist offen für Kritik. Jede kann in die Irre führen.
+
+Wissen hat keine autoritative Quelle. Es ist Vermutung, die Kritik bisher überlebt hat.[fn:popper-conjecture]
+
+Poppers Ersatzfrage lautet: /Wie können wir hoffen, Irrtümer zu entdecken und auszuschalten?/[fn:popper-question]
+Auf eine Behauptung angewandt: nicht /Was ist deine Quelle?/, sondern /Wie könnten wir herausfinden, dass du falsch liegst?/
+Für die Tabelle oben lautet die ehrliche Antwort: gar nicht. Jedes Ergebnis jeder weiteren Sitzung passt.
+
+* Deutsch: schwer variierbar
+
+David Deutsch liefert das schärfere Werkzeug (/The Beginning of Infinity/, Kapitel 1).[fn:deutsch]
+
+In der üblichen Nacherzählung (auch bei Deutsch) erklärten die alten Griechen den Winter mit Persephone: Hades entführte sie, sie aß Granatapfelkerne,
+also muss sie jedes Jahr eine Zeit in der Unterwelt verbringen, und solange sie fort ist, lässt die Trauer ihrer Mutter Demeter die Erde kahl und kalt werden.[fn:persephone]
+
+Das Problem ist nicht bloß, dass die Geschichte falsch ist. Das Problem ist, dass sie /leicht variierbar/ ist.[fn:easy-to-vary]
+Ersetze Persephone durch eine andere Göttin, den Granatapfel durch eine Feige, Trauer durch Zorn - der Winter ist genauso gut erklärt.
+Die Details leisten nichts. Nichts in der Erklärung wird durch das eingeschränkt, was sie erklären soll.
+
+Vergleiche die Neigung der Erdachse. Ändere irgendein Detail und die Erklärung bricht.
+Und sie trifft, woran der Mythos scheitert: Wenn in Griechenland Winter ist, ist in Australien Sommer.[fn:tilt]
+
+Jetzt auf das Leben zwischen den Leben angewandt.
+
+- Warum wandern /Seelen/? Warum nicht /Herzen/?
+  Die alten Ägypter haben das Selbst tatsächlich ins Herz gelegt und es nach dem Tod gegen eine Feder gewogen.[fn:heart]
+  Es würde die Hypnoseberichte genauso gut erklären.
+- Warum ein Rat der Ältesten? Warum nicht ein einzelner Richter, oder 42 Richter (auch Ägypten), oder keiner?[fn:assessors]
+- Warum eine Seele pro Person? Warum nicht sieben, oder eine Seele, die sich teilt?
+- Warum eine Seelenwelt dazwischen? Warum nicht direkt in den nächsten Körper? Warum nicht Engel Christi, die einen empfangen? Warum nicht Hermes, der einen hinab zu Charons Fähre führt?[fn:afterlife-guides]
+
+Jedes Detail ließe sich austauschen, und die Erklärung würde die Berichte gleich gut erklären.
+Das ist das Zeichen. Wenn eine Erklärung jede Variante schlucken kann, ist sie nicht durch die Wirklichkeit eingeschränkt,
+sondern dadurch, was die Person (und die Person, die die Fragen stellt) erzählerisch plausibel findet.
+Und genau diese Varianz sehen wir in der Tabelle: Jede Kultur füllt die Leerstellen mit ihrem eigenen Mobiliar.
+
+Die Variation /zwischen/ den Zeilen ist die Variation, die die Erklärung /erlaubt/.
+
+* Wie würde es aussehen, wenn man getäuscht würde?
+
+Der Rationalist sagt: Wenn ich in der Wüste eine Fata Morgana sehe, wird sie wie eine Oase aussehen.
+Das /ist/ eine Fata Morgana. "Es sah genau aus wie eine Oase" ist also kein Beleg für eine Oase.
+
+Also frage: /Wie würde es für jemanden aussehen, der getäuscht wird?/
+Genau so. Lebhaft, echt, bedeutungsvoll, wirklicher als wirklich.
+Wenn die Erfahrung gleich aussähe, ob es den Gott gibt oder nicht, kann die Erfahrung nicht entscheiden, welches von beiden stimmt.
+Wenn ich einen Gott erfahre, ist die beste Erklärung meiner Erfahrung die Psychologie, nicht die Existenz eines Gottes.
+
+Denk an einen Zaubertrick. Für den Getäuschten sieht er aus wie Magie. Genau darum geht es bei einem guten Trick.
+"Ich hab's mit eigenen Augen gesehen" ist kein Einwand gegen den Trick, sondern das, was der Zauberer entworfen hat.
+
+Und das ist der Teil, den ich am meisten mag: Die Erklärung des Tricks ist /interessanter/ als Magie.
+"Magie" erklärt nichts; es ist die am leichtesten variierbare Erklärung überhaupt.
+Die echte Erklärung braucht Ablenkung, Aufmerksamkeit, Timing, jahrelanges Training
+und ein tiefes, praktisches Wissen darüber, wie Wahrnehmung funktioniert und wie sie versagt.
+Dort liegt die Tiefe.
+
+Dasselbe gilt für den Gott im Gebet, die Seele in der Trance, den Elf auf DMT.
+Die Erklärung liegt in Psychologie und Neurowissenschaft: wie Gehirne Erfahrung aus Erwartung bauen,
+wie Aufmerksamkeit, Suggestion, Ritual und Übung formen, was wir fühlen.
+(Tanya Luhrmann beschreibt in /When God Talks Back/, wie evangelikale Christen Beten als Fertigkeit üben, bis Gott sich echt anfühlt.)[fn:luhrmann]
+
+"Das ist Psychologie" ist keine Abwertung. Es ist die schwierigere, tiefere, interessantere Erklärung.
+"Ein Gott war's" ist die langweilige.
+
+* Aber die Berichte sind so übereinstimmend!
+
+Das ist das am stärksten klingende Argument für jede Behauptung dieser Art, also wenden wir denselben Zug darauf an.
+Wenn übereinstimmende Berichte gute Evidenz wären, was würden sie sonst noch beweisen?
+
+Schau noch einmal auf die Tabelle. Jede Zeile ist übereinstimmend.
+Christen begegnen übereinstimmend Jesus, nicht Krishna. Vaishnavas begegnen übereinstimmend Krishna, nicht Jesus.
+DMT-Nutzer berichten von auffällig ähnlichen Wesen. Entführte berichten von auffällig ähnlichen Raumschiffen und Untersuchungen.[fn:table]
+Studien zu Sterbebettvisionen in den USA und in Indien (Osis und Haraldsson, /At the Hour of Death/) fanden in beiden dasselbe Grundmuster,
+"jemand kommt, um dich abzuholen", aber /wer/ kommt, folgt der Kultur:
+Amerikaner sahen meist verstorbene Verwandte, Inder häufiger religiöse Gestalten, etwa die Boten Yamas.[fn:osis]
+
+Wenn Übereinstimmung der Test wäre, würde jede Zeile bestehen, auch die, die einander widersprechen.
+Die Übereinstimmung gibt es /innerhalb/ einer Tradition, die Unterschiede /zwischen/ den Traditionen.
+
+Also noch einmal die Frage: Wie würde es aussehen, wenn die Erfahrung von dem geformt wird, was der Erlebende mitbringt? Genau so.
+Alles, was Erfahrungen dieser Art erzeugt, hat reichlich Quellen für Übereinstimmung, die keine andere Welt brauchen:
+
+- Eine gemeinsame Methode: dasselbe Ritual, dieselbe Praxis, dieselben Fragen. Fragen bringen ihr Weltbild gleich mit.
+- Gemeinsame Erwartungen: Wer das Gebetstreffen, die Zeremonie oder die Sitzung aufsucht, hat meist schon gehört, wie es dort aussehen soll.
+- Suggestible Zustände: Trance, Hypnose, Ekstase. Hypnose lässt Menschen mehr erinnern, und mit mehr Gewissheit, aber vieles davon ist falsch.[fn:hypnosis-recall]
+  Forscher, die hypnotische Rückführungen in frühere Leben untersucht haben, fanden, dass die "früheren Leben" dem folgen, was man den Versuchspersonen zu erwarten gesagt hatte
+  (Spanos und Kollegen, 1991).[fn:spanos]
+- Gemeinsame Erzähler: Die Berichte, die weitergegeben werden, werden von Menschen ausgewählt und aufgeschrieben, die das Weltbild schon haben.
+
+Übereinstimmung zeigt, dass es eine gemeinsame Ursache gibt. Sie sagt nicht, welche.
+Um eine echte andere Welt von einem gemeinsamen Drehbuch zu unterscheiden, bräuchte man Übereinstimmung, die das Drehbuch nicht erklären kann:
+Details, die die Person nicht wissen konnte und die man hinterher überprüft, oder dieselben Berichte von Menschen, die das Drehbuch nie gehört haben.
+Das wäre schwer variierbare Evidenz. Übereinstimmung allein ist es nicht.
+
+* Die eine Zeile, die man überprüfen konnte
+
+Die meisten Zeilen der Tabelle lassen sich nie überprüfen. Niemand kann die Seelenwelt oder das Elfenreich besuchen und mit einem Foto zurückkommen.
+Aber es gibt eine weitere Zeile mit derselben Art von Evidenz, bei der die Wirklichkeit /doch/ mitreden durfte.
+
+| Wer                             | Erfahrung                                    | Also                                                  |
+|---------------------------------+----------------------------------------------+-------------------------------------------------------|
+| eine Patientin in Therapie      | erinnert sich, als Kind vergewaltigt worden zu sein | mein Vater hat mich vergewaltigt               |
+
+In den 80er- und 90er-Jahren führte die Therapie "wiedergefundener Erinnerungen", mit Techniken wie Hypnose, geführter Imagination und suggestiven Fragen,
+viele Menschen zu lebhaften, detailreichen, emotional überwältigenden Erinnerungen an sexuellen Missbrauch in der Kindheit.[fn:recovered-memory]
+Manche davon ließen sich überprüfen, und hatten nie stattgefunden.
+
+- Beth Rutherfords kirchliche Beraterin brachte ihr bei, sich in Selbsthypnose und Trancezustände zu versetzen. Danach "erinnerte" sie sich, ihr Vater, ein Pfarrer, habe sie vergewaltigt,
+  und sie habe eine Abtreibung mit einem Kleiderbügel erlitten. Eine gynäkologische Untersuchung zeigte später, dass sie noch Jungfrau war, und ihr Vater hatte eine Vasektomie.[fn:rutherford]
+  1996 zahlten die Kirche und die Beraterin in einem Vergleich 1 Million Dollar.
+- Paul Ingram, von seinen Töchtern beschuldigt, "erinnerte" sich nach langen, suggestiven Verhören an den Missbrauch und gestand.
+  Der Soziologe Richard Ofshe erfand dann eine Szene, die nie jemand behauptet hatte, erzählte Ingram davon, und Ingram kam mit einem detaillierten schriftlichen Geständnis zurück.[fn:ingram]
+- Im Labor, in einer kleinen Studie, brachten Elizabeth Loftus und Jacqueline Pickrell etwa ein Viertel ihrer Versuchspersonen dazu, sich zumindest teilweise daran zu erinnern,
+  als Kind in einem Einkaufszentrum verloren gegangen zu sein. Es ist nie passiert.[fn:loftus]
+
+Um es klar zu sagen: Sexueller Missbrauch ist real und häufig, und die meisten Betroffenen haben sich immer daran erinnert.[fn:survivors]
+Manche vergessen und erinnern sich später. Unzuverlässig waren die Erinnerungen, die in der Therapie durch Suggestion entstanden.
+Um sie geht es hier nicht. Es geht um die Evidenzklasse.
+Diese Erinnerungen konnten sich genauso echt anfühlen wie die wahren: lebhaft, detailreich, emotional, voller Gewissheit. So übereinstimmend wie jeder Bericht in der Tabelle.[fn:felt-real]
+Sie haben Familien zerstört.
+
+Also: Wenn "Ich habe mich unter Hypnose daran erinnert" eine Quelle von Wissen wäre, dann wären auch diese Erinnerungen Wissen.
+Das eine Mal, als man diese Art von Evidenz an der Wirklichkeit messen konnte, hat die Wirklichkeit nein gesagt.
+
+* Der schlimmste Fall
+
+Kants Maxime testet eine Regel, indem sie sie verallgemeinert: Könnte ich wollen, dass alle nach ihr handeln?
+Bei Evidenz gehe ich gern einen Schritt weiter und schaue direkt auf den schlimmsten Fall:
+Was ist das Schlimmste, das jemand mit dieser Art von Evidenz legitim behaupten könnte?
+
+Für /bedeutungsvolle Erfahrung in einem veränderten Bewusstseinszustand/ ist der schlimmste Fall unbegrenzt.
+Diese Art von Evidenz legitimiert jeden Sektenführer, jeden Gott, jeden Heimatplaneten, jeden Widerspruch.
+Eine Evidenzklasse, deren schlimmster Fall unbegrenzt ist, ist keine Evidenzklasse.
+
+* Warum ich diesen Zug mag
+
+- Man muss niemandem sagen, seine Erfahrung sei falsch gewesen. War sie nicht.
+- Man muss über niemandes Methode streiten. Die falschen Erinnerungen sind eine Bonuszeile, nicht das Fundament: Das Argument funktioniert auch ohne sie.
+- Es funktioniert bei jeder Behauptung dieser Form, und die Liste macht man selbst in fünf Minuten.
+- Es ist symmetrisch. Es gilt auch für mich.
+  Ich hatte Erfahrungen in der Meditation, die sich wie Einsicht in das Wesen der Dinge /anfühlten/.
+  Sie sind interessant. Sie sagen mir etwas über mein Gehirn.
+  Wenn ich daraus etwas Spirituelles retten will, muss es etwas sein, das Kritik übersteht
+  (siehe [[denote:20251026T183929][Recovering Some Spiritual Concepts]]).
+
+Die allgemeine Regel:
+
+#+begin_quote
+Erfahrungen der besonderen, bedeutungsvollen, überwältigenden Art können nicht die Grundlage einer Ontologie sein.
+Bevor du einer Art von Evidenz traust, schau dir an, wem sie sonst noch Recht geben würde.
+#+end_quote
+
+[fn:newton] WAHR. Michael Newton, zertifizierter Hypnotherapeut, /Journey of Souls/ (Llewellyn, 1994; dt. /Reise der Seelen/): hypnotische Rückführung in ein "Leben zwischen den Leben". Das Buch präsentiert 29 Fälle; wissenschaftlich nicht bestätigt. Erste dt. Ausgabe 1996 hieß /Die Reisen der Seele/. [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
+
+[fn:newton-content] WAHR. "Heimkehr", ein Hauptführer, Seelengruppen, ein Rat der Ältesten, Wahl des nächsten Lebens und Körpers kommen alle im Buch vor. Geprüft an Zusammenfassungen, nicht am Buch selbst. [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
+
+[fn:newton-consistent] GRÖSSTENTEILS WAHR. Der Verlagstext spricht von "remarkable consistency"; das ist Newtons eigene Behauptung, nicht unabhängig geprüft. Die oft zitierten "tausenden Sitzungen" hatten keine Primärquelle, daher stehen sie nicht mehr im Text. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][Verlagstext]]
+
+[fn:kant] WAHR. Wortgetreu, /Grundlegung zur Metaphysik der Sitten/, AA 4:421 (bei Kant "daß"). [[https://projekt-gutenberg.org/authors/immanuel-kant/books/grundlegung-zur-metaphysik-der-sitten/chapter/4][Grundlegung, Gutenberg]]
+
+[fn:one-life] GRÖSSTENTEILS WAHR. Katechismus der Katholischen Kirche 1013: keine Rückkehr in weitere Erdenleben, "keine Reinkarnation nach dem Tod" (mit Hebr 9,27). Sunnitischer und Zwölfer-schiitischer Islam lehren ein Leben, Barzakh, Auferstehung und Gericht und lehnen /tanasukh/ ab. Kritik: Die christliche Quelle ist katholisch; esoterische christliche Strömungen und heterodoxe Gruppen (Drusen: /taqammus/, Alawiten) lehren Wiedergeburt, daher "Mainstream". [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][KKK 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Drusen]]
+
+[fn:anatta] GRÖSSTENTEILS WAHR. Der Mainstream-Buddhismus (v. a. Theravada) lehrt Wiedergeburt ohne beständiges Selbst, das wandert; die Milindapañha erklärt die Kontinuität mit Wagen und Flamme ("weder derselbe noch ein anderer"). Newtons Seelen behalten ihre Identität. Kritik: SN 22.59 zeigt nur, dass die Daseinsgruppen nicht das Selbst sind; die Pudgalavāda kannte eine fortbestehende "Person", tibetische Schulen einen Bewusstseinsstrom, und die Spannung ist in der Forschung umstritten. [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]]
+
+[fn:islam-jesus] WAHR. Koran 4:171 ("der Messias, Jesus, Sohn der Maria, ein Gesandter Gottes ... fern ist es von Ihm, einen Sohn zu haben") und 19:35 verneinen ausdrücklich, dass Gott einen Sohn hat; 5:116 und 112:3 stützen das. Kritik: /al-Masih/ hat im Islam nicht die christliche Bedeutung eines göttlichen Erlösers. [[https://en.wikipedia.org/wiki/Jesus_in_Islam][Jesus im Islam]]
+
+[fn:popper] GRÖSSTENTEILS WAHR. Vortrag an der British Academy 1960, Einleitung zu /Conjectures and Refutations/ (dt. /Vermutungen und Widerlegungen/): "There are no ultimate sources of knowledge. Every source [...] is welcome; and every source [...] is open to critical examination." Kritik: Popper verwirft Quellen nicht, er spricht ihnen nur Autorität ab. Bibel, Trance und Experte sind meine Ergänzung. Der dt. Titel ist über eine Sekundärquelle belegt, nicht am Inhaltsverzeichnis geprüft. [[https://www.hist-analytic.com/Popper1.pdf][Text (PDF)]], [[https://www.getabstract.com/de/zusammenfassung/vermutungen-und-widerlegungen/13189][getAbstract]]
+
+[fn:popper-conjecture] GRÖSSTENTEILS WAHR. Bei Popper ist Wissen Vermutung; Kritik entscheidet, nicht Herkunft. Kritik: "Kritik überlebt" ist Paraphrase; Popper spricht von Bewährung und setzt sie nicht mit Rechtfertigung gleich. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
+
+[fn:popper-question] WAHR. Poppers Ersatzfrage ("How can we hope to detect and eliminate error?"), über Sekundärquellen zitiert, hier übersetzt. Die zweite Frage ist meine Paraphrase. [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Poppers neun Thesen]]
+
+[fn:deutsch] GRÖSSTENTEILS WAHR. Kapitel 1, "The Reach of Explanations", führt "hard to vary" mit Persephone vs. Achsneigung ein; die Neigung sagt gegenläufige Jahreszeiten auf beiden Halbkugeln voraus, das widerlegt den Mythos. Kritik: Deutschs Punkt ist weniger die Widerlegung als dass der Mythos sich durch triviale Änderungen retten lässt, die Achsneigung nicht. Buchtext selbst nicht abgerufen, nur Auszüge und Zusammenfassungen. [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][Zusammenfassung]]
+
+[fn:persephone] Urteil zum ersten Entwurf: IRREFÜHREND, jetzt umformuliert. Homerischer Demeter-Hymnos: ein Kern, ein Drittel des Jahres unten, Demeters Trauer bringt Hungersnot; Ovid, /Metamorphosen/ 5: sieben Kerne, das halbe Jahr. Keine der Quellen nennt den Winter. Die Winter-Deutung ist spät und modern, und umstritten: In Griechenland ist die Brache die Sommerdürre, daher setzen manche Forscher Persephones Abwesenheit in den Sommer. Der Text kennzeichnet sie jetzt als "die übliche Nacherzählung", der auch Deutsch folgt. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][Sommer, nicht Winter]]
+
+[fn:easy-to-vary] GRÖSSTENTEILS WAHR. Deutsch: Die Details des Mythos sind beliebig, also lässt er sich sofort flicken. Kritik: Meine Varianten (Göttin, Feige, Zorn) sind meine Illustration; ob das Buch konkrete Varianten nennt, ließ sich nicht bestätigen. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][Lesenotizen]]
+
+[fn:tilt] WAHR. Grundwissen Astronomie; Deutsch nutzt die gegenläufigen Halbkugeln gegen den Mythos. Australien ist mein Beispiel; das Buch spricht von "den beiden Halbkugeln". [[https://www.timeanddate.com/astronomy/seasons-causes.html][timeanddate]]
+
+[fn:heart] GRÖSSTENTEILS WAHR. Das Herz (/ib/, /haty/) als Zentrum von Denken, Gefühl, Gedächtnis und moralischem Charakter; gewogen gegen die Feder der Maat im Gericht von Totenbuch 125; Spruch 30B, auf Herzskarabäen, bittet es, nicht gegen seinen Besitzer auszusagen. Kritik: "das Selbst" ist eine moderne Deutung, und die Ägypter kannten weitere Teile der Person (/Ka/, /Ba/, Name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]], [[https://www.metmuseum.org/art/collection/search/552490][Met: Herzskarabäus]]
+
+[fn:assessors] WAHR. Spruch 125, das "negative Sündenbekenntnis" vor 42 Beisitzer-Göttern in der Halle der beiden Wahrheiten. Ägyptologen sagen eher "Beisitzer" als "Richter". [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
+
+[fn:afterlife-guides] GRÖSSTENTEILS WAHR. Hermes führt die Seelen der Toten schon in der /Odyssee/ 24 (der Beiname Psychopompos ist später). Charon kommt bei Homer nicht vor; griechische Autoren setzen ihn an den Acheron, römische Dichter an den Styx, daher "Charons Fähre". Engel: Lk 16,22 (Lazarus von Engeln getragen) und die Antiphon /In paradisum/ ("ins Paradies mögen Engel dich geleiten"), ein Gebet, keine Lehre. [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
+
+[fn:luhrmann] WAHR. T. M. Luhrmann, /When God Talks Back/ (2012): Beten als erlernte Fertigkeit; in ihrem Experiment ließ ein Monat imaginatives Beten Gott präsenter wirken. Sie verbindet das mit dem Merkmal "Absorption". Geprüft an Rezensionen, nicht am Buch. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][Rezension]]
+
+[fn:table] Zeile für Zeile: /Christin/ GRÖSSTENTEILS WAHR, Nizänum; Luhrmann dokumentiert die gefühlte Gegenwart Gottes im Gebet bei evangelikalen (Vineyard-)Christen, also nicht bei allen. /Muslim/ GRÖSSTENTEILS WAHR, die Schahada sagt "Gesandter" (/rasul/), korrigiert. /Vaishnava/ GRÖSSTENTEILS WAHR, "Supreme Personality of Godhead" ist Prabhupadas (ISKCON) Formel, daher nicht mehr "Hindu". /Delphi/ WAHR. /Ayahuasca/ WAHR, "Pflanzen, die lehren" (Luna 1984). /DMT/ WAHR, McKennas Formulierung; Davis et al. 2020 befragten 2.561 Menschen, viele hielten die Wesen für real. /Entführte/ GRÖSSTENTEILS WAHR, Hypnose war Standard bei Hopkins, Mack und im Fall Hill, viele erinnerten sich aber ohne (Clancy 2005). /Scientology/ GRÖSSTENTEILS WAHR, Rückerinnerung im Auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu erst auf der vertraulichen Stufe OT III. /Buddhistin/ siehe Anatta-Fußnote. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Have_You_Lived_Before_This_Life][Hubbard 1958]]
+
+[fn:osis] GRÖSSTENTEILS WAHR. Osis und Haraldsson, /At the Hour of Death/: ein "kommt dich abholen"-Motiv in beiden Ländern (69 % USA, 79 % Indien); Amerikaner sahen meist verstorbene Verwandte, Inder häufiger religiöse Gestalten wie die Yamdoots. Kritik: Die Autoren selbst deuten den kulturübergreifenden Kern als Beleg /für/ ein Jenseits; Altersunterschied (im Schnitt 62 vs. 42). Über Sekundärquelle geprüft. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
+
+[fn:hypnosis-recall] GRÖSSTENTEILS WAHR. Dywan & Bowers 1983 (/Science/): Hypnose steigerte richtige wie falsche Erinnerungen, die Gewissheit stieg unabhängig von der Richtigkeit; erhöhte Suggestibilität und Risiko falscher Erinnerungen sind Standardposition. Kritik: Manche Studien finden kleine Genauigkeitsgewinne, die von Fehlern überwogen werden. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][Abstract]]
+
+[fn:spanos] WAHR. Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320: Berichte über frühere Leben unter Hypnose folgten den vorher gegebenen Erwartungen und enthielten kaum zutreffende Geschichte. Studie per Suche bestätigt, Details teils aus dem Gedächtnis.
+
+[fn:recovered-memory] GRÖSSTENTEILS WAHR. Die Recovered-Memory-Episode und die "Retractors" sind gut dokumentiert. Kritik: Hypnose war eine Technik unter mehreren, viele Fälle hatten keine; wie viele wiedergefundene Erinnerungen falsch waren, weiß man nicht insgesamt, nur Fall für Fall. [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO-Überblick]]
+
+[fn:rutherford] GRÖSSTENTEILS WAHR. Seattle Times 1996: Beraterin Donna Strand brachte ihr ab 1992 in mindestens 64 Sitzungen Selbsthypnose/Trance bei; Erinnerungen an Vergewaltigung und eine Kleiderbügel-Abtreibung; eine Untersuchung 1995 zeigte, dass sie Jungfrau war, ihr Vater hatte seit ihrem 4. Lebensjahr eine Vasektomie; Vergleich über 1 Million Dollar ohne Schuldeingeständnis. Das frühere Detail "Schwangerschaft" hatte keine Quelle und wurde gestrichen. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+
+[fn:ingram] GRÖSSTENTEILS WAHR. Thurston County, 1988. Ofshe erfand einen Vorwurf (Sohn und Tochter zum Sex miteinander gezwungen), Ingram schrieb ein detailliertes Geständnis; als man ihm sagte, es sei erfunden, sagte er, es sei für ihn "just as real as anything else". Trance-artige Elemente der Verhöre nicht geprüft. [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+
+[fn:loftus] WAHR. Loftus & Pickrell 1995: 6 von 24 Teilnehmern. Kritik: kleine Stichprobe; eine präregistrierte Replikation 2023 ("Lost in the mall again") fand eine niedrigere Rate. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][Replikation]]
+
+[fn:survivors] GRÖSSTENTEILS WAHR. Die Mainstream-Sicht (McNally, /Remembering Trauma/, 2003): Die meisten Betroffenen erinnern sich. Aber das ist eine Mehrheit, keine Regel: Williams 1994 begleitete 138 Frauen mit dokumentiertem Missbrauch, 38 % berichteten ihn 17 Jahre später nicht, und 16 % derer, die ihn berichteten, hatten ihn zeitweise vergessen (womöglich gewöhnliche Kindheitsamnesie). Geraerts et al. 2007: Spontan außerhalb der Therapie wiedergekehrte Erinnerungen ließen sich etwa so oft bestätigen wie durchgehende, in der Therapie wiedergefundene fast nie. Kritik: Der erste Entwurf sagte "nie vergessen", zu absolut, jetzt korrigiert; Geraerts' Stichproben waren klein. WHO-Zahlen und McNally aus dem Gedächtnis. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+
+[fn:felt-real] GRÖSSTENTEILS WAHR. Loftus' Studien zu "rich false memories": Eingepflanzte Erinnerungen können mit Gewissheit, Details und Gefühl einhergehen, und vom Gefühl her lassen sie sich oft nicht von wahren unterscheiden. Kritik: "genauso echt" (erster Entwurf) war zu stark; im Schnitt sind falsche Erinnerungen etwas weniger lebhaft, und nur eine Minderheit bildet sie. Jetzt "konnten sich genauso echt anfühlen". [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus]], [[https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.00650/epub][Frontiers 2020]]
+
+-----
+
+/Generiert von Claude im Auftrag von Benjamin Schwerdtner./

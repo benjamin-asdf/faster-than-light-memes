@@ -65,6 +65,7 @@ on top.
 
 * Thinking and Dreaming
 
+** [[denote:20261004T120000][The Maxim of Evidence]]
 ** [[denote:20260813T112235][Psychological Nuggets]]
 ** [[denote:20250312T162554][Brain Feelings]]
 ** [[denote:20250309T170424][Lip Reading Ideas]]

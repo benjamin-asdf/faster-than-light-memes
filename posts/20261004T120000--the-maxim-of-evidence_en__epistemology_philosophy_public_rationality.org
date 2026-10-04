@@ -1,0 +1,307 @@
+#+title:      The Maxim of Evidence
+#+date:       [2026-10-04 Sun 12:00]
+#+filetags:   :epistemology:philosophy:public:rationality:
+#+identifier: 20261004T120000
+#+LANGUAGE: en
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: the-maxim-of-evidence_en
+
+A friend tells you about Michael Newton.
+A hypnotherapist who, in /Journey of Souls/, regressed his clients past their birth,
+past their previous death, into the place /in between/.[fn:newton]
+They report a spirit world. Souls returning home, meeting their guides, their soul group,
+standing before a council of elders, choosing the next body and the next life.[fn:newton-content]
+Case after case, and by his account the reports are strikingly consistent.[fn:newton-consistent]
+
+The usual way to deal with this is to weigh it.
+What speaks for it? (Consistent reports, sincere people, a serious practitioner.)
+What speaks against it? (A list just as long.)
+And then you argue about Newton, his method, his clients, and nobody changes their mind.
+
+I want to make a different move. I will not say a single word against Newton.
+
+* What else would I have to believe?
+
+Instead of /is this claim true?/, ask:
+
+1. If I accept this /kind/ of evidence, what else /should/ I believe?
+2. If somebody else comes with the same kind of evidence, what can /they/ claim?
+
+This is Kant's move, transplanted.
+Kant says: act only in accordance with that maxim through which you can at the same time will that it become a universal law.[fn:kant]
+You don't judge the single act, you judge the /rule/ behind it, as if everybody followed it.
+
+So, the *maxim of evidence*:
+
+#+begin_quote
+Believe only according to that maxim of evidence which you could at the same time will to become a universal law of knowledge.
+#+end_quote
+
+The evidence here is not the claim. The evidence is:
+/a vivid, meaningful, emotionally overwhelming experience, in a special state of mind (hypnosis, prayer, trance, meditation, a near-death experience, a drug),/
+/whose content is then taken as a description of how reality is./
+
+Let's universalize it. Here is who else gets to make claims, if that is a legitimate source of knowledge:
+
+| Who                           | Experience                                | Therefore                                       |
+|-------------------------------+-------------------------------------------+-------------------------------------------------|
+| a Christian                   | encounters Jesus in prayer                | Jesus is the risen son of God                   |
+| a Muslim                      | feels the presence of Allah in salat      | there is no god but God, and Muhammad is His messenger |
+| a Vaishnava devotee           | experiences Krishna in bhakti             | Krishna is the "Supreme Personality of Godhead" |
+| an ancient Greek              | the oracle at Delphi speaks for Apollo    | Zeus and the Olympians rule the world           |
+| a shaman on ayahuasca         | talks to the spirit of the plant          | plants have spirits that teach                  |
+| someone on DMT                | meets "self-transforming machine elves"   | there is a hyperdimensional elf realm           |
+| an abductee, under hypnosis   | recalls being examined on a ship          | aliens are visiting us                          |
+| a Scientologist in auditing   | recalls lives on other planets            | we are thetans (and, at OT III, Xenu)           |
+| a Buddhist meditator          | sees through the self                     | rebirth, but there is /no/ soul that wanders    |
+| someone at 4am                | a glitch, a déjà vu, everything is too neat | we live in a simulation                       |
+| Newton's client               | recalls the life between lives            | souls wander, through a spirit world            |
+
+/The rows, checked:/[fn:table]
+
+Every row has the same shape. Same kind of experience, same step from experience to ontology.
+If the last row is legitimate, all of them are.
+
+* They can't all be true
+
+And now the trouble is obvious, just from making the list.
+
+- One life, then judgement (mainstream Christianity, Islam) vs. many lives (reincarnation).[fn:one-life]
+- A soul that travels (Newton) vs. no self at all that could travel (Buddhism).[fn:anatta]
+- One god vs. many gods vs. no gods but elves vs. no gods but aliens.
+- Jesus is the son of God (Christianity) vs. Jesus is a prophet and explicitly /not/ the son of God (Islam).[fn:islam-jesus]
+
+The experiences do not merely differ in detail, they contradict each other.
+But the /evidence/ is of the same quality in each case. The Christian's prayer is not less vivid than the hypnotized client's memory.
+Nobody in this table is lying.
+
+Evidence that supports X and not-X equally well supports neither.
+
+So the conclusion is not /Newton is wrong/. The conclusion is:
+
+#+begin_quote
+If the Muslim says X, and the Christian says not-X, both on the basis of experiences of class Y,
+then experiences of class Y are not a basis for knowledge.
+#+end_quote
+
+The experiences are real. They are real /experiences/. They are excellent data about minds,
+about what brains do in trance, in prayer, under hypnosis, at the edge of death.
+They are not data about the furniture of the universe.
+
+* Popper: there are no authoritative sources
+
+This is a special case of something Karl Popper said in /On the Sources of Knowledge and of Ignorance/:
+the question /where does your knowledge come from?/ is the wrong question.
+There are no ultimate, authoritative sources. Not the senses, not reason, not tradition. (And, I add: not the Bible, not the trance, not the expert.)[fn:popper]
+Every source is welcome as a suggestion, and every source is open to criticism. Any of them can lead us into error.
+
+Knowledge has no authoritative source. It is conjecture that has, so far, survived criticism.[fn:popper-conjecture]
+
+Popper's replacement question is: /How can we hope to detect and eliminate error?/[fn:popper-question]
+Applied to a claim: not /what is your source?/ but /how could we find out if you're wrong?/
+For the table above, the honest answer is: we can't. Any outcome of any further session fits.
+
+* Deutsch: hard to vary
+
+David Deutsch gives the sharper tool (/The Beginning of Infinity/, chapter 1).[fn:deutsch]
+
+In the usual retelling (Deutsch's too), the ancient Greeks explained winter with Persephone: Hades abducted her, she ate pomegranate seeds,
+so she must spend part of each year in the underworld, and while she is gone her mother Demeter's grief leaves the earth barren and cold.[fn:persephone]
+
+The problem isn't merely that the story is false. The problem is that it is /easy to vary/.[fn:easy-to-vary]
+Replace Persephone with another goddess, the pomegranate with a fig, grief with anger - it explains winter just as well.
+The details do no work. Nothing in the account is constrained by the thing it is supposed to explain.
+
+Compare the axial tilt of the earth. Change any detail and the explanation breaks.
+And it gets right what the myth gets wrong: when it is winter in Greece, it is summer in Australia.[fn:tilt]
+
+Now apply that to the life between lives.
+
+- Why do /souls/ wander? Why not /hearts/?
+  The ancient Egyptians did put the self in the heart, and weighed it against a feather after death.[fn:heart]
+  It would fit the hypnosis reports just as well.
+- Why a council of elders? Why not a single judge, or 42 judges (also Egypt), or none?[fn:assessors]
+- Why one soul per person? Why not seven, or a soul that splits?
+- Why a spirit world in between? Why not straight into the next body? Why not angels of Christ who receive you? Why not Hermes leading you down to Charon's ferry?[fn:afterlife-guides]
+
+Every detail could be swapped out, and the account would explain the reports equally well.
+That is the tell. If an explanation can absorb any variant, it isn't constrained by reality,
+it is constrained by what the person (and the person asking the questions) finds narratively plausible.
+And that is exactly the variance we see across the table: each culture fills in the slots with its own furniture.
+
+The variation /between/ the rows is the variation the explanation /permits/.
+
+* How would it look if you were being tricked?
+
+The rationalist says: when I see a mirage in the desert, it will look like an oasis.
+That is what a mirage /is/. So "it looked exactly like an oasis" is no evidence for an oasis.
+
+So ask: /how would it look to somebody who is being tricked?/
+Exactly like this. Vivid, real, meaningful, more real than real.
+If the experience would look the same whether the god exists or not, the experience can't tell you which.
+When I experience a god, the best explanation of my experience is psychology, not the existence of a god.
+
+Think of a magic trick. To the one being tricked it looks like magic. That is the whole point of a good trick.
+"I saw it with my own eyes" is not an objection to the trick, it is what the magician designed.
+
+And here is the part I like most: the explanation of the trick is /more/ interesting than magic.
+"Magic" explains nothing; it is the easiest-to-vary explanation there is.
+The real explanation needs misdirection, attention, timing, years of training,
+and a deep, practical knowledge of how perception works and how it fails.
+That is where the depth is.
+
+The same goes for the god in the prayer, the soul in the trance, the elf on DMT.
+The explanation lives in psychology and neuroscience: how brains build experience out of expectation,
+how attention, suggestion, ritual and practice shape what we feel.
+(Tanya Luhrmann, in /When God Talks Back/, describes how evangelical Christians practise prayer as a skill until God feels real.)[fn:luhrmann]
+
+Saying "it's psychology" is not a dismissal. It is the harder, deeper, more interesting explanation.
+"A god did it" is the boring one.
+
+* But the reports are so consistent!
+
+This is the strongest-sounding argument for any claim of this kind, so let's apply the same move to it.
+If consistency of reports were good evidence, what else would it prove?
+
+Look at the table again. Every row is consistent.
+Christians consistently meet Jesus, not Krishna. Vaishnavas consistently meet Krishna, not Jesus.
+DMT users report strikingly similar entities. Abductees report strikingly similar ships and examinations.[fn:table]
+Studies of deathbed visions in the US and in India (Osis and Haraldsson, /At the Hour of Death/) found the same basic pattern in both,
+"someone comes to fetch you", but /who/ comes follows the culture:
+Americans mostly saw deceased relatives, Indians more often religious figures, like the messengers of Yama.[fn:osis]
+
+If consistency were the test, every row would pass, including the rows that contradict each other.
+The consistency is /within/ a tradition, and the differences are /between/ traditions.
+
+So ask again: how would it look if the experience were shaped by what the experiencer brings into it? Exactly like this.
+Anything that produces experiences of this kind has plenty of sources of consistency that need no other world:
+
+- A shared method: the same ritual, the same practice, the same questions. Questions carry their framework in with them.
+- Shared expectations: whoever seeks out the prayer meeting, the ceremony or the session has usually heard what it is supposed to look like.
+- Suggestible states: trance, hypnosis, ecstasy. Hypnosis makes people recall more, and more confidently, but much of the extra is wrong.[fn:hypnosis-recall]
+  Researchers who studied hypnotic past-life regression found that the "past lives" follow what the subjects were told to expect
+  (Spanos and colleagues, 1991).[fn:spanos]
+- Shared storytellers: the reports that get passed on are chosen and written up by people who already hold the framework.
+
+Consistency tells you there is a common cause. It doesn't tell you which one.
+To tell a real other world apart from a shared script, you would need consistency that the script cannot explain:
+details the person could not have known, checked afterwards, or the same reports from people who never heard the script.
+That would be hard-to-vary evidence. Consistency alone is not.
+
+* The one row we could check
+
+Most rows in the table can never be checked. Nobody can visit the spirit world, or the elf realm, and come back with a photo.
+But there is one more row with the same kind of evidence where reality /did/ get a vote.
+
+| Who                           | Experience                                | Therefore                                       |
+|-------------------------------+-------------------------------------------+-------------------------------------------------|
+| a patient in therapy          | recovers memories of being raped as a child | my father raped me                            |
+
+In the 1980s and 90s, "recovered memory" therapy, using techniques such as hypnosis, guided imagery and suggestive questioning,
+led many people to vivid, detailed, emotionally overwhelming memories of childhood sexual abuse.[fn:recovered-memory]
+Some of these could be checked, and turned out never to have happened.
+
+- Beth Rutherford's church counselor taught her to go into self-hypnotic trance states. She came out of it "remembering" that her father, a minister, had raped her,
+  and that she had gone through a coat-hanger abortion. A gynecological exam later showed she was still a virgin, and her father had had a vasectomy.[fn:rutherford]
+  In 1996 the church and the counselor settled for $1 million.
+- Paul Ingram, accused by his daughters, came to "remember" and confess the abuse after long, suggestive interrogations.
+  The sociologist Richard Ofshe then made up a scene that nobody had ever alleged, told Ingram about it, and Ingram came back with a detailed written confession of it.[fn:ingram]
+- In the lab, in a small study, Elizabeth Loftus and Jacqueline Pickrell got about a quarter of their subjects to remember, at least partly,
+  being lost in a shopping mall as a child. It never happened.[fn:loftus]
+
+To be clear: sexual abuse is real and common, and most survivors have always remembered it.[fn:survivors]
+Some do forget and remember later. It was the memories produced by suggestion in therapy that turned out to be unreliable.
+The point is not about them. The point is about the evidence class.
+These memories could feel just as real as the true ones: vivid, detailed, emotional, held with confidence. As consistent as any report in the table.[fn:felt-real]
+They destroyed families.
+
+So: if "I remembered it under hypnosis" were a source of knowledge, these memories would be knowledge too.
+The one time this kind of evidence could be held against reality, reality said no.
+
+* The worst case
+
+Kant's maxim tests a rule by universalizing it: could I will that everybody acts on it?
+For evidence I like to go one step further and look straight at the worst case:
+what is the worst thing somebody could legitimately claim with this kind of evidence?
+
+For /meaningful experience in an altered state/ the worst case is unbounded.
+It licenses any cult leader, any god, any planet of origin, any contradiction.
+An evidence class whose worst case is unbounded is no evidence class.
+
+* Why I like this move
+
+- You never have to tell anybody their experience was fake. It wasn't.
+- You never have to argue about anybody's method. The false memories are a bonus row, not the foundation: the argument works without them.
+- It works on any claim of this form, and you can make the list yourself in five minutes.
+- It is symmetric. It applies to me.
+  I have had experiences in meditation that /felt/ like insight into the nature of things.
+  They are interesting. They tell me something about my brain.
+  If I want to rescue anything spiritual from them, it has to be the kind of thing that survives criticism
+  (see [[denote:20251026T183929][Recovering Some Spiritual Concepts]]).
+
+The general rule:
+
+#+begin_quote
+Experiences of the special, meaningful, overwhelming kind can't be the basis of an ontology.
+Before you trust a kind of evidence, look at everybody else it would make right.
+#+end_quote
+
+[fn:newton] TRUE. Michael Newton, certified hypnotherapist, /Journey of Souls/ (Llewellyn, 1994): hypnotic regression of clients into a "life between lives". The book presents 29 cases; its claims are not scientifically validated. [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
+
+[fn:newton-content] TRUE. Going "home", a primary guide, soul groups, a Council of Elders, choosing the next life and body are all in the book. Checked against summaries, not the book itself. [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
+
+[fn:newton-consistent] MOSTLY TRUE. The publisher's blurb speaks of "remarkable consistency" across the cases; that is Newton's own claim, not independently checked. The often-quoted "thousands of sessions" had no primary source, so the text no longer says it. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][publisher blurb]]
+
+[fn:kant] TRUE. Formula of Universal Law, /Groundwork/ AA 4:421, in Mary Gregor's translation ("in accordance with"; an earlier draft had a paraphrase). German original verified word for word (Kant writes "daß"). [[https://plato.stanford.edu/entries/kant-moral/][SEP: Kant's Moral Philosophy]], [[https://projekt-gutenberg.org/authors/immanuel-kant/books/grundlegung-zur-metaphysik-der-sitten/chapter/4][Grundlegung, Gutenberg]]
+
+[fn:one-life] MOSTLY TRUE. Catechism of the Catholic Church 1013: "we shall not return to other earthly lives", "There is no 'reincarnation' after death" (citing Heb 9:27). Mainstream Sunni and Twelver Shia Islam teach one life, barzakh, resurrection and judgment, and reject /tanasukh/. Criticism: the Christian source is Catholic, Protestant and Orthodox teaching agree but weren't cited separately; some esoteric Christian currents and heterodox groups (Druze /taqammus/, Alawites) do teach rebirth, hence "mainstream". [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][CCC 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Druze rebirth]]
+
+[fn:anatta] MOSTLY TRUE. Mainstream (especially Theravada) Buddhism teaches rebirth without an enduring self that transmigrates; the Milindapañha explains the continuity with the chariot and flame analogies ("neither the same nor another"). Newton's souls keep their identity across lives. Criticism: SN 22.59 itself only shows the aggregates are not-self, it doesn't discuss rebirth; Pudgalavāda posited a persisting "person", Tibetan schools speak of a continuing mind-stream, and scholars debate the tension. [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]], [[https://www.accesstoinsight.org/tipitaka/sn/sn22/sn22.059.than.html][SN 22.59]]
+
+[fn:islam-jesus] TRUE. Qur'an 4:171 ("the Messiah, Jesus son of Mary, a messenger of Allah ... far is He from having a son") and 19:35 explicitly deny that God has a son; 5:116 and 112:3 support it. Criticism: /al-Masih/ in Islam doesn't carry the Christian meaning of a divine saviour. [[https://en.wikipedia.org/wiki/Jesus_in_Islam][Jesus in Islam]], [[https://quran.com/4/171][Qur'an 4:171]]
+
+[fn:popper] MOSTLY TRUE. British Academy lecture, 1960, reprinted as the introduction to /Conjectures and Refutations/ (1963): "There are no ultimate sources of knowledge. Every source, every suggestion, is welcome; and every source, every suggestion, is open to critical examination." Criticism: Popper does not dismiss sources, he denies them authority. Bible, trance and expert are my addition, not his. [[https://www.hist-analytic.com/Popper1.pdf][text (PDF)]], [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Popper's nine theses]]
+
+[fn:popper-conjecture] MOSTLY TRUE. Popper's knowledge is conjectural; criticism decides, not origin. Criticism: "survived criticism" is a paraphrase; Popper calls it corroboration and does not equate it with justification. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
+
+[fn:popper-question] TRUE. Popper's wording of the replacement question, quoted via secondary sources. The follow-up ("how could we find out if you're wrong?") is my paraphrase. [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Popper's nine theses]]
+
+[fn:deutsch] MOSTLY TRUE. Chapter 1, "The Reach of Explanations", introduces "hard to vary" with Persephone vs. axial tilt; tilt predicts seasons out of phase in the two hemispheres, which refutes the myth. Criticism: Deutsch's point is less that the myth is refuted than that it can be rescued by trivial changes, while the tilt theory can't. Book text itself not retrieved, only highlights and summaries. [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][summary]], [[https://en.wikipedia.org/wiki/The_Beginning_of_Infinity][Wikipedia]]
+
+[fn:persephone] Verdict on the first draft: MISLEADING, now reworded. Homeric Hymn to Demeter: one seed, a third of the year below, Demeter's grief causes a famine; Ovid, /Metamorphoses/ 5: seven seeds, half the year. Neither source names winter. The winter reading is later and modern, and debated: in Greece the fallow season is the summer drought, so some scholars put Persephone's absence in summer. The text now marks it as "the usual retelling", which is the one Deutsch uses. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][summer, not winter]]
+
+[fn:easy-to-vary] MOSTLY TRUE. Deutsch: the myth's details are arbitrary, so it can be patched at once. Criticism: my variations (goddess, fig, anger) are my illustration; whether the book lists specific variations could not be confirmed. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][reading notes]]
+
+[fn:tilt] TRUE. Basic astronomy; Deutsch uses the out-of-phase hemispheres against the myth. Australia is my example; the book speaks of "the two hemispheres". [[https://www.timeanddate.com/astronomy/seasons-causes.html][timeanddate]]
+
+[fn:heart] MOSTLY TRUE. The heart (/ib/, /haty/) as the centre of thought, emotion, memory and moral character; weighed against the feather of Ma'at in the judgment of Book of the Dead 125; spell 30B, written on heart scarabs, asks it not to testify against its owner. Criticism: "self" is a modern gloss, and the Egyptians had other parts of the person too (/ka/, /ba/, name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]], [[https://www.metmuseum.org/art/collection/search/552490][Met: heart scarab]]
+
+[fn:assessors] TRUE. Spell 125, the "Negative Confession" before 42 assessor gods in the Hall of Two Truths. Egyptologists usually say "assessors" rather than "judges". [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
+
+[fn:afterlife-guides] MOSTLY TRUE. Hermes leads the souls of the dead already in /Odyssey/ 24 (the title Psychopompos is later). Charon isn't in Homer; Greek authors put him on the Acheron, Roman poets on the Styx, hence "Charon's ferry". Angels: Luke 16:22 (Lazarus carried by angels) and the antiphon /In paradisum/ ("may the angels lead you into paradise"), a prayer rather than doctrine. [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
+
+[fn:luhrmann] TRUE. T. M. Luhrmann, /When God Talks Back/ (2012): prayer as a learned skill; in her experiment a month of imaginative prayer made God feel more present. She links it to the trait "absorption". Checked against reviews, not the book. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][review]]
+
+[fn:table] Row by row: /Christian/ MOSTLY TRUE, Nicene Creed; Luhrmann documents the felt presence of God in prayer among evangelical (Vineyard) Christians, so it's not every Christian. /Muslim/ MOSTLY TRUE, the shahada says "messenger" (/rasul/), fixed. /Vaishnava/ MOSTLY TRUE, "Supreme Personality of Godhead" is Prabhupada's (ISKCON) phrase, so the row no longer says "Hindu". /Delphi/ TRUE. /Ayahuasca/ TRUE, "plants that teach" (Luna 1984), though not every plant is a teacher plant. /DMT/ TRUE, McKenna's phrase; Davis et al. 2020 surveyed 2,561 entity encounters, many judged the entities real. /Abductee/ MOSTLY TRUE, hypnosis was standard with Hopkins, Mack and the Hill case, but many abductees remembered without it (Clancy 2005). /Scientology/ MOSTLY TRUE, past-life recall in auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu only at the confidential OT III level. /Buddhist/ see the anatta note. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Susan_Clancy][Clancy]], [[https://en.wikipedia.org/wiki/Have_You_Lived_Before_This_Life][Hubbard 1958]], [[https://en.wikipedia.org/wiki/Xenu][Xenu]]
+
+[fn:osis] MOSTLY TRUE. Osis and Haraldsson, /At the Hour of Death/: a "come to fetch you" theme in both countries (69% US, 79% India); Americans mostly saw deceased relatives, Indians more often religious figures such as the Yamdoots. Criticism: the authors themselves read the cross-cultural core as evidence /for/ an afterlife; there is an age confound (mean 62 vs. 42). Checked via a secondary source. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
+
+[fn:hypnosis-recall] MOSTLY TRUE. Dywan & Bowers 1983 (/Science/): hypnosis increased both correct and false recall, confidence rose regardless of accuracy; suggestibility and false-memory risk are the standard position. Criticism: some studies find small accuracy gains, outweighed by errors. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][abstract]]
+
+[fn:spanos] TRUE. Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320: past-life reports under hypnosis followed the expectations given beforehand and contained little accurate history. Paper confirmed by search, the manipulation details partly from memory.
+
+[fn:recovered-memory] MOSTLY TRUE. The recovered-memory episode and the retractors are well documented. Criticism: hypnosis was one technique among several, many cases had none; how many recovered memories were false is not known globally, only case by case. [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO overview]]
+
+[fn:rutherford] MOSTLY TRUE. Seattle Times 1996: counselor Donna Strand taught her self-hypnosis/trance over at least 64 sessions from 1992; memories of rape and a coat-hanger abortion; a 1995 exam showed she was a virgin, her father had a vasectomy when she was 4; $1 million settlement, no admission of wrongdoing. The earlier "pregnancy" detail had no source and was removed. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+
+[fn:ingram] MOSTLY TRUE. Thurston County case, 1988. Ofshe invented an accusation (forcing a son and daughter to have sex) and Ingram wrote a detailed confession; told it was invented, he said it was "just as real to me as anything else". The trance-like elements of the interrogations were not verified. [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+
+[fn:loftus] TRUE. Loftus & Pickrell 1995: 6 of 24 participants. Criticism: small sample; a preregistered 2023 replication ("Lost in the mall again") found a lower rate. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][replication]]
+
+[fn:survivors] MOSTLY TRUE. The mainstream view (McNally, /Remembering Trauma/, 2003) is that most survivors remember. But it is a majority pattern, not a rule: Williams 1994 followed 138 women with documented abuse, 38% did not report it 17 years later, and 16% of those who did said they had forgotten it for a time (possibly ordinary childhood amnesia). Geraerts et al. 2007: memories recovered spontaneously outside therapy were corroborated about as often as continuous ones, memories recovered in therapy almost never. Criticism: the first draft said "never forgot", too absolute, now fixed; Geraerts' samples were small. WHO prevalence and McNally from memory. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://research-portal.st-andrews.ac.uk/en/publications/the-reality-of-recovered-memories-corroborating-continuous-and-di/][same, St Andrews]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+
+[fn:felt-real] MOSTLY TRUE. Loftus' "rich false memory" studies: implanted memories can come with confidence, detail and emotion, and people often can't tell them from true ones by feel. Criticism: "exactly as real" (first draft) overstated it; on average false memories are somewhat less vivid, and only a minority of participants form them. Now "could feel just as real". [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus keynote]], [[https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.00650/epub][Frontiers 2020]]
+
+-----
+
+/Generated by Claude on Benjamin Schwerdtner's behalf./
