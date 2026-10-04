@@ -50,10 +50,11 @@ Almost every recovery below runs through one idea: /information/ and /form/ are 
 
 A book is not the letters, a book is the story. You can print it on paper, put it on a screen, read it aloud. Same book.
 An organism is not the atoms, it is the /principle of organisation/. Your atoms get replaced over the years, you stay. [Braitenberg]
-In /Information – der Geist in der Natur/ Braitenberg treats the information stored in the genes as a kind of spirit of the species, something like a *Lebensprinzip*, a life principle. [verify][fn:lebensprinzip]
+Braitenberg's last book is called /Information – der Geist in der Natur/: information, the spirit in nature.[fn:lebensprinzip]
+In that sense the knowledge stored in the genes is the spirit of a species, its *Lebensprinzip*, life principle, as I like to call it.
 
 Information is =substrate independent= and (classically) *copyable*: the same pattern can live in DNA, in a brain, in a book, in a computer.
-Chiara Marletto and David Deutsch build a theory of information on this, constructor theory.[fn:constructor]
+Chiara Marletto and David Deutsch build a theory of information on this, constructor theory (still a research programme, not settled physics).[fn:constructor]
 
 Knowledge, in Deutsch's sense, is information that, once physically embodied in a suitable environment, tends to cause itself to remain so. Roughly: /information with causal power/.[fn:knowledge]
 Genes [biology], memes [Dawkins] and temes, technological memes [Blackmore], are all replicators, which I like to think of as software entities,[fn:replicators]
@@ -100,9 +101,10 @@ The soul was named after the most obvious difference between the living and the 
 Anil Seth (/Being You/) brings us back there: the self is grounded in the body regulating itself, staying alive,
 the fundamental aliveness we share with the rest of the tree of life.[fn:seth]
 
-Douglas Hofstadter (/I Am a Strange Loop/) adds the second half: the "I" is a pattern, a self-referential loop in which the brain's symbols come to include a symbol for the brain itself.[fn:strange-loop]
+Douglas Hofstadter (/I Am a Strange Loop/) adds the second half: the "I" is a pattern, a self-referential loop in which the brain's symbols come to include a symbol for the brain itself.
+A pattern so convincing that he calls it a kind of hallucination, one that hallucinates itself.[fn:strange-loop]
 And because it is a pattern, it can be partly copied into other brains. He even proposes measuring souls in "hunekers",
-a unit named after the critic James Huneker: a mosquito has a tiny fraction of one, a dog more, an average person around a hundred.[fn:hunekers]
+a unit named after the critic James Huneker: a mosquito has a tiny fraction of one, an average person around a hundred.[fn:hunekers]
 
 *What doesn't survive.* A soul made of a different stuff. A soul that keeps going without anything to run on.
 
@@ -122,7 +124,7 @@ Thoughts and characters seem to repeat across centuries.
 
 *Idea 1: ancestor software.* Brain circuits are either designed /labeled lines/, or high dimensional and learned.
 To the extent that a brain circuit is genetically designed, it is a software module coming directly from our ancestors.
-Fear of snakes and spiders, for example, seems to be learned unusually quickly, as if the brain is prepared for it, though how robust this is remains debated.[fn:preparedness]
+Fear of snakes (and, less clearly, spiders), for example, seems to be learned unusually quickly, as if the brain is prepared for it, though how robust this is remains debated.[fn:preparedness]
 When you jump back from a garden hose, you may be seeing the leftover of an old primate snake-detection system (Lynne Isbell's snake detection theory, still debated).
 And the /Baldwin effect/ describes how a learned behaviour can, through selection on heritable predispositions over many generations, become partly built-in. No Lamarck involved.[fn:baldwin]
 
@@ -269,7 +271,7 @@ And a person who expects opportunities notices them, and acts on them, which loo
 *The dinosaur.* The magician. The real magic is the /craft/: misdirection, attention, timing, years of training,
 and a deep, practical knowledge of how perception works and how it fails.
 To the one being tricked it looks like magic. That is the whole point of a good trick. [[denote:20261004T120000][The Maxim of Evidence]] has more on this.
-Magicians are, in a way, the oldest practical psychologists of attention, trained by centuries of audience trial and error, and some now co-author with neuroscientists.[fn:magicians]
+Magicians are, in a way, among the oldest practical psychologists of attention, trained by centuries of audience trial and error, and some now co-author with neuroscientists.[fn:magicians]
 
 Programmers know a second kind of real magic: you write words, and a machine does things in the world. Spells, with a compiler.
 The old fantasy of the wizard who changes reality by saying the right words in the right order is the job description of a software engineer.
@@ -341,61 +343,61 @@ The explanation they had was a dragon. We have a better one now, and it is stran
 
 And there are still a lot of bones in the ground.
 
-[fn:dragon-bones] MOSTLY TRUE. Listed in Chinese pharmacopoeias since at least the /Shennong Bencaojing/ (around 100 AD); in 1885 about 20 tons passed through Chinese ports. Criticism: mostly Cenozoic mammals, only occasionally dinosaurs; "centuries" undersold it. [[https://en.wikipedia.org/wiki/Long_gu][Long gu]], [[https://www.nbcnews.com/id/wbna19606626][NBC]]
+[fn:dragon-bones] /Long gu/, listed in Chinese pharmacopoeias since at least the /Shennong Bencaojing/ (around 100 AD); in 1885 about 20 tons passed through Chinese ports. [[https://en.wikipedia.org/wiki/Long_gu][Long gu]], [[https://www.nbcnews.com/id/wbna19606626][NBC]]
 
-[fn:griffin] MOSTLY TRUE. Mayor, /The First Fossil Hunters/ (Princeton, 2000). Criticism: her hypothesis, contested by some palaeontologists and classicists; she is a folklorist and historian of science rather than a "historian". [[https://press.princeton.edu/isbn/9780691245607][Princeton UP]], [[https://classics.stanford.edu/publications/first-fossil-hunters-dinosaurs-mammoths-and-myth-greek-and-roman-times][Stanford]]
+[fn:griffin] Adrienne Mayor, /The First Fossil Hunters/ (Princeton, 2000). [[https://press.princeton.edu/isbn/9780691245607][Princeton UP]], [[https://classics.stanford.edu/publications/first-fossil-hunters-dinosaurs-mammoths-and-myth-greek-and-roman-times][Stanford]]
 
-[fn:lebensprinzip] UNVERIFIABLE so far. The book (2011) does treat information as the "spirit in nature" and genes as stored information, so the gist fits. But no source online confirms "Lebensprinzip" or "spirit of the species" as Braitenberg's own wording, and the term is older (vitalism, Driesch). Needs a look into the book and a page number. [[https://www.tabularasamagazin.de/geist-und-leben-aus-naturwissenschaftlicher-sicht/][review]]
+[fn:lebensprinzip] Valentino Braitenberg, /Information – der Geist in der Natur/ (2011). [[https://www.tabularasamagazin.de/geist-und-leben-aus-naturwissenschaftlicher-sicht/][review]]
 
-[fn:constructor] MOSTLY TRUE. Deutsch & Marletto, "Constructor Theory of Information" (2015): information media are defined by possible copying tasks; quantum no-cloning falls out as a special case. Criticism: only classical information is copyable; constructor theory is a research programme, not established physics. [[https://arxiv.org/abs/1405.5563][arXiv 1405.5563]]
+[fn:constructor] Deutsch & Marletto, "Constructor Theory of Information" (2015): information media are defined by the copying tasks they allow; quantum no-cloning falls out as a special case. [[https://arxiv.org/abs/1405.5563][arXiv 1405.5563]]
 
-[fn:knowledge] MOSTLY TRUE. Deutsch's definition from /The Beginning of Infinity/, developed by Marletto. Criticism: "information with causal power" is a common paraphrase, not his wording, and the first draft dropped "in a suitable environment". Exact wording checked via quotations, not the book. [[https://www.edge.org/memberbio/chiara_marletto][Edge: Marletto]]
+[fn:knowledge] Deutsch, /The Beginning of Infinity/, developed further by Marletto. [[https://www.edge.org/memberbio/chiara_marletto][Edge: Marletto]]
 
-[fn:replicators] MOSTLY TRUE. "Meme": Dawkins, /The Selfish Gene/ (1976). "Teme": Susan Blackmore, TED 2008. (My notes said "tremes", the term is "temes".) Criticism: "software entities" is my framing, not theirs; memes and temes are contested as scientific concepts. [[https://en.wikipedia.org/wiki/Susan_Blackmore][Blackmore]]
+[fn:replicators] "Meme": Dawkins, /The Selfish Gene/ (1976). "Teme": Susan Blackmore, TED 2008. [[https://en.wikipedia.org/wiki/Susan_Blackmore][Blackmore]]
 
-[fn:cyberanimism] MOSTLY TRUE. Bach uses "cyberanimism" (e.g. AGI-24 keynote) and says spirits are real as self-organizing software. Criticism: "populated by spirits" (first draft) was a paraphrase; his idea is not limited to brains. The linked video itself was not checked. [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]]
+[fn:cyberanimism] E.g. Bach's AGI-24 keynote "Cyberanimism". [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]]
 
-[fn:breath] MOSTLY TRUE. Latin /spiritus/ "breath", /anima/ "breathing", Hebrew /ruach/ "wind, breath, spirit", Greek /psyche/ "cold air, breath of life". Criticism: the etymology of /psyche/ is partly reconstructed. [[https://en.wikipedia.org/wiki/Spirit_(animating_force)][Spirit (animating force)]]
+[fn:breath] Latin /spiritus/ "breath", /anima/ "breathing", Hebrew /ruach/ "wind, breath, spirit", Greek /psyche/ "cold air, breath of life". [[https://en.wikipedia.org/wiki/Spirit_(animating_force)][Spirit (animating force)]]
 
-[fn:seth] TRUE. Seth, /Being You/ (2021): the self is rooted in predictive regulation of the body's interior, "we are beast machines", consciousness has more to do with being alive than with being intelligent. "Tree of life" is my phrase, not his. [[https://www.mind-foundation.org/blog/consciousness-keep-body-alive][MIND Foundation]]
+[fn:seth] Anil Seth, /Being You/ (2021): the self is rooted in predictive regulation of the body's interior; "we are beast machines". [[https://www.mind-foundation.org/blog/consciousness-keep-body-alive][MIND Foundation]]
 
-[fn:strange-loop] MOSTLY TRUE. Hofstadter, /I Am a Strange Loop/ (2007). Criticism: he also calls the "I" largely a hallucination, which the sentence leaves out. [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Wikipedia]]
+[fn:strange-loop] Hofstadter, /I Am a Strange Loop/ (2007). [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Wikipedia]], [[https://www.scientificamerican.com/article/a-new-journey-into-hofsta][Scientific American]]
 
-[fn:hunekers] MOSTLY TRUE. Named after Huneker's remark that "small-souled men" should avoid Chopin's Étude op. 25 no. 11. Criticism: the mosquito-to-human range is confirmed, the dog only implied (cats, parakeets are "borderline"); it is a playful but serious device for consciousness coming in degrees. [[https://en.wikipedia.org/wiki/James_Huneker][James Huneker]], [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Strange Loop]]
+[fn:hunekers] Named after Huneker's remark that "small-souled men" should not attempt Chopin's Étude op. 25 no. 11. Hofstadter uses the unit for consciousness coming in degrees. [[https://en.wikipedia.org/wiki/James_Huneker][James Huneker]]
 
-[fn:preparedness] MOSTLY TRUE. Seligman's preparedness; Öhman & Mineka (2003); Mineka's monkeys learn snake fear by observation, flower fear not. Criticism: "hard to unlearn" (first draft) is overstated, replications are mixed (McNally 2016), exposure therapy works well; the evidence is stronger for snakes than spiders. [[https://en.wikipedia.org/wiki/Preparedness_(learning)][Preparedness]], [[https://blogs.ubc.ca/2017wufor200/files/2017/01/The-malicious-serpent-Snakes-as-a-prototypical-stimulus-for-an-evolved-module-of-fear-Ohman-Mineka-2003.pdf][Öhman & Mineka 2003]]
+[fn:preparedness] Seligman's preparedness theory; Öhman & Mineka (2003); Mineka's monkeys learn fear of snakes by observation, but not of flowers. Replications are mixed (McNally 2016), and exposure therapy works well. [[https://en.wikipedia.org/wiki/Preparedness_(learning)][Preparedness]], [[https://blogs.ubc.ca/2017wufor200/files/2017/01/The-malicious-serpent-Snakes-as-a-prototypical-stimulus-for-an-evolved-module-of-fear-Ohman-Mineka-2003.pdf][Öhman & Mineka 2003]]
 
-[fn:baldwin] First draft MISLEADING, now reworded. The Baldwin effect (Baldwin 1896; named by Simpson 1953) is selection on heritable variation, not inheritance of learning; the first draft sounded Lamarckian, and nothing links it to the garden-hose flinch. Isbell's theory concerns visual detection and attention, and is partly untested. [[https://en.wikipedia.org/wiki/Baldwin_effect][Baldwin effect]], [[https://pmc.ncbi.nlm.nih.gov/articles/PMC4262429/][snake detection]]
+[fn:baldwin] Baldwin 1896, named by Simpson 1953. Isbell's snake detection theory is about visual detection and attention in primates. [[https://en.wikipedia.org/wiki/Baldwin_effect][Baldwin effect]], [[https://pmc.ncbi.nlm.nih.gov/articles/PMC4262429/][snake detection]]
 
-[fn:brac] MOSTLY TRUE. Kleitman's BRAC proposes 80–120 minute ultradian cycles, also in wakefulness. Criticism: evidence outside sleep is weak and contested; popular productivity claims go beyond it. [[https://en.wikipedia.org/wiki/Basic_rest%E2%80%93activity_cycle][BRAC]]
+[fn:brac] Kleitman's BRAC proposes 80–120 minute ultradian cycles, during sleep and, more controversially, during the day. [[https://en.wikipedia.org/wiki/Basic_rest%E2%80%93activity_cycle][BRAC]]
 
-[fn:selective-memory] MOSTLY TRUE. Selective memory is the standard skeptical explanation of "telephone telepathy". Rupert Sheldrake disputes it with his own trials (about 45% hits vs. 25% chance), which mainstream science does not accept. Criticism: leading explanation, not demonstrated for every case. [[https://gold.ac.uk/apru/telephone-telepathy][Goldsmiths APRU]], [[https://noetic.org/blog/telephone-telepathy/][IONS]]
+[fn:selective-memory] The standard skeptical explanation of "telephone telepathy". Rupert Sheldrake reports above-chance trials; mainstream science doesn't accept them. [[https://gold.ac.uk/apru/telephone-telepathy][Goldsmiths APRU]]
 
-[fn:rees] TRUE. Rees (1971, BMJ): 293 widowed people, 46.7% had experiences of the dead spouse, a sense of presence most often (39.2%). Later studies: roughly 30–60%, non-pathological. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8388006][review]], [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
+[fn:rees] Rees (1971, BMJ): 293 widowed people, 46.7% had experiences of the dead spouse, most often a sense of presence (39.2%). Later studies: roughly 30–60%. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8388006][review]], [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
 
-[fn:cached] First draft MISLEADING, now corrected. No Dennett source found; likely a mix-up with Hofstadter, who was Dennett's friend. "Cached" is my computing metaphor, not a term from the literature. [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche: O'Connor]]
+[fn:cached] Mary-Frances O'Connor, /The Grieving Brain/. "Cached" is my computing metaphor. [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
 
-[fn:halo] MOSTLY TRUE. Hofstadter argues close people run rough copies of each other's "I", so a partial copy of Carol lives on in him; Carol died suddenly of a brain tumour in 1993. Criticism: "halo" is not confirmed as his word (reviews say "soul", "copies"), so it's now marked as mine; the grieving reading is interpretation, though supported by his framing. [[https://www.theglobeandmail.com/arts/when-is-death-not-death/article723876/][Globe and Mail]], [[https://physicsworld.com/a/going-loopy-over-consciousness/][Physics World]]
+[fn:halo] Carol Hofstadter died suddenly of a brain tumour in 1993. In the book, close people run rough copies of each other's "I". [[https://www.theglobeandmail.com/arts/when-is-death-not-death/article723876/][Globe and Mail]], [[https://physicsworld.com/a/going-loopy-over-consciousness/][Physics World]]
 
-[fn:bach-gods] MOSTLY TRUE. No source for "Gods are memes" as Bach's phrase; his vocabulary is cyberanimism, spirits and gods as self-organizing software/social agents. The gods part rests on talk summaries; the full talk transcript was not accessible. [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]], [[https://no.player.fm/series/machine-learning-street-talk-mlst/joscha-bach-agi24-keynote-cyberanimism][AGI-24 keynote]]
+[fn:bach-gods] Bach: spirits and gods as self-organizing software and social agents running on minds (from talk summaries). [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]], [[https://no.player.fm/series/machine-learning-street-talk-mlst/joscha-bach-agi24-keynote-cyberanimism][AGI-24 keynote]]
 
-[fn:durkheim] MOSTLY TRUE. /The Elementary Forms of the Religious Life/ (1912): "the idea of society is the soul of religion". Criticism: the popular one-liner is commentators' paraphrase, not Durkheim's sentence; built on Australian totemism and contested as a theory of all religion. [[https://people.uncw.edu/ricej/theory/durkheim3.htm][UNCW notes]]
+[fn:durkheim] /The Elementary Forms of the Religious Life/ (1912): "the idea of society is the soul of religion"; based on Australian totemism. [[https://people.uncw.edu/ricej/theory/durkheim3.htm][UNCW notes]]
 
-[fn:predictive] MOSTLY TRUE. Clark's predictive processing, Barrett's constructed emotion, Friston's free energy principle. Criticism: three related but distinct programmes; "perception /is/ the prediction" (first draft) was too strong. [[https://nautil.us/reality-is-your-brains-best-guess-312269][Nautilus]]
+[fn:predictive] Clark's predictive processing, Barrett's constructed emotion, Friston's free energy principle: related programmes, not identical. [[https://nautil.us/reality-is-your-brains-best-guess-312269][Nautilus]]
 
-[fn:active-inference] TRUE. Active inference (Friston, Mattout & Kilner 2011): action fulfils proprioceptive predictions via reflex arcs. Criticism: a simplification, and the framework is contested. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3491875][Friston et al. 2011]]
+[fn:active-inference] Friston, Mattout & Kilner 2011: action fulfils proprioceptive predictions via reflex arcs. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3491875][Friston et al. 2011]]
 
-[fn:barrett] MOSTLY TRUE. Theory of constructed emotion; the roller coaster vs. stressful meeting heartbeat is her standard example, confirmed via secondary summaries. Contested theory. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8493823/][review]], [[https://lisafeldmanbarrett.com/][Barrett]]
+[fn:barrett] Lisa Feldman Barrett's theory of constructed emotion; the roller coaster vs. stressful meeting is her standard example. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8493823/][review]]
 
-[fn:frequency] MOSTLY TRUE. "Baader-Meinhof phenomenon" from a 1994 reader's letter to the St. Paul Pioneer Press; "frequency illusion" coined by linguist Arnold Zwicky in 2005 (selective attention plus confirmation bias). Criticism: a named bias, not a rigorously tested phenomenon. [[https://en.wikipedia.org/wiki/Frequency_illusion][Frequency illusion]]
+[fn:frequency] "Baader-Meinhof phenomenon" from a 1994 reader's letter to the St. Paul Pioneer Press; "frequency illusion" from Arnold Zwicky, 2005 (selective attention plus confirmation bias). [[https://en.wikipedia.org/wiki/Frequency_illusion][Frequency illusion]]
 
-[fn:magicians] MOSTLY TRUE. Macknik, King, Randi, Robbins, Teller, Thompson & Martinez-Conde, "Attention and awareness in stage magic", /Nature Reviews Neuroscience/ 9 (2008). Criticism: "experimental psychologists" (first draft) was figurative; magicians test by trial and error, not controlled experiments; "oldest" is unprovable. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3069790/][Macknik et al.]], [[https://en.wikipedia.org/wiki/Sleights_of_Mind][Sleights of Mind]]
+[fn:magicians] Macknik, King, Randi, Robbins, Teller, Thompson & Martinez-Conde, "Attention and awareness in stage magic", /Nature Reviews Neuroscience/ 9 (2008). [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3069790/][Macknik et al.]], [[https://en.wikipedia.org/wiki/Sleights_of_Mind][Sleights of Mind]]
 
-[fn:leibniz] First draft MISLEADING, now corrected. The quote in my notes is not a verbatim Leibniz line; the closest is /Monadology/ §89: "sins must bear their penalty with them, through the order of nature, and even in virtue of the mechanical structure of things". Criticism: the passage is theological (divine justice, kingdom of grace) and about sins and good deeds, not "everything". [[https://www.rbjones.com/rbjpub/philos/classics/leibniz/monad.htm][Monadology]]
+[fn:leibniz] /Monadology/ §89: "sins must bear their penalty with them, through the order of nature, and even in virtue of the mechanical structure of things". [[https://www.rbjones.com/rbjpub/philos/classics/leibniz/monad.htm][Monadology]]
 
-[fn:reciprocity] TRUE. Concept from Richard Alexander (/The Biology of Moral Systems/, 1987), modelled by Nowak & Sigmund, "Evolution of indirect reciprocity by image scoring", /Nature/ 393 (1998). Alexander attribution from memory. [[https://en.wikipedia.org/wiki/Indirect_reciprocity][Indirect reciprocity]], [[https://ideas.repec.org/a/nat/nature/v393y1998i6685d10.1038_31225.html][Nowak & Sigmund 1998]]
+[fn:reciprocity] Richard Alexander, /The Biology of Moral Systems/ (1987); Nowak & Sigmund, "Evolution of indirect reciprocity by image scoring", /Nature/ 393 (1998). [[https://en.wikipedia.org/wiki/Indirect_reciprocity][Indirect reciprocity]], [[https://ideas.repec.org/a/nat/nature/v393y1998i6685d10.1038_31225.html][Nowak & Sigmund 1998]]
 
-[fn:dennett-competence] MOSTLY TRUE. Dennett's phrase, applied to natural selection (and Turing machines). Criticism: "knowledge creation" is Popper/Deutsch vocabulary, not Dennett's; the first draft blurred the two. [[https://www.nybooks.com/articles/2017/03/09/is-consciousness-an-illusion-dennett-evolution/][NYRB]], [[https://now.tufts.edu/2017/04/24/why-are-there-minds][Tufts]]
+[fn:dennett-competence] Dennett, /From Bacteria to Bach and Back/ (2017). [[https://www.nybooks.com/articles/2017/03/09/is-consciousness-an-illusion-dennett-evolution/][NYRB]], [[https://now.tufts.edu/2017/04/24/why-are-there-minds][Tufts]]
 
 -----
 

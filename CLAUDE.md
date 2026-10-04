@@ -37,6 +37,7 @@ Benjamin Schwerdtner's blog. See README.org for the build.
   [fn:hypnosis] Dywan & Bowers 1983 (J. Abnorm. Psych.): more recall, more errors, confidence up regardless. <link>
   ```
 
-- Get that basis from a verifier agent, one claim (or a small group) per agent: it searches, gives a verdict, the sources, and its criticism of the claim as written (overstated, misattributed, contested, weak sample...). Put that criticism into the footnote; don't hide it.
-- If the verifier answered from memory instead of searching, say so in the footnote.
-- Once a claim holds (verdict TRUE or MOSTLY TRUE after any fixes, and the verifier actually searched), remove its `[verify]` marker and keep the footnote. The marker stays on claims that are unchecked, checked only from memory, or that failed.
+- Get that basis from a verifier agent, one claim (or a small group) per agent: it searches, gives a verdict, the sources, and its criticism of the claim as written (overstated, misattributed, contested, weak sample...).
+- Act on the criticism in the TEXT: reword the claim until the criticism no longer applies, or drop the claim. Never leave a claim in the post that its own footnote refutes.
+- Footnotes support the text: sources, links, and nuance that agrees with what the text says. No verdict labels (TRUE / MOSTLY TRUE), no "Criticism:", no history of earlier drafts.
+- Once a claim holds (the verifier actually searched and the text is fixed), remove its `[verify]` marker and keep the footnote. The marker stays only on claims that are still unchecked or unconfirmed.

@@ -62,12 +62,56 @@ Let's universalize it. Here is who else gets to make claims, if that is a legiti
 Every row has the same shape. Same kind of experience, same step from experience to ontology.
 If the last row is legitimate, all of them are.
 
+* A sense of possibility
+
+Robert Musil has a word for what the table does, in /The Man Without Qualities/ (my translation):
+
+#+begin_quote
+If there is a sense of reality, and nobody will doubt that it has its right to exist, then there must also be something that can be called a sense of possibility.[fn:musil]
+#+end_quote
+
+And right after, as a definition:
+
+#+begin_quote
+So the sense of possibility could be defined outright as the ability to think everything that might just as well be, and not to take what is more seriously than what is not.[fn:musil-def]
+#+end_quote
+
+The sense of reality asks: /is it so?/ That is the question everybody fights over with Newton.
+The sense of possibility asks: /what might just as well be?/
+
+With that the maxim fits in one sentence:
+
+#+begin_quote
+If X is your evidence, then everything in evidence class X is /possible/.
+#+end_quote
+
+Not true. Possible. The table above is then not a list of opponents I'd have to refute.
+It is the space of possibilities this kind of evidence opens up. Newton's spirit world is one point in it, Krishna another, Xenu a third.
+Under different expectations the client might just as well have met Jesus. That is the sense of possibility at work:
+it takes what is (/this/ report) no more seriously than what is not (but might just as well have been).
+
+Parsing the world in counterfactuals instead of facts is a move of Popper and Deutsch.
+
+- Popper: laws of nature are prohibitions. They say what /cannot/ happen, and "the more they prohibit, the more they say."[fn:popper-prohibit]
+  A theory that prohibits nothing says nothing. That is also the test for evidence: what does it prohibit?
+  The evidence class /meaningful experience in an altered state/ prohibits nothing. Every row of the table fits.
+- Deutsch: his constructor theory wants to express physics as a dichotomy between transformations that are possible and those that are impossible,
+  and he writes that counterfactual statements are "essential in science and everyday life".[fn:deutsch-ct]
+  Explanations with counterfactual implications, he says, are more fundamental than predictions of what will happen.
+
+Two things I honestly don't know:
+
+- By the sense of possibility Musil means something wider: a stance that sees reality as a draft that could have come out differently, and in him that is more utopian than epistemological.
+  Am I just borrowing a nice word, or is it the same capacity, once as an art and once as a test?
+- The possibility space of the evidence is huge. How do you narrow it without already knowing what is true?
+  Popper's answer would be: criticism. Deutsch's: hard-to-vary explanations. Is that enough?
+
 * They can't all be true
 
 And now the trouble is obvious, just from making the list.
 
 - One life, then judgement (mainstream Christianity, Islam) vs. many lives (reincarnation).[fn:one-life]
-- A soul that travels (Newton) vs. no self at all that could travel (Buddhism).[fn:anatta]
+- A soul that travels (Newton) vs. no self at all that could travel (mainstream Buddhism).[fn:anatta]
 - One god vs. many gods vs. no gods but elves vs. no gods but aliens.
 - Jesus is the son of God (Christianity) vs. Jesus is a prophet and explicitly /not/ the son of God (Islam).[fn:islam-jesus]
 
@@ -105,7 +149,7 @@ For the table above, the honest answer is: we can't. Any outcome of any further 
 
 David Deutsch gives the sharper tool (/The Beginning of Infinity/, chapter 1).[fn:deutsch]
 
-In the usual retelling (Deutsch's too), the ancient Greeks explained winter with Persephone: Hades abducted her, she ate pomegranate seeds,
+The myth of Persephone, as it is usually retold today (Deutsch retells it this way too), explains winter: Hades abducted her, she ate pomegranate seeds,
 so she must spend part of each year in the underworld, and while she is gone her mother Demeter's grief leaves the earth barren and cold.[fn:persephone]
 
 The problem isn't merely that the story is false. The problem is that it is /easy to vary/.[fn:easy-to-vary]
@@ -118,7 +162,7 @@ And it gets right what the myth gets wrong: when it is winter in Greece, it is s
 Now apply that to the life between lives.
 
 - Why do /souls/ wander? Why not /hearts/?
-  The ancient Egyptians did put the self in the heart, and weighed it against a feather after death.[fn:heart]
+  The ancient Egyptians put mind, memory and moral character in the heart, and weighed it against a feather after death.[fn:heart]
   It would fit the hypnosis reports just as well.
 - Why a council of elders? Why not a single judge, or 42 judges (also Egypt), or none?[fn:assessors]
 - Why one soul per person? Why not seven, or a soul that splits?
@@ -169,6 +213,7 @@ DMT users report strikingly similar entities. Abductees report strikingly simila
 Studies of deathbed visions in the US and in India (Osis and Haraldsson, /At the Hour of Death/) found the same basic pattern in both,
 "someone comes to fetch you", but /who/ comes follows the culture:
 Americans mostly saw deceased relatives, Indians more often religious figures, like the messengers of Yama.[fn:osis]
+(Osis and Haraldsson themselves read the shared core as a hint of an afterlife. But a shared core is also what shared human brains would produce.)
 
 If consistency were the test, every row would pass, including the rows that contradict each other.
 The consistency is /within/ a tradition, and the differences are /between/ traditions.
@@ -246,61 +291,69 @@ Experiences of the special, meaningful, overwhelming kind can't be the basis of 
 Before you trust a kind of evidence, look at everybody else it would make right.
 #+end_quote
 
-[fn:newton] TRUE. Michael Newton, certified hypnotherapist, /Journey of Souls/ (Llewellyn, 1994): hypnotic regression of clients into a "life between lives". The book presents 29 cases; its claims are not scientifically validated. [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
+[fn:musil] Musil, /Der Mann ohne Eigenschaften/, book 1, chapter 4: "Wenn es aber Wirklichkeitssinn gibt, und niemand wird bezweifeln, daß er seine Daseinsberechtigung hat, dann muß es auch etwas geben, das man Möglichkeitssinn nennen kann." English: my translation. [[https://projekt-gutenberg.org/authors/robert-musil/books/der-mann-ohne-eigenschaften-erstes-buch/chapter/5][Project Gutenberg]]
 
-[fn:newton-content] TRUE. Going "home", a primary guide, soul groups, a Council of Elders, choosing the next life and body are all in the book. Checked against summaries, not the book itself. [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
+[fn:musil-def] Same chapter: "alles, was ebensogut sein könnte, zu denken und das, was ist, nicht wichtiger zu nehmen als das, was nicht ist". In the novel it is the narrator's characterization of Ulrich. English: my translation.
 
-[fn:newton-consistent] MOSTLY TRUE. The publisher's blurb speaks of "remarkable consistency" across the cases; that is Newton's own claim, not independently checked. The often-quoted "thousands of sessions" had no primary source, so the text no longer says it. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][publisher blurb]]
+[fn:popper-prohibit] Popper, /The Logic of Scientific Discovery/: natural laws have the character of prohibitions; "the more they prohibit, the more they say". Deutsch builds on this (§31 and §35, "what it forbids"). [[https://arxiv.org/pdf/2204.08413][arXiv 2204.08413]]
 
-[fn:kant] TRUE. Formula of Universal Law, /Groundwork/ AA 4:421, in Mary Gregor's translation ("in accordance with"; an earlier draft had a paraphrase). German original verified word for word (Kant writes "daß"). [[https://plato.stanford.edu/entries/kant-moral/][SEP: Kant's Moral Philosophy]], [[https://projekt-gutenberg.org/authors/immanuel-kant/books/grundlegung-zur-metaphysik-der-sitten/chapter/4][Grundlegung, Gutenberg]]
+[fn:deutsch-ct] Deutsch, "Constructor Theory", /Synthese/ 190 (2013): theories as a dichotomy between "possible and impossible physical transformations"; §2.13: "'Counterfactual' predictions of that kind seem to be essential in science and everyday life, and even in the idea of a law of physics." Constructor theory is a proposal, not settled physics; the link to Musil is mine. [[https://arxiv.org/abs/1210.7439][arXiv 1210.7439]]
 
-[fn:one-life] MOSTLY TRUE. Catechism of the Catholic Church 1013: "we shall not return to other earthly lives", "There is no 'reincarnation' after death" (citing Heb 9:27). Mainstream Sunni and Twelver Shia Islam teach one life, barzakh, resurrection and judgment, and reject /tanasukh/. Criticism: the Christian source is Catholic, Protestant and Orthodox teaching agree but weren't cited separately; some esoteric Christian currents and heterodox groups (Druze /taqammus/, Alawites) do teach rebirth, hence "mainstream". [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][CCC 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Druze rebirth]]
+[fn:newton] Michael Newton, hypnotherapist, /Journey of Souls/ (Llewellyn, 1994), 29 case studies of "life between lives" regression. [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
 
-[fn:anatta] MOSTLY TRUE. Mainstream (especially Theravada) Buddhism teaches rebirth without an enduring self that transmigrates; the Milindapañha explains the continuity with the chariot and flame analogies ("neither the same nor another"). Newton's souls keep their identity across lives. Criticism: SN 22.59 itself only shows the aggregates are not-self, it doesn't discuss rebirth; Pudgalavāda posited a persisting "person", Tibetan schools speak of a continuing mind-stream, and scholars debate the tension. [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]], [[https://www.accesstoinsight.org/tipitaka/sn/sn22/sn22.059.than.html][SN 22.59]]
+[fn:newton-content] Coming "home", a primary guide, soul groups, a Council of Elders, choosing the next life and body: all in the book (checked against summaries). [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
 
-[fn:islam-jesus] TRUE. Qur'an 4:171 ("the Messiah, Jesus son of Mary, a messenger of Allah ... far is He from having a son") and 19:35 explicitly deny that God has a son; 5:116 and 112:3 support it. Criticism: /al-Masih/ in Islam doesn't carry the Christian meaning of a divine saviour. [[https://en.wikipedia.org/wiki/Jesus_in_Islam][Jesus in Islam]], [[https://quran.com/4/171][Qur'an 4:171]]
+[fn:newton-consistent] The publisher's blurb speaks of the cases' "remarkable consistency"; that is Newton's own account. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][publisher blurb]]
 
-[fn:popper] MOSTLY TRUE. British Academy lecture, 1960, reprinted as the introduction to /Conjectures and Refutations/ (1963): "There are no ultimate sources of knowledge. Every source, every suggestion, is welcome; and every source, every suggestion, is open to critical examination." Criticism: Popper does not dismiss sources, he denies them authority. Bible, trance and expert are my addition, not his. [[https://www.hist-analytic.com/Popper1.pdf][text (PDF)]], [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Popper's nine theses]]
+[fn:kant] /Groundwork of the Metaphysics of Morals/, AA 4:421, in Mary Gregor's translation. [[https://plato.stanford.edu/entries/kant-moral/][SEP: Kant's Moral Philosophy]]
 
-[fn:popper-conjecture] MOSTLY TRUE. Popper's knowledge is conjectural; criticism decides, not origin. Criticism: "survived criticism" is a paraphrase; Popper calls it corroboration and does not equate it with justification. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
+[fn:one-life] Catechism of the Catholic Church 1013: "There is no 'reincarnation' after death" (citing Heb 9:27). Mainstream Sunni and Twelver Shia Islam teach one life, resurrection and judgment, and reject /tanasukh/. Some heterodox groups, like the Druze, do teach rebirth. [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][CCC 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Druze]]
 
-[fn:popper-question] TRUE. Popper's wording of the replacement question, quoted via secondary sources. The follow-up ("how could we find out if you're wrong?") is my paraphrase. [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Popper's nine theses]]
+[fn:anatta] Mainstream, especially Theravada, Buddhism teaches rebirth without an enduring self; the Milindapañha explains the continuity with the chariot and the flame ("neither the same nor another"). Minority schools differ, e.g. the Pudgalavāda's persisting "person". [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]]
 
-[fn:deutsch] MOSTLY TRUE. Chapter 1, "The Reach of Explanations", introduces "hard to vary" with Persephone vs. axial tilt; tilt predicts seasons out of phase in the two hemispheres, which refutes the myth. Criticism: Deutsch's point is less that the myth is refuted than that it can be rescued by trivial changes, while the tilt theory can't. Book text itself not retrieved, only highlights and summaries. [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][summary]], [[https://en.wikipedia.org/wiki/The_Beginning_of_Infinity][Wikipedia]]
+[fn:islam-jesus] Qur'an 4:171 ("the Messiah, Jesus son of Mary, a messenger of Allah ... far is He from having a son") and 19:35; see also 5:116 and 112:3. [[https://quran.com/4/171][Qur'an 4:171]], [[https://en.wikipedia.org/wiki/Jesus_in_Islam][Jesus in Islam]]
 
-[fn:persephone] Verdict on the first draft: MISLEADING, now reworded. Homeric Hymn to Demeter: one seed, a third of the year below, Demeter's grief causes a famine; Ovid, /Metamorphoses/ 5: seven seeds, half the year. Neither source names winter. The winter reading is later and modern, and debated: in Greece the fallow season is the summer drought, so some scholars put Persephone's absence in summer. The text now marks it as "the usual retelling", which is the one Deutsch uses. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][summer, not winter]]
+[fn:popper] British Academy lecture, 1960, the introduction to /Conjectures and Refutations/ (1963): "There are no ultimate sources of knowledge. Every source, every suggestion, is welcome; and every source, every suggestion, is open to critical examination." Bible, trance and expert are my additions. [[https://www.hist-analytic.com/Popper1.pdf][text (PDF)]]
 
-[fn:easy-to-vary] MOSTLY TRUE. Deutsch: the myth's details are arbitrary, so it can be patched at once. Criticism: my variations (goddess, fig, anger) are my illustration; whether the book lists specific variations could not be confirmed. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][reading notes]]
+[fn:popper-conjecture] Popper: all knowledge is conjectural; what counts is how a theory stands up to criticism and testing, not where it came from. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
 
-[fn:tilt] TRUE. Basic astronomy; Deutsch uses the out-of-phase hemispheres against the myth. Australia is my example; the book speaks of "the two hemispheres". [[https://www.timeanddate.com/astronomy/seasons-causes.html][timeanddate]]
+[fn:popper-question] Same essay. Popper's answer: "By criticizing the theories or guesses of others and ... by criticizing our own." [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Popper's nine theses]]
 
-[fn:heart] MOSTLY TRUE. The heart (/ib/, /haty/) as the centre of thought, emotion, memory and moral character; weighed against the feather of Ma'at in the judgment of Book of the Dead 125; spell 30B, written on heart scarabs, asks it not to testify against its owner. Criticism: "self" is a modern gloss, and the Egyptians had other parts of the person too (/ka/, /ba/, name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]], [[https://www.metmuseum.org/art/collection/search/552490][Met: heart scarab]]
+[fn:deutsch] /The Beginning of Infinity/ (2011), chapter 1, "The Reach of Explanations". [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][summary]], [[https://en.wikipedia.org/wiki/The_Beginning_of_Infinity][Wikipedia]]
 
-[fn:assessors] TRUE. Spell 125, the "Negative Confession" before 42 assessor gods in the Hall of Two Truths. Egyptologists usually say "assessors" rather than "judges". [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
+[fn:persephone] Homeric Hymn to Demeter (one seed, a third of the year below) and Ovid, /Metamorphoses/ 5 (seven seeds, half the year). The ancient texts don't name winter; the link to winter is the later reading. Some scholars put her absence in the Greek summer, the fallow season. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][summer, not winter]]
 
-[fn:afterlife-guides] MOSTLY TRUE. Hermes leads the souls of the dead already in /Odyssey/ 24 (the title Psychopompos is later). Charon isn't in Homer; Greek authors put him on the Acheron, Roman poets on the Styx, hence "Charon's ferry". Angels: Luke 16:22 (Lazarus carried by angels) and the antiphon /In paradisum/ ("may the angels lead you into paradise"), a prayer rather than doctrine. [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
+[fn:easy-to-vary] Deutsch: the myth's details are arbitrary, so it can be patched at once, while the tilt theory can't. The specific swaps are my examples. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][reading notes]]
 
-[fn:luhrmann] TRUE. T. M. Luhrmann, /When God Talks Back/ (2012): prayer as a learned skill; in her experiment a month of imaginative prayer made God feel more present. She links it to the trait "absorption". Checked against reviews, not the book. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][review]]
+[fn:tilt] Deutsch uses exactly this: seasons out of phase in the two hemispheres. [[https://www.timeanddate.com/astronomy/seasons-causes.html][why we have seasons]]
 
-[fn:table] Row by row: /Christian/ MOSTLY TRUE, Nicene Creed; Luhrmann documents the felt presence of God in prayer among evangelical (Vineyard) Christians, so it's not every Christian. /Muslim/ MOSTLY TRUE, the shahada says "messenger" (/rasul/), fixed. /Vaishnava/ MOSTLY TRUE, "Supreme Personality of Godhead" is Prabhupada's (ISKCON) phrase, so the row no longer says "Hindu". /Delphi/ TRUE. /Ayahuasca/ TRUE, "plants that teach" (Luna 1984), though not every plant is a teacher plant. /DMT/ TRUE, McKenna's phrase; Davis et al. 2020 surveyed 2,561 entity encounters, many judged the entities real. /Abductee/ MOSTLY TRUE, hypnosis was standard with Hopkins, Mack and the Hill case, but many abductees remembered without it (Clancy 2005). /Scientology/ MOSTLY TRUE, past-life recall in auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu only at the confidential OT III level. /Buddhist/ see the anatta note. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Susan_Clancy][Clancy]], [[https://en.wikipedia.org/wiki/Have_You_Lived_Before_This_Life][Hubbard 1958]], [[https://en.wikipedia.org/wiki/Xenu][Xenu]]
+[fn:heart] The heart (/ib/) as the centre of thought, emotion, memory and moral character; weighed against the feather of Ma'at in Book of the Dead spell 125. The Egyptians had other parts of the person too (/ka/, /ba/, the name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]], [[https://www.metmuseum.org/art/collection/search/552490][Met: heart scarab]]
 
-[fn:osis] MOSTLY TRUE. Osis and Haraldsson, /At the Hour of Death/: a "come to fetch you" theme in both countries (69% US, 79% India); Americans mostly saw deceased relatives, Indians more often religious figures such as the Yamdoots. Criticism: the authors themselves read the cross-cultural core as evidence /for/ an afterlife; there is an age confound (mean 62 vs. 42). Checked via a secondary source. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
+[fn:assessors] Book of the Dead spell 125: the "Negative Confession" before 42 assessor gods in the Hall of Two Truths. [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
 
-[fn:hypnosis-recall] MOSTLY TRUE. Dywan & Bowers 1983 (/Science/): hypnosis increased both correct and false recall, confidence rose regardless of accuracy; suggestibility and false-memory risk are the standard position. Criticism: some studies find small accuracy gains, outweighed by errors. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][abstract]]
+[fn:afterlife-guides] Hermes leads the souls of the dead in /Odyssey/ 24. Charon ferries them across the Acheron (Greek sources) or the Styx (Roman poets). Angels: Luke 16:22 and the antiphon /In paradisum/ ("may the angels lead you into paradise"). [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
 
-[fn:spanos] TRUE. Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320: past-life reports under hypnosis followed the expectations given beforehand and contained little accurate history. Paper confirmed by search, the manipulation details partly from memory.
+[fn:luhrmann] T. M. Luhrmann, /When God Talks Back/ (2012), fieldwork with Vineyard evangelicals; in her experiment a month of imaginative prayer made God feel more present. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][review]]
 
-[fn:recovered-memory] MOSTLY TRUE. The recovered-memory episode and the retractors are well documented. Criticism: hypnosis was one technique among several, many cases had none; how many recovered memories were false is not known globally, only case by case. [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO overview]]
+[fn:table] /Christian/: Nicene Creed; on felt presence in prayer, Luhrmann. /Muslim/: the shahada. /Vaishnava/: "Supreme Personality of Godhead" is A. C. Bhaktivedanta Swami Prabhupada's (ISKCON) phrase. /Delphi/: the Pythia spoke for Apollo. /Ayahuasca/: "plants that teach" (Luna 1984). /DMT/: McKenna's phrase; Davis et al. 2020 surveyed 2,561 entity encounters. /Abductee/: hypnotic regression was standard with Hopkins, Mack and the Hill case (Clancy 2005). /Scientology/: past lives in auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu in the confidential OT III. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Susan_Clancy][Clancy]], [[https://en.wikipedia.org/wiki/Xenu][Xenu]]
 
-[fn:rutherford] MOSTLY TRUE. Seattle Times 1996: counselor Donna Strand taught her self-hypnosis/trance over at least 64 sessions from 1992; memories of rape and a coat-hanger abortion; a 1995 exam showed she was a virgin, her father had a vasectomy when she was 4; $1 million settlement, no admission of wrongdoing. The earlier "pregnancy" detail had no source and was removed. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+[fn:osis] Osis and Haraldsson, /At the Hour of Death/: a "come to fetch you" theme in both countries (69% US, 79% India); Americans mostly saw deceased relatives, Indians more often religious figures such as the Yamdoots. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
 
-[fn:ingram] MOSTLY TRUE. Thurston County case, 1988. Ofshe invented an accusation (forcing a son and daughter to have sex) and Ingram wrote a detailed confession; told it was invented, he said it was "just as real to me as anything else". The trance-like elements of the interrogations were not verified. [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+[fn:hypnosis-recall] Dywan & Bowers 1983 (/Science/): hypnosis increased both correct and false recall, and confidence rose regardless. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][abstract]]
 
-[fn:loftus] TRUE. Loftus & Pickrell 1995: 6 of 24 participants. Criticism: small sample; a preregistered 2023 replication ("Lost in the mall again") found a lower rate. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][replication]]
+[fn:spanos] Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320.
 
-[fn:survivors] MOSTLY TRUE. The mainstream view (McNally, /Remembering Trauma/, 2003) is that most survivors remember. But it is a majority pattern, not a rule: Williams 1994 followed 138 women with documented abuse, 38% did not report it 17 years later, and 16% of those who did said they had forgotten it for a time (possibly ordinary childhood amnesia). Geraerts et al. 2007: memories recovered spontaneously outside therapy were corroborated about as often as continuous ones, memories recovered in therapy almost never. Criticism: the first draft said "never forgot", too absolute, now fixed; Geraerts' samples were small. WHO prevalence and McNally from memory. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://research-portal.st-andrews.ac.uk/en/publications/the-reality-of-recovered-memories-corroborating-continuous-and-di/][same, St Andrews]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+[fn:recovered-memory] Hypnosis was one technique among several (also guided imagery, suggestive questioning, sodium amytal). [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO overview]]
 
-[fn:felt-real] MOSTLY TRUE. Loftus' "rich false memory" studies: implanted memories can come with confidence, detail and emotion, and people often can't tell them from true ones by feel. Criticism: "exactly as real" (first draft) overstated it; on average false memories are somewhat less vivid, and only a minority of participants form them. Now "could feel just as real". [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus keynote]], [[https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.00650/epub][Frontiers 2020]]
+[fn:rutherford] Seattle Times, 1996: counselor Donna Strand taught her self-hypnosis over at least 64 sessions from 1992; the 1995 exam; a $1 million settlement without admission of wrongdoing. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+
+[fn:ingram] Thurston County, 1988. Ofshe's invented accusation: that Ingram had forced a son and daughter to have sex with each other. Told it was invented, Ingram said it was "just as real to me as anything else". [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+
+[fn:loftus] Loftus & Pickrell 1995: 6 of 24 participants. A preregistered replication in 2023 ("Lost in the mall again") also produced false memories, at a lower rate. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][replication]]
+
+[fn:survivors] McNally, /Remembering Trauma/ (2003). Williams 1994: of women with documented abuse who recalled it, 16% had forgotten it for a time. Geraerts et al. 2007: memories recovered spontaneously outside therapy were corroborated about as often as continuous ones, memories recovered in therapy almost never. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+
+[fn:felt-real] Loftus' work on "rich false memories": implanted memories can come with confidence, detail and emotion. On average they are somewhat less vivid than true ones, and only some participants form them. [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus keynote]]
 
 -----
 

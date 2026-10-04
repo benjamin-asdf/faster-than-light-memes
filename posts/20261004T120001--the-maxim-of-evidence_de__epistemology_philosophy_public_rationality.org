@@ -62,12 +62,56 @@ Verallgemeinern wir das. Wer darf sonst noch etwas behaupten, wenn das eine legi
 Jede Zeile hat dieselbe Form. Dieselbe Art Erfahrung, derselbe Schritt von der Erfahrung zur Ontologie.
 Wenn die letzte Zeile legitim ist, sind es alle.
 
+* Möglichkeitssinn
+
+Für das, was die Tabelle macht, hat Robert Musil ein Wort, im /Mann ohne Eigenschaften/:
+
+#+begin_quote
+Wenn es aber Wirklichkeitssinn gibt, und niemand wird bezweifeln, daß er seine Daseinsberechtigung hat, dann muß es auch etwas geben, das man Möglichkeitssinn nennen kann.[fn:musil]
+#+end_quote
+
+Und gleich danach, als Definition:
+
+#+begin_quote
+So ließe sich der Möglichkeitssinn geradezu als die Fähigkeit definieren, alles, was ebensogut sein könnte, zu denken und das, was ist, nicht wichtiger zu nehmen als das, was nicht ist.[fn:musil-def]
+#+end_quote
+
+Der Wirklichkeitssinn fragt: /Ist das so?/ Das ist die Frage, über die bei Newton alle streiten.
+Der Möglichkeitssinn fragt: /Was könnte ebensogut sein?/
+
+Und damit lässt sich die Maxime in einem Satz sagen:
+
+#+begin_quote
+Wenn X deine Evidenz ist, dann ist alles aus der Evidenzklasse X /möglich/.
+#+end_quote
+
+Nicht wahr. Möglich. Die Tabelle oben ist dann keine Liste von Gegnern, die ich widerlegen müsste.
+Sie ist der Möglichkeitsraum, den diese Art von Evidenz aufspannt. Newtons Seelenwelt ist ein Punkt darin, Krishna ein anderer, Xenu ein dritter.
+Der Klient hätte unter anderen Erwartungen ebensogut Jesus getroffen. Das ist der Möglichkeitssinn bei der Arbeit:
+Er nimmt das, was ist (/dieser/ Bericht), nicht wichtiger als das, was nicht ist (aber ebensogut hätte sein können).
+
+Die Welt so zu parsen, in Kontrafaktischem statt in Tatsachen, ist ein Zug von Popper und Deutsch.
+
+- Popper: Naturgesetze sind Verbote. Sie sagen, was /nicht/ geschehen kann, und: "the more they prohibit, the more they say."[fn:popper-prohibit]
+  Eine Theorie, die nichts verbietet, sagt nichts. Das ist auch der Test für Evidenz: Was verbietet sie?
+  Die Evidenzklasse /bedeutungsvolle Erfahrung im Ausnahmezustand/ verbietet nichts. Jede Zeile der Tabelle passt.
+- Deutsch: Seine Constructor Theory will die Physik als Dichotomie fassen, zwischen Transformationen, die möglich sind, und solchen, die unmöglich sind,
+  und er schreibt, kontrafaktische Aussagen seien "essential in science and everyday life".[fn:deutsch-ct]
+  Erklärungen mit kontrafaktischen Folgen seien fundamentaler als Vorhersagen dessen, was geschehen wird.
+
+Zwei Dinge, bei denen ich ehrlich nicht weiß:
+
+- Musil meint mit dem Möglichkeitssinn etwas Weiteres: eine Haltung, Wirklichkeit als Entwurf zu sehen, der auch anders ausfallen könnte, und das ist bei ihm eher utopisch als erkenntnistheoretisch.
+  Borge ich mir hier nur ein schönes Wort, oder ist es dieselbe Fähigkeit, einmal als Kunst und einmal als Test?
+- Der Möglichkeitsraum der Evidenz ist riesig. Wie schränkt man ihn ein, ohne schon vorher zu wissen, was wahr ist?
+  Poppers Antwort wäre: durch Kritik. Deutschs: durch schwer variierbare Erklärungen. Reicht das?
+
 * Sie können nicht alle wahr sein
 
 Und jetzt ist das Problem offensichtlich, einfach indem man die Liste macht.
 
 - Ein Leben, dann das Gericht (Mainstream-Christentum, Islam) vs. viele Leben (Reinkarnation).[fn:one-life]
-- Eine Seele, die reist (Newton) vs. gar kein Selbst, das reisen könnte (Buddhismus).[fn:anatta]
+- Eine Seele, die reist (Newton) vs. gar kein Selbst, das reisen könnte (Mainstream-Buddhismus).[fn:anatta]
 - Ein Gott vs. viele Götter vs. keine Götter, aber Elfen vs. keine Götter, aber Aliens.
 - Jesus ist Gottes Sohn (Christentum) vs. Jesus ist ein Prophet und ausdrücklich /nicht/ Gottes Sohn (Islam).[fn:islam-jesus]
 
@@ -105,7 +149,7 @@ Für die Tabelle oben lautet die ehrliche Antwort: gar nicht. Jedes Ergebnis jed
 
 David Deutsch liefert das schärfere Werkzeug (/The Beginning of Infinity/, Kapitel 1).[fn:deutsch]
 
-In der üblichen Nacherzählung (auch bei Deutsch) erklärten die alten Griechen den Winter mit Persephone: Hades entführte sie, sie aß Granatapfelkerne,
+Der Mythos von Persephone, wie er heute meist nacherzählt wird (auch bei Deutsch), erklärt den Winter: Hades entführte sie, sie aß Granatapfelkerne,
 also muss sie jedes Jahr eine Zeit in der Unterwelt verbringen, und solange sie fort ist, lässt die Trauer ihrer Mutter Demeter die Erde kahl und kalt werden.[fn:persephone]
 
 Das Problem ist nicht bloß, dass die Geschichte falsch ist. Das Problem ist, dass sie /leicht variierbar/ ist.[fn:easy-to-vary]
@@ -118,7 +162,7 @@ Und sie trifft, woran der Mythos scheitert: Wenn in Griechenland Winter ist, ist
 Jetzt auf das Leben zwischen den Leben angewandt.
 
 - Warum wandern /Seelen/? Warum nicht /Herzen/?
-  Die alten Ägypter haben das Selbst tatsächlich ins Herz gelegt und es nach dem Tod gegen eine Feder gewogen.[fn:heart]
+  Die alten Ägypter haben Verstand, Gedächtnis und Charakter ins Herz gelegt und es nach dem Tod gegen eine Feder gewogen.[fn:heart]
   Es würde die Hypnoseberichte genauso gut erklären.
 - Warum ein Rat der Ältesten? Warum nicht ein einzelner Richter, oder 42 Richter (auch Ägypten), oder keiner?[fn:assessors]
 - Warum eine Seele pro Person? Warum nicht sieben, oder eine Seele, die sich teilt?
@@ -169,6 +213,7 @@ DMT-Nutzer berichten von auffällig ähnlichen Wesen. Entführte berichten von a
 Studien zu Sterbebettvisionen in den USA und in Indien (Osis und Haraldsson, /At the Hour of Death/) fanden in beiden dasselbe Grundmuster,
 "jemand kommt, um dich abzuholen", aber /wer/ kommt, folgt der Kultur:
 Amerikaner sahen meist verstorbene Verwandte, Inder häufiger religiöse Gestalten, etwa die Boten Yamas.[fn:osis]
+(Osis und Haraldsson selbst lesen den gemeinsamen Kern als Hinweis auf ein Jenseits. Aber einen gemeinsamen Kern würden auch gemeinsame menschliche Gehirne erzeugen.)
 
 Wenn Übereinstimmung der Test wäre, würde jede Zeile bestehen, auch die, die einander widersprechen.
 Die Übereinstimmung gibt es /innerhalb/ einer Tradition, die Unterschiede /zwischen/ den Traditionen.
@@ -246,61 +291,69 @@ Erfahrungen der besonderen, bedeutungsvollen, überwältigenden Art können nich
 Bevor du einer Art von Evidenz traust, schau dir an, wem sie sonst noch Recht geben würde.
 #+end_quote
 
-[fn:newton] WAHR. Michael Newton, zertifizierter Hypnotherapeut, /Journey of Souls/ (Llewellyn, 1994; dt. /Reise der Seelen/): hypnotische Rückführung in ein "Leben zwischen den Leben". Das Buch präsentiert 29 Fälle; wissenschaftlich nicht bestätigt. Erste dt. Ausgabe 1996 hieß /Die Reisen der Seele/. [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
+[fn:musil] Musil, /Der Mann ohne Eigenschaften/, Erstes Buch, Kapitel 4, wortgetreu. [[https://projekt-gutenberg.org/authors/robert-musil/books/der-mann-ohne-eigenschaften-erstes-buch/chapter/5][Projekt Gutenberg]]
 
-[fn:newton-content] WAHR. "Heimkehr", ein Hauptführer, Seelengruppen, ein Rat der Ältesten, Wahl des nächsten Lebens und Körpers kommen alle im Buch vor. Geprüft an Zusammenfassungen, nicht am Buch selbst. [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
+[fn:musil-def] Selbes Kapitel, wortgetreu. Im Roman ist es die Charakterisierung Ulrichs durch den Erzähler.
 
-[fn:newton-consistent] GRÖSSTENTEILS WAHR. Der Verlagstext spricht von "remarkable consistency"; das ist Newtons eigene Behauptung, nicht unabhängig geprüft. Die oft zitierten "tausenden Sitzungen" hatten keine Primärquelle, daher stehen sie nicht mehr im Text. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][Verlagstext]]
+[fn:popper-prohibit] Popper, /Logik der Forschung/: Naturgesetze haben den Charakter von Verboten; "the more they prohibit, the more they say" (engl. Ausgabe). Deutsch knüpft daran an (§31 und §35, "what it forbids"). [[https://arxiv.org/pdf/2204.08413][arXiv 2204.08413]]
 
-[fn:kant] WAHR. Wortgetreu, /Grundlegung zur Metaphysik der Sitten/, AA 4:421 (bei Kant "daß"). [[https://projekt-gutenberg.org/authors/immanuel-kant/books/grundlegung-zur-metaphysik-der-sitten/chapter/4][Grundlegung, Gutenberg]]
+[fn:deutsch-ct] Deutsch, "Constructor Theory", /Synthese/ 190 (2013): Theorien als Dichotomie zwischen "possible and impossible physical transformations"; §2.13: "'Counterfactual' predictions of that kind seem to be essential in science and everyday life, and even in the idea of a law of physics." Konstruktortheorie ist ein Vorschlag, keine gesicherte Physik; die Verbindung zu Musil ist meine. [[https://arxiv.org/abs/1210.7439][arXiv 1210.7439]]
 
-[fn:one-life] GRÖSSTENTEILS WAHR. Katechismus der Katholischen Kirche 1013: keine Rückkehr in weitere Erdenleben, "keine Reinkarnation nach dem Tod" (mit Hebr 9,27). Sunnitischer und Zwölfer-schiitischer Islam lehren ein Leben, Barzakh, Auferstehung und Gericht und lehnen /tanasukh/ ab. Kritik: Die christliche Quelle ist katholisch; esoterische christliche Strömungen und heterodoxe Gruppen (Drusen: /taqammus/, Alawiten) lehren Wiedergeburt, daher "Mainstream". [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][KKK 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Drusen]]
+[fn:newton] Michael Newton, Hypnotherapeut, /Journey of Souls/ (Llewellyn, 1994; dt. /Reise der Seelen/), 29 Fallstudien zur Rückführung ins "Leben zwischen den Leben". [[https://en.wikipedia.org/wiki/Journey_of_Souls_(book)][Wikipedia]]
 
-[fn:anatta] GRÖSSTENTEILS WAHR. Der Mainstream-Buddhismus (v. a. Theravada) lehrt Wiedergeburt ohne beständiges Selbst, das wandert; die Milindapañha erklärt die Kontinuität mit Wagen und Flamme ("weder derselbe noch ein anderer"). Newtons Seelen behalten ihre Identität. Kritik: SN 22.59 zeigt nur, dass die Daseinsgruppen nicht das Selbst sind; die Pudgalavāda kannte eine fortbestehende "Person", tibetische Schulen einen Bewusstseinsstrom, und die Spannung ist in der Forschung umstritten. [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]]
+[fn:newton-content] Heimkehr, ein Hauptführer, Seelengruppen, ein Rat der Ältesten, Wahl des nächsten Lebens und Körpers: alles im Buch (geprüft an Zusammenfassungen). [[https://www.supersummary.com/journey-of-souls/summary/][SuperSummary]]
 
-[fn:islam-jesus] WAHR. Koran 4:171 ("der Messias, Jesus, Sohn der Maria, ein Gesandter Gottes ... fern ist es von Ihm, einen Sohn zu haben") und 19:35 verneinen ausdrücklich, dass Gott einen Sohn hat; 5:116 und 112:3 stützen das. Kritik: /al-Masih/ hat im Islam nicht die christliche Bedeutung eines göttlichen Erlösers. [[https://en.wikipedia.org/wiki/Jesus_in_Islam][Jesus im Islam]]
+[fn:newton-consistent] Der Verlagstext spricht von "remarkable consistency" der Fälle; das ist Newtons eigene Darstellung. [[https://www.porchlightbooks.com/products/journey-of-souls-michael-newton-9781567184853][Verlagstext]]
 
-[fn:popper] GRÖSSTENTEILS WAHR. Vortrag an der British Academy 1960, Einleitung zu /Conjectures and Refutations/ (dt. /Vermutungen und Widerlegungen/): "There are no ultimate sources of knowledge. Every source [...] is welcome; and every source [...] is open to critical examination." Kritik: Popper verwirft Quellen nicht, er spricht ihnen nur Autorität ab. Bibel, Trance und Experte sind meine Ergänzung. Der dt. Titel ist über eine Sekundärquelle belegt, nicht am Inhaltsverzeichnis geprüft. [[https://www.hist-analytic.com/Popper1.pdf][Text (PDF)]], [[https://www.getabstract.com/de/zusammenfassung/vermutungen-und-widerlegungen/13189][getAbstract]]
+[fn:kant] /Grundlegung zur Metaphysik der Sitten/, AA 4:421 (bei Kant "daß"). [[https://projekt-gutenberg.org/authors/immanuel-kant/books/grundlegung-zur-metaphysik-der-sitten/chapter/4][Grundlegung, Gutenberg]]
 
-[fn:popper-conjecture] GRÖSSTENTEILS WAHR. Bei Popper ist Wissen Vermutung; Kritik entscheidet, nicht Herkunft. Kritik: "Kritik überlebt" ist Paraphrase; Popper spricht von Bewährung und setzt sie nicht mit Rechtfertigung gleich. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
+[fn:one-life] Katechismus der Katholischen Kirche 1013: "keine Reinkarnation nach dem Tod" (mit Hebr 9,27). Sunnitischer und Zwölfer-schiitischer Islam lehren ein Leben, Auferstehung und Gericht und lehnen /tanasukh/ ab. Manche heterodoxe Gruppen, etwa die Drusen, lehren Wiedergeburt. [[https://www.vatican.va/archive/ENG0015/__P2I.HTM][KKK 1013]], [[https://www.michiganpublic.org/2025-05-06/syrian-druze-recall-what-they-believe-to-be-past-lives-even-vivid-details][Drusen]]
 
-[fn:popper-question] WAHR. Poppers Ersatzfrage ("How can we hope to detect and eliminate error?"), über Sekundärquellen zitiert, hier übersetzt. Die zweite Frage ist meine Paraphrase. [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Poppers neun Thesen]]
+[fn:anatta] Der Mainstream-Buddhismus, v. a. Theravada, lehrt Wiedergeburt ohne beständiges Selbst; die Milindapañha erklärt die Kontinuität mit Wagen und Flamme ("weder derselbe noch ein anderer"). Minderheitsschulen weichen ab, etwa die Pudgalavāda mit ihrer fortbestehenden "Person". [[https://www.newworldencyclopedia.org/entry/Anatta][New World Encyclopedia: Anatta]]
 
-[fn:deutsch] GRÖSSTENTEILS WAHR. Kapitel 1, "The Reach of Explanations", führt "hard to vary" mit Persephone vs. Achsneigung ein; die Neigung sagt gegenläufige Jahreszeiten auf beiden Halbkugeln voraus, das widerlegt den Mythos. Kritik: Deutschs Punkt ist weniger die Widerlegung als dass der Mythos sich durch triviale Änderungen retten lässt, die Achsneigung nicht. Buchtext selbst nicht abgerufen, nur Auszüge und Zusammenfassungen. [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][Zusammenfassung]]
+[fn:islam-jesus] Koran 4:171 ("der Messias, Jesus, Sohn der Maria, ein Gesandter Gottes ... fern ist es von Ihm, einen Sohn zu haben") und 19:35; siehe auch 5:116 und 112:3. [[https://quran.com/4/171][Koran 4:171]]
 
-[fn:persephone] Urteil zum ersten Entwurf: IRREFÜHREND, jetzt umformuliert. Homerischer Demeter-Hymnos: ein Kern, ein Drittel des Jahres unten, Demeters Trauer bringt Hungersnot; Ovid, /Metamorphosen/ 5: sieben Kerne, das halbe Jahr. Keine der Quellen nennt den Winter. Die Winter-Deutung ist spät und modern, und umstritten: In Griechenland ist die Brache die Sommerdürre, daher setzen manche Forscher Persephones Abwesenheit in den Sommer. Der Text kennzeichnet sie jetzt als "die übliche Nacherzählung", der auch Deutsch folgt. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][Sommer, nicht Winter]]
+[fn:popper] Vortrag an der British Academy 1960, Einleitung zu /Conjectures and Refutations/ (dt. /Vermutungen und Widerlegungen/): "There are no ultimate sources of knowledge. Every source [...] is welcome; and every source [...] is open to critical examination." Bibel, Trance und Experte sind meine Ergänzungen. [[https://www.hist-analytic.com/Popper1.pdf][Text (PDF)]], [[https://www.getabstract.com/de/zusammenfassung/vermutungen-und-widerlegungen/13189][getAbstract]]
 
-[fn:easy-to-vary] GRÖSSTENTEILS WAHR. Deutsch: Die Details des Mythos sind beliebig, also lässt er sich sofort flicken. Kritik: Meine Varianten (Göttin, Feige, Zorn) sind meine Illustration; ob das Buch konkrete Varianten nennt, ließ sich nicht bestätigen. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][Lesenotizen]]
+[fn:popper-conjecture] Popper: Alles Wissen ist Vermutung; es zählt, wie eine Theorie Kritik und Prüfung standhält, nicht woher sie kommt. [[https://plato.stanford.edu/entries/popper/][SEP: Popper]]
 
-[fn:tilt] WAHR. Grundwissen Astronomie; Deutsch nutzt die gegenläufigen Halbkugeln gegen den Mythos. Australien ist mein Beispiel; das Buch spricht von "den beiden Halbkugeln". [[https://www.timeanddate.com/astronomy/seasons-causes.html][timeanddate]]
+[fn:popper-question] Derselbe Aufsatz ("How can we hope to detect and eliminate error?"). Poppers Antwort: indem wir die Theorien anderer und unsere eigenen kritisieren. [[https://www.criticalrationalism.net/2010/02/02/karl-poppers-nine-theses-concerning-epistemology/][Poppers neun Thesen]]
 
-[fn:heart] GRÖSSTENTEILS WAHR. Das Herz (/ib/, /haty/) als Zentrum von Denken, Gefühl, Gedächtnis und moralischem Charakter; gewogen gegen die Feder der Maat im Gericht von Totenbuch 125; Spruch 30B, auf Herzskarabäen, bittet es, nicht gegen seinen Besitzer auszusagen. Kritik: "das Selbst" ist eine moderne Deutung, und die Ägypter kannten weitere Teile der Person (/Ka/, /Ba/, Name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]], [[https://www.metmuseum.org/art/collection/search/552490][Met: Herzskarabäus]]
+[fn:deutsch] /The Beginning of Infinity/ (2011), Kapitel 1, "The Reach of Explanations". [[https://www.lesswrong.com/posts/jzibHBxczkZuTKY93/david-deutsch-a-new-way-to-explain-explanation][Zusammenfassung]]
 
-[fn:assessors] WAHR. Spruch 125, das "negative Sündenbekenntnis" vor 42 Beisitzer-Göttern in der Halle der beiden Wahrheiten. Ägyptologen sagen eher "Beisitzer" als "Richter". [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
+[fn:persephone] Homerischer Demeter-Hymnos (ein Kern, ein Drittel des Jahres unten) und Ovid, /Metamorphosen/ 5 (sieben Kerne, das halbe Jahr). Die antiken Texte nennen den Winter nicht; die Winter-Deutung ist die spätere Lesart. Manche Forscher setzen Persephones Abwesenheit in den griechischen Sommer, die Brache. [[https://en.wikipedia.org/wiki/Persephone][Persephone]], [[https://talesoftimesforgotten.com/2023/11/25/persephone-is-in-the-underworld-during-the-summer-not-the-winter/][Sommer, nicht Winter]]
 
-[fn:afterlife-guides] GRÖSSTENTEILS WAHR. Hermes führt die Seelen der Toten schon in der /Odyssee/ 24 (der Beiname Psychopompos ist später). Charon kommt bei Homer nicht vor; griechische Autoren setzen ihn an den Acheron, römische Dichter an den Styx, daher "Charons Fähre". Engel: Lk 16,22 (Lazarus von Engeln getragen) und die Antiphon /In paradisum/ ("ins Paradies mögen Engel dich geleiten"), ein Gebet, keine Lehre. [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
+[fn:easy-to-vary] Deutsch: Die Details des Mythos sind beliebig, also lässt er sich sofort flicken, die Achsneigung nicht. Die konkreten Varianten sind meine Beispiele. [[https://www.goodreads.com/notes/12187787-the-beginning-of-infinity/23103620-conal-elliott/57241ec9-0760-40cc-bcd0-7269a9123b95][Lesenotizen]]
 
-[fn:luhrmann] WAHR. T. M. Luhrmann, /When God Talks Back/ (2012): Beten als erlernte Fertigkeit; in ihrem Experiment ließ ein Monat imaginatives Beten Gott präsenter wirken. Sie verbindet das mit dem Merkmal "Absorption". Geprüft an Rezensionen, nicht am Buch. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][Rezension]]
+[fn:tilt] Genau das nutzt Deutsch: gegenläufige Jahreszeiten auf beiden Halbkugeln. [[https://www.timeanddate.com/astronomy/seasons-causes.html][Ursachen der Jahreszeiten]]
 
-[fn:table] Zeile für Zeile: /Christin/ GRÖSSTENTEILS WAHR, Nizänum; Luhrmann dokumentiert die gefühlte Gegenwart Gottes im Gebet bei evangelikalen (Vineyard-)Christen, also nicht bei allen. /Muslim/ GRÖSSTENTEILS WAHR, die Schahada sagt "Gesandter" (/rasul/), korrigiert. /Vaishnava/ GRÖSSTENTEILS WAHR, "Supreme Personality of Godhead" ist Prabhupadas (ISKCON) Formel, daher nicht mehr "Hindu". /Delphi/ WAHR. /Ayahuasca/ WAHR, "Pflanzen, die lehren" (Luna 1984). /DMT/ WAHR, McKennas Formulierung; Davis et al. 2020 befragten 2.561 Menschen, viele hielten die Wesen für real. /Entführte/ GRÖSSTENTEILS WAHR, Hypnose war Standard bei Hopkins, Mack und im Fall Hill, viele erinnerten sich aber ohne (Clancy 2005). /Scientology/ GRÖSSTENTEILS WAHR, Rückerinnerung im Auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu erst auf der vertraulichen Stufe OT III. /Buddhistin/ siehe Anatta-Fußnote. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Have_You_Lived_Before_This_Life][Hubbard 1958]]
+[fn:heart] Das Herz (/ib/) als Zentrum von Denken, Gefühl, Gedächtnis und moralischem Charakter; gewogen gegen die Feder der Maat in Totenbuch-Spruch 125. Die Ägypter kannten weitere Teile der Person (/Ka/, /Ba/, Name). [[https://en.wikipedia.org/wiki/Weighing_of_the_heart][Weighing of the heart]]
 
-[fn:osis] GRÖSSTENTEILS WAHR. Osis und Haraldsson, /At the Hour of Death/: ein "kommt dich abholen"-Motiv in beiden Ländern (69 % USA, 79 % Indien); Amerikaner sahen meist verstorbene Verwandte, Inder häufiger religiöse Gestalten wie die Yamdoots. Kritik: Die Autoren selbst deuten den kulturübergreifenden Kern als Beleg /für/ ein Jenseits; Altersunterschied (im Schnitt 62 vs. 42). Über Sekundärquelle geprüft. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
+[fn:assessors] Totenbuch-Spruch 125: das "negative Sündenbekenntnis" vor 42 Beisitzer-Göttern in der Halle der beiden Wahrheiten. [[https://en.wikipedia.org/wiki/Assessors_of_Maat][Assessors of Maat]]
 
-[fn:hypnosis-recall] GRÖSSTENTEILS WAHR. Dywan & Bowers 1983 (/Science/): Hypnose steigerte richtige wie falsche Erinnerungen, die Gewissheit stieg unabhängig von der Richtigkeit; erhöhte Suggestibilität und Risiko falscher Erinnerungen sind Standardposition. Kritik: Manche Studien finden kleine Genauigkeitsgewinne, die von Fehlern überwogen werden. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][Abstract]]
+[fn:afterlife-guides] Hermes führt die Seelen der Toten in der /Odyssee/ 24. Charon setzt sie über den Acheron (griechische Quellen) oder den Styx (römische Dichter). Engel: Lk 16,22 und die Antiphon /In paradisum/ ("ins Paradies mögen Engel dich geleiten"). [[https://en.wikipedia.org/wiki/Charon][Charon]], [[https://en.wikipedia.org/wiki/In_paradisum][In paradisum]]
 
-[fn:spanos] WAHR. Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320: Berichte über frühere Leben unter Hypnose folgten den vorher gegebenen Erwartungen und enthielten kaum zutreffende Geschichte. Studie per Suche bestätigt, Details teils aus dem Gedächtnis.
+[fn:luhrmann] T. M. Luhrmann, /When God Talks Back/ (2012), Feldforschung bei Vineyard-Evangelikalen; in ihrem Experiment ließ ein Monat imaginatives Beten Gott präsenter wirken. [[https://emotionsblog.history.qmul.ac.uk/2013/08/book-review-when-god-talks-back-by-tm-luhrmann/][Rezension]]
 
-[fn:recovered-memory] GRÖSSTENTEILS WAHR. Die Recovered-Memory-Episode und die "Retractors" sind gut dokumentiert. Kritik: Hypnose war eine Technik unter mehreren, viele Fälle hatten keine; wie viele wiedergefundene Erinnerungen falsch waren, weiß man nicht insgesamt, nur Fall für Fall. [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO-Überblick]]
+[fn:table] /Christin/: Nizänum; zur gefühlten Gegenwart im Gebet Luhrmann. /Muslim/: die Schahada. /Vaishnava/: "Supreme Personality of Godhead" ist die Formel von A. C. Bhaktivedanta Swami Prabhupada (ISKCON). /Delphi/: die Pythia sprach für Apollon. /Ayahuasca/: "Pflanzen, die lehren" (Luna 1984). /DMT/: McKennas Formulierung; Davis et al. 2020 befragten 2.561 Menschen zu Begegnungen. /Entführte/: hypnotische Rückführung war Standard bei Hopkins, Mack und im Fall Hill (Clancy 2005). /Scientology/: frühere Leben im Auditing (Hubbard, /Have You Lived Before This Life?/, 1958), Xenu auf der vertraulichen Stufe OT III. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8716686][Davis et al. 2020]], [[https://revistas.icanh.gov.co/index.php/rca/article/view/1518][Luna 1984]], [[https://en.wikipedia.org/wiki/Have_You_Lived_Before_This_Life][Hubbard 1958]]
 
-[fn:rutherford] GRÖSSTENTEILS WAHR. Seattle Times 1996: Beraterin Donna Strand brachte ihr ab 1992 in mindestens 64 Sitzungen Selbsthypnose/Trance bei; Erinnerungen an Vergewaltigung und eine Kleiderbügel-Abtreibung; eine Untersuchung 1995 zeigte, dass sie Jungfrau war, ihr Vater hatte seit ihrem 4. Lebensjahr eine Vasektomie; Vergleich über 1 Million Dollar ohne Schuldeingeständnis. Das frühere Detail "Schwangerschaft" hatte keine Quelle und wurde gestrichen. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+[fn:osis] Osis und Haraldsson, /At the Hour of Death/: ein "kommt dich abholen"-Motiv in beiden Ländern (69 % USA, 79 % Indien); Amerikaner sahen meist verstorbene Verwandte, Inder häufiger religiöse Gestalten wie die Yamdoots. [[https://psi-encyclopedia.spr.ac.uk/articles/deathbed-visions][Psi Encyclopedia]]
 
-[fn:ingram] GRÖSSTENTEILS WAHR. Thurston County, 1988. Ofshe erfand einen Vorwurf (Sohn und Tochter zum Sex miteinander gezwungen), Ingram schrieb ein detailliertes Geständnis; als man ihm sagte, es sei erfunden, sagte er, es sei für ihn "just as real as anything else". Trance-artige Elemente der Verhöre nicht geprüft. [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+[fn:hypnosis-recall] Dywan & Bowers 1983 (/Science/): Hypnose steigerte richtige wie falsche Erinnerungen, die Gewissheit stieg in jedem Fall. [[https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=95737][Abstract]]
 
-[fn:loftus] WAHR. Loftus & Pickrell 1995: 6 von 24 Teilnehmern. Kritik: kleine Stichprobe; eine präregistrierte Replikation 2023 ("Lost in the mall again") fand eine niedrigere Rate. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][Replikation]]
+[fn:spanos] Spanos et al. 1991, /J. Personality and Social Psychology/ 61(2), 308–320.
 
-[fn:survivors] GRÖSSTENTEILS WAHR. Die Mainstream-Sicht (McNally, /Remembering Trauma/, 2003): Die meisten Betroffenen erinnern sich. Aber das ist eine Mehrheit, keine Regel: Williams 1994 begleitete 138 Frauen mit dokumentiertem Missbrauch, 38 % berichteten ihn 17 Jahre später nicht, und 16 % derer, die ihn berichteten, hatten ihn zeitweise vergessen (womöglich gewöhnliche Kindheitsamnesie). Geraerts et al. 2007: Spontan außerhalb der Therapie wiedergekehrte Erinnerungen ließen sich etwa so oft bestätigen wie durchgehende, in der Therapie wiedergefundene fast nie. Kritik: Der erste Entwurf sagte "nie vergessen", zu absolut, jetzt korrigiert; Geraerts' Stichproben waren klein. WHO-Zahlen und McNally aus dem Gedächtnis. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+[fn:recovered-memory] Hypnose war eine Technik unter mehreren (auch geführte Imagination, suggestive Fragen, Natriumamytal). [[https://ebsco.com/research-starters/health-and-medicine/recovered-memory-therapy-rmt][EBSCO-Überblick]]
 
-[fn:felt-real] GRÖSSTENTEILS WAHR. Loftus' Studien zu "rich false memories": Eingepflanzte Erinnerungen können mit Gewissheit, Details und Gefühl einhergehen, und vom Gefühl her lassen sie sich oft nicht von wahren unterscheiden. Kritik: "genauso echt" (erster Entwurf) war zu stark; im Schnitt sind falsche Erinnerungen etwas weniger lebhaft, und nur eine Minderheit bildet sie. Jetzt "konnten sich genauso echt anfühlen". [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus]], [[https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2020.00650/epub][Frontiers 2020]]
+[fn:rutherford] Seattle Times, 1996: Beraterin Donna Strand brachte ihr ab 1992 in mindestens 64 Sitzungen Selbsthypnose bei; die Untersuchung 1995; ein Vergleich über 1 Million Dollar ohne Schuldeingeständnis. [[https://archive.seattletimes.com/archive/19961116/2359981/woman-says-memory-of-abuse-implanted-church-settles][Seattle Times]]
+
+[fn:ingram] Thurston County, 1988. Ofshes erfundener Vorwurf: Ingram habe Sohn und Tochter zum Sex miteinander gezwungen. Als man ihm sagte, es sei erfunden, sagte Ingram, es sei für ihn "just as real as anything else". [[https://en.wikipedia.org/wiki/Thurston_County_ritual_abuse_case][Wikipedia]]
+
+[fn:loftus] Loftus & Pickrell 1995: 6 von 24 Teilnehmern. Eine präregistrierte Replikation 2023 ("Lost in the mall again") erzeugte ebenfalls falsche Erinnerungen, seltener. [[https://cora.ucc.ie/items/ea64497b-c210-4ad6-9bf0-497939ea752d][Replikation]]
+
+[fn:survivors] McNally, /Remembering Trauma/ (2003). Williams 1994: Von Frauen mit dokumentiertem Missbrauch, die sich erinnerten, hatten 16 % ihn zeitweise vergessen. Geraerts et al. 2007: Spontan außerhalb der Therapie wiedergekehrte Erinnerungen ließen sich etwa so oft bestätigen wie durchgehende, in der Therapie wiedergefundene fast nie. [[https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2007.01940.x/][Geraerts et al. 2007]], [[https://pesquisa.bvsalud.org/ses/resource/pt/mdl-7860815][Williams 1994]]
+
+[fn:felt-real] Loftus' Arbeiten zu "rich false memories": Eingepflanzte Erinnerungen können mit Gewissheit, Details und Gefühl einhergehen. Im Schnitt sind sie etwas weniger lebhaft als wahre, und nur ein Teil der Versuchspersonen bildet sie. [[https://www.psychologicalscience.org/observer/grand-illusions-of-memory-keynote-address-showcases-evidence-of-false-memories][APS: Loftus]]
 
 -----
 
