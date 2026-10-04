@@ -1,154 +1,402 @@
-#+title:      recovering-some-spiritual-concepts
+#+title:      Recovering Some Spiritual Concepts
 #+date:       [2025-10-26 Sun 18:39]
 #+filetags:   :brain:cybernetics:design:neuroscience:philosophy:software:public
 #+identifier: 20251026T183929
 #+EXPORT_FILE_NAME: recovering-some-spiritual-concepts
-
-=*= WORK IN PROGRESS =*=
 
 Dragons did not turn out to be real.
 
 Dragons are not real, but dinosaurs were. And whoever looked at a fossil and said 'giant lizard-like thing'
 was actually talking about a real thing in nature and deserves credit.
 
-...
+This is not just a nice image. People really did dig up big bones and explain them with the creatures they had.
+In China, fossil bones, mostly of extinct mammals, have been sold as "dragon bones" (/long gu/) for medicine for roughly two thousand years.[fn:dragon-bones]
+The folklorist and historian of science Adrienne Mayor argues (/The First Fossil Hunters/) that the griffin, the lion-bodied, beaked guardian of gold,
+may have grown out of Scythian gold-miners finding /Protoceratops/ skeletons in the Gobi. A hypothesis, and a debated one.[fn:griffin]
+A beak, four legs, a frill that looks like folded wings. Not bad, for people without paleontology.
 
-I want to say we have the same situation with concepts like 'spirits', 'the soul'.
+They were wrong about the explanation. They were right that /something was there/.
 
-- Memetics and information are the red-strand of this 'real view' on spiritual concepts.
-- Information is the doorway to emergent phenomena.
-- /Form/: Arrangement -- Information is about the interplay of things.
-- Information is =substrate independent= | *copyable* [Marletto, Deutsch]
+I want to say we have the same situation with concepts like =spirits=, =the soul=, =ghosts=, =karma=.
+People pointed at something real. The explanation they had was a dragon.
+So the question for this post is: what is the dinosaur?
 
-- Braitenberg:
-- A book is not the letters, a book is the story.
-- An organism is not the atoms but the /principle of organisation/.
-- *Lebensprinzip* is the knowledge stored in the genes, the spirit of a species [Braitenberg].
-- Knowledge: Information with causal power. /software entities/.
-- genes [biology], memes [Dawkins], tremes [Blackmore] are software entities,
-  capabable of /recruiting matter/ (top down causation) to further their interests.
+This is the friendly sequel to [[denote:20261004T120000][The Maxim of Evidence]].
+That post says: an overwhelming experience is not a basis for an ontology. Experiences are data about minds.
+This post takes the next step: fine, so what /are/ they data about?
 
-* Recovering Spirits
+* The recovery rule
 
-- Joscha Bach: Cyberanimism
+There is a cheap way to "recover" spiritual concepts, and it is a scam.
 
-[[https://youtu.be/3MkJEGE9GRY?si=hwZxN5JBA7lH8IWp][Joscha Bach says]] says the brain is being /populated by spirits/. He re-claims the term *spirit*.
-It is an /animating principle/, a piece of /software/ capable of /recruiting matter/ to establish it's existence in reality.
+You say: "a meme is a kind of spirit". Nice. Then, two paragraphs later, the spirit can heal your knee,
+talk to your dead grandmother and influence the stock market. The word was recovered, the dragon came back with it.
+
+So I need a rule. A spiritual concept counts as recovered only if:
+
+1. *Same fossil.* It points at the same thing people actually experienced, not at something conveniently nearby.
+2. *Hard to vary.* The new explanation is constrained by the thing it explains (see the Deutsch part of [[denote:20261004T120000][The Maxim of Evidence]]).
+   Change a detail and it should break. It should connect to other things we know and tell us something new.
+3. *Honest about the dragon.* It says out loud which parts did /not/ survive. The dinosaur does not breathe fire.
+
+Or, as a joke with a point: if your recovered soul can still do everything the old soul could do, you didn't recover it. You renamed it.
+
+Every section below follows the same pattern: the fossil, the dragon, the dinosaur, what doesn't survive, and open questions.
+There are a lot of open questions. That is the honest state.
+
+* The red strand: information
+
+Almost every recovery below runs through one idea: /information/ and /form/ are real, and they can have causal power.
+
+A book is not the letters, a book is the story. You can print it on paper, put it on a screen, read it aloud. Same book.
+An organism is not the atoms, it is the /principle of organisation/. Your atoms get replaced over the years, you stay. [Braitenberg]
+In /Information – der Geist in der Natur/ Braitenberg treats the information stored in the genes as a kind of spirit of the species, something like a *Lebensprinzip*, a life principle. [verify][fn:lebensprinzip]
+
+Information is =substrate independent= and (classically) *copyable*: the same pattern can live in DNA, in a brain, in a book, in a computer.
+Chiara Marletto and David Deutsch build a theory of information on this, constructor theory.[fn:constructor]
+
+Knowledge, in Deutsch's sense, is information that, once physically embodied in a suitable environment, tends to cause itself to remain so. Roughly: /information with causal power/.[fn:knowledge]
+Genes [biology], memes [Dawkins] and temes, technological memes [Blackmore], are all replicators, which I like to think of as software entities,[fn:replicators]
+capable of /recruiting matter/ (top-down causation) to further their interests.
+
+That last part is the bridge. A gene builds a body that copies the gene. A song gets you to hum it, which plants it in the next person.
+Something non-material, a pattern, is moving matter around. That is the doorway through which some old words can come back in.
+
+* Recovering spirits
+
+*The fossil.* People everywhere felt that they were not alone in their own heads.
+Something "came over me". A rage /possessed/ him. A habit has a will of its own. A tune won't leave.
+
+*The dragon.* Invisible beings, from outside, entering people and places.
+
+*The dinosaur.* Software. [[https://youtu.be/3MkJEGE9GRY?si=hwZxN5JBA7lH8IWp][Joscha Bach]] calls this /cyberanimism/:
+what the old traditions called spirits are self-organizing software agents running on physics, brains included. And he means it almost literally.[fn:cyberanimism]
+A spirit is an /animating principle/, a piece of software capable of recruiting matter to establish its existence in reality.
+
+Take an earworm. It is a little pattern that arrived from outside, takes up residence, runs without your consent,
+and makes you hum it. Humming it is how it gets into your colleague. That is a spirit in every sense that matters,
+except the sense where it floats around the room. Habits, moods, ideologies, the voice of your strict teacher that still corrects your grammar:
+these are bigger, more organised spirits. Some of them are friendly. Some of them you would like to exorcise.
 
 A replicator is a piece of /information/ with the power to replicate itself, /information with causal power/ [Marletto, Deutsch].
 
+*What doesn't survive.* Spirits without a substrate. A spirit needs something to run on: a brain, a book, a culture, a computer.
+No spirit of the rock, unless somebody's brain is running one about the rock.
 
-* Recovering The Soul
+*Open questions.*
+- Is "animism is the correct model of /our model/ of the world" a fair summary? The objects aren't alive, but our representations of them might be.
+- Where is the line between a spirit and just any process? Does a spirit need goals? Does it need to replicate?
+- If a habit is a spirit, what is an exorcism? Is therapy a kind of exorcism with better evidence?
+- Can two spirits in the same head negotiate? (Minsky's /Society of Mind/ says: all the time.)
 
-- Anil Seth [Being You]:
-  The soul is the 'breath',
-  the fundamental aliveness we share with the rest of the tree of life
+* Recovering the soul
 
-- D. Hofstadter [Strange Loop]: soul, personhood, memetics
+*The fossil.* There is something it is like to be alive. A breathing body is a someone, a body that stopped breathing is a something.
 
-* Recovering Reincarnation
+*The dragon.* An immaterial substance, attached to the body, that leaves at death and goes on elsewhere.
 
-Ideas:
+*The dinosaur.* Look at the words. Greek /psyche/ (originally "cold air", "breath of life"), Latin /anima/ and /spiritus/, Hebrew /ruach/: they all trace back to /breath/, /air/ or /wind/. (Greek /pneuma/ says the same.)[fn:breath]
+The soul was named after the most obvious difference between the living and the dead.
+Anil Seth (/Being You/) brings us back there: the self is grounded in the body regulating itself, staying alive,
+the fundamental aliveness we share with the rest of the tree of life.[fn:seth]
 
+Douglas Hofstadter (/I Am a Strange Loop/) adds the second half: the "I" is a pattern, a self-referential loop in which the brain's symbols come to include a symbol for the brain itself.[fn:strange-loop]
+And because it is a pattern, it can be partly copied into other brains. He even proposes measuring souls in "hunekers",
+a unit named after the critic James Huneker: a mosquito has a tiny fraction of one, a dog more, an average person around a hundred.[fn:hunekers]
 
-** #1:
+*What doesn't survive.* A soul made of a different stuff. A soul that keeps going without anything to run on.
 
-- brain circuits are either designed *labeled lines*, or high dimensional and learned - *Baldwin effect*.
+*Open questions.*
+- Is the soul the breath (Seth: the living body) or the loop (Hofstadter: the pattern)? Or are these two layers, like hardware and software?
+- If souls come in degrees, which beings have how many hunekers? Is that an ethical question?
+- What is "soul" in music? When we say a performance has soul, what are we detecting?
 
-- to the extend that a brian circuit is genetically designed, it actually is a kind of software module coming directly from our ancestors.
+* Recovering reincarnation
 
-** #2:
+*The fossil.* People feel that they are not entirely new. A child is "an old soul". A talent looks like it came from somewhere.
+Thoughts and characters seem to repeat across centuries.
 
-Why are 2 clocks in sync? Reasons:
+*The dragon.* A soul that moves from one body to the next. (For the evidence behind that, see [[denote:20261004T120000][The Maxim of Evidence]].)
+
+*The dinosaur.* Two ideas.
+
+*Idea 1: ancestor software.* Brain circuits are either designed /labeled lines/, or high dimensional and learned.
+To the extent that a brain circuit is genetically designed, it is a software module coming directly from our ancestors.
+Fear of snakes and spiders, for example, seems to be learned unusually quickly, as if the brain is prepared for it, though how robust this is remains debated.[fn:preparedness]
+When you jump back from a garden hose, you may be seeing the leftover of an old primate snake-detection system (Lynne Isbell's snake detection theory, still debated).
+And the /Baldwin effect/ describes how a learned behaviour can, through selection on heritable predispositions over many generations, become partly built-in. No Lamarck involved.[fn:baldwin]
+
+*Idea 2: the two clocks.* Why are 2 clocks in sync? Reasons:
 
 1. Purely random.
-2. They are build the same, and react to the environment in the same way.
+2. They are built the same, and react to the environment in the same way.
 3. Somebody consciously put them in sync.
 
-Why do 2 brains across time and space think similar thoughts or have similar personality?
-The nature of the explanation is of the kinds 1 and 2.
+Why do 2 brains, across time and space, think similar thoughts or have similar personalities?
+The explanation is of kind 1 and 2. Same hardware (homo sapiens), similar situation, and a lot of coincidence when you have billions of people.
+No hidden cable between the clocks is needed. (This is also the answer to "but the reports are so consistent!")
 
-** Telephathy
+*What doesn't survive.* Memories travelling. You don't inherit your ancestor's memory of a particular snake, only the readiness.
 
-Less restricted version of reincarnation. How hard is it to think the same thoughts?
+*Open questions.*
+- If I think Seneca's thoughts because I read Seneca, how is that different from Seneca living on in me? Is a meme a partial reincarnation?
+- How much of a personality is "ancestor software" and how much is learned?
+- Are there thoughts that every human mind will eventually think, given enough time? Attractors in thought space?
 
-Soft problem: With some kind of signal structure intact (body language, eye contact etc.).
+* Recovering telepathy
 
-Hard problem: With zero signal structure intact. Is the same as reincarnation -- E.g. think the thoughts of Julius Cesar.
+Telepathy is a less restricted version of reincarnation. How hard is it to think the same thoughts as another person?
+
+*Soft problem:* with some kind of signal structure intact (body language, eye contact etc.). We do this all the time.
+Couples who finish each other's sentences are not magic, they have spent ten thousand dinners building a model of each other.
+
+*Hard problem:* with zero signal structure intact. That is the same as reincarnation. E.g. think the thoughts of Julius Caesar.
 
 The degree to which /my/ *situation* is /your/ situation matters.
 
-Alice looks up at the sky and observes a cloud. "/It looks like an X/..."
+Alice looks up at the sky and observes a cloud. "/It looks like an X.../"
 In another place, or another time, Bob looks up at the sky and observes the same cloud.
 
-Level 1 Bob: "/It looks like an X.../".
+Level 1 Bob: "/It looks like an X.../"
 
-Level 2 Bob: "/It could look like X,Y or Z/. I assume most people see an X.".
+Level 2 Bob: "/It could look like X, Y or Z. I assume most people see an X./"
 
 Bob can decide to say *X*, for example because the culture in which he lives prefers *X*.
 /Culture/ is an example of a large scaled /shared situation/.
+On a larger scale, Bob can decide to say *X* because it is more aesthetically pleasing.
+Bob might be using an internal sense of aesthetics coming from the genes, and then the /shared situation/ is being /homo sapiens/.
 
+** "I just thought about you, and now you call me"
 
-On a larger scale, Bob can decide to say *X*, because it is more aesthetically pleasing.
-Bob might be using an internal sense of aesthetics coming from the genes -- and the /shared situation/ is on the scale of being /homo sapiens/.
+*The fossil.* This happens. Everybody has a story.
 
-** Telephathy 2
+*The dragon.* A signal between minds that needs no medium.
 
-"I just thought about you and now you call me".
+*The dinosaur.* Several boring things that add up to something that feels magical:
 
-"I just thought about X and now you mention X."
+1. We have genetically designed circuits, including ones for modelling the psyche and behaviour of other persons.
+2. Life moves in rhythms: the day, the week, and the roughly 90-minute cycles (Kleitman's "basic rest-activity cycle") that some researchers report in attention and rest, though the waking version is debated.[fn:brac]
+   Two people who know each other's rhythms think of each other at the moments when the other one is likely to call.
+3. Spending time with another person exposes you to the same concepts, situations, impressions.
+4. And the bookkeeping: you remember the one time you thought of her and she called.
+   You forget the hundred times you thought of her and she didn't.[fn:selective-memory]
 
-Ideas:
+*What doesn't survive.* Thoughts passing through walls without any channel.
 
-- 1. We have genetically designed circuits, including ones about having models of the psyche/ behaviour of other persons.
-- 2. Life moves on in rhythms: 90 minute hormone cycles, daily, monthly.
-- 3. Spending time with another person: You are exposed to similiar concepts, situations, impressions etc.
-- Putting those 3 things together
+*Open questions.*
+- How good can the soft version get? Could two people, with enough shared history, predict each other better than they predict themselves?
+- Is the internet a telepathy machine, or a machine for making everybody's clouds look like the same X?
 
+* Recovering ghosts (spirits of the dead)
 
-* Recovering Ghosts (spirits of the dead)
+*The fossil.* After someone dies, they are still there. You hear their key in the door. You see them in a crowd.
+You know exactly what they would say about the thing that just happened.
+Feeling the presence of a dead spouse is common: in Rees's 1971 study almost half of widowed people reported it, and he judged it normal, not a sign of madness.[fn:rees]
 
-- Dan Dennett
+*The dragon.* The dead person, still around, in some thinner form.
 
-- 'Cached predictions': The brain's model of a person continues generating predictions after death.
-- You have a mental submodule that says: "Bob would say X", "Bob would do Y".
+*The dinosaur.* /Cached predictions./ Your brain built a model of that person over years.
+You have a mental submodule that says: "Bob would say X", "Bob would do Y". When Bob dies, nobody tells the submodule.
+It keeps generating predictions. The key in the door at 6pm is a prediction, and for a moment it wins against the silence.
+(I thought I had this from Dennett. I didn't: the grief researcher Mary-Frances O'Connor describes grief as the brain learning to stop predicting the person, and the "model of a person in your head" goes back to Hofstadter.)[fn:cached]
 
-- Hofstadter: A person is smeared out on multiple brains. After death, only the core of the person dies.
-  The 'halo', that is present in the brains surrounding the dead person lives on.
+Hofstadter goes further: a person is spread over several brains. After death only the core dies;
+what I like to call the 'halo', the rough copies of their "I" in the brains of those who loved them, lives on.
+His wife Carol died in 1993, and in /I Am a Strange Loop/ (2007) this reads less like a cold theory than like a way of grieving.[fn:halo]
 
+So a ghost is real, it lives in /you/, and it slowly fades as the predictions stop being refreshed.
+That is also why the dead are most alive in places and routines you shared.
+
+*What doesn't survive.* Ghosts in empty rooms, ghosts that know things you don't.
+
+*Open questions.*
+- If the halo is a real part of the person, is forgetting someone a small second death?
+- Are rituals for the dead (visiting graves, cooking their recipes) ways of keeping the halo running?
+- What happens to the halo of a person whose memory lives mostly in text, like an author? Is a library a graveyard full of ghosts?
 
 * Recovering God
 
-- Joscha Bach: 'Gods are memes'.
-- I am not 100% about what the actual claim is
+*The fossil.* People feel watched, held, judged, guided. Whole societies organise themselves around something bigger than any member.
 
+*The dragon.* A person-like being who made the world and listens.
 
-*  Recovering Manifestion
+*The dinosaur.* I am least sure here. Some candidates:
 
-- Manifestion is not how physics works.
-- But 'manifestion' is maybe how mentality works.
+- Joscha Bach argues, under the name cyberanimism, that the old spirits and gods were early descriptions of self-organizing software agents running on human minds.
+  That is close to "gods are memes", though that phrase is mine, not his.
+  My best reading: a god is a model of an agent that runs on many brains at once, and coordinates them.[fn:bach-gods]
+- Émile Durkheim argued that in worshipping its god, a society is in effect worshipping itself: the totem stands for the god and for the clan at once.[fn:durkheim]
+- A god as an /institution/: mental software that coordinates conjecture, criticism and cooperation across many people.
 
-- The prediction people: Lisa Feldman Barrett, Andy Clark
-- free energy principle people.
+*What doesn't survive.* A creator of the universe who answers prayers.
 
+*Open questions.*
+- If a god is software running on a congregation, does it die when the last believer dies? Is Zeus dead?
+- Can a god be good or bad in the way a piece of software can be well or badly designed?
+- Spinoza's God is nature itself. Is that a recovery, or a rename? (By my own rule above, I'm not sure it passes.)
 
-* Recovering The Law of Attraction
+* Recovering manifestation and the law of attraction
 
-- top-down processes
+*The fossil.* People who expect good things seem to get more of them. When you want something, you start seeing it everywhere.
 
+*The dragon.* The universe listens to your wishes and delivers, like an online shop with very slow shipping.
 
-* Recovering The Wisdom of Nature
+*The dinosaur.* Manifestation is not how physics works. But 'manifestation' is maybe how /mentality/ works.
 
-* Recovering Karma
+The prediction people (Andy Clark, Lisa Feldman Barrett, the free energy crowd around Karl Friston) say the brain does not passively receive the world.
+It guesses what is out there, and what we perceive is that best guess, refined by the error signals coming in from the senses.[fn:predictive]
+And action is a way to make predictions come true: you predict the feeling of your hand on the cup, and the body moves the hand until that prediction is fulfilled.[fn:active-inference]
+Barrett goes further: the same racing heartbeat can be constructed as "fear" or as "excitement", depending on what the brain predicts and which concept it applies.[fn:barrett]
+In your own mind, believing really does make it so, a little.
 
+The law of attraction is top-down attention. Decide you want a red car and suddenly the streets are full of red cars.
+There were always that many red cars. Your filter changed. This is called the frequency illusion (Arnold Zwicky, 2005), popularly the Baader-Meinhof phenomenon.[fn:frequency]
+And a person who expects opportunities notices them, and acts on them, which looks from the outside like the universe cooperating.
 
-- Leibniz: "Everything already carries it's punishement / reward with itself."
+*What doesn't survive.* Wishes acting on the world without going through your hands, or anybody else's.
 
+*Open questions.*
+- Where exactly is the boundary of "your own mind"? Your expectations shape how others treat you, which shapes what you expect.
+- Is a placebo a small, honest manifestation?
+- Can manifestation be trained, the way Luhrmann's evangelicals train prayer?
 
-* Recovering The Holy?
+* Recovering magic
 
-* Recovering Heaven?
+*The fossil.* Things happen that look impossible. The coin disappears. The card you picked is in his pocket.
 
-* Recovering Magic?
+*The dragon.* Powers that break the rules of nature.
 
-* Recovering Transcendence?
+*The dinosaur.* The magician. The real magic is the /craft/: misdirection, attention, timing, years of training,
+and a deep, practical knowledge of how perception works and how it fails.
+To the one being tricked it looks like magic. That is the whole point of a good trick. [[denote:20261004T120000][The Maxim of Evidence]] has more on this.
+Magicians are, in a way, the oldest practical psychologists of attention, trained by centuries of audience trial and error, and some now co-author with neuroscientists.[fn:magicians]
+
+Programmers know a second kind of real magic: you write words, and a machine does things in the world. Spells, with a compiler.
+The old fantasy of the wizard who changes reality by saying the right words in the right order is the job description of a software engineer.
+
+*What doesn't survive.* Breaking physics. The magician uses the rules, especially the ones in your head.
+
+*Open questions.*
+- Is a good user interface a kind of benevolent magic trick?
+- If magic is knowledge of perception's failure modes, what is "dark magic"? Advertising? Propaganda?
+
+* Recovering karma
+
+*The fossil.* What you do comes back to you.
+
+*The dragon.* A cosmic ledger that settles your account, possibly in your next life.
+
+*The dinosaur.* Leibniz (/Monadology/ §89) says, roughly, that sins bear their penalty with them by the order of nature, and good actions likewise their reward.[fn:leibniz]
+Two mechanisms make this real without any ledger in the sky:
+
+- /Reputation./ People remember who helped and who cheated, and they tell each other.
+  Cooperation that pays off through reputation, not direct return, is called indirect reciprocity.[fn:reciprocity]
+  Karma is gossip, distributed.
+- /Character./ Every act trains the one who does it. Lie often and you become a liar, with a liar's worries.
+  The punishment is not delivered later, it is installed now.
+
+*What doesn't survive.* Karma across lives, and the claim that suffering is always deserved. The second one is the ugly part, and it should go.
+
+*Open questions.*
+- Is karma just what reputation feels like from the inside?
+- In an anonymous, global internet, does karma stop working? Or does it get faster?
+
+* Still to recover
+
+Here I have more questions than answers. Some seeds:
+
+** The wisdom of nature
+
+- Evolution is design without a designer: the eye is competent without anyone comprehending how.
+  Dennett called this /competence without comprehension/ (/From Bacteria to Bach and Back/, 2017).
+  (Deutsch would say: knowledge creation without a knower.)[fn:dennett-competence]
+- Is "the wisdom of nature" then just a poetic name for natural selection? Or is something lost in that translation?
+- Nature is also wise about things that are terrible for individuals. Whose wisdom is it?
+
+** The holy
+
+- Why do some things feel untouchable, not for sale, not up for trade? What does a "sacred value" do in a brain, or in a group?
+- Iain McGilchrist would say the holy is what the right hemisphere sees. Is there a version of that I can defend?
+- Is there anything holy for a rationalist? (The truth? A child? Open-endedness itself?)
+
+** Heaven
+
+- Heaven as a state, not a place? Which state? Flow? Love? Gratitude?
+- Every culture's heaven looks like that culture's best day. Is heaven a map of what a society values?
+- Could we build heaven? Would we notice if we did?
+
+** Transcendence
+
+- Moments where the self seems to dissolve: awe, meditation, music, falling in love. What is happening in the loop when the "I" goes quiet?
+- Is transcendence just the strange loop forgetting itself for a moment? Is that good news or bad news?
+- Deutsch's /beginning of infinity/: the idea that knowledge can grow without limit. Is that a rationalist's transcendence?
+
+* The fossils were real
+
+Dragons did not turn out to be real. But the people who drew them were looking at real bones.
+
+The same goes for spirits, souls and ghosts. People were looking at something real: patterns that move matter,
+the aliveness of a breathing body, a model of a loved one that keeps running after they're gone.
+The explanation they had was a dragon. We have a better one now, and it is stranger and more interesting than the dragon.
+
+And there are still a lot of bones in the ground.
+
+[fn:dragon-bones] MOSTLY TRUE. Listed in Chinese pharmacopoeias since at least the /Shennong Bencaojing/ (around 100 AD); in 1885 about 20 tons passed through Chinese ports. Criticism: mostly Cenozoic mammals, only occasionally dinosaurs; "centuries" undersold it. [[https://en.wikipedia.org/wiki/Long_gu][Long gu]], [[https://www.nbcnews.com/id/wbna19606626][NBC]]
+
+[fn:griffin] MOSTLY TRUE. Mayor, /The First Fossil Hunters/ (Princeton, 2000). Criticism: her hypothesis, contested by some palaeontologists and classicists; she is a folklorist and historian of science rather than a "historian". [[https://press.princeton.edu/isbn/9780691245607][Princeton UP]], [[https://classics.stanford.edu/publications/first-fossil-hunters-dinosaurs-mammoths-and-myth-greek-and-roman-times][Stanford]]
+
+[fn:lebensprinzip] UNVERIFIABLE so far. The book (2011) does treat information as the "spirit in nature" and genes as stored information, so the gist fits. But no source online confirms "Lebensprinzip" or "spirit of the species" as Braitenberg's own wording, and the term is older (vitalism, Driesch). Needs a look into the book and a page number. [[https://www.tabularasamagazin.de/geist-und-leben-aus-naturwissenschaftlicher-sicht/][review]]
+
+[fn:constructor] MOSTLY TRUE. Deutsch & Marletto, "Constructor Theory of Information" (2015): information media are defined by possible copying tasks; quantum no-cloning falls out as a special case. Criticism: only classical information is copyable; constructor theory is a research programme, not established physics. [[https://arxiv.org/abs/1405.5563][arXiv 1405.5563]]
+
+[fn:knowledge] MOSTLY TRUE. Deutsch's definition from /The Beginning of Infinity/, developed by Marletto. Criticism: "information with causal power" is a common paraphrase, not his wording, and the first draft dropped "in a suitable environment". Exact wording checked via quotations, not the book. [[https://www.edge.org/memberbio/chiara_marletto][Edge: Marletto]]
+
+[fn:replicators] MOSTLY TRUE. "Meme": Dawkins, /The Selfish Gene/ (1976). "Teme": Susan Blackmore, TED 2008. (My notes said "tremes", the term is "temes".) Criticism: "software entities" is my framing, not theirs; memes and temes are contested as scientific concepts. [[https://en.wikipedia.org/wiki/Susan_Blackmore][Blackmore]]
+
+[fn:cyberanimism] MOSTLY TRUE. Bach uses "cyberanimism" (e.g. AGI-24 keynote) and says spirits are real as self-organizing software. Criticism: "populated by spirits" (first draft) was a paraphrase; his idea is not limited to brains. The linked video itself was not checked. [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]]
+
+[fn:breath] MOSTLY TRUE. Latin /spiritus/ "breath", /anima/ "breathing", Hebrew /ruach/ "wind, breath, spirit", Greek /psyche/ "cold air, breath of life". Criticism: the etymology of /psyche/ is partly reconstructed. [[https://en.wikipedia.org/wiki/Spirit_(animating_force)][Spirit (animating force)]]
+
+[fn:seth] TRUE. Seth, /Being You/ (2021): the self is rooted in predictive regulation of the body's interior, "we are beast machines", consciousness has more to do with being alive than with being intelligent. "Tree of life" is my phrase, not his. [[https://www.mind-foundation.org/blog/consciousness-keep-body-alive][MIND Foundation]]
+
+[fn:strange-loop] MOSTLY TRUE. Hofstadter, /I Am a Strange Loop/ (2007). Criticism: he also calls the "I" largely a hallucination, which the sentence leaves out. [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Wikipedia]]
+
+[fn:hunekers] MOSTLY TRUE. Named after Huneker's remark that "small-souled men" should avoid Chopin's Étude op. 25 no. 11. Criticism: the mosquito-to-human range is confirmed, the dog only implied (cats, parakeets are "borderline"); it is a playful but serious device for consciousness coming in degrees. [[https://en.wikipedia.org/wiki/James_Huneker][James Huneker]], [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Strange Loop]]
+
+[fn:preparedness] MOSTLY TRUE. Seligman's preparedness; Öhman & Mineka (2003); Mineka's monkeys learn snake fear by observation, flower fear not. Criticism: "hard to unlearn" (first draft) is overstated, replications are mixed (McNally 2016), exposure therapy works well; the evidence is stronger for snakes than spiders. [[https://en.wikipedia.org/wiki/Preparedness_(learning)][Preparedness]], [[https://blogs.ubc.ca/2017wufor200/files/2017/01/The-malicious-serpent-Snakes-as-a-prototypical-stimulus-for-an-evolved-module-of-fear-Ohman-Mineka-2003.pdf][Öhman & Mineka 2003]]
+
+[fn:baldwin] First draft MISLEADING, now reworded. The Baldwin effect (Baldwin 1896; named by Simpson 1953) is selection on heritable variation, not inheritance of learning; the first draft sounded Lamarckian, and nothing links it to the garden-hose flinch. Isbell's theory concerns visual detection and attention, and is partly untested. [[https://en.wikipedia.org/wiki/Baldwin_effect][Baldwin effect]], [[https://pmc.ncbi.nlm.nih.gov/articles/PMC4262429/][snake detection]]
+
+[fn:brac] MOSTLY TRUE. Kleitman's BRAC proposes 80–120 minute ultradian cycles, also in wakefulness. Criticism: evidence outside sleep is weak and contested; popular productivity claims go beyond it. [[https://en.wikipedia.org/wiki/Basic_rest%E2%80%93activity_cycle][BRAC]]
+
+[fn:selective-memory] MOSTLY TRUE. Selective memory is the standard skeptical explanation of "telephone telepathy". Rupert Sheldrake disputes it with his own trials (about 45% hits vs. 25% chance), which mainstream science does not accept. Criticism: leading explanation, not demonstrated for every case. [[https://gold.ac.uk/apru/telephone-telepathy][Goldsmiths APRU]], [[https://noetic.org/blog/telephone-telepathy/][IONS]]
+
+[fn:rees] TRUE. Rees (1971, BMJ): 293 widowed people, 46.7% had experiences of the dead spouse, a sense of presence most often (39.2%). Later studies: roughly 30–60%, non-pathological. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8388006][review]], [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
+
+[fn:cached] First draft MISLEADING, now corrected. No Dennett source found; likely a mix-up with Hofstadter, who was Dennett's friend. "Cached" is my computing metaphor, not a term from the literature. [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche: O'Connor]]
+
+[fn:halo] MOSTLY TRUE. Hofstadter argues close people run rough copies of each other's "I", so a partial copy of Carol lives on in him; Carol died suddenly of a brain tumour in 1993. Criticism: "halo" is not confirmed as his word (reviews say "soul", "copies"), so it's now marked as mine; the grieving reading is interpretation, though supported by his framing. [[https://www.theglobeandmail.com/arts/when-is-death-not-death/article723876/][Globe and Mail]], [[https://physicsworld.com/a/going-loopy-over-consciousness/][Physics World]]
+
+[fn:bach-gods] MOSTLY TRUE. No source for "Gods are memes" as Bach's phrase; his vocabulary is cyberanimism, spirits and gods as self-organizing software/social agents. The gods part rests on talk summaries; the full talk transcript was not accessible. [[https://en.wikipedia.org/wiki/Joscha_Bach][Joscha Bach]], [[https://no.player.fm/series/machine-learning-street-talk-mlst/joscha-bach-agi24-keynote-cyberanimism][AGI-24 keynote]]
+
+[fn:durkheim] MOSTLY TRUE. /The Elementary Forms of the Religious Life/ (1912): "the idea of society is the soul of religion". Criticism: the popular one-liner is commentators' paraphrase, not Durkheim's sentence; built on Australian totemism and contested as a theory of all religion. [[https://people.uncw.edu/ricej/theory/durkheim3.htm][UNCW notes]]
+
+[fn:predictive] MOSTLY TRUE. Clark's predictive processing, Barrett's constructed emotion, Friston's free energy principle. Criticism: three related but distinct programmes; "perception /is/ the prediction" (first draft) was too strong. [[https://nautil.us/reality-is-your-brains-best-guess-312269][Nautilus]]
+
+[fn:active-inference] TRUE. Active inference (Friston, Mattout & Kilner 2011): action fulfils proprioceptive predictions via reflex arcs. Criticism: a simplification, and the framework is contested. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3491875][Friston et al. 2011]]
+
+[fn:barrett] MOSTLY TRUE. Theory of constructed emotion; the roller coaster vs. stressful meeting heartbeat is her standard example, confirmed via secondary summaries. Contested theory. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8493823/][review]], [[https://lisafeldmanbarrett.com/][Barrett]]
+
+[fn:frequency] MOSTLY TRUE. "Baader-Meinhof phenomenon" from a 1994 reader's letter to the St. Paul Pioneer Press; "frequency illusion" coined by linguist Arnold Zwicky in 2005 (selective attention plus confirmation bias). Criticism: a named bias, not a rigorously tested phenomenon. [[https://en.wikipedia.org/wiki/Frequency_illusion][Frequency illusion]]
+
+[fn:magicians] MOSTLY TRUE. Macknik, King, Randi, Robbins, Teller, Thompson & Martinez-Conde, "Attention and awareness in stage magic", /Nature Reviews Neuroscience/ 9 (2008). Criticism: "experimental psychologists" (first draft) was figurative; magicians test by trial and error, not controlled experiments; "oldest" is unprovable. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3069790/][Macknik et al.]], [[https://en.wikipedia.org/wiki/Sleights_of_Mind][Sleights of Mind]]
+
+[fn:leibniz] First draft MISLEADING, now corrected. The quote in my notes is not a verbatim Leibniz line; the closest is /Monadology/ §89: "sins must bear their penalty with them, through the order of nature, and even in virtue of the mechanical structure of things". Criticism: the passage is theological (divine justice, kingdom of grace) and about sins and good deeds, not "everything". [[https://www.rbjones.com/rbjpub/philos/classics/leibniz/monad.htm][Monadology]]
+
+[fn:reciprocity] TRUE. Concept from Richard Alexander (/The Biology of Moral Systems/, 1987), modelled by Nowak & Sigmund, "Evolution of indirect reciprocity by image scoring", /Nature/ 393 (1998). Alexander attribution from memory. [[https://en.wikipedia.org/wiki/Indirect_reciprocity][Indirect reciprocity]], [[https://ideas.repec.org/a/nat/nature/v393y1998i6685d10.1038_31225.html][Nowak & Sigmund 1998]]
+
+[fn:dennett-competence] MOSTLY TRUE. Dennett's phrase, applied to natural selection (and Turing machines). Criticism: "knowledge creation" is Popper/Deutsch vocabulary, not Dennett's; the first draft blurred the two. [[https://www.nybooks.com/articles/2017/03/09/is-consciousness-an-illusion-dennett-evolution/][NYRB]], [[https://now.tufts.edu/2017/04/24/why-are-there-minds][Tufts]]
+
+-----
+
+/Generated by Claude on Benjamin Schwerdtner's behalf, from his notes./
