@@ -18,3 +18,4 @@ public
 /static-private/
 /build/monitor/geo/
 /build/monitor/__pycache__/
+/.build-stamps/

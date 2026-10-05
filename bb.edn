@@ -4,28 +4,49 @@
   :blog-author "Benjamin Schwerdtner"
   :out-dir "public/"
   :blog-root "https://faster-than-light-memes.xyz/"}
- :tasks {:init
-         (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
+ :tasks {:requires ([babashka.fs :as fs])
+         :init
+         (do
+           (def url (-> (read-string (slurp "bb.edn")) :blog :blog-root))
+           ;; A step is skipped when none of its sources changed since its stamp in
+           ;; .build-stamps/ was last touched, and its output still exists.
+           ;; FORCE=1 runs everything anyway.
+           (defn when-stale [step sources output f]
+             (let [stamp (str ".build-stamps/" step)]
+               (if (or (System/getenv "FORCE")
+                       (not (fs/exists? stamp))
+                       (not (fs/exists? output))
+                       (seq (fs/modified-since stamp (filter fs/exists? sources))))
+                 (do (f)
+                     (fs/create-dirs ".build-stamps")
+                     (spit stamp ""))
+                 (println "skip" step "(nothing changed, FORCE=1 to run anyway)")))))
 
 
          build-css
          ;; -----------------------------
          {:requires ([dev.build])
           :task
-          (dev.build/css-release)}
+          (when-stale "css" ["src/ftlmemes/page" "src/dev/build.clj"] "public/css/ui.css"
+                      dev.build/css-release)}
          ;; -------------------------------
 
 
          build {:depends [build-css]
                 :task
                 (do
-                  (shell
-                   "emacs"
-                   ;; "emacs"
-                   ;; "/home/benj/repos/emacs/src/emacs"
-                   ;; "-Q"
-                   "--script" "build-site.el")
-                  (shell "bb" "src/ftlmemes/gen_pages.clj"))}
+                  (when-stale "org" ["posts" "assets" "static" "static-private" "src" "build-site.el"]
+                              "public/index.html"
+                              (fn []
+                               (shell
+                                "emacs"
+                                ;; "emacs"
+                                ;; "/home/benj/repos/emacs/src/emacs"
+                                ;; "-Q"
+                                "--script" "build-site.el")))
+                  (when-stale "pages" ["src/ftlmemes/page" "src/ftlmemes/gen_pages.clj"]
+                              "public/documentaries.html"
+                              (fn [] (shell "bb" "src/ftlmemes/gen_pages.clj"))))}
 
          css-watch
          (clojure "-X:dev dev.repl/watch-css")
