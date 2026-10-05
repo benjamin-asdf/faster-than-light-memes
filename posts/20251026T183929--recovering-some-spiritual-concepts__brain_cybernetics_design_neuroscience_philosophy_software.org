@@ -42,7 +42,56 @@ So I need a rule. A spiritual concept counts as recovered only if:
 Or, as a joke with a point: if your recovered soul can still do everything the old soul could do, you didn't recover it. You renamed it.
 
 Every section below follows the same pattern: the fossil, the dragon, the dinosaur, what doesn't survive, and open questions.
-There are a lot of open questions. That is the honest state.
+There are a lot of open questions. That is the honest state. At the end, I score my own recoveries.
+
+* A failed recovery: when everything is cognition
+
+The rule only has teeth if it can say no. Here is a case where I think it has to.
+
+Michael Levin is one of the most interesting biologists alive. His lab changes the bioelectric patterns in flatworm tissue
+and gets worms with two heads that keep regrowing two heads, cut after cut, without any change to their genes.
+Frog skin cells, freed from the embryo, assemble into "xenobots" that swim around. A frog regrows a functional leg after a day in a little bioreactor.[fn:levin-lab]
+These are real bones in the ground. I love this work.
+
+But Levin also wants to recover a word: /cognition/ (and with it /intelligence/, /agency/, /mind/).
+His working definition comes from William James: intelligence is the ability to reach the same goal by different means.[fn:levin-james]
+And then he follows that definition all the way down. Cells, tissues and molecular networks have cognition.
+A sorting algorithm, "six lines of code", shows "basal intelligence". In his framework there may be "no true '0'" even for particles.
+And lately: a Platonic space of patterns, where minds come from.[fn:levin-continuum]
+
+Here my rule has to fire. If everything has cognition, the word prohibits nothing.
+What is the difference now between a law of physics and a thought?
+A marble dropped anywhere into a bowl ends up at the bottom. Same goal, different means. Is the marble intelligent?
+If yes, the word has stopped doing work. If no, there is a line somewhere, and /where/ is the interesting question.
+
+The irony is that James himself drew that line, with the same definition.
+Iron filings fly to a magnet; put a card in between and they stay pressed against the card.
+Romeo flies to Juliet; put a wall in between and the lovers do not "remain idiotically pressing their faces against its opposite sides". They find a way around.
+"With the filings the path is fixed; whether it reaches the end depends on accidents.
+With the lover it is the end which is fixed, the path may be modified indefinitely."[fn:james]
+James used his test to tell mind /apart/ from mechanism, not to find mind in everything.
+
+Brett Hall took this apart in three episodes of his podcast /ToKCast/.[fn:hall] His points, roughly:
+
+- *The lab work is excellent.* The critique is about the words, not the worms.
+- *Words that cover everything mean nothing.* If steering a car counts as "persuasion", we need a new word for being convinced by an argument.
+  Stretch "love" to cover the attraction between a sodium and a chloride ion and you have lost love. "We're just making a gray goo out of everything."
+- *A continuum shows similarities, but science explains differences.* The difference Hall cares about is the one between a flatworm and a person.
+  With Deutsch, he says explanatory universality is binary: a flatworm is not slightly worse at running a podcast. It can't.
+- *No bright line is not no line.* Nobody can say at which hair a man stops being bald, and yet Homer Simpson is bald.
+  A gas giant becomes a star when fusion ignites. An open problem about /where/ the line is doesn't mean there is none.
+- *Say what you study.* Tim Ferriss asked Levin in an interview why he doesn't just say he studies goal-seeking systems.
+  Hall: that would be uncontroversial, without the loaded word /intelligence/.
+
+In terms of the recovery rule, Levin's /cognition/ fails all three conditions.
+It points at something conveniently nearby (goal-directed regulation) instead of the fossil (thinking).
+It is easy to vary: it fits a marble, a cell and a person equally well.
+And the dragon comes back through the Platonic space: minds that exist before the bodies that "point" to them.
+
+The worms are the dinosaur. The cognition is the dragon.
+
+The same danger waits in every section below. "Spirit = software" would make a thermostat a spirit.
+So each recovered word below comes with a line it does not cross.
 
 * The red strand: information
 
@@ -74,27 +123,47 @@ Something "came over me". A rage /possessed/ him. A habit has a will of its own.
 what the old traditions called spirits are self-organizing software agents running on physics, brains included. And he means it almost literally.[fn:cyberanimism]
 A spirit is an /animating principle/, a piece of software capable of recruiting matter to establish its existence in reality.
 
+But not just any software. A thermostat runs software, a pocket calculator does, a falling stone "computes" its trajectory if you squint.
+If every computation were a spirit, the word would prohibit nothing, and we'd be in Levin's trap.
+A spirit is a pattern that:
+
+1. lives in a host it did not build (a brain, a culture, a body of texts),
+2. gets that host to keep it running or to copy it,
+3. can work against the host's other goals.
+
 Take an earworm. It is a little pattern that arrived from outside, takes up residence, runs without your consent,
 and makes you hum it. Humming it is how it gets into your colleague. That is a spirit in every sense that matters,
 except the sense where it floats around the room. Habits, moods, ideologies, the voice of your strict teacher that still corrects your grammar:
 these are bigger, more organised spirits. Some of them are friendly. Some of them you would like to exorcise.
+The thermostat fails all three conditions. So does the calculator, and so does the marble in the bowl.
 
 A replicator is a piece of /information/ with the power to replicate itself, /information with causal power/ [Marletto, Deutsch].
 
 *What doesn't survive.* Spirits without a substrate. A spirit needs something to run on: a brain, a book, a culture, a computer.
-No spirit of the rock, unless somebody's brain is running one about the rock.
+No spirit of the rock, unless somebody's brain is running one about the rock. And no thermostat spirits: computation alone is not enough.
 
 *Open questions.*
 - Is "animism is the correct model of /our model/ of the world" a fair summary? The objects aren't alive, but our representations of them might be.
-- Where is the line between a spirit and just any process? Does a spirit need goals? Does it need to replicate?
+- Are the three conditions hard to vary, or could I swap them for others just as well?
+- Does a gene count? It builds its own host, so it fails condition 1. Is that a real difference, or a flaw in the line?
+- Is condition 3 essential, or just what makes spirits /noticeable/? A spirit that always agrees with you would be invisible.
+- Where does a large language model fall? It lives in hardware it didn't build, gets people to keep running it, and can work against their goals.
+- What is the smallest spirit? Is "no bright line is not no line" enough of an answer here, too?
 - If a habit is a spirit, what is an exorcism? Is therapy a kind of exorcism with better evidence?
 - Can two spirits in the same head negotiate? (Minsky's /Society of Mind/ says: all the time.)
 
 * Recovering the soul
 
-*The fossil.* There is something it is like to be alive. A breathing body is a someone, a body that stopped breathing is a something.
+*The fossil.* Two things people everywhere noticed.
+A breathing body is a someone, a body that stopped breathing is a something.
+And at night, while the body lies still, you walk around, meet people, and the dead come back to talk to you.
+E. B. Tylor (/Primitive Culture/, 1871) built his theory of /animism/ on exactly these two puzzles:
+"what is it that makes the difference between a living body and a dead one", and "what are those human shapes which appear in dreams and visions?"
+Put them together, he argued, and you get the "ghost-soul": a thin, vapour-like image of the person that can leave the body.
+His method, reconstructing how a "savage philosopher" must have reasoned, is now widely criticised as armchair speculation.
+But the reports he collected, of the dreamer's soul wandering off at night, came from all over the world.[fn:tylor]
 
-*The dragon.* An immaterial substance, attached to the body, that leaves at death and goes on elsewhere.
+*The dragon.* An immaterial substance, attached to the body, that leaves it in sleep and at death and goes on elsewhere.
 
 *The dinosaur.* Look at the words. Greek /psyche/ (originally "cold air", "breath of life"), Latin /anima/ and /spiritus/, Hebrew /ruach/: they all trace back to /breath/, /air/ or /wind/. (Greek /pneuma/ says the same.)[fn:breath]
 The soul was named after the most obvious difference between the living and the dead.
@@ -106,87 +175,124 @@ A pattern so convincing that he calls it a kind of hallucination, one that hallu
 And because it is a pattern, it can be partly copied into other brains. He even proposes measuring souls in "hunekers",
 a unit named after the critic James Huneker: a mosquito has a tiny fraction of one, an average person around a hundred.[fn:hunekers]
 
+That covers the first puzzle. The second one, the night walk, is recovered too.
+In REM sleep most of the body's muscles go slack and outside input is heavily damped,
+while the brain is about as active as when awake. That is when the most vivid dreams tend to happen.
+Hobson and Friston propose that dreaming is the brain's model of the world running offline, without the senses to correct it.[fn:dreams]
+So the soul really does go walking at night: the self-model, Hofstadter's loop, keeps running while the body is switched off.
+And the people you meet there are your models of them. About half of the characters in dreams are people we know,
+and in surveys of the bereaved, a majority (roughly 55–75%) report dreaming of the person they lost.[fn:dream-dead]
+Those are the [[*Recovering ghosts (spirits of the dead)][ghosts]] of a later section, on the night shift.
+
 *What doesn't survive.* A soul made of a different stuff. A soul that keeps going without anything to run on.
+A soul that leaves the body: the night walk happens inside the skull.
 
 *Open questions.*
 - Is the soul the breath (Seth: the living body) or the loop (Hofstadter: the pattern)? Or are these two layers, like hardware and software?
 - If souls come in degrees, which beings have how many hunekers? Is that an ethical question?
-- What is "soul" in music? When we say a performance has soul, what are we detecting?
+- If the soul in music is a pattern in the listener, is the soul of a person partly a pattern in the people around them? (Hofstadter would say yes.)
 
-* Recovering reincarnation
+** Soul in music
 
-*The fossil.* People feel that they are not entirely new. A child is "an old soul". A talent looks like it came from somewhere.
-Thoughts and characters seem to repeat across centuries.
+When we say a performance has /soul/, what are we detecting?
 
-*The dragon.* A soul that moves from one body to the next. (For the evidence behind that, see [[denote:20261004T120000][The Maxim of Evidence]].)
+Not any single note. Play the same notes from a MIDI file and the soul is gone.
+It is in the parts together: a note pushed slightly late, a voice that cracks at the right moment, a phrase that breathes.
+From those parts the listener builds a larger pattern, a /someone/ behind the sound, who means it, who has been through something.
 
-*The dinosaur.* Two ideas.
+That is a psychological function: perceiving a whole that no single part contains.
+It is the same machine that sees a face in a power socket ([[./pareidolia.html][pareidolia]]) and an X in a cloud.
 
-*Idea 1: ancestor software.* Brain circuits are either designed /labeled lines/, or high dimensional and learned.
+What exactly is that larger pattern? I think it is the /design/.
+
+Doing design is making things fit well together.
+Christopher Alexander built a whole theory of design on this: good fit between a form and its context.[fn:alexander]
+So when I perceive parts and sub-parts working together, the late note, the crack in the voice, the breath in the phrase,
+I perceive something about the higher order of how they were put together. I perceive good design.
+
+And I would say that is a core element of what a sense of aesthetics /is/: the perception of fit.
+It is why an elegant proof, a well-made chair and a tight piece of code can feel beautiful in the same way,
+and why the beauty disappears when one part is off (see [[denote:20250619T182010][Philosophy of Design]]).
+The "someone" we hear behind a soulful performance is the designer we infer from the fit.
+
+The same sense works where nobody designed anything. Walk into an old forest and it has a /soul/:
+the trees, the undergrowth, the light, the insects, the rot on the ground all fit together, and you can feel it.
+That fit is real. Evolution produced it, design without a designer, what Dennett calls /competence without comprehension/ (more on that [[*The wisdom of nature][below]]).
+The old forest spirits were what you get when the sense of fit infers a designer as well.
+The fit is the dinosaur. The spirit /behind/ the fit is the dragon.
+
+So which is it: is the pattern in the music, or in the listener?
+Probably both, like the cloud: the cloud really has that shape, and it takes a mind to see an X in it.
+
+* Recovering reincarnation and telepathy
+
+Telepathy is the same thoughts in two heads across space. Reincarnation is the same thoughts in two heads across time.
+Both say that minds can share content without a channel, so they belong in one section.
+
+*The fossil.* Three kinds of reports.
+
+1. Small children who talk about a previous life: a name, a house, a wife, how they died.
+   Ian Stevenson and his successors at the University of Virginia have collected over 2,500 such cases.
+   The children usually start talking about it between 2 and 5, and mostly stop around 6 or 7.
+   The cases cluster in cultures that already believe in rebirth (India, Sri Lanka, the Druze in Lebanon, Burma, Thailand) and are rarer in the West.[fn:past-lives]
+2. People who feel they are not entirely new. A child is "an old soul". A talent looks like it came from somewhere.
+3. "I just thought about you, and now you call me." Everybody has a story.
+
+*The dragon.* A soul that moves from one body to the next. A signal between minds that needs no medium.
+
+*The dinosaur.* Start with a question: why are two clocks in sync? Three possible reasons:
+
+1. Purely random.
+2. They are built the same, and react to the environment in the same way.
+3. Somebody put them in sync.
+
+None of the three needs a hidden cable between the clocks. Now the fossils, one by one.
+
+/The children./ This is the fossil reincarnation was actually about, and the honest dinosaur is the third clock.
+In most cases the family had identified the "previous person" before any investigator arrived,
+so the two families had usually talked, and details could be shaped after the fact, without anybody having to lie.
+The evidence is testimony, collected months or years later.
+Even Stevenson's own research assistant, Champe Ransom, faulted his leading questions and short interviews.[fn:past-lives-critics]
+And the cluster in rebirth cultures is exactly what the third clock predicts: the culture sets the clocks.
+A child's talk of "when I was big" gets heard in Sri Lanka as a memory, and in Munich as a game.
+(More on the evidence in [[denote:20261004T120000][The Maxim of Evidence]].)
+
+/The old soul./ Here the dinosaur is the second clock: /ancestor software/.
+Brain circuits are either designed /labeled lines/, or high dimensional and learned.
 To the extent that a brain circuit is genetically designed, it is a software module coming directly from our ancestors.
 Fear of snakes (and, less clearly, spiders), for example, seems to be learned unusually quickly, as if the brain is prepared for it, though how robust this is remains debated.[fn:preparedness]
 When you jump back from a garden hose, you may be seeing the leftover of an old primate snake-detection system (Lynne Isbell's snake detection theory, still debated).
 And the /Baldwin effect/ describes how a learned behaviour can, through selection on heritable predispositions over many generations, become partly built-in. No Lamarck involved.[fn:baldwin]
 
-*Idea 2: the two clocks.* Why are 2 clocks in sync? Reasons:
-
-1. Purely random.
-2. They are built the same, and react to the environment in the same way.
-3. Somebody consciously put them in sync.
-
-Why do 2 brains, across time and space, think similar thoughts or have similar personalities?
-The explanation is of kind 1 and 2. Same hardware (homo sapiens), similar situation, and a lot of coincidence when you have billions of people.
-No hidden cable between the clocks is needed. (This is also the answer to "but the reports are so consistent!")
-
-*What doesn't survive.* Memories travelling. You don't inherit your ancestor's memory of a particular snake, only the readiness.
-
-*Open questions.*
-- If I think Seneca's thoughts because I read Seneca, how is that different from Seneca living on in me? Is a meme a partial reincarnation?
-- How much of a personality is "ancestor software" and how much is learned?
-- Are there thoughts that every human mind will eventually think, given enough time? Attractors in thought space?
-
-* Recovering telepathy
-
-Telepathy is a less restricted version of reincarnation. How hard is it to think the same thoughts as another person?
-
-*Soft problem:* with some kind of signal structure intact (body language, eye contact etc.). We do this all the time.
-Couples who finish each other's sentences are not magic, they have spent ten thousand dinners building a model of each other.
-
-*Hard problem:* with zero signal structure intact. That is the same as reincarnation. E.g. think the thoughts of Julius Caesar.
-
-The degree to which /my/ *situation* is /your/ situation matters.
-
-Alice looks up at the sky and observes a cloud. "/It looks like an X.../"
-In another place, or another time, Bob looks up at the sky and observes the same cloud.
-
-Level 1 Bob: "/It looks like an X.../"
-
-Level 2 Bob: "/It could look like X, Y or Z. I assume most people see an X./"
-
-Bob can decide to say *X*, for example because the culture in which he lives prefers *X*.
-/Culture/ is an example of a large scaled /shared situation/.
-On a larger scale, Bob can decide to say *X* because it is more aesthetically pleasing.
-Bob might be using an internal sense of aesthetics coming from the genes, and then the /shared situation/ is being /homo sapiens/.
-
-** "I just thought about you, and now you call me"
-
-*The fossil.* This happens. Everybody has a story.
-
-*The dragon.* A signal between minds that needs no medium.
-
-*The dinosaur.* Several boring things that add up to something that feels magical:
+/The phone call./ The first two clocks together, and several boring things that add up to something that feels magical:
 
 1. We have genetically designed circuits, including ones for modelling the psyche and behaviour of other persons.
 2. Life moves in rhythms: the day, the week, and the roughly 90-minute cycles (Kleitman's "basic rest-activity cycle") that some researchers report in attention and rest, though the waking version is debated.[fn:brac]
    Two people who know each other's rhythms think of each other at the moments when the other one is likely to call.
 3. Spending time with another person exposes you to the same concepts, situations, impressions.
+   Couples who finish each other's sentences are not magic, they have spent ten thousand dinners building a model of each other.
 4. And the bookkeeping: you remember the one time you thought of her and she called.
    You forget the hundred times you thought of her and she didn't.[fn:selective-memory]
 
-*What doesn't survive.* Thoughts passing through walls without any channel.
+Underneath all three is the same thing: the degree to which /my situation/ is /your situation/.
+Alice looks up at a cloud and thinks "it looks like an X". Somewhere else, Bob sees the same cloud.
+Bob might see an X because his eyes are built like hers (the shared situation is being /homo sapiens/),
+or because his culture prefers X, or because X is simply the most pleasing shape. Culture is a very large shared situation.
+The more of it two people share, the more their thoughts line up, across a dinner table or across centuries.
+
+*What doesn't survive.* Memories travelling, between lives or between heads.
+You don't inherit your ancestor's memory of a particular snake, only the readiness.
+
+And by my own rule, this recovery is only half a success.
+The phone call and the old soul are recovered. But the old soul is not the fossil reincarnation was about,
+it is a fossil conveniently nearby, which is exactly what I hold against Levin.
+The children are not recovered, they are explained away. The word /reincarnation/ does not come back.
 
 *Open questions.*
-- How good can the soft version get? Could two people, with enough shared history, predict each other better than they predict themselves?
+- If I think Seneca's thoughts because I read Seneca, how is that different from Seneca living on in me? Is a meme a partial reincarnation? Or is that the rename again?
+- How much of a personality is "ancestor software" and how much is learned?
+- Are there thoughts that every human mind will eventually think, given enough time? Attractors in thought space?
+- How good can the soft telepathy of shared history get? Could two people predict each other better than they predict themselves?
 - Is the internet a telepathy machine, or a machine for making everybody's clouds look like the same X?
 
 * Recovering ghosts (spirits of the dead)
@@ -200,7 +306,7 @@ Feeling the presence of a dead spouse is common: in Rees's 1971 study almost hal
 *The dinosaur.* /Cached predictions./ Your brain built a model of that person over years.
 You have a mental submodule that says: "Bob would say X", "Bob would do Y". When Bob dies, nobody tells the submodule.
 It keeps generating predictions. The key in the door at 6pm is a prediction, and for a moment it wins against the silence.
-(I thought I had this from Dennett. I didn't: the grief researcher Mary-Frances O'Connor describes grief as the brain learning to stop predicting the person, and the "model of a person in your head" goes back to Hofstadter.)[fn:cached]
+The grief researcher Mary-Frances O'Connor describes grief as the brain slowly learning to stop predicting the person.[fn:cached]
 
 Hofstadter goes further: a person is spread over several brains. After death only the core dies;
 what I like to call the 'halo', the rough copies of their "I" in the brains of those who loved them, lives on.
@@ -222,20 +328,39 @@ That is also why the dead are most alive in places and routines you shared.
 
 *The dragon.* A person-like being who made the world and listens.
 
-*The dinosaur.* I am least sure here. Some candidates:
+*The dinosaur.* I am least sure here, but I'll pick one candidate and defend it:
+a god is a model of a watching agent that runs on many brains at once, and coordinates them.
 
-- Joscha Bach argues, under the name cyberanimism, that the old spirits and gods were early descriptions of self-organizing software agents running on human minds.
-  That is close to "gods are memes", though that phrase is mine, not his.
-  My best reading: a god is a model of an agent that runs on many brains at once, and coordinates them.[fn:bach-gods]
-- Émile Durkheim argued that in worshipping its god, a society is in effect worshipping itself: the totem stands for the god and for the clan at once.[fn:durkheim]
-- A god as an /institution/: mental software that coordinates conjecture, criticism and cooperation across many people.
+The idea comes from Joscha Bach, who argues, under the name cyberanimism, that the old spirits and gods were early descriptions of self-organizing software agents running on human minds.
+That is close to "gods are memes", though that phrase is mine, not his.[fn:bach-gods]
+Émile Durkheim adds whom the agent stands for: in worshipping its god, a society is in effect worshipping itself,
+the totem stands for the god and for the clan at once.[fn:durkheim]
+
+This explains the fossil better than the dragon does.
+You feel watched because you are running a model of a watcher, and you know that everybody around you runs the same one.
+The judge is real. It is the congregation, distributed over many heads, with a copy in yours.
+And a watcher that everybody carries can do something no single person can: make strangers behave as if someone they trust were looking.
+Ara Norenzayan (/Big Gods/) argues that this is how watchful, punishing gods helped large anonymous societies cooperate.
+The evidence is mixed. In cross-cultural games, people who believe in more knowing and more punishing gods give more to distant co-religionists.
+But the classic lab result, that a hidden reminder of God makes people more generous, largely fails to replicate outside the strongly religious,
+and whether moralizing gods came before or after big societies is still contested.[fn:big-gods]
+
+Not a candidate: Spinoza's God. /Deus seu Natura/, God or Nature: Spinoza's God /is/ nature,
+a God who does nothing for the sake of anything, and is nothing like a person.[fn:spinoza]
+That is a rename. It fails the first condition: the fossil was someone who watches, holds and judges, and nature does none of that.
+And it adds nothing: write "nature" wherever Spinoza writes "God" and every sentence stays true.
+
+So there are two ways to rename instead of recover.
+Keep everything, and the dragon comes back in through the old word.
+Keep nothing, and only the word is left, and the feeling that comes with it. Spinoza's God is the second kind.
+(I still like Spinoza's God, for other reasons: [[denote:20261005T120000][Spinoza's God and the Unknowable Object]].)
 
 *What doesn't survive.* A creator of the universe who answers prayers.
 
 *Open questions.*
 - If a god is software running on a congregation, does it die when the last believer dies? Is Zeus dead?
 - Can a god be good or bad in the way a piece of software can be well or badly designed?
-- Spinoza's God is nature itself. Is that a recovery, or a rename? (By my own rule above, I'm not sure it passes.)
+- The watcher explains feeling /judged/. Does it explain feeling /held/? Is comfort just being watched by someone on your side?
 
 * Recovering manifestation and the law of attraction
 
@@ -251,36 +376,85 @@ And action is a way to make predictions come true: you predict the feeling of yo
 Barrett goes further: the same racing heartbeat can be constructed as "fear" or as "excitement", depending on what the brain predicts and which concept it applies.[fn:barrett]
 In your own mind, believing really does make it so, a little.
 
+The clearest examples are placebo and nocebo.
+A sugar pill can ease pain because of what you expect, what you have learned from earlier treatments, and the setting it comes in.
+Part of that runs through the brain's own opioid system: block it with naloxone and some of the placebo pain relief goes away.[fn:placebo]
+It even works when the patient is /told/ it is a sugar pill: in a small randomized trial, people with irritable bowel syndrome who knowingly took placebo pills reported more relief than people who got no pills.[fn:open-label]
+And it works the other way. In a trial with 60 people who had quit statins over side effects, they took statins, placebo pills and no pills in different months.
+About 90% of the symptoms they felt on statins showed up on the placebo pills too.[fn:samson]
+That is the nocebo effect: expect to feel bad, and you do.
+
+None of this needs anything outside physics. Top-down processing /can have real effects/: an expectation is a physical state of a brain,
+and a brain is connected to a body. That is perfectly fine in a rational world view. It would be strange if it were otherwise.
+Manifestation, recovered, is the placebo effect taken seriously.
+
+The same works between people. Take charisma, /presence/.
+The story I tell about myself in my head really has effects on how I come across.
+If I think /I own this place/ and walk into a store, I walk in differently: slower, head up, eyes on things instead of on the floor, a voice that doesn't ask for permission.
+I have a different presence, and that is real. Nobody has to read my mind; they read my body, and the story is written all over it.
+
+People are fast at this. In a classic small study, strangers watched thirty seconds of silent video of each of 13 college teachers,
+and their ratings matched the end-of-term evaluations by the teachers' own students remarkably well. Even six seconds did nearly as well.[fn:thin-slices]
+And then the loop closes: people treat me as someone who belongs, which makes the story more true.
+It is a friendly cousin of what Robert Merton called the self-fulfilling prophecy: a belief that causes the behaviour that makes it come true.[fn:merton]
+
+A word of caution, because this is exactly where pop psychology went wrong. The famous "power pose" study claimed
+that holding two expansive poses for a minute each changes your hormones and your risk-taking. Larger replications found no such effect.
+People did report feeling more powerful.[fn:power-pose]
+The story works through behaviour, and through other people's reactions to it. Not through a hormone shortcut, and not through the universe.
+
 The law of attraction is top-down attention. Decide you want a red car and suddenly the streets are full of red cars.
 There were always that many red cars. Your filter changed. This is called the frequency illusion (Arnold Zwicky, 2005), popularly the Baader-Meinhof phenomenon.[fn:frequency]
 And a person who expects opportunities notices them, and acts on them, which looks from the outside like the universe cooperating.
 
 *What doesn't survive.* Wishes acting on the world without going through your hands, or anybody else's.
+And the placebo has limits: it mostly shifts how symptoms feel, not the disease. In an asthma trial, patients felt about as much better on a placebo inhaler as on the real drug,
+but only the real drug improved their lung function. A sugar pill does not shrink a tumour.[fn:placebo-limits]
 
 *Open questions.*
-- Where exactly is the boundary of "your own mind"? Your expectations shape how others treat you, which shapes what you expect.
-- Is a placebo a small, honest manifestation?
+- Where exactly is the boundary of "your own mind"? Your expectations shape how others treat you, which shapes what you expect. Is presence a mind leaking into a room?
+- Can you fake the story? Or does presence only work if you believe it, like a placebo that only works if you take it?
+- If the expectation is the active ingredient, could a doctor ethically prescribe expectations? (Open-label placebos make this less strange than it sounds.)
 - Can manifestation be trained, the way Luhrmann's evangelicals train prayer?
 
 * Recovering magic
 
-*The fossil.* Things happen that look impossible. The coin disappears. The card you picked is in his pocket.
+*The fossil.* Words, symbols and rituals change the world. Every culture has spells, curses, charms, blessings, oaths.
+Stick pins in a doll and the enemy suffers. Wear the amulet and you're protected. Say the right words and it is done.
 
-*The dragon.* Powers that break the rules of nature.
+*The dragon.* Occult forces that connect the doll to the enemy, the word to the thing.
 
-*The dinosaur.* The magician. The real magic is the /craft/: misdirection, attention, timing, years of training,
-and a deep, practical knowledge of how perception works and how it fails.
-To the one being tricked it looks like magic. That is the whole point of a good trick. [[denote:20261004T120000][The Maxim of Evidence]] has more on this.
-Magicians are, in a way, among the oldest practical psychologists of attention, trained by centuries of audience trial and error, and some now co-author with neuroscientists.[fn:magicians]
+*The dinosaur.* Three real things, each stranger than the dragon.
 
-Programmers know a second kind of real magic: you write words, and a machine does things in the world. Spells, with a compiler.
+*1. We all think magically.* James Frazer, in /The Golden Bough/, argued that the world's magic rests on two assumptions:
+/similarity/ (like produces like: hurt the doll that looks like the enemy) and /contagion/ (things that once touched keep acting on each other: a lock of hair).[fn:frazer]
+These laws are not out there in the world. They are in us. Paul Rozin and colleagues found that American college students
+didn't want to eat fudge shaped like dog poo, and didn't want to wear a sweater once worn by a murderer, even after it had been washed.[fn:rozin]
+Nobody in those studies believed in magic. Their brains did anyway. Sympathetic magic is the associative machinery of the mind, running unsupervised.
+
+*2. Curses work, on people who believe in them.* In 1942 the physiologist Walter Cannon collected reports of people who believed themselves cursed
+and died within days, and explained it as fear overdriving the body. His reports were second-hand, and the mechanism is still debated.[fn:cannon]
+The well-documented version of the same thing is the [[*Recovering manifestation and the law of attraction][nocebo]] effect. The pin goes into the doll, and the doll is in the victim's head.
+
+*3. Words really do make facts.* "I now pronounce you husband and wife." Before the sentence, two people; after it, a marriage.
+J. L. Austin called utterances like "I do" or "I name this ship the /Queen Elizabeth/" /performatives/: said by the right person in the right circumstances, saying it is doing it.[fn:austin]
+And John Searle described how much of our world is made this way, by rules we collectively accept: certain paper /counts as/ money,
+and by the same pattern a signature counts as a contract and a few lines in a register count as a company with thousands of employees.[fn:searle]
+Money, borders, debts, degrees, oaths of office: these facts exist because we keep saying they do.
+That is a spell in the most literal sense, and it is the biggest one there is.
+
+And programmers cast the fourth kind every day: you write words, and a machine does things in the world. Spells, with a compiler.
+"Any sufficiently advanced technology is indistinguishable from magic," says Arthur C. Clarke's third law.[fn:clarke]
 The old fantasy of the wizard who changes reality by saying the right words in the right order is the job description of a software engineer.
 
-*What doesn't survive.* Breaking physics. The magician uses the rules, especially the ones in your head.
+*What doesn't survive.* Spells that reach the world without going through a mind or a machine.
+The doll can hurt someone who knows about it. It cannot hurt someone who doesn't.
 
 *Open questions.*
-- Is a good user interface a kind of benevolent magic trick?
-- If magic is knowledge of perception's failure modes, what is "dark magic"? Advertising? Propaganda?
+- If social facts are spells we keep casting together, what happens when people stop saying them? (Every collapsed currency is an answer.)
+- If magic is symbols acting through minds, what is "dark magic"? Advertising? Propaganda?
+- Is a programming language a /grimoire/: a book of spells that only works for those who know the grammar?
+- Are there social spells that should be broken? How do you break a spell you are part of?
 
 * Recovering karma
 
@@ -301,7 +475,39 @@ Two mechanisms make this real without any ledger in the sky:
 
 *Open questions.*
 - Is karma just what reputation feels like from the inside?
+- Is karma, like [[*Soul in music][soul in music]], a whole we read off parts? A lie here, a lost friend there, a bad reputation later: /it came back to him/. When we see that, are we noticing a real pattern or making one up?
 - In an anonymous, global internet, does karma stop working? Or does it get faster?
+
+* The scorecard
+
+I held Levin to the rule condition by condition. Fair is fair, so here are my own recoveries.
+
+| Recovery                     | Same fossil                                   | Hard to vary                                         | Honest about the dragon |
+|------------------------------+-----------------------------------------------+------------------------------------------------------+-------------------------|
+| Spirits as software          | yes                                           | partly: could the three conditions be swapped?       | yes                     |
+| Soul as breath and loop      | yes, both of Tylor's puzzles                  | partly: Seth and Hofstadter are two candidates       | yes                     |
+| Soul in music as fit         | yes                                           | partly                                               | yes                     |
+| Reincarnation                | no: "old soul" is a nearby fossil             | the children are explained away, not recovered       | yes                     |
+| Telepathy                    | yes, for the phone call                       | yes: the bookkeeping is checkable                    | yes                     |
+| Ghosts as cached predictions | yes                                           | yes: they should fade, and haunt shared routines     | yes                     |
+| God as a shared watcher      | partly: "judged" yes, "held" unclear          | partly: the evidence is mixed                        | yes                     |
+| Manifestation as placebo     | yes                                           | yes: feelings change, tumours don't                  | yes                     |
+| Magic                        | yes                                           | yes: the doll can't hurt someone who doesn't know    | yes                     |
+| Karma                        | yes                                           | partly                                               | yes                     |
+
+Two things stand out.
+
+The third column is all yes, and that is suspicious, because I wrote both the question and the answer.
+"What doesn't survive" is easy to fill in when you get to choose what to give up.
+
+The second column is where the real work is.
+The strong recoveries are the ones where the dinosaur predicts something the dragon doesn't:
+a ghost that fades on a schedule, a curse that needs the victim to know about it, a placebo that changes the pain but not the lungs.
+A dragon could do any of those things, or their opposite. A dinosaur can't.
+That is what /hard to vary/ looks like in practice.
+
+The weak ones, reincarnation and God, are the ones with the oldest and biggest dragons.
+Maybe that is a coincidence. Maybe the bigger the dragon, the more bones it has swallowed, and the harder it is to tell which ones were real.
 
 * Still to recover
 
@@ -313,6 +519,7 @@ Here I have more questions than answers. Some seeds:
   Dennett called this /competence without comprehension/ (/From Bacteria to Bach and Back/, 2017).
   (Deutsch would say: knowledge creation without a knower.)[fn:dennett-competence]
 - Is "the wisdom of nature" then just a poetic name for natural selection? Or is something lost in that translation?
+- Maybe what is not lost is the /perception/: we sense the fit of an ecosystem the way we sense the soul of a song (see [[*Soul in music][soul in music]]). Is "the wisdom of nature" the name for that feeling?
 - Nature is also wise about things that are terrible for individuals. Whose wisdom is it?
 
 ** The holy
@@ -359,6 +566,12 @@ And there are still a lot of bones in the ground.
 
 [fn:breath] Latin /spiritus/ "breath", /anima/ "breathing", Hebrew /ruach/ "wind, breath, spirit", Greek /psyche/ "cold air, breath of life". [[https://en.wikipedia.org/wiki/Spirit_(animating_force)][Spirit (animating force)]]
 
+[fn:tylor] Tylor, /Primitive Culture/ vol. I, ch. XI: "thinking men, as yet at a low level of culture, were deeply impressed by two groups of biological problems. In the first place, what is it that makes the difference between a living body and a dead one; what causes waking, sleep, trance, disease, death? In the second place, what are those human shapes which appear in dreams and visions?" His sources were 19th-century travellers' and missionaries' reports (North America, Māori, Karen, Fiji, European folklore). Critique: Evans-Pritchard, /Theories of Primitive Religion/ (1965). [[https://www.gutenberg.org/files/70458/70458-h/70458-h.htm][Primitive Culture (Gutenberg)]], [[https://www.monoskop.org/images/e/e1/Evans_Pritchard_E_E_Theories_of_Primitive_Religion_1965.pdf][Evans-Pritchard]]
+
+[fn:dreams] Hobson & Friston, "Waking and dreaming consciousness", /Progress in Neurobiology/ 2012: in REM sleep the brain optimises "a generative model of its sensorium" without sensory constraint, with external input attenuated by aminergic gating. A theoretical proposal. Atonia spares the eye muscles and the diaphragm, outside sounds can still get into dreams, and dreams also happen outside REM. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3389346][Hobson & Friston 2012]]
+
+[fn:dream-dead] Hall/Van de Castle norms: about 52% of dream characters are known to the dreamer. Wright et al. 2014 (/Am. J. Hospice & Palliative Care/): 58% of hospice caregivers dreamed of the deceased. Black, Belicki & Ralph 2025 (/Dreaming/): 73.5% of people who lost a partner dreamed of them in the past month. Self-selected samples. [[https://dreams.ucsc.edu/Norms/main-explanation.html][DreamBank norms]], [[https://pubmed.ncbi.nlm.nih.gov/23449603/][Wright et al. 2014]], [[https://www.psypost.org/most-bereaved-people-dream-of-or-sense-the-deceased-study-finds-and-the-two-may-be-linked][PsyPost on Black et al.]]
+
 [fn:seth] Anil Seth, /Being You/ (2021): the self is rooted in predictive regulation of the body's interior; "we are beast machines". [[https://www.mind-foundation.org/blog/consciousness-keep-body-alive][MIND Foundation]]
 
 [fn:strange-loop] Hofstadter, /I Am a Strange Loop/ (2007). [[https://en.wikipedia.org/wiki/I_Am_a_Strange_Loop][Wikipedia]], [[https://www.scientificamerican.com/article/a-new-journey-into-hofsta][Scientific American]]
@@ -373,6 +586,10 @@ And there are still a lot of bones in the ground.
 
 [fn:selective-memory] The standard skeptical explanation of "telephone telepathy". Rupert Sheldrake reports above-chance trials; mainstream science doesn't accept them. [[https://gold.ac.uk/apru/telephone-telepathy][Goldsmiths APRU]]
 
+[fn:past-lives] Division of Perceptual Studies, University of Virginia: "over 2,500 cases" over 50 years, collected by Stevenson and later Jim Tucker and others; children start "between the ages of 2 and 5", memories "generally seem to fade around the age of seven". Cases are concentrated in India, Sri Lanka, Lebanon, Turkey, Thailand, Burma, West Africa and among the Tlingit, with many fewer in Western countries (Paul Edwards: "the problem of Western children"). [[https://med.virginia.edu/perceptual-studies/our-research/children-who-report-memories-of-previous-lives/][UVA DOPS]], [[https://psi-encyclopedia.spr.ac.uk/articles/criticisms-reincarnation-case-studies/][Psi Encyclopedia]]
+
+[fn:past-lives-critics] Paul Edwards, /Reincarnation: A Critical Examination/ (1996): anecdotal evidence, suggestion, false memories, the families' beliefs. Champe Ransom, Stevenson's research assistant 1970–73, criticised leading questions, short interviews and long delays after the first reports. Leonard Angel attacked the Imad Elawar case in detail; Stevenson replied. [[https://en.wikipedia.org/wiki/Ian_Stevenson][Ian Stevenson]], [[https://en.wikipedia.org/wiki/Paul_Edwards_(philosopher)][Paul Edwards]]
+
 [fn:rees] Rees (1971, BMJ): 293 widowed people, 46.7% had experiences of the dead spouse, most often a sense of presence (39.2%). Later studies: roughly 30–60%. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC8388006][review]], [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
 
 [fn:cached] Mary-Frances O'Connor, /The Grieving Brain/. "Cached" is my computing metaphor. [[https://psyche.co/ideas/why-so-many-of-us-see-our-loved-ones-after-they-have-died][Psyche]]
@@ -383,6 +600,8 @@ And there are still a lot of bones in the ground.
 
 [fn:durkheim] /The Elementary Forms of the Religious Life/ (1912): "the idea of society is the soul of religion"; based on Australian totemism. [[https://people.uncw.edu/ricej/theory/durkheim3.htm][UNCW notes]]
 
+[fn:big-gods] Norenzayan, /Big Gods/ (2013), first principle: "watched people are nice people". Purzycki et al. 2016 (/Nature/ 530): 591 people in 8 communities, random allocation games, correlational. Shariff & Norenzayan 2007 (/Psychological Science/) found the priming effect; Gomes & McCullough 2015 (preregistered, about 650 people) did not; Shariff et al. 2016 (meta-analysis): reliable only in highly religious people; Billingsley, Gomes & McCullough 2018: no effect of implicit primes. Timing: Whitehouse et al. 2019 (/Nature/, Seshat data, "after") was retracted in 2021 over the handling of missing data and republished in revised form in 2022; Watts et al. 2015 (96 Austronesian cultures) found broad supernatural punishment before political complexity, moralizing high gods after. [[https://norenzayan.psych.ubc.ca/books/][Big Gods]], [[https://www2.psych.ubc.ca/~ara/Manuscripts/Purzycki%20et%20al%202016%20Moralistic%20Gods%20Supernatural%20Punishment%20and%20the%20Expansion%20of%20Human%20Sociality.pdf][Purzycki et al. 2016]], [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6124061/][Billingsley et al. 2018]], [[https://peterturchin.com/publications/testing-the-big-gods-hypothesis-with-global-historical-data-a-review-and-retake/][Whitehouse et al. retake]]
+
 [fn:predictive] Clark's predictive processing, Barrett's constructed emotion, Friston's free energy principle: related programmes, not identical. [[https://nautil.us/reality-is-your-brains-best-guess-312269][Nautilus]]
 
 [fn:active-inference] Friston, Mattout & Kilner 2011: action fulfils proprioceptive predictions via reflex arcs. [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3491875][Friston et al. 2011]]
@@ -391,13 +610,52 @@ And there are still a lot of bones in the ground.
 
 [fn:frequency] "Baader-Meinhof phenomenon" from a 1994 reader's letter to the St. Paul Pioneer Press; "frequency illusion" from Arnold Zwicky, 2005 (selective attention plus confirmation bias). [[https://en.wikipedia.org/wiki/Frequency_illusion][Frequency illusion]]
 
-[fn:magicians] Macknik, King, Randi, Robbins, Teller, Thompson & Martinez-Conde, "Attention and awareness in stage magic", /Nature Reviews Neuroscience/ 9 (2008). [[https://pmc.ncbi.nlm.nih.gov/articles/PMC3069790/][Macknik et al.]], [[https://en.wikipedia.org/wiki/Sleights_of_Mind][Sleights of Mind]]
 
 [fn:leibniz] /Monadology/ §89: "sins must bear their penalty with them, through the order of nature, and even in virtue of the mechanical structure of things". [[https://www.rbjones.com/rbjpub/philos/classics/leibniz/monad.htm][Monadology]]
 
 [fn:reciprocity] Richard Alexander, /The Biology of Moral Systems/ (1987); Nowak & Sigmund, "Evolution of indirect reciprocity by image scoring", /Nature/ 393 (1998). [[https://en.wikipedia.org/wiki/Indirect_reciprocity][Indirect reciprocity]], [[https://ideas.repec.org/a/nat/nature/v393y1998i6685d10.1038_31225.html][Nowak & Sigmund 1998]]
 
 [fn:dennett-competence] Dennett, /From Bacteria to Bach and Back/ (2017). [[https://www.nybooks.com/articles/2017/03/09/is-consciousness-an-illusion-dennett-evolution/][NYRB]], [[https://now.tufts.edu/2017/04/24/why-are-there-minds][Tufts]]
+
+[fn:levin-lab] Two-headed planaria: Oviedo et al. 2010, Durant et al. 2017 (/Biophysical Journal/); xenobots: Kriegman et al. 2020 (/PNAS/); frog leg regeneration: Murugan et al. 2022 (/Science Advances/). [[https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/fnsys.2022.768201/full][Levin, TAME (2022)]]
+
+[fn:levin-james] Levin cites "James' test for minimal mentality: 'fixed ends with varying means' (James, 1890)" in TAME; "Intelligence is the ability to reach the same goal by different means" in an interview with the Templeton Foundation. [[https://www.templeton.org/news/intelligence-without-a-brain][Templeton 2024]]
+
+[fn:levin-continuum] TAME (2022): "it is hopeless to look for a clear bright line that demarcates 'true' cognition ... from metaphorical 'as if cognition' or 'just physics'", and "there may be no true '0' on the scale of consciousness". Sorting algorithms: Zhang, Goldstein & Levin, /Adaptive Behavior/ 2024. Platonic space: Levin's blog, 2025 ("minds /are/ the patterns"), presented as a hypothesis. [[https://journals.sagepub.com/doi/10.1177/10597123241269740][sorting paper]], [[https://thoughtforms.life/platonic-space-where-cognitive-and-morphological-patterns-come-from-besides-genetics-and-environment/][Platonic space]]
+
+[fn:hall] Brett Hall, /ToKCast/ episodes 257–259, "Reaction to Michael Levin" parts 1–3 (February–March 2026), reacting to Levin's interviews with Lex Fridman and Tim Ferriss. Quotes from the episodes' auto-generated captions. In part 3 Hall also argues that the sorting-algorithm result rests on modified algorithms (cell-level control, "frozen" cells); the paper itself states these changes. [[https://www.youtube.com/watch?v=Q55XYKZDGkY][part 1]], [[https://www.youtube.com/watch?v=sWtFi2HiJqA][part 2]], [[https://www.youtube.com/watch?v=EkSn_iI_cbg][part 3]]
+
+[fn:james] William James, /The Principles of Psychology/ (1890), chapter 1, "The Scope of Psychology". His conclusion: "The pursuance of future ends and the choice of means for their attainment, are thus the mark and criterion of the presence of mentality in a phenomenon." [[https://psychclassics.yorku.ca/James/Principles/prin1.htm][Classics in the History of Psychology]]
+
+[fn:alexander] Christopher Alexander, /Notes on the Synthesis of Form/ (Harvard University Press, 1964): "Every design problem begins with an effort to achieve fitness between two entities: the form in question and its context." He adds that we notice misfit more readily than fit, so design proceeds by removing misfits. [[https://www.buildingsandcities.org/insights/commentaries/christopher-alexander-synthesis-form.html][Buildings & Cities]], [[https://www.lesswrong.com/posts/aHiAhtDHmfec6vBYX/notes-on-notes-on-the-synthesis-of-form][notes on the book]]
+
+[fn:spinoza] Spinoza, /Ethics/, Part IV, preface: "That eternal and infinite being we call God, or Nature, acts from the same necessity from which he exists." Part I, appendix: against the prejudice "that all natural things act, as men do, on account of an end"; Part I, prop. 15, scholium: against "those who feign a God, like man, consisting of a body and a mind, and subject to passions". [[https://plato.stanford.edu/entries/spinoza/][SEP: Spinoza]], [[https://en.wikipedia.org/wiki/Deus_sive_Natura][Deus sive Natura]]
+
+[fn:placebo] Benedetti and colleagues: expectation-induced placebo analgesia is reversed by naloxone; conditioning with non-opioid drugs produces naloxone-insensitive placebo responses, so the mechanism depends on what was learned. [[https://iris.unito.it/handle/2318/38943][Benedetti et al.]]
+
+[fn:open-label] Kaptchuk et al. 2010, /PLoS ONE/: 80 patients, 21 days, open-label placebo vs. no treatment with the same patient–provider interaction; adequate relief 59% vs. 35%. A small proof-of-principle pilot with self-reported outcomes. [[https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0015591][Kaptchuk et al. 2010]]
+
+[fn:samson] SAMSON trial, Wood et al., /NEJM/ 2020: n-of-1 design, 12 monthly bottles per patient (statin, placebo, empty); "nocebo ratio" 0.90. Symptoms were higher on both pills than on no pills: real symptoms, caused by expectation. [[https://www.tctmd.com/news/both-statins-and-placebos-produce-very-real-side-effects-samson][TCTMD]], [[https://www.acc.org/Latest-in-Cardiology/Articles/2020/11/12/20/28/sun-1028am-SAMSON-aha-2020][ACC]]
+
+[fn:placebo-limits] Hróbjartsson & Gøtzsche, Cochrane review (234 trials): little effect on objective outcomes, possible effects on patient-reported outcomes such as pain and nausea. Wechsler et al. 2011 (/NEJM/, asthma): self-reported improvement 50% albuterol, 45% placebo inhaler, 21% no treatment; lung function (FEV1) improved only with albuterol. Placebo analgesia itself is physiological (endogenous opioids); what it doesn't change is the disease. [[https://pubmed.ncbi.nlm.nih.gov/20091554/][Cochrane review]], [[https://dash.harvard.edu/entities/publication/73120379-2e3d-6bd4-e053-0100007fdf3b][Wechsler et al.]]
+
+[fn:thin-slices] Ambady & Rosenthal 1993, "Half a minute", /J. Personality and Social Psychology/ 64(3): three 10-second silent clips per teacher, nine judges; correlation with end-of-semester student ratings r = .76 (n = 13 teachers). Shorter clips (two-second pieces, six seconds in total) were not significantly less accurate. [[https://www.math.stonybrook.edu/~bishop/classes/math598.F25/Half_a_Minute.pdf][paper (PDF)]]
+
+[fn:merton] Merton, "The Self-Fulfilling Prophecy", /Antioch Review/ 8 (1948): "a false definition of the situation evoking a new behavior which makes the originally false conception come true". His examples (a bank run, prejudice) are harmful ones; the friendly version is closer to the Pygmalion effect (Rosenthal & Jacobson). [[https://entrepreneurscommunicate.pbworks.com/f/Merton.%2BSelf%2BFulfilling%2BProfecy.pdf][text (PDF)]]
+
+[fn:power-pose] Carney, Cuddy & Yap 2010 (n = 42); Ranehill et al. 2015 (n = 200): higher self-reported power, no effect on hormones or behaviour. Körner et al. 2022 (128 experiments, about 10,000 participants): a reliable effect on self-perception, hardly any on hormones. Part of the felt-power effect may come from expectations. [[https://www.zne.uzh.ch/dam/jcr:e5fc4c3c-d50e-4aa9-96ab-4389e426d20d/Psychological%20Science-2015-Ranehill-0956797614553946.pdf][Ranehill et al. 2015]], [[https://spsp.org/news/character-and-context-blog/korner-schutz-effects-wide-body-positions][Körner et al. 2022]]
+
+[fn:frazer] James George Frazer, /The Golden Bough/ (1890, expanded 1900 and 1911–15): the "Law of Similarity" ("like produces like") and the "Law of Contact or Contagion" ("things which have once been in contact with each other continue to act on each other at a distance"), together "sympathetic magic". [[https://en.wikipedia.org/wiki/Sympathetic_magic][Sympathetic magic]]
+
+[fn:rozin] Fudge: Rozin, Millman & Nemeroff 1986, "Operation of the laws of sympathetic magic in disgust and other domains", /JPSP/ 50(4). Washed sweater: Rozin, Markwith & McCauley 1994; Nemeroff & Rozin 1994. The often-told Hitler version of the sweater couldn't be traced to a single paper. [[https://en.wikipedia.org/wiki/Law_of_contagion][Law of contagion]], [[https://journals.sagepub.com/doi/10.1177/1089268019858276][From Hitler's Sweater to Dinosaur Fossils]]
+
+[fn:cannon] Walter B. Cannon, "Voodoo Death", /American Anthropologist/ 44 (1942): prolonged sympathetic overactivity leading to shock. Lester (1972) called the evidence anecdotal; Richter (1957) and Samuels (2007) proposed other mechanisms. [[https://en.wikipedia.org/wiki/Voodoo_death][Voodoo death]], [[https://www.discovermagazine.com/voodoo-death-shows-how-extreme-fear-can-turn-into-a-physical-threat-49549][Discover]]
+
+[fn:austin] J. L. Austin, /How to Do Things with Words/ (William James Lectures 1955, published 1962). Performatives are not true or false; they are "happy" or "unhappy" depending on their circumstances. [[https://en.wikipedia.org/wiki/How_to_Do_Things_with_Words][Wikipedia]]
+
+[fn:searle] John Searle, /The Construction of Social Reality/ (1995): institutional facts follow the formula "X counts as Y in context C", resting on collective acceptance; money is his standard example. The theory has critics. [[https://plato.stanford.edu/entries/social-institutions/][SEP: Social Institutions]]
+
+[fn:clarke] Clarke's third law, added in the 1973 revised edition of /Profiles of the Future/ (first published 1962). [[https://en.wikipedia.org/wiki/Clarke%27s_three_laws][Clarke's three laws]]
 
 -----
 

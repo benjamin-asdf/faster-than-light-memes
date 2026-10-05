@@ -21,6 +21,7 @@ on top.
 
 ** [[denote:20250619T182010][Philosophy of Design - Notes]]
 ** [[denote:20251026T183929][Recovering Some Spiritual Concepts]]
+** [[denote:20261005T120000][Spinoza's God and the Unknowable Object]]
 
 * Clojure / Lisp
 
