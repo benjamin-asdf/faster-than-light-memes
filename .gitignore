@@ -16,3 +16,5 @@ public
 /.clj-kondo/.cache/v1/java/
 /.lsp/
 /static-private/
+/build/monitor/geo/
+/build/monitor/__pycache__/

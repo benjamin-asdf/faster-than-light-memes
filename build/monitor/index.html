@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FTLM status</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface: #fcfcfb; --card: #ffffff; --line: #e4e3df; --grid: #eeede9;
+    --ink: #0b0b0b; --ink2: #52514e; --ink3: #7b7a75;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a;
+    --good: #008300; --bad: #e34948;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface: #1a1a19; --card: #232322; --line: #3a3a38; --grid: #2e2e2c;
+      --ink: #ffffff; --ink2: #c3c2b7; --ink3: #8f8e86;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+      --good: #3fb950; --bad: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface: #1a1a19; --card: #232322; --line: #3a3a38; --grid: #2e2e2c;
+    --ink: #ffffff; --ink2: #c3c2b7; --ink3: #8f8e86;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    --good: #3fb950; --bad: #e66767;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--ink);
+         font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 14px; margin: 0 0 4px; font-weight: 600; }
+  .sub { color: var(--ink2); font-size: 13px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: baseline; justify-content: space-between; }
+  .banner { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; padding: 6px 12px;
+            border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+  .banner.ok .ico { color: var(--good); } .banner.bad .ico { color: var(--bad); }
+  .grid { display: grid; gap: 12px; margin-top: 16px; }
+  .tiles { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .charts { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+  @media (max-width: 480px) { .charts { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+  .tile .v { font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tile .l { color: var(--ink2); font-size: 13px; }
+  .tile .n { color: var(--ink3); font-size: 12px; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  th { color: var(--ink2); font-weight: 500; font-size: 13px; }
+  td.r, th.r { text-align: right; }
+  .up { color: var(--good); font-weight: 600; } .down { color: var(--bad); font-weight: 600; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .axis text { fill: var(--ink3); font-size: 11px; }
+  .gridline { stroke: var(--grid); stroke-width: 1; }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink2); margin: 2px 0 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  #tip { position: fixed; pointer-events: none; z-index: 5; background: var(--card); color: var(--ink);
+         border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; font-size: 12px;
+         box-shadow: 0 2px 8px rgba(0,0,0,.18); display: none; white-space: nowrap; }
+  #tip b { font-variant-numeric: tabular-nums; }
+  details { margin-top: 16px; } summary { cursor: pointer; color: var(--ink2); font-size: 13px; }
+  .note { color: var(--ink3); font-size: 12px; margin-top: 18px; }
+  #err { display: none; color: var(--bad); margin-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>FTLM status</h1><div class="sub" id="gen">loading…</div></div>
+    <div class="banner" id="banner"><span class="ico">…</span><span id="bannertext">checking</span></div>
+  </header>
+  <div id="err"></div>
+
+  <div class="grid tiles" id="tiles"></div>
+
+  <div class="grid">
+    <div class="card"><h2>Services</h2>
+      <table><thead><tr><th>Service</th><th>State</th><th class="r">Response</th><th class="r">Memory (RSS)</th><th>Detail</th></tr></thead>
+      <tbody id="svc"></tbody></table>
+    </div>
+  </div>
+
+  <div class="grid charts" id="charts"></div>
+
+  <details><summary>Table view: traffic per day</summary>
+    <div class="card" style="margin-top:8px; overflow-x:auto"><table id="daytable"></table></div>
+  </details>
+
+  <p class="note" id="note"></p>
+</main>
+<div id="tip"></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const NS = "http://www.w3.org/2000/svg";
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt = (n) => (n == null ? "–" : Number(n).toLocaleString("en"));
+const tip = $("#tip");
+
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function niceMax(v) {
+  if (v <= 0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v))), f = v / p;
+  return (f <= 1.2 ? 1.2 : f <= 2 ? 2 : f <= 4 ? 4 : f <= 8 ? 8 : 12) * p; /* 4 ticks stay round */
+}
+function showTip(ev, html) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth;
+  tip.style.left = Math.min(ev.clientX + 14, innerWidth - w - 8) + "px";
+  tip.style.top = (ev.clientY + 14) + "px";
+}
+const hideTip = () => (tip.style.display = "none");
+
+/* Generic chart: points = [{x: label/Date, ...}], series = [{key, label, color, type: bar|line}].
+   Bars are anchored to the baseline with a 4px rounded top; lines are 2px. One y axis. */
+function chart({ title, unit, points, series, xlabel }) {
+  const card = document.createElement("div"); card.className = "card";
+  card.innerHTML = `<h2>${title}</h2>`;
+  if (series.length > 1) {
+    const lg = document.createElement("div"); lg.className = "legend";
+    lg.innerHTML = series.map((s) => `<span><i style="background:${s.color}"></i>${s.label}</span>`).join("");
+    card.appendChild(lg);
+  }
+  const W = 480, H = 170, m = { l: 38, r: 8, t: 8, b: 20 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": title }, card);
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const n = points.length;
+  const max = niceMax(Math.max(1, ...points.flatMap((p) => series.map((s) => p[s.key] ?? 0))));
+  const X = (i) => m.l + (n === 1 ? iw / 2 : (i + 0.5) * (iw / n));
+  const Y = (v) => m.t + ih - (v / max) * ih;
+  const g = el("g", { class: "axis" }, svg);
+  for (let k = 0; k <= 4; k++) {
+    const v = (max / 4) * k, y = Y(v);
+    el("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, class: "gridline" }, g);
+    const t = el("text", { x: m.l - 6, y: y + 4, "text-anchor": "end" }, g); t.textContent = fmt(Math.round(v * 10) / 10);
+  }
+  const every = Math.ceil(n / 6);
+  points.forEach((p, i) => {
+    if (i % every === 0 || i === n - 1) {
+      const t = el("text", { x: X(i), y: H - 4, "text-anchor": "middle" }, g); t.textContent = p.xs;
+    }
+  });
+  const bw = Math.max(2, Math.min(18, (iw / n) * 0.7));
+  series.forEach((s) => {
+    if (s.type === "bar") {
+      points.forEach((p, i) => {
+        const v = p[s.key]; if (!v) return;
+        const h = Math.max(1, (v / max) * ih), r = Math.min(4, bw / 2, h);
+        const x = X(i) - bw / 2, y = Y(v);
+        el("path", { fill: s.color,
+          d: `M${x},${y + h} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${y + h} Z` }, svg);
+      });
+    } else {
+      let d = "", pen = false;
+      points.forEach((p, i) => {
+        if (p[s.key] == null) { pen = false; return; }
+        d += (pen ? "L" : "M") + X(i) + "," + Y(p[s.key]); pen = true;
+      });
+      el("path", { d, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+    }
+  });
+  const cross = el("line", { y1: m.t, y2: m.t + ih, stroke: css("--ink3"), "stroke-width": 1, visibility: "hidden" }, svg);
+  const hit = el("rect", { x: m.l, y: m.t, width: iw, height: ih, fill: "transparent" }, svg);
+  hit.addEventListener("mousemove", (ev) => {
+    const r = svg.getBoundingClientRect();
+    const px = ((ev.clientX - r.left) / r.width) * W - m.l;
+    const i = Math.max(0, Math.min(n - 1, Math.floor(px / (iw / n))));
+    cross.setAttribute("x1", X(i)); cross.setAttribute("x2", X(i)); cross.setAttribute("visibility", "visible");
+    const p = points[i];
+    showTip(ev, `${p.xl}<br>` + series.map((s) =>
+      `<i style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${s.color};margin-right:5px"></i>${s.label}: <b>${fmt(p[s.key])}</b>${unit || ""}`).join("<br>"));
+  });
+  hit.addEventListener("mouseleave", () => { hideTip(); cross.setAttribute("visibility", "hidden"); });
+  $("#charts").appendChild(card);
+}
+
+function tile(label, value, note) {
+  const d = document.createElement("div"); d.className = "card tile";
+  d.innerHTML = `<div class="v">${value}</div><div class="l">${label}</div><div class="n">${note || "&nbsp;"}</div>`;
+  $("#tiles").appendChild(d);
+}
+
+const get = (f) => fetch(f + "?t=" + Date.now()).then((r) => { if (!r.ok) throw new Error(f + " " + r.status); return r.json(); });
+
+async function main() {
+  const [status, traffic, series] = await Promise.all([get("status.json"), get("traffic.json"), get("series.json")]);
+  const age = Math.round(Date.now() / 1000 - status.t);
+  const stale = age > 180;
+  $("#gen").textContent = `updated ${new Date(status.t * 1000).toLocaleString()} (${age}s ago)`;
+  const ok = status.ok && !stale;
+  $("#banner").className = "banner " + (ok ? "ok" : "bad");
+  $("#banner .ico").textContent = ok ? "✓" : "✕";
+  $("#bannertext").textContent = stale ? "Collector stale" : ok ? "All systems up" : "Problem detected";
+
+  const h = status.host, today = traffic.days[traffic.days.length - 1], yday = traffic.days[traffic.days.length - 2];
+  tile("Viewers today", fmt(today.viewers), `${fmt(today.verified)} browser-verified · yesterday ${fmt(yday?.viewers)}`);
+  tile("Viewers, 30 days", fmt(traffic.window.viewers), `${fmt(traffic.window.verified)} browser-verified · ${fmt(traffic.window.ips)} IPs incl. bots`);
+  tile("Requests today", fmt(today.req), `${fmt(today["4xx"])} × 4xx, ${fmt(today["5xx"])} × 5xx`);
+  tile("Memory available", fmt(h.mem_avail_mb) + " MB", `of ${fmt(h.mem_total_mb)} MB · swap used ${fmt(h.swap_used_mb)} MB`);
+  tile("Disk", h.disk_pct + " %", "root filesystem");
+  tile("Load (1 min)", h.load1, `up ${h.uptime_h < 48 ? h.uptime_h + " h" : Math.round(h.uptime_h / 24) + " d"}`);
+  tile("TLS certificate", h.cert_days == null ? "–" : h.cert_days + " d", "until expiry");
+
+  $("#svc").innerHTML = status.checks.map((c) => `<tr>
+    <td>${c.name}</td>
+    <td class="${c.ok ? "up" : "down"}">${c.ok ? "✓ up" : "✕ down"}</td>
+    <td class="r">${c.ms == null ? "–" : c.ms + " ms"}</td>
+    <td class="r">${c.rss_mb == null ? "–" : c.rss_mb + " MB"}</td>
+    <td>${c.detail}</td></tr>`).join("");
+
+  const day = (d) => { const t = new Date(d.day + "T00:00:00Z"); return { xs: d.day.slice(5), xl: t.toUTCString().slice(0, 11) }; };
+  chart({ title: "Visitors per day (distinct IPs)", unit: "", series: [
+      { key: "verified", label: "Browser-verified", color: css("--s1"), type: "bar" },
+      { key: "viewers", label: "Viewers", color: css("--s3"), type: "line" },
+      { key: "ips", label: "All IPs", color: css("--s2"), type: "line" }],
+    points: traffic.days.map((d) => ({ ...day(d), verified: d.verified, viewers: d.viewers, ips: d.ips })) });
+  const hr = (x) => { const t = new Date(x.t * 1000); return { xs: String(t.getHours()).padStart(2, "0") + "h", xl: t.toLocaleString() }; };
+  chart({ title: "Viewers per hour, last 48 h", series: [
+      { key: "verified", label: "Browser-verified", color: css("--s1"), type: "line" },
+      { key: "viewers", label: "Viewers", color: css("--s3"), type: "line" }],
+    points: traffic.hours.map((x) => ({ ...hr(x), verified: x.verified, viewers: x.viewers })) });
+  chart({ title: "Requests per day", series: [{ key: "req", label: "Requests", color: css("--s1"), type: "bar" }],
+    points: traffic.days.map((d) => ({ ...day(d), req: d.req })) });
+  const sv = (x) => ({ xs: String(new Date(x.t * 1000).getHours()).padStart(2, "0") + "h", xl: new Date(x.t * 1000).toLocaleString() });
+  chart({ title: "Memory available (MB), last 48 h", series: [{ key: "mem", label: "Available", color: css("--s1"), type: "line" }],
+    points: series.map((x) => ({ ...sv(x), mem: x.mem_avail_mb })) });
+  chart({ title: "Vehicles response time (ms), last 48 h", series: [{ key: "ms", label: "Response", color: css("--s1"), type: "line" }],
+    points: series.map((x) => ({ ...sv(x), ms: x.svc.vehicles?.ms })) });
+  chart({ title: "Vehicles JVM memory (RSS, MB), last 48 h", series: [{ key: "rss", label: "RSS", color: css("--s1"), type: "line" }],
+    points: series.map((x) => ({ ...sv(x), rss: x.svc.vehicles?.rss })) });
+
+  $("#daytable").innerHTML = "<thead><tr><th>Day (UTC)</th><th class='r'>Browser-verified</th><th class='r'>Viewers</th><th class='r'>All IPs</th><th class='r'>Scanner IPs</th><th class='r'>Requests</th><th class='r'>4xx</th><th class='r'>5xx</th></tr></thead><tbody>" +
+    traffic.days.slice().reverse().map((d) => `<tr><td>${d.day}</td><td class="r">${fmt(d.verified)}</td><td class="r">${fmt(d.viewers)}</td><td class="r">${fmt(d.ips)}</td><td class="r">${fmt(d.scanners)}</td><td class="r">${fmt(d.req)}</td><td class="r">${fmt(d["4xx"])}</td><td class="r">${fmt(d["5xx"])}</td></tr>`).join("") + "</tbody>";
+
+  $("#note").textContent = `Counts are distinct IPs. Viewers: a successful non-bot page GET, never probing for exploits; the vehicles iframe on the main site does not count. Browser-verified: viewers that also fetched css/js/images, so surely a real browser (a lower bound: a warm cache fetches nothing). IPs are stored only as salted hashes, for ${traffic.window.days} days. Several people behind one IP count once. Counted since ${traffic.since || "the first run"}; earlier days come from the one-off backfill.`;
+}
+main().catch((e) => { const x = $("#err"); x.style.display = "block"; x.textContent = "Could not load data: " + e.message; });
+setInterval(() => location.reload(), 60000);
+</script>
+</body>
+</html>

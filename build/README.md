@@ -11,15 +11,27 @@ push them with `deploy.sh`. Don't edit them on the box.
 | `openrc/ftlm-vehicles-server` | `/etc/init.d/ftlm-vehicles-server`  |
 | `openrc/lachliste`            | `/etc/init.d/lachliste`             |
 | `openrc/geomaxing`            | `/etc/init.d/geomaxing`             |
+| `monitor/collect.py`          | `/usr/local/bin/ftlm-collect` (cron, every minute) |
+| `monitor/index.html`          | `/var/www/ftlm-status/index.html`   |
 
 ```sh
-build/deploy.sh            # everything
-build/deploy.sh nginx      # nginx -t, reload (restores the old file if the test fails)
-build/deploy.sh search     # install init script, add to runlevel, restart
+build/deploy.sh                    # push everything that differs from the box
+build/deploy.sh diff               # read-only: show drift between repo and box
+build/deploy.sh diff vehicles      # one target
+build/deploy.sh nginx              # nginx -t, reload (restores the old file if the test fails)
+build/deploy.sh search             # install init script, add to runlevel, restart
 build/deploy.sh vehicles
-build/deploy.sh lachliste  # also writes /etc/conf.d/lachliste (see below)
+build/deploy.sh lachliste          # also writes /etc/conf.d/lachliste (see below)
 build/deploy.sh geomaxing
+build/deploy.sh monitor           # collector + dashboard + cron entry (first run backfills the stats)
+build/check.sh                     # external probe from this machine: site, vehicles, /admin/, TLS expiry
+FORCE=1 build/deploy.sh vehicles   # push + restart even if unchanged
 ```
+
+`push` compares each file with the box first and skips (no restart) what is identical. Safety nets:
+nginx keeps the newest 5 `nginx.conf.bak-*` and rolls back on a failed `nginx -t`; an overwritten init
+script is kept as `/etc/init.d/<svc>.bak`. `diff` never prints `/etc/conf.d/*` contents (secrets), only
+whether they match.
 
 The static site itself goes up with `../publish.sh` (rsync of `public/` to `/var/www/ftlm/`).
 
@@ -83,3 +95,35 @@ Recovery if it happens again:
 
 `[linode…@…-fra1 lish]#` is LISH's host shell, not the VM. Normal shell commands like
 `ls` don't work there.
+
+## Monitoring
+
+`monitor/collect.py` runs on the box every minute (cron, stdlib Python) and writes three JSON files
+for the dashboard into `/var/www/ftlm-status/`; its state is in `/var/lib/ftlm-monitor/` (mode 700).
+
+- **Dashboard:** https://faster-than-light-memes.xyz/admin/ (basic auth with its own `/etc/nginx/.htpasswd_admin`,
+  not the `/janoshi/` one; `deploy.sh monitor` creates it on first run and asks for the password, or reads
+  `ADMIN_USER`/`ADMIN_PASSWORD`; the password never goes into the repo. To change it, delete the file on the
+  box and redeploy).
+- **Health:** nginx, vehicles, search, lachliste, geomaxing, postgresql (port/HTTP checks with latency),
+  JVM RSS, memory/swap, disk, load, TLS expiry. The banner turns red on any failed check, low memory,
+  disk > 90 %, cert < 7 days, or a collector that stopped reporting for 3 minutes.
+- **Viewers:** distinct IPs from the nginx `access.log` with at least one successful page GET (2xx/304)
+  and a non-bot user agent; "all IPs" (mostly scanners) is shown next to it. IPs are only stored as
+  salted hashes (`/var/lib/ftlm-monitor/salt`) and dropped after 30 days. Needs the `ftlm` log format
+  in `nginx.conf` for the per-site split (older log lines have no vhost).
+- **Iframes:** the vehicles server is embedded in the main site. Requests to it with a main-site `Referer`
+  are not counted as vehicles viewers.
+- **Three counts:** all IPs, viewers, and browser-verified viewers (they also fetched css/js/images).
+  Scanner IPs (a 4xx on `.php`, `.env`, ...) are excluded from viewers.
+- **`monitor/analyze.py <access.log>`** prints a one-off visitor profile (aggregates only, no IPs). With `monitor/geo-update.sh` (free DB-IP
+  Lite databases, no account) it also shows country and network type; run it with
+  `uv run --with maxminddb build/monitor/analyze.py <log>`. IP Geolocation by [DB-IP](https://db-ip.com), CC BY 4.0.
+- **`build/check.sh`** looks from outside (what a visitor sees). It does not need ssh.
+- The collector does not alert by itself. Run `build/check.sh` from cron/`/loop`, or point an external
+  pinger at the site.
+
+`/var/log/nginx/access.log` and `error.log` are not rotated (700 MB and 400 MB in Oct 2026). The
+collector copes with rotation (inode/size check), so adding logrotate later is safe.
+
+Next steps are in [TODO.md](TODO.md).
