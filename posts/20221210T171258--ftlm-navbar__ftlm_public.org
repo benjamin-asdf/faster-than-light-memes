@@ -85,6 +85,12 @@ on top.
 ** [[denote:20230820T125336][Thought dump]]
 ** [[denote:20241125T192323][Wizards and Shamelessness]]
 
+* Programming with Claude
+
+** [[denote:20261015T100000][Claude Coding Overview]]
+*** [[denote:20261008T081410][Towards a Meta Design of LLM Skills]]
+*** [[denote:20261015T093435][My Skills]]
+
 * Cybernetics, Living Computation, AI
 
 ** [[denote:20240606T185815][Hyper dimensional computing, SDM, Neuronal Ensembles]]

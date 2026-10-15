@@ -1,0 +1,205 @@
+#+title:      Towards a Meta Design of LLM Skills
+#+date:       [2026-10-08 Thu 08:14]
+#+filetags:   :thinking:software:debugging:public:
+#+identifier: 20261008T081410
+#+EXPORT_FILE_NAME: meta-design-of-llm-skills_en
+#+LANGUAGE: en
+
+If this blog documents my thoughts on programming, it must be about Claude Code nowadays. At first glance, skills for Claude Code are instructions: when do they run, which steps, which output. What I noticed: the good ones capture something else, a /thinking move/ that experienced developers otherwise make only implicitly.
+
+* Four layers
+
+I approach skills philosophically, not as a collection of instructions. That gives layers:
+
+- *Layer 0:* the debugging moves that are already in the model.
+- *Layer 1:* skills that steer these moves, for example the layer analysis.
+- *Layer 2:* higher-order skills that delegate which skill fits the problem.
+- *Layer 3:* meta skills that apply the same debugging moves to the skills themselves.
+
+* Layer 0: debugging is already in the model
+
+The model bisects, minimizes, compares the running with the non-running case and reads error messages without being told. Presumably these moves are already in there from the training data. I cannot prove that from the inside; it is a conjecture that fits what I observe.
+
+So a skill does not have to teach these moves. What is left for it: give the model a direction (what to aim at), enforce completeness (all layers, all siblings) and make what the model claims checkable from the outside.
+
+* Layer 1: one line, four levels
+
+The layer analysis is a good example, because it steers the model to the /design/ of the software. Without it, a fix easily stays on the surface, one line at the spot where it hurts. With it, you force the model to ask about class, assumption and process gap, and you get deep corrections instead of band-aids. I have not tested whether the model would have stayed at the line without the skill. An ablation (the same case with and without the skill) is still to do.
+
+An expression =new Date()= returned the real wall-clock time of the machine, where the fixed system time of the evaluation was expected. The fix was one line.
+
+The analysis afterwards needed four levels.
+
+- *L1, same mechanism.* It was not just the clock. I searched all host imports, globals and library functions and found twelve sources of ambient state: randomness, time zone, order of hash maps, stack depth and more.
+- *L2, broken assumption.* Caches and incremental runs trusted the declared set of inputs. An implicit input made all of them silently wrong. The test "incremental = full run" could not find that, because both runs saw the same wall clock.
+- *L3, process.* The concept text said "same engine, same behavior". There was never a test for that. Same bytes are not the same inputs. Where one test per claim existed (sandbox escape), there was no bug.
+- *L4* I checked and dropped. It found nothing that L3 did not already have.
+
+Each level got its own countermeasure: a fix, a construction with a checklist, a property test with deliberately shifted ambient state, a table "claim → test".
+
+The point is not that there are four levels. Each level is used to /keep searching/, and each instance found is checked. A level that merely restates the known bug more abstractly is dropped.
+
+* The move deserves a name
+
+Climb from the concrete to the class, search on every level, name on every level what /we/ did wrong and decide a countermeasure: that is a thinking move. I have captured it as a skill, =bug-layer-analysis=.
+
+Pólya worked exactly like this for mathematics. In /How to Solve It/ he collects moves with a name and a guiding question, such as specialization, generalization and working backwards ("Could you solve a more general problem? A more special one?"). [Pólya][fn:polya] A skill is, in this sense, an executed heuristic.
+
+Three terms I use for this:
+
+- *Thinking object (Denkobjekt):* anything you can handle with thought. A bug, a decision, an assumption, a diff. A skill too.
+- *Thinking operator (Denkoperator):* the class of thinking objects that process other thinking objects. The layer analysis takes a defect and returns a class of errors.
+- *Space of thinking operators:* operators are not scattered, they sit in a space with axes. (Provisional, see below.)
+
+* The layer analysis is the end of the chain
+
+The note on the date bug starts after the localization. An agent had found the bug in a case study. How is written nowhere.
+
+Before that come the moves of layer 0: read the error message, reproduce the bug at the push of a button, minimize it, bisect (in space and in time), compare the running with the non-running case, take "that cannot happen" as a signal for a violated assumption. The model does these on its own.
+
+The layer analysis, on the other hand, it does not do on its own. It comes after the fix and asks what the bug says about the design. My bet is that this is exactly the place where a skill changes the most. That is a hypothesis. Evidence would be an ablation and a look into real debugging sessions: where does the model stop without the skill?
+
+* Two ways to find operators
+
+*From above.* I break an operator into axes (object, time, abstraction, stance) and flip one. That is how I got from the layer analysis to the pre-mortem (time arrow flipped) and to the assumption stress test (direction of abstraction flipped).
+
+*From below.* I ask what someone actually thinks and does when debugging, and derive the operators from that. The technical terms for this are protocol analysis (thinking aloud as a data source) and cognitive task analysis. [fn:psych]
+
+I took the first way first, and the result is the most honest place in this post: I had four skills that were coherent in themselves and never ran. Placing them in the axes confirmed the construction, because it came from the construction. Then I applied the layer analysis to this error:
+
+- *L1:* Artifacts are generated from a structure and not tested against practice.
+- *L2:* "A free point in the space is a useful operator" is an assumption, not a finding.
+- *L3:* There is no acceptance criterion for skills. Generating costs nothing.
+- *Countermeasure:* An operator is only built when an observed instance supports it. Every skill carries a section "evidence" with a deletion rule.
+
+That is why I now take the second way. The first is good for seeing gaps, not for deciding what gets built.
+
+* Layers 2 and 3: skills about skills
+
+*Layer 2* delegates. A higher-order skill chooses which skill fits the problem (a router). Schoenfeld showed in empirical studies that Pólya's heuristics alone are not enough. What matters is control: when which strategy is chosen, how progress is monitored and when a path is abandoned. Selection is only one part of that. [fn:schoenfeld]
+
+*Layer 3* applies the same debugging moves to the skills themselves. A skill has bugs like code: it can fire on the wrong cases, overlap with another skill or never find anything. Then layer analysis, pre-mortem and stress test can be pointed at it.
+
+If operators are thinking objects, you can apply operators to operators. "Which skills sit next to this one?" is the same move as the layer analysis, one level higher: from the instance to the class, from there to the siblings. That is also the move this post came from.
+
+So far I see five:
+
+- *choose an axis*,
+- *invert* an operator,
+- *compose* several (layer analysis → L2 assumption → stress test),
+- *apply an operator to itself*,
+- *choose* the fitting one before applying (a router).
+
+The risk is a tower. Meta levels move the problem upwards, and a router can be wrong itself. So I keep the meta level thin: a neighborhood search and a router, nothing more.
+
+* The provisional space
+
+| Operator                     | Object          | Time     | Abstraction | Stance        |
+|------------------------------+-----------------+----------+-------------+---------------|
+| Layer analysis               | defect          | backward | upward      | constructive  |
+| Pre-mortem                   | planned change  | forward  | upward      | constructive  |
+| Assumption stress test       | assumption      | –        | downward    | falsifying    |
+| Decision matrix (Hickey)     | design          | –        | lateral     | comparative   |
+| Adversarial review           | diff            | –        | –           | falsifying    |
+
+The assignment is my judgment, and the axes are chosen, not given. According to Popper, creativity has no logic and therefore no complete list of axes either: a new concept can bring a new axis at any time. A move that fits no axis is the normal case and says that an axis is to be added. Every point in the space is a possible growth point. (I had attributed that sentence to Wheeler and found no source, so it stands here as my thesis.) The same holds for stances and habits of thought.
+
+* Conjecture and criticism
+
+Debugging is also a lens on thinking and creativity. Minsky shows in 1967 that poorly understood ideas can be expressed as a program and then corrected on the program; debugging as a stance toward thinking goes back to Papert. [fn:minsky] For Popper, criticism is central: a problem is followed by a tentative theory, then the attempt at error elimination, and from that a new problem usually arises. [fn:popper] I read this as debugging. A program is a conjecture, a failing test is the refutation.
+
+According to Popper there is no logic for generating ideas, but there is one for testing them. [fn:popper] That gives a division of labor: operators generate fallible conjectures, and the core is criticism. In Minsky, critics recognize problem types and activate fitting ways of thinking. That is not Popper's criticism, the parallel is my own. [fn:minsky]
+
+Criticism has to be independent of the source of the conjecture. A model that criticizes itself in the same conversation is weak for that: without external feedback, self-correction on reasoning tasks mostly improves nothing and sometimes gets worse. [fn:huang] The reason is probably that generator and critic share the same assumptions; that is my interpretation, not the authors'. Criticism gets stronger step by step: a verifier agent with a fresh context, then an executable check such as a test, a grep or a REPL form, which does not depend on the model at all. That is why my skills demand runs instead of narratives and visibly mark what is unchecked.
+
+The layer analysis is built this way already: each level is a conjecture about the class of errors, the search for siblings is the attempt at refutation, and a level that finds nothing is dropped. Operators themselves are conjectures too. They survive when they bring findings.
+
+[fn:huang] Huang et al., /Large Language Models Cannot Self-Correct Reasoning Yet/ (ICLR 2024), https://arxiv.org/abs/2310.01798. Tested was self-correction by prompt without external feedback on GSM8K, CommonSenseQA and HotpotQA, with GPT-3.5, GPT-4, GPT-4-Turbo and Llama-2-70b. With reliable external feedback or specifically trained models it looks different: Kamoi et al. 2024, https://arxiv.org/abs/2406.01297, and Kumar et al. 2025 (SCoRe), https://arxiv.org/abs/2409.12917.
+
+Related figures of thought I use along the way: Zwicky's morphological analysis (spanning a space over axes), Hayakawa's ladder of abstraction (after Korzybski) and Alexander's pattern language (each pattern has a name, context, problem, solution and links to larger and smaller patterns). [fn:misc]
+
+* What is not established
+
+- Pre-mortem, assumption stress test, router and neighborhood search are not tested on real cases. Only the layer analysis has produced findings.
+- Whether the skill /generates/ the findings on L2 and L3 or only /structures/ them, I do not know.
+- That the debugging moves are already in the model is a conjecture. I cannot support it from the inside.
+- Whether the layer analysis brings deeper fixes than a bare instruction has not been tested by ablation.
+
+* Open questions
+
+- Which moves show up repeatedly in real debugging sessions, and which of them have no operator yet?
+- How do you evaluate an operator? My proposal: it found instances that would have stayed undiscovered without it. Is that enough?
+- How many operators do you really need, and how do you recognize that one is superfluous?
+- Which axis is still missing? And who decides which axes a problem needs?
+- Does the layer analysis really change where the model stops with the fix, or would it have reached the same depth without the skill?
+
+* Literature on thinking moves
+
+There is no field with a fixed name for this. There is a reason: Reichenbach separated the context of discovery from the context of justification in 1938. [Reichenbach][fn:popper] Popper had already denied in 1934 that there is a logic of discovery: only testing is open to logical analysis, and invention belongs to psychology for him. [Popper][fn:popper] The thinking moves migrated into psychology, mathematics education and AI. Here is the trail I have found so far.
+
+** Philosophy
+
+- Descartes, /Regulae ad directionem ingenii/ (unfinished, c. 1628): rules of method: intuition, deduction, enumeration, reduction to simple natures. [fn:philo]
+- Leibniz, /ars inveniendi/ and /ars combinatoria/ (1666): discovery as an art that he wanted to make rule-governed through signs and combinatorics. [fn:philo]
+- Aristotle, /Topics/: a collection of about 300 topoi, argument patterns for finding premises for dialectical theses. I read it as an early precursor of a catalog of thinking moves. [fn:philo]
+- Kant: the logical functions of unity in judgments are the same functions that, as categories, guide the synthesis of intuition (CPR A79/B105). [fn:philo]
+- Hegel: philosophical method as the content's own movement. The thinker is asked to give up arbitrary interference and to follow that movement (Phenomenology, Preface). That is more of a counterpoint to a toolbox of thinking moves. [fn:hegel]
+- Peirce: three kinds of inference, deduction, induction and abduction (inference to an explanatory hypothesis). [fn:polya]
+- Husserl: free imaginative variation. One varies an example in imagination and asks what stays invariant; the invariant is the essence (/eidos/). As an analogy to neighborhood search, that is my reading. [verify]
+- Dewey, /How We Think/ (1910): five aspects of reflective thought (suggestion, problem formulation, hypothesis, reasoning, testing), explicitly not a fixed sequence. [fn:polya]
+- Lakatos, /Proofs and Refutations/: moves in the interplay of proof and counterexample, such as monster-barring and lemma-incorporation. [fn:polya]
+- Geach, /Mental Acts/ (1957): judging is an episodic mental act. Against that, G. Strawson (2003): thoughts mostly come to us unbidden; mental action, apart from volition, consists in preparing the ground for them ("catalysis"). [verify]
+- Popper, /Logik der Forschung/ and /Conjectures and Refutations/: no logic of discovery, but criticism as the core. [fn:popper]
+
+** Psychology and cognitive science
+
+- Würzburg school (Külpe, Bühler) and Selz: experimental introspection on thinking; Selz describes thinking as a sequence of operations. Duncker (Gestalt psychology, Berlin) later studies productive thinking. [fn:psych]
+- Piaget: thinking develops as operations, internalized actions that can be reversed mentally and form a coherent system; children reach them, applied to concrete objects, in the concrete operational stage (roughly ages 7 to 11). [fn:dev]
+- Newell and Simon, /Human Problem Solving/ (1972): problem space and operators, means-ends analysis, verbal protocols as a data source. [fn:psych]
+- Ericsson and Simon, /Protocol Analysis/ (1984): when and how verbal reports can serve as data on cognitive processes. [fn:psych]
+- Guilford, /Structure of Intellect/: a cube of 5 to 6 operations, 4 to 5 contents and 6 products (originally 120, later 150 to 180 cells), built as a taxonomy of intelligence factors, not of thinking moves. [fn:psych]
+- Bloom's taxonomy (1956) orders educational objectives in the cognitive domain from knowledge to evaluation. The 2001 revision by Anderson and Krathwohl crosses six cognitive processes (remember to create) with four types of knowledge (factual, conceptual, procedural, metacognitive). [fn:dev]
+- Gentner (structure mapping) and Hofstadter and Sander, /Surfaces and Essences/: analogy-making as a basic move of thought, with competing accounts of how it works. [fn:psych]
+- Flavell: introduced the term metacognition in 1979; it covers knowledge about cognition (about oneself, tasks and strategies) and metacognitive experiences. Informally: thinking about one's own thinking. [fn:dev]
+- Crandall, Klein, Hoffman, /Working Minds/ (2006): cognitive task analysis, methods for eliciting and analyzing experts' cognitive demands and strategies. [fn:psych]
+- Debugging and programming as objects of psychology: Katz and Anderson (bug-location strategies, 1987), Weinberg (1971), Détienne (2001). Zeller's /Why Programs Fail/ is software engineering, but a systematization of debugging. [fn:psych]
+- Minsky: in /The Emotion Machine/ (2006), critics recognize problem types and activate fitting ways of thinking (critic-selector model), arranged in six levels. /Society of Mind/ already has B-brains, censors and suppressors that supervise an A-brain. [fn:minsky]
+
+** Mathematics and computer science
+
+- Pólya, /How to Solve It/ (1945) and /Mathematics and Plausible Reasoning/ (1954). [fn:polya]
+- Schoenfeld, /Mathematical Problem Solving/ (1985): an empirical study of why Pólya's heuristics often fail in teaching. A catalog is not enough; control (selection, monitoring, abandoning paths), knowledge base and beliefs also matter. [fn:schoenfeld]
+- LCF, HOL, Isabelle: tactics are executable operators on proof goals, tacticals (THEN, ORELSE, REPEAT) are operators over tactics. A small kernel admits only valid inferences, so even buggy tactics cannot produce false theorems. Coq and Lean also have small kernels that check proof terms. [fn:misc]
+- Lenat: AM applies heuristics to mathematical concepts. Its successor EURISKO also contains heuristics that create and modify heuristics. [fn:misc]
+- Smith, 3-Lisp: a conceptually infinite reflective tower of interpreters whose levels the implementation creates only on demand. [fn:misc]
+- Classical AI planning, for example STRIPS (Fikes and Nilsson, 1971), describes actions by preconditions and effects (add and delete lists). For language models there are prompting methods such as chain-of-thought (Wei et al., 2022), ReAct (Yao et al., 2022, ICLR 2023) and tree of thoughts (Yao et al., 2023); they structure thinking and acting, but do not formalize actions this way. [fn:ai]
+
+** Practice
+
+- Collections of thinking tools: De Bono's methods (lateral thinking, 1967; CoRT, 1973; Six Thinking Hats, 1985), the thinking routines of Harvard Project Zero's Visible Thinking project (completed 2005) and Munger's "latticework of models" from his 1994 USC talk "A Lesson on Elementary, Worldly Wisdom". These are different kinds of collection; calling them "operators" is my frame. [fn:ai]
+
+Guilford's cube orders intelligence factors, not thinking moves, so as far as I can see nobody has built a space of thinking operators yet. And Schoenfeld shows that a catalog is not enough: what counts is control.
+
+[fn:polya] Pólya, /How to Solve It/ (Princeton 1945/1957): entries "Generalization", "Specialization", "Working backwards" and guiding questions such as "Could you imagine a more general problem? A more special problem?". Peirce: SEP "Peirce" (classification of arguments 1867, abduction as inference to explanatory hypotheses). Dewey, /How We Think/ (1910), ch. 6, https://gutenberg.org/ebooks/37423: five "phases or aspects of reflective thought", not as a fixed order. Lakatos, /Proofs and Refutations/: methods include monster-barring, exception-barring, lemma-incorporation. Peirce, Dewey and Lakatos checked against secondary sources.
+
+[fn:schoenfeld] Schoenfeld, /Mathematical Problem Solving/ (1985): four categories (resources, heuristics, control, beliefs); control means decisions about when to use which resources and strategies, including monitoring progress. https://tecfa.unige.ch/themes/sa2/act-app-dos2-fic-mathemat2.htm. According to secondary sources; I have not checked the book itself.
+
+[fn:popper] Popper, /Logik der Forschung/ (1934), §2: "There is no such thing as a logical method of having new ideas" (English edition). Schema P1 → TT → EE → P2 in /Objective Knowledge/, ch. 6, https://www.marxists.org/reference/subject/philosophy/works/at/popper.htm. Reichenbach, /Experience and Prediction/ (1938), ch. 1 §1. The distinction was later read more rigidly than Reichenbach meant it.
+
+[fn:minsky] Minsky, "Why Programming is a Good Medium for Expressing Poorly Understood and Sloppily Formulated Ideas" (1967). Papert, /Mindstorms/ (1980). Critic-selector model: Minsky, /The Emotion Machine/ (2006), https://en.wikipedia.org/wiki/The_Emotion_Machine; B-brain in /Society of Mind/ §6.4. Chapter references from secondary sources.
+
+[fn:psych] Katz and Anderson 1987, /Human-Computer Interaction/ 3(4), https://ets.org/research/policy_research_reports/publications/article/1987/icwz.html. Crandall, Klein, Hoffman, /Working Minds/ (MIT Press 2006). Ericsson and Simon, /Protocol Analysis/ (1984). Newell and Simon, /Human Problem Solving/ (1972). Guilford: https://en.wikipedia.org/wiki/J._P._Guilford. Hofstadter criticizes Gentner's structure mapping: https://www.qrg.northwestern.edu/papers/Files/Analogy_Just_Looks_Like_1998_Gentner.pdf. Selz: https://www.uni-mannheim.de/en/osi/institute/otto-selz/scientific-relevance/. Mostly search results, not full texts.
+
+[fn:philo] SEP "Descartes' Works" (Regulae, 21 rules, c. 1628), "Leibniz's Logic" (ars inveniendi), "Aristotle's Logic" (Topics, books II to VI), "Kant's Theory of Judgment" (CPR A79/B105, https://humanum.arts.cuhk.edu.hk/humftp/E-text/Kant/cpr.kemp-smith/08td-b.htm).
+
+[fn:misc] LCF: https://arxiv.org/pdf/1907.02836. EURISKO: https://en.wikipedia.org/wiki/Eurisko. 3-Lisp: https://xeroxparcarchive.computerhistory.org/phylum/3-lisp/desrivieres/impl-paper/.impl-paper-1.bravo!1.html. Zwicky: https://concepts.dsebastien.net/concept/morphological-analysis/. Hayakawa: /Language in Thought and Action/. Alexander: /A Pattern Language/. Partly from search results.
+
+[fn:hegel] Hegel, /Phenomenology of Spirit/, Preface, Baillie translation https://www.marxists.org/reference/archive/hegel/works/ph/phprefac.htm (German: https://www.marxists.org/deutsch/philosophie/hegel/phaenom/vorrede.htm), ¶22 ("self-movement, self-activity"), ¶58 (freedom should sink into the content and "observe this process taking place"; one must not interrupt the "immanent rhythm of the movement of conceptual thought"). The phrase "self-movement of the concept" does not appear there verbatim; it is a common paraphrase. Whether the thinker only watches is disputed among interpreters; that is my reading.
+
+[fn:dev] Piaget: definition of operation as „action intériorisée, réversible et coordonnée avec d’autres en un système d’ensemble“, after https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/18592759/operation; concrete operational stage after https://en.wikipedia.org/wiki/Piaget%27s_theory_of_cognitive_development. Flavell, /American Psychologist/ 34(10), 1979, 906-911; "Monitoring and control" comes from later literature. Bloom 1956 and Anderson and Krathwohl 2001 after https://en.wikipedia.org/wiki/Bloom%27s_taxonomy. From secondary sources; I could not read the originals.
+
+[fn:ai] STRIPS: Fikes and Nilsson, /Artificial Intelligence/ 2 (1971), 189-208, https://mlanthology.org/ijcai/1971/fikes1971ijcai-strips. Wei et al., https://arxiv.org/abs/2201.11903; Yao et al. (ReAct), https://arxiv.org/abs/2210.03629; Yao et al. (Tree of Thoughts), https://arxiv.org/abs/2305.10601. De Bono: https://en.wikipedia.org/wiki/Six_Thinking_Hats. Project Zero: https://pz.harvard.edu/resources/see-think-wonder. Munger: https://fs.blog/great-talks/a-lesson-on-worldly-wisdom/; "latticework of models" is his wording, "mental models" the popular shorthand. Partly from search results.
+
+-----
+
+/Generated by Claude on Benjamin Schwerdtner's behalf./

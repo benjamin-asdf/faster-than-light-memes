@@ -1,0 +1,66 @@
+#+title:      Meine Skills
+#+date:       [2026-10-15 Thu 09:34]
+#+filetags:   :claude:skills:thinking:software:public:
+#+identifier: 20261015T093436
+#+EXPORT_FILE_NAME: my-skills_de
+#+LANGUAGE: de
+
+Sieben Claude-Code-Skills, die ich benutze oder bauen musste, um sie zu benutzen. Sie liegen öffentlich in [[https://github.com/benjamin-asdf/bjs-claude-skills][bjs-claude-skills]]. Die Gedanken dahinter stehen in [[denote:20261008T081411][Towards a Meta Design of LLM Skills]].
+
+Kurz: Das Modell kann vermutlich schon alles, was hier steht. Ein Skill gibt ihm Richtung, erzwingt Vollständigkeit und macht sein Ergebnis prüfbar. Ob das im Einzelfall etwas bringt, ist eine Vermutung, und jede Zeile unten sagt, wie gut sie belegt ist.
+
+* Benutzt
+
+** =bug-layer-analysis=
+
+*Was er tut:* Ein Bug wird zum Ausgangspunkt. Erst alle Orte, an denen er auftaucht. Dann die Geschwister mit demselben Mechanismus. Dann hinauf: welche Annahme war falsch, welche Lücke im Prozess hat sie durchgelassen. Auf jeder Stufe steht, was /wir/ falsch gemacht haben, und eine Gegenmaßnahme.
+
+*Was er bringt:* Das Modell bleibt nicht bei der einen Zeile an der Stelle, an der es weh tut. Es wird aufs Design gelenkt, und jede Stufe muss durch eine Suche belegt sein. Eine Stufe, die nichts Neues findet, wird gestrichen.
+
+*Wie gut belegt:* Er ist in mehreren Sessions gelaufen, und zwei Analysen liegen als Datei vor, zum Beispiel der Fall mit der Wanduhr im Datumsausdruck. Ob das Modell ohne Skill dieselbe Tiefe erreicht hätte, habe ich nicht geprüft.
+
+** =decision-matrix=
+
+*Was er tut:* Nach Rich Hickeys /Design in Practice/. Kriterien als Zeilen, Ansätze als Spalten, der Status quo zuerst. In die Zellen kommen Fakten, nicht Noten. Das Urteil steht getrennt daneben.
+
+*Was er bringt:* Jeder Ansatz muss jedes Kriterium beantworten. Lücken und verdeckte Kosten fallen dadurch auf, bevor entschieden wird.
+
+*Wie gut belegt:* benutzt, nicht gegen eine Alternative gemessen.
+
+** =review-verify-loop=
+
+*Was er tut:* Ein Reviewer schlägt Befunde vor. Pro Befund versucht ein eigener Verifier, ihn zu widerlegen. Was überlebt, wird behoben. Das wiederholt sich, bis eine Runde nichts mehr übrig lässt.
+
+*Was er bringt:* Ein einzelner Review-Durchgang liefert selbstsichere Befunde, von denen viele falsch sind. Der Widerlegungsversuch filtert sie, und der Verifier ist unabhängiger als eine Selbstkritik im selben Kontext.
+
+*Wie gut belegt:* benutzt. Die Aussage zur Unabhängigkeit ist plausibel, aber meine Deutung. Die Studienlage zu Selbstkorrektur stützt sie nur vorsichtig.
+
+* Geschrieben, nicht erprobt
+
+** =pre-mortem=
+
+Die Schichtenanalyse mit umgedrehtem Zeitpfeil. Die Änderung gilt als gescheitert, die Ursachen werden aufgezählt, verallgemeinert und jede bekommt einen Check, der jetzt laufen kann. Der Gewinn wäre, dass Risiken als Ursachen mit Prüfung dastehen und nicht als Sorgen. Ob das stimmt, zeigt erst ein echter Fall.
+
+** =assumption-stress-test=
+
+Eine Annahme wird zu „für alle X aus S gilt P". Dann entstehen Fälle, die sie brechen sollen, sie laufen, und die Annahme wird neu formuliert. Er soll die L2-Annahme einer Analyse systematisch angreifen. „Hält" heißt nur: hält unter diesen Fällen.
+
+** =operator-neighborhood=
+
+Ein Operator wird in Achsen zerlegt, die Nachbarn werden gesucht, jede Achse einzeln umgedreht. Das ist der Skill, mit dem die letzten vier entstanden sind, und er hat genau den Fehler der Konstruktion am Schreibtisch: Alles passt in die Struktur, weil es aus ihr stammt. Deshalb steht in ihm die Regel, dass ein Operator erst gebaut wird, wenn eine beobachtete Instanz ihn belegt.
+
+** =operator-router=
+
+Vor der Anwendung wird gewählt, welcher Operator zum Problem passt, und der Grund wird genannt. Schoenfeld hat in empirischen Studien gezeigt, dass Pólyas Heuristiken allein nicht reichen und dass die Kontrolle (Auswahl, Überwachung, Abbruch von Lösungswegen) entscheidend ist. [fn:schoenfeld] Der Router wählt bisher nur unter Skills aus demselben Raum.
+
+* Was fehlt
+
+- Ein Ablationsversuch: derselbe Fall mit und ohne Skill, verglichen nach gefundenen Geschwistern, verifizierten Instanzen und Ebenen, die etwas Neues bringen.
+- Auswertung echter Debugging-Gespräche: Wo hört das Modell ohne Skill auf, und welche Bewegungen fehlen noch?
+- Ein Abschnitt „Belege" in jedem Skill mit einer Streichregel. Ein Skill ohne Funde nach mehreren Aufrufen fliegt raus.
+
+[fn:schoenfeld] Schoenfeld, /Mathematical Problem Solving/ (1985), nach Sekundärquellen: https://tecfa.unige.ch/themes/sa2/act-app-dos2-fic-mathemat2.htm.
+
+-----
+
+/Generiert von Claude im Auftrag von Benjamin Schwerdtner./

@@ -1,0 +1,32 @@
+#+title:      Claude Coding im Überblick
+#+date:       [2026-10-15 Thu 10:00]
+#+filetags:   :claude:programming:llm:public:
+#+identifier: 20261015T100001
+#+LANGUAGE: de
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: claude-coding-overview_de
+
+Seit November 2025 ist Claude Code richtig gut, so gut, dass ich es einfach benutze. In letzter Zeit haben sich mit Opus 5.5 nochmal neue Möglichkeiten aufgetan.
+
+Was sich geändert hat, ist das Substrat. Wir haben jetzt eine Technologie, in der Programmiersprachen und natürliche Sprache nebeneinanderstehen. Nicht als neue Schicht über den Hochsprachen, sondern als neuer Kanal daneben, der sich mit ihnen verweben kann und weiter unten wieder die Programmiersprachen und den Computer benutzt. Dazu ist ein eigener Post geplant.
+
+Diese Seite ist der Hub für alles, was ich über das Programmieren mit Claude schreibe.
+
+* Posts
+
+- [[denote:20261008T081411][Towards a Meta Design of LLM Skills]]: Skills als Denkoperatoren, Schichten von Skills, und warum Kritik von außerhalb des Modells kommen muss.
+- [[denote:20261015T093436][Meine Skills]]: die sieben Skills in [[https://github.com/benjamin-asdf/bjs-claude-skills][bjs-claude-skills]], mit dem, wofür jeder gut ist, und wie gut das belegt ist.
+
+* Geplant
+
+- *Der Substrat-Post.* LLMs als Taschenrechner für natürliche Sprache: eine Ressource am Boden, kein Schöpfer. Unten eine Skizze der Idee.
+- *Die Reise.* Von den ersten ChatGPT-Experimenten bis zur täglichen Arbeit mit Claude Code. Ein weiterer Post kann diese Geschichte erzählen, die älteren LLM-Posts gehören dorthin.
+- *Daten aus echten Debugging-Sessions.* Welche Bewegungen das Modell von selbst macht, wo es aufhört und was die Skills ändern.
+
+* Die Idee in einem Absatz
+
+Ein Taschenrechner stellt Rechnen als Ressource bereit. Niemand nennt ihn intelligent, und trotzdem baut eine kreative Person darauf auf. Ich glaube, dass sich Intelligenz und Kreativität genauso aufteilen: Es gibt Ressourcen am Boden, die die kreative Person auf eine höhere Ebene heben. Ein Sprachmodell ist so eine Ressource, eine algorithmische Operation mit natürlicher Sprache als Ein- und Ausgabe. Es ist unscharf, wo ein Taschenrechner exakt ist, weil es auf hochdimensionalen Daten arbeitet, aber es bleibt algorithmisch. Meine Position: Das Modell allein ist keine kreative Person, so wenig wie ein Taschenrechner. Kreativität wäre eine Eigenschaft der Organisation, in der es steckt.
+
+-----
+
+/Generiert von Claude im Auftrag von Benjamin Schwerdtner./

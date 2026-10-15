@@ -1,0 +1,205 @@
+#+title:      Towards a Meta Design of LLM Skills
+#+date:       [2026-10-08 Thu 08:14]
+#+filetags:   :thinking:software:debugging:public:
+#+identifier: 20261008T081411
+#+EXPORT_FILE_NAME: meta-design-of-llm-skills_de
+#+LANGUAGE: de
+
+Wenn dieser Blog meine Gedanken zum Programmieren festhält, muss er heutzutage von Claude Code handeln. Skills für Claude Code sind auf den ersten Blick Anleitungen: Wann laufen sie, welche Schritte, welche Ausgabe. Mir ist aufgefallen: Die guten halten etwas anderes fest, nämlich eine /Denkbewegung/, die erfahrene Entwickler sonst nur implizit machen.
+
+* Vier Schichten
+
+Ich gehe an Skills philosophisch heran, nicht als Anleitungssammlung. Dann ergeben sich Schichten:
+
+- *Schicht 0:* die Debugging-Bewegungen, die schon im Modell stecken.
+- *Schicht 1:* Skills, die diese Bewegungen lenken, etwa die Schichtenanalyse.
+- *Schicht 2:* Skills höherer Ordnung, die delegieren, welcher Skill zum Problem passt.
+- *Schicht 3:* Meta-Skills, die dieselben Debugging-Bewegungen auf die Skills selbst anwenden.
+
+* Schicht 0: Debugging steckt schon im Modell
+
+Das Modell bisectet, minimiert, vergleicht den laufenden mit dem nicht laufenden Fall und liest Fehlermeldungen, ohne dass ich es ihm sage. Vermutlich stecken diese Bewegungen aus den Trainingsdaten schon darin. Ich kann das von innen nicht belegen, es ist eine Vermutung, die zu dem passt, was ich beobachte.
+
+Ein Skill muss diese Bewegungen deshalb nicht beibringen. Was ihm bleibt: dem Modell eine Richtung geben (worauf soll es sich richten), Vollständigkeit erzwingen (alle Ebenen, alle Geschwister) und von außen prüfbar machen, was das Modell behauptet.
+
+* Schicht 1: Eine Zeile, vier Ebenen
+
+Die Schichtenanalyse ist dafür ein gutes Beispiel, weil sie das Modell auf das /Design/ der Software lenkt. Ohne sie bleibt ein Fix leicht an der Oberfläche, eine Zeile an der Stelle, an der es weh tut. Mit ihr zwingt man das Modell, nach Klasse, Annahme und Prozesslücke zu fragen, und kommt zu tiefen Korrekturen statt zu Pflastern. Ob das Modell ohne den Skill bei der Zeile geblieben wäre, habe ich nicht geprüft. Ein Ablationsversuch (derselbe Fall mit und ohne Skill) steht aus.
+
+Ein Ausdruck =new Date()= lieferte die echte Uhrzeit des Rechners, wo die fixe Systemzeit der Auswertung erwartet war. Der Fix war eine Zeile.
+
+Die Analyse danach hat vier Ebenen gebraucht.
+
+- *L1, gleicher Mechanismus.* Es war nicht nur die Uhr. Ich habe alle Host-Imports, Globals und Bibliotheksfunktionen abgesucht und zwölf Quellen ambienten Zustands gefunden: Zufall, Zeitzone, Reihenfolge von Hash-Maps, Stacktiefe und weitere.
+- *L2, gebrochene Annahme.* Caches und inkrementelle Läufe vertrauten der deklarierten Input-Menge. Ein impliziter Input machte sie alle still falsch. Der Test „inkrementell = voller Lauf“ konnte das nicht finden, denn beide Läufe sahen dieselbe Wanduhr.
+- *L3, Prozess.* Im Konzepttext stand „gleiche Engine, gleiches Verhalten“. Dafür gab es nie einen Test. Gleiche Bytes sind nicht gleiche Inputs. Wo pro Behauptung ein Test existierte (Sandbox-Ausbruch), gab es keinen Fehler.
+- *L4* habe ich geprüft und gestrichen. Sie fand nichts, was L3 nicht schon hatte.
+
+Jede Ebene bekam eine eigene Gegenmaßnahme: Fix, Konstruktion mit Checkliste, ein Eigenschaftstest mit absichtlich verstelltem Ambient, eine Tabelle „Behauptung → Test“.
+
+Das Entscheidende ist nicht, dass es vier Ebenen sind. Jede Ebene wird benutzt, um /weiter zu suchen/, und jede gefundene Instanz wird geprüft. Eine Ebene, die den bekannten Fehler nur abstrakter formuliert, fliegt raus.
+
+* Die Bewegung hat einen Namen verdient
+
+Vom Konkreten zur Klasse aufsteigen, auf jeder Stufe suchen, auf jeder Stufe benennen, was /wir/ falsch gemacht haben, und eine Gegenmaßnahme bestimmen: Das ist eine Denkbewegung. Ich habe sie als Skill festgehalten, =bug-layer-analysis=.
+
+Pólya hat für die Mathematik genau so gearbeitet. In /How to Solve It/ sammelt er Bewegungen mit Namen und Leitfrage, etwa Spezialisierung, Verallgemeinerung und Rückwärtsarbeiten („Könntest du ein allgemeineres Problem lösen? Ein spezielleres?“). [Pólya][fn:polya] Ein Skill ist in diesem Sinn eine ausgeführte Heuristik.
+
+Drei Begriffe, die ich dafür benutze:
+
+- *Denkobjekt:* alles, womit man denkend umgehen kann. Ein Bug, eine Entscheidung, eine Annahme, ein Diff. Auch ein Skill.
+- *Denkoperator:* die Klasse von Denkobjekten, die andere Denkobjekte verarbeiten. Die Schichtenanalyse nimmt einen Defekt und liefert eine Fehlerklasse.
+- *Raum der Denkoperatoren:* Operatoren liegen nicht verstreut, sondern in einem Raum mit Achsen. (Vorläufig, siehe unten.)
+
+* Die Schichtenanalyse ist das Ende der Kette
+
+Die Notiz zum Datumsfehler beginnt nach der Lokalisierung. Gefunden hatte den Fehler ein Agent in einer Case Study. Wie, steht nirgends.
+
+Davor passieren die Bewegungen aus Schicht 0: die Fehlermeldung lesen, den Fehler auf Knopfdruck reproduzieren, ihn minimieren, bisecten (im Raum und in der Zeit), den laufenden mit dem nicht laufenden Fall vergleichen, „das kann nicht passieren“ als Signal für eine verletzte Annahme nehmen. Das Modell macht sie von sich aus.
+
+Die Schichtenanalyse dagegen macht es nicht von sich aus. Sie kommt nach dem Fix und fragt, was der Fehler über das Design sagt. Meine Wette ist, dass genau das die Stelle ist, an der ein Skill am meisten ändert. Das ist eine Hypothese. Beleg wäre ein Ablationsversuch und ein Blick in echte Debugging-Sessions: Wo hört das Modell ohne Skill auf?
+
+* Zwei Wege, Operatoren zu finden
+
+*Von oben.* Ich zerlege einen Operator in Achsen (Objekt, Zeit, Abstraktion, Haltung) und drehe eine um. So bin ich von der Schichtenanalyse zum Pre-Mortem gekommen (Zeitpfeil gedreht) und zum Annahmen-Sturmtest (Abstraktionsrichtung gedreht).
+
+*Von unten.* Ich frage, was jemand tatsächlich denkt und tut, wenn er debuggt, und leite die Operatoren daraus ab. Die Fachbegriffe dafür sind Protokollanalyse (lautes Denken als Datenquelle) und Cognitive Task Analysis. [fn:psych]
+
+Den ersten Weg bin ich zuerst gegangen, und das Ergebnis ist die ehrlichste Stelle dieses Posts: Ich hatte vier Skills, die in sich stimmig waren und nie gelaufen sind. Die Einordnung in die Achsen bestätigte die Konstruktion, weil sie aus ihr stammte. Dann habe ich die Schichtenanalyse auf diesen Fehler angewendet:
+
+- *L1:* Artefakte werden aus einer Struktur erzeugt und nicht an der Praxis geprüft.
+- *L2:* „Ein freier Punkt im Raum ist ein nützlicher Operator“ ist eine Annahme, kein Befund.
+- *L3:* Es gibt kein Annahmekriterium für Skills. Erzeugen kostet nichts.
+- *Gegenmaßnahme:* Ein Operator wird nur gebaut, wenn eine beobachtete Instanz ihn belegt. Jeder Skill führt einen Abschnitt „Belege“ mit einer Streichregel.
+
+Deshalb gehe ich jetzt den zweiten Weg. Der erste taugt, um Lücken zu sehen, nicht um zu entscheiden, was gebaut wird.
+
+* Schicht 2 und 3: Skills über Skills
+
+*Schicht 2* delegiert. Ein Skill höherer Ordnung wählt, welcher Skill zum Problem passt (ein Router). Schoenfeld hat in empirischen Studien gezeigt, dass Pólyas Heuristiken allein nicht reichen. Entscheidend ist die Kontrolle: wann welche Strategie gewählt wird, wie der Fortschritt überwacht wird und wann man einen Weg verlässt. Die Auswahl ist dabei nur ein Teil. [fn:schoenfeld]
+
+*Schicht 3* wendet dieselben Debugging-Bewegungen auf die Skills selbst an. Ein Skill hat Fehler wie Code: Er kann auf die falschen Fälle auslösen, mit einem anderen Skill überlappen oder nie etwas finden. Dann lassen sich Schichtenanalyse, Pre-Mortem und Sturmtest auf ihn richten.
+
+Wenn Operatoren Denkobjekte sind, kann man Operatoren auf Operatoren anwenden. „Welche Skills liegen neben diesem?“ ist dieselbe Bewegung wie die Schichtenanalyse, nur eine Ebene höher: von der Instanz zur Klasse, von dort zu den Geschwistern. Das ist auch die Bewegung, mit der der Post entstanden ist.
+
+Bisher sehe ich fünf:
+
+- eine *Achse wählen*,
+- einen Operator *umkehren*,
+- mehrere *komponieren* (Schichtenanalyse → L2-Annahme → Sturmtest),
+- einen Operator *auf sich selbst anwenden*,
+- vor der Anwendung den passenden *wählen* (ein Router).
+
+Das Risiko ist ein Turm. Meta-Ebenen verschieben das Problem nach oben, und ein Router kann sich selbst irren. Ich halte die Meta-Ebene deshalb dünn: eine Nachbarschaftssuche und ein Router, mehr nicht.
+
+* Der vorläufige Raum
+
+| Operator                     | Objekt            | Zeit      | Abstraktion | Haltung        |
+|------------------------------+-------------------+-----------+-------------+----------------|
+| Schichtenanalyse             | Defekt            | rückwärts | aufwärts    | konstruktiv    |
+| Pre-Mortem                   | geplante Änderung | vorwärts  | aufwärts    | konstruktiv    |
+| Annahmen-Sturmtest           | Annahme           | –         | abwärts     | falsifizierend |
+| Entscheidungsmatrix (Hickey) | Design            | –         | lateral     | vergleichend   |
+| Adversarial Review           | Diff              | –         | –           | falsifizierend |
+
+Die Zuordnung ist meine Einschätzung, und die Achsen sind gewählt, nicht gegeben. Nach Popper hat die Kreativität keine Logik und deshalb auch keine vollständige Achsenliste: Ein neuer Begriff kann jederzeit eine neue Achse bringen. Eine Bewegung, die in keine Achse passt, ist der Normalfall und sagt, dass eine Achse dazukommt. Jeder Punkt im Raum ist ein möglicher Wachstumspunkt. (Ich habe den Satz Wheeler zugeschrieben und keine Quelle gefunden, deshalb steht er hier als meine These.) Für Haltungen und Denkgewohnheiten gilt dasselbe.
+
+* Vermutung und Kritik
+
+Debugging ist auch eine Linse auf Denken und Kreativität. Minsky zeigt 1967, dass sich schlecht verstandene Ideen als Programm ausdrücken und dann am Programm korrigieren lassen; Debugging als Denkhaltung geht auf Papert zurück. [fn:minsky] Bei Popper steht die Kritik im Zentrum: Auf ein Problem folgt eine vorläufige Theorie, dann der Versuch der Fehlerbeseitigung, und daraus entsteht in der Regel ein neues Problem. [fn:popper] Ich lese das als Debugging. Ein Programm ist eine Vermutung, ein fehlschlagender Test ist die Widerlegung.
+
+Nach Popper gibt es für das Erzeugen von Ideen keine Logik, wohl aber für das Prüfen. [fn:popper] Daraus ergibt sich eine Arbeitsteilung: Operatoren erzeugen fehlbare Vermutungen, und der Kern ist die Kritik. Bei Minsky erkennen Kritiker Problemtypen und aktivieren passende Denkweisen. Das ist nicht Poppers Kritik, die Parallele ziehe ich selbst. [fn:minsky]
+
+Die Kritik muss von der Quelle der Vermutung unabhängig sein. Ein Modell, das sich im selben Gespräch selbst kritisiert, ist dafür schwach: Ohne externes Feedback verbessert Selbstkorrektur bei Denkaufgaben meist nichts und wird teils schlechter. [fn:huang] Der Grund ist wohl, dass Erzeuger und Kritiker dieselben Annahmen teilen; das ist meine Deutung, nicht die der Autoren. Stärker wird die Kritik schrittweise: ein Verifier-Agent mit frischem Kontext, dann eine ausführbare Prüfung wie ein Test, ein grep oder eine REPL-Form, die gar nicht vom Modell abhängt. Deshalb verlangen meine Skills Läufe statt Erzählungen und markieren Ungeprüftes sichtbar.
+
+Die Schichtenanalyse ist in diesem Sinn schon so gebaut: Jede Ebene ist eine Vermutung über die Fehlerklasse, die Suche nach Geschwistern ist der Widerlegungsversuch, und eine Ebene, die nichts findet, wird gestrichen. Operatoren selbst sind auch Vermutungen. Sie überleben, wenn sie Funde bringen.
+
+[fn:huang] Huang u. a., /Large Language Models Cannot Self-Correct Reasoning Yet/ (ICLR 2024), https://arxiv.org/abs/2310.01798. Getestet wurde Selbstkorrektur per Prompt ohne externes Feedback an GSM8K, CommonSenseQA und HotpotQA, mit GPT-3.5, GPT-4, GPT-4-Turbo und Llama-2-70b. Mit verlässlichem externem Feedback oder gezielt trainierten Modellen sieht es anders aus: Kamoi u. a. 2024, https://arxiv.org/abs/2406.01297, und Kumar u. a. 2025 (SCoRe), https://arxiv.org/abs/2409.12917.
+
+Verwandte Denkfiguren, die ich dabei benutze: Zwickys morphologische Analyse (einen Raum über Achsen aufspannen), Hayakawas Abstraktionsleiter (nach Korzybski) und Alexanders Mustersprache (jedes Muster hat Name, Kontext, Problem, Lösung und Verweise auf größere und kleinere Muster). [fn:misc]
+
+* Was nicht belegt ist
+
+- Pre-Mortem, Annahmen-Sturmtest, Router und Nachbarschaftssuche sind nicht an echten Fällen erprobt. Nur die Schichtenanalyse hat Funde gebracht.
+- Ob der Skill die Funde auf L2 und L3 /erzeugt/ oder nur /strukturiert/ hat, weiß ich nicht.
+- Dass die Debugging-Bewegungen schon im Modell stecken, ist eine Vermutung. Ich kann sie von innen nicht belegen.
+- Ob die Schichtenanalyse tiefere Fixes bringt als ein nackter Auftrag, ist nicht per Ablation geprüft.
+
+* Offene Fragen
+
+- Welche Bewegungen tauchen in echten Debugging-Sessions wiederholt auf, und welche davon haben noch keinen Operator?
+- Wie bewertet man einen Operator? Mein Vorschlag: Er hat Instanzen gefunden, die ohne ihn unentdeckt geblieben wären. Reicht das?
+- Wie viele Operatoren braucht man wirklich, und woran erkennt man, dass einer überflüssig ist?
+- Welche Achse fehlt noch? Und wer entscheidet, welche Achsen ein Problem braucht?
+- Verändert die Schichtenanalyse wirklich, wo das Modell mit dem Fix aufhört, oder hätte es ohne Skill dieselbe Tiefe erreicht?
+
+* Literatur zu Denkbewegungen
+
+Ein Fach mit festem Namen ist das nicht. Das hat einen Grund: Reichenbach trennte 1938 den Entdeckungszusammenhang vom Rechtfertigungszusammenhang. [Reichenbach][fn:popper] Popper hatte schon 1934 bestritten, dass es eine Logik des Entdeckens gibt: Nur das Prüfen ist logisch analysierbar, das Erfinden gehört für ihn zur Psychologie. [Popper][fn:popper] Die Denkbewegungen wanderten in Psychologie, Mathematikdidaktik und KI. Hier die Spur, die ich bisher gefunden habe.
+
+** Philosophie
+
+- Descartes, /Regulae ad directionem ingenii/ (unvollendet, um 1628): Regeln der Methode: Intuition, Deduktion, Aufzählung, Zurückführung auf einfache Naturen. [fn:philo]
+- Leibniz, /ars inveniendi/ und /ars combinatoria/ (1666): Entdecken als Kunst, die er über Zeichen und Kombinatorik regelhaft machen wollte. [fn:philo]
+- Aristoteles, /Topik/: eine Sammlung von rund 300 Topoi, Argumentationsmustern, mit denen man Prämissen für dialektische Thesen findet. Ich lese sie als frühe Vorform eines Katalogs von Denkzügen. [fn:philo]
+- Kant: Die logischen Funktionen der Einheit in Urteilen sind dieselben Funktionen, die als Kategorien die Synthesis der Anschauung leiten (KrV A79/B105). [fn:philo]
+- Hegel: die philosophische Methode als die eigene Bewegung des Inhalts. Das Denken soll auf willkürliches Eingreifen verzichten und dieser Bewegung folgen (Phänomenologie, Vorrede). Das ist eher ein Gegenpunkt zu einem Werkzeugkasten von Denkzügen. [fn:hegel]
+- Peirce: drei Schlussarten, Deduktion, Induktion und Abduktion (der Schluss auf eine erklärende Hypothese). [fn:polya]
+- Husserl: die freie (imaginative) Variation. Man variiert ein Beispiel in der Phantasie und fragt, was invariant bleibt; das Invariante ist das Wesen (/eidos/). Als Analogie zur Nachbarschaftssuche ist das meine Lesart. [verify]
+- Dewey, /How We Think/ (1910): fünf Aspekte reflektierenden Denkens (Vorschlag, Problematisierung, Hypothese, gedankliche Ausarbeitung, Prüfung), ausdrücklich keine feste Schrittfolge. [fn:polya]
+- Lakatos, /Proofs and Refutations/: Züge im Wechselspiel von Beweis und Gegenbeispiel, etwa Monster-Sperre (/monster-barring/) und Lemma-Einbau (/lemma-incorporation/). [fn:polya]
+- Geach, /Mental Acts/ (1957): Urteilen ist ein episodischer geistiger Akt. Dagegen G. Strawson (2003): Gedanken fallen uns überwiegend zu; mentales Handeln besteht abgesehen vom Wollen darin, ihnen den Boden zu bereiten („Katalyse“). [verify]
+- Popper, /Logik der Forschung/ und /Conjectures and Refutations/: keine Logik des Entdeckens, aber Kritik als Kern. [fn:popper]
+
+** Psychologie und Kognitionswissenschaft
+
+- Würzburger Schule (Külpe, Bühler) und Selz: experimentelle Introspektion des Denkens; Selz beschreibt Denken als Folge von Operationen. Duncker (Gestaltpsychologie, Berlin) untersucht danach das produktive Denken. [fn:psych]
+- Piaget: Das Denken entwickelt sich als Operationen, verinnerlichte Handlungen, die sich gedanklich umkehren lassen und ein zusammenhängendes System bilden; Kinder erreichen sie an konkreten Gegenständen im Stadium der konkreten Operationen (etwa 7 bis 11 Jahre). [fn:dev]
+- Newell und Simon, /Human Problem Solving/ (1972): Problemraum und Operatoren, Mittel-Ziel-Analyse, verbale Protokolle als Datenquelle. [fn:psych]
+- Ericsson und Simon, /Protocol Analysis/ (1984): wann und wie sich verbale Berichte als Daten über Denkprozesse auswerten lassen. [fn:psych]
+- Guilford, /Structure of Intellect/: ein Würfel aus 5 bis 6 Operationen, 4 bis 5 Inhalten und 6 Produkten (ursprünglich 120, später 150 bis 180 Zellen), gebaut als Taxonomie von Intelligenzfaktoren, nicht von Denkzügen. [fn:psych]
+- Bloom-Taxonomie (1956): ordnet Lernziele im kognitiven Bereich von Wissen bis Bewertung. Die Revision von Anderson und Krathwohl (2001) kreuzt sechs kognitive Prozesse (Erinnern bis Erschaffen) mit vier Wissensarten (faktisch, konzeptuell, prozedural, metakognitiv). [fn:dev]
+- Gentner (Structure Mapping) und Hofstadter und Sander, /Surfaces and Essences/: Analogiebildung als Grundbewegung des Denkens, mit konkurrierenden Theorien darüber, wie sie funktioniert. [fn:psych]
+- Flavell: führte 1979 den Begriff Metakognition ein; er umfasst Wissen über das eigene Denken (über sich selbst, Aufgaben und Strategien) und metakognitive Erfahrungen. Umgangssprachlich: Denken über das eigene Denken. [fn:dev]
+- Crandall, Klein, Hoffman, /Working Minds/ (2006): Cognitive Task Analysis, Methoden, um kognitive Anforderungen und Strategien von Experten zu erheben und auszuwerten. [fn:psych]
+- Debuggen und Programmieren als Gegenstand der Psychologie: Katz und Anderson (Strategien der Fehlerlokalisierung, 1987), Weinberg (1971), Détienne (2001). Zellers /Why Programs Fail/ ist Softwaretechnik, aber eine Systematik des Debuggens. [fn:psych]
+- Minsky: In /The Emotion Machine/ (2006) erkennen Kritiker Problemtypen und aktivieren passende Denkweisen (Critic-Selector-Modell), über sechs Ebenen gestaffelt. /Society of Mind/ hat schon B-Gehirne, Zensoren und Unterdrücker, die ein A-Gehirn beaufsichtigen. [fn:minsky]
+
+** Mathematik und Informatik
+
+- Pólya, /How to Solve It/ (1945) und /Mathematics and Plausible Reasoning/ (1954). [fn:polya]
+- Schoenfeld, /Mathematical Problem Solving/ (1985): eine empirische Studie dazu, warum Pólyas Heuristiken im Unterricht oft nicht wirken. Ein Katalog reicht nicht; hinzu kommen Kontrolle (Auswahl, Überwachung, Abbruch von Lösungswegen), Wissensbestand und Überzeugungen. [fn:schoenfeld]
+- LCF, HOL, Isabelle: Taktiken sind ausführbare Operatoren auf Beweiszielen, Tacticals (THEN, ORELSE, REPEAT) sind Operatoren über Taktiken. Ein kleiner Kern lässt nur gültige Inferenzen zu, so dass auch fehlerhafte Taktiken keine falschen Theoreme erzeugen. Coq und Lean haben ebenfalls kleine Kerne, die Beweisterme prüfen. [fn:misc]
+- Lenat: AM wendet Heuristiken auf mathematische Konzepte an. Der Nachfolger EURISKO enthält zusätzlich Heuristiken, die Heuristiken erzeugen und verändern. [fn:misc]
+- Smith, 3-Lisp: ein konzeptuell unendlicher reflektiver Turm von Interpretern, dessen Ebenen die Implementierung erst bei Bedarf erzeugt. [fn:misc]
+- Klassische KI-Planung, etwa STRIPS (Fikes und Nilsson, 1971), beschreibt Aktionen über Vorbedingungen und Effekte (Add- und Delete-Listen). Für Sprachmodelle gibt es Prompting-Verfahren wie Chain-of-Thought (Wei u. a., 2022), ReAct (Yao u. a., 2022, ICLR 2023) und Tree of Thoughts (Yao u. a., 2023); sie strukturieren Denken und Handeln, formalisieren Aktionen aber nicht auf diese Weise. [fn:ai]
+
+** Praxis
+
+- Sammlungen von Denkwerkzeugen: De Bonos Methoden (Lateral Thinking, 1967; CoRT, 1973; Six Thinking Hats, 1985), die Thinking Routines des Visible-Thinking-Projekts am Harvard Project Zero (2005 abgeschlossen) und Mungers „Latticework of Models“ aus seinem Vortrag „A Lesson on Elementary, Worldly Wisdom“ (USC, 1994). Das sind verschiedene Arten von Sammlung; sie „Operatoren“ zu nennen ist mein Rahmen. [fn:ai]
+
+Zwei Sachen fallen mir daran auf. Guilfords Würfel ordnet Intelligenzfaktoren und keine Denkzüge, einen Raum der Denkoperatoren hat also noch niemand gebaut, soweit ich sehe. Und Schoenfeld zeigt, dass ein Katalog nicht reicht: Es kommt auf die Kontrolle an.
+
+[fn:polya] Pólya, /How to Solve It/ (Princeton 1945/1957): Stichworte „Generalization“, „Specialization“, „Working backwards“ und Leitfragen wie „Could you imagine a more general problem? A more special problem?“. Peirce: SEP „Peirce“ (Einteilung der Schlüsse 1867, Abduktion als Schluss auf erklärende Hypothesen). Dewey, /How We Think/ (1910), Kap. 6, https://gutenberg.org/ebooks/37423: fünf „phases or aspects of reflective thought“, nicht als feste Folge. Lakatos, /Proofs and Refutations/: Methoden u. a. monster-barring, exception-barring, lemma-incorporation. Peirce, Dewey und Lakatos nach Sekundärquellen geprüft.
+
+[fn:schoenfeld] Schoenfeld, /Mathematical Problem Solving/ (1985): vier Kategorien (Ressourcen, Heuristiken, Kontrolle, Überzeugungen); Kontrolle meint Entscheidungen darüber, wann welche Ressourcen und Strategien genutzt werden, einschließlich Überwachung des Fortschritts. https://tecfa.unige.ch/themes/sa2/act-app-dos2-fic-mathemat2.htm. Nach Sekundärquellen; das Buch selbst habe ich nicht geprüft.
+
+[fn:popper] Popper, /Logik der Forschung/ (1934), §2: „There is no such thing as a logical method of having new ideas“ (engl. Ausgabe). Schema P1 → TT → EE → P2 in /Objective Knowledge/, Kap. 6, https://www.marxists.org/reference/subject/philosophy/works/at/popper.htm. Reichenbach, /Experience and Prediction/ (1938), Kap. 1 §1. Die Unterscheidung wurde später starrer gelesen, als Reichenbach sie meinte.
+
+[fn:minsky] Minsky, „Why Programming is a Good Medium for Expressing Poorly Understood and Sloppily Formulated Ideas“ (1967). Papert, /Mindstorms/ (1980). Critic-Selector-Modell: Minsky, /The Emotion Machine/ (2006), https://en.wikipedia.org/wiki/The_Emotion_Machine; B-Gehirn in /Society of Mind/ §6.4. Kapitelangaben nach Sekundärquellen.
+
+[fn:psych] Katz und Anderson 1987, /Human-Computer Interaction/ 3(4), https://ets.org/research/policy_research_reports/publications/article/1987/icwz.html. Crandall, Klein, Hoffman, /Working Minds/ (MIT Press 2006). Ericsson und Simon, /Protocol Analysis/ (1984). Newell und Simon, /Human Problem Solving/ (1972). Guilford: https://en.wikipedia.org/wiki/J._P._Guilford. Hofstadter kritisiert Gentners Structure Mapping: https://www.qrg.northwestern.edu/papers/Files/Analogy_Just_Looks_Like_1998_Gentner.pdf. Selz: https://www.uni-mannheim.de/en/osi/institute/otto-selz/scientific-relevance/. Überwiegend Suchtreffer, nicht Volltexte.
+
+[fn:philo] SEP „Descartes’ Works“ (Regulae, 21 Regeln, um 1628), „Leibniz’s Logic“ (ars inveniendi), „Aristotle’s Logic“ (Topik, Bücher II bis VI), „Kant’s Theory of Judgment“ (KrV A79/B105, https://humanum.arts.cuhk.edu.hk/humftp/E-text/Kant/cpr.kemp-smith/08td-b.htm).
+
+[fn:misc] LCF: https://arxiv.org/pdf/1907.02836. EURISKO: https://en.wikipedia.org/wiki/Eurisko. 3-Lisp: https://xeroxparcarchive.computerhistory.org/phylum/3-lisp/desrivieres/impl-paper/.impl-paper-1.bravo!1.html. Zwicky: https://concepts.dsebastien.net/concept/morphological-analysis/. Hayakawa: /Language in Thought and Action/. Alexander: /A Pattern Language/. Teils nach Suchtreffern.
+
+[fn:hegel] Hegel, /Phänomenologie des Geistes/, Vorrede, in der Baillie-Übersetzung https://www.marxists.org/reference/archive/hegel/works/ph/phprefac.htm (deutsch: https://www.marxists.org/deutsch/philosophie/hegel/phaenom/vorrede.htm), ¶22 („self-movement, self-activity“), ¶58 (Freiheit soll sich in den Inhalt versenken und „observe this process“; man soll den „immanent rhythm of the movement of conceptual thought“ nicht unterbrechen). Die Wendung „Selbstbewegung des Begriffs“ steht dort nicht wörtlich, sie ist eine geläufige Paraphrase. Ob der Denkende nur zusieht, ist in der Forschung umstritten; das ist meine Lesart.
+
+[fn:dev] Piaget: Definition der Operation als „action intériorisée, réversible et coordonnée avec d’autres en un système d’ensemble“, nach https://vitrinelinguistique.oqlf.gouv.qc.ca/fiche-gdt/fiche/18592759/operation; Stadium der konkreten Operationen nach https://en.wikipedia.org/wiki/Piaget%27s_theory_of_cognitive_development. Flavell, /American Psychologist/ 34(10), 1979, 906-911; „Überwachung und Kontrolle“ stammt aus späterer Literatur. Bloom 1956 und Anderson und Krathwohl 2001 nach https://en.wikipedia.org/wiki/Bloom%27s_taxonomy. Nach Sekundärquellen; die Originale konnte ich nicht lesen.
+
+[fn:ai] STRIPS: Fikes und Nilsson, /Artificial Intelligence/ 2 (1971), 189-208, https://mlanthology.org/ijcai/1971/fikes1971ijcai-strips. Wei u. a., https://arxiv.org/abs/2201.11903; Yao u. a. (ReAct), https://arxiv.org/abs/2210.03629; Yao u. a. (Tree of Thoughts), https://arxiv.org/abs/2305.10601. De Bono: https://en.wikipedia.org/wiki/Six_Thinking_Hats. Project Zero: https://pz.harvard.edu/resources/see-think-wonder. Munger: https://fs.blog/great-talks/a-lesson-on-worldly-wisdom/; „latticework of models“ ist sein Wortlaut, „mental models“ die populäre Verkürzung. Teils nach Suchtreffern.
+
+-----
+
+/Generiert von Claude im Auftrag von Benjamin Schwerdtner./
