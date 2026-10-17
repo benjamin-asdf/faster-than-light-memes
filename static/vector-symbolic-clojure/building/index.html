@@ -556,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>6</td>
+<td>7</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>18</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -583,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>yes</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>9</td>
+<td>10</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -592,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(1 2 3)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>12</td>
+<td>14</td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>258</td>
+<td>277</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -646,13 +646,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1397</td>
+<td>1493</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><code>(fact 5)</code> makes 120 additions through the recursion of <code>*</code>, and every variable lookup walks an environment of vectors. The memory grew to:</p>
+<p><code>(fact 5)</code> makes 34 additions (1 + 1 + 2 + 6 + 24) through the recursion of <code>*</code>, and every variable lookup walks an environment of vectors. The memory grew to:</p>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>(h/mem-size M)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -664,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="from-here-to-the-real-interpreter">10. From here to the real interpreter</h2>
 <p>This evaluator shows the idea in about 150 lines. The real one, <a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/core.clj"><code>src/vsc/core.clj</code></a>, adds:</p>
 <ul>
-<li><strong>Decisions without fixed thresholds.</strong> <code>same?</code> above says “similar enough” at 0.9. That caps how much noise the interpreter survives, whatever D is (failure mode 5 in the overview). The real <code>eq?</code> cleans up both sides and compares identities, and <code>kind</code> compares with the chance level 1/√D.</li>
+<li><strong>Decisions without fixed thresholds.</strong> <code>same?</code> above says “similar enough” at 0.9, and <code>kind</code> gives up below 0.5. Such cutoffs cap how much noise the interpreter survives, whatever D is (failure mode 5 in the overview). The real <code>eq?</code> cleans up both sides and compares identities, and <code>kind</code> compares with the chance level 1/√D.</li>
 <li><strong>Maps and sets</strong> as bundles: <code>{k v}</code> is ν(Σ k⊗⟨v⟩) plus the set of keys and the size. <code>get</code> is one unbind and one cleanup. Keys are listed by <em>explaining away</em>: clean up, subtract what was found, repeat.</li>
 <li><strong>A global memory</strong> F instead of a global list. It is probed with L⊗name, as in the original paper.</li>
 <li><strong>Vectors as positional superpositions.</strong> Here a vector is a list. In the real interpreter <code>[x₀ … xₙ₋₁]</code> is ν(Σᵢ Πⁱ(V⊗xᵢ)), with Π a fixed random permutation: no pointers, so vectors that share elements at the same positions are similar vectors, and <code>nth</code> is one readout. Lists stay pointer chains. The program picks the trade-off: similarity and indexing, or robustness and unbounded length.</li>
