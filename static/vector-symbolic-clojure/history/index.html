@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>How the Vector-Symbolic Clojure Got Here</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="history_files/libs/clipboard/clipboard.min.js"></script>
+<script src="history_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="history_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="history_files/libs/quarto-html/popper.min.js"></script>
+<script src="history_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="history_files/libs/quarto-html/anchor.min.js"></script>
+<link href="history_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="history_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="history_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="history_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="history_files/libs/bootstrap/bootstrap-ce2870c0447adeac6fa03d9d61a2dd64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-the-vector-symbolic-clojure-got-here" id="toc-how-the-vector-symbolic-clojure-got-here" class="nav-link active" data-scroll-target="#how-the-vector-symbolic-clojure-got-here">How the Vector-Symbolic Clojure Got Here</a>
+  <ul>
+  <li><a href="#bundled-list-cells" id="toc-bundled-list-cells" class="nav-link" data-scroll-target="#bundled-list-cells">1. Bundled list cells</a></li>
+  <li><a href="#integers-from-a-table-to-clocks-and-the-chimeras" id="toc-integers-from-a-table-to-clocks-and-the-chimeras" class="nav-link" data-scroll-target="#integers-from-a-table-to-clocks-and-the-chimeras">2. Integers: from a table to clocks, and the chimeras</a></li>
+  <li><a href="#zero-in-one-dimension" id="toc-zero-in-one-dimension" class="nav-link" data-scroll-target="#zero-in-one-dimension">3. Zero in one dimension</a></li>
+  <li><a href="#fixed-thresholds" id="toc-fixed-thresholds" class="nav-link" data-scroll-target="#fixed-thresholds">4. Fixed thresholds</a></li>
+  <li><a href="#vectors-as-pointer-chains-then-as-superpositions" id="toc-vectors-as-pointer-chains-then-as-superpositions" class="nav-link" data-scroll-target="#vectors-as-pointer-chains-then-as-superpositions">5. Vectors as pointer chains, then as superpositions</a></li>
+  <li><a href="#tuples-of-worlds" id="toc-tuples-of-worlds" class="nav-link" data-scroll-target="#tuples-of-worlds">6. Tuples of worlds</a></li>
+  <li><a href="#map-entries" id="toc-map-entries" class="nav-link" data-scroll-target="#map-entries">7. Map entries</a></li>
+  <li><a href="#hopfield-networks" id="toc-hopfield-networks" class="nav-link" data-scroll-target="#hopfield-networks">8. Hopfield networks</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<style></style>
+<style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="history_files/md-default0.js" type="text/javascript"></script>
+<script src="history_files/md-default1.js" type="text/javascript"></script>
+<section id="how-the-vector-symbolic-clojure-got-here" class="level1">
+<h1>How the Vector-Symbolic Clojure Got Here</h1>
+<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>, which describes the design as it is. This page records how it got that way: what broke, in the order we found it, and what changed. September–October 2026.</em></p>
+<p>The starting point was the design of Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (2024): list cells as bundles of their parts, binding by circular convolution, and thresholds “a little under 1 and a little over 0”. Each section below is one place where running real programs disagreed with it, or with our own first choices. The paper draft (§4) has the measurements, and <code>scripts/failure_modes.clj</code> rebuilds each failure next to the current code.</p>
+<section id="bundled-list-cells" class="level2">
+<h2 class="anchored" data-anchor-id="bundled-list-cells">1. Bundled list cells</h2>
+<p>Our first <code>(fact 5)</code> failed with “unable to resolve symbol: a”. Its list cells were the paper’s: a cell for (a . b) was just L⊗a + R⊗b. Recursion builds near-copies such as ((a . 5) . ()) and ((a . 4) . ()), 89% similar as bundles, so a read beat the wrong sibling by only 0.05. We did not isolate which lookup failed before replacing the cells. A rebuild on the current code shows the same message in 3 of 3 seeds at noise σ = 2, where cells with IDs give 120.</p>
+<p>The change: every cell got a random pointer, shared by cells with equal contents (hash-consing). The margin rose to 0.66 and the noise tolerated by 2.8×.</p>
+</section>
+<section id="integers-from-a-table-to-clocks-and-the-chimeras" class="level2">
+<h2 class="anchored" data-anchor-id="integers-from-a-table-to-clocks-and-the-chimeras">2. Integers: from a table to clocks, and the chimeras</h2>
+<p>Integers started as powers Bⁿ of one vector, recognised by scanning the whole integer range on every cleanup. That scan dominated the run time. Following Kymn et al.&nbsp;(2025) and Hanley et al.&nbsp;(2025), the encoding moved to residues: one band of the vector per prime, read like six clocks. Cleanup became 72 checks instead of a scan.</p>
+<p>The clocks brought chimeras: a sum of 11 and 12 matches 62 fake numbers exactly as well as its members. The readout over integers that showed this was replaced before the first commit, so the end-to-end failure no longer reproduces. The fix stayed: integers inside maps and sets sit behind their own pointers.</p>
+</section>
+<section id="zero-in-one-dimension" class="level2">
+<h2 class="anchored" data-anchor-id="zero-in-one-dimension">3. Zero in one dimension</h2>
+<p>B⁰ is the identity of convolution, a vector with all its weight in dimension 0. Damaging that one dimension, at a lesion of 0.5%, destroyed all arithmetic. In review we also saw that 5005 = 5·7·11·13 is 4/6 similar to zero on the clocks, so a threshold <code>zero?</code> would accept it.</p>
+<p>The change: n = Bⁿ⊗Z with a random Z, so zero is spread over all dimensions; <code>zero?</code> and <code>=</code> compare identities. <code>(+ 17 25)</code> then came out right in 300 of 300 runs up to a 10% lesion.</p>
+</section>
+<section id="fixed-thresholds" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-thresholds">4. Fixed thresholds</h2>
+<p>Every stored structure failed at noise σ ≈ 1.5–1.7, for every vector size, while the cleanup underneath survived σ ≈ 17. The interpreter recognised a value’s kind at cosine &gt; 0.5 and a global at &gt; 0.4, and those cutoffs do not grow with the dimension. A 4-list round trip worked 10 of 10 times at σ = 1 and 0 of 10 from σ = 2.</p>
+<p>The change: decide by argmax, or relative to the chance level 1/√D. The same round trip now passes 10 of 10 up to σ = 3. One cutoff was missed and fixed later, in naming the primitive of a superposed call.</p>
+</section>
+<section id="vectors-as-pointer-chains-then-as-superpositions" class="level2">
+<h2 class="anchored" data-anchor-id="vectors-as-pointer-chains-then-as-superpositions">5. Vectors as pointer chains, then as superpositions</h2>
+<p>Clojure vectors started as lists: chains of pointer cells. In October they became positional superpositions, ν(Σᵢ Πⁱ(V⊗xᵢ)), so that vectors with the same elements in the same places are similar and <code>nth</code> is one readout. Lists stayed pointer chains. Which of the two to use became the programmer’s choice.</p>
+<p>The first version kept the vector’s length as a field inside it, under the same role that maps and sets use for their size. Reading the set <code>#{[1 2] [1 3]}</code> then pulled stored vectors in as members. Under a role of its own, any two vectors of one length were still 20% alike, which the superposition memory took as present. The length moved out of the vector, next to it in the memory.</p>
+</section>
+<section id="tuples-of-worlds" class="level2">
+<h2 class="anchored" data-anchor-id="tuples-of-worlds">6. Tuples of worlds</h2>
+<p>With vectors as superpositions, the dice and sprinkler demos built their joint worlds as vectors, and read back far from the exact joints (total variation 0.43–0.82) without any capacity error. A sum of vectors keeps each position’s distribution and loses which values went together: [1 1] + [2 2] is [1 2] + [2 1]. Joint worlds went back to lists.</p>
+</section>
+<section id="map-entries" class="level2">
+<h2 class="anchored" data-anchor-id="map-entries">7. Map entries</h2>
+<p>A benchmark task found <code>(get {1 2 2 3} 2)</code> returning 1: the entry 1 ↦ 2 was 1⊗2, which is also 2⊗1. The first fix stored every map value behind its own pointer, which made the pair directed at the cost of one extra memory row per value. It was later replaced by a directed bind, k⊗Π(v). Done as two operations, a bind and then a permutation, it made maps fail from noise σ = 2 instead of about 3, because the substrate’s noise compounds between operations. As one operation it matches the old robustness.</p>
+</section>
+<section id="hopfield-networks" class="level2">
+<h2 class="anchored" data-anchor-id="hopfield-networks">8. Hopfield networks</h2>
+<p>The original paper suggests a modern Hopfield network as the cleanup memory. We tried it on unrelated items, on look-alikes and under damage: it ties the lookup table at best and loses on look-alikes, and a superposition needed a different memory altogether. The overview has the numbers.</p>
+<hr>
+<p><em>Generated by Claude on Benjamin Schwerdtner’s behalf.</em></p>
+<div style="background-color:grey;height:2px;width:100%;"></div>
+<div><pre><small><small>source: notebooks/history.clj</small></small></pre></div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

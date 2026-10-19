@@ -556,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>7</td>
+<td>6</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -574,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>20</td>
+<td>17</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -583,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>yes</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>10</td>
+<td>9</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -592,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(1 2 3)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>14</td>
+<td>12</td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>277</td>
+<td>245</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -646,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1493</td>
+<td>1310</td>
 </tr>
 </tbody>
 </table>
@@ -665,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This evaluator shows the idea in about 150 lines. The real one, <a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/core.clj"><code>src/vsc/core.clj</code></a>, adds:</p>
 <ul>
 <li><strong>Decisions without fixed thresholds.</strong> <code>same?</code> above says “similar enough” at 0.9, and <code>kind</code> gives up below 0.5. Such cutoffs cap how much noise the interpreter survives, whatever D is (failure mode 5 in the overview). The real <code>eq?</code> cleans up both sides and compares identities, and <code>kind</code> compares with the chance level 1/√D.</li>
-<li><strong>Maps and sets</strong> as bundles: <code>{k v}</code> is ν(Σ k⊗⟨v⟩) plus the set of keys and the size. <code>get</code> is one unbind and one cleanup. Keys are listed by <em>explaining away</em>: clean up, subtract what was found, repeat.</li>
+<li><strong>Maps and sets</strong> as bundles: <code>{k v}</code> is ν(Σ k⊗Π(v)) plus the set of keys and the size, where the fixed random permutation Π gives each pair a direction (binding alone commutes). <code>get</code> is one unbind and one cleanup. Keys are listed by <em>explaining away</em>: clean up, subtract what was found, repeat.</li>
 <li><strong>A global memory</strong> F instead of a global list. It is probed with L⊗name, as in the original paper.</li>
 <li><strong>Vectors as positional superpositions.</strong> Here a vector is a list. In the real interpreter <code>[x₀ … xₙ₋₁]</code> is ν(Σᵢ Πⁱ(V⊗xᵢ)), with Π a fixed random permutation: no pointers, so vectors that share elements at the same positions are similar vectors, and <code>nth</code> is one readout. Lists stay pointer chains. The program picks the trade-off: similarity and indexing, or robustness and unbounded length.</li>
 <li><strong>The residue integers in full</strong> (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/resources/vsc/hdc.py"><code>resources/vsc/hdc.py</code></a>, class <code>Numbers</code>), and integers boxed behind pointers inside maps and sets.</li>
