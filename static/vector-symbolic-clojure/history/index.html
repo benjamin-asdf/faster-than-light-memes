@@ -56,11 +56,11 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#bundled-list-cells" id="toc-bundled-list-cells" class="nav-link" data-scroll-target="#bundled-list-cells">1. Bundled list cells</a></li>
   <li><a href="#integers-from-a-table-to-clocks-and-the-chimeras" id="toc-integers-from-a-table-to-clocks-and-the-chimeras" class="nav-link" data-scroll-target="#integers-from-a-table-to-clocks-and-the-chimeras">2. Integers: from a table to clocks, and the chimeras</a></li>
-  <li><a href="#zero-in-one-dimension" id="toc-zero-in-one-dimension" class="nav-link" data-scroll-target="#zero-in-one-dimension">3. Zero in one dimension</a></li>
-  <li><a href="#fixed-thresholds" id="toc-fixed-thresholds" class="nav-link" data-scroll-target="#fixed-thresholds">4. Fixed thresholds</a></li>
-  <li><a href="#vectors-as-pointer-chains-then-as-superpositions" id="toc-vectors-as-pointer-chains-then-as-superpositions" class="nav-link" data-scroll-target="#vectors-as-pointer-chains-then-as-superpositions">5. Vectors as pointer chains, then as superpositions</a></li>
-  <li><a href="#tuples-of-worlds" id="toc-tuples-of-worlds" class="nav-link" data-scroll-target="#tuples-of-worlds">6. Tuples of worlds</a></li>
-  <li><a href="#map-entries" id="toc-map-entries" class="nav-link" data-scroll-target="#map-entries">7. Map entries</a></li>
+  <li><a href="#map-entries" id="toc-map-entries" class="nav-link" data-scroll-target="#map-entries">3. Map entries</a></li>
+  <li><a href="#zero-in-one-dimension" id="toc-zero-in-one-dimension" class="nav-link" data-scroll-target="#zero-in-one-dimension">4. Zero in one dimension</a></li>
+  <li><a href="#fixed-thresholds" id="toc-fixed-thresholds" class="nav-link" data-scroll-target="#fixed-thresholds">5. Fixed thresholds</a></li>
+  <li><a href="#vectors-as-pointer-chains-then-as-superpositions" id="toc-vectors-as-pointer-chains-then-as-superpositions" class="nav-link" data-scroll-target="#vectors-as-pointer-chains-then-as-superpositions">6. Vectors as pointer chains, then as superpositions</a></li>
+  <li><a href="#tuples-of-worlds" id="toc-tuples-of-worlds" class="nav-link" data-scroll-target="#tuples-of-worlds">7. Tuples of worlds</a></li>
   <li><a href="#hopfield-networks" id="toc-hopfield-networks" class="nav-link" data-scroll-target="#hopfield-networks">8. Hopfield networks</a></li>
   </ul></li>
   </ul>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
 </blockquote>
-<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>, which describes the design as it is. This page records how it got that way: what broke, in the order we found it, and what changed. September–October 2026.</em></p>
+<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>, which describes the design as it is. This page records how it got that way: what broke, roughly in the order we found it, and what changed. The overview numbers its seven traps by theme, so the numbers here differ. September–October 2026.</em></p>
 <p>The starting point was the design of Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (2024): list cells as bundles of their parts, binding by circular convolution, and thresholds “a little under 1 and a little over 0”. Each section below is one place where running real programs disagreed with it, or with our own first choices. The paper draft (§4) has the measurements, and <code>scripts/failure_modes.clj</code> rebuilds each failure next to the current code.</p>
 <section id="bundled-list-cells" class="level2">
 <h2 class="anchored" data-anchor-id="bundled-list-cells">1. Bundled list cells</h2>
@@ -100,28 +100,28 @@ ul.task-list li input[type="checkbox"] {
 <p>Integers started as powers Bⁿ of one vector, recognised by scanning the whole integer range on every cleanup. That scan dominated the run time. Following Kymn et al.&nbsp;(2025) and Hanley et al.&nbsp;(2025), the encoding moved to residues: one band of the vector per prime, read like six clocks. Cleanup became 72 checks instead of a scan.</p>
 <p>The clocks brought chimeras: a sum of 11 and 12 matches 62 fake numbers exactly as well as its members. The readout over integers that showed this was replaced before the first commit, so the end-to-end failure no longer reproduces. The fix stayed: integers inside maps and sets sit behind their own pointers.</p>
 </section>
+<section id="map-entries" class="level2">
+<h2 class="anchored" data-anchor-id="map-entries">3. Map entries</h2>
+<p>On the first day, a benchmark task found <code>(get {1 2 2 3} 2)</code> returning 1: the entry 1 ↦ 2 was 1⊗2, which is also 2⊗1. The first fix stored every map value behind its own pointer, which made the pair directed at the cost of one extra memory row per value. In October a directed bind, k⊗Π(v), replaced it. Done as two operations, a bind and then a permutation, it made maps fail from noise σ = 2 instead of about 3, because the substrate’s noise compounds between operations. As one operation it matches the old robustness.</p>
+</section>
 <section id="zero-in-one-dimension" class="level2">
-<h2 class="anchored" data-anchor-id="zero-in-one-dimension">3. Zero in one dimension</h2>
+<h2 class="anchored" data-anchor-id="zero-in-one-dimension">4. Zero in one dimension</h2>
 <p>B⁰ is the identity of convolution, a vector with all its weight in dimension 0. Damaging that one dimension, at a lesion of 0.5%, destroyed all arithmetic. In review we also saw that 5005 = 5·7·11·13 is 4/6 similar to zero on the clocks, so a threshold <code>zero?</code> would accept it.</p>
 <p>The change: n = Bⁿ⊗Z with a random Z, so zero is spread over all dimensions; <code>zero?</code> and <code>=</code> compare identities. <code>(+ 17 25)</code> then came out right in 300 of 300 runs up to a 10% lesion.</p>
 </section>
 <section id="fixed-thresholds" class="level2">
-<h2 class="anchored" data-anchor-id="fixed-thresholds">4. Fixed thresholds</h2>
+<h2 class="anchored" data-anchor-id="fixed-thresholds">5. Fixed thresholds</h2>
 <p>Every stored structure failed at noise σ ≈ 1.5–1.7, for every vector size, while the cleanup underneath survived σ ≈ 17. The interpreter recognised a value’s kind at cosine &gt; 0.5 and a global at &gt; 0.4, and those cutoffs do not grow with the dimension. A 4-list round trip worked 10 of 10 times at σ = 1 and 0 of 10 from σ = 2.</p>
-<p>The change: decide by argmax, or relative to the chance level 1/√D. The same round trip now passes 10 of 10 up to σ = 3. One cutoff was missed and fixed later, in naming the primitive of a superposed call.</p>
+<p>The change: decide by argmax, or relative to the chance level 1/√D. The same round trip now passes 10 of 10 up to σ = 3. One cutoff was missed and fixed later, in naming the primitive of a superposed call. The CEK machine’s own datapath still has fixed cutoffs: 0.5 in its PRIM instruction, 0.6 to decide a jump or a halt, and 0.4 as the floor under the nearest rule key, below which no rule matches.</p>
 </section>
 <section id="vectors-as-pointer-chains-then-as-superpositions" class="level2">
-<h2 class="anchored" data-anchor-id="vectors-as-pointer-chains-then-as-superpositions">5. Vectors as pointer chains, then as superpositions</h2>
+<h2 class="anchored" data-anchor-id="vectors-as-pointer-chains-then-as-superpositions">6. Vectors as pointer chains, then as superpositions</h2>
 <p>Clojure vectors started as lists: chains of pointer cells. In October they became positional superpositions, ν(Σᵢ Πⁱ(V⊗xᵢ)), so that vectors with the same elements in the same places are similar and <code>nth</code> is one readout. Lists stayed pointer chains. Which of the two to use became the programmer’s choice.</p>
 <p>The first version kept the vector’s length as a field inside it, under the same role that maps and sets use for their size. Reading the set <code>#{[1 2] [1 3]}</code> then pulled stored vectors in as members. Under a role of its own, any two vectors of one length were still 20% alike, which the superposition memory took as present. The length moved out of the vector, next to it in the memory.</p>
 </section>
 <section id="tuples-of-worlds" class="level2">
-<h2 class="anchored" data-anchor-id="tuples-of-worlds">6. Tuples of worlds</h2>
+<h2 class="anchored" data-anchor-id="tuples-of-worlds">7. Tuples of worlds</h2>
 <p>With vectors as superpositions, the dice and sprinkler demos built their joint worlds as vectors, and read back far from the exact joints (total variation 0.43–0.82) without any capacity error. A sum of vectors keeps each position’s distribution and loses which values went together: [1 1] + [2 2] is [1 2] + [2 1]. Joint worlds went back to lists.</p>
-</section>
-<section id="map-entries" class="level2">
-<h2 class="anchored" data-anchor-id="map-entries">7. Map entries</h2>
-<p>A benchmark task found <code>(get {1 2 2 3} 2)</code> returning 1: the entry 1 ↦ 2 was 1⊗2, which is also 2⊗1. The first fix stored every map value behind its own pointer, which made the pair directed at the cost of one extra memory row per value. It was later replaced by a directed bind, k⊗Π(v). Done as two operations, a bind and then a permutation, it made maps fail from noise σ = 2 instead of about 3, because the substrate’s noise compounds between operations. As one operation it matches the old robustness.</p>
 </section>
 <section id="hopfield-networks" class="level2">
 <h2 class="anchored" data-anchor-id="hopfield-networks">8. Hopfield networks</h2>

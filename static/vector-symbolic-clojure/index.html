@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A value can be a weighted mix of several values, and the program computes on all of them at once. Getting this to work needed a new kind of memory.</li>
 </ul>
 <p>How the interpreter is built, step by step, with all the code: <a href="building/">Building a Vector-Symbolic Interpreter</a>.</p>
-<p>How the seven traps turned up, in the order we hit them: <a href="history/">History</a>.</p>
+<p>How the design got here, roughly in the order the traps turned up: <a href="history/">History</a>.</p>
 <p>Code, tests, experiments and the paper draft: <a href="https://github.com/benjamin-asdf/vector-symbolic-clj">github.com/benjamin-asdf/vector-symbolic-clj</a>.</p>
 <section id="hyperdimensional-computing-in-four-operations" class="level2">
 <h2 class="anchored" data-anchor-id="hyperdimensional-computing-in-four-operations">Hyperdimensional computing in four operations</h2>
@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>[-<span class="fl">0.04233199</span>  <span class="fl">0.00739691</span>  <span class="fl">0.02738149</span> ...  <span class="fl">0.0052645</span>   <span class="fl">0.00336788</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.00798453</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>How a list becomes one vector: a list cell says “first is a, rest is b”. Bind a to a fixed role label L and b to a role label R, and bundle the two: L⊗a + R⊗b. To read the first element, unbind L and clean up. Every such cell also gets its own random ID (a <em>pointer</em>), for a reason explained under “What the algebra hides”. The rest of the encoding follows the same pattern. In the table, L, R, V, B and Z are fixed random vectors, Bⁿ is B bound to itself n times, Π shuffles the dimensions in a fixed random order, and ν rescales to length 1.</p>
+<p>How a list becomes one vector: a list cell says “first is a, rest is b”. Bind a to a fixed role label L and b to a role label R, and bundle the two: L⊗a + R⊗b. To read the first element, unbind L and clean up. Every such cell also gets its own random ID (a <em>pointer</em>), for a reason explained under “What the algebra hides”. The rest of the encoding follows the same pattern. In the table, L, R, V, KEYS, SIZE, B and Z are fixed random vectors, Bⁿ is B bound to itself n times, Π shuffles the dimensions in a fixed random order, and ν rescales to length 1.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -200,11 +200,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>{k v …}</code></td>
-<td>p ↦ ν(Σ k⊗Π(v)); M also records the set of keys and the size</td>
+<td>p ↦ ν(ν(Σ k⊗Π(v)) + ν(KEYS⊗Σ k) + SIZE⊗n): the entries, the set of keys, and the size n</td>
 </tr>
 <tr class="even">
 <td><code>#{x …}</code></td>
-<td>p ↦ ν(Σ x); M also records the size</td>
+<td>p ↦ ν(ν(Σ x) + SIZE⊗n)</td>
 </tr>
 <tr class="odd">
 <td>integer n</td>
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>74</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>17</td>
+<td>18</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>1</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>22</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a b c)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>14</td>
+<td>15</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>"Ada"</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>9</td>
+<td>10</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>6</td>
+<td>5</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -402,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1426</td>
+<td>1422</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(0 1 4 9 16 25)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1355</td>
+<td>1346</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -420,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>10</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>247</td>
+<td>252</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -429,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>7</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>45</td>
+<td>40</td>
 </tr>
 </tbody>
 </table>
@@ -477,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>2</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>19</td>
+<td>17</td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>5. Fixed thresholds throw robustness away.</strong> Bigger vectors should tolerate more noise, but a fixed “similar enough” cutoff does not grow with them. Say a value’s kind counts as recognised when its cosine exceeds 0.5. A clean vector’s cosine to its own noisy probe is 1/√(1 + σ²), which crosses 0.5 at σ = √3 for <em>every</em> dimension. So every structure would fail at σ ≈ 1.7, while the cleanup underneath survives σ ≈ 17 at the size of these memories. Deciding by argmax, or relative to the chance level 1/√D, makes robustness grow with √D again, and that is how the interpreter decides. Fixed thresholds are common practice: Nengo’s associative memory defaults to 0.3 in every dimension.</p>
-<p><strong>6. A shared field makes strangers similar.</strong> If a vector stored its length inside itself, any two vectors of the same length would share that part and look 20% alike, even with no element in common. That is far above chance, and the superposition memory below treats anything above chance as present, so unrelated vectors would creep into results. So the length lives next to the vector in the memory, not inside it.</p>
+<p><strong>6. A shared field makes strangers similar.</strong> If a vector stored its length inside itself, any two vectors of the same length would share that part and look 20% alike, even with no element in common. That is far above chance, and the superposition memory below treats anything above chance as present, so unrelated vectors would creep into results. So the length lives next to the vector in the memory, not inside it. Maps and sets keep their size in their trace, and that is fine: their value is the random pointer p, so two maps of one size are as unrelated as any two pointers.</p>
 <p><strong>7. A sum of tuples forgets which values went together.</strong> A vector is a sum over its positions, so [1 1] + [2 2] is exactly [1 2] + [2 1]. A superposition of vectors remembers how likely each value is at each position, but not which values occurred together. Tuples whose correlations matter are therefore built as lists.</p>
 </section>
 <section id="how-robust-it-is" class="level2">
@@ -651,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="one-step">One step</h3>
 <p>The machine runs in steps. Each step goes round the loop below in three phases, and each phase reads some vectors and produces others. The orange lines follow one real step: the moment the machine meets <code>(if (zero? x) :zero (inc x))</code>.</p>
 <svg style="font-family:system-ui, sans-serif;max-width:800px;width:100%;" viewbox="0 0 800 440"><defs><marker id="arrowhead" markerheight="8" markerwidth="10" orient="auto" refx="9" refy="4"><path d="M0,0 L10,4 L0,8 z" fill="#555"></path></marker></defs><g><rect fill="#eef4fb" height="150" rx="10" stroke="#2c6fbb" stroke-width="1.5" width="350" x="16" y="16"></rect><text fill="#1b3a5c" font-size="15" font-weight="600" x="30" y="42">the state s: one vector</text><text fill="#b05f00" font-family="monospace" font-size="12.5" x="30" y="152">EVAL, C = (if (zero? x) …), K = [halt]</text><text fill="#222" font-size="13" x="30" y="68"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">C</tspan><tspan x="66">control: what to evaluate now</tspan></text><text fill="#222" font-size="13" x="30" y="88"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">E</tspan><tspan x="66">environment: variables → values</tspan></text><text fill="#222" font-size="13" x="30" y="108"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">K</tspan><tspan x="66">continuation: the frames still to do</tspan></text><text fill="#222" font-size="13" x="30" y="128"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">M</tspan><tspan x="66">mode: EVAL, RET, APPLY or HALT</tspan></text></g><g><rect fill="#eef4fb" height="150" rx="10" stroke="#2c6fbb" stroke-width="1.5" width="350" x="434" y="16"></rect><text fill="#1b3a5c" font-size="15" font-weight="600" x="448" y="42">1 · fetch: read the state's shape</text><text fill="#b05f00" font-family="monospace" font-size="12.5" x="448" y="152">KEY = EVAL + list + if + halt</text><text fill="#222" font-size="13" x="448" y="68"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">in </tspan><tspan x="484">s</tspan></text><text fill="#222" font-size="13" x="448" y="88"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">out</tspan><tspan x="484">C, E, K, M unpacked into registers,</tspan></text><text fill="#222" font-size="13" x="448" y="108"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600"></tspan><tspan x="484">and KEY, a vector naming the shape:</tspan></text><text fill="#222" font-size="13" x="448" y="128"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600"></tspan><tspan x="484">mode + kind of C + head of C + frame</tspan></text></g><g><rect fill="#eef4fb" height="150" rx="10" stroke="#2c6fbb" stroke-width="1.5" width="350" x="434" y="274"></rect><text fill="#1b3a5c" font-size="15" font-weight="600" x="448" y="300">2 · select: which rule fits?</text><text fill="#b05f00" font-family="monospace" font-size="12.5" x="448" y="410">rule if (its key: EVAL + list + if)</text><text fill="#222" font-size="13" x="448" y="326"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">in </tspan><tspan x="484">KEY</tspan></text><text fill="#222" font-size="13" x="448" y="346"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">how</tspan><tspan x="484">nearest of the 35 rule keys</tspan></text><text fill="#222" font-size="13" x="448" y="366"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600"></tspan><tspan x="484">stored in the rule memory R</tspan></text><text fill="#222" font-size="13" x="448" y="386"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">out</tspan><tspan x="484">that rule's microprogram</tspan></text></g><g><rect fill="#eef4fb" height="150" rx="10" stroke="#2c6fbb" stroke-width="1.5" width="350" x="16" y="274"></rect><text fill="#1b3a5c" font-size="15" font-weight="600" x="30" y="300">3 · run the microprogram</text><text fill="#b05f00" font-family="monospace" font-size="12.5" x="30" y="410">push an if frame; C = (zero? x)</text><text fill="#222" font-size="13" x="30" y="326"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">in </tspan><tspan x="66">the registers C, E, K, M</tspan></text><text fill="#222" font-size="13" x="30" y="346"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">how</tspan><tspan x="66">instructions on vectors: read a</tspan></text><text fill="#222" font-size="13" x="30" y="366"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600"></tspan><tspan x="66">field, bind, clean up, build a record</tspan></text><text fill="#222" font-size="13" x="30" y="386"><tspan fill="#2c6fbb" font-family="monospace" font-weight="600">out</tspan><tspan x="66">the next state s′</tspan></text></g><g><line marker-end="url(#arrowhead)" stroke="#555" stroke-width="1.6" x1="366" x2="434" y1="70" y2="70"></line><text fill="#555" font-size="12.5" font-style="italic" text-anchor="middle" x="400" y="60">unpack</text></g><g><line marker-end="url(#arrowhead)" stroke="#555" stroke-width="1.6" x1="609" x2="609" y1="166" y2="274"></line><text fill="#555" font-size="12.5" font-style="italic" text-anchor="start" x="620" y="224">KEY</text></g><g><line marker-end="url(#arrowhead)" stroke="#555" stroke-width="1.6" x1="434" x2="366" y1="340" y2="340"></line><text fill="#555" font-size="12.5" font-style="italic" text-anchor="middle" x="400" y="330">code</text></g><g><line marker-end="url(#arrowhead)" stroke="#555" stroke-width="1.6" x1="191" x2="191" y1="274" y2="166"></line><text fill="#555" font-size="12.5" font-style="italic" text-anchor="end" x="178" y="224">s′ is the new s</text></g><text fill="#555" font-size="12.5" font-style="italic" text-anchor="end" x="178" y="240">(until mode = HALT)</text><rect fill="#fff4e0" height="36" rx="18" stroke="#d98a00" stroke-width="1.5" width="240" x="280" y="202"></rect><text fill="#7a4b00" font-size="13.5" font-weight="600" text-anchor="middle" x="400" y="225">host loop · under 50 lines · no Lisp</text></svg>
-<p>The key is the whole trick. It describes the state by up to five features: the <strong>mode</strong>; the <strong>kind</strong> of C (symbol, number, list, closure, …); the <strong>head</strong> of C when C is a list starting with a special form such as <code>if</code> or <code>let</code>; C’s <strong>identity</strong> when C is one of the two primitives that re-enter evaluation, <code>apply</code> and <code>eval</code>; and the type of the <strong>frame</strong> on top of K. Each feature is a random vector bound to its role, and the key is their sum. The rule memory then does what a <code>case</code> statement does in an ordinary interpreter, by similarity.</p>
+<p>The key is the whole trick. It describes the state by five features: the <strong>mode</strong>; the <strong>kind</strong> of C (symbol, number, list, closure, …); the <strong>head</strong> of C, which matters when C is a list starting with a special form such as <code>if</code> or <code>let</code>; C’s <strong>identity</strong>, which matters when C is one of the two primitives that re-enter evaluation, <code>apply</code> and <code>eval</code>; and the type of the <strong>frame</strong> on top of K. Every state’s key has all five; a rule names only those it cares about. Each feature is a random vector bound to its role, and the key is their sum. The rule memory then does what a <code>case</code> statement does in an ordinary interpreter, by similarity.</p>
 <p>Here is that step again, decoded live from the vectors. The rule <code>if</code> saves the two branches and the environment in a new frame on K, and makes the test the next thing to evaluate.</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -1083,7 +1083,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{11 0.5, 12 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>24</td>
+<td>27</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -1092,7 +1092,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{a 0.5, c 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>35</td>
+<td>38</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -1110,7 +1110,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{2 0.5, 4 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>68</td>
+<td>71</td>
 </tr>
 </tbody>
 </table>
@@ -1151,7 +1151,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{4 0.5, 6 0.3, 10 0.2}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>667</td>
+<td>691</td>
 </tr>
 </tbody>
 </table>
@@ -1190,7 +1190,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{false 0.6372, true 0.3628}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>4</td>
+<td>5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
