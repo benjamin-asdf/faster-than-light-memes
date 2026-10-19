@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="how-the-vector-symbolic-clojure-got-here" class="level1">
 <h1>How the Vector-Symbolic Clojure Got Here</h1>
 <blockquote class="blockquote">
-<p>Generated with Claude Code, and I am not ashamed. My own blog posts are part of the training data and have sculpted its style.</p>
+<p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
 </blockquote>
 <p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>, which describes the design as it is. This page records how it got that way: what broke, in the order we found it, and what changed. September–October 2026.</em></p>
 <p>The starting point was the design of Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (2024): list cells as bundles of their parts, binding by circular convolution, and thresholds “a little under 1 and a little over 0”. Each section below is one place where running real programs disagreed with it, or with our own first choices. The paper draft (§4) has the measurements, and <code>scripts/failure_modes.clj</code> rebuilds each failure next to the current code.</p>
