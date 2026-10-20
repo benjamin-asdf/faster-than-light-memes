@@ -132,13 +132,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>Every value is one high-dimensional vector. September 2026, updated October 2026.</em></p>
 <p>This notebook runs a small Clojure in which every value is a single vector of 2048 numbers. That covers lists, maps, sets, integers, closures, and the environment the evaluator runs in. The evaluator never looks inside a vector. It only binds, unbinds, adds and compares vectors, and cleans up noisy ones against a memory.</p>
 <p>It is the idea of Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (2024), which builds Lisp 1.5 this way, carried over to Clojure and then run until it broke. Every result below is computed live when the page renders.</p>
+<p><strong>What we learned.</strong> Each point is measured below.</p>
+<ol type="1">
+<li><strong>Similar is confusable.</strong> A cleanup’s margin is 1 minus the similarity to the nearest wrong item. Built as bundles of their parts, the cells of a recursion are 89% alike, and reads fail. Give every structure its own random pointer, shared by equal contents: reads then survive 2.8× more noise. Keep similarity only where you want it, as in vectors.</li>
+<li><strong>Never decide with a fixed threshold.</strong> A cutoff like “cosine above 0.5” fails at noise σ ≈ 1.7 in <em>every</em> dimension, while the cleanup underneath survives σ ≈ 17. Decide by the best match, or relative to chance (1/√D), and robustness grows with √D.</li>
+<li><strong>Convolution commutes, so key–value pairs need direction.</strong> Store an entry as k⊗Π(v), with Π a fixed random permutation, as one operation. A cyclic shift does not work, since it commutes with convolution too.</li>
+<li><strong>Residue-number integers blend into fake ones.</strong> A superposition of 11 and 12 matches 62 other integers exactly as well as its members. Inside sets and maps, keep integers behind pointers.</li>
+<li><strong>Stored data is robust, computation is fragile.</strong> Lists still read back with 60–80% of the dimensions dead; <code>(fact 4)</code> breaks at about 4%, because every bind passes the damage on until the next cleanup.</li>
+<li><strong>A Hopfield network cannot beat a lookup table at exact recall.</strong> For a probe that is one stored item plus noise, picking the best match is already optimal. Measured: it ties at best and loses on look-alikes.</li>
+<li><strong>Programs can compute on superpositions.</strong> A value can be a weighted mix of values, and destructors, arithmetic and <code>if</code> act on all of them at once. This needs a memory that keeps several matches instead of one; it holds about D/100 worlds. It makes no program faster.</li>
+<li><strong>An interpreter can live in vector memory.</strong> A CEK machine whose 35 rules are vectors, picked by similarity, runs these programs from a host loop of under 50 lines that knows no Lisp.</li>
+</ol>
 <p><strong>Why care.</strong> Brains, and the neuromorphic chips modelled on them, do not store bits in addresses. They store patterns spread over many noisy units. Vector-symbolic architectures are a mathematical model of how symbols and structure could live in such patterns. A language whose values are all such vectors asks the question concretely: can you <em>program</em> on that kind of substrate, and what goes wrong when you try? It also puts data and code in one format, and it allows a new way of programming, on superpositions of values.</p>
-<p><strong>Three findings.</strong></p>
-<ul>
-<li>It works, once the design avoids seven traps that the algebra hides (below).</li>
-<li>Stored data survives heavy damage. Computation is far more fragile.</li>
-<li>A value can be a weighted mix of several values, and the program computes on all of them at once. Getting this to work needed a new kind of memory.</li>
-</ul>
 <p>How the interpreter is built, step by step, with all the code: <a href="building/">Building a Vector-Symbolic Interpreter</a>.</p>
 <p>How the design got here, roughly in the order the traps turned up: <a href="history/">History</a>.</p>
 <p>Code, tests, experiments and the paper draft: <a href="https://github.com/benjamin-asdf/vector-symbolic-clj">github.com/benjamin-asdf/vector-symbolic-clj</a>.</p>
@@ -247,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>74</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>18</td>
+<td>17</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -256,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>1</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>23</td>
+<td>21</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -305,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a b c)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>15</td>
+<td>14</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -314,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>"Ada"</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>10</td>
+<td>9</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -323,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>true</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>19</td>
+<td>17</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -341,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{:a 1, :b [1 2]}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>23</td>
+<td>21</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -350,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>5</td>
+<td>6</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -359,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>3</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>17</td>
+<td>15</td>
 </tr>
 </tbody>
 </table>
@@ -402,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1422</td>
+<td>1335</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -411,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(0 1 4 9 16 25)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1346</td>
+<td>1325</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -420,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>10</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>252</td>
+<td>243</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -429,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>7</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>40</td>
+<td>37</td>
 </tr>
 </tbody>
 </table>
@@ -468,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>a</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>14</td>
+<td>11</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -575,7 +580,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>true</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>4</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
@@ -1083,7 +1088,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{11 0.5, 12 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>27</td>
+<td>24</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -1092,7 +1097,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{a 0.5, c 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>38</td>
+<td>35</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -1101,7 +1106,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{2 0.25, 3 0.5, 4 0.25}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>54</td>
+<td>53</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -1110,7 +1115,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{2 0.5, 4 0.5}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>71</td>
+<td>64</td>
 </tr>
 </tbody>
 </table>
@@ -1151,7 +1156,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{4 0.5, 6 0.3, 10 0.2}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>691</td>
+<td>605</td>
 </tr>
 </tbody>
 </table>
@@ -1190,7 +1195,7 @@ K    [if halt]</code></pre>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{false 0.6372, true 0.3628}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>5</td>
+<td>4</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
