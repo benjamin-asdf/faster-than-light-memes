@@ -1,0 +1,4142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Reproducing the Traps in the Original Code</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="holis_reproduction_files/libs/clipboard/clipboard.min.js"></script>
+<script src="holis_reproduction_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="holis_reproduction_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="holis_reproduction_files/libs/quarto-html/popper.min.js"></script>
+<script src="holis_reproduction_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="holis_reproduction_files/libs/quarto-html/anchor.min.js"></script>
+<link href="holis_reproduction_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="holis_reproduction_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="holis_reproduction_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="holis_reproduction_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="holis_reproduction_files/libs/bootstrap/bootstrap-ce2870c0447adeac6fa03d9d61a2dd64.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#reproducing-the-traps-in-the-original-code" id="toc-reproducing-the-traps-in-the-original-code" class="nav-link active" data-scroll-target="#reproducing-the-traps-in-the-original-code">Reproducing the Traps in the Original Code</a>
+  <ul>
+  <li><a href="#the-two-codebases" id="toc-the-two-codebases" class="nav-link" data-scroll-target="#the-two-codebases">The two codebases</a></li>
+  <li><a href="#what-we-ran" id="toc-what-we-ran" class="nav-link" data-scroll-target="#what-we-ran">What we ran</a></li>
+  <li><a href="#superposed-cells-the-paper-has-them-the-code-does-not" id="toc-superposed-cells-the-paper-has-them-the-code-does-not" class="nav-link" data-scroll-target="#superposed-cells-the-paper-has-them-the-code-does-not">4.1 Superposed cells: the paper has them, the code does not</a></li>
+  <li><a href="#binding-commutes" id="toc-binding-commutes" class="nav-link" data-scroll-target="#binding-commutes">4.2 Binding commutes</a></li>
+  <li><a href="#residue-chimeras" id="toc-residue-chimeras" class="nav-link" data-scroll-target="#residue-chimeras">4.3 Residue chimeras</a></li>
+  <li><a href="#zero" id="toc-zero" class="nav-link" data-scroll-target="#zero">4.4 Zero</a></li>
+  <li><a href="#fixed-thresholds-cap-robustness" id="toc-fixed-thresholds-cap-robustness" class="nav-link" data-scroll-target="#fixed-thresholds-cap-robustness">4.5 Fixed thresholds cap robustness</a></li>
+  <li><a href="#a-shared-field-the-integer-tag" id="toc-a-shared-field-the-integer-tag" class="nav-link" data-scroll-target="#a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</a></li>
+  <li><a href="#a-sum-of-tuples" id="toc-a-sum-of-tuples" class="nav-link" data-scroll-target="#a-sum-of-tuples">4.7 A sum of tuples</a></li>
+  <li><a href="#further-errata" id="toc-further-errata" class="nav-link" data-scroll-target="#further-errata">Further errata</a></li>
+  <li><a href="#what-did-not-reproduce" id="toc-what-did-not-reproduce" class="nav-link" data-scroll-target="#what-did-not-reproduce">What did not reproduce</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
+  <ul class="collapse">
+  <li><a href="#a.-commands" id="toc-a.-commands" class="nav-link" data-scroll-target="#a.-commands">A. Commands</a></li>
+  <li><a href="#b.-settings-per-file" id="toc-b.-settings-per-file" class="nav-link" data-scroll-target="#b.-settings-per-file">B. Settings, per file</a></li>
+  <li><a href="#c.-harness-excerpts-our-code" id="toc-c.-harness-excerpts-our-code" class="nav-link" data-scroll-target="#c.-harness-excerpts-our-code">C. Harness excerpts (our code)</a></li>
+  <li><a href="#d.-raw-results" id="toc-d.-raw-results" class="nav-link" data-scroll-target="#d.-raw-results">D. Raw results</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<style></style>
+<style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="holis_reproduction_files/md-default0.js" type="text/javascript"></script>
+<script src="holis_reproduction_files/md-default1.js" type="text/javascript"></script>
+<section id="reproducing-the-traps-in-the-original-code" class="level1">
+<h1>Reproducing the Traps in the Original Code</h1>
+<blockquote class="blockquote">
+<p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
+</blockquote>
+<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>. The overview found seven traps in a vector-symbolic Lisp. This page runs each one against the original authors’ own code. October 2026.</em></p>
+<p>Our Clojure started from Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (ICCM 2024). That paper built Lisp 1.5 out of holographic vectors and showed that it can be done. Their follow-up with Hanley, “Hey Pentti, We Did (More of) It!” (IJCNN 2025), added integers in residue arithmetic. Both have public code. Our seven traps came from our code. The fair question is which of them exist in theirs. Here we answer it by running their code: we fetch it at a pinned commit, add noise the way our paper does, and count. The section numbers 4.1–4.7 are those of our paper draft; they are the overview’s traps 1–7 in the same order.</p>
+<p>Their papers are proofs of concept, and their READMEs say so. Nothing below changes that. A proof of concept is where the next person starts, and this page lists what that next person (us) ran into.</p>
+<section id="the-two-codebases" class="level2">
+<h2 class="anchored" data-anchor-id="the-two-codebases">The two codebases</h2>
+<p><strong>holis</strong> (<a href="https://github.com/eilene-ftf/holis">eilene-ftf/holis</a>, commit <code>db208d7</code>, AGPL-3.0) is one Jupyter notebook. It adapts Norvig’s lispy to holographic reduced representations (HRR) at D = 512:</p>
+<ul>
+<li>Vectors are random Gaussian, bound by circular convolution.</li>
+<li>A cons cell is the bundle lhs⊗a + rhs⊗b + φ, but it is stored behind a fresh random <em>pointer</em> in a second memory, because, in the notebook’s words, “tuples turn out to degrade rather quickly”. Equal bundles share a pointer.</li>
+<li>CAR and CDR follow the pointer, unbind a role and clean up against a lookup table (argmax).</li>
+<li>The pointer memory looks up a noisy pointer by its nearest key, but only if the cosine exceeds θ = 0.2. Otherwise it returns the probe itself.</li>
+<li>The evaluator tests with a fixed floor of 0.2, and COND is the paper’s saturating ⊕ with cutoffs 0.8 and 0.2.</li>
+<li>Functions work by substitution, so there are no environments. Numbers are Peano lists: 0 is NIL and n+1 is (n).</li>
+</ul>
+<p><strong>residuelisp</strong> (<a href="https://github.com/hanleyc01/residuelisp">hanleyc01/residuelisp</a>, commit <code>09864c7</code>, MIT) is the code of the second paper, a typed Python package. It uses complex FHRR vectors at D = 1000:</p>
+<ul>
+<li>Cells sit behind pointers, as in holis.</li>
+<li>Function calls bind parameters in a small memory keyed by symbol.</li>
+<li>Integers are Kymn et al.’s residue code over the moduli 3, 5, 7, 11 (range 0..1154), plus a tag: int(x) = ζ(x) + int.</li>
+<li>It keeps holis’s numbers: θ = 0.2 in the pointer memory and a 0.2 floor in its approximate equality. Its similarity is not normalised, though.</li>
+</ul>
+</section>
+<section id="what-we-ran" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-ran">What we ran</h2>
+<p>Nothing of theirs is copied into our repository. A small loader fetches each codebase at its pinned commit when a script runs. For holis it executes the notebook’s code cells as a module. The scripts in <a href="https://github.com/benjamin-asdf/vector-symbolic-clj/tree/main/repro/holis"><code>repro/holis/</code></a> then:</p>
+<ul>
+<li>add <strong>probe noise</strong> exactly as in our paper: before every cleanup, the probe p becomes p + σ·|p|/√D · N(0, I). Cleanups are the item memory, the function memory and the pointer memory;</li>
+<li>change at most one thing as a <strong>control</strong>, and say which;</li>
+<li>count over seeds, and write every number on this page to a JSON file that the page reads.</li>
+</ul>
+<p>First, their code works. Noise-free, holis computes these at D = 512 and 2048 over 5 seeds each:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">correct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS a (b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(EQ a a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(EQ a b)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(ATOM a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(ATOM (a b))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a a) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a b) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LAMBDA (x) (CONS x (b c))) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>4 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS a (b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(EQ a a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(EQ a b)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(ATOM a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(ATOM (a b))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a a) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a b) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LAMBDA (x) (CONS x (b c))) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>4 / 5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>One program misses a seed. We return to it under E1 below. The authors’ own fizzbuzz helpers, verbatim from the notebook, also give the right answers. They are slow, which is why the noise sweeps below use smaller programs:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">result</th>
+<th data-quarto-table-cell-role="th">expected</th>
+<th data-quarto-table-cell-role="th">seconds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>their fizzbuzz DEFINEs</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL", "NIL"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5.9</td>
+</tr>
+<tr class="even">
+<td>countdown 3 1</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[[["NIL"]]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[[["NIL"]]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>16.6</td>
+</tr>
+<tr class="odd">
+<td>divisible 3 3</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["T"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["T"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>83.1</td>
+</tr>
+<tr class="even">
+<td>divisible 4 3</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["F"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["F"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>767.8</td>
+</tr>
+<tr class="odd">
+<td>and T F</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["F"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["F"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>51.7</td>
+</tr>
+<tr class="even">
+<td>take 2 (a b c)</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>241.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>residuelisp, noise-free at D = 1000 over 5 seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">expected</th>
+<th data-quarto-table-cell-role="th">correct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1 2 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>3</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 20 22 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 7 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>4</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(car (cons 1 2 ) )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>1</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(cdr (cons a b))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>b</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((lambda (x) ((lambda (y) (cons x (cons y nil))) n)) m)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>["m", "n"]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? a a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#t</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? a b)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#f</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#t</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(int? 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#t</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(int? a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#f</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t #t)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#t</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #f #t)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>#f</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if #t yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>yes</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if #f yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>no</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>5 / 5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>So both interpreters do what their papers show. What follows asks for more than the papers claim.</p>
+</section>
+<section id="superposed-cells-the-paper-has-them-the-code-does-not" class="level2">
+<h2 class="anchored" data-anchor-id="superposed-cells-the-paper-has-them-the-code-does-not">4.1 Superposed cells: the paper has them, the code does not</h2>
+<p><strong>Applies?</strong> To the paper’s equation (2), cons(a, b) = ν(L⊗a + R⊗b + φ), yes. To the code, no: both codebases put each cell behind a random pointer, as our fix does. The holis notebook gives the reason in a comment.</p>
+<p>To see the paper’s cell inside their code, we added a <em>paper mode</em>. It is two attributes on their pointer memory: a cell is stored as its own normalised bundle, and “following” it returns it unchanged. The evaluator, CAR, CDR and the reader stay theirs. At D = 2048, Peano numerals n and n+1 then look alike. Pointer cells do not:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">mode</th>
+<th data-quarto-table-cell-role="th">mean cos(n, n+1)</th>
+<th data-quarto-table-cell-role="th">mean cos(n, n+2)</th>
+<th data-quarto-table-cell-role="th">seeds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pointer</td>
+<td>0.000</td>
+<td>0.005</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>paper</td>
+<td>0.743</td>
+<td>0.721</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Reproduced?</strong> Yes, noise-free, and in a way we did not expect. Their evaluator decides that an expression “evaluates to itself”, and stops, when the result is similar to the input: <code>(ee == e) &gt; 0.2</code>. With pointers, a form and its result are unrelated. With superposed cells, a form and its first evaluation step share terms, and their cosine is well above 0.2:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">mode</th>
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">correct</th>
+<th data-quarto-table-cell-role="th">results</th>
+<th data-quarto-table-cell-role="th">mean cos(form, first step)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pointer</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 / 10</td>
+<td>["a"] ×10</td>
+<td>0.005</td>
+</tr>
+<tr class="even">
+<td>pointer</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a b) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 / 10</td>
+<td>["no"] ×10</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td>pointer</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LAMBDA (x) (CONS x (b c))) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>9 / 10</td>
+<td>[["a", "b", "c"]] ×9, [["a", "LAMBDA", ["c"], "LAMBDA"]] ×1</td>
+<td>0.005</td>
+</tr>
+<tr class="even">
+<td>paper</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (a b c))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 / 10</td>
+<td>["a"] ×10</td>
+<td>-0.003</td>
+</tr>
+<tr class="odd">
+<td>paper</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(COND ((EQ a b) . yes) (T . no))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 / 10</td>
+<td>["no"] ×10</td>
+<td>-0.001</td>
+</tr>
+<tr class="even">
+<td>paper</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LAMBDA (x) (CONS x (b c))) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>0 / 10</td>
+<td>[["CONS", "a", ["b", "c"]]] ×7, [["CONS", ["x", "b", "c"], ["b", "c"]]] ×2, [["CONS", ["b", "c"], ["b", "c"]]] ×1</td>
+<td>0.435</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>In paper mode the LAMBDA program stops after the substitution and returns the body unevaluated. This is 4.1’s lesson in its plainest form: similarity of content is not identity.</p>
+<p>Under noise the picture is less clean. Here numerals 1 to 8 are built, and then numeral 4 is read back with their reader:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">pointer</th>
+<th data-quarto-table-cell-role="th">pointer, theta=5/sqrt(D)</th>
+<th data-quarto-table-cell-role="th">pointer, theta=-1</th>
+<th data-quarto-table-cell-role="th">paper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>0.500</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>1.500</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>19 / 20</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>16 / 20</td>
+<td>20 / 20</td>
+<td>0 / 20</td>
+<td>17 / 20</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0 / 20</td>
+<td>18 / 20</td>
+<td>0 / 20</td>
+<td>15 / 20</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0 / 20</td>
+<td>17 / 20</td>
+<td>0 / 20</td>
+<td>14 / 20</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0 / 20</td>
+<td>1 / 20</td>
+<td>0 / 20</td>
+<td>5 / 20</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>1 / 20</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>With their θ = 0.2, pointer cells fail first, because of that threshold (4.5 below). With θ set relative to chance, 5/√D, the comparison is between encodings alone. Then the curves cross: pointer cells read more numerals right at σ = 5 and 6, superposed cells at σ = 8. So this test does not show the loss of noise tolerance we measured in our own code (§4.1 of our paper). One difference: a superposed cell needs no pointer lookup, so each read makes fewer noisy cleanups. Plain argmax (θ = −1) breaks the pointer reads even at σ = 0. Their atom test needs a threshold, which we come back to in 4.5.</p>
+<p><strong>Verdict.</strong> The paper’s cell causes a noise-free failure in their code. The code’s own cell does not have that problem. The extra noise sensitivity did not reproduce in our read test.</p>
+</section>
+<section id="binding-commutes" class="level2">
+<h2 class="anchored" data-anchor-id="binding-commutes">4.2 Binding commutes</h2>
+<p><strong>Applies?</strong> Mostly no. Neither codebase stores an unlabelled pair: cells carry the roles lhs and rhs. holis has no environments, and residuelisp’s are a keyed memory, not a sum of var⊗value. As a control, (x . y) and (y . x) read back correctly every time.</p>
+<p>There is one opening. In holis the roles are also ordinary atoms: <code>vsa_env</code> enters <code>lhs</code>, <code>rhs</code> and <code>φ</code> in the lexicon. A program that mentions the symbol <code>lhs</code> therefore gets the role vector itself. The cell (x . lhs) then contains lhs⊗x + rhs⊗lhs. Unbinding lhs finds x and rhs at equal strength, because rhs⊗lhs = lhs⊗rhs.</p>
+<p><strong>Reproduced?</strong> Yes, through their parser, evaluator and reader, 40 seeds per row:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">expected</th>
+<th data-quarto-table-cell-role="th">correct</th>
+<th data-quarto-table-cell-role="th">results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>18 / 40</td>
+<td>rhs ×22, x ×18</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>17 / 40</td>
+<td>lhs ×23, x ×17</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>19 / 40</td>
+<td>rhs ×21, x ×19</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>22 / 40</td>
+<td>x ×22, lhs ×18</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>20 / 40</td>
+<td>x ×20, rhs ×20</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>22 / 40</td>
+<td>x ×22, lhs ×18</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>y</td>
+<td>40 / 40</td>
+<td>y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40</td>
+<td>x ×40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>About half the reads give the wrong atom at every D. It is a tie, not noise, so a bigger D does not help. residuelisp names its roles <code>__lhs</code> and <code>__rhs</code>. Its lexer starts identifiers with a letter, so a program cannot name them (we read this in their lexer and did not run it).</p>
+</section>
+<section id="residue-chimeras" class="level2">
+<h2 class="anchored" data-anchor-id="residue-chimeras">4.3 Residue chimeras</h2>
+<p><strong>Applies?</strong> Not as we found it. Our chimeras came from giving each prime its own band of coordinates, so each band could match a different member of a sum. residuelisp uses Kymn et al.’s product code instead: every coordinate mixes all four moduli. We measured with their <code>RHC.encode</code> on the sum ζ(11) + ζ(12). Its 14 chimeras (integers whose residues each match 11 or 12) score like any other integer:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">cos to 11</th>
+<th data-quarto-table-cell-role="th">cos to 12</th>
+<th data-quarto-table-cell-role="th">chimeras: mean</th>
+<th data-quarto-table-cell-role="th">chimeras: max</th>
+<th data-quarto-table-cell-role="th">others: mean |cos|</th>
+<th data-quarto-table-cell-role="th">seeds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000</td>
+<td>0.704</td>
+<td>0.704</td>
+<td>-0.004</td>
+<td>0.061</td>
+<td>0.018</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>0.704</td>
+<td>0.704</td>
+<td>0.000</td>
+<td>0.025</td>
+<td>0.009</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Decoders tell the same story. Their interpreter decodes integers with <code>decode_rhc</code>, an argmax over the codes of 0..199. Their library also has <code>resonator_decoding</code>, the resonator network the paper describes. The interpreter does not call it, and its test is commented out. We read its output residue by residue, by magnitude, because a resonator finds each factor only up to a phase. Counts over the seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">readout</th>
+<th data-quarto-table-cell-role="th">of ζ(11)</th>
+<th data-quarto-table-cell-role="th">of ζ(11) + ζ(12): a member</th>
+<th data-quarto-table-cell-role="th">of ζ(11) + ζ(12): a chimera</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>decode_rhc</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+<td>0 / 10</td>
+</tr>
+<tr class="even">
+<td>resonator_decoding</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+<td>0 / 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>A residuelisp program cannot build such a sum anyway. Integers come from literals and <code>+</code> / <code>-</code> only, and cells hold them behind pointers.</p>
+<p><strong>Reproduced?</strong> No.&nbsp;The chimeras belong to the banded encoding, which residuelisp does not use.</p>
+</section>
+<section id="zero" class="level2">
+<h2 class="anchored" data-anchor-id="zero">4.4 Zero</h2>
+<p><strong>Applies?</strong> No.&nbsp;Our zero problem had two parts, and neither carries over. On bands, an n divisible by several of the primes looked partly like zero, because each such band matched. In the product code, an n that some moduli divide is still unrelated to zero, unless all four divide it, which means n ≡ 0 mod 1155:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ1)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ3)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ15)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ105)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ385)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ1154)</th>
+<th data-quarto-table-cell-role="th">cos(ζ0, ζ1155)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000</td>
+<td>-0.008</td>
+<td>-0.013</td>
+<td>-0.014</td>
+<td>-0.002</td>
+<td>0.001</td>
+<td>-0.008</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>-0.008</td>
+<td>0.003</td>
+<td>0.006</td>
+<td>0.004</td>
+<td>0.003</td>
+<td>-0.008</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The wrap at 1155 is the residue range itself, so it is by design. Our second part was that B⁰ was a spike in dimension 0, so damaging that one dimension broke all arithmetic. In FHRR, zero is the all-ones vector, spread evenly. With coordinate 0 zeroed, ζ(17)·ζ(25) still reads as 42:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">argmax over 0..199</th>
+<th data-quarto-table-cell-role="th">cos to ζ(42)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000</td>
+<td>0</td>
+<td>42</td>
+<td>0.999</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>1</td>
+<td>42</td>
+<td>0.999</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>2</td>
+<td>42</td>
+<td>0.999</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>3</td>
+<td>42</td>
+<td>0.999</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>4</td>
+<td>42</td>
+<td>0.999</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>0</td>
+<td>42</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>4096</td>
+<td>1</td>
+<td>42</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>2</td>
+<td>42</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>4096</td>
+<td>3</td>
+<td>42</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>4</td>
+<td>42</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Reproduced?</strong> No.</p>
+</section>
+<section id="fixed-thresholds-cap-robustness" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-thresholds-cap-robustness">4.5 Fixed thresholds cap robustness</h2>
+<p><strong>Applies?</strong> To holis, yes. Its pointer memory accepts the nearest key only above cosine θ = 0.2. A probe with noise σ has cosine 1/√(1 + σ²) to its key. That falls below 0.2 at σ = √24 ≈ 4.9, whatever D is.</p>
+<p><strong>Reproduced?</strong> Yes. The control is the same code with θ = 5/√D, a threshold relative to chance, as our paper prescribes. It is one attribute set on their object. Plain argmax (θ = −1) would not do: their atom test needs the threshold to tell an atom, which matches no pointer, from a cell. With θ = −1 even noise-free reads fail. For D = 512, 5/√D = 0.22 is close to their 0.2. First, single CAR lookups on 25 stored 4-lists, 200 lookups per cell. The cells give correct lookups, and in parentheses how often θ made the memory return the probe itself:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">D=512, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=512, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=2048, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=2048, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=8192, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=8192, chance floor (theta=5/sqrt(D))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>196 (0)</td>
+<td>196 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>159 (0)</td>
+<td>159 (1)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>103 (26)</td>
+<td>84 (54)</td>
+<td>195 (4)</td>
+<td>199 (0)</td>
+<td>200 (0)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>4.500</td>
+<td>48 (75)</td>
+<td>38 (101)</td>
+<td>164 (37)</td>
+<td>199 (0)</td>
+<td>190 (10)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>26 (104)</td>
+<td>15 (147)</td>
+<td>83 (118)</td>
+<td>194 (0)</td>
+<td>75 (126)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>5.500</td>
+<td>21 (141)</td>
+<td>12 (165)</td>
+<td>31 (165)</td>
+<td>178 (0)</td>
+<td>6 (197)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>9 (160)</td>
+<td>7 (180)</td>
+<td>8 (194)</td>
+<td>165 (0)</td>
+<td>1 (200)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>3 (183)</td>
+<td>2 (194)</td>
+<td>2 (199)</td>
+<td>119 (15)</td>
+<td>1 (200)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>5 (191)</td>
+<td>4 (197)</td>
+<td>1 (200)</td>
+<td>91 (46)</td>
+<td>0 (200)</td>
+<td>200 (0)</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>1 (198)</td>
+<td>1 (200)</td>
+<td>0 (200)</td>
+<td>21 (147)</td>
+<td>1 (200)</td>
+<td>188 (0)</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>1 (200)</td>
+<td>1 (200)</td>
+<td>2 (200)</td>
+<td>8 (179)</td>
+<td>2 (200)</td>
+<td>166 (0)</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>2 (200)</td>
+<td>2 (200)</td>
+<td>2 (200)</td>
+<td>2 (200)</td>
+<td>2 (200)</td>
+<td>83 (46)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>With their θ, the lookups collapse between σ = 5 and 5.5 at D = 2048 and at D = 8192 alike, just past the predicted 4.9, and the fallback count shows why. With the chance floor, D = 8192 still gets 200 of 200 at σ = 8. At D = 512 the two rows agree, because there the item memory gives out first, and 5/√512 is close to 0.2 anyway.</p>
+<p>The same holds one level up. Here is a 4-list read back with their reader, 20 seeds per cell:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">D=512, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=512, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=2048, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=2048, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=8192, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=8192, chance floor (theta=5/sqrt(D))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>14 / 20</td>
+<td>14 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>17 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>18 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>15 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>20 / 20</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>18 / 20</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>0 / 20</td>
+<td>11 / 20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>And a whole program, <code>((LAMBDA (x) (CONS x (b c))) a)</code>, 10 seeds per cell. Its noise-free row already misses some seeds (E1 below):</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">D=512, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=512, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=2048, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=2048, chance floor (theta=5/sqrt(D))</th>
+<th data-quarto-table-cell-role="th">D=8192, theirs (theta=0.2)</th>
+<th data-quarto-table-cell-role="th">D=8192, chance floor (theta=5/sqrt(D))</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>9 / 10</td>
+<td>9 / 10</td>
+<td>9 / 10</td>
+<td>9 / 10</td>
+<td>7 / 10</td>
+<td>7 / 10</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6 / 10</td>
+<td>6 / 10</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+<td>7 / 10</td>
+<td>7 / 10</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>3 / 10</td>
+<td>10 / 10</td>
+<td>8 / 10</td>
+<td>8 / 10</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>7 / 10</td>
+<td>0 / 10</td>
+<td>8 / 10</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>8 / 10</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>7 / 10</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>3 / 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Their θ stops the program at σ = 5 for D = 2048 and 8192 alike. With the chance floor, D = 8192 still gets 8 of 10 at σ = 5 and 6. That is as many as at σ = 4, and more than the 7 of 10 at σ = 0, which E1 costs.</p>
+<p><strong>residuelisp</strong> keeps the 0.2 but compares it with an unnormalised similarity. A noisy pointer keeps similarity about 1 to its own key at any σ. What grows is the spread of chance matches, about √((1 + σ²)/(2D)). So the cutoff should give way at a σ that grows like √D. Here is the two-lambda program, 10 seeds per cell:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">D=500</th>
+<th data-quarto-table-cell-role="th">D=2000</th>
+<th data-quarto-table-cell-role="th">D=8000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>7 / 10</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0 / 10</td>
+<td>10 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0 / 10</td>
+<td>8 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>10 / 10</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>9 / 10</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>1 / 10</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+</tr>
+<tr class="even">
+<td>24</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+</tr>
+<tr class="odd">
+<td>32</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+<td>0 / 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The last σ with all 10 runs right is 1 at D = 500, 3 at D = 2000 and 6 at D = 8000. It roughly doubles for each 4× in D, as √D predicts. So in residuelisp the fixed numbers do not set a cap independent of D. Its failures are loud: every failing run raised an exception (mostly <code>InterpreterError</code>) or hit our cleanup budget, and none returned a wrong value (raw table in the appendix). The price of the unnormalised similarity is elsewhere, in 4.6.</p>
+</section>
+<section id="a-shared-field-the-integer-tag" class="level2">
+<h2 class="anchored" data-anchor-id="a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</h2>
+<p><strong>Applies?</strong> Not to holis, which has no records. It does apply to residuelisp, in a form we did not foresee. Every integer carries the same tag, int(x) = ζ(x) + int, which is the paper’s equation (11). Atoms count as <code>eq?</code> when their unnormalised similarity exceeds 0.2, and the tag alone contributes 1. So any two integers are equal.</p>
+<p><strong>Reproduced?</strong> Yes, noise-free at D = 1000, in 5 of 5 seeds (rows R1 below). The similarities behind it:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">seeds</th>
+<th data-quarto-table-cell-role="th">sim(3,3)</th>
+<th data-quarto-table-cell-role="th">sim(3,5)</th>
+<th data-quarto-table-cell-role="th">sim(3,1000)</th>
+<th data-quarto-table-cell-role="th">sim(a,b)</th>
+<th data-quarto-table-cell-role="th">cos(3,5)</th>
+<th data-quarto-table-cell-role="th">cos(3,1000)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td>1.988</td>
+<td>1.022</td>
+<td>0.952</td>
+<td>0.013</td>
+<td>0.509</td>
+<td>0.482</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Their own tests compare an arithmetic result with the expected integer through this equality. So those assertions pass whatever integer the arithmetic returns. In their test’s pattern, the result of <code>(+ 5 5)</code> “equals” 10, 7, 0 and 999:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">equals(result, n) for n = 10, 7, 0, 999</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 5 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 5 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 5 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 5 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 5 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="a-sum-of-tuples" class="level2">
+<h2 class="anchored" data-anchor-id="a-sum-of-tuples">4.7 A sum of tuples</h2>
+<p><strong>Applies?</strong> No.&nbsp;Neither codebase builds superpositions of values, and neither has positional vectors, so there are no joint worlds to lose.</p>
+</section>
+<section id="further-errata" class="level2">
+<h2 class="anchored" data-anchor-id="further-errata">Further errata</h2>
+<p>Running the code turned up problems that our list does not cover. All are noise-free.</p>
+<p><strong>E1 (holis). CAR of an atom.</strong> To decide “is this head a lambda expression?”, their evaluator compares car(head) with LAMBDA. It does this even when head is an atom, and an atom has no CAR. car() then cleans up a meaningless probe and returns some stored item. When that item happens to match, the evaluator takes the wrong branch. Here is <code>((LAMBDA (x) (CONS x (b c))) a)</code> over 100 seeds. The control makes car() answer NIL for anything that is not a stored pointer, and changes nothing else:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">variant</th>
+<th data-quarto-table-cell-role="th">wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>theirs</td>
+<td>7 / 100</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>car(atom) = NIL</td>
+<td>0 / 100</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs</td>
+<td>11 / 100</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>car(atom) = NIL</td>
+<td>0 / 100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Some of the wrong results:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>0</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b", "LAMBDA", "x", ["CONS", "a", ["b", "c"]]]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>34</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "LAMBDA"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>41</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b", "LAMBDA", "a", ["x", ["b", "c"]]]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>43</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>2</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "LAMBDA", ["c"], "LAMBDA"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>11</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["LAMBDA", "b", "c"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>21</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", 1]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>46</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>[["a", "b", "LAMBDA", "lhs", "CONS"]]</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>What car(a) returns for the atom <code>a</code>, after the run, over the 100 seeds. It is spread over the whole vocabulary:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">car(a) → item ×seeds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>NIL ×11, CONS ×9, b ×9, 1 ×9, lhs ×8, a ×7, φ ×6, F ×6, T ×5, rhs ×5, c ×5, DEFINE ×4, QUOTE ×3, LABEL ×3, x ×2, CDR ×2, EQ ×2, ATOM ×1, COND ×1, CAR ×1, LAMBDA ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>a ×14, lhs ×11, F ×9, T ×7, x ×7, c ×7, φ ×5, CONS ×5, NIL ×5, EQ ×5, DEFINE ×4, LAMBDA ×4, 1 ×4, CAR ×3, QUOTE ×2, LABEL ×2, b ×2, CDR ×2, rhs ×1, ATOM ×1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>E2, E3 (holis).</strong> CAR does not evaluate its argument, and LABEL is dispatched but raises. Their paper says it leaves LABEL out, so E3 is a leftover, not a broken claim:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">results over seeds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["CDR"] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(LABEL f (LAMBDA (x) x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>E4 (holis). The item memory grows quadratically.</strong> <code>SimpleCleanUp.memorize</code> appends 100 empty rows once it is full, but it never raises its capacity. So past 100 items, every new item appends another 100 rows. An empty row scores 0, so it can win a lookup only when every stored row scores below 0. Mostly it costs memory and time. It is why the fizzbuzz calls above take minutes, and why our noise sweep at D = 8192 needed smaller memories to stay under 8 GB. residuelisp’s <code>CleanupMemory</code> does raise its capacity.</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">items stored</th>
+<th data-quarto-table-cell-role="th">matrix rows</th>
+<th data-quarto-table-cell-role="th">MB at D = 512</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100</td>
+<td>100</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>200</td>
+<td>10100</td>
+<td>41.4</td>
+</tr>
+<tr class="odd">
+<td>400</td>
+<td>30100</td>
+<td>123.3</td>
+</tr>
+<tr class="even">
+<td>800</td>
+<td>70100</td>
+<td>287.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">after their fizzbuzz DEFINEs, D = 512</th>
+<th data-quarto-table-cell-role="th">items stored</th>
+<th data-quarto-table-cell-role="th">matrix rows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>seed 0</td>
+<td>635</td>
+<td>53600</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>R2–R5 (residuelisp).</strong></p>
+<ul>
+<li>R2: <code>and</code> tests its left argument twice and never the right one. Structural <code>eq?</code> on lists joins car and cdr with <code>and</code>, so it compares only the cars.</li>
+<li>R3: <code>if</code> does not evaluate its condition. The condition is the unevaluated form, a pointer, which is neither <code>nil</code> nor <code>#f</code>.</li>
+<li>R4: the decoder searches 0..199, while the moduli cover 0..1154.</li>
+<li>R5: see the lexer table below.</li>
+</ul>
+<p>D = 1000, 5 seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">erratum</th>
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">expected</th>
+<th data-quarto-table-cell-role="th">results</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R1</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 1000 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+</tr>
+<tr class="odd">
+<td>R1 control</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>#t ×5</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t #f)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+</tr>
+<tr class="odd">
+<td>R2</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t nil)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>nil or #f</td>
+<td>#t ×5</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons a (cons b nil)) (cons a (cons c nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+</tr>
+<tr class="odd">
+<td>R2 control</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons a (cons b nil)) (cons a (cons b nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>#t ×5</td>
+</tr>
+<tr class="even">
+<td>R3</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? a b) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>yes ×5</td>
+</tr>
+<tr class="odd">
+<td>R3</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (and #f #f) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>yes ×5</td>
+</tr>
+<tr class="even">
+<td>R3 control</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if #f yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>no ×5</td>
+</tr>
+<tr class="odd">
+<td>R4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 150 100 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>250</td>
+<td>37 ×1, 15 ×1, 119 ×1, 77 ×1, 61 ×1</td>
+</tr>
+<tr class="even">
+<td>R4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 199 1 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>200</td>
+<td>173 ×1, 32 ×1, 16 ×2, 61 ×1</td>
+</tr>
+<tr class="odd">
+<td>R4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 3 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>-2 (1153 mod 1155)</td>
+<td>173 ×1, 15 ×1, 121 ×1, 127 ×1, 46 ×1</td>
+</tr>
+<tr class="even">
+<td>R4 control</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 100 99 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>199</td>
+<td>199 ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>R5: the lexer drops a <code>)</code> that directly follows an integer, so nested arithmetic parses wrongly. Our residuelisp programs put a space there.</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">source</th>
+<th data-quarto-table-cell-role="th">tokens</th>
+<th data-quarto-table-cell-role="th">result (seed 0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g 1)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( g 1</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g 1 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( g 1 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>–</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2) 3)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( + ( + 1 2 3</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>InterpreterError: Segmentation fault in car hehe</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2 ) 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( + ( + 1 2 ) 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="what-did-not-reproduce" class="level2">
+<h2 class="anchored" data-anchor-id="what-did-not-reproduce">What did not reproduce</h2>
+<ul>
+<li>4.1 does not apply to either codebase as written: both use pointer cells. In our paper mode of holis it shows up as a noise-free failure, but the loss of noise tolerance did not show in our read test.</li>
+<li>4.2 shows up only through role names leaking into holis’s symbol table. The (x . y) / (y . x) controls are 40 of 40 correct.</li>
+<li>4.3 and 4.4 do not reproduce. residuelisp’s product code has no chimeras in its similarity and no special zero, and its programs never superpose integers.</li>
+<li>4.5 does not reproduce in residuelisp in the form “a cap independent of D”, because its similarity is unnormalised (see the table above).</li>
+<li>4.7 does not apply.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>trap</th>
+<th>holis (2024)</th>
+<th>residuelisp (2025)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.1 superposed cells</td>
+<td>code: n/a (pointers), paper mode: noise-free failure reproduced, noise margin not</td>
+<td>n/a (pointers)</td>
+</tr>
+<tr class="even">
+<td>4.2 commuting bind</td>
+<td>reproduced via role symbols</td>
+<td>n/a</td>
+</tr>
+<tr class="odd">
+<td>4.3 chimeras</td>
+<td>n/a (no integers)</td>
+<td>not reproduced</td>
+</tr>
+<tr class="even">
+<td>4.4 zero</td>
+<td>n/a</td>
+<td>not reproduced</td>
+</tr>
+<tr class="odd">
+<td>4.5 fixed thresholds</td>
+<td>reproduced</td>
+<td>not reproduced (the cliff moves with √D)</td>
+</tr>
+<tr class="even">
+<td>4.6 shared field</td>
+<td>n/a</td>
+<td>reproduced (integer tag)</td>
+</tr>
+<tr class="odd">
+<td>4.7 sum of tuples</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr class="even">
+<td>new</td>
+<td>E1 car of an atom, E2, E3, E4 memory growth</td>
+<td>R2 <code>and</code>, R3 <code>if</code>, R4 decoder range, R5 lexer</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="appendix" class="level2">
+<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
+<section id="a.-commands" class="level3">
+<h3 class="anchored" data-anchor-id="a.-commands">A. Commands</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb130"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
+<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
+<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
+<span id="cb130-10"><a href="#cb130-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
+<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
+<span id="cb130-12"><a href="#cb130-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
+<span id="cb130-13"><a href="#cb130-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
+<span id="cb130-14"><a href="#cb130-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each script writes the JSON file of the same name, which this page reads. The loader <code>upstream.py</code> fetches holis at <code>db208d782863febfb50ec46b25a3700369f5cfea</code> and residuelisp at <code>09864c74f1a35680a0008e59d7ab2571269a986f</code> into a gitignored cache.</p>
+</section>
+<section id="b.-settings-per-file" class="level3">
+<h3 class="anchored" data-anchor-id="b.-settings-per-file">B. Settings, per file</h3>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">file</th>
+<th data-quarto-table-cell-role="th">upstream</th>
+<th data-quarto-table-cell-role="th">python / numpy</th>
+<th data-quarto-table-cell-role="th">settings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>holis_control.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"D":[512,2048],"seeds":[0,1,2,3,4],"fizzbuzz_D":512,"fizzbuzz_seed":0,"sigma":0}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>holis_errata.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"program":"((LAMBDA (x) (CONS x (b c))) a)","seeds":100,"dims":[512,2048],"sigma":0}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>holis_commute.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"dims":[512,2048,8192],"seeds":40,"sigma":0}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>holis_thresholds.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"dims":[512,2048,8192],"sigma_read":[0,1,2,3,4,5,6,8,10,12],"lookup":"25 lists x 8 repeats per (D, sigma, mode), env seed 0","noise":"p + sigma*|p|\/sqrt(D)*N(0,I) before every SimpleCleanUp.recall and SimpleAssoc.recall","sigma_lookup":[0,1,2,3,4,4.5,5,5.5,6,7,8,10,12,16],"max_cells_program":300,"why_small":"their SimpleCleanUp grows by 100 zero rows per stored item past 100 rows (erratum E4); larger memories exceed 8 GB at D = 8192","read_seeds":20,"modes":["theirs (theta=0.2)","chance floor (theta=5\/sqrt(D))"],"sigma_program":[0,2,4,5,6,8,10],"program_seeds":10,"program":"((LAMBDA (x) (CONS x (b c))) a)"}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>holis_cells.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"D":2048,"sigma_read":[0,0.5,1,1.5,2,3,4,5,6,8,10,12,16],"read_seeds":20,"program_seeds":10,"program_sigma":0,"max_cells_program":20000}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>residuelisp_control.json</td>
+<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"D":1000,"vsa":"FHRR","integers":"RHCIntegers, moduli [3, 5, 7, 11]","seeds":[0,1,2,3,4],"sigma":0}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>residuelisp_errata.json</td>
+<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"D":1000,"seeds":[0,1,2,3,4],"sigma":0}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>residuelisp_residues.json</td>
+<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"dims":[1000,4096],"seeds":[0,1,2,3,4],"moduli":[3,5,7,11],"range":1155,"superposition":"zeta(11) + zeta(12)","resonator_iters":200}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>residuelisp_thresholds.json</td>
+<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"program":"((lambda (x) ((lambda (y) (cons x (cons y nil))) n)) m)","max_steps":5000,"dims":[500,2000,8000],"sigmas":[0,1,2,3,4,6,8,12,16,24,32],"seeds":10,"noise":"p + sigma*|p|\/sqrt(D)*CN(0,I) before every CleanupMemory.recall and AssociativeMemory.deref"}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The holis notebook we ran has SHA-256 <code>80eee8cdeed896fe1987bd9c391d3001c3e46f736227f8cac8f9784b2dd09175</code>.</p>
+</section>
+<section id="c.-harness-excerpts-our-code" class="level3">
+<h3 class="anchored" data-anchor-id="c.-harness-excerpts-our-code">C. Harness excerpts (our code)</h3>
+<p>Probe noise, wrapped around their two cleanup methods (<code>holis_common.py</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
+<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
+<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
+<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
+<span id="cb140-10"><a href="#cb140-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The 4.5 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Paper mode, the 4.1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For residuelisp we also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
+</section>
+<section id="d.-raw-results" class="level3">
+<h3 class="anchored" data-anchor-id="d.-raw-results">D. Raw results</h3>
+<p>holis, 4.5 lookups (all rows):</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">mode</th>
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">correct</th>
+<th data-quarto-table-cell-role="th">θ fallbacks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>196 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>3</td>
+<td>159 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>103 / 200</td>
+<td>26</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>4.5</td>
+<td>48 / 200</td>
+<td>75</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>26 / 200</td>
+<td>104</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>5.5</td>
+<td>21 / 200</td>
+<td>141</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>9 / 200</td>
+<td>160</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>7</td>
+<td>3 / 200</td>
+<td>183</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>5 / 200</td>
+<td>191</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>1 / 200</td>
+<td>198</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>12</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>16</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>196 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>3</td>
+<td>159 / 200</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>84 / 200</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4.5</td>
+<td>38 / 200</td>
+<td>101</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>15 / 200</td>
+<td>147</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5.5</td>
+<td>12 / 200</td>
+<td>165</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>7 / 200</td>
+<td>180</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>7</td>
+<td>2 / 200</td>
+<td>194</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>4 / 200</td>
+<td>197</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>12</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>16</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>3</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>195 / 200</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>4.5</td>
+<td>164 / 200</td>
+<td>37</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>83 / 200</td>
+<td>118</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>5.5</td>
+<td>31 / 200</td>
+<td>165</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>8 / 200</td>
+<td>194</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>7</td>
+<td>2 / 200</td>
+<td>199</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>0 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>12</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>16</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>3</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>199 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4.5</td>
+<td>199 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>194 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5.5</td>
+<td>178 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>165 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>7</td>
+<td>119 / 200</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>91 / 200</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>21 / 200</td>
+<td>147</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>12</td>
+<td>8 / 200</td>
+<td>179</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>16</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>3</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>4.5</td>
+<td>190 / 200</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>75 / 200</td>
+<td>126</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>5.5</td>
+<td>6 / 200</td>
+<td>197</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>7</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>0 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>1 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>12</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>16</td>
+<td>2 / 200</td>
+<td>200</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>1</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>3</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4.5</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5.5</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>7</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>200 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>188 / 200</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>12</td>
+<td>166 / 200</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>16</td>
+<td>83 / 200</td>
+<td>46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>holis, 4.5 program runs, with what went wrong:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">mode</th>
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">correct</th>
+<th data-quarto-table-cell-role="th">errors</th>
+<th data-quarto-table-cell-role="th">wrong values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>9 / 10</td>
+<td></td>
+<td>["a", "b", "LAMBDA", "x", ["CONS", "a", ["b", "c"]]] ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>6 / 10</td>
+<td></td>
+<td>["x", "b", "c"] ×1, ["lhs", "b", "c"] ×1, ["c", "a", ["b", "c"]] ×1, ["a", "LAMBDA", ["x", ["b", "c"]], "c"] ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>0 / 10</td>
+<td></td>
+<td>rhs ×1, [["x"], ["rhs", "lhs"]] ×1, [["rhs", ["LAMBDA", "x"]], ["rhs", ["x", 1]]] ×1, ["LAMBDA", "CONS", [["a"], [[["LAMBDA", "T"], ["x", "F"]]]]] ×1, [[[[[["F", ["T", ["CONS", "lhs"]], "x"], "LAMBDA"], ["NIL", ×1, ["LAMBDA", "rhs"] ×1, ["lhs", ["a", "LAMBDA"]] ×1, ["LAMBDA", 1, ["NIL", "lhs"]] ×1, [[["b", ["x"], "F"], "rhs"], "lhs"] ×1, ["F", "a"] ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>0 / 10</td>
+<td></td>
+<td>[[["CONS", "rhs"], "ATOM"], "lhs"] ×1, ["lhs", "\u03c6"] ×1, LAMBDA ×1, a ×1, ["ATOM", "EQ"] ×1, ["F", ["NIL", "x"]] ×1, ["x", "\u03c6"] ×1, ["rhs", ["a", ["b", "lhs"]]] ×1, ["LAMBDA", ["rhs", "rhs"]] ×1, ["a", 1] ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>0 / 10</td>
+<td></td>
+<td>["ATOM", "T"] ×1, ["CONS", "a"] ×1, ["F", "EQ"] ×1, φ ×1, ["CDR", "CONS"] ×1, LAMBDA ×2, a ×1, ["x", "\u03c6"] ×1, c ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>0 / 10</td>
+<td></td>
+<td>a ×1, c ×3, F ×1, ["NIL", "T"] ×1, [[1], ["NIL", "x"]] ×1, LAMBDA ×1, EQ ×1, x ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>0 / 10</td>
+<td>budget ×1</td>
+<td>a ×2, c ×1, ["LAMBDA", "b"] ×1, lhs ×1, [["lhs", ["a", ["EQ", "T"]], "CONS"], [[[["ATOM", "a"], "LAM ×1, [[1], ["NIL", "x"]] ×1, LAMBDA ×1, x ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>9 / 10</td>
+<td></td>
+<td>["a", "b", "LAMBDA", "x", ["CONS", "a", ["b", "c"]]] ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>6 / 10</td>
+<td></td>
+<td>["x", "b", "c"] ×1, ["lhs", "b", "c"] ×1, ["c", "a", ["b", "c"]] ×1, ["a", "LAMBDA", ["x", ["b", "c"]], "c"] ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>0 / 10</td>
+<td></td>
+<td>[["CAR", "b", "F", "CONS", "F", "lhs", [["lhs", "rhs"], ["F" ×1, ["F", "EQ"] ×1, x ×1, ["lhs", "\u03c6"] ×1, ["a", ["LAMBDA", "x"]] ×1, ["LAMBDA", "c"] ×1, a ×1, ["LAMBDA", "LAMBDA"] ×1, ["lhs", [["x"], "ATOM"]] ×1, c ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>0 / 10</td>
+<td></td>
+<td>["lhs", ["NIL", "x"]] ×1, φ ×1, [[["CONS", "rhs"], "ATOM"], "lhs"] ×1, ["lhs", "\u03c6"] ×1, F ×1, LAMBDA ×2, a ×1, ["x", "\u03c6"] ×1, c ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>0 / 10</td>
+<td></td>
+<td>a ×1, c ×2, b ×1, LAMBDA ×2, ["ATOM", "T"] ×1, φ ×1, ["CONS", "a"] ×1, x ×1</td>
+</tr>
+<tr class="odd">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>0 / 10</td>
+<td></td>
+<td>a ×2, c ×3, F ×1, ["NIL", "T"] ×1, [[1], ["NIL", "x"]] ×1, LAMBDA ×1, x ×1</td>
+</tr>
+<tr class="even">
+<td>512</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>0 / 10</td>
+<td>budget ×1</td>
+<td>a ×2, c ×1, ["LAMBDA", "b"] ×1, lhs ×1, EQ ×1, [[1], ["NIL", "x"]] ×1, LAMBDA ×1, x ×1</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>9 / 10</td>
+<td></td>
+<td>["a", "LAMBDA", ["c"], "LAMBDA"] ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>3 / 10</td>
+<td></td>
+<td>rhs ×1, ["a", ["b", "LAMBDA"]] ×1, ["T", "b", "x"] ×1, [["x", "a", ["b", "c"]], "a", ["b", "c"]] ×1, ["a", "b", 1] ×1, c ×1, [["LAMBDA", ["x"], ["CONS", "x", ["b", "c"]]], "a"] ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>0 / 10</td>
+<td></td>
+<td>[1, "b"] ×1, ["LAMBDA", "CONS"] ×1, CONS ×2, DEFINE ×2, ["LAMBDA", "b"] ×1, NIL ×1, φ ×1, ["T", 1] ×1</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>0 / 10</td>
+<td></td>
+<td>LAMBDA ×1, rhs ×1, DEFINE ×3, b ×1, x ×2, φ ×1, a ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>0 / 10</td>
+<td></td>
+<td>LAMBDA ×1, rhs ×1, DEFINE ×3, b ×1, x ×2, φ ×1, a ×1</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>0 / 10</td>
+<td></td>
+<td>LAMBDA ×1, rhs ×1, DEFINE ×3, b ×1, x ×2, φ ×1, a ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>9 / 10</td>
+<td></td>
+<td>["a", "LAMBDA", ["c"], "LAMBDA"] ×1</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>7 / 10</td>
+<td></td>
+<td>["x", "b", ["x", "b", "c"]] ×1, ["c"] ×1, ["rhs", "lhs"] ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>0 / 10</td>
+<td></td>
+<td>["a", "x"] ×1, ["a", "b"] ×1, [["x", ["a"]], "x", ["b", "c", "c"]] ×1, ["a", "b", "c", [["a"], "a"]] ×1, [["c"], [["b", "c"]]] ×1, ["x", "a"] ×1, a ×1, ["LAMBDA", "CONS", ["CONS", ["x", [["b", [[[["x"], ["CONS", ×1, ["a", "LAMBDA"] ×1, ["LAMBDA", ["x", ["b", "c"], "b", "c"], ["c"]] ×1</td>
+</tr>
+<tr class="odd">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>0 / 10</td>
+<td></td>
+<td>T ×1, ["LAMBDA", "a"] ×1, [["DEFINE", ["CONS", [["CAR"], "CONS"]]], [["b", "F"], [["NI ×1, x ×1, [1, "DEFINE"] ×1, a ×1, ["LAMBDA", "LABEL"] ×1, [["LAMBDA", "lhs"], ["a"]] ×1, ["LAMBDA", ["rhs", ["rhs", "x"]], "c"] ×1, [[["x"], "DEFINE", "x"], ["c", [["CONS", [[[1, "T"], "a"], [ ×1</td>
+</tr>
+<tr class="even">
+<td>2048</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>0 / 10</td>
+<td></td>
+<td>rhs ×1, [["x"], "c"] ×1, φ ×1, x ×1, CONS ×1, DEFINE ×2, LAMBDA ×1, a ×1, 1 ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>0</td>
+<td>7 / 10</td>
+<td></td>
+<td>["a", "LAMBDA", ["NIL", ["CONS", "a", ["b", "c"]]], [["b", " ×1, ["a", "b", "LAMBDA", "a", "lhs"] ×1, ["a", "b", "LAMBDA", "x", ["b", "c"]] ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>2</td>
+<td>7 / 10</td>
+<td></td>
+<td>["a", ["a", "b", "c"]] ×1, ["a", ["b", "c"]] ×1, ["LAMBDA", "b", "c"] ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>4</td>
+<td>8 / 10</td>
+<td></td>
+<td>["a", "rhs"] ×1, ["a", "LAMBDA", [[["b", "c"]], "a"], 1] ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>5</td>
+<td>0 / 10</td>
+<td></td>
+<td>T ×1, ["rhs", "T"] ×1, CONS ×1, ["NIL", "F"] ×1, ["T", "CONS"] ×1, LAMBDA ×2, a ×1, NIL ×1, [1, ["F", "a"]] ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>6</td>
+<td>0 / 10</td>
+<td></td>
+<td>rhs ×1, φ ×1, CONS ×1, lhs ×1, LAMBDA ×2, a ×1, 1 ×1, NIL ×1, c ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>8</td>
+<td>0 / 10</td>
+<td></td>
+<td>rhs ×1, φ ×1, CONS ×1, lhs ×1, LAMBDA ×2, a ×1, 1 ×1, NIL ×1, c ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>theirs (theta=0.2)</td>
+<td>10</td>
+<td>0 / 10</td>
+<td></td>
+<td>rhs ×1, LAMBDA ×2, lhs ×1, c ×1, 1 ×2, CONS ×1, a ×1, φ ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>0</td>
+<td>7 / 10</td>
+<td></td>
+<td>["a", "LAMBDA", ["NIL", ["CONS", "a", ["b", "c"]]], [["b", " ×1, ["a", "b", "LAMBDA", "a", "lhs"] ×1, ["a", "b", "LAMBDA", "x", ["b", "c"]] ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>2</td>
+<td>7 / 10</td>
+<td></td>
+<td>["a", ["a", "b", "c"]] ×1, ["a", ["b", "c"]] ×1, ["LAMBDA", "b", "c"] ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>4</td>
+<td>8 / 10</td>
+<td></td>
+<td>["a", "rhs"] ×1, ["a", "LAMBDA", [[["b", "c"]], "a"], 1] ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>5</td>
+<td>8 / 10</td>
+<td></td>
+<td>["a", "c"] ×1, ["a", "LAMBDA", [[["b", "c"]], "a"], 1] ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>6</td>
+<td>8 / 10</td>
+<td></td>
+<td>["a", "a", "b", "c"] ×1, ["a", "LAMBDA", "\u03c6", 1] ×1</td>
+</tr>
+<tr class="odd">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>8</td>
+<td>7 / 10</td>
+<td></td>
+<td>["a", "a", "b", "c"] ×1, ["a", "LAMBDA", "\u03c6", 1] ×1, ["a", ["b", "c"]] ×1</td>
+</tr>
+<tr class="even">
+<td>8192</td>
+<td>chance floor (theta=5/sqrt(D))</td>
+<td>10</td>
+<td>3 / 10</td>
+<td></td>
+<td>["NIL", "a", "b", "LAMBDA", "a", [["CONS", "x", ["b", "c"]]] ×1, ["a", "LAMBDA", "\u03c6", 1] ×1, ["a", ["b", "c"]] ×1, ["b", "a"] ×1, [["a", ["b", "c"]], "b", "c"] ×1, ["a", ["c"], "c"] ×1, ["LAMBDA", "lhs", ["CONS", "a", ["b", "c"]]] ×1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>residuelisp, 4.5 runs, with what went wrong:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">σ</th>
+<th data-quarto-table-cell-role="th">correct</th>
+<th data-quarto-table-cell-role="th">errors</th>
+<th data-quarto-table-cell-role="th">wrong values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>500</td>
+<td>0</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>1</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>2</td>
+<td>7 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>3</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×6, InterpreterError: Segmentation fault in cdr hehe ×2, InterpreterError: ERROR: argument number mismatch in `associate`. ×2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>4</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×7, InterpreterError: Segmentation fault in cdr hehe ×2, InterpreterError: ERROR: Tuple is not a list. ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>6</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in cdr hehe ×4, InterpreterError: Segmentation fault in car hehe ×4, Exception: TODO ×1, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>8</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Tuple is not a list. ×2, InterpreterError: ERROR: Expected function in `get_args`. ×1, Exception: TODO ×1, InterpreterError: Segmentation fault in car hehe ×2, InterpreterError: Segmentation fault in cdr hehe ×3, InterpreterError: ERROR: Conditional expression requires `CONSEQUENT` and `ALTERNATE`, see documen ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>12</td>
+<td>0 / 10</td>
+<td>budget ×4, InterpreterError: ERROR: Expected function in `get_args`. ×2, InterpreterError: Segmentation fault in car hehe ×2, InterpreterError: ERROR: Expected function in `get_body`. ×1, InterpreterError: ERROR: Conditional expression requires `CONSEQUENT` and `ALTERNATE`, see documen ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>16</td>
+<td>0 / 10</td>
+<td>budget ×7, InterpreterError: ERROR: Expected function in `get_args`. ×1, Exception: TODO ×1, InterpreterError: ERROR: Expected function in `get_body`. ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>500</td>
+<td>24</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Conditional expression requires `CONSEQUENT` and `ALTERNATE`, see documen ×1, Exception: TODO ×4, InterpreterError: ERROR: Expected function in `get_body`. ×1, budget ×3, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>500</td>
+<td>32</td>
+<td>0 / 10</td>
+<td>Exception: TODO ×3, RecursionError ×2, budget ×3, InterpreterError: ERROR: Tuple is not a list. ×1, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>0</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>1</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>2</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>3</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>4</td>
+<td>8 / 10</td>
+<td>InterpreterError: ERROR: argument number mismatch in `associate`. ×1, InterpreterError: Segmentation fault in car hehe ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>6</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×3, InterpreterError: ERROR: argument number mismatch in `associate`. ×5, InterpreterError: Segmentation fault in cdr hehe ×2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>8</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×9, InterpreterError: Segmentation fault in cdr hehe ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>12</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Tuple is not a list. ×3, InterpreterError: Segmentation fault in cdr hehe ×3, InterpreterError: Segmentation fault in car hehe ×2, InterpreterError: ERROR: Expected function in `get_args`. ×1, Exception: TODO ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>16</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Expected function in `get_args`. ×3, InterpreterError: ERROR: Tuple is not a list. ×2, InterpreterError: Segmentation fault in cdr hehe ×2, Exception: TODO ×3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>2000</td>
+<td>24</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Expected function in `get_body`. ×2, budget ×6, InterpreterError: Segmentation fault in car hehe ×1, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2000</td>
+<td>32</td>
+<td>0 / 10</td>
+<td>InterpreterError: ERROR: Expected function in `get_args`. ×1, InterpreterError: Segmentation fault in car hehe ×1, InterpreterError: ERROR: Expected function in `get_body`. ×2, budget ×6</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>0</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8000</td>
+<td>1</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>2</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8000</td>
+<td>3</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>4</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8000</td>
+<td>6</td>
+<td>10 / 10</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>8</td>
+<td>9 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8000</td>
+<td>12</td>
+<td>1 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×6, InterpreterError: ERROR: argument number mismatch in `associate`. ×2, InterpreterError: Segmentation fault in cdr hehe ×1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>16</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in car hehe ×7, InterpreterError: ERROR: argument number mismatch in `associate`. ×1, InterpreterError: Segmentation fault in cdr hehe ×2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>8000</td>
+<td>24</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in cdr hehe ×4, InterpreterError: Segmentation fault in car hehe ×6</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>8000</td>
+<td>32</td>
+<td>0 / 10</td>
+<td>InterpreterError: Segmentation fault in cdr hehe ×2, InterpreterError: Segmentation fault in car hehe ×3, budget ×2, InterpreterError: ERROR: Tuple is not a list. ×2, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>residuelisp, the superposition per seed:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">decode_rhc(11+12)</th>
+<th data-quarto-table-cell-role="th">decode_rhc(11)</th>
+<th data-quarto-table-cell-role="th">resonator(11+12)</th>
+<th data-quarto-table-cell-role="th">residues</th>
+<th data-quarto-table-cell-role="th">chimera?</th>
+<th data-quarto-table-cell-role="th">resonator(11)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000</td>
+<td>0</td>
+<td>12</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>1</td>
+<td>12</td>
+<td>11</td>
+<td>12</td>
+<td>[0 2 5 1]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>2</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>3</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>1000</td>
+<td>4</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>0</td>
+<td>12</td>
+<td>11</td>
+<td>12</td>
+<td>[0 2 5 1]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>4096</td>
+<td>1</td>
+<td>12</td>
+<td>11</td>
+<td>12</td>
+<td>[0 2 5 1]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>2</td>
+<td>12</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>4096</td>
+<td>3</td>
+<td>11</td>
+<td>11</td>
+<td>11</td>
+<td>[2 1 4 0]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>4096</td>
+<td>4</td>
+<td>12</td>
+<td>11</td>
+<td>12</td>
+<td>[0 2 5 1]</td>
+<td>false</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+<p><em>Generated by Claude on Benjamin Schwerdtner’s behalf.</em></p>
+<div style="background-color:grey;height:2px;width:100%;"></div>
+<div><pre><small><small>source: notebooks/holis_reproduction.clj</small></small></pre></div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
