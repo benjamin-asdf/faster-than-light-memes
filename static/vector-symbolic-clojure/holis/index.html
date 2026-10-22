@@ -90,14 +90,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reproducing-the-traps-in-the-original-code" id="toc-reproducing-the-traps-in-the-original-code" class="nav-link active" data-scroll-target="#reproducing-the-traps-in-the-original-code">Reproducing the Traps in the Original Code</a>
   <ul>
   <li><a href="#the-two-codebases" id="toc-the-two-codebases" class="nav-link" data-scroll-target="#the-two-codebases">The two codebases</a></li>
-  <li><a href="#what-we-ran" id="toc-what-we-ran" class="nav-link" data-scroll-target="#what-we-ran">What we ran</a></li>
-  <li><a href="#superposed-cells-the-paper-has-them-the-code-does-not" id="toc-superposed-cells-the-paper-has-them-the-code-does-not" class="nav-link" data-scroll-target="#superposed-cells-the-paper-has-them-the-code-does-not">4.1 Superposed cells: the paper has them, the code does not</a></li>
-  <li><a href="#binding-commutes" id="toc-binding-commutes" class="nav-link" data-scroll-target="#binding-commutes">4.2 Binding commutes</a></li>
-  <li><a href="#residue-chimeras" id="toc-residue-chimeras" class="nav-link" data-scroll-target="#residue-chimeras">4.3 Residue chimeras</a></li>
-  <li><a href="#zero" id="toc-zero" class="nav-link" data-scroll-target="#zero">4.4 Zero</a></li>
-  <li><a href="#fixed-thresholds-cap-robustness" id="toc-fixed-thresholds-cap-robustness" class="nav-link" data-scroll-target="#fixed-thresholds-cap-robustness">4.5 Fixed thresholds cap robustness</a></li>
-  <li><a href="#a-shared-field-the-integer-tag" id="toc-a-shared-field-the-integer-tag" class="nav-link" data-scroll-target="#a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</a></li>
-  <li><a href="#a-sum-of-tuples" id="toc-a-sum-of-tuples" class="nav-link" data-scroll-target="#a-sum-of-tuples">4.7 A sum of tuples</a></li>
+  <li><a href="#what-i-ran" id="toc-what-i-ran" class="nav-link" data-scroll-target="#what-i-ran">What I ran</a></li>
+  <li><a href="#trap-1-superposed-cells-which-the-paper-has-and-the-code-does-not" id="toc-trap-1-superposed-cells-which-the-paper-has-and-the-code-does-not" class="nav-link" data-scroll-target="#trap-1-superposed-cells-which-the-paper-has-and-the-code-does-not">Trap 1: Superposed cells, which the paper has and the code does not</a></li>
+  <li><a href="#trap-2-binding-commutes" id="toc-trap-2-binding-commutes" class="nav-link" data-scroll-target="#trap-2-binding-commutes">Trap 2: Binding commutes</a></li>
+  <li><a href="#trap-3-fixed-thresholds-cap-robustness" id="toc-trap-3-fixed-thresholds-cap-robustness" class="nav-link" data-scroll-target="#trap-3-fixed-thresholds-cap-robustness">Trap 3: Fixed thresholds cap robustness</a></li>
+  <li><a href="#trap-4-a-shared-field-the-integer-tag" id="toc-trap-4-a-shared-field-the-integer-tag" class="nav-link" data-scroll-target="#trap-4-a-shared-field-the-integer-tag">Trap 4: A shared field (the integer tag)</a></li>
+  <li><a href="#trap-5-a-sum-of-tuples" id="toc-trap-5-a-sum-of-tuples" class="nav-link" data-scroll-target="#trap-5-a-sum-of-tuples">Trap 5: A sum of tuples</a></li>
   <li><a href="#further-errata" id="toc-further-errata" class="nav-link" data-scroll-target="#further-errata">Further errata</a></li>
   <li><a href="#errata-for-the-authors" id="toc-errata-for-the-authors" class="nav-link" data-scroll-target="#errata-for-the-authors">Errata for the authors</a>
   <ul class="collapse">
@@ -111,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#a.-commands" id="toc-a.-commands" class="nav-link" data-scroll-target="#a.-commands">A. Commands</a></li>
   <li><a href="#b.-settings-per-file" id="toc-b.-settings-per-file" class="nav-link" data-scroll-target="#b.-settings-per-file">B. Settings, per file</a></li>
-  <li><a href="#c.-harness-excerpts-our-code" id="toc-c.-harness-excerpts-our-code" class="nav-link" data-scroll-target="#c.-harness-excerpts-our-code">C. Harness excerpts (our code)</a></li>
+  <li><a href="#c.-harness-excerpts-my-code" id="toc-c.-harness-excerpts-my-code" class="nav-link" data-scroll-target="#c.-harness-excerpts-my-code">C. Harness excerpts (my code)</a></li>
   <li><a href="#d.-raw-results" id="toc-d.-raw-results" class="nav-link" data-scroll-target="#d.-raw-results">D. Raw results</a></li>
   </ul></li>
   </ul></li>
@@ -140,9 +138,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
 </blockquote>
-<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>. The overview found seven traps in a vector-symbolic Lisp. This page runs each one against the original authors’ own code. October 2026.</em></p>
-<p>Our Clojure started from Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (ICCM 2024). That paper built Lisp 1.5 out of holographic vectors and showed that it can be done. Their follow-up with Hanley, “Hey Pentti, We Did (More of) It!” (IJCNN 2025), added integers in residue arithmetic. Both have public code. Our seven traps came from our code. The fair question is which of them exist in theirs. Here we answer it by running their code: we fetch it at a pinned commit, add noise the way our paper does, and count. The section numbers 4.1–4.7 are those of our paper draft; they are the overview’s traps 1–7 in the same order.</p>
-<p>Their papers are proofs of concept, and their READMEs say so. Nothing below changes that. A proof of concept is where the next person starts, and this page lists what that next person (us) ran into.</p>
+<p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>. The overview found five traps in a vector-symbolic Lisp. This page runs each one against the original authors’ own code. October 2026.</em></p>
+<p>My Clojure started from Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (ICCM 2024). That paper built Lisp 1.5 out of holographic vectors and showed that it can be done. Their follow-up with Hanley, “Hey Pentti, We Did (More of) It!” (IJCNN 2025), added integers in residue arithmetic. Both have public code. My five traps came from my code. The fair question is which of them exist in theirs. Here I answer it by running their code: I fetch it at a pinned commit, add noise the way my paper does, and count. The trap numbers 1–5 are those of the overview.</p>
+<p>Their papers are proofs of concept, and their READMEs say so. Nothing below changes that. A proof of concept is where the next person starts, and this page lists what that next person (me) ran into.</p>
 <p>If you maintain or build on either codebase, go to <a href="#errata-for-the-authors">Errata for the authors</a>: each defect with its location, a minimal program and a suggested fix.</p>
 <section id="the-two-codebases" class="level2">
 <h2 class="anchored" data-anchor-id="the-two-codebases">The two codebases</h2>
@@ -163,11 +161,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>It keeps holis’s numbers: θ = 0.2 in the pointer memory and a 0.2 floor in its approximate equality. Its similarity is not normalised, though.</li>
 </ul>
 </section>
-<section id="what-we-ran" class="level2">
-<h2 class="anchored" data-anchor-id="what-we-ran">What we ran</h2>
-<p>Nothing of theirs is copied into our repository. A small loader fetches each codebase at its pinned commit when a script runs. For holis it executes the notebook’s code cells as a module. The scripts in <a href="https://github.com/benjamin-asdf/vector-symbolic-clj/tree/main/repro/holis"><code>repro/holis/</code></a> then:</p>
+<section id="what-i-ran" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-ran">What I ran</h2>
+<p>Nothing of theirs is copied into my repository. A small loader fetches each codebase at its pinned commit when a script runs. For holis it executes the notebook’s code cells as a module. The scripts in <a href="https://github.com/benjamin-asdf/vector-symbolic-clj/tree/main/repro/holis"><code>repro/holis/</code></a> then:</p>
 <ul>
-<li>add <strong>probe noise</strong> exactly as in our paper: before every cleanup, the probe p becomes p + σ·|p|/√D · N(0, I). Cleanups are the item memory, the function memory and the pointer memory;</li>
+<li>add <strong>probe noise</strong> exactly as in my paper: before every cleanup, the probe p becomes p + σ·|p|/√D · N(0, I). Cleanups are the item memory, the function memory and the pointer memory;</li>
 <li>change at most one thing as a <strong>control</strong>, and say which;</li>
 <li>count over seeds, and write every number on this page to a JSON file that the page reads.</li>
 </ul>
@@ -332,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>One program misses a seed. We return to it under E1 below. The authors’ own fizzbuzz helpers, verbatim from the notebook, also give the right answers. They are slow, which is why the noise sweeps below use smaller programs:</p>
+<p>One program misses a seed. I return to it under E1 below. The authors’ own fizzbuzz helpers, verbatim from the notebook, also give the right answers. They are slow, which is why the noise sweeps below use smaller programs:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -573,10 +571,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>So both interpreters do what their papers show. What follows asks for more than the papers claim.</p>
 </section>
-<section id="superposed-cells-the-paper-has-them-the-code-does-not" class="level2">
-<h2 class="anchored" data-anchor-id="superposed-cells-the-paper-has-them-the-code-does-not">4.1 Superposed cells: the paper has them, the code does not</h2>
-<p><strong>Applies?</strong> To the paper’s equation (2), cons(a, b) = ν(L⊗a + R⊗b + φ), yes. To the code, no: both codebases put each cell behind a random pointer, as our fix does. The holis notebook gives the reason in a comment.</p>
-<p>To see the paper’s cell inside their code, we added a <em>paper mode</em>. It is two attributes on their pointer memory: a cell is stored as its own normalised bundle, and “following” it returns it unchanged. The evaluator, CAR, CDR and the reader stay theirs. At D = 2048, Peano numerals n and n+1 then look alike. Pointer cells do not:</p>
+<section id="trap-1-superposed-cells-which-the-paper-has-and-the-code-does-not" class="level2">
+<h2 class="anchored" data-anchor-id="trap-1-superposed-cells-which-the-paper-has-and-the-code-does-not">Trap 1: Superposed cells, which the paper has and the code does not</h2>
+<p><strong>Applies?</strong> To the paper’s equation (2), cons(a, b) = ν(L⊗a + R⊗b + φ), yes. To the code, no: both codebases put each cell behind a random pointer, as my fix does. The holis notebook gives the reason in a comment.</p>
+<p>To see the paper’s cell inside their code, I added a <em>paper mode</em>. It is two attributes on their pointer memory: a cell is stored as its own normalised bundle, and “following” it returns it unchanged. The evaluator, CAR, CDR and the reader stay theirs. At D = 2048, Peano numerals n and n+1 then look alike. Pointer cells do not:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -605,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>Reproduced?</strong> Yes, noise-free, and in a way we did not expect. Their evaluator decides that an expression “evaluates to itself”, and stops, when the result is similar to the input: <code>(ee == e) &gt; 0.2</code>. With pointers, a form and its result are unrelated. With superposed cells, a form and its first evaluation step share terms, and their cosine is well above 0.2:</p>
+<p><strong>Reproduced?</strong> Yes, noise-free, and in a way I did not expect. Their evaluator decides that an expression “evaluates to itself”, and stops, when the result is similar to the input: <code>(ee == e) &gt; 0.2</code>. With pointers, a form and its result are unrelated. With superposed cells, a form and its first evaluation step share terms, and their cosine is well above 0.2:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -684,7 +682,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>In paper mode the LAMBDA program stops after the substitution and returns the body unevaluated. This is 4.1’s lesson in its plainest form: similarity of content is not identity.</p>
+<p>In paper mode the LAMBDA program stops after the substitution and returns the body unevaluated. This is trap 1’s lesson in its plainest form: similarity of content is not identity.</p>
 <p>Under noise the picture is less clean. Here numerals 1 to 8 are built, and then numeral 4 is read back with their reader:</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -794,11 +792,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>With their θ = 0.2, pointer cells fail first, because of that threshold (4.5 below). With θ set relative to chance, 5/√D, the comparison is between encodings alone. Then the curves cross: pointer cells read more numerals right at σ = 5 and 6, superposed cells at σ = 8. So this test does not show the loss of noise tolerance we measured in our own code (§4.1 of our paper). One difference: a superposed cell needs no pointer lookup, so each read makes fewer noisy cleanups. Plain argmax (θ = −1) breaks the pointer reads even at σ = 0. Their atom test needs a threshold, which we come back to in 4.5.</p>
-<p><strong>Verdict.</strong> The paper’s cell causes a noise-free failure in their code. The code’s own cell does not have that problem. The extra noise sensitivity did not reproduce in our read test.</p>
+<p>With their θ = 0.2, pointer cells fail first, because of that threshold (trap 3 below). With θ set relative to chance, 5/√D, the comparison is between encodings alone. Then the curves cross: pointer cells read more numerals right at σ = 5 and 6, superposed cells at σ = 8. So this test does not show the loss of noise tolerance I measured in my own code (trap 1 on the overview). One difference: a superposed cell needs no pointer lookup, so each read makes fewer noisy cleanups. Plain argmax (θ = −1) breaks the pointer reads even at σ = 0. Their atom test needs a threshold, which I come back to in trap 3.</p>
+<p><strong>Verdict.</strong> The paper’s cell causes a noise-free failure in their code. The code’s own cell does not have that problem. The extra noise sensitivity did not reproduce in my read test.</p>
 </section>
-<section id="binding-commutes" class="level2">
-<h2 class="anchored" data-anchor-id="binding-commutes">4.2 Binding commutes</h2>
+<section id="trap-2-binding-commutes" class="level2">
+<h2 class="anchored" data-anchor-id="trap-2-binding-commutes">Trap 2: Binding commutes</h2>
 <p><strong>Applies?</strong> Mostly no. Neither codebase stores an unlabelled pair: cells carry the roles lhs and rhs. holis has no environments, and residuelisp’s are a keyed memory, not a sum of var⊗value. As a control, (x . y) and (y . x) read back correctly every time.</p>
 <p>There is one opening. In holis the roles are also ordinary atoms: <code>vsa_env</code> enters <code>lhs</code>, <code>rhs</code> and <code>φ</code> in the lexicon. A program that mentions the symbol <code>lhs</code> therefore gets the role vector itself. The cell (x . lhs) then contains lhs⊗x + rhs⊗lhs. Unbinding lhs finds x and rhs at equal strength, because rhs⊗lhs = lhs⊗rhs.</p>
 <p><strong>Reproduced?</strong> Yes, through their parser, evaluator and reader, 40 seeds per row:</p>
@@ -1042,206 +1040,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>About half the reads give the wrong atom at every D. It is a tie, not noise, so a bigger D does not help. residuelisp names its roles <code>__lhs</code> and <code>__rhs</code>. Its lexer starts identifiers with a letter, so a program cannot name them (we read this in their lexer and did not run it).</p>
+<p>About half the reads give the wrong atom at every D. It is a tie, not noise, so a bigger D does not help. residuelisp names its roles <code>__lhs</code> and <code>__rhs</code>. Its lexer starts identifiers with a letter, so a program cannot name them (I read this in their lexer and did not run it).</p>
 </section>
-<section id="residue-chimeras" class="level2">
-<h2 class="anchored" data-anchor-id="residue-chimeras">4.3 Residue chimeras</h2>
-<p><strong>Applies?</strong> Not as we found it. Our chimeras came from giving each prime its own band of coordinates, so each band could match a different member of a sum. residuelisp uses Kymn et al.’s product code instead: every coordinate mixes all four moduli. We measured with their <code>RHC.encode</code> on the sum ζ(11) + ζ(12). Its 14 chimeras (integers whose residues each match 11 or 12) score like any other integer:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">cos to 11</th>
-<th data-quarto-table-cell-role="th">cos to 12</th>
-<th data-quarto-table-cell-role="th">chimeras: mean</th>
-<th data-quarto-table-cell-role="th">chimeras: max</th>
-<th data-quarto-table-cell-role="th">others: mean |cos|</th>
-<th data-quarto-table-cell-role="th">seeds</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1000</td>
-<td>0.704</td>
-<td>0.704</td>
-<td>-0.004</td>
-<td>0.061</td>
-<td>0.018</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>0.704</td>
-<td>0.704</td>
-<td>0.000</td>
-<td>0.025</td>
-<td>0.009</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Decoders tell the same story. Their interpreter decodes integers with <code>decode_rhc</code>, an argmax over the codes of 0..199. Their library also has <code>resonator_decoding</code>, the resonator network the paper describes. The interpreter does not call it, and its test is commented out. We read its output residue by residue, by magnitude, because a resonator finds each factor only up to a phase. Counts over the seeds:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">readout</th>
-<th data-quarto-table-cell-role="th">of ζ(11)</th>
-<th data-quarto-table-cell-role="th">of ζ(11) + ζ(12): a member</th>
-<th data-quarto-table-cell-role="th">of ζ(11) + ζ(12): a chimera</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>decode_rhc</td>
-<td>10 / 10</td>
-<td>10 / 10</td>
-<td>0 / 10</td>
-</tr>
-<tr class="even">
-<td>resonator_decoding</td>
-<td>10 / 10</td>
-<td>10 / 10</td>
-<td>0 / 10</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>A residuelisp program cannot build such a sum anyway. Integers come from literals and <code>+</code> / <code>-</code> only, and cells hold them behind pointers.</p>
-<p><strong>Reproduced?</strong> No.&nbsp;The chimeras belong to the banded encoding, which residuelisp does not use. Since October 2026 our own interpreter has used a product code too (one phase per frequency, drawn uniformly from Z_P with P = 5·7·11·13·17·19), and the chimeras are gone there as well: see trap 3 on the <a href="../">overview page</a>.</p>
-</section>
-<section id="zero" class="level2">
-<h2 class="anchored" data-anchor-id="zero">4.4 Zero</h2>
-<p><strong>Applies?</strong> No.&nbsp;Our zero problem had two parts, and neither carries over. On bands, an n divisible by several of the primes looked partly like zero, because each such band matched. In the product code, an n that some moduli divide is still unrelated to zero, unless all four divide it, which means n ≡ 0 mod 1155:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ1)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ3)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ15)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ105)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ385)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ1154)</th>
-<th data-quarto-table-cell-role="th">cos(ζ0, ζ1155)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1000</td>
-<td>-0.008</td>
-<td>-0.013</td>
-<td>-0.014</td>
-<td>-0.002</td>
-<td>0.001</td>
-<td>-0.008</td>
-<td>1.000</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>-0.008</td>
-<td>0.003</td>
-<td>0.006</td>
-<td>0.004</td>
-<td>0.003</td>
-<td>-0.008</td>
-<td>1.000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The wrap at 1155 is the residue range itself, so it is by design. Our second part was that B⁰ was a spike in dimension 0, so damaging that one dimension broke all arithmetic. In FHRR, zero is the all-ones vector, spread evenly. With coordinate 0 zeroed, ζ(17)·ζ(25) still reads as 42:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">seed</th>
-<th data-quarto-table-cell-role="th">argmax over 0..199</th>
-<th data-quarto-table-cell-role="th">cos to ζ(42)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1000</td>
-<td>0</td>
-<td>42</td>
-<td>0.999</td>
-</tr>
-<tr class="even">
-<td>1000</td>
-<td>1</td>
-<td>42</td>
-<td>0.999</td>
-</tr>
-<tr class="odd">
-<td>1000</td>
-<td>2</td>
-<td>42</td>
-<td>0.999</td>
-</tr>
-<tr class="even">
-<td>1000</td>
-<td>3</td>
-<td>42</td>
-<td>0.999</td>
-</tr>
-<tr class="odd">
-<td>1000</td>
-<td>4</td>
-<td>42</td>
-<td>0.999</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>0</td>
-<td>42</td>
-<td>1.000</td>
-</tr>
-<tr class="odd">
-<td>4096</td>
-<td>1</td>
-<td>42</td>
-<td>1.000</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>2</td>
-<td>42</td>
-<td>1.000</td>
-</tr>
-<tr class="odd">
-<td>4096</td>
-<td>3</td>
-<td>42</td>
-<td>1.000</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>4</td>
-<td>42</td>
-<td>1.000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><strong>Reproduced?</strong> No.</p>
-</section>
-<section id="fixed-thresholds-cap-robustness" class="level2">
-<h2 class="anchored" data-anchor-id="fixed-thresholds-cap-robustness">4.5 Fixed thresholds cap robustness</h2>
+<section id="trap-3-fixed-thresholds-cap-robustness" class="level2">
+<h2 class="anchored" data-anchor-id="trap-3-fixed-thresholds-cap-robustness">Trap 3: Fixed thresholds cap robustness</h2>
 <p><strong>Applies?</strong> To holis, yes. Its pointer memory accepts the nearest key only above cosine θ = 0.2. A probe with noise σ has cosine 1/√(1 + σ²) to its key. That falls below 0.2 at σ = √24 ≈ 4.9, whatever D is.</p>
-<p><strong>Reproduced?</strong> Yes. The control is the same code with θ = 5/√D, a threshold relative to chance, as our paper prescribes. It is one attribute set on their object. Plain argmax (θ = −1) would not do: their atom test needs the threshold to tell an atom, which matches no pointer, from a cell. With θ = −1 even noise-free reads fail. For D = 512, 5/√D = 0.22 is close to their 0.2. First, single CAR lookups on 25 stored 4-lists, 200 lookups per cell. The cells give correct lookups, and in parentheses how often θ made the memory return the probe itself:</p>
+<p><strong>Reproduced?</strong> Yes. The control is the same code with θ = 5/√D, a threshold relative to chance, as my paper prescribes. It is one attribute set on their object. Plain argmax (θ = −1) would not do: their atom test needs the threshold to tell an atom, which matches no pointer, from a cell. With θ = −1 even noise-free reads fail. For D = 512, 5/√D = 0.22 is close to their 0.2. First, single CAR lookups on 25 stored 4-lists, 200 lookups per cell. The cells give correct lookups, and in parentheses how often θ made the memory return the probe itself:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -1665,11 +1469,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>The last σ with all 10 runs right is 1 at D = 500, 3 at D = 2000 and 6 at D = 8000. It roughly doubles for each 4× in D, as √D predicts. So in residuelisp the fixed numbers do not set a cap independent of D. Its failures are loud: every failing run raised an exception (mostly <code>InterpreterError</code>) or hit our cleanup budget, and none returned a wrong value (raw table in the appendix). A fixed floor has a different cost there, in 4.6.</p>
+<p>The last σ with all 10 runs right is 1 at D = 500, 3 at D = 2000 and 6 at D = 8000. It roughly doubles for each 4× in D, as √D predicts. So in residuelisp the fixed numbers do not set a cap independent of D. Its failures are loud: every failing run raised an exception (mostly <code>InterpreterError</code>) or hit my cleanup budget, and none returned a wrong value (raw table in the appendix). A fixed floor has a different cost there, in trap 4.</p>
 </section>
-<section id="a-shared-field-the-integer-tag" class="level2">
-<h2 class="anchored" data-anchor-id="a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</h2>
-<p><strong>Applies?</strong> Not to holis, which has no records. It does apply to residuelisp, in a form we did not foresee. Every integer carries the same tag, int(x) = ζ(x) + int, which is the paper’s equation (11). Atoms count as <code>eq?</code> when their unnormalised similarity exceeds 0.2, and the tag alone contributes 1. So any two integers are equal.</p>
+<section id="trap-4-a-shared-field-the-integer-tag" class="level2">
+<h2 class="anchored" data-anchor-id="trap-4-a-shared-field-the-integer-tag">Trap 4: A shared field (the integer tag)</h2>
+<p><strong>Applies?</strong> Not to holis, which has no records. It does apply to residuelisp, in a form I did not foresee. Every integer carries the same tag, int(x) = ζ(x) + int, which is the paper’s equation (11). Atoms count as <code>eq?</code> when their unnormalised similarity exceeds 0.2, and the tag alone contributes 1. So any two integers are equal.</p>
 <p><strong>Reproduced?</strong> Yes, noise-free at D = 1000, in 5 of 5 seeds (rows R1 below). The similarities behind it:</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -1756,13 +1560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="a-sum-of-tuples" class="level2">
-<h2 class="anchored" data-anchor-id="a-sum-of-tuples">4.7 A sum of tuples</h2>
+<section id="trap-5-a-sum-of-tuples" class="level2">
+<h2 class="anchored" data-anchor-id="trap-5-a-sum-of-tuples">Trap 5: A sum of tuples</h2>
 <p><strong>Applies?</strong> No.&nbsp;Neither codebase builds superpositions of values, and neither has positional vectors, so there are no joint worlds to lose.</p>
 </section>
 <section id="further-errata" class="level2">
 <h2 class="anchored" data-anchor-id="further-errata">Further errata</h2>
-<p>Running the code turned up problems that our list does not cover. All are noise-free.</p>
+<p>Running the code turned up problems that my list does not cover. All are noise-free.</p>
 <p><strong>E1 (holis). CAR of an atom.</strong> To decide “is this head a lambda expression?”, their evaluator compares car(head) with LAMBDA. It does this even when head is an atom, and an atom has no CAR. car() then cleans up a meaningless probe and returns some stored item. When that item happens to match, the evaluator takes the wrong branch. Here is <code>((LAMBDA (x) (CONS x (b c))) a)</code> over 100 seeds. The control makes car() answer NIL for anything that is not a stored pointer, and changes nothing else:</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -1934,7 +1738,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>E4 (holis). The item memory grows quadratically.</strong> <code>SimpleCleanUp.memorize</code> appends 100 empty rows once it is full, but it never raises its capacity. So past 100 items, every new item appends another 100 rows. An empty row scores 0, so it can win a lookup only when every stored row scores below 0. Mostly it costs memory and time. It is why the fizzbuzz calls above take minutes, and why our noise sweep at D = 8192 needed smaller memories to stay under 8 GB. residuelisp’s <code>CleanupMemory</code> does raise its capacity.</p>
+<p><strong>E4 (holis). The item memory grows quadratically.</strong> <code>SimpleCleanUp.memorize</code> appends 100 empty rows once it is full, but it never raises its capacity. So past 100 items, every new item appends another 100 rows. An empty row scores 0, so it can win a lookup only when every stored row scores below 0. Mostly it costs memory and time. It is why the fizzbuzz calls above take minutes, and why my noise sweep at D = 8192 needed smaller memories to stay under 8 GB. residuelisp’s <code>CleanupMemory</code> does raise its capacity.</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -2132,7 +1936,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>R5: the lexer drops a <code>)</code> that directly follows an integer, so nested arithmetic parses wrongly. Our residuelisp programs put a space there.</p>
+<p>R5: the lexer drops a <code>)</code> that directly follows an integer, so nested arithmetic parses wrongly. My residuelisp programs put a space there.</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -2192,8 +1996,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="errata-for-the-authors" class="level2">
 <h2 class="anchored" data-anchor-id="errata-for-the-authors">Errata for the authors</h2>
-<p>This section is for Tomkins-Flanagan, Kelly and Hanley, and for anyone who builds on their code. Each item says where the defect is, shows a minimal program, gives the cause in one sentence and suggests a small fix. Line numbers are for residuelisp at <code>09864c7</code>. holis is one notebook, so for it we name the cell and the function, at <code>db208d7</code>. Most items are slips that a proof of concept is allowed to have. They are listed so they are quick to fix.</p>
-<p>Every fix below is <strong>tested</strong>. Our harness applies it as a runtime patch to their code, runs the erratum’s minimal programs, and then runs the noise-free control programs from the start of this page again (<code>holis_fixes.py</code>, <code>residuelisp_fixes.py</code>; E1 and 4.5 come from <code>holis_errata.py</code> and <code>holis_thresholds.py</code>). Where a suggested fix turned out wrong or incomplete, we say so. The fix shown is always the one we ran.</p>
+<p>This section is for Tomkins-Flanagan, Kelly and Hanley, and for anyone who builds on their code. Each item says where the defect is, shows a minimal program, gives the cause in one sentence and suggests a small fix. Line numbers are for residuelisp at <code>09864c7</code>. holis is one notebook, so for it I name the cell and the function, at <code>db208d7</code>. Most items are slips that a proof of concept is allowed to have. They are listed so they are quick to fix.</p>
+<p>Every fix below is <strong>tested</strong>. My harness applies it as a runtime patch to their code, runs the erratum’s minimal programs, and then runs the noise-free control programs from the start of this page again (<code>holis_fixes.py</code>, <code>residuelisp_fixes.py</code>; E1 and trap 3 come from <code>holis_errata.py</code> and <code>holis_thresholds.py</code>). Where a suggested fix turned out wrong or incomplete, I say so. The fix shown is always the one I ran.</p>
 <p>The order is by harm: wrong answers without any noise first, then robustness under noise, then memory and leftovers. The counts below come from the same JSON files as the rest of the page:</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -2220,7 +2024,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>R1 (4.6)</td>
+<td>R1 (trap 4)</td>
 <td>residuelisp</td>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 5 )</code></pre>
@@ -2297,7 +2101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0 / 5</td>
 </tr>
 <tr class="even">
-<td>4.2</td>
+<td>trap 2</td>
 <td>holis</td>
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
@@ -2319,7 +2123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0 / 5 at D = 512, 0 / 5 at D = 2048</td>
 </tr>
 <tr class="even">
-<td>4.5</td>
+<td>trap 3</td>
 <td>holis</td>
 <td>CAR lookup on a stored 4-list, σ = 5.5, D = 8192</td>
 <td>the stored head</td>
@@ -2379,7 +2183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>100 / 100</td>
 </tr>
 <tr class="even">
-<td>4.2</td>
+<td>trap 2</td>
 <td>18 / 20 (program × D)</td>
 <td>98 / 100</td>
 </tr>
@@ -2414,7 +2218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>98 / 100</td>
 </tr>
 <tr class="odd">
-<td>all but E1 (4.2, E2 + unwrap QUOTE, E3 removed, E4)</td>
+<td>all but E1 (trap 2, E2 + unwrap QUOTE, E3 removed, E4)</td>
 <td>18 / 20 (program × D)</td>
 <td>98 / 100</td>
 </tr>
@@ -2473,7 +2277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>The holis control programs have no DEFINE, so we also ran their fizzbuzz helpers: their DEFINEs, then the five calls in one environment, D = 512, 5 seeds, each call stopped after 60 s. All these runs use the E4 fix, which changes no answer and turns minutes into seconds (E4 below). Runs right per call:</p>
+<p>The holis control programs have no DEFINE, so I also ran their fizzbuzz helpers: their DEFINEs, then the five calls in one environment, D = 512, 5 seeds, each call stopped after 60 s. All these runs use the E4 fix, which changes no answer and turns minutes into seconds (E4 below). Runs right per call:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -2616,12 +2420,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="wrong-answers-without-noise" class="level3">
 <h3 class="anchored" data-anchor-id="wrong-answers-without-noise">Wrong answers without noise</h3>
-<p><strong>R1 (residuelisp; our 4.6). Any two integers are <code>eq?</code>.</strong></p>
+<p><strong>R1 (residuelisp; my trap 4). Any two integers are <code>eq?</code>.</strong></p>
 <ul>
 <li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>equals</code>, lines 320–362; the atom comparison is line 331. The tag is added in <code>src/language/encoding.py</code>, <code>encode_rhc_integer</code>, lines 322–348.</li>
-<li><em>Symptom.</em> <code>(eq? 3 5 )</code> and <code>(eq? 3 1000 )</code> give <code>#t</code> (table above). The 4.6 table shows the same for their test pattern: the result of <code>(+ 5 5)</code> “equals” 10, 7, 0 and 999. So <code>test_rhc_add</code> and <code>test_rhc_sub</code> in <code>src/tests/test_interpret.py</code> (lines 302–335) pass whatever the arithmetic returns.</li>
+<li><em>Symptom.</em> <code>(eq? 3 5 )</code> and <code>(eq? 3 1000 )</code> give <code>#t</code> (table above). The trap 4 table shows the same for their test pattern: the result of <code>(+ 5 5)</code> “equals” 10, 7, 0 and 999. So <code>test_rhc_add</code> and <code>test_rhc_sub</code> in <code>src/tests/test_interpret.py</code> (lines 302–335) pass whatever the arithmetic returns.</li>
 <li><em>Cause.</em> Every integer is ζ(x) + <code>__int</code>, and the shared tag alone gives a similarity of about 1, far above the 0.2 floor.</li>
-<li><em>Fix.</em> Compare integers without their tag, as <code>rhc_add</code> already does. Normalising the similarity is not enough: the cosine of 3 and 5 is still about 0.5 (4.6 table). In the “both atomic” branch of <code>equals</code>, before line 331:</li>
+<li><em>Fix.</em> Compare integers without their tag, as <code>rhc_add</code> already does. Normalising the similarity is not enough: the cosine of 3 and 5 is still about 0.5 (trap 4 table). In the “both atomic” branch of <code>equals</code>, before line 331:</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>tag <span class="op">=</span> enc_env.codebook[<span class="st">"__int"</span>]</span>
 <span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_true(check_int(lhs, enc_env), enc_env) <span class="kw">and</span> is_true(check_int(rhs, enc_env), enc_env):</span>
@@ -3029,7 +2833,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
 <span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested, and incomplete.</strong> On the LAMBDA program, wrong results go to 0 of 100 at D = 512 and 2048 (E1 table), and the control programs all pass (regression table above). But it breaks every DEFINE’d function (the fizzbuzz table above, column <code>E1 + E4</code>): their calls come back unevaluated. Their function memory holds cell bundles, not pointers, and <code>ev</code> finds a function by <code>car</code> of such a bundle, which the guard now answers with NIL. Admitting stored cells too (<code>c in assoc.A or c in assoc.A.reverse</code>) brings DEFINE back, but in one of the 5 seeds four of the five calls then run past 60 s (column <code>E1 admitting cells + E4</code>). So we have no fix for E1 that we can recommend. The cause is that their code uses one <code>car</code> both on pointers and on bundles. A fix would give the function memory its own lookup, and let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
+<li><em>Status.</em> <strong>Tested, and incomplete.</strong> On the LAMBDA program, wrong results go to 0 of 100 at D = 512 and 2048 (E1 table), and the control programs all pass (regression table above). But it breaks every DEFINE’d function (the fizzbuzz table above, column <code>E1 + E4</code>): their calls come back unevaluated. Their function memory holds cell bundles, not pointers, and <code>ev</code> finds a function by <code>car</code> of such a bundle, which the guard now answers with NIL. Admitting stored cells too (<code>c in assoc.A or c in assoc.A.reverse</code>) brings DEFINE back, but in one of the 5 seeds four of the five calls then run past 60 s (column <code>E1 admitting cells + E4</code>). So I have no fix for E1 that I can recommend. The cause is that their code uses one <code>car</code> both on pointers and on bundles. A fix would give the function memory its own lookup, and let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
 </ul>
 <p><strong>R4 (residuelisp). The decoder stops at 199.</strong></p>
 <ul>
@@ -3041,7 +2845,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
 <span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
 <span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> np.prod([z_m <span class="op">**</span> i <span class="cf">for</span> z_m <span class="kw">in</span> RHC.z_ms], axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted. - <em>Status.</em> <strong>Tested</strong>, as shown. Our first version called <code>RHC.encode(enc_env.dim, i, RHC.moduli).data</code> in the loop. It gave the same answers, but each call builds an <code>RHC</code> object whose constructor recomputes the four roots, so one decode took about 20 s at D = 1000. The version above takes well under a second:</p>
+<p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted. - <em>Status.</em> <strong>Tested</strong>, as shown. My first version called <code>RHC.encode(enc_env.dim, i, RHC.moduli).data</code> in the loop. It gave the same answers, but each call builds an <code>RHC</code> object whose constructor recomputes the four roots, so one decode took about 20 s at D = 1000. The version above takes well under a second:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -3336,7 +3140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>4.2 (holis). Programs can name the role vectors.</strong></p>
+<p><strong>Trap 2 (holis). Programs can name the role vectors.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>vsa_env</code>, the <code>reserved</code> list. It puts <code>lhs</code>, <code>rhs</code> and <code>φ</code> into <code>env['lex']</code> and the item memory, and <code>make_atom</code> returns the lexicon entry for any name a program uses.</li>
 <li><em>Symptom.</em> <code>(CAR (x . lhs))</code> gives <code>rhs</code> in about half the runs, at every D (table above). <code>read</code> and <code>car</code> can also return <code>lhs</code>, <code>rhs</code> or <code>φ</code> as atoms (the car(a) spread under E1).</li>
@@ -3347,7 +3151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
 <span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested.</strong> Our harness lets <code>vsa_env</code> draw the roles as before and then deletes them from <code>env['lex']</code> and their rows from the item memory. That is the state the change above gives, with the same random draws. <code>lhs</code> in a program is then a fresh atom. The 4.2 programs, 40 seeds per row:</li>
+<li><em>Status.</em> <strong>Tested.</strong> My harness lets <code>vsa_env</code> draw the roles as before and then deletes them from <code>env['lex']</code> and their rows from the item memory. That is the state the change above gives, with the same random draws. <code>lhs</code> in a program is then a fresh atom. The trap 2 programs, 40 seeds per row:</li>
 </ul>
 <div class="clay-table">
 <div class="table-responsive">
@@ -3365,7 +3169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">D</th>
 <th data-quarto-table-cell-role="th">should give</th>
 <th data-quarto-table-cell-role="th">theirs</th>
-<th data-quarto-table-cell-role="th">4.2</th>
+<th data-quarto-table-cell-role="th">trap 2</th>
 </tr>
 </thead>
 <tbody>
@@ -3606,7 +3410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb218-7"><a href="#cb218-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> cdr(val(car(c), ind))</span>
 <span id="cb218-8"><a href="#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cons(ab, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> ccons(val(car(ab), ind), val(car(cdr(ab)), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested.</strong> We first suggested only the two <code>ev_until_done</code> lines, and that <code>quote</code> return its argument. Both were incomplete. Without the unwrapping, a quoted list comes back with its wrapper, <code>(QUOTE ((a b c)))</code>. With <code>quote</code> returning its argument, <code>ev_until_done</code> evaluates the argument again, so <code>(QUOTE (CDR a))</code> runs <code>CDR</code> on an atom (E1) and gives a random item. The version above leaves <code>quote</code> alone. Unquoted literal lists such as <code>(a b c)</code> keep working, because their evaluator returns a list with an unknown head unchanged. CONS evaluates by accident in their code: the loop in <code>ev_until_done</code> evaluates the new cell again. Over 5 seeds:</li>
+<li><em>Status.</em> <strong>Tested.</strong> I first suggested only the two <code>ev_until_done</code> lines, and that <code>quote</code> return its argument. Both were incomplete. Without the unwrapping, a quoted list comes back with its wrapper, <code>(QUOTE ((a b c)))</code>. With <code>quote</code> returning its argument, <code>ev_until_done</code> evaluates the argument again, so <code>(QUOTE (CDR a))</code> runs <code>CDR</code> on an atom (E1) and gives a random item. The version above leaves <code>quote</code> alone. Unquoted literal lists such as <code>(a b c)</code> keep working, because their evaluator returns a list with an unknown head unchanged. CONS evaluates by accident in their code: the loop in <code>ev_until_done</code> evaluates the new cell again. Over 5 seeds:</li>
 </ul>
 <div class="clay-table">
 <div class="table-responsive">
@@ -3790,20 +3594,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>Here <code>E2</code> is the two lines alone (and CONS), and <code>E2 + unwrap QUOTE</code> is the fix shown. The control programs keep their counts with it (regression table above). Their fizzbuzz helpers do not all survive it (the fizzbuzz table above, column <code>E2 + unwrap QUOTE + E4</code>): in one of the 5 seeds, every call after the first runs into unbounded recursion. Raising Python’s recursion limit to 200 000 did not let it finish within 15 minutes (a side run, not in the JSON files). We suspect E1: evaluating CAR’s argument runs <code>ev</code> on more atoms, and <code>ev</code> takes CAR of an atom. We did not confirm this, and with no working E1 fix (above) we could not test the pair.</p>
+<p>Here <code>E2</code> is the two lines alone (and CONS), and <code>E2 + unwrap QUOTE</code> is the fix shown. The control programs keep their counts with it (regression table above). Their fizzbuzz helpers do not all survive it (the fizzbuzz table above, column <code>E2 + unwrap QUOTE + E4</code>): in one of the 5 seeds, every call after the first runs into unbounded recursion. Raising Python’s recursion limit to 200 000 did not let it finish within 15 minutes (a side run, not in the JSON files). I suspect E1: evaluating CAR’s argument runs <code>ev</code> on more atoms, and <code>ev</code> takes CAR of an atom. I did not confirm this, and with no working E1 fix (above) I could not test the pair.</p>
 </section>
 <section id="robustness-under-noise" class="level3">
 <h3 class="anchored" data-anchor-id="robustness-under-noise">Robustness under noise</h3>
-<p><strong>4.5 (holis). A fixed θ = 0.2 in the pointer memory.</strong></p>
+<p><strong>Trap 3 (holis). A fixed θ = 0.2 in the pointer memory.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>SimpleAssoc.__init__</code> (<code>theta=0.2</code>); <code>vsa_env</code> creates it with the default.</li>
-<li><em>Symptom.</em> Under probe noise, lookups fail past σ ≈ 4.9 at any D (table above, and the 4.5 tables).</li>
+<li><em>Symptom.</em> Under probe noise, lookups fail past σ ≈ 4.9 at any D (table above, and the trap 3 tables).</li>
 <li><em>Cause.</em> A noisy probe has cosine 1/√(1 + σ²) to its key, which falls below 0.2 at σ = √24 whatever D is, while chance cosines shrink like 1/√D.</li>
 <li><em>Fix.</em> Set θ relative to chance:</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb233"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (4.5 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. We did not change the evaluator’s other 0.2 floors.</li>
+<li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (trap 3 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. I did not change the evaluator’s other 0.2 floors.</li>
 </ul>
 </section>
 <section id="memory-and-leftovers" class="level3">
@@ -3923,7 +3727,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb235"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> label(lbl_exp, ind<span class="op">=</span><span class="st">''</span>):</span>
 <span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a>    define(lbl_exp, ind)</span>
 <span id="cb235-3"><a href="#cb235-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> car(cdr(lbl_exp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Unlike Lisp 1.5, the name is then global. - <em>Status.</em> <strong>Tested.</strong> We first suggested keeping their <code>label</code> with an <code>ind=''</code> parameter and <code>mem.memorize(lbl)</code>. That stops the error, but recursion still fails: their helper <code>ll</code> replaces the label only at the top level of the body, never inside it. Removing LABEL turns the form into plain data. D = 512, 5 seeds:</p>
+<p>Unlike Lisp 1.5, the name is then global. - <em>Status.</em> <strong>Tested.</strong> I first suggested keeping their <code>label</code> with an <code>ind=''</code> parameter and <code>mem.memorize(lbl)</code>. That stops the error, but recursion still fails: their helper <code>ll</code> replaces the label only at the top level of the body, never inside it. Removing LABEL turns the form into plain data. D = 512, 5 seeds:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -3991,11 +3795,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-did-not-reproduce" class="level2">
 <h2 class="anchored" data-anchor-id="what-did-not-reproduce">What did not reproduce</h2>
 <ul>
-<li>4.1 does not apply to either codebase as written: both use pointer cells. In our paper mode of holis it shows up as a noise-free failure, but the loss of noise tolerance did not show in our read test.</li>
-<li>4.2 shows up only through role names leaking into holis’s symbol table. The (x . y) / (y . x) controls are 40 of 40 correct.</li>
-<li>4.3 and 4.4 do not reproduce. residuelisp’s product code has no chimeras in its similarity and no special zero, and its programs never superpose integers.</li>
-<li>4.5 does not reproduce in residuelisp in the form “a cap independent of D”, because its similarity is unnormalised (see the table above).</li>
-<li>4.7 does not apply.</li>
+<li>Trap 1 does not apply to either codebase as written: both use pointer cells. In my paper mode of holis it shows up as a noise-free failure, but the loss of noise tolerance did not show in my read test.</li>
+<li>Trap 2 shows up only through role names leaking into holis’s symbol table. The (x . y) / (y . x) controls are 40 of 40 correct.</li>
+<li>Trap 3 does not reproduce in residuelisp in the form “a cap independent of D”, because its similarity is unnormalised (see the table above).</li>
+<li>Trap 5 does not apply.</li>
 </ul>
 </section>
 <section id="summary" class="level2">
@@ -4015,37 +3818,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>4.1 superposed cells</td>
+<td>1 superposed cells</td>
 <td>code: n/a (pointers), paper mode: noise-free failure reproduced, noise margin not</td>
 <td>n/a (pointers)</td>
 </tr>
 <tr class="even">
-<td>4.2 commuting bind</td>
+<td>2 commuting bind</td>
 <td>reproduced via role symbols</td>
 <td>n/a</td>
 </tr>
 <tr class="odd">
-<td>4.3 chimeras</td>
-<td>n/a (no integers)</td>
-<td>not reproduced</td>
-</tr>
-<tr class="even">
-<td>4.4 zero</td>
-<td>n/a</td>
-<td>not reproduced</td>
-</tr>
-<tr class="odd">
-<td>4.5 fixed thresholds</td>
+<td>3 fixed thresholds</td>
 <td>reproduced</td>
 <td>not reproduced (the cliff moves with √D)</td>
 </tr>
 <tr class="even">
-<td>4.6 shared field</td>
+<td>4 shared field</td>
 <td>n/a</td>
 <td>reproduced (integer tag)</td>
 </tr>
 <tr class="odd">
-<td>4.7 sum of tuples</td>
+<td>5 sum of tuples</td>
 <td>n/a</td>
 <td>n/a</td>
 </tr>
@@ -4073,10 +3866,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb239-10"><a href="#cb239-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
 <span id="cb239-11"><a href="#cb239-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
 <span id="cb239-12"><a href="#cb239-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
-<span id="cb239-13"><a href="#cb239-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
-<span id="cb239-14"><a href="#cb239-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span>
-<span id="cb239-15"><a href="#cb239-15" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_fixes.py</span>
-<span id="cb239-16"><a href="#cb239-16" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_fixes.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb239-13"><a href="#cb239-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span>
+<span id="cb239-14"><a href="#cb239-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_fixes.py</span>
+<span id="cb239-15"><a href="#cb239-15" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_fixes.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Each script writes the JSON file of the same name, which this page reads. The loader <code>upstream.py</code> fetches holis at <code>db208d782863febfb50ec46b25a3700369f5cfea</code> and residuelisp at <code>09864c74f1a35680a0008e59d7ab2571269a986f</code> into a gitignored cache.</p>
 </section>
 <section id="b.-settings-per-file" class="level3">
@@ -4156,14 +3948,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 </tr>
 <tr class="even">
-<td>residuelisp_residues.json</td>
-<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
-<td>3.14.7 / 2.5.4</td>
-<td><div class="code-copy-outer-scaffold"><div>
-<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"dims":[1000,4096],"seeds":[0,1,2,3,4],"moduli":[3,5,7,11],"range":1155,"superposition":"zeta(11) + zeta(12)","resonator_iters":200}</code></pre>
-</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-</tr>
-<tr class="odd">
 <td>residuelisp_thresholds.json</td>
 <td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
 <td>3.14.7 / 2.5.4</td>
@@ -4171,7 +3955,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"program":"((lambda (x) ((lambda (y) (cons x (cons y nil))) n)) m)","max_steps":5000,"dims":[500,2000,8000],"sigmas":[0,1,2,3,4,6,8,12,16,24,32],"seeds":10,"noise":"p + sigma*|p|\/sqrt(D)*CN(0,I) before every CleanupMemory.recall and AssociativeMemory.deref"}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>holis_fixes.json</td>
 <td>https://github.com/eilene-ftf/holis @ db208d7</td>
 <td>3.14.7 / 2.5.4</td>
@@ -4179,7 +3963,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"seeds":5,"dims":[512,2048],"sigma":0,"commute_seeds":40,"commute_dims":[512,2048,8192],"fizzbuzz":{"D":512,"seeds":[0,1,2,3,4],"call_limit_s":60},"max_cells":300,"variants":["theirs","E1","E1 + E4","E1 admitting cells","E1 admitting cells + E4","4.2","E2","E2 + QUOTE returns its argument","E2 + unwrap QUOTE","E3 removed","E3 kept","E3 as DEFINE","E4","E2 + unwrap QUOTE + E4","all but E1 (4.2, E2 + unwrap QUOTE, E3 removed, E4)"]}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>residuelisp_fixes.json</td>
 <td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
 <td>3.14.7 / 2.5.4</td>
@@ -4191,32 +3975,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>The holis notebook we ran has SHA-256 <code>80eee8cdeed896fe1987bd9c391d3001c3e46f736227f8cac8f9784b2dd09175</code>.</p>
+<p>The holis notebook I ran has SHA-256 <code>80eee8cdeed896fe1987bd9c391d3001c3e46f736227f8cac8f9784b2dd09175</code>.</p>
 </section>
-<section id="c.-harness-excerpts-our-code" class="level3">
-<h3 class="anchored" data-anchor-id="c.-harness-excerpts-our-code">C. Harness excerpts (our code)</h3>
+<section id="c.-harness-excerpts-my-code" class="level3">
+<h3 class="anchored" data-anchor-id="c.-harness-excerpts-my-code">C. Harness excerpts (my code)</h3>
 <p>Probe noise, wrapped around their two cleanup methods (<code>holis_common.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb251"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
-<span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
-<span id="cb251-3"><a href="#cb251-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb251-4"><a href="#cb251-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
-<span id="cb251-5"><a href="#cb251-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
-<span id="cb251-6"><a href="#cb251-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
-<span id="cb251-7"><a href="#cb251-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
-<span id="cb251-8"><a href="#cb251-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-9"><a href="#cb251-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
-<span id="cb251-10"><a href="#cb251-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The 4.5 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb252"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
-<span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Paper mode, the 4.1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb253"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb253-1"><a href="#cb253-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
-<span id="cb253-2"><a href="#cb253-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For residuelisp we also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb250"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
+<span id="cb250-2"><a href="#cb250-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
+<span id="cb250-3"><a href="#cb250-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb250-4"><a href="#cb250-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
+<span id="cb250-5"><a href="#cb250-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
+<span id="cb250-6"><a href="#cb250-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
+<span id="cb250-7"><a href="#cb250-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
+<span id="cb250-8"><a href="#cb250-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb250-9"><a href="#cb250-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
+<span id="cb250-10"><a href="#cb250-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The trap 3 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb251"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Paper mode, the trap 1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb252"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
+<span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For residuelisp I also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
 </section>
 <section id="d.-raw-results" class="level3">
 <h3 class="anchored" data-anchor-id="d.-raw-results">D. Raw results</h3>
-<p>holis, 4.5 lookups (all rows):</p>
+<p>holis, trap 3 lookups (all rows):</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -4822,7 +4606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>holis, 4.5 program runs, with what went wrong:</p>
+<p>holis, trap 3 program runs, with what went wrong:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -5177,7 +4961,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>residuelisp, 4.5 runs, with what went wrong:</p>
+<p>residuelisp, trap 3 runs, with what went wrong:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -5421,127 +5205,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0 / 10</td>
 <td>InterpreterError: Segmentation fault in cdr hehe ×2, InterpreterError: Segmentation fault in car hehe ×3, budget ×2, InterpreterError: ERROR: Tuple is not a list. ×2, InterpreterError: ERROR: Expected function in `get_args`. ×1</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>residuelisp, the superposition per seed:</p>
-<div class="clay-table">
-<div class="table-responsive">
-<table class="table table-hover clay-table caption-top">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">seed</th>
-<th data-quarto-table-cell-role="th">decode_rhc(11+12)</th>
-<th data-quarto-table-cell-role="th">decode_rhc(11)</th>
-<th data-quarto-table-cell-role="th">resonator(11+12)</th>
-<th data-quarto-table-cell-role="th">residues</th>
-<th data-quarto-table-cell-role="th">chimera?</th>
-<th data-quarto-table-cell-role="th">resonator(11)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1000</td>
-<td>0</td>
-<td>12</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>1000</td>
-<td>1</td>
-<td>12</td>
-<td>11</td>
-<td>12</td>
-<td>[0 2 5 1]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>1000</td>
-<td>2</td>
-<td>11</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>1000</td>
-<td>3</td>
-<td>11</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>1000</td>
-<td>4</td>
-<td>11</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>0</td>
-<td>12</td>
-<td>11</td>
-<td>12</td>
-<td>[0 2 5 1]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>4096</td>
-<td>1</td>
-<td>12</td>
-<td>11</td>
-<td>12</td>
-<td>[0 2 5 1]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>2</td>
-<td>12</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>4096</td>
-<td>3</td>
-<td>11</td>
-<td>11</td>
-<td>11</td>
-<td>[2 1 4 0]</td>
-<td>false</td>
-<td>11</td>
-</tr>
-<tr class="even">
-<td>4096</td>
-<td>4</td>
-<td>12</td>
-<td>11</td>
-<td>12</td>
-<td>[0 2 5 1]</td>
-<td>false</td>
-<td>11</td>
 </tr>
 </tbody>
 </table>
