@@ -1997,7 +1997,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="errata-for-the-authors" class="level2">
 <h2 class="anchored" data-anchor-id="errata-for-the-authors">Errata for the authors</h2>
 <p>This section is for Tomkins-Flanagan, Kelly and Hanley, and for anyone who builds on their code. Each item says where the defect is, shows a minimal program, gives the cause in one sentence and suggests a small fix. Line numbers are for residuelisp at <code>09864c7</code>. holis is one notebook, so for it I name the cell and the function, at <code>db208d7</code>. Most items are slips that a proof of concept is allowed to have. They are listed so they are quick to fix.</p>
-<p>Every fix below is <strong>tested</strong>. My harness applies it as a runtime patch to their code, runs the erratum’s minimal programs, and then runs the noise-free control programs from the start of this page again (<code>holis_fixes.py</code>, <code>residuelisp_fixes.py</code>; E1 and trap 3 come from <code>holis_errata.py</code> and <code>holis_thresholds.py</code>). Where a suggested fix turned out wrong or incomplete, I say so. The fix shown is always the one I ran.</p>
+<p>Every fix below is <strong>tested</strong>. My harness applies it as a runtime patch to their code and runs the erratum’s minimal programs. Every fix except trap 3’s then also runs the noise-free control programs from the start of this page again (<code>holis_fixes.py</code>, <code>residuelisp_fixes.py</code>; E1’s own control is in <code>holis_errata.py</code>). The trap 3 fix is tested only in <code>holis_thresholds.py</code>: lookups, reads and the LAMBDA program. Where a suggested fix turned out wrong or incomplete, I say so. The fix shown is always the one I ran.</p>
 <p>The order is by harm: wrong answers without any noise first, then robustness under noise, then memory and leftovers. The counts below come from the same JSON files as the rest of the page:</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -3607,7 +3607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb233"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (trap 3 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. I did not change the evaluator’s other 0.2 floors.</li>
+<li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (trap 3 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. I did not change the evaluator’s other 0.2 floors, and I did not run the fix on the other control programs. Without noise the LAMBDA program gives the same counts as with θ = 0.2 (9 of 10 at D = 512 and 2048, 7 of 10 at D = 8192).</li>
 </ul>
 </section>
 <section id="memory-and-leftovers" class="level3">
@@ -3690,27 +3690,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>countdown 3 1</td>
 <td>16.6</td>
-<td>0.3</td>
+<td>0.4</td>
 </tr>
 <tr class="odd">
 <td>divisible 3 3</td>
 <td>83.1</td>
-<td>0.9</td>
+<td>1.5</td>
 </tr>
 <tr class="even">
 <td>divisible 4 3</td>
 <td>767.8</td>
-<td>2.1</td>
+<td>3.1</td>
 </tr>
 <tr class="odd">
 <td>and T F</td>
 <td>51.7</td>
-<td>0.2</td>
+<td>0.3</td>
 </tr>
 <tr class="even">
 <td>take 2 (a b c)</td>
 <td>241.2</td>
-<td>0.9</td>
+<td>2.8</td>
 </tr>
 </tbody>
 </table>
