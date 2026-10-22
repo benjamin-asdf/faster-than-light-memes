@@ -99,6 +99,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-shared-field-the-integer-tag" id="toc-a-shared-field-the-integer-tag" class="nav-link" data-scroll-target="#a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</a></li>
   <li><a href="#a-sum-of-tuples" id="toc-a-sum-of-tuples" class="nav-link" data-scroll-target="#a-sum-of-tuples">4.7 A sum of tuples</a></li>
   <li><a href="#further-errata" id="toc-further-errata" class="nav-link" data-scroll-target="#further-errata">Further errata</a></li>
+  <li><a href="#errata-for-the-authors" id="toc-errata-for-the-authors" class="nav-link" data-scroll-target="#errata-for-the-authors">Errata for the authors</a>
+  <ul class="collapse">
+  <li><a href="#wrong-answers-without-noise" id="toc-wrong-answers-without-noise" class="nav-link" data-scroll-target="#wrong-answers-without-noise">Wrong answers without noise</a></li>
+  <li><a href="#robustness-under-noise" id="toc-robustness-under-noise" class="nav-link" data-scroll-target="#robustness-under-noise">Robustness under noise</a></li>
+  <li><a href="#memory-and-leftovers" id="toc-memory-and-leftovers" class="nav-link" data-scroll-target="#memory-and-leftovers">Memory and leftovers</a></li>
+  </ul></li>
   <li><a href="#what-did-not-reproduce" id="toc-what-did-not-reproduce" class="nav-link" data-scroll-target="#what-did-not-reproduce">What did not reproduce</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a>
@@ -137,6 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>. The overview found seven traps in a vector-symbolic Lisp. This page runs each one against the original authors’ own code. October 2026.</em></p>
 <p>Our Clojure started from Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (ICCM 2024). That paper built Lisp 1.5 out of holographic vectors and showed that it can be done. Their follow-up with Hanley, “Hey Pentti, We Did (More of) It!” (IJCNN 2025), added integers in residue arithmetic. Both have public code. Our seven traps came from our code. The fair question is which of them exist in theirs. Here we answer it by running their code: we fetch it at a pinned commit, add noise the way our paper does, and count. The section numbers 4.1–4.7 are those of our paper draft; they are the overview’s traps 1–7 in the same order.</p>
 <p>Their papers are proofs of concept, and their READMEs say so. Nothing below changes that. A proof of concept is where the next person starts, and this page lists what that next person (us) ran into.</p>
+<p>If you maintain or build on either codebase, go to <a href="#errata-for-the-authors">Errata for the authors</a>: each defect with its location, a minimal program and a suggested fix.</p>
 <section id="the-two-codebases" class="level2">
 <h2 class="anchored" data-anchor-id="the-two-codebases">The two codebases</h2>
 <p><strong>holis</strong> (<a href="https://github.com/eilene-ftf/holis">eilene-ftf/holis</a>, commit <code>db208d7</code>, AGPL-3.0) is one Jupyter notebook. It adapts Norvig’s lispy to holographic reduced representations (HRR) at D = 512:</p>
@@ -1658,7 +1665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>The last σ with all 10 runs right is 1 at D = 500, 3 at D = 2000 and 6 at D = 8000. It roughly doubles for each 4× in D, as √D predicts. So in residuelisp the fixed numbers do not set a cap independent of D. Its failures are loud: every failing run raised an exception (mostly <code>InterpreterError</code>) or hit our cleanup budget, and none returned a wrong value (raw table in the appendix). The price of the unnormalised similarity is elsewhere, in 4.6.</p>
+<p>The last σ with all 10 runs right is 1 at D = 500, 3 at D = 2000 and 6 at D = 8000. It roughly doubles for each 4× in D, as √D predicts. So in residuelisp the fixed numbers do not set a cap independent of D. Its failures are loud: every failing run raised an exception (mostly <code>InterpreterError</code>) or hit our cleanup budget, and none returned a wrong value (raw table in the appendix). A fixed floor has a different cost there, in 4.6.</p>
 </section>
 <section id="a-shared-field-the-integer-tag" class="level2">
 <h2 class="anchored" data-anchor-id="a-shared-field-the-integer-tag">4.6 A shared field: the integer tag</h2>
@@ -1892,7 +1899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>E2, E3 (holis).</strong> CAR does not evaluate its argument, and LABEL is dispatched but raises. Their paper says it leaves LABEL out, so E3 is a leftover, not a broken claim:</p>
+<p><strong>E2, E3 (holis).</strong> CAR does not evaluate its argument (by reading their code, CDR and CONS do not either), and LABEL is dispatched but raises. Their paper says it leaves LABEL out, so E3 is a leftover, not a broken claim:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -2183,6 +2190,292 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="errata-for-the-authors" class="level2">
+<h2 class="anchored" data-anchor-id="errata-for-the-authors">Errata for the authors</h2>
+<p>This section is for Tomkins-Flanagan, Kelly and Hanley, and for anyone who builds on their code. Each item says where the defect is, shows a minimal program, gives the cause in one sentence and suggests a small fix. Line numbers are for residuelisp at <code>09864c7</code>. holis is one notebook, so for it we name the cell and the function, at <code>db208d7</code>. Most items are slips that a proof of concept is allowed to have. They are listed so they are quick to fix.</p>
+<p>A fix marked <strong>tested</strong> is the control that our harness ran, with the result shown. A fix marked <strong>untested</strong> is our suggestion from reading the code. We did not run it.</p>
+<p>The order is by harm: wrong answers without any noise first, then robustness under noise, then memory and leftovers. The counts below come from the same JSON files as the rest of the page:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">gives (×runs)</th>
+<th data-quarto-table-cell-role="th">wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R1 (4.6)</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t #f)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td>R2</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons a (cons b nil)) (cons a (cons c nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>#t ×5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td>R3</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? a b) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>yes ×5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td>E1</td>
+<td>holis</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LAMBDA (x) (CONS x (b c))) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>(a b c)</td>
+<td>varies, e.g. [["a", "LAMBDA", ["c"], "LAMBDA"]] (D = 2048, seed 2)</td>
+<td>7 / 100 at D = 512, 11 / 100 at D = 2048</td>
+</tr>
+<tr class="even">
+<td>R4</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 150 100 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>250</td>
+<td>37 ×1, 15 ×1, 119 ×1, 77 ×1, 61 ×1</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td>R5</td>
+<td>residuelisp</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2) 3)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>6</td>
+<td>InterpreterError: Segmentation fault in car hehe</td>
+<td>seed 0 (lexer, no randomness)</td>
+</tr>
+<tr class="even">
+<td>4.2</td>
+<td>holis</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>x</td>
+<td>D = 512: rhs ×22, x ×18; D = 2048: rhs ×21, x ×19; D = 8192: x ×20, rhs ×20</td>
+<td>22 / 40, 21 / 40, 20 / 40</td>
+</tr>
+<tr class="odd">
+<td>E2</td>
+<td>holis</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>b</td>
+<td>["CDR"] ×5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td>4.5</td>
+<td>holis</td>
+<td>CAR lookup on a stored 4-list, σ = 5.5, D = 8192</td>
+<td>the stored head</td>
+<td>6 right with θ = 0.2; 200 right with θ = 5/√D</td>
+<td>194 / 200</td>
+</tr>
+<tr class="odd">
+<td>E4</td>
+<td>holis</td>
+<td>store 800 items in SimpleCleanUp</td>
+<td>about 800 rows</td>
+<td>70100 rows, 287.1 MB at D = 512</td>
+<td>–</td>
+</tr>
+<tr class="even">
+<td>E3</td>
+<td>holis</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(LABEL f (LAMBDA (x) x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>an error that names LABEL, or no LABEL</td>
+<td>TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
+<td>5 / 5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="wrong-answers-without-noise" class="level3">
+<h3 class="anchored" data-anchor-id="wrong-answers-without-noise">Wrong answers without noise</h3>
+<p><strong>R1 (residuelisp; our 4.6). Any two integers are <code>eq?</code>.</strong></p>
+<ul>
+<li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>equals</code>, lines 320–362; the atom comparison is line 331. The tag is added in <code>src/language/encoding.py</code>, <code>encode_rhc_integer</code>, lines 322–348.</li>
+<li><em>Symptom.</em> <code>(eq? 3 5 )</code> and <code>(eq? 3 1000 )</code> give <code>#t</code> (table above). The 4.6 table shows the same for their test pattern: the result of <code>(+ 5 5)</code> “equals” 10, 7, 0 and 999. So <code>test_rhc_add</code> and <code>test_rhc_sub</code> in <code>src/tests/test_interpret.py</code> (lines 302–335) pass whatever the arithmetic returns.</li>
+<li><em>Cause.</em> Every integer is ζ(x) + <code>__int</code>, and the shared tag alone gives a similarity of about 1, far above the 0.2 floor.</li>
+<li><em>Fix.</em> Compare integers without their tag, as <code>rhc_add</code> already does. Normalising the similarity is not enough: the cosine of 3 and 5 is still about 0.5 (4.6 table). In the “both atomic” branch of <code>equals</code>, before line 331:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>tag <span class="op">=</span> enc_env.codebook[<span class="st">"__int"</span>]</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_true(check_int(lhs, enc_env), enc_env) <span class="kw">and</span> is_true(check_int(rhs, enc_env), enc_env):</span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>    lhs, rhs <span class="op">=</span> lhs <span class="op">-</span> tag, rhs <span class="op">-</span> tag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In the tests, compare the decoded value instead. Then a wrong sum fails:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> decode(value, enc_env, eval_env) <span class="op">==</span> <span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> Untested.</li>
+</ul>
+<p><strong>R2 (residuelisp). <code>and</code> never looks at its second argument.</strong></p>
+<ul>
+<li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>_and_</code>, lines 286–289. <code>equals</code> uses it at line 360 to join the car and cdr comparisons.</li>
+<li><em>Symptom.</em> <code>(and #t #f)</code> gives <code>#t</code>. Structural <code>eq?</code> compares only the cars, so <code>(a b)</code> and <code>(a c)</code> are <code>eq?</code> (table above).</li>
+<li><em>Cause.</em> The second clause tests <code>lhs</code> again instead of <code>rhs</code>.</li>
+<li><em>Fix.</em> Line 288:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>        is_nil(rhs, enc_env) <span class="kw">or</span> is_false(rhs, enc_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Their <code>test_and</code> and <code>test_and_comp</code> only use true arguments, so a test of <code>(and #t #f)</code> would have caught it. - <em>Status.</em> Untested. It is a one-word change.</p>
+<p><strong>R3 (residuelisp). <code>if</code> does not evaluate its condition.</strong></p>
+<ul>
+<li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>if_</code>, lines 427–461; the condition is taken at line 447 and tested at line 458.</li>
+<li><em>Symptom.</em> <code>(if (eq? a b) yes no)</code> gives <code>yes</code>. Any compound condition takes the consequent. A literal <code>#f</code> works, which is why <code>test_if_consequent</code> and <code>test_if_alternate</code> pass.</li>
+<li><em>Cause.</em> The condition is the unevaluated form, a pointer, and a pointer is neither <code>nil</code> nor <code>#f</code>.</li>
+<li><em>Fix.</em> Line 447:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> evaluate(car(rand, enc_env, eval_env), enc_env, eval_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> Untested.</li>
+</ul>
+<p><strong>E1 (holis). CAR of an atom returns a random item.</strong></p>
+<ul>
+<li><em>Where.</em> Code cell 2 (“Lisp environment definitions”), <code>vsa_env</code>, the inner <code>car</code>. <code>ev</code> calls it on atoms in two tests: “is head a lambda expression?” (<code>car(head)</code>) and “is head a defined function?” (<code>car(echo)</code>).</li>
+<li><em>Symptom.</em> <code>((LAMBDA (x) (CONS x (b c))) a)</code> gives a wrong list in some seeds (table above, and the E1 tables under “Further errata”).</li>
+<li><em>Cause.</em> For a probe that matches no pointer, <code>SimpleAssoc.recall</code> returns the probe itself, so <code>car</code> unbinds <code>lhs</code> from an atom and cleans up noise, which lands on an arbitrary stored item.</li>
+<li><em>Fix.</em> Let <code>car</code> answer NIL for anything that is not a stored pointer. residuelisp’s <code>car</code> raises in this case (line 226), which is also fine.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> <strong>Tested</strong>, noise-free: wrong results go to 0 of 100 at D = 512 and 2048 (E1 table). The same guard in <code>cdr</code> is untested. The test is an exact key match, which is right for the pointers their code passes around. A version for noisy pointers would let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
+</ul>
+<p><strong>R4 (residuelisp). The decoder stops at 199.</strong></p>
+<ul>
+<li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>decode_rhc</code>, lines 1253–1271; the range is line 1265.</li>
+<li><em>Symptom.</em> <code>(+ 150 100 )</code> gives a different wrong number in each seed (table above). So do <code>(+ 199 1 )</code> and <code>(- 3 5 )</code>.</li>
+<li><em>Cause.</em> The argmax runs over the codes of 0..199 (plus literals seen), while the moduli 3, 5, 7, 11 cover 0..1154.</li>
+<li><em>Fix.</em> Lines 1265–1267. <code>RHC.moduli</code> is the moduli the encoder used; <code>enc_env.moduli</code> is empty by default:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> RHC.encode(enc_env.dim, i, RHC.moduli).data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted. - <em>Status.</em> Untested.</p>
+<p><strong>R5 (residuelisp). The lexer drops a <code>)</code> right after a number.</strong></p>
+<ul>
+<li><em>Where.</em> <code>src/syntax/parser.py</code>, <code>_digit</code>, lines 121–127.</li>
+<li><em>Symptom.</em> <code>(+ (+ 1 2) 3)</code> lexes as <code>( + ( + 1 2 3</code> and fails. With a space before each <code>)</code> it gives 6 (table above, and the lexer table under “Further errata”).</li>
+<li><em>Cause.</em> The loop calls <code>_next</code> to look at the character after the digits, so that character is consumed and lost.</li>
+<li><em>Fix.</em> Peek first, as <code>_key_or_ident</code> does:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _digit(d, conts):</span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> [d]</span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (curr <span class="op">:=</span> _peek(conts)) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> curr.isdigit():</span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>        ds.append(_next(conts))</span>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Token(<span class="st">""</span>.join(ds), TokenKind.Int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> Untested.</li>
+</ul>
+<p><strong>4.2 (holis). Programs can name the role vectors.</strong></p>
+<ul>
+<li><em>Where.</em> Code cell 2, <code>vsa_env</code>, the <code>reserved</code> list. It puts <code>lhs</code>, <code>rhs</code> and <code>φ</code> into <code>env['lex']</code> and the item memory, and <code>make_atom</code> returns the lexicon entry for any name a program uses.</li>
+<li><em>Symptom.</em> <code>(CAR (x . lhs))</code> gives <code>rhs</code> in about half the runs, at every D (table above). <code>read</code> and <code>car</code> can also return <code>lhs</code>, <code>rhs</code> or <code>φ</code> as atoms (the car(a) spread under E1).</li>
+<li><em>Cause.</em> The symbol <code>lhs</code> is the role vector itself, and binding commutes, so unbinding <code>lhs</code> from rhs⊗lhs gives <code>rhs</code> as strongly as unbinding it from lhs⊗x gives <code>x</code>.</li>
+<li><em>Fix.</em> Keep the roles out of the lexicon and the item memory:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>reserved <span class="op">=</span> [<span class="st">'T'</span>, <span class="st">'F'</span>, <span class="st">"NIL"</span>, <span class="dv">1</span>]      <span class="co"># atoms a program may name</span></span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> Untested. Nothing else reads the roles from <code>env['lex']</code>, as far as we can see.</li>
+</ul>
+<p><strong>E2 (holis). CAR does not evaluate its argument.</strong></p>
+<ul>
+<li><em>Where.</em> Code cell 2, <code>vsa_env</code>, <code>caar</code>. By reading, <code>cdar</code> and <code>cons</code> do the same; we ran only the CAR case.</li>
+<li><em>Symptom.</em> <code>(CAR (CDR (a b c)))</code> gives <code>CDR</code>. Lisp 1.5 gives <code>b</code>.</li>
+<li><em>Cause.</em> <code>caar(c)</code> is <code>car(car(c))</code>: it takes the first element of the argument form instead of its value.</li>
+<li><em>Fix,</em> if Lisp 1.5 semantics are intended. Evaluate first:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caar(c, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> car(ev_until_done(car(c), ind))</span>
+<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> cdr(ev_until_done(car(c), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Literal lists then need QUOTE, and their QUOTE keeps its wrapper, so <code>quote</code> would have to return its argument too. Rerun the fizzbuzz helpers after this change. - <em>Status.</em> Untested.</p>
+</section>
+<section id="robustness-under-noise" class="level3">
+<h3 class="anchored" data-anchor-id="robustness-under-noise">Robustness under noise</h3>
+<p><strong>4.5 (holis). A fixed θ = 0.2 in the pointer memory.</strong></p>
+<ul>
+<li><em>Where.</em> Code cell 2, <code>SimpleAssoc.__init__</code> (<code>theta=0.2</code>); <code>vsa_env</code> creates it with the default.</li>
+<li><em>Symptom.</em> Under probe noise, lookups fail past σ ≈ 4.9 at any D (table above, and the 4.5 tables).</li>
+<li><em>Cause.</em> A noisy probe has cosine 1/√(1 + σ²) to its key, which falls below 0.2 at σ = √24 whatever D is, while chance cosines shrink like 1/√D.</li>
+<li><em>Fix.</em> Set θ relative to chance:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (4.5 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. We did not change the evaluator’s other 0.2 floors.</li>
+</ul>
+</section>
+<section id="memory-and-leftovers" class="level3">
+<h3 class="anchored" data-anchor-id="memory-and-leftovers">Memory and leftovers</h3>
+<p><strong>E4 (holis). The item memory grows quadratically.</strong></p>
+<ul>
+<li><em>Where.</em> Code cell 2, <code>SimpleCleanUp.memorize</code>.</li>
+<li><em>Symptom.</em> 800 stored items take 70 100 rows (table above, and the E4 tables). Their fizzbuzz runs take minutes partly because of this.</li>
+<li><em>Cause.</em> When the matrix is full it appends <code>k</code> empty rows but never raises <code>m</code>, so every later item appends another <code>k</code> rows.</li>
+<li><em>Fix.</em> One line, as residuelisp’s <code>CleanupMemory.memorize</code> does (<code>src/language/encoding.py</code>, line 90):</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">&gt;=</span> <span class="va">self</span>.m:</span>
+<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.M <span class="op">=</span> np.concatenate([<span class="va">self</span>.M, np.zeros((<span class="va">self</span>.k, <span class="va">self</span>.n))], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.m <span class="op">+=</span> <span class="va">self</span>.k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> Untested. We only measured their version.</li>
+</ul>
+<p><strong>E3 (holis). LABEL is a leftover.</strong> Their paper says it leaves LABEL out, so this breaks no claim.</p>
+<ul>
+<li><em>Where.</em> Code cell 2, <code>vsa_env</code>: <code>'LABEL'</code> in <code>basic_fs</code> and in <code>env.update</code>, and the inner <code>label</code>.</li>
+<li><em>Symptom.</em> <code>(LABEL f (LAMBDA (x) x))</code> raises a <code>TypeError</code>.</li>
+<li><em>Cause.</em> <code>ev</code> calls every basic function with <code>ind=</code>, and <code>label</code> has no such parameter. Inside, <code>mem.memorize(lbl, exp)</code> passes two arguments to a one-argument method, so it would fail next.</li>
+<li><em>Fix.</em> Remove <code>'LABEL'</code> from <code>basic_fs</code> and from <code>env.update</code>. To keep it, give <code>label</code> an <code>ind=''</code> parameter and call <code>mem.memorize(lbl)</code>.</li>
+<li><em>Status.</em> Untested.</li>
+</ul>
+</section>
+</section>
 <section id="what-did-not-reproduce" class="level2">
 <h2 class="anchored" data-anchor-id="what-did-not-reproduce">What did not reproduce</h2>
 <ul>
@@ -2256,20 +2549,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
 <section id="a.-commands" class="level3">
 <h3 class="anchored" data-anchor-id="a.-commands">A. Commands</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb130"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
-<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
-<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
-<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
-<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
-<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
-<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
-<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
-<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
-<span id="cb130-10"><a href="#cb130-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
-<span id="cb130-11"><a href="#cb130-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
-<span id="cb130-12"><a href="#cb130-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
-<span id="cb130-13"><a href="#cb130-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
-<span id="cb130-14"><a href="#cb130-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb151"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
+<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
+<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
+<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
+<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
+<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
+<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
+<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
+<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
+<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
+<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
+<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
+<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
+<span id="cb151-14"><a href="#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Each script writes the JSON file of the same name, which this page reads. The loader <code>upstream.py</code> fetches holis at <code>db208d782863febfb50ec46b25a3700369f5cfea</code> and residuelisp at <code>09864c74f1a35680a0008e59d7ab2571269a986f</code> into a gitignored cache.</p>
 </section>
 <section id="b.-settings-per-file" class="level3">
@@ -2373,22 +2666,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c.-harness-excerpts-our-code" class="level3">
 <h3 class="anchored" data-anchor-id="c.-harness-excerpts-our-code">C. Harness excerpts (our code)</h3>
 <p>Probe noise, wrapped around their two cleanup methods (<code>holis_common.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
-<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
-<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
-<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
-<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
-<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
-<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
-<span id="cb140-10"><a href="#cb140-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
+<span id="cb161-10"><a href="#cb161-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The 4.5 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Paper mode, the 4.1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
-<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For residuelisp we also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
 </section>
 <section id="d.-raw-results" class="level3">
