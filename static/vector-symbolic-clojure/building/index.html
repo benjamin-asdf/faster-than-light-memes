@@ -122,9 +122,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="building_the_interpreter_files/md-default1.js" type="text/javascript"></script>
 <section id="building-a-vector-symbolic-interpreter" class="level1">
 <h1>Building a Vector-Symbolic Interpreter</h1>
-<blockquote class="blockquote">
-<p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
-</blockquote>
 <p><em>The code behind <a href="../">A Vector-Symbolic Clojure</a>, step by step. September 2026, updated October 2026.</em></p>
 <p>This notebook builds a small interpreter from nothing but vector operations. At the end it runs <code>(fact 5)</code>, and every value along the way is one vector. The finished interpreter (<a href="https://github.com/benjamin-asdf/vector-symbolic-clj/blob/main/src/vsc/core.clj"><code>src/vsc/core.clj</code></a>) does the same with more care. The last section lists what it adds.</p>
 <p>The only library used is the substrate bridge <code>vsc.hdc</code>: thin Clojure wrappers around numpy, reached through libpython-clj. A vector is an opaque Python object. Clojure never looks inside one.</p>
@@ -568,7 +565,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>a</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>5</td>
+<td>4</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -640,7 +637,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>169</td>
+<td>167</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -649,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1033</td>
+<td>915</td>
 </tr>
 </tbody>
 </table>

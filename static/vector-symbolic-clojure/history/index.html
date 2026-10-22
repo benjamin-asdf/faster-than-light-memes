@@ -85,9 +85,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="history_files/md-default1.js" type="text/javascript"></script>
 <section id="how-the-vector-symbolic-clojure-got-here" class="level1">
 <h1>How the Vector-Symbolic Clojure Got Here</h1>
-<blockquote class="blockquote">
-<p>Generated with Claude Code, and I am not ashamed. My own blog posts of this kind are part of the training data and have sculpted its style.</p>
-</blockquote>
 <p><em>A companion to <a href="../">A Vector-Symbolic Clojure</a>, which describes the design as it is. This page records how it got that way: what broke, roughly in the order I found it, and what changed. The overview numbers its five traps by theme, so the numbers here differ. Two problems told here, the chimeras and the partial zero, belonged to an integer encoding that has since been replaced, so the overview no longer lists them. September–October 2026.</em></p>
 <p>The starting point was the design of Tomkins-Flanagan and Kelly’s “Hey Pentti, We Did It!” (2024): list cells as bundles of their parts, binding by circular convolution, and thresholds “a little under 1 and a little over 0”. Each section below is one place where running real programs disagreed with it, or with my own first choices. The paper draft (§4) has the measurements, and <code>scripts/failure_modes.clj</code> rebuilds each failure next to the current code.</p>
 <section id="bundled-list-cells" class="level2">
