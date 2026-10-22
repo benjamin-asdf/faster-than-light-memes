@@ -1114,7 +1114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>A residuelisp program cannot build such a sum anyway. Integers come from literals and <code>+</code> / <code>-</code> only, and cells hold them behind pointers.</p>
-<p><strong>Reproduced?</strong> No.&nbsp;The chimeras belong to the banded encoding, which residuelisp does not use.</p>
+<p><strong>Reproduced?</strong> No.&nbsp;The chimeras belong to the banded encoding, which residuelisp does not use. Since October 2026 our own interpreter has used a product code too (one phase per frequency, drawn uniformly from Z_P with P = 5·7·11·13·17·19), and the chimeras are gone there as well: see trap 3 on the <a href="../">overview page</a>.</p>
 </section>
 <section id="zero" class="level2">
 <h2 class="anchored" data-anchor-id="zero">4.4 Zero</h2>
@@ -1899,7 +1899,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>E2, E3 (holis).</strong> CAR does not evaluate its argument (by reading their code, CDR and CONS do not either), and LABEL is dispatched but raises. Their paper says it leaves LABEL out, so E3 is a leftover, not a broken claim:</p>
+<p><strong>E2, E3 (holis).</strong> CAR does not evaluate its argument (nor does CDR; CONS does not either, but their evaluator hides that, see the errata), and LABEL is dispatched but raises. Their paper says it leaves LABEL out, so E3 is a leftover, not a broken claim:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -2193,18 +2193,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="errata-for-the-authors" class="level2">
 <h2 class="anchored" data-anchor-id="errata-for-the-authors">Errata for the authors</h2>
 <p>This section is for Tomkins-Flanagan, Kelly and Hanley, and for anyone who builds on their code. Each item says where the defect is, shows a minimal program, gives the cause in one sentence and suggests a small fix. Line numbers are for residuelisp at <code>09864c7</code>. holis is one notebook, so for it we name the cell and the function, at <code>db208d7</code>. Most items are slips that a proof of concept is allowed to have. They are listed so they are quick to fix.</p>
-<p>A fix marked <strong>tested</strong> is the control that our harness ran, with the result shown. A fix marked <strong>untested</strong> is our suggestion from reading the code. We did not run it.</p>
+<p>Every fix below is <strong>tested</strong>. Our harness applies it as a runtime patch to their code, runs the erratum’s minimal programs, and then runs the noise-free control programs from the start of this page again (<code>holis_fixes.py</code>, <code>residuelisp_fixes.py</code>; E1 and 4.5 come from <code>holis_errata.py</code> and <code>holis_thresholds.py</code>). Where a suggested fix turned out wrong or incomplete, we say so. The fix shown is always the one we ran.</p>
 <p>The order is by harm: wrong answers without any noise first, then robustness under noise, then memory and leftovers. The counts below come from the same JSON files as the rest of the page:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -2214,6 +2215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">should give</th>
 <th data-quarto-table-cell-role="th">gives (×runs)</th>
 <th data-quarto-table-cell-role="th">wrong</th>
+<th data-quarto-table-cell-role="th">wrong with the fix</th>
 </tr>
 </thead>
 <tbody>
@@ -2226,6 +2228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>#f</td>
 <td>#t ×5</td>
 <td>5 / 5</td>
+<td>0 / 5</td>
 </tr>
 <tr class="even">
 <td>R2</td>
@@ -2236,6 +2239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>#f</td>
 <td>#t ×5</td>
 <td>5 / 5</td>
+<td>0 / 5</td>
 </tr>
 <tr class="odd">
 <td>R2</td>
@@ -2246,6 +2250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>#f</td>
 <td>#t ×5</td>
 <td>5 / 5</td>
+<td>0 / 5</td>
 </tr>
 <tr class="even">
 <td>R3</td>
@@ -2256,6 +2261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>no</td>
 <td>yes ×5</td>
 <td>5 / 5</td>
+<td>0 / 5</td>
 </tr>
 <tr class="odd">
 <td>E1</td>
@@ -2266,6 +2272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>(a b c)</td>
 <td>varies, e.g. [["a", "LAMBDA", ["c"], "LAMBDA"]] (D = 2048, seed 2)</td>
 <td>7 / 100 at D = 512, 11 / 100 at D = 2048</td>
+<td>0 / 100 at D = 512, 0 / 100 at D = 2048</td>
 </tr>
 <tr class="even">
 <td>R4</td>
@@ -2276,6 +2283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>250</td>
 <td>37 ×1, 15 ×1, 119 ×1, 77 ×1, 61 ×1</td>
 <td>5 / 5</td>
+<td>0 / 5</td>
 </tr>
 <tr class="odd">
 <td>R5</td>
@@ -2286,6 +2294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>6</td>
 <td>InterpreterError: Segmentation fault in car hehe</td>
 <td>seed 0 (lexer, no randomness)</td>
+<td>0 / 5</td>
 </tr>
 <tr class="even">
 <td>4.2</td>
@@ -2295,7 +2304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>x</td>
 <td>D = 512: rhs ×22, x ×18; D = 2048: rhs ×21, x ×19; D = 8192: x ×20, rhs ×20</td>
-<td>22 / 40, 21 / 40, 20 / 40</td>
+<td>22 / 40 at D = 512, 21 / 40 at D = 2048, 20 / 40 at D = 8192</td>
+<td>0 / 40 at D = 512, 0 / 40 at D = 2048, 0 / 40 at D = 8192</td>
 </tr>
 <tr class="odd">
 <td>E2</td>
@@ -2306,6 +2316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>b</td>
 <td>["CDR"] ×5</td>
 <td>5 / 5</td>
+<td>0 / 5 at D = 512, 0 / 5 at D = 2048</td>
 </tr>
 <tr class="even">
 <td>4.5</td>
@@ -2314,6 +2325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>the stored head</td>
 <td>6 right with θ = 0.2; 200 right with θ = 5/√D</td>
 <td>194 / 200</td>
+<td>0 / 200</td>
 </tr>
 <tr class="odd">
 <td>E4</td>
@@ -2322,6 +2334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>about 800 rows</td>
 <td>70100 rows, 287.1 MB at D = 512</td>
 <td>–</td>
+<td>800 rows</td>
 </tr>
 <tr class="even">
 <td>E3</td>
@@ -2332,6 +2345,270 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>an error that names LABEL, or no LABEL</td>
 <td>TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
 <td>5 / 5</td>
+<td>0 / 5 (LABEL removed)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>With each fix applied, the control programs from the start of the page still give the right answers. holis, 10 programs at D = 512 and 2048, 5 seeds each. The one program that misses a seed in most rows is the LAMBDA program of E1; only the rows with an E1 fix get it right:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">programs right in every run</th>
+<th data-quarto-table-cell-role="th">runs right</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theirs</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="even">
+<td>E1</td>
+<td>20 / 20 (program × D)</td>
+<td>100 / 100</td>
+</tr>
+<tr class="odd">
+<td>E1 admitting cells</td>
+<td>20 / 20 (program × D)</td>
+<td>100 / 100</td>
+</tr>
+<tr class="even">
+<td>4.2</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="odd">
+<td>E2</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="even">
+<td>E2 + unwrap QUOTE</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="odd">
+<td>E3 removed</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="even">
+<td>E3 kept</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="odd">
+<td>E3 as DEFINE</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="even">
+<td>E4</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+<tr class="odd">
+<td>all but E1 (4.2, E2 + unwrap QUOTE, E3 removed, E4)</td>
+<td>18 / 20 (program × D)</td>
+<td>98 / 100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>residuelisp, its 15 control programs over 5 seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">programs right in every run</th>
+<th data-quarto-table-cell-role="th">runs right</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theirs</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="odd">
+<td>R2</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="even">
+<td>R3</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="odd">
+<td>R4</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="even">
+<td>R5</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+<tr class="odd">
+<td>all</td>
+<td>15 / 15</td>
+<td>75 / 75</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The holis control programs have no DEFINE, so we also ran their fizzbuzz helpers: their DEFINEs, then the five calls in one environment, D = 512, 5 seeds, each call stopped after 60 s. All these runs use the E4 fix, which changes no answer and turns minutes into seconds (E4 below). Runs right per call:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">call</th>
+<th data-quarto-table-cell-role="th">E4</th>
+<th data-quarto-table-cell-role="th">E1 + E4</th>
+<th data-quarto-table-cell-role="th">E1 admitting cells + E4</th>
+<th data-quarto-table-cell-role="th">E2 + unwrap QUOTE + E4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>their fizzbuzz DEFINEs</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td>countdown 3 1</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>4 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td>divisible 3 3</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>4 / 5</td>
+<td>4 / 5</td>
+</tr>
+<tr class="even">
+<td>divisible 4 3</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>4 / 5</td>
+<td>4 / 5</td>
+</tr>
+<tr class="odd">
+<td>and T F</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>5 / 5</td>
+<td>4 / 5</td>
+</tr>
+<tr class="even">
+<td>take 2 (a b c)</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>4 / 5</td>
+<td>4 / 5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>What the wrong runs gave:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">call</th>
+<th data-quarto-table-cell-role="th">results of the wrong runs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>E1 + E4</td>
+<td>and T F</td>
+<td>[["and", "T", "F"]] ×5</td>
+</tr>
+<tr class="even">
+<td>E2 + unwrap QUOTE + E4</td>
+<td>and T F</td>
+<td>RecursionError ×1</td>
+</tr>
+<tr class="odd">
+<td>E1 + E4</td>
+<td>divisible 4 3</td>
+<td>[["divisible", "divisible", ["countdown", "LAMBDA", ["x", "n"]], ["x", … ×1; [["divisible", [[[["T"]]]], [[["T"]]]]] ×1; [["divisible", "F"]] ×1; [["divisible", ["fb", "LAMBDA"], "fizzesbuzzes", "LAMBDA", ["n"], ["CO … ×2</td>
+</tr>
+<tr class="even">
+<td>E1 admitting cells + E4</td>
+<td>divisible 3 3</td>
+<td>stopped after 60 s ×1</td>
+</tr>
+<tr class="odd">
+<td>E2 + unwrap QUOTE + E4</td>
+<td>divisible 3 3</td>
+<td>RecursionError ×1</td>
+</tr>
+<tr class="even">
+<td>E1 admitting cells + E4</td>
+<td>take 2 (a b c)</td>
+<td>stopped after 60 s ×1</td>
+</tr>
+<tr class="odd">
+<td>E2 + unwrap QUOTE + E4</td>
+<td>take 2 (a b c)</td>
+<td>RecursionError ×1</td>
+</tr>
+<tr class="even">
+<td>E2 + unwrap QUOTE + E4</td>
+<td>divisible 4 3</td>
+<td>RecursionError ×1</td>
+</tr>
+<tr class="odd">
+<td>E1 admitting cells + E4</td>
+<td>divisible 4 3</td>
+<td>stopped after 60 s ×1</td>
+</tr>
+<tr class="even">
+<td>E1 + E4</td>
+<td>divisible 3 3</td>
+<td>[["divisible", "divisible", ["countdown", "LAMBDA", ["x", "n"]], ["x", … ×1; [["divisible", [[["T"]]], [[["T"]]]]] ×1; [["divisible", "F"]] ×1; [["divisible", ["fb", "LAMBDA"], "fizzesbuzzes", "LAMBDA", ["n"], ["CO … ×2</td>
+</tr>
+<tr class="odd">
+<td>E1 admitting cells + E4</td>
+<td>countdown 3 1</td>
+<td>stopped after 60 s ×1</td>
+</tr>
+<tr class="even">
+<td>E1 + E4</td>
+<td>countdown 3 1</td>
+<td>[["countdown", "divisible", ["countdown", "LAMBDA", ["x", "n"]], ["x", … ×1; [["countdown", [[["T"]]], ["T"]]] ×1; [["countdown", "F"]] ×1; [["countdown", ["fb", "LAMBDA"], "fizzesbuzzes", "LAMBDA", ["n"], ["CO … ×2</td>
+</tr>
+<tr class="odd">
+<td>E1 + E4</td>
+<td>take 2 (a b c)</td>
+<td>[["take", "LAMBDA", ["n"], [["LAMBDA", ["xx"], ["COND", [["EQ", "xx", … ×1; [["take", [["T"]], ["a", "b", "c"]]] ×1; [["take", "LAMBDA", ["b"], ["COND", [["EQ", ["a", "b", "c"], "T"], "CO … ×1; [["take", ["fb", ["a", "b", "c"]], "fizzesbuzzes", "a"]] ×2</td>
 </tr>
 </tbody>
 </table>
@@ -2352,8 +2629,235 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the tests, compare the decoded value instead. Then a wrong sum fails:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> decode(value, enc_env, eval_env) <span class="op">==</span> <span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> Untested.</li>
+<li><em>Status.</em> <strong>Tested</strong>, as shown. Before and after, D = 1000, 5 seeds:</li>
 </ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">R1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 1000 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? 3 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>5 / 5 right: #t ×5</td>
+<td>5 / 5 right: #t ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (+ 1 2 ) 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>5 / 5 right: #t ×5</td>
+<td>5 / 5 right: #t ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (+ 1 2 ) 4 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? a 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>5 / 5 right: #f ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Their test pattern now tells a right sum from a wrong one. The result of <code>(+ 5 5 )</code> compared with 10, 7, 0 and 999, through <code>equals</code> and through the decoded value:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">seed</th>
+<th data-quarto-table-cell-role="th">equals(result, n) for n = 10, 7, 0, 999</th>
+<th data-quarto-table-cell-role="th">decode(result)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theirs</td>
+<td>0</td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>theirs</td>
+<td>1</td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>theirs</td>
+<td>2</td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>theirs</td>
+<td>3</td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>theirs</td>
+<td>4</td>
+<td>10 ×#t, 7 ×#t, 0 ×#t, 999 ×#t</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td>0</td>
+<td>10 ×#t, 7 ×#f, 0 ×#f, 999 ×#f</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>R1</td>
+<td>1</td>
+<td>10 ×#t, 7 ×#f, 0 ×#f, 999 ×#f</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td>2</td>
+<td>10 ×#t, 7 ×#f, 0 ×#f, 999 ×#f</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>R1</td>
+<td>3</td>
+<td>10 ×#t, 7 ×#f, 0 ×#f, 999 ×#f</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>R1</td>
+<td>4</td>
+<td>10 ×#t, 7 ×#f, 0 ×#f, 999 ×#f</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>And their own <code>test_rhc_add</code> and <code>test_rhc_sub</code> sources, checked against the right answer 3 and a wrong answer 4, counted over the seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">source</th>
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">assert passes for 3</th>
+<th data-quarto-table-cell-role="th">assert passes for 4</th>
+<th data-quarto-table-cell-role="th">decode gives 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>theirs</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 5 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>theirs</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>R1</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 5 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>R1</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>all</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>5 / 5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 5 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>all</td>
+<td>5 / 5</td>
+<td>0 / 5</td>
+<td>5 / 5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>With the fix their assertion fails for 4, as it should. The decoded value was right all along. The control programs still pass (the regression table above).</p>
 <p><strong>R2 (residuelisp). <code>and</code> never looks at its second argument.</strong></p>
 <ul>
 <li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>_and_</code>, lines 286–289. <code>equals</code> uses it at line 360 to join the car and cdr comparisons.</li>
@@ -2361,8 +2865,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The second clause tests <code>lhs</code> again instead of <code>rhs</code>.</li>
 <li><em>Fix.</em> Line 288:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>        is_nil(rhs, enc_env) <span class="kw">or</span> is_false(rhs, enc_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Their <code>test_and</code> and <code>test_and_comp</code> only use true arguments, so a test of <code>(and #t #f)</code> would have caught it. - <em>Status.</em> Untested. It is a one-word change.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>        is_nil(rhs, enc_env) <span class="kw">or</span> is_false(rhs, enc_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Their <code>test_and</code> and <code>test_and_comp</code> only use true arguments, so a test of <code>(and #t #f)</code> would have caught it. - <em>Status.</em> <strong>Tested</strong>, as shown. Structural <code>eq?</code> now compares the cdrs too, and the control programs still pass:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">R2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t #f)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t nil)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f or nil</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #t #t)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>5 / 5 right: #t ×5</td>
+<td>5 / 5 right: #t ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(and #f #t)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>5 / 5 right: #f ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons a (cons b nil)) (cons a (cons c nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons a (cons b nil)) (cons a (cons b nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>5 / 5 right: #t ×5</td>
+<td>5 / 5 right: #t ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>R3 (residuelisp). <code>if</code> does not evaluate its condition.</strong></p>
 <ul>
 <li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>if_</code>, lines 427–461; the condition is taken at line 447 and tested at line 458.</li>
@@ -2370,10 +2944,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The condition is the unevaluated form, a pointer, and a pointer is neither <code>nil</code> nor <code>#f</code>.</li>
 <li><em>Fix.</em> Line 447:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> evaluate(car(rand, enc_env, eval_env), enc_env, eval_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> evaluate(car(rand, enc_env, eval_env), enc_env, eval_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> Untested.</li>
+<li><em>Status.</em> <strong>Tested</strong>, as shown. The literal conditions give the same answers as before, and the control programs still pass:</li>
 </ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">R3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? a b) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>0 / 5 right: yes ×5</td>
+<td>5 / 5 right: no ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? a a) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>yes</td>
+<td>5 / 5 right: yes ×5</td>
+<td>5 / 5 right: yes ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (and #f #f) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>0 / 5 right: yes ×5</td>
+<td>5 / 5 right: no ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (and #t #t) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>yes</td>
+<td>5 / 5 right: yes ×5</td>
+<td>5 / 5 right: yes ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if #f yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>5 / 5 right: no ×5</td>
+<td>5 / 5 right: no ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if #t yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>yes</td>
+<td>5 / 5 right: yes ×5</td>
+<td>5 / 5 right: yes ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>E1 (holis). CAR of an atom returns a random item.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2 (“Lisp environment definitions”), <code>vsa_env</code>, the inner <code>car</code>. <code>ev</code> calls it on atoms in two tests: “is head a lambda expression?” (<code>car(head)</code>) and “is head a defined function?” (<code>car(echo)</code>).</li>
@@ -2381,23 +3025,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> For a probe that matches no pointer, <code>SimpleAssoc.recall</code> returns the probe itself, so <code>car</code> unbinds <code>lhs</code> from an atom and cleans up noise, which lands on an arbitrary stored item.</li>
 <li><em>Fix.</em> Let <code>car</code> answer NIL for anything that is not a stored pointer. residuelisp’s <code>car</code> raises in this case (line 226), which is also fine.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
-<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested</strong>, noise-free: wrong results go to 0 of 100 at D = 512 and 2048 (E1 table). The same guard in <code>cdr</code> is untested. The test is an exact key match, which is right for the pointers their code passes around. A version for noisy pointers would let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
+<li><em>Status.</em> <strong>Tested, and incomplete.</strong> On the LAMBDA program, wrong results go to 0 of 100 at D = 512 and 2048 (E1 table), and the control programs all pass (regression table above). But it breaks every DEFINE’d function (the fizzbuzz table above, column <code>E1 + E4</code>): their calls come back unevaluated. Their function memory holds cell bundles, not pointers, and <code>ev</code> finds a function by <code>car</code> of such a bundle, which the guard now answers with NIL. Admitting stored cells too (<code>c in assoc.A or c in assoc.A.reverse</code>) brings DEFINE back, but in one of the 5 seeds four of the five calls then run past 60 s (column <code>E1 admitting cells + E4</code>). So we have no fix for E1 that we can recommend. The cause is that their code uses one <code>car</code> both on pointers and on bundles. A fix would give the function memory its own lookup, and let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
 </ul>
 <p><strong>R4 (residuelisp). The decoder stops at 199.</strong></p>
 <ul>
 <li><em>Where.</em> <code>src/language/interpreter.py</code>, <code>decode_rhc</code>, lines 1253–1271; the range is line 1265.</li>
 <li><em>Symptom.</em> <code>(+ 150 100 )</code> gives a different wrong number in each seed (table above). So do <code>(+ 199 1 )</code> and <code>(- 3 5 )</code>.</li>
 <li><em>Cause.</em> The argmax runs over the codes of 0..199 (plus literals seen), while the moduli 3, 5, 7, 11 cover 0..1154.</li>
-<li><em>Fix.</em> Lines 1265–1267. <code>RHC.moduli</code> is the moduli the encoder used; <code>enc_env.moduli</code> is empty by default:</li>
+<li><em>Fix.</em> Lines 1265–1267. <code>RHC.moduli</code> is the moduli the encoder used; <code>enc_env.moduli</code> is empty by default. <code>RHC.z_ms</code> are the roots the encoder used, so each code is built as <code>RHC.encode</code> builds it:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb145"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
-<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
-<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> RHC.encode(enc_env.dim, i, RHC.moduli).data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted. - <em>Status.</em> Untested.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> np.prod([z_m <span class="op">**</span> i <span class="cf">for</span> z_m <span class="kw">in</span> RHC.z_ms], axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted. - <em>Status.</em> <strong>Tested</strong>, as shown. Our first version called <code>RHC.encode(enc_env.dim, i, RHC.moduli).data</code> in the loop. It gave the same answers, but each call builds an <code>RHC</code> object whose constructor recomputes the four roots, so one decode took about 20 s at D = 1000. The version above takes well under a second:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">R4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 150 100 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>250</td>
+<td>0 / 5 right: 37 ×1, 15 ×1, 119 ×1, 77 ×1, 61 ×1</td>
+<td>5 / 5 right: 250 ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 199 1 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>200</td>
+<td>0 / 5 right: 173 ×1, 32 ×1, 16 ×2, 61 ×1</td>
+<td>5 / 5 right: 200 ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(- 3 5 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>1153</td>
+<td>0 / 5 right: 173 ×1, 15 ×1, 121 ×1, 127 ×1, 46 ×1</td>
+<td>5 / 5 right: 1153 ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1000 154 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>1154</td>
+<td>0 / 5 right: 106 ×1, 81 ×1, 130 ×1, 173 ×1, 1 ×1</td>
+<td>5 / 5 right: 1154 ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 100 99 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>199</td>
+<td>5 / 5 right: 199 ×5</td>
+<td>5 / 5 right: 199 ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>R5 (residuelisp). The lexer drops a <code>)</code> right after a number.</strong></p>
 <ul>
 <li><em>Where.</em> <code>src/syntax/parser.py</code>, <code>_digit</code>, lines 121–127.</li>
@@ -2405,14 +3111,231 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The loop calls <code>_next</code> to look at the character after the digits, so that character is consumed and lost.</li>
 <li><em>Fix.</em> Peek first, as <code>_key_or_ident</code> does:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _digit(d, conts):</span>
-<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> [d]</span>
-<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (curr <span class="op">:=</span> _peek(conts)) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> curr.isdigit():</span>
-<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>        ds.append(_next(conts))</span>
-<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Token(<span class="st">""</span>.join(ds), TokenKind.Int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _digit(d, conts):</span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> [d]</span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (curr <span class="op">:=</span> _peek(conts)) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> curr.isdigit():</span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a>        ds.append(_next(conts))</span>
+<span id="cb175-5"><a href="#cb175-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Token(<span class="st">""</span>.join(ds), TokenKind.Int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> Untested.</li>
+<li><em>Status.</em> <strong>Tested</strong>, as shown. The tokens:</li>
 </ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">source</th>
+<th data-quarto-table-cell-role="th">tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theirs</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g 1)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( g 1</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>theirs</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2) 3)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( + ( + 1 2 3</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>R5</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g 1)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( g 1 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="even">
+<td>R5</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2) 3)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>( + ( + 1 2 ) 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">R5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2) 3)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>6</td>
+<td>0 / 5 right: InterpreterError: Segmentation fault in car hehe ×5</td>
+<td>5 / 5 right: 6 ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ 1 2)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>3</td>
+<td>5 / 5 right: 3 ×5</td>
+<td>5 / 5 right: 3 ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(car (cons 1 2))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>1</td>
+<td>5 / 5 right: 1 ×5</td>
+<td>5 / 5 right: 1 ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 1 2 ) 3 )</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>6</td>
+<td>5 / 5 right: 6 ×5</td>
+<td>5 / 5 right: 6 ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">fix</th>
+<th data-quarto-table-cell-role="th">control programs without the space before ), right in every run</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>theirs</td>
+<td>15 / 15</td>
+</tr>
+<tr class="even">
+<td>R5</td>
+<td>15 / 15</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The control programs pass with the fix, with and without the space before each <code>)</code>. They pass without the space even unfixed: a <code>)</code> lost at the very end is forgiven by the parser. Only a lost <code>)</code> inside the form breaks a program. That is also why their tests, which write <code>(+ 1 2)</code>, never saw it.</p>
+<p>With all five fixes applied together, the programs of R1 to R5 give:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">programs</th>
+<th data-quarto-table-cell-role="th">right in every run</th>
+<th data-quarto-table-cell-role="th">runs right</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>27</td>
+<td>27</td>
+<td>135 / 135</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>And programs that need two fixes at once:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">all</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? 3 5) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>no</td>
+<td>0 / 5 right: InterpreterError: ERROR: Conditional expression requires `CONSEQUENT` and `ALTERNATE`, see documen ×5</td>
+<td>5 / 5 right: no ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(if (eq? (+ 2 3) 5) yes no)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>yes</td>
+<td>0 / 5 right: InterpreterError: ERROR: Conditional expression requires `CONSEQUENT` and `ALTERNATE`, see documen ×5</td>
+<td>5 / 5 right: yes ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons 1 (cons 2 nil)) (cons 1 (cons 3 nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#f</td>
+<td>0 / 5 right: #t ×5</td>
+<td>5 / 5 right: #f ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(eq? (cons 1 (cons 2 nil)) (cons 1 (cons 2 nil)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>#t</td>
+<td>5 / 5 right: #t ×5</td>
+<td>5 / 5 right: #t ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(+ (+ 150 100) 1)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>251</td>
+<td>0 / 5 right: InterpreterError: Segmentation fault in car hehe ×5</td>
+<td>5 / 5 right: 251 ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>4.2 (holis). Programs can name the role vectors.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>vsa_env</code>, the <code>reserved</code> list. It puts <code>lhs</code>, <code>rhs</code> and <code>φ</code> into <code>env['lex']</code> and the item memory, and <code>make_atom</code> returns the lexicon entry for any name a program uses.</li>
@@ -2420,22 +3343,454 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The symbol <code>lhs</code> is the role vector itself, and binding commutes, so unbinding <code>lhs</code> from rhs⊗lhs gives <code>rhs</code> as strongly as unbinding it from lhs⊗x gives <code>x</code>.</li>
 <li><em>Fix.</em> Keep the roles out of the lexicon and the item memory:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb147"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>reserved <span class="op">=</span> [<span class="st">'T'</span>, <span class="st">'F'</span>, <span class="st">"NIL"</span>, <span class="dv">1</span>]      <span class="co"># atoms a program may name</span></span>
-<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
-<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>reserved <span class="op">=</span> [<span class="st">'T'</span>, <span class="st">'F'</span>, <span class="st">"NIL"</span>, <span class="dv">1</span>]      <span class="co"># atoms a program may name</span></span>
+<span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
+<span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> Untested. Nothing else reads the roles from <code>env['lex']</code>, as far as we can see.</li>
+<li><em>Status.</em> <strong>Tested.</strong> Our harness lets <code>vsa_env</code> draw the roles as before and then deletes them from <code>env['lex']</code> and their rows from the item memory. That is the state the change above gives, with the same random draws. <code>lhs</code> in a program is then a fresh atom. The 4.2 programs, 40 seeds per row:</li>
 </ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">4.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>18 / 40 right: rhs ×22, x ×18</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>19 / 40 right: rhs ×21, x ×19</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . lhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>20 / 40 right: x ×20, rhs ×20</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>17 / 40 right: lhs ×23, x ×17</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>22 / 40 right: x ×22, lhs ×18</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (rhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>22 / 40 right: x ×22, lhs ×18</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . rhs))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (lhs . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (x . y))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>y</td>
+<td>40 / 40 right: y ×40</td>
+<td>40 / 40 right: y ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (y . x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>8192</td>
+<td>x</td>
+<td>40 / 40 right: x ×40</td>
+<td>40 / 40 right: x ×40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Nothing else reads the roles from <code>env['lex']</code>: the control programs give the same counts as without the fix (regression table above).</p>
 <p><strong>E2 (holis). CAR does not evaluate its argument.</strong></p>
 <ul>
-<li><em>Where.</em> Code cell 2, <code>vsa_env</code>, <code>caar</code>. By reading, <code>cdar</code> and <code>cons</code> do the same; we ran only the CAR case.</li>
-<li><em>Symptom.</em> <code>(CAR (CDR (a b c)))</code> gives <code>CDR</code>. Lisp 1.5 gives <code>b</code>.</li>
+<li><em>Where.</em> Code cell 2, <code>vsa_env</code>, <code>caar</code>, <code>cdar</code> and <code>cons</code>.</li>
+<li><em>Symptom.</em> <code>(CAR (CDR (a b c)))</code> gives <code>CDR</code>. Lisp 1.5 gives <code>b</code>. <code>(CDR (CDR (a b c)))</code> gives <code>((a b c))</code> instead of <code>(c)</code> (table below).</li>
 <li><em>Cause.</em> <code>caar(c)</code> is <code>car(car(c))</code>: it takes the first element of the argument form instead of its value.</li>
-<li><em>Fix,</em> if Lisp 1.5 semantics are intended. Evaluate first:</li>
+<li><em>Fix,</em> if Lisp 1.5 semantics are intended. Evaluate first, and read their QUOTE form as its argument:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caar(c, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> car(ev_until_done(car(c), ind))</span>
-<span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> cdr(ev_until_done(car(c), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Literal lists then need QUOTE, and their QUOTE keeps its wrapper, so <code>quote</code> would have to return its argument too. Rerun the fizzbuzz helpers after this change. - <em>Status.</em> Untested.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> val(x, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb218-2"><a href="#cb218-2" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> ev_until_done(x, ind)</span>
+<span id="cb218-3"><a href="#cb218-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (car(v) <span class="op">==</span> env[<span class="st">'lex'</span>][<span class="st">'QUOTE'</span>]) <span class="op">&gt;</span> floor:   <span class="co"># (QUOTE (x)) -&gt; x</span></span>
+<span id="cb218-4"><a href="#cb218-4" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> car(car(cdr(v)))</span>
+<span id="cb218-5"><a href="#cb218-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
+<span id="cb218-6"><a href="#cb218-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> car(val(car(c), ind))</span>
+<span id="cb218-7"><a href="#cb218-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> cdr(val(car(c), ind))</span>
+<span id="cb218-8"><a href="#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cons(ab, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> ccons(val(car(ab), ind), val(car(cdr(ab)), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><em>Status.</em> <strong>Tested.</strong> We first suggested only the two <code>ev_until_done</code> lines, and that <code>quote</code> return its argument. Both were incomplete. Without the unwrapping, a quoted list comes back with its wrapper, <code>(QUOTE ((a b c)))</code>. With <code>quote</code> returning its argument, <code>ev_until_done</code> evaluates the argument again, so <code>(QUOTE (CDR a))</code> runs <code>CDR</code> on an atom (E1) and gives a random item. The version above leaves <code>quote</code> alone. Unquoted literal lists such as <code>(a b c)</code> keep working, because their evaluator returns a list with an unknown head unchanged. CONS evaluates by accident in their code: the loop in <code>ev_until_done</code> evaluates the new cell again. Over 5 seeds:</li>
+</ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">E2</th>
+<th data-quarto-table-cell-role="th">E2 + QUOTE returns its argument</th>
+<th data-quarto-table-cell-role="th">E2 + unwrap QUOTE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["b"]</td>
+<td>0 / 5 right: ["CDR"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>["b"]</td>
+<td>0 / 5 right: ["CDR"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>[["c"]]</td>
+<td>0 / 5 right: [[["a", "b", "c"]]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CDR (CDR (a b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>[["c"]]</td>
+<td>0 / 5 right: [[["a", "b", "c"]]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+<td>5 / 5 right: [["c"]] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS (CAR (a b)) (c d))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>[["a", "c", "d"]]</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS (CAR (a b)) (c d))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>[["a", "c", "d"]]</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+<td>5 / 5 right: [["a", "c", "d"]] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (QUOTE (a b c))))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["b"]</td>
+<td>0 / 5 right: ["CDR"] ×5</td>
+<td>0 / 5 right: [[["a", "b", "c"]]] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (CDR (QUOTE (a b c))))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>["b"]</td>
+<td>0 / 5 right: ["CDR"] ×5</td>
+<td>0 / 5 right: [[["a", "b", "c"]]] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+<td>5 / 5 right: ["b"] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (QUOTE (CDR a)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["CDR"]</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>1 / 5 right: ["F"] ×2, ["CDR"] ×1, ["NIL"] ×1, budget ×1</td>
+<td>5 / 5 right: ["CDR"] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (QUOTE (CDR a)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>["CDR"]</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>0 / 5 right: [["QUOTE", ["CDR", "a"]]] ×1, ["NIL"] ×1, ["a"] ×1, ["rhs"] ×1, RecursionError ×1</td>
+<td>5 / 5 right: ["CDR"] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (QUOTE (a b)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["a"]</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>5 / 5 right: ["a"] ×5</td>
+<td>5 / 5 right: ["a"] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CAR (QUOTE (a b)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>["a"]</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>0 / 5 right: ["QUOTE"] ×5</td>
+<td>5 / 5 right: ["a"] ×5</td>
+<td>5 / 5 right: ["a"] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS (QUOTE a) (QUOTE (b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>[["a", "b", "c"]]</td>
+<td>0 / 5 right: budget ×5</td>
+<td>0 / 5 right: budget ×5</td>
+<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(CONS (QUOTE a) (QUOTE (b c)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>2048</td>
+<td>[["a", "b", "c"]]</td>
+<td>0 / 5 right: budget ×5</td>
+<td>0 / 5 right: budget ×5</td>
+<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Here <code>E2</code> is the two lines alone (and CONS), and <code>E2 + unwrap QUOTE</code> is the fix shown. The control programs keep their counts with it (regression table above). Their fizzbuzz helpers do not all survive it (the fizzbuzz table above, column <code>E2 + unwrap QUOTE + E4</code>): in one of the 5 seeds, every call after the first runs into unbounded recursion. Raising Python’s recursion limit to 200 000 did not let it finish within 15 minutes (a side run, not in the JSON files). We suspect E1: evaluating CAR’s argument runs <code>ev</code> on more atoms, and <code>ev</code> takes CAR of an atom. We did not confirm this, and with no working E1 fix (above) we could not test the pair.</p>
 </section>
 <section id="robustness-under-noise" class="level3">
 <h3 class="anchored" data-anchor-id="robustness-under-noise">Robustness under noise</h3>
@@ -2446,7 +3801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> A noisy probe has cosine 1/√(1 + σ²) to its key, which falls below 0.2 at σ = √24 whatever D is, while chance cosines shrink like 1/√D.</li>
 <li><em>Fix.</em> Set θ relative to chance:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb233"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (4.5 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. We did not change the evaluator’s other 0.2 floors.</li>
 </ul>
@@ -2456,24 +3811,181 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>E4 (holis). The item memory grows quadratically.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>SimpleCleanUp.memorize</code>.</li>
-<li><em>Symptom.</em> 800 stored items take 70 100 rows (table above, and the E4 tables). Their fizzbuzz runs take minutes partly because of this.</li>
+<li><em>Symptom.</em> 800 stored items take 70 100 rows (table above, and the E4 tables). Their fizzbuzz runs take minutes because of this.</li>
 <li><em>Cause.</em> When the matrix is full it appends <code>k</code> empty rows but never raises <code>m</code>, so every later item appends another <code>k</code> rows.</li>
 <li><em>Fix.</em> One line, as residuelisp’s <code>CleanupMemory.memorize</code> does (<code>src/language/encoding.py</code>, line 90):</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">&gt;=</span> <span class="va">self</span>.m:</span>
-<span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.M <span class="op">=</span> np.concatenate([<span class="va">self</span>.M, np.zeros((<span class="va">self</span>.k, <span class="va">self</span>.n))], axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.m <span class="op">+=</span> <span class="va">self</span>.k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb234"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">&gt;=</span> <span class="va">self</span>.m:</span>
+<span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.M <span class="op">=</span> np.concatenate([<span class="va">self</span>.M, np.zeros((<span class="va">self</span>.k, <span class="va">self</span>.n))], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb234-3"><a href="#cb234-3" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.m <span class="op">+=</span> <span class="va">self</span>.k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> Untested. We only measured their version.</li>
+<li><em>Status.</em> <strong>Tested</strong>, as shown. Rows of the matrix after storing n items:</li>
 </ul>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">items stored</th>
+<th data-quarto-table-cell-role="th">rows, theirs</th>
+<th data-quarto-table-cell-role="th">rows, with the fix</th>
+<th data-quarto-table-cell-role="th">MB at D = 512, theirs</th>
+<th data-quarto-table-cell-role="th">MB, with the fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>100</td>
+<td>100</td>
+<td>100</td>
+<td>0.4</td>
+<td>0.4</td>
+</tr>
+<tr class="even">
+<td>200</td>
+<td>10100</td>
+<td>200</td>
+<td>41.4</td>
+<td>0.8</td>
+</tr>
+<tr class="odd">
+<td>400</td>
+<td>30100</td>
+<td>400</td>
+<td>123.3</td>
+<td>1.6</td>
+</tr>
+<tr class="even">
+<td>800</td>
+<td>70100</td>
+<td>800</td>
+<td>287.1</td>
+<td>3.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The control programs keep their counts (regression table above). The fizzbuzz helpers give the right answers in all 5 seeds (fizzbuzz table above, column <code>E4</code>), and the time per call drops from minutes to seconds. Seed 0, against the control at the top of the page:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">call</th>
+<th data-quarto-table-cell-role="th">seconds, theirs</th>
+<th data-quarto-table-cell-role="th">seconds, with the fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>their fizzbuzz DEFINEs</td>
+<td>5.9</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td>countdown 3 1</td>
+<td>16.6</td>
+<td>0.3</td>
+</tr>
+<tr class="odd">
+<td>divisible 3 3</td>
+<td>83.1</td>
+<td>0.9</td>
+</tr>
+<tr class="even">
+<td>divisible 4 3</td>
+<td>767.8</td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>and T F</td>
+<td>51.7</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>take 2 (a b c)</td>
+<td>241.2</td>
+<td>0.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>So here the empty rows changed no result. They only cost time.</p>
 <p><strong>E3 (holis). LABEL is a leftover.</strong> Their paper says it leaves LABEL out, so this breaks no claim.</p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>vsa_env</code>: <code>'LABEL'</code> in <code>basic_fs</code> and in <code>env.update</code>, and the inner <code>label</code>.</li>
 <li><em>Symptom.</em> <code>(LABEL f (LAMBDA (x) x))</code> raises a <code>TypeError</code>.</li>
 <li><em>Cause.</em> <code>ev</code> calls every basic function with <code>ind=</code>, and <code>label</code> has no such parameter. Inside, <code>mem.memorize(lbl, exp)</code> passes two arguments to a one-argument method, so it would fail next.</li>
-<li><em>Fix.</em> Remove <code>'LABEL'</code> from <code>basic_fs</code> and from <code>env.update</code>. To keep it, give <code>label</code> an <code>ind=''</code> parameter and call <code>mem.memorize(lbl)</code>.</li>
-<li><em>Status.</em> Untested.</li>
+<li><em>Fix.</em> Remove <code>'LABEL'</code> from <code>basic_fs</code> and from <code>env.update</code>. To keep it, let it enter the name the way DEFINE does, and return the lambda:</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb235"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb235-1"><a href="#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> label(lbl_exp, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb235-2"><a href="#cb235-2" aria-hidden="true" tabindex="-1"></a>    define(lbl_exp, ind)</span>
+<span id="cb235-3"><a href="#cb235-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> car(cdr(lbl_exp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Unlike Lisp 1.5, the name is then global. - <em>Status.</em> <strong>Tested.</strong> We first suggested keeping their <code>label</code> with an <code>ind=''</code> parameter and <code>mem.memorize(lbl)</code>. That stops the error, but recursion still fails: their helper <code>ll</code> replaces the label only at the top level of the body, never inside it. Removing LABEL turns the form into plain data. D = 512, 5 seeds:</p>
+<div class="clay-table">
+<div class="table-responsive">
+<table class="table table-hover clay-table caption-top">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">program</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">should give</th>
+<th data-quarto-table-cell-role="th">theirs</th>
+<th data-quarto-table-cell-role="th">E3 removed</th>
+<th data-quarto-table-cell-role="th">E3 kept</th>
+<th data-quarto-table-cell-role="th">E3 as DEFINE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(LABEL f (LAMBDA (x) x))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>[["LAMBDA", ["x"], "x"]]</td>
+<td>0 / 5 right: TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
+<td>0 / 5 right: [["LABEL", "f", "LAMBDA", ["x"], "x"]] ×4, [["LAMBDA", "LAMBDA", "x"]] ×1</td>
+<td>5 / 5 right: [["LAMBDA", ["x"], "x"]] ×5</td>
+<td>5 / 5 right: [["LAMBDA", ["x"], "x"]] ×5</td>
+</tr>
+<tr class="even">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LABEL f (LAMBDA (x) x)) a)</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["a"]</td>
+<td>0 / 5 right: TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
+<td>0 / 5 right: [[["LABEL", "f", "LAMBDA", ["x"], "x"], "a"]] ×4, [["LAMBDA", [["LAMBDA", ["x"], "x"]], "x"]] ×1</td>
+<td>5 / 5 right: ["a"] ×5</td>
+<td>5 / 5 right: ["a"] ×5</td>
+</tr>
+<tr class="odd">
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>((LABEL f (LAMBDA (x) (COND ((EQ x NIL) . done) (T . (f (CAR x)))))) ((NIL)))</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+<td>512</td>
+<td>["done"]</td>
+<td>0 / 5 right: TypeError: vsa_env.<locals>.label() got an unexpected keyword argument 'ind' ×5</locals></td>
+<td>0 / 5 right: [[["LABEL", "f", "LAMBDA", ["x"], ["COND", [["EQ", "x", "NIL"], "done"], ["T", "f", ["CAR", "x"]]]], [["NIL"]]]] ×5</td>
+<td>0 / 5 right: [["f", ["NIL"]]] ×5</td>
+<td>5 / 5 right: ["done"] ×5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>E3 kept</code> is the first suggestion, <code>E3 as DEFINE</code> the version above. Every variant keeps the control programs’ counts (regression table above).</p>
 </section>
 </section>
 <section id="what-did-not-reproduce" class="level2">
@@ -2549,20 +4061,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
 <section id="a.-commands" class="level3">
 <h3 class="anchored" data-anchor-id="a.-commands">A. Commands</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb151"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
-<span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
-<span id="cb151-3"><a href="#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
-<span id="cb151-4"><a href="#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
-<span id="cb151-5"><a href="#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
-<span id="cb151-6"><a href="#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
-<span id="cb151-7"><a href="#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
-<span id="cb151-8"><a href="#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
-<span id="cb151-9"><a href="#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
-<span id="cb151-10"><a href="#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
-<span id="cb151-11"><a href="#cb151-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
-<span id="cb151-12"><a href="#cb151-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
-<span id="cb151-13"><a href="#cb151-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
-<span id="cb151-14"><a href="#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb239"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb239-1"><a href="#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
+<span id="cb239-2"><a href="#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
+<span id="cb239-3"><a href="#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
+<span id="cb239-4"><a href="#cb239-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
+<span id="cb239-5"><a href="#cb239-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
+<span id="cb239-6"><a href="#cb239-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
+<span id="cb239-7"><a href="#cb239-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
+<span id="cb239-8"><a href="#cb239-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
+<span id="cb239-9"><a href="#cb239-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
+<span id="cb239-10"><a href="#cb239-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
+<span id="cb239-11"><a href="#cb239-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
+<span id="cb239-12"><a href="#cb239-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
+<span id="cb239-13"><a href="#cb239-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_residues.py</span>
+<span id="cb239-14"><a href="#cb239-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span>
+<span id="cb239-15"><a href="#cb239-15" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_fixes.py</span>
+<span id="cb239-16"><a href="#cb239-16" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_fixes.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Each script writes the JSON file of the same name, which this page reads. The loader <code>upstream.py</code> fetches holis at <code>db208d782863febfb50ec46b25a3700369f5cfea</code> and residuelisp at <code>09864c74f1a35680a0008e59d7ab2571269a986f</code> into a gitignored cache.</p>
 </section>
 <section id="b.-settings-per-file" class="level3">
@@ -2657,6 +4171,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"program":"((lambda (x) ((lambda (y) (cons x (cons y nil))) n)) m)","max_steps":5000,"dims":[500,2000,8000],"sigmas":[0,1,2,3,4,6,8,12,16,24,32],"seeds":10,"noise":"p + sigma*|p|\/sqrt(D)*CN(0,I) before every CleanupMemory.recall and AssociativeMemory.deref"}</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 </tr>
+<tr class="even">
+<td>holis_fixes.json</td>
+<td>https://github.com/eilene-ftf/holis @ db208d7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"seeds":5,"dims":[512,2048],"sigma":0,"commute_seeds":40,"commute_dims":[512,2048,8192],"fizzbuzz":{"D":512,"seeds":[0,1,2,3,4],"call_limit_s":60},"max_cells":300,"variants":["theirs","E1","E1 + E4","E1 admitting cells","E1 admitting cells + E4","4.2","E2","E2 + QUOTE returns its argument","E2 + unwrap QUOTE","E3 removed","E3 kept","E3 as DEFINE","E4","E2 + unwrap QUOTE + E4","all but E1 (4.2, E2 + unwrap QUOTE, E3 removed, E4)"]}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
+<tr class="odd">
+<td>residuelisp_fixes.json</td>
+<td>https://github.com/hanleyc01/residuelisp @ 09864c7</td>
+<td>3.14.7 / 2.5.4</td>
+<td><div class="code-copy-outer-scaffold"><div>
+<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>{"D":1000,"seeds":[0,1,2,3,4],"sigma":0,"max_steps":5000,"fixes":["R1","R2","R3","R4","R5","all"]}</code></pre>
+</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2666,22 +4196,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c.-harness-excerpts-our-code" class="level3">
 <h3 class="anchored" data-anchor-id="c.-harness-excerpts-our-code">C. Harness excerpts (our code)</h3>
 <p>Probe noise, wrapped around their two cleanup methods (<code>holis_common.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
-<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
-<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
-<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
-<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
-<span id="cb161-10"><a href="#cb161-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb251"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
+<span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
+<span id="cb251-3"><a href="#cb251-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb251-4"><a href="#cb251-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
+<span id="cb251-5"><a href="#cb251-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
+<span id="cb251-6"><a href="#cb251-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
+<span id="cb251-7"><a href="#cb251-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
+<span id="cb251-8"><a href="#cb251-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-9"><a href="#cb251-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
+<span id="cb251-10"><a href="#cb251-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The 4.5 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
-<span id="cb162-2"><a href="#cb162-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb252"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Paper mode, the 4.1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
-<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb253"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb253-1"><a href="#cb253-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
+<span id="cb253-2"><a href="#cb253-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For residuelisp we also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
 </section>
 <section id="d.-raw-results" class="level3">
