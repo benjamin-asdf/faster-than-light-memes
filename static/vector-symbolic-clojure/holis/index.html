@@ -100,6 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#errata-for-the-authors" id="toc-errata-for-the-authors" class="nav-link" data-scroll-target="#errata-for-the-authors">Errata for the authors</a>
   <ul class="collapse">
   <li><a href="#wrong-answers-without-noise" id="toc-wrong-answers-without-noise" class="nav-link" data-scroll-target="#wrong-answers-without-noise">Wrong answers without noise</a></li>
+  <li><a href="#a-question-about-the-semantics" id="toc-a-question-about-the-semantics" class="nav-link" data-scroll-target="#a-question-about-the-semantics">A question about the semantics</a></li>
   <li><a href="#robustness-under-noise" id="toc-robustness-under-noise" class="nav-link" data-scroll-target="#robustness-under-noise">Robustness under noise</a></li>
   <li><a href="#memory-and-leftovers" id="toc-memory-and-leftovers" class="nav-link" data-scroll-target="#memory-and-leftovers">Memory and leftovers</a></li>
   </ul></li>
@@ -1735,7 +1736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p><strong>E5 (holis).</strong> A function name or a lambda inside a list is applied to what follows it: <code>(a CAR (b c))</code> gives <code>(a b)</code> in every seed. Their own <code>take</code> relies on it (see the errata).</p>
+<p><strong>E5 (holis), a question.</strong> For a list whose head is no function, the code evaluates the tail as a call, where the paper says to leave the list unevaluated. So <code>(a CAR (b c))</code> gives the pair <code>(a . b)</code>. Their programs rely on this, so it may well be intended (see the errata).</p>
 <p><strong>E4 (holis). The item memory adds 100 rows per item past 100.</strong> <code>SimpleCleanUp.memorize</code> appends 100 empty rows once it is full, but it never raises its capacity. So past 100 items, every new item appends another 100 rows. An empty row scores 0, so it can win a lookup only when every stored row scores below 0. Mostly it costs memory and time. It is why the fizzbuzz calls above take minutes, and why my noise sweep at D = 8192 needed smaller memories to stay under 8 GB. residuelisp’s <code>CleanupMemory</code> does raise its capacity.</p>
 <div class="clay-table">
 <div class="table-responsive">
@@ -2139,17 +2140,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>800 rows</td>
 </tr>
 <tr class="even">
-<td>E5</td>
-<td>holis</td>
-<td><div class="code-copy-outer-scaffold"><div>
-<pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a CAR (b c))</code></pre>
-</div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>(a CAR (b c))</td>
-<td>[["a", "b"]] ×5</td>
-<td>5 / 5 at D = 512, 5 / 5 at D = 2048</td>
-<td>0 / 5 at D = 512, 0 / 5 at D = 2048; needs E2, or `take` breaks</td>
-</tr>
-<tr class="odd">
 <td>E3</td>
 <td>holis</td>
 <td><div class="code-copy-outer-scaffold"><div>
@@ -2436,11 +2426,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> Every integer is ζ(x) + <code>__int</code>, and the shared tag alone gives a similarity of about 1, far above the 0.2 floor.</li>
 <li><em>Fix.</em> Compare integers without their tag, as <code>rhc_add</code> already does. Normalising the similarity is not enough: the cosine of 3 and 5 is still about 0.5 (trap 4 table). In the “both atomic” branch of <code>equals</code>, before its <code>return (</code> on line 329:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>        tag <span class="op">=</span> enc_env.codebook[<span class="st">"__int"</span>]</span>
-<span id="cb141-2"><a href="#cb141-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> is_true(check_int(lhs, enc_env), enc_env) <span class="kw">and</span> is_true(check_int(rhs, enc_env), enc_env):</span>
-<span id="cb141-3"><a href="#cb141-3" aria-hidden="true" tabindex="-1"></a>            lhs, rhs <span class="op">=</span> lhs <span class="op">-</span> tag, rhs <span class="op">-</span> tag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb140"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>        tag <span class="op">=</span> enc_env.codebook[<span class="st">"__int"</span>]</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> is_true(check_int(lhs, enc_env), enc_env) <span class="kw">and</span> is_true(check_int(rhs, enc_env), enc_env):</span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>            lhs, rhs <span class="op">=</span> lhs <span class="op">-</span> tag, rhs <span class="op">-</span> tag</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In the tests, compare the decoded value instead. Then a wrong sum fails:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> decode(value, enc_env, eval_env) <span class="op">==</span> <span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> decode(value, enc_env, eval_env) <span class="op">==</span> <span class="st">"3"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. Before and after, D = 1000, 5 seeds:</li>
 </ul>
@@ -2678,7 +2668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The second clause tests <code>lhs</code> again instead of <code>rhs</code>.</li>
 <li><em>Fix.</em> Line 288:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>        is_nil(rhs, enc_env) <span class="kw">or</span> is_false(rhs, enc_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb154"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>        is_nil(rhs, enc_env) <span class="kw">or</span> is_false(rhs, enc_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Their <code>test_and</code> and <code>test_and_comp</code> only use true arguments, so a test of <code>(and #t #f)</code> would have caught it.</p>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. Structural <code>eq?</code> now compares the cdrs too, and the control programs still pass:</li>
@@ -2760,7 +2750,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The condition is the unevaluated form, a pointer, and a pointer is neither <code>nil</code> nor <code>#f</code>.</li>
 <li><em>Fix.</em> Line 447:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> evaluate(car(rand, enc_env, eval_env), enc_env, eval_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>    condition <span class="op">=</span> evaluate(car(rand, enc_env, eval_env), enc_env, eval_env)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. The literal conditions give the same answers as before, and the control programs still pass:</li>
 </ul>
@@ -2841,9 +2831,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> For a probe that matches no pointer, <code>SimpleAssoc.recall</code> returns the probe itself, so <code>car</code> unbinds <code>lhs</code> from an atom and cleans up noise, which lands on an arbitrary stored item.</li>
 <li><em>Tried, not recommended.</em> A guard that answers NIL for anything that is not a stored pointer fixes the LAMBDA program but breaks every DEFINE’d function (see <em>Status</em>); do not apply it as is. Raising instead, as residuelisp’s <code>car</code> does (line 226), would be worse here: <code>ev_until_done</code> calls <code>car</code> on every result, so every program with an atom as its value, DEFINE included, would raise.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
-<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> assoc.A: <span class="cf">return</span> env[<span class="st">'NIL'</span>]</span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mem.recall(assoc.recall(c) <span class="op">*</span> <span class="op">~</span>env[<span class="st">"lhs"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested; breaks DEFINE.</strong> On the LAMBDA program, wrong results go to 0 of 100 at D = 512 and 2048 (E1 table), and the control programs all pass (regression table above). But it breaks every DEFINE’d function (the fizzbuzz table above, column <code>E1 + E4</code>): their calls come back unevaluated. Their function memory holds cell bundles, not pointers, and <code>ev</code> finds a function by <code>car</code> of such a bundle, which the guard now answers with NIL. Admitting stored cells too (<code>c in assoc.A or c in assoc.A.reverse</code>) brings DEFINE back, but in one of the 5 seeds four of the five calls then run past 60 s (column <code>E1 admitting cells + E4</code>). So I have no fix for E1 that I can recommend. The cause is that their code uses one <code>car</code> both on pointers and on bundles. A fix would give the function memory its own lookup, and let <code>SimpleAssoc.recall</code> report a miss instead of returning the probe.</li>
 </ul>
@@ -2854,9 +2844,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The argmax runs over the codes of 0..199 (plus literals seen), while the moduli 3, 5, 7, 11 cover 0..1154.</li>
 <li><em>Fix.</em> Lines 1265–1267. <code>RHC.moduli</code> is the moduli the encoder used; <code>enc_env.moduli</code> is empty by default. <code>RHC.z_ms</code> are the roots the encoder used, so each code is built as <code>RHC.encode</code> builds it:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
-<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> np.prod([z_m <span class="op">**</span> i <span class="cf">for</span> z_m <span class="kw">in</span> RHC.z_ms], axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb169"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(np.prod(RHC.moduli))):   <span class="co"># 0..1154</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> codebook:</span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a>            codebook[i] <span class="op">=</span> np.prod([z_m <span class="op">**</span> i <span class="cf">for</span> z_m <span class="kw">in</span> RHC.z_ms], axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Results then wrap modulo 1155, so <code>(- 3 5 )</code> decodes as 1153. Map the upper half to negatives if that is wanted.</p>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. My first version called <code>RHC.encode(enc_env.dim, i, RHC.moduli).data</code> in the loop. It gave the same answers, but each call builds an <code>RHC</code> object whose constructor recomputes the four roots, so one decode took about 20 s at D = 1000. The version above takes well under a second:</li>
@@ -2930,11 +2920,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The loop calls <code>_next</code> to look at the character after the digits, so that character is consumed and lost.</li>
 <li><em>Fix.</em> Peek first, as <code>_key_or_ident</code> does:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb176"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _digit(d, conts):</span>
-<span id="cb176-2"><a href="#cb176-2" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> [d]</span>
-<span id="cb176-3"><a href="#cb176-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (curr <span class="op">:=</span> _peek(conts)) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> curr.isdigit():</span>
-<span id="cb176-4"><a href="#cb176-4" aria-hidden="true" tabindex="-1"></a>        ds.append(_next(conts))</span>
-<span id="cb176-5"><a href="#cb176-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Token(<span class="st">""</span>.join(ds), TokenKind.Int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb175"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _digit(d, conts):</span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> [d]</span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (curr <span class="op">:=</span> _peek(conts)) <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> curr.isdigit():</span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a>        ds.append(_next(conts))</span>
+<span id="cb175-5"><a href="#cb175-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Token(<span class="st">""</span>.join(ds), TokenKind.Int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. The tokens:</li>
 </ul>
@@ -3162,9 +3152,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> The symbol <code>lhs</code> is the role vector itself, and binding commutes, so unbinding <code>lhs</code> from rhs⊗lhs gives <code>rhs</code> as strongly as unbinding it from lhs⊗x gives <code>x</code>.</li>
 <li><em>Fix.</em> Keep the roles out of the lexicon and the item memory:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a>reserved <span class="op">=</span> [<span class="st">'T'</span>, <span class="st">'F'</span>, <span class="st">"NIL"</span>, <span class="dv">1</span>]      <span class="co"># atoms a program may name</span></span>
-<span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
-<span id="cb194-3"><a href="#cb194-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a>reserved <span class="op">=</span> [<span class="st">'T'</span>, <span class="st">'F'</span>, <span class="st">"NIL"</span>, <span class="dv">1</span>]      <span class="co"># atoms a program may name</span></span>
+<span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> [<span class="st">'lhs'</span>, <span class="st">'rhs'</span>, <span class="st">'φ'</span>]:</span>
+<span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>    env[role] <span class="op">=</span> HRR(N<span class="op">=</span>dim)           <span class="co"># roles only, not in env['lex'] or mem</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested.</strong> My harness lets <code>vsa_env</code> draw the roles as before and then deletes them from <code>env['lex']</code> and their rows from the item memory. That is the state the change above gives, with the same random draws. <code>lhs</code> in a program is then a fresh atom. The trap 2 programs, 40 seeds per row:</li>
 </ul>
@@ -3416,16 +3406,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> <code>caar(c)</code> is <code>car(car(c))</code>: it takes the first element of the argument form instead of its value.</li>
 <li><em>Fix,</em> if Lisp 1.5 semantics are intended. Evaluate first, and read their QUOTE form as its argument:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb219"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> val(x, ind<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb219-2"><a href="#cb219-2" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> ev_until_done(x, ind)</span>
-<span id="cb219-3"><a href="#cb219-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (car(v) <span class="op">==</span> env[<span class="st">'lex'</span>][<span class="st">'QUOTE'</span>]) <span class="op">&gt;</span> floor:   <span class="co"># (QUOTE (x)) -&gt; x</span></span>
-<span id="cb219-4"><a href="#cb219-4" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> car(car(cdr(v)))</span>
-<span id="cb219-5"><a href="#cb219-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
-<span id="cb219-6"><a href="#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> car(val(car(c), ind))</span>
-<span id="cb219-7"><a href="#cb219-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> cdr(val(car(c), ind))</span>
-<span id="cb219-8"><a href="#cb219-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cons(ab, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> ccons(val(car(ab), ind), val(car(cdr(ab)), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> val(x, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb218-2"><a href="#cb218-2" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> ev_until_done(x, ind)</span>
+<span id="cb218-3"><a href="#cb218-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (car(v) <span class="op">==</span> env[<span class="st">'lex'</span>][<span class="st">'QUOTE'</span>]) <span class="op">&gt;</span> floor:   <span class="co"># (QUOTE (x)) -&gt; x</span></span>
+<span id="cb218-4"><a href="#cb218-4" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> car(car(cdr(v)))</span>
+<span id="cb218-5"><a href="#cb218-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> v</span>
+<span id="cb218-6"><a href="#cb218-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> caar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> car(val(car(c), ind))</span>
+<span id="cb218-7"><a href="#cb218-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cdar(c, ind<span class="op">=</span><span class="st">''</span>):  <span class="cf">return</span> cdr(val(car(c), ind))</span>
+<span id="cb218-8"><a href="#cb218-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cons(ab, ind<span class="op">=</span><span class="st">''</span>): <span class="cf">return</span> ccons(val(car(ab), ind), val(car(cdr(ab)), ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><em>Status.</em> <strong>Tested.</strong> I first suggested only the two <code>ev_until_done</code> lines, and that <code>quote</code> return its argument. Both were incomplete. Without the unwrapping, a quoted list comes back with its wrapper, <code>(QUOTE ((a b c)))</code>. With <code>quote</code> returning its argument, <code>ev_until_done</code> evaluates the argument again, so <code>(QUOTE (CDR a))</code> runs <code>CDR</code> on an atom (E1) and gives a random item. The version above leaves <code>quote</code> alone. Unquoted literal lists such as <code>(a b c)</code> keep working, because their evaluator returns a list with an unknown head unchanged (unless it holds a function name or a lambda, E5). CONS evaluates by accident in their code: the loop in <code>ev_until_done</code> evaluates the new cell again. With quoted arguments that loop never ends: their QUOTE returns <code>(QUOTE (x))</code>, and each pass wraps it once more, so <code>(CONS (QUOTE a) (QUOTE (b c)))</code> runs until my harness stops it (“budget”: more than 300 cons cells for one program). The two <code>E2</code> lines alone keep the loop; both QUOTE variants end it. Over 5 seeds:</li>
+<li><em>Status.</em> <strong>Tested.</strong> I first suggested only the two <code>ev_until_done</code> lines, and that <code>quote</code> return its argument. Both were incomplete. Without the unwrapping, a quoted list comes back with its wrapper, <code>(QUOTE ((a b c)))</code>. With <code>quote</code> returning its argument, <code>ev_until_done</code> evaluates the argument again, so <code>(QUOTE (CDR a))</code> runs <code>CDR</code> on an atom (E1) and gives a random item. The version above leaves <code>quote</code> alone. Unquoted literal lists such as <code>(a b c)</code> keep working, because their evaluator keeps an atom that is no function, at the head and after it (a function name or a lambda after the head is applied instead, E5). CONS evaluates by accident in their code: the loop in <code>ev_until_done</code> evaluates the new cell again. With quoted arguments that loop never ends: their QUOTE returns <code>(QUOTE (x))</code>, and each pass wraps it once more, so <code>(CONS (QUOTE a) (QUOTE (b c)))</code> runs until my harness stops it (“budget”: more than 300 cons cells for one program). The two <code>E2</code> lines alone keep the loop; both QUOTE variants end it. Over 5 seeds:</li>
 </ul>
 <div class="clay-table">
 <div class="table-responsive">
@@ -3610,38 +3600,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here <code>E2</code> is the two lines alone (and CONS), and <code>E2 + unwrap QUOTE</code> is the fix shown. The control programs keep their counts with it (regression table above). Their fizzbuzz helpers do not all survive it (the fizzbuzz table above, column <code>E2 + unwrap QUOTE + E4</code>). In seed 0, <code>divisible 3 3</code> runs into unbounded recursion when it follows <code>countdown</code>, and every later call in the same environment then fails as well, even <code>(and T F)</code>: the failed call leaves new pointers in <code>SimpleAssoc</code>, and restoring only that memory makes <code>(and T F)</code> pass again (restoring the item memory does not). Raising Python’s recursion limit to 200 000 did not let it finish within 15 minutes. Which call fails first depends on what ran before it: <code>divisible 3 3</code> passes on its own and after <code>(and T F)</code> but fails after <code>countdown</code> or <code>take</code>, and reseeding numpy’s random generator after <code>countdown</code> makes it pass. Every cons draws a fresh vector from that generator, so each call changes the vectors the next one gets. With E4 alone, the same order passes. (These orderings are side runs, not in the JSON files.) I suspect E1 sets off the first failure: their internal <code>car</code> runs on every call, and with E2 more atoms reach it. I did not confirm this, and with no working E1 fix (above) I could not test the pair.</p>
-<p><strong>E5 (holis). A function name or lambda inside a list is applied to what follows it.</strong></p>
+</section>
+<section id="a-question-about-the-semantics" class="level3">
+<h3 class="anchored" data-anchor-id="a-question-about-the-semantics">A question about the semantics</h3>
+<p><strong>E5 (holis). A question rather than an erratum: code and paper differ on lists whose head is no function.</strong></p>
 <ul>
 <li><em>Where.</em> Code cell 2, <code>vsa_env</code>: the last line of <code>ev</code>, <code>ccons(ev(head), ev(tail))</code>, and in <code>ev_until_done</code> the branch <code>ccons(head, ev_until_done(cdr(e)))</code>.</li>
-<li><em>Symptom.</em> <code>(a CAR (b c))</code> gives <code>(a b)</code>, <code>(a (LAMBDA (x) x) b)</code> gives <code>(a b)</code>, and <code>(g (LAMBDA (x) x))</code> gives <code>(g LAMBDA (x) x)</code>, without noise and in every seed (table below). The E3 result with LABEL removed is this effect too.</li>
-<li><em>Cause.</em> For a list whose head is no function, both lines evaluate the tail as one expression instead of element by element. So the second element becomes the head of a call. Their programs rely on this: <code>take</code> writes <code>(CONS (CAR l) (take (CAR n) (CDR l)))</code>, and since CONS does not evaluate its arguments (E2), the recursive call runs only because the tail of the new cell is evaluated as a call. <code>fizzesbuzzes</code> builds its list as <code>((fb n) . (fizzesbuzzes (CAR n)))</code> for the same reason.</li>
-<li><em>Fix,</em> together with E2. Evaluate the tail element by element:</li>
+<li><em>The paper</em> says “the interpreter should leave the list including f as an unevaluated expression if f is not in the function namespace”; in its eq. (11) such an f gives <code>cons(f, a)</code>.</li>
+<li><em>The code</em> evaluates the tail as one expression: <code>ev</code> evaluates the head and then the tail, and <code>ev_until_done</code> keeps the head and evaluates the tail (“otherwise, just leave it and evaluate the tail”). Since <code>(x f y)</code> is <code>(x . (f y))</code>, a function name or lambda after the head is then applied to what follows it: <code>(a CAR (b c))</code> gives the pair <code>(a . b)</code> and <code>(g (LAMBDA (x) x))</code> gives <code>(g LAMBDA (x) x)</code> (table below, which prints the pair <code>(a . b)</code> as <code>["a", "b"]</code>). The E3 result with LABEL removed is this effect.</li>
+<li><em>Their programs rely on it.</em> <code>fizzesbuzzes</code> and <code>fizzingbuzzing</code> cons onto their recursive call as <code>((fb n) . (fizzesbuzzes (CAR n)))</code>, where both the head <code>(fb n)</code> and the tail are evaluated, and the recursive call in <code>take</code>, <code>(CONS (CAR l) (take (CAR n) (CDR l)))</code>, runs only this way, because CONS does not evaluate its arguments (E2). To keep a function name in data, quote it: <code>(QUOTE (a CAR (b c)))</code> keeps the list inside its QUOTE wrapper (a side run).</li>
+<li><em>The question.</em> Is evaluating the tail meant as the language’s semantics? Then the paper could say so. The paper’s rule taken literally, returning the list as it is, would also stop <code>(fb n)</code> and <code>(CAR (b c))</code> inside a list from running; I did not test it. A third option keeps the head evaluation and evaluates each element of the tail on its own. This is what it takes:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb234"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> each(t, f, ind<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb234-2"><a href="#cb234-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (atomic(t) <span class="op">==</span> env[<span class="st">'T'</span>]) <span class="op">&gt;</span> floor:</span>
-<span id="cb234-3"><a href="#cb234-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> t</span>
-<span id="cb234-4"><a href="#cb234-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ccons(f(car(t), ind<span class="op">=</span>ind), each(cdr(t), f, ind<span class="op">=</span>ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and end <code>ev</code> with <code>return ccons(ev(head, ind=ind+'  '), each(tail,   ev, ind+'  '))</code> and that branch of <code>ev_until_done</code> with <code>return ccons(head, each(cdr(e), ev_until_done, ind))</code>. Lists built as <code>(x . (f …))</code>, as in <code>fizzesbuzzes</code>, then need <code>CONS</code> instead.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb233"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb233-1"><a href="#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> each(t, f, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb233-2"><a href="#cb233-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (atomic(t) <span class="op">==</span> env[<span class="st">'T'</span>]) <span class="op">&gt;</span> floor:</span>
+<span id="cb233-3"><a href="#cb233-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> t</span>
+<span id="cb233-4"><a href="#cb233-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ccons(f(car(t), ind<span class="op">=</span>ind), each(cdr(t), f, ind<span class="op">=</span>ind))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>inside <code>vsa_env</code>, and end <code>ev</code> with <code>return ccons(ev(head,   ind=ind+'  '), each(tail, ev, ind+'  '))</code> and that branch of <code>ev_until_done</code> with <code>return ccons(head, each(cdr(e), ev_until_done,   ind))</code>. It needs E2, and <code>fizzesbuzzes</code> and <code>fizzingbuzzing</code> would have to use <code>CONS</code>.</p>
 <ul>
-<li><em>Status.</em> <strong>Tested</strong> (<code>holis_tail.py</code>, applied as a wrapper around their <code>ev</code> and <code>ev_until_done</code>). Over 5 seeds:</li>
+<li><em>Tested</em> (<code>holis_tail.py</code>, as a wrapper around their <code>ev</code> and <code>ev_until_done</code>; column <code>elementwise</code>). Results over 5 seeds:</li>
 </ul>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">program</th>
 <th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">should give</th>
 <th data-quarto-table-cell-role="th">theirs</th>
-<th data-quarto-table-cell-role="th">E5</th>
+<th data-quarto-table-cell-role="th">elementwise</th>
 </tr>
 </thead>
 <tbody>
@@ -3650,113 +3642,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a CAR (b c))</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["a", "CAR", ["b", "c"]]]</td>
-<td>0 / 5 right: [["a", "b"]] ×5</td>
-<td>5 / 5 right: [["a", "CAR", ["b", "c"]]] ×5</td>
+<td>[["a", "b"]] ×5</td>
+<td>[["a", "CAR", ["b", "c"]]] ×5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a CAR (b c))</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>2048</td>
-<td>[["a", "CAR", ["b", "c"]]]</td>
-<td>0 / 5 right: [["a", "b"]] ×5</td>
-<td>5 / 5 right: [["a", "CAR", ["b", "c"]]] ×5</td>
+<td>[["a", "b"]] ×5</td>
+<td>[["a", "CAR", ["b", "c"]]] ×5</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g (LAMBDA (x) x))</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["g", ["LAMBDA", ["x"], "x"]]]</td>
-<td>0 / 5 right: [["g", "LAMBDA", ["x"], "x"]] ×5</td>
-<td>5 / 5 right: [["g", ["LAMBDA", ["x"], "x"]]] ×5</td>
+<td>[["g", "LAMBDA", ["x"], "x"]] ×5</td>
+<td>[["g", ["LAMBDA", ["x"], "x"]]] ×5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(g (LAMBDA (x) x))</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>2048</td>
-<td>[["g", ["LAMBDA", ["x"], "x"]]]</td>
-<td>0 / 5 right: [["g", "LAMBDA", ["x"], "x"]] ×4, [["LAMBDA", ["x"], "x"]] ×1</td>
-<td>4 / 5 right: [["g", ["LAMBDA", ["x"], "x"]]] ×4, [["LAMBDA", ["x"], "x"]] ×1</td>
+<td>[["g", "LAMBDA", ["x"], "x"]] ×4, [["LAMBDA", ["x"], "x"]] ×1</td>
+<td>[["g", ["LAMBDA", ["x"], "x"]]] ×4, [["LAMBDA", ["x"], "x"]] ×1</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a (LAMBDA (x) x) b)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["a", ["LAMBDA", ["x"], "x"], "b"]]</td>
-<td>0 / 5 right: [["a", "b"]] ×5</td>
-<td>5 / 5 right: [["a", ["LAMBDA", ["x"], "x"], "b"]] ×5</td>
+<td>[["a", "b"]] ×5</td>
+<td>[["a", ["LAMBDA", ["x"], "x"], "b"]] ×5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a (LAMBDA (x) x) b)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>2048</td>
-<td>[["a", ["LAMBDA", ["x"], "x"], "b"]]</td>
-<td>0 / 5 right: [["a", "b"]] ×4, budget ×1</td>
-<td>4 / 5 right: [["a", ["LAMBDA", ["x"], "x"], "b"]] ×4, budget ×1</td>
+<td>[["a", "b"]] ×4, budget ×1</td>
+<td>[["a", ["LAMBDA", ["x"], "x"], "b"]] ×4, budget ×1</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a (CAR (b c)) d)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["a", "b", "d"]]</td>
-<td>5 / 5 right: [["a", "b", "d"]] ×5</td>
-<td>5 / 5 right: [["a", "b", "d"]] ×5</td>
+<td>[["a", "b", "d"]] ×5</td>
+<td>[["a", "b", "d"]] ×5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a (CAR (b c)) d)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>2048</td>
-<td>[["a", "b", "d"]]</td>
-<td>5 / 5 right: [["a", "b", "d"]] ×5</td>
-<td>5 / 5 right: [["a", "b", "d"]] ×5</td>
+<td>[["a", "b", "d"]] ×5</td>
+<td>[["a", "b", "d"]] ×5</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a b c)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["a", "b", "c"]]</td>
-<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
-<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+<td>[["a", "b", "c"]] ×5</td>
+<td>[["a", "b", "c"]] ×5</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(a b c)</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>2048</td>
-<td>[["a", "b", "c"]]</td>
-<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
-<td>5 / 5 right: [["a", "b", "c"]] ×5</td>
+<td>[["a", "b", "c"]] ×5</td>
+<td>[["a", "b", "c"]] ×5</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The single misses at D = 2048 happen with and without the fix, with the same wrong result; I did not trace them. With LABEL removed (E3), <code>(LABEL f (LAMBDA (x) x))</code> comes back as written with the fix, in 4 of 5 seeds:</p>
+<p>The single odd results at D = 2048 happen in both columns, the same in each; I did not trace them. With LABEL removed (E3), <code>(LABEL f (LAMBDA (x) x))</code> comes back as written with the alternative, in 4 of 5 seeds:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">program</th>
 <th data-quarto-table-cell-role="th">D</th>
-<th data-quarto-table-cell-role="th">should give</th>
 <th data-quarto-table-cell-role="th">E3 removed</th>
-<th data-quarto-table-cell-role="th">E3 removed + E5</th>
+<th data-quarto-table-cell-role="th">E3 removed + elementwise</th>
 </tr>
 </thead>
 <tbody>
@@ -3765,15 +3745,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>(LABEL f (LAMBDA (x) x))</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td>512</td>
-<td>[["LABEL", "f", ["LAMBDA", ["x"], "x"]]]</td>
-<td>0 / 5 right: [["LABEL", "f", "LAMBDA", ["x"], "x"]] ×4, [["LAMBDA", "LAMBDA", "x"]] ×1</td>
-<td>4 / 5 right: [["LABEL", "f", ["LAMBDA", ["x"], "x"]]] ×4, [["LAMBDA", ["f"], "f"]] ×1</td>
+<td>[["LABEL", "f", "LAMBDA", ["x"], "x"]] ×4, [["LAMBDA", "LAMBDA", "x"]] ×1</td>
+<td>[["LABEL", "f", ["LAMBDA", ["x"], "x"]]] ×4, [["LAMBDA", ["f"], "f"]] ×1</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The control programs, without and with the fix (the two misses without it are the LAMBDA program of E1):</p>
+<p>The control programs, with their code and with the alternative:</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -3789,14 +3768,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>98 / 100</td>
 </tr>
 <tr class="even">
-<td>E5</td>
+<td>elementwise</td>
 <td>100 / 100</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Their fizzbuzz helpers, right per call over 5 seeds (D = 512, with E4). Alone, the fix breaks <code>take</code>, which then returns its recursive call as data; with E2 it works again, and only seed 0 fails, as with E2 alone. I could not run <code>fizzesbuzzes</code> itself to the end: even with their code and E4, <code>(fizzesbuzzes 3)</code> did not finish within 120 s (a side run).</p>
+<p>The two misses with their code are the LAMBDA program of E1. There <code>car</code> of an atom reads back LAMBDA (E1), and the atom sits at the head of a call only because a tail such as <code>(b c)</code> is evaluated as a call. The alternative removes that path in these seeds; the misread still happens but does no harm. It does not replace the E1 guard: over 100 seeds the alternative still misses 2 at D = 512 and 4 at D = 2048, where the misread hits the lambda’s argument list, and the guard gets all 200 right (a side run).</p>
+<p>Their fizzbuzz helpers, right per call over 5 seeds (D = 512, with E4). Alone, the alternative breaks <code>take</code>, which then returns its recursive call as data; with E2 it works again, and only seed 0 fails, as with E2 alone. I could not run <code>fizzesbuzzes</code> itself to the end: even with their code and E4, <code>(fizzesbuzzes 3)</code> did not finish within 120 s (a side run).</p>
 <div class="clay-table">
 <div class="table-responsive">
 <table class="table table-hover clay-table caption-top">
@@ -3804,8 +3784,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th">call</th>
 <th data-quarto-table-cell-role="th">E4</th>
-<th data-quarto-table-cell-role="th">E5 + E4</th>
-<th data-quarto-table-cell-role="th">E2 + unwrap QUOTE + E5 + E4</th>
+<th data-quarto-table-cell-role="th">elementwise + E4</th>
+<th data-quarto-table-cell-role="th">E2 + unwrap QUOTE + elementwise + E4</th>
 </tr>
 </thead>
 <tbody>
@@ -3849,7 +3829,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-<p>So I would apply it only with E2.</p>
+<p>So keeping list elements is a design change, not a fix: it needs E2 and rewritten programs.</p>
 </section>
 <section id="robustness-under-noise" class="level3">
 <h3 class="anchored" data-anchor-id="robustness-under-noise">Robustness under noise</h3>
@@ -3860,7 +3840,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> A noisy probe has cosine 1/√(1 + σ²) to its key, which falls below 0.2 at σ = √24 whatever D is, while chance cosines shrink like 1/√D.</li>
 <li><em>Fix.</em> Set θ relative to chance:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb246"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb245"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a>assoc <span class="op">=</span> SimpleAssoc(lexicon<span class="op">=</span>env[<span class="st">'lex'</span>], theta<span class="op">=</span><span class="dv">5</span> <span class="op">/</span> np.sqrt(dim))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>: at D = 8192 lookups stay at 200 of 200 up to σ = 8, and the LAMBDA program keeps 8 of 10 at σ = 5 and 6 (trap 3 tables). At D = 512 it changes nothing, since 5/√512 ≈ 0.22. I did not change the evaluator’s other 0.2 floors, and I did not run the fix on the other control programs. Without noise the LAMBDA program gives the same counts as with θ = 0.2 (9 of 10 at D = 512 and 2048, 7 of 10 at D = 8192).</li>
 </ul>
@@ -3874,9 +3854,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> When the matrix is full it appends <code>k</code> empty rows but never raises <code>m</code>, so every later item appends another <code>k</code> rows.</li>
 <li><em>Fix.</em> One line, as residuelisp’s <code>CleanupMemory.memorize</code> does (<code>src/language/encoding.py</code>, line 90):</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb247"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">&gt;=</span> <span class="va">self</span>.m:</span>
-<span id="cb247-2"><a href="#cb247-2" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.M <span class="op">=</span> np.concatenate([<span class="va">self</span>.M, np.zeros((<span class="va">self</span>.k, <span class="va">self</span>.n))], axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb247-3"><a href="#cb247-3" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.m <span class="op">+=</span> <span class="va">self</span>.k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb246"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.i <span class="op">&gt;=</span> <span class="va">self</span>.m:</span>
+<span id="cb246-2"><a href="#cb246-2" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.M <span class="op">=</span> np.concatenate([<span class="va">self</span>.M, np.zeros((<span class="va">self</span>.k, <span class="va">self</span>.n))], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb246-3"><a href="#cb246-3" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.m <span class="op">+=</span> <span class="va">self</span>.k</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em>Status.</em> <strong>Tested</strong>, as shown. Rows of the matrix after storing n items:</li>
 </ul>
@@ -3979,9 +3959,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><em>Cause.</em> <code>ev</code> calls every basic function with <code>ind=</code>, and <code>label</code> has no such parameter. Inside, <code>mem.memorize(lbl, exp)</code> passes two arguments to a one-argument method, so it would fail next.</li>
 <li><em>Fix.</em> Let LABEL enter the name the way DEFINE does, and return the lambda:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb248"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb248-1"><a href="#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> label(lbl_exp, ind<span class="op">=</span><span class="st">''</span>):</span>
-<span id="cb248-2"><a href="#cb248-2" aria-hidden="true" tabindex="-1"></a>    define(lbl_exp, ind)</span>
-<span id="cb248-3"><a href="#cb248-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> car(cdr(lbl_exp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb247"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><a href="#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> label(lbl_exp, ind<span class="op">=</span><span class="st">''</span>):</span>
+<span id="cb247-2"><a href="#cb247-2" aria-hidden="true" tabindex="-1"></a>    define(lbl_exp, ind)</span>
+<span id="cb247-3"><a href="#cb247-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> car(cdr(lbl_exp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Unlike Lisp 1.5, the name is then global. Removing <code>'LABEL'</code> from <code>basic_fs</code> and <code>env.update</code>, as the paper leaves it out, also stops the error, but LABEL is then never applied and the form comes back as a wrong list: their evaluator keeps the unknown head <code>LABEL</code> and splices the evaluated lambda in (E5), giving <code>(LABEL f LAMBDA (x) x)</code> in 4 of 5 seeds.</p>
 <ul>
 <li><em>Status.</em> <strong>Tested.</strong> I first suggested keeping their <code>label</code> with an <code>ind=''</code> parameter and <code>mem.memorize(lbl)</code>. That stops the error, but recursion still fails: their helper <code>ll</code> replaces the label only at the top level of the body, never inside it. With LABEL removed, it is never applied and the form comes back as a wrong list. D = 512, 5 seeds:</li>
@@ -4102,7 +4082,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>new</td>
-<td>E1 car of an atom, E2, E3, E4 memory growth, E5 list tails</td>
+<td>E1 car of an atom, E2, E3, E4 memory growth; E5 a question (list tails)</td>
 <td>R2 <code>and</code>, R3 <code>if</code>, R4 decoder range, R5 lexer</td>
 </tr>
 </tbody>
@@ -4112,22 +4092,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
 <section id="a.-commands" class="level3">
 <h3 class="anchored" data-anchor-id="a.-commands">A. Commands</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb252"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb252-1"><a href="#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
-<span id="cb252-2"><a href="#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
-<span id="cb252-3"><a href="#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
-<span id="cb252-4"><a href="#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
-<span id="cb252-5"><a href="#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
-<span id="cb252-6"><a href="#cb252-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
-<span id="cb252-7"><a href="#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
-<span id="cb252-8"><a href="#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
-<span id="cb252-9"><a href="#cb252-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
-<span id="cb252-10"><a href="#cb252-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
-<span id="cb252-11"><a href="#cb252-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
-<span id="cb252-12"><a href="#cb252-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
-<span id="cb252-13"><a href="#cb252-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span>
-<span id="cb252-14"><a href="#cb252-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_fixes.py</span>
-<span id="cb252-15"><a href="#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_tail.py</span>
-<span id="cb252-16"><a href="#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_fixes.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb251"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb251-1"><a href="#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> repro/holis</span>
+<span id="cb251-2"><a href="#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv          <span class="co"># Python 3.14.7</span></span>
+<span id="cb251-3"><a href="#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/pip</span> install numpy more-itertools</span>
+<span id="cb251-4"><a href="#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENBLAS_NUM_THREADS</span><span class="op">=</span>1</span>
+<span id="cb251-5"><a href="#cb251-5" aria-hidden="true" tabindex="-1"></a><span class="bu">ulimit</span> <span class="at">-v</span> 8000000</span>
+<span id="cb251-6"><a href="#cb251-6" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_control.py</span>
+<span id="cb251-7"><a href="#cb251-7" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_errata.py</span>
+<span id="cb251-8"><a href="#cb251-8" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_commute.py</span>
+<span id="cb251-9"><a href="#cb251-9" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_thresholds.py</span>
+<span id="cb251-10"><a href="#cb251-10" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_cells.py</span>
+<span id="cb251-11"><a href="#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_control.py</span>
+<span id="cb251-12"><a href="#cb251-12" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_errata.py</span>
+<span id="cb251-13"><a href="#cb251-13" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_thresholds.py</span>
+<span id="cb251-14"><a href="#cb251-14" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_fixes.py</span>
+<span id="cb251-15"><a href="#cb251-15" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> holis_tail.py</span>
+<span id="cb251-16"><a href="#cb251-16" aria-hidden="true" tabindex="-1"></a><span class="ex">.venv/bin/python</span> residuelisp_fixes.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Each script writes the JSON file of the same name, which this page reads. The loader <code>upstream.py</code> fetches holis at <code>db208d782863febfb50ec46b25a3700369f5cfea</code> and residuelisp at <code>09864c74f1a35680a0008e59d7ab2571269a986f</code> into a gitignored cache.</p>
 </section>
 <section id="b.-settings-per-file" class="level3">
@@ -4239,22 +4219,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="c.-harness-excerpts-my-code" class="level3">
 <h3 class="anchored" data-anchor-id="c.-harness-excerpts-my-code">C. Harness excerpts (my code)</h3>
 <p>Probe noise, wrapped around their two cleanup methods (<code>holis_common.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb263"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
-<span id="cb263-2"><a href="#cb263-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
-<span id="cb263-3"><a href="#cb263-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb263-4"><a href="#cb263-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
-<span id="cb263-5"><a href="#cb263-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
-<span id="cb263-6"><a href="#cb263-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
-<span id="cb263-7"><a href="#cb263-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
-<span id="cb263-8"><a href="#cb263-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb263-9"><a href="#cb263-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
-<span id="cb263-10"><a href="#cb263-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb262"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb262-1"><a href="#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _noisy(hrr):</span>
+<span id="cb262-2"><a href="#cb262-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> STATE[<span class="st">"sigma"</span>]</span>
+<span id="cb262-3"><a href="#cb262-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb262-4"><a href="#cb262-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> hrr</span>
+<span id="cb262-5"><a href="#cb262-5" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> hrr.v</span>
+<span id="cb262-6"><a href="#cb262-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> STATE[<span class="st">"rng"</span>].normal(size<span class="op">=</span>v.size) <span class="op">*</span> (s <span class="op">*</span> np.linalg.norm(v) <span class="op">/</span> math.sqrt(v.size))</span>
+<span id="cb262-7"><a href="#cb262-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H.HRR(data<span class="op">=</span>v <span class="op">+</span> n)</span>
+<span id="cb262-8"><a href="#cb262-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb262-9"><a href="#cb262-9" aria-hidden="true" tabindex="-1"></a>H.SimpleCleanUp.recall <span class="op">=</span> <span class="kw">lambda</span> <span class="va">self</span>, hrr: _ORIG_MEM_RECALL(<span class="va">self</span>, _noisy(hrr))</span>
+<span id="cb262-10"><a href="#cb262-10" aria-hidden="true" tabindex="-1"></a>H.SimpleAssoc.recall   <span class="op">=</span> ...  <span class="co"># the same, and counts theta fallbacks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The trap 3 control is one attribute, <code>env["assoc"].theta = 5 / sqrt(D)</code>. The E1 control rebinds their inner <code>car</code> in the closures of <code>vsa_env</code> (<code>holis_errata.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb264"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
-<span id="cb264-2"><a href="#cb264-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb263"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> car(c, ind<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb263-2"><a href="#cb263-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> orig(c) <span class="cf">if</span> c <span class="kw">in</span> assoc.A <span class="cf">else</span> nil</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Paper mode, the trap 1 experiment, is two attributes on their pointer memory (<code>holis_cells.py</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb265"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb265-1"><a href="#cb265-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
-<span id="cb265-2"><a href="#cb265-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb264"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a>a.memorize <span class="op">=</span> <span class="kw">lambda</span> probe, trace: (trace.unit(), trace.unit())</span>
+<span id="cb264-2"><a href="#cb264-2" aria-hidden="true" tabindex="-1"></a>a.recall <span class="op">=</span> <span class="kw">lambda</span> probe: probe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For residuelisp I also silence its debug output, stub the <code>decode</code> it calls inside log messages while a program runs, reset its class-level RHC state per seed, and stop a run after a budget of cleanups. holis runs stop after a budget of cons cells (300 per small program in <code>holis_fixes.py</code> and <code>holis_thresholds.py</code>, 20 000 in <code>holis_cells.py</code>) or, for the fizzbuzz calls, after 60 s. Under noise its <code>tuple_to_list</code> loops until <code>car</code> raises, which can be never.</p>
 </section>
 <section id="d.-raw-results" class="level3">
