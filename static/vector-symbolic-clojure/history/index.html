@@ -98,7 +98,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="integers-from-a-table-to-clocks-and-the-chimeras" class="level2">
 <h2 class="anchored" data-anchor-id="integers-from-a-table-to-clocks-and-the-chimeras">2. Integers: from a table to clocks, and the chimeras</h2>
 <p>Integers started as powers Bⁿ of one vector, recognised by scanning the whole integer range on every cleanup. That scan dominated the run time. Following Kymn et al.&nbsp;(2025) and Hanley et al.&nbsp;(2025), the encoding moved to residues: one band of the vector per prime, read like six clocks. Cleanup became 72 checks instead of a scan.</p>
-<p>The clocks brought chimeras: a sum of 11 and 12 matches 62 fake numbers exactly as well as its members. The readout over integers that showed this was replaced before the first commit, so the end-to-end failure no longer reproduces. The fix stayed: integers inside maps and sets sit behind their own pointers.</p>
+<p>The clocks brought chimeras: a sum of 11 and 12 matches 62 fake numbers exactly as well as its members. The readout over integers that showed this was replaced before the first commit, so the end-to-end failure no longer reproduces. The fix then: integers inside maps and sets sit behind their own pointers.</p>
+<p>In October, running Hanley et al.’s own code showed that their product code has no chimeras: every coordinate mixes all six clocks, so two numbers agree only when they are equal. We had split the clocks into bands for a cheap readout, and the bands made the chimeras. The encoding moved to the product code. Its readout cannot read one clock at a time, so it keeps a memory of the numbers the interpreter has made, much like the very first table but holding only numbers in use, and reads anything else against all 1.6 million numbers by one Fourier transform. The pointers inside maps and sets stayed.</p>
 </section>
 <section id="map-entries" class="level2">
 <h2 class="anchored" data-anchor-id="map-entries">3. Map entries</h2>
@@ -106,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="zero-in-one-dimension" class="level2">
 <h2 class="anchored" data-anchor-id="zero-in-one-dimension">4. Zero in one dimension</h2>
-<p>B⁰ is the identity of convolution, a vector with all its weight in dimension 0. Damaging that one dimension, at a lesion of 0.5%, destroyed all arithmetic. In review we also saw that 5005 = 5·7·11·13 is 4/6 similar to zero on the clocks, so a threshold <code>zero?</code> would accept it.</p>
+<p>B⁰ is the identity of convolution, a vector with all its weight in dimension 0. Damaging that one dimension, at a lesion of 0.5%, destroyed all arithmetic. In review we also saw that 5005 = 5·7·11·13 is 4/6 similar to zero on the banded clocks, so a threshold <code>zero?</code> would accept it (the product code later removed that overlap too).</p>
 <p>The change: n = Bⁿ⊗Z with a random Z, so zero is spread over all dimensions; <code>zero?</code> and <code>=</code> compare identities. <code>(+ 17 25)</code> then came out right in 300 of 300 runs up to a 10% lesion.</p>
 </section>
 <section id="fixed-thresholds" class="level2">

@@ -334,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> kons </span>[a b] (h/mem-get M (h/intern! M (random-vec) (cell-trace a b) CELL)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Integers come from the substrate’s residue encoding: n = Bⁿ⊗Z, cleaned up by reading off each residue. General cleanup takes whichever is closer, a stored row or an integer.</p>
+<p>Integers come from the substrate’s residue encoding: n = Bⁿ⊗Z, with every Fourier coefficient of B a random multiple of 2π/P (the product code), so distinct integers are unrelated. No single residue can be read off any more, so cleanup compares a vector with the integers made so far (<code>read-known-num</code>); <code>read-num</code> can also search all P integers by one FFT, at tens of milliseconds a call. General cleanup takes whichever is closer, a stored row or an integer.</p>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> N </span>(h/numbers S))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -343,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> cleanup </span>[v]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [[n s-num] (h/read-num N v)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [[n s-num] (h/read-known-num N v)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        [i s-row] (h/nearest M v)]</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">if</span> (<span class="kw">&gt;</span> s-num s-row) (<span class="kw">num</span> n) (h/mem-get M i))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> kind </span>[v]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [[_ s-num] (h/read-num N v)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [[_ s-num] (h/read-known-num N v)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        [i label s] (h/recall M v)]</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">cond</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>      (<span class="kw">&gt;</span> s-num (<span class="kw">max</span> s <span class="fl">0.5</span>)) <span class="at">:num</span></span>
@@ -446,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-evaluator" class="level2">
 <h2 class="anchored" data-anchor-id="the-evaluator">8. The evaluator</h2>
-<p>Arithmetic is binding. Since n = Bⁿ⊗Z, the sum a + b is a⊗b⊘Z, and <code>inc</code> binds one more B.</p>
+<p>Arithmetic is binding. Since n = Bⁿ⊗Z, the sum a + b is a⊗b⊘Z, and <code>inc</code> binds one more B. Each result is handed to the integer memory (<code>num-made</code>), which works out its value from the clean operands, so that cleanup can recognise it later.</p>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> Z </span>(h/num-offset N))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -458,10 +458,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> primitives</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  {<span class="at">'+</span> (<span class="kw">fn</span> [a b] (h/unbind S Z (h/bind S a b)))</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">'-</span> (<span class="kw">fn</span> [a b] (h/bind S Z (h/unbind S b a)))</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">'inc</span> (<span class="kw">fn</span> [a] (h/bind S B a))</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">'dec</span> (<span class="kw">fn</span> [a] (h/unbind S B a))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  {<span class="at">'+</span> (<span class="kw">fn</span> [a b] (h/num-made N (h/unbind S Z (h/bind S a b)) <span class="at">:add</span> a b))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">'-</span> (<span class="kw">fn</span> [a b] (h/num-made N (h/bind S Z (h/unbind S b a)) <span class="at">:sub</span> a b))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">'inc</span> (<span class="kw">fn</span> [a] (h/num-made N (h/bind S B a) <span class="at">:inc</span> a))</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">'dec</span> (<span class="kw">fn</span> [a] (h/num-made N (h/unbind S B a) <span class="at">:dec</span> a))</span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">'zero?</span> (<span class="kw">fn</span> [a] (truthy (same? a (<span class="kw">num</span> <span class="dv">0</span>))))</span>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">'=</span> (<span class="kw">fn</span> [a b] (truthy (same? a b)))</span>
 <span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">'cons</span> kons</span>
@@ -568,7 +568,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>a</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>7</td>
+<td>6</td>
 </tr>
 <tr class="odd">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -640,7 +640,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>42</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>260</td>
+<td>232</td>
 </tr>
 <tr class="even">
 <td><div class="code-copy-outer-scaffold"><div>
@@ -649,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><div class="code-copy-outer-scaffold"><div>
 <pre class="sourceCode language-clojure source-clojure bg-light code-with-copy"><code>120</code></pre>
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
-<td>1414</td>
+<td>1234</td>
 </tr>
 </tbody>
 </table>
